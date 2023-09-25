@@ -2290,7 +2290,7 @@ header.active {
 .course-search-form input {
     height: 62px;
     border: 1px solid #DDDDDD;
-    padding: 0 60px 0 155px;
+    padding: 0 60px 0 20px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
@@ -2387,7 +2387,7 @@ header.active {
 }
 
 .header-area .logo img {
-    max-width: 100%;
+    max-width: 90%;
 }
 
 @media (max-width: 991px) {
@@ -6228,6 +6228,7 @@ blockquote::before {
 }
 
 .custom-button {
+    transform: translateX(10px);
     color: #ffffff;
     text-transform: uppercase;
     line-height: 48px;
@@ -6239,6 +6240,7 @@ blockquote::before {
     font-size: 16px;
     border-radius: 25px;
     border: 1px solid #FF7700;
+    
 }
 
 .custom-button i {
