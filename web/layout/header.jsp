@@ -14,7 +14,7 @@
                 <div class="header-area">
                     <div class="logo">
                         <a href="index.jsp">
-                            <img height ="150" src="assets/images/logo/logo2.png" alt="logo">
+                            <img  height="100" src="assets/images/logo/logo5.png" alt="logo">
                         </a>
                     </div>
                     <ul class="menu d-none d-lg-flex flex-wrap">

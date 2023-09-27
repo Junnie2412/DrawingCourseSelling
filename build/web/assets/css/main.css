@@ -2386,8 +2386,10 @@ header.active {
     display: block;
 }
 
+
 .header-area .logo img {
     max-width: 90%;
+    vertical-align: top;
 }
 
 @media (max-width: 991px) {
