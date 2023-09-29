@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>Eduac - Online Education HTML Template</title>
+    <title>ArtCenter - Online Drawing Course</title>
 
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/all.min.css">
@@ -46,11 +46,11 @@
             <div class="container">
                 <div class="banner-content cl-white">
                     <h3 class="subtitle">Join the drawing course now</h3>
-                    <h1 class="title">Your Knowledge</h1>
+                    <h1 class="title">course creative</h1>
                     <p>You can learn drawing skills from basic to advanced, by participating in the courses below.</p>
                     <div class="banner-button-area">
                         <a href="courses.jsp" class="custom-button btn-md">view courses<i class="fas fa-play-circle"></i></a>
-                        <a href="#apply" class="custom-button btn-md theme-one">Apply now<i class="flaticon-tap-1"></i></a>
+                        <a href="#apply" class="custom-button btn-md theme-one">Create your account<i class="flaticon-tap-1"></i></a>
                     </div>
                 </div>
             </div>
@@ -80,7 +80,8 @@
                             <div class="content">
                                 <h6 class="title">Education Services</h6>
                                 <span class="shape"></span>
-                                <p class="fs-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis fermentum metus.</p>
+                                <p class="fs-sm">Students can have many opportunities to learn and experience many different drawing genres. In addition, we will provide you with a certificate trusted by companies and organizations once you complete each course.
+</p>
                             </div>
                         </div>
                     </div>
@@ -90,9 +91,10 @@
                                 <i class="fas fa-laptop-house"></i>
                             </div>
                             <div class="content">
-                                <h6 class="title">Online/Offline Class</h6>
+                                <h6 class="title">Online Class</h6>
                                 <span class="shape"></span>
-                                <p class="fs-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis fermentum metus.</p>
+                                <p class="fs-sm">To meet the need to learn without going to the school, each course will provide online videos for each student when registering for the course. You can access our website anytime, anywhere as long as you have a learning spirit and are willing to develop your creativity.
+</p>
                             </div>
                         </div>
                     </div>
@@ -104,7 +106,7 @@
                             <div class="content">
                                 <h6 class="title">Expert Mentor</h6>
                                 <span class="shape"></span>
-                                <p class="fs-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis fermentum metus.</p>
+                                <p class="fs-sm">Students will learn from instructors with degrees from famous art universities across the country. Each instructor will provide interesting lessons.</p>
                             </div>
                         </div>
                     </div>
@@ -116,7 +118,8 @@
                             <div class="content">
                                 <h6 class="title">Lifetime Support</h6>
                                 <span class="shape"></span>
-                                <p class="fs-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis fermentum metus.</p>
+                                <p class="fs-sm">We will serve and support you quickly when you have questions or encounter difficulties in studying. There is also a forum where you can discuss and share useful courses while studying with us.
+</p>
                             </div>
                         </div>
                     </div>
@@ -143,7 +146,7 @@
                     <div class="col-xl-4 col-md-6 col-sm-10">
                         <div class="course-item">
                             <div class="thumb">
-                                <a href="#0">
+                                <a href="course-details.jsp">
                                     <img src="assets/images/course/01.png" alt="course">
                                 </a>
                             </div>
@@ -186,7 +189,7 @@
                     <div class="col-xl-4 col-md-6 col-sm-10">
                         <div class="course-item">
                             <div class="thumb">
-                                <a href="#0">
+                                <a href="course-details.jsp">
                                     <img src="assets/images/course/02.png" alt="course">
                                 </a>
                             </div>
@@ -229,7 +232,7 @@
                     <div class="col-xl-4 col-md-6 col-sm-10">
                         <div class="course-item">
                             <div class="thumb">
-                                <a href="#0">
+                                <a href="course-details.jsp">
                                     <img src="assets/images/course/03.png" alt="course">
                                 </a>
                             </div>
@@ -272,7 +275,7 @@
                     <div class="col-xl-4 col-md-6 col-sm-10">
                         <div class="course-item">
                             <div class="thumb">
-                                <a href="#0">
+                                <a href="course-details.jsp">
                                     <img src="assets/images/course/04.png" alt="course">
                                 </a>
                             </div>
@@ -315,7 +318,7 @@
                     <div class="col-xl-4 col-md-6 col-sm-10">
                         <div class="course-item">
                             <div class="thumb">
-                                <a href="#0">
+                                <a href="course-details.jsp">
                                     <img src="assets/images/course/05.png" alt="course">
                                 </a>
                             </div>
@@ -358,7 +361,7 @@
                     <div class="col-xl-4 col-md-6 col-sm-10">
                         <div class="course-item">
                             <div class="thumb">
-                                <a href="#0">
+                                <a href="course-details.jsp">
                                     <img src="assets/images/course/06.png" alt="course">
                                 </a>
                             </div>

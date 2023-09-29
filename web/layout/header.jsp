@@ -8,13 +8,14 @@
 
 
 
+
         <!-- ~~~ Header Section ~~~ -->
         <header>
             <div class="custom-container">
                 <div class="header-area">
                     <div class="logo">
                         <a href="index.jsp">
-                            <img  src="assets/images/logo/logo-dark.png" alt="logo">
+                            <img  src="assets/images/logo/logo6.png" alt="logo">
                         </a>
                     </div>
                     <ul class="menu d-none d-lg-flex flex-wrap">
@@ -54,7 +55,7 @@
                         <input type="text" name="name" placeholder="Search Courses" class="rounded pl-0">
                         <button type="submit" class="rounded"><i class="flaticon-loupe"></i></button>
                     </form>
-                    <a href="login.jsp" class="custom-button"><i class="fas fa-user"></i><span>Sign Up</span></a>
+                    <a href="login.jsp" class="custom-button"><i class="fas fa-user"></i><span>Log In</span></a>
                 </div>
             </div>
         </header>
