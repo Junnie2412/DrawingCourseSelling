@@ -541,7 +541,7 @@
         <div class="sponsor-section pb-120">
             <div class="container-fluid">
                 <div class="text-center">
-                    <h4 class="title cl-theme">As Seen On</h4>
+                    <h4 class="title cl-theme">Art Center</h4>
                 </div>
                 <div class="sponsor-slider-wrapper">
                     <div class="sponsor-slider owl-theme owl-carousel">

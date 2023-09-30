@@ -49,7 +49,7 @@
         <jsp:include page="layout/header.jsp"/>
 
         <!-- ~~~ Hero Section ~~~ -->
-        <section class="hero-section banner-overlay bg_img" data-img="assets/images/banner/mainBanner.jpg>
+        <section class="hero-section banner-overlay bg_img" data-img="assets/images/banner/banner.png>
             
             <div class="custom-container">
                 <div class="hero-content">

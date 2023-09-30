@@ -2380,7 +2380,7 @@ header.active {
 }
 
 .header-area .custom-button {
-    background-color: rgba(226,127,142,1);
+    background-color: rgba(31,191,177,0.87);
     border: 2px solid rgba(226,127,142,1);
     box-shadow: 0 3px 6px rgba(61,115,130,0.3);
     margin-left: 20px;
@@ -2937,7 +2937,7 @@ header.active {
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
-    border: 1px solid #E2E4FF;
+    border: 3px solid #E2E4FF;
     -webkit-transition: all ease 0.3s;
     -moz-transition: all ease 0.3s;
     transition: all ease 0.3s;
@@ -2945,6 +2945,8 @@ header.active {
     -webkit-transition: all ease 0.3s;
     -moz-transition: all ease 0.3s;
     transition: all ease 0.3s;
+    height: 450px;
+    
     
 }
 
