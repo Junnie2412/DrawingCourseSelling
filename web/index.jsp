@@ -16,9 +16,9 @@
     <link rel="stylesheet" href="assets/css/owl.min.css">
     <link rel="stylesheet" href="assets/css/magnific-popup.css">
     <link rel="stylesheet" href="assets/css/flaticon.css">
-    <link rel="stylesheet" href="assets/css/main.css">
-
-    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
+    <link href="assets/css/main2.css" rel="stylesheet" type="text/css"/>
+    
+    <link rel="shortcut icon" href="assets/images/logo/SketchAcaLogo.png" type="image/x-icon">
 </head>
 
 
@@ -40,9 +40,12 @@
          <jsp:include page="layout/header.jsp"/>
         
 
-
+        <div class="sliding-top">
+            <img src="https://webdesign-finder.com/html/canabro/images/mask-top-subtract.png" alt="">
+        </div>
+         
         <!-- ~~~ Banner Section ~~~ -->
-        <section class="banner-section banner-overlay bg_img" data-img="assets/images/banner/banner.png">
+        <section class="banner-section banner-overlay bg_img" data-img="assets/images/banner/mainBanner.jpg">
             <div class="container">
                 <div class="banner-content cl-white">
                     <h3 class="subtitle">Join the drawing course now</h3>
@@ -54,15 +57,12 @@
                     </div>
                 </div>
             </div>
-            <div class="banner-thumb">
-                <div class="rounded-shape shape-1"></div>
-                <div class="rounded-shape shape-2"></div>
-                <div class="rounded-shape shape-3"></div>
-                <img src="assets/images/banner/banner.png" alt="banner">
-            </div>
+
         </section>
         <!-- ~~~ Banner Section ~~~ -->
-
+        <div class="sliding-down">
+            <img src="https://webdesign-finder.com/html/canabro/images/mask-bottom-subtract.png" alt="">
+        </div>
 
         <!-- ~~~ Feature Section ~~~ -->
         <section class="feature-section pt-120 pb-120">
@@ -147,7 +147,50 @@
                         <div class="course-item">
                             <div class="thumb">
                                 <a href="course-details.jsp">
-                                    <img src="assets/images/course/01.png" alt="course">
+                                    <img src="https://pbs.twimg.com/media/FKq8fr2aUAQc2wq.jpg:large" alt="course">
+                                </a>
+                            </div>
+                            <div class="content">
+                                <h5 class="title">
+                                    <a href="course-details.jsp">Illustration with Mai Yoneyama</a>
+                                </h5>
+                                <div class="meta-area">
+                                    <div class="meta">
+                                        <div class="meta-item">
+                                            <i class="fas fa-user"></i>
+                                            <span>Mark Parker</span>
+                                        </div>
+                                        <div class="meta-item">
+                                            <i class="fas fa-photo-video"></i>
+                                            <span>15 Lessons</span>
+                                        </div>
+                                        <div class="meta-item">
+                                            <i class="fas fa-user-graduate"></i>
+                                            <span>25 Students</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ratings-area">
+                                    <div class="ratings cl-theme">
+                                        <span><i class="fas fa-star"></i></span>
+                                        <span><i class="fas fa-star"></i></span>
+                                        <span><i class="fas fa-star"></i></span>
+                                        <span><i class="fas fa-star"></i></span>
+                                        <span class="cl-theme-light"><i class="fas fa-star"></i></span>
+                                        <span>(4.9/5.00)</span>
+                                    </div>
+                                    <div class="price cl-1">
+                                        $29.99
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-6 col-sm-10">
+                        <div class="course-item">
+                            <div class="thumb">
+                                <a href="course-details.jsp">
+                                    <img src="https://i.pinimg.com/564x/b5/f5/c5/b5f5c5c8f41ce9fe53579dc47b03a9f0.jpg" alt="course">
                                 </a>
                             </div>
                             <div class="content">
@@ -190,7 +233,7 @@
                         <div class="course-item">
                             <div class="thumb">
                                 <a href="course-details.jsp">
-                                    <img src="assets/images/course/02.png" alt="course">
+                                    <img src="https://i.pinimg.com/564x/7f/cd/cc/7fcdcc74d1d3e8cf0c111d7ea51a46b2.jpg" alt="course">
                                 </a>
                             </div>
                             <div class="content">
@@ -233,50 +276,7 @@
                         <div class="course-item">
                             <div class="thumb">
                                 <a href="course-details.jsp">
-                                    <img src="assets/images/course/03.png" alt="course">
-                                </a>
-                            </div>
-                            <div class="content">
-                                <h5 class="title">
-                                    <a href="course-details.jsp">Strategic Social Media & Marketing Policy</a>
-                                </h5>
-                                <div class="meta-area">
-                                    <div class="meta">
-                                        <div class="meta-item">
-                                            <i class="fas fa-user"></i>
-                                            <span>Mark Parker</span>
-                                        </div>
-                                        <div class="meta-item">
-                                            <i class="fas fa-photo-video"></i>
-                                            <span>15 Lessons</span>
-                                        </div>
-                                        <div class="meta-item">
-                                            <i class="fas fa-user-graduate"></i>
-                                            <span>25 Students</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="ratings-area">
-                                    <div class="ratings cl-theme">
-                                        <span><i class="fas fa-star"></i></span>
-                                        <span><i class="fas fa-star"></i></span>
-                                        <span><i class="fas fa-star"></i></span>
-                                        <span><i class="fas fa-star"></i></span>
-                                        <span class="cl-theme-light"><i class="fas fa-star"></i></span>
-                                        <span>(4.9/5.00)</span>
-                                    </div>
-                                    <div class="price cl-1">
-                                        $29.99
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-md-6 col-sm-10">
-                        <div class="course-item">
-                            <div class="thumb">
-                                <a href="course-details.jsp">
-                                    <img src="assets/images/course/04.png" alt="course">
+                                    <img src="https://i.pinimg.com/564x/74/46/10/744610b3ee5fbe4ae9495403710144e5.jpg" alt="course">
                                 </a>
                             </div>
                             <div class="content">
@@ -319,7 +319,7 @@
                         <div class="course-item">
                             <div class="thumb">
                                 <a href="course-details.jsp">
-                                    <img src="assets/images/course/05.png" alt="course">
+                                    <img src="https://i.pinimg.com/564x/02/74/c3/0274c3618020cba3164efff8a5ed0ed0.jpg" alt="course">
                                 </a>
                             </div>
                             <div class="content">
@@ -362,7 +362,7 @@
                         <div class="course-item">
                             <div class="thumb">
                                 <a href="course-details.jsp">
-                                    <img src="assets/images/course/06.png" alt="course">
+                                    <img src="https://i.pinimg.com/564x/c4/0b/f1/c40bf15f649a337cb7414d20d8f000e9.jpg" alt="course">
                                 </a>
                             </div>
                             <div class="content">
@@ -478,149 +478,6 @@
             </div>
         </section>
         <!-- ~~~ Counter Section ~~~ -->
-
-
-        <!-- ~~~ Schedule Section ~~~ -->
-        <section class="schedule-section pt-120 pb-120 pos-rel">
-            <div class="schedule-left-shape">
-                <img src="assets/images/course/course-top-shape.png" alt="course">
-            </div>
-            <div class="schedule-right-shape">
-                <img src="assets/images/course/course-bottom-shape.png" alt="course">
-            </div>
-            <div class="container">
-                <div class="slider-header">
-                    <div class="section-header left-style">
-                        <span class="category">upcoming Events</span>
-                        <h2 class="title"><span>Event </span>Schedule</h2>
-                    </div>
-                    <select class="select-bar">
-                        <option value="01">Saturday 15 December 2023</option>
-                        <option value="02">Sunday 16 December 2023</option>
-                        <option value="03">Monday 17 December 2023</option>
-                        <option value="04">Tuesday 18 December 2023</option>
-                        <option value="05">Thursday 19 December 2023</option>
-                    </select>
-                </div>
-                <div class="row mb-30-none">
-                    <div class="col-12">
-                        <div class="schedule-item">
-                            <div class="schedule-inner">
-                                <div class="author-area">
-                                    <div class="thumb">
-                                        <img src="assets/images/schedule/author01.png" alt="schedule">
-                                    </div>
-                                    <div class="content">
-                                        <span class="title">James Milner</span>
-                                    </div>
-                                </div>
-                                <div class="content-area">
-                                    <div class="info"><span><i class="far fa-clock"></i>22:00</span><span>GMT+6</span></div>
-                                    <h5 class="title"><a href="#0">Basic Product Design Concept</a></h5>
-                                </div>
-                                <a href="#0" class="add-ticket"><i class="flaticon-add"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="schedule-item">
-                            <div class="schedule-inner">
-                                <div class="author-area">
-                                    <div class="thumb">
-                                        <img src="assets/images/schedule/author02.png" alt="schedule">
-                                    </div>
-                                    <div class="content">
-                                        <span class="title">James Milner</span>
-                                    </div>
-                                </div>
-                                <div class="content-area">
-                                    <div class="info"><span><i class="far fa-clock"></i>22:00</span><span>GMT+6</span></div>
-                                    <h5 class="title"><a href="#0">Typography & Advance Typeface</a></h5>
-                                </div>
-                                <a href="#0" class="add-ticket"><i class="flaticon-add"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="schedule-item">
-                            <div class="schedule-inner">
-                                <div class="author-area">
-                                    <div class="thumb not-rounded">
-                                        <img src="assets/images/schedule/author06.png" alt="schedule">
-                                    </div>
-                                    <div class="content">
-                                        <span class="title">James Milner</span>
-                                    </div>
-                                </div>
-                                <div class="content-area">
-                                    <div class="info"><span><i class="far fa-clock"></i>22:00</span><span>GMT+6</span></div>
-                                    <h5 class="title"><a href="#0">Lunch Break</a></h5>
-                                </div>
-                                <a href="#0" class="add-ticket"><i class="flaticon-add"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="schedule-item">
-                            <div class="schedule-inner">
-                                <div class="author-area">
-                                    <div class="thumb">
-                                        <img src="assets/images/schedule/author03.png" alt="schedule">
-                                    </div>
-                                    <div class="content">
-                                        <span class="title">James Milner</span>
-                                    </div>
-                                </div>
-                                <div class="content-area">
-                                    <div class="info"><span><i class="far fa-clock"></i>22:00</span><span>GMT+6</span></div>
-                                    <h5 class="title"><a href="#0">User Persona Creation & Research</a></h5>
-                                </div>
-                                <a href="#0" class="add-ticket"><i class="flaticon-add"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="schedule-item">
-                            <div class="schedule-inner">
-                                <div class="author-area">
-                                    <div class="thumb">
-                                        <img src="assets/images/schedule/author04.png" alt="schedule">
-                                    </div>
-                                    <div class="content">
-                                        <span class="title">James Milner</span>
-                                    </div>
-                                </div>
-                                <div class="content-area">
-                                    <div class="info"><span><i class="far fa-clock"></i>22:00</span><span>GMT+6</span></div>
-                                    <h5 class="title"><a href="#0">Human Centre Design Guidline</a></h5>
-                                </div>
-                                <a href="#0" class="add-ticket"><i class="flaticon-add"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="schedule-item">
-                            <div class="schedule-inner">
-                                <div class="author-area">
-                                    <div class="thumb">
-                                        <img src="assets/images/schedule/author05.png" alt="schedule">
-                                    </div>
-                                    <div class="content">
-                                        <span class="title">James Milner</span>
-                                    </div>
-                                </div>
-                                <div class="content-area">
-                                    <div class="info"><span><i class="far fa-clock"></i>22:00</span><span>GMT+6</span></div>
-                                    <h5 class="title"><a href="#0">Basic Product Design Concept</a></h5>
-                                </div>
-                                <a href="#0" class="add-ticket"><i class="flaticon-add"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- ~~~ Schedule Section ~~~ -->
 
 
         <!-- ~~~ Instructor Section ~~~ -->
