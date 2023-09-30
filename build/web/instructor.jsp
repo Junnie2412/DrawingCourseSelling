@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="assets/css/owl.min.css">
     <link rel="stylesheet" href="assets/css/magnific-popup.css">
     <link rel="stylesheet" href="assets/css/flaticon.css">
-    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/main2.css">
 
     <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
 </head>

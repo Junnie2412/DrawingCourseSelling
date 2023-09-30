@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="assets/css/flaticon.css">
     <link href="assets/css/main2.css" rel="stylesheet" type="text/css"/>
     
-    <link rel="shortcut icon" href="assets/images/logo/SketchAcaLogo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="assets/images/art1.png" type="image/x-icon">
 </head>
 
 

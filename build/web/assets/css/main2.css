@@ -2390,11 +2390,12 @@ header.active {
 
 .header-area .logo a {
     display: block;
+    width: 150px;
 }
 
 
 .header-area .logo img {
-    max-width: 50%;
+    margin-right: 10px;
     vertical-align: top;
 }
 
@@ -2406,7 +2407,7 @@ header.active {
 
 @media screen and (min-width: 1366px) and (max-width: 1580px) {
     .header-area .logo {
-        width: 190px;
+        width: 150px;
     }
 
     .header-area .course-search-form {
@@ -3098,6 +3099,7 @@ div[class*=col]:nth-of-type(4n + 4) .feature-item:hover .content .shape {
     -webkit-transition: all ease 0.3s;
     -moz-transition: all ease 0.3s;
     transition: all ease 0.3s;
+    height: 250px;
 }
 
 .course-item .content {
