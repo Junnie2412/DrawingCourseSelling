@@ -45,7 +45,7 @@
         </div>
          
         <!-- ~~~ Banner Section ~~~ -->
-        <section class="banner-section banner-overlay bg_img" data-img="assets/images/banner/mainBanner.jpg">
+        <section class="banner-section banner-overlay bg_img" data-img="assets/images/banner/banner.png">
             <div class="container">
                 <div class="banner-content cl-white">
                     <h3 class="subtitle">Join the drawing course now</h3>
@@ -68,7 +68,7 @@
         <section class="feature-section pt-120 pb-120">
             <div class="container">
                 <div class="section-header">
-                    <span class="category">Features</span>
+                    
                     <h2 class="title"><span>Our Special</span> Features</h2>
                 </div>
                 <div class="row justify-content-center mb-30-none">
@@ -139,7 +139,7 @@
             </div>
             <div class="container">
                 <div class="section-header">
-                    <span class="category">TOP COURSES</span>
+                    
                     <h2 class="title"><span>Featured</span> Online Courses</h2>
                 </div>
                 <div class="row justify-content-center mb-30-none">
@@ -484,7 +484,7 @@
         <section class="instructor-section pt-120 pb-120 gradient-bg">
             <div class="container">
                 <div class="section-header">
-                    <span class="category">our teachers</span>
+                   
                     <h2 class="title"><span>Awesome </span>Instructors</h2>
                 </div>
                 <div class="row justify-content-center mb-30-none">
@@ -536,176 +536,7 @@
             </div>
         </section>
         <!-- ~~~ Instructor Section ~~~ -->
-
-        <!-- ~~~ Testimonial Section ~~~ -->
-        <section class="testimonial-section pb-120">
-            <div class="container">
-                <div class="slider-header">
-                    <div class="section-header left-style">
-                        <h2 class="title"><span>Our </span>Success Stories</h2>
-                    </div>
-                    <div class="slider-nav">
-                        <div class="testimoni-prev">
-                            <i class="fas fa-angle-left"></i>
-                        </div>
-                        <div class="testimoni-next active">
-                            <i class="fas fa-angle-right"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="m--15">
-                    <div class="testimonial-slider owl-theme owl-carousel">
-                        <div class="testimonial-item">
-                            <div class="rating-area">
-                                <div class="ratings cl-theme">
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="fas fa-star"></i></span>
-                                </div>
-                                <div class="quote">
-                                    "Best Services"
-                                </div>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet, consec tetur adipiscing elit. Donec scelerisque tortor at neque viverra posuere. Nam ut tortor viverra, accumsan felis sed, faci lisis est. Donec et mattis purus. Etiam leo lacus, luctus sit.</p>
-                            <div class="clients">
-                                <div class="thumb">
-                                    <img src="assets/images/client/client01.png" alt="client">
-                                </div>
-                                <div class="content">
-                                    <h6 class="title">Mark Parker</h6>
-                                    <span class="cl-1 fs-sm">CEO Of Fiverr</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="testimonial-item">
-                            <div class="rating-area">
-                                <div class="ratings cl-theme">
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="fas fa-star"></i></span>
-                                </div>
-                                <div class="quote">
-                                    "Best Services"
-                                </div>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet, consec tetur adipiscing elit. Donec scelerisque tortor at neque viverra posuere. Nam ut tortor viverra, accumsan felis sed, faci lisis est. Donec et mattis purus. Etiam leo lacus, luctus sit.</p>
-                            <div class="clients">
-                                <div class="thumb">
-                                    <img src="assets/images/client/client01.png" alt="client">
-                                </div>
-                                <div class="content">
-                                    <h6 class="title">Mark Parker</h6>
-                                    <span class="cl-1 fs-sm">CEO Of Fiverr</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="testimonial-item">
-                            <div class="rating-area">
-                                <div class="ratings cl-theme">
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="fas fa-star"></i></span>
-                                </div>
-                                <div class="quote">
-                                    "Best Services"
-                                </div>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet, consec tetur adipiscing elit. Donec scelerisque tortor at neque viverra posuere. Nam ut tortor viverra, accumsan felis sed, faci lisis est. Donec et mattis purus. Etiam leo lacus, luctus sit.</p>
-                            <div class="clients">
-                                <div class="thumb">
-                                    <img src="assets/images/client/client01.png" alt="client">
-                                </div>
-                                <div class="content">
-                                    <h6 class="title">Mark Parker</h6>
-                                    <span class="cl-1 fs-sm">CEO Of Fiverr</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="testimonial-item">
-                            <div class="rating-area">
-                                <div class="ratings cl-theme">
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="fas fa-star"></i></span>
-                                </div>
-                                <div class="quote">
-                                    "Best Services"
-                                </div>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet, consec tetur adipiscing elit. Donec scelerisque tortor at neque viverra posuere. Nam ut tortor viverra, accumsan felis sed, faci lisis est. Donec et mattis purus. Etiam leo lacus, luctus sit.</p>
-                            <div class="clients">
-                                <div class="thumb">
-                                    <img src="assets/images/client/client01.png" alt="client">
-                                </div>
-                                <div class="content">
-                                    <h6 class="title">Mark Parker</h6>
-                                    <span class="cl-1 fs-sm">CEO Of Fiverr</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="testimonial-item">
-                            <div class="rating-area">
-                                <div class="ratings cl-theme">
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="fas fa-star"></i></span>
-                                </div>
-                                <div class="quote">
-                                    "Best Services"
-                                </div>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet, consec tetur adipiscing elit. Donec scelerisque tortor at neque viverra posuere. Nam ut tortor viverra, accumsan felis sed, faci lisis est. Donec et mattis purus. Etiam leo lacus, luctus sit.</p>
-                            <div class="clients">
-                                <div class="thumb">
-                                    <img src="assets/images/client/client01.png" alt="client">
-                                </div>
-                                <div class="content">
-                                    <h6 class="title">Mark Parker</h6>
-                                    <span class="cl-1 fs-sm">CEO Of Fiverr</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="testimonial-item">
-                            <div class="rating-area">
-                                <div class="ratings cl-theme">
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="fas fa-star"></i></span>
-                                </div>
-                                <div class="quote">
-                                    "Best Services"
-                                </div>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet, consec tetur adipiscing elit. Donec scelerisque tortor at neque viverra posuere. Nam ut tortor viverra, accumsan felis sed, faci lisis est. Donec et mattis purus. Etiam leo lacus, luctus sit.</p>
-                            <div class="clients">
-                                <div class="thumb">
-                                    <img src="assets/images/client/client01.png" alt="client">
-                                </div>
-                                <div class="content">
-                                    <h6 class="title">Mark Parker</h6>
-                                    <span class="cl-1 fs-sm">CEO Of Fiverr</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- ~~~ Testimonial Section ~~~ -->
-
-
+        
         <!-- ~~~ Sponsor Section ~~~ -->
         <div class="sponsor-section pb-120">
             <div class="container-fluid">

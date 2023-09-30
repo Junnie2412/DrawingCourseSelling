@@ -734,6 +734,8 @@ p:last-child {
         font-size: 44px;
         line-height: 56px;
         margin-top: -12px;
+        text-align: center;
+        
     }
 
     h3 {
@@ -900,7 +902,7 @@ input[type=submit] {
 
 @media (min-width: 992px) {
     .pt-120 {
-        padding-top: 120px;
+        padding-top: 50px;
     }
 
     .pb-120 {
