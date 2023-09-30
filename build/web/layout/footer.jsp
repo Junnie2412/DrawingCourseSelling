@@ -67,7 +67,7 @@
                                             <i class="fas fa-map-marker-alt"></i>
                                         </div>
                                         <div class="content">
-                                            <span>12/A, Hamilton City Way, Newyork, US</span>
+                                            <span>Lô E2a-7, Duong D1 Khu Cong nghe cao, P. Long Thanh My, TP. Thu Duc, TP. Ho Chi Minh</span>
                                         </div>
                                     </li>
                                     <li>

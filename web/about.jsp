@@ -50,7 +50,7 @@
 
 
         <!-- ~~~ Hero Section ~~~ -->
-        <section class="hero-section banner-overlay bg_img" data-img="assets/images/banner/banner-bg.jpg">
+        <section class="hero-section banner-overlay bg_img" data-img="assets/images/banner/mainBanner.jpg">
             
             <div class="container">
                 <div class="hero-content">

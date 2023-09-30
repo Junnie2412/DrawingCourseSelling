@@ -2673,7 +2673,7 @@ header.active {
     font-size: 30px;
     line-height: 42px;
     text-transform: uppercase;
-    color: rgba(226,127,142,1);
+    color: #ffffff;
     letter-spacing: 3px;
     margin-bottom: 7px;
 }
@@ -6270,15 +6270,15 @@ blockquote::before {
 }
 
 .custom-button {
-    transform: translateX(20px);
+    transform: translateX(50px);
     color: #ffffff;
     text-transform: uppercase;
-    line-height: 48px;
+    line-height: 38px;
     background: #FF7700;
     padding: 0 20px;
     display: inline-block;
     text-transform: uppercase;
-    font-weight: 500;
+    font-weight: 400;
     font-size: 16px;
     border-radius: 25px;
     border: 1px solid #FF7700;
