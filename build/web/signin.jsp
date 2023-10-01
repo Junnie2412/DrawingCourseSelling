@@ -9,7 +9,7 @@
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="admin/assets/images/favicon.ico">
+    <link rel="shortcut icon" href="assets/images/art1.png">
 
     <!-- Layout config Js -->
     <script src="admin/assets/js/layout.js"></script>
@@ -96,9 +96,10 @@
                                                 <h5 class="fs-13 mb-4 title">Sign In with</h5>
                                             </div>
                                             <div>
-                                             <button type="button" class="btn btn-danger btn-icon waves-effect waves-light" style="width: 200px;">
-  <span class="button-text">Login with Google account</span>
-  <i class="ri-google-fill fs-16"></i>
+                                             <button type="button" class="btn btn-danger btn-icon waves-effect waves-light" style="width: 200px;"><i class="ri-google-fill fs-16"></i>  &nbsp; 
+  <span class="button-text ">Login with Google account</span>
+    
+ 
 </button>   
                                     
                                                   
@@ -146,19 +147,19 @@
     <!-- end auth-page-wrapper -->
 
     <!-- JAVASCRIPT -->
-    <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/libs/simplebar/simplebar.min.js"></script>
-    <script src="assets/libs/node-waves/waves.min.js"></script>
-    <script src="assets/libs/feather-icons/feather.min.js"></script>
-    <script src="assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
-    <script src="assets/js/plugins.js"></script>
+    <script src="admin/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="admin/assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="admin/assets/libs/node-waves/waves.min.js"></script>
+    <script src="admin/assets/libs/feather-icons/feather.min.js"></script>
+    <script src="admin/assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
+    <script src="admin/assets/js/plugins.js"></script>
 
     <!-- particles js -->
-    <script src="assets/libs/particles.js/particles.js"></script>
+    <script src="admin/assets/libs/particles.js/particles.js"></script>
     <!-- particles app js -->
-    <script src="assets/js/pages/particles.app.js"></script>
+    <script src="admin/assets/js/pages/particles.app.js"></script>
     <!-- password-addon init -->
-    <script src="assets/js/pages/password-addon.init.js"></script>
+    <script src="admin/assets/js/pages/password-addon.init.js"></script>
 </body>
 
 </html>

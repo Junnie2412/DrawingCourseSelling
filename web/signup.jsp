@@ -4,12 +4,12 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Sign Up | Velzon - Admin & Dashboard Template</title>
+    <title>Sign Up</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="admin/assets/images/favicon.ico">
+    <link rel="shortcut icon" href="assets/images/art1.png">
 
     <!-- Layout config Js -->
     <script src="admin/assets/js/layout.js"></script>
@@ -47,10 +47,10 @@
                         <div class="text-center mt-sm-5 mb-4 text-white-50">
                             <div>
                                 <a href="index.jsp" class="d-inline-block auth-logo">
-                                    <img src="admin/assets/images/logo-light.png" alt="" height="20">
+                                    <img src="admin/assets/images/logomain.png"  alt="logo" height="90">
                                 </a>
                             </div>
-                            <p class="mt-3 fs-15 fw-medium">Premium Admin & Dashboard Template</p>
+                            
                         </div>
                     </div>
                 </div>
@@ -63,7 +63,7 @@
                             <div class="card-body p-4">
                                 <div class="text-center mt-2">
                                     <h5 class="text-primary">Create New Account</h5>
-                                    <p class="text-muted">Get your free velzon account now</p>
+                                    <p class="text-muted">Get your free ArtCenter account now</p>
                                 </div>
                                 <div class="p-2 mt-4">
                                     <form class="needs-validation" novalidate action="https://themesbrand.com/velzon/html/material/index.jsp">
@@ -95,7 +95,7 @@
                                         </div>
 
                                         <div class="mb-4">
-                                            <p class="mb-0 fs-12 text-muted fst-italic">By registering you agree to the Velzon <a href="#" class="text-primary text-decoration-underline fst-normal fw-medium">Terms of Use</a></p>
+                                            <p class="mb-0 fs-12 text-muted fst-italic">By registering you agree to the ArtCenter <a href="#" class="text-primary text-decoration-underline fst-normal fw-medium">Terms of Use</a></p>
                                         </div>
 
                                         <div id="password-contain" class="p-3 bg-light mb-2 rounded">
@@ -116,10 +116,11 @@
                                             </div>
 
                                             <div>
-                                                <button type="button" class="btn btn-primary btn-icon waves-effect waves-light"><i class="ri-facebook-fill fs-16"></i></button>
-                                                <button type="button" class="btn btn-danger btn-icon waves-effect waves-light"><i class="ri-google-fill fs-16"></i></button>
-                                                <button type="button" class="btn btn-dark btn-icon waves-effect waves-light"><i class="ri-github-fill fs-16"></i></button>
-                                                <button type="button" class="btn btn-info btn-icon waves-effect waves-light"><i class="ri-twitter-fill fs-16"></i></button>
+                                                <button type="button" class="btn btn-danger btn-icon waves-effect waves-light" style="width: 200px;"><i class="ri-google-fill fs-16"></i>  &nbsp; 
+  <span class="button-text ">Login with Google account</span>
+    
+ 
+</button>
                                             </div>
                                         </div>
                                     </form>
@@ -149,7 +150,7 @@
                     <div class="col-lg-12">
                         <div class="text-center">
                             <p class="mb-0 text-muted">&copy;
-                                <script>document.write(new Date().getFullYear())</script> Velzon. Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesbrand
+                                <script>document.write(new Date().getFullYear())</script> ArtCenter <i class="mdi mdi-heart text-danger"></i> 
                             </p>
                         </div>
                     </div>
