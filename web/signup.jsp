@@ -112,7 +112,7 @@
 
                                         <div class="mt-4 text-center">
                                             <div class="signin-other-title">
-                                                <h5 class="fs-13 mb-4 title text-muted">Create account with</h5>
+                                                <h5 class="fs-13 mb-4 title text-muted">Sign up account with</h5>
                                             </div>
 
                                             <div>

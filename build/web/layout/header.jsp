@@ -24,7 +24,7 @@
                         </li>
                        
                         <li>
-                            <a href="about.jsp">About Us</a>
+                            <a href="about.jsp">Về Chúng tôi</a>
                         </li>
                         <li>
                             <a href="courses.jsp">Courses</a>

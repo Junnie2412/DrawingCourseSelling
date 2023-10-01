@@ -3086,6 +3086,7 @@ div[class*=col]:nth-of-type(4n + 4) .feature-item:hover .content .shape {
     -webkit-transition: all ease 0.3s;
     -moz-transition: all ease 0.3s;
     transition: all ease 0.3s;
+    height: 440px;
 }
 
 .course-item .thumb {

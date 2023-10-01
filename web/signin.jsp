@@ -93,7 +93,7 @@
 
                                         <div class="mt-4 text-center">
                                             <div class="signin-other-title">
-                                                <h5 class="fs-13 mb-4 title">Sign In with</h5>
+                                                <h5 class="fs-13 mb-4 title">LogIn with</h5>
                                             </div>
                                             <div>
                                              <button type="button" class="btn btn-danger btn-icon waves-effect waves-light" style="width: 200px;"><i class="ri-google-fill fs-16"></i>  &nbsp; 
