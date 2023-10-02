@@ -24,7 +24,7 @@
                         </li>
                        
                         <li>
-                            <a href="about.jsp">Về Chúng tôi</a>
+                            <a href="about.jsp">About Us</a>
                         </li>
                         <li>
                             <a href="courses.jsp">Courses</a>
@@ -54,8 +54,8 @@
                     <form class="course-search-form ml-auto mr-4">
                         <input type="text" name="name" placeholder="Search Courses" class="rounded pl-0">
                         <button type="submit" class="rounded"><i class="flaticon-loupe"></i></button>
-                    </form>
-                    <a href="signin.jsp" class="custom-button"><i class="fas fa-user"></i><span>Log In</span></a>
+                    </form> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="signin.jsp" class="custom-button"><i class="fas fa-user"></i><span>Log In</span></a>
                 </div>
             </div>
         </header>
