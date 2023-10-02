@@ -5,7 +5,7 @@
  */
 package users;
 
-import DBUtils.DBUtil;
+import utils.DBUtil;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
