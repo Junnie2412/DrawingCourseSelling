@@ -906,7 +906,7 @@ input[type=submit] {
     }
 
     .pb-120 {
-        padding-bottom: 120px;
+        padding-bottom: 80px;
     }
 }
 /*Section Header*/
@@ -6276,7 +6276,7 @@ blockquote::before {
 }
 
 .custom-button {
-    transform: translateX(50px);
+    
     color: #ffffff;
     text-transform: uppercase;
     line-height: 38px;
@@ -6288,7 +6288,11 @@ blockquote::before {
     font-size: 16px;
     border-radius: 25px;
     border: 1px solid #FF7700;
+    cursor: pointer;
     
+}
+.custom-button:hover{
+    color: pink; 
 }
 
 .custom-button i {

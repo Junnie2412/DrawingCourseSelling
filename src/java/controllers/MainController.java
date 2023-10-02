@@ -1,12 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controllers;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,26 +11,24 @@ import javax.servlet.http.HttpServletResponse;
  * @author HOANG DUNG
  */
 public class MainController extends HttpServlet {
-
-    private static final String HOMEPAGE="index.jsp";
-    
+    private static final String LOGIN_PAGE = "signin.jsp";
+    private static final String HOMEPAGE = "index.jsp";
     private static final String SIGNIN = "Sign In";
     private static final String SIGNIN_CONTROLLER = "LoginController";
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
         String url = HOMEPAGE;
-        
         try {
             String action = request.getParameter("action");
-            
-            if(action.equals(SIGNIN)){
+            if (action == null) {
+                url = LOGIN_PAGE;
+            } else if (action.equals(SIGNIN)) {
                 url = SIGNIN_CONTROLLER;
             }
-            
         } catch (Exception e) {
-        }finally{
+            log("Error at MainController: " + e.toString());
+        } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }
     }
