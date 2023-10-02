@@ -69,69 +69,43 @@
 
 
         <!-- ~~~ Course Section ~~~ -->
-        <section class="course-section pt-120 pb-120">
+        <section class="course-section pt-120 pb-120 section-bg oh pos-rel">
+            <div class="course-top-shape">
+                <img src="assets/images/course/course-top-shape.png" alt="course">
+            </div>
+            <div class="course-bottom-shape">
+                <img src="assets/images/course/course-bottom-shape.png" alt="course">
+            </div>
             <div class="container">
-                <div class="row align-items-center section-header">
-                    <div class="col-lg-7">
-                        <div class="section-header left-style mb-low mb-lg-0">
-                            <span class="category">TOP COURSES</span>
-                            <h2 class="title"><span>Featured</span> Online Courses</h2>
-                        </div>
-                    </div>
-                    <div class="col-lg-5">
-                        <div class="d-flex flex-wrap justify-content-lg-end m--10">
-                            <div class="course-select-item">
-                                <select class="select-bar">
-                                    <option value="c1">Photoshop</option>
-                                    <option value="c2">Webdesign</option>
-                                    <option value="c3">English</option>
-                                    <option value="c4">History</option>
-                                    <option value="c5">Wordpress</option>
-                                    <option value="c6">Laravel</option>
-                                    <option value="c7">Python</option>
-                                    <option value="c8">Javascript</option>
-                                </select>
-                            </div>
-                            <div class="course-select-item">
-                                <select class="select-bar">
-                                    <option value="o1">Select Order</option>
-                                    <option value="o2">Webdesign</option>
-                                    <option value="o3">English</option>
-                                    <option value="o4">History</option>
-                                    <option value="o5">Wordpress</option>
-                                    <option value="o6">Laravel</option>
-                                    <option value="o7">Python</option>
-                                    <option value="o8">Javascript</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
+                <div class="section-header">
+                    
+                    <h2 class="title"><span>Featured</span> Online Courses</h2>
                 </div>
                 <div class="row justify-content-center mb-30-none">
                     <div class="col-xl-4 col-md-6 col-sm-10">
                         <div class="course-item">
                             <div class="thumb">
                                 <a href="course-details.jsp">
-                                    <img src="assets/images/course/01.png" alt="course">
+                                    <img src="https://pbs.twimg.com/media/FKq8fr2aUAQc2wq.jpg:large" alt="course">
                                 </a>
                             </div>
                             <div class="content">
                                 <h5 class="title">
-                                    <a href="course-details.jsp">Strategic Social Media & Marketing Policy</a>
+                                    <a href="course-details.jsp">Illustration with Mai Yoneyama</a>
                                 </h5>
                                 <div class="meta-area">
                                     <div class="meta">
                                         <div class="meta-item">
                                             <i class="fas fa-user"></i>
-                                            <span>Mark Parker</span>
+                                            <span>NGÔ KHÁNH VÂN</span>
                                         </div>
                                         <div class="meta-item">
                                             <i class="fas fa-photo-video"></i>
-                                            <span>15 Lessons</span>
+                                            <span>38 Lessons</span>
                                         </div>
                                         <div class="meta-item">
                                             <i class="fas fa-user-graduate"></i>
-                                            <span>25 Students</span>
+                                            <span>20 Students</span>
                                         </div>
                                     </div>
                                 </div>
@@ -145,7 +119,7 @@
                                         <span>(4.9/5.00)</span>
                                     </div>
                                     <div class="price cl-1">
-                                        $29.99
+                                        40.00$
                                     </div>
                                 </div>
                             </div>
@@ -155,26 +129,26 @@
                         <div class="course-item">
                             <div class="thumb">
                                 <a href="course-details.jsp">
-                                    <img src="assets/images/course/02.png" alt="course">
+                                    <img src="https://i.pinimg.com/564x/b5/f5/c5/b5f5c5c8f41ce9fe53579dc47b03a9f0.jpg" alt="course">
                                 </a>
                             </div>
                             <div class="content">
                                 <h5 class="title">
-                                    <a href="course-details.jsp">Strategic Social Media & Marketing Policy</a>
+                                    <a href="course-details.jsp">Sketch Painting</a>
                                 </h5>
                                 <div class="meta-area">
                                     <div class="meta">
                                         <div class="meta-item">
                                             <i class="fas fa-user"></i>
-                                            <span>Mark Parker</span>
+                                            <span>HOÀNG MINH</span>
                                         </div>
                                         <div class="meta-item">
                                             <i class="fas fa-photo-video"></i>
-                                            <span>15 Lessons</span>
+                                            <span>38 Lessons</span>
                                         </div>
                                         <div class="meta-item">
                                             <i class="fas fa-user-graduate"></i>
-                                            <span>25 Students</span>
+                                            <span>20 Students</span>
                                         </div>
                                     </div>
                                 </div>
@@ -188,7 +162,7 @@
                                         <span>(4.9/5.00)</span>
                                     </div>
                                     <div class="price cl-1">
-                                        $29.99
+                                        $30.00
                                     </div>
                                 </div>
                             </div>
@@ -198,26 +172,26 @@
                         <div class="course-item">
                             <div class="thumb">
                                 <a href="course-details.jsp">
-                                    <img src="assets/images/course/03.png" alt="course">
+                                    <img src="https://i.pinimg.com/564x/7f/cd/cc/7fcdcc74d1d3e8cf0c111d7ea51a46b2.jpg" alt="course">
                                 </a>
                             </div>
                             <div class="content">
                                 <h5 class="title">
-                                    <a href="course-details.jsp">Strategic Social Media & Marketing Policy</a>
+                                    <a href="course-details.jsp">Oil painting</a>
                                 </h5>
                                 <div class="meta-area">
                                     <div class="meta">
                                         <div class="meta-item">
                                             <i class="fas fa-user"></i>
-                                            <span>Mark Parker</span>
+                                            <span>MINH KHANG</span>
                                         </div>
                                         <div class="meta-item">
                                             <i class="fas fa-photo-video"></i>
-                                            <span>15 Lessons</span>
+                                            <span>38 Lessons</span>
                                         </div>
                                         <div class="meta-item">
                                             <i class="fas fa-user-graduate"></i>
-                                            <span>25 Students</span>
+                                            <span>30 Students</span>
                                         </div>
                                     </div>
                                 </div>
@@ -231,7 +205,7 @@
                                         <span>(4.9/5.00)</span>
                                     </div>
                                     <div class="price cl-1">
-                                        $29.99
+                                        $40.00
                                     </div>
                                 </div>
                             </div>
@@ -241,26 +215,26 @@
                         <div class="course-item">
                             <div class="thumb">
                                 <a href="course-details.jsp">
-                                    <img src="assets/images/course/04.png" alt="course">
+                                    <img src="https://i.pinimg.com/564x/74/46/10/744610b3ee5fbe4ae9495403710144e5.jpg" alt="course">
                                 </a>
                             </div>
                             <div class="content">
                                 <h5 class="title">
-                                    <a href="course-details.jsp">Strategic Social Media & Marketing Policy</a>
+                                    <a href="course-details.jsp">Gouache Painting</a>
                                 </h5>
                                 <div class="meta-area">
                                     <div class="meta">
                                         <div class="meta-item">
                                             <i class="fas fa-user"></i>
-                                            <span>Mark Parker</span>
+                                            <span>HOÀNG LINH</span>
                                         </div>
                                         <div class="meta-item">
                                             <i class="fas fa-photo-video"></i>
-                                            <span>15 Lessons</span>
+                                            <span>10 Lessons</span>
                                         </div>
                                         <div class="meta-item">
                                             <i class="fas fa-user-graduate"></i>
-                                            <span>25 Students</span>
+                                            <span>30 Students</span>
                                         </div>
                                     </div>
                                 </div>
@@ -274,7 +248,7 @@
                                         <span>(4.9/5.00)</span>
                                     </div>
                                     <div class="price cl-1">
-                                        $29.99
+                                        40.00$
                                     </div>
                                 </div>
                             </div>
@@ -284,26 +258,26 @@
                         <div class="course-item">
                             <div class="thumb">
                                 <a href="course-details.jsp">
-                                    <img src="assets/images/course/05.png" alt="course">
+                                    <img src="https://i.pinimg.com/564x/02/74/c3/0274c3618020cba3164efff8a5ed0ed0.jpg" alt="course">
                                 </a>
                             </div>
                             <div class="content">
                                 <h5 class="title">
-                                    <a href="course-details.jsp">Strategic Social Media & Marketing Policy</a>
+                                    <a href="course-details.jsp">Cube Drawing</a>
                                 </h5>
                                 <div class="meta-area">
                                     <div class="meta">
                                         <div class="meta-item">
                                             <i class="fas fa-user"></i>
-                                            <span>Mark Parker</span>
+                                            <span>THANH TRÚC</span>
                                         </div>
                                         <div class="meta-item">
                                             <i class="fas fa-photo-video"></i>
-                                            <span>15 Lessons</span>
+                                            <span>38 Lessons</span>
                                         </div>
                                         <div class="meta-item">
                                             <i class="fas fa-user-graduate"></i>
-                                            <span>25 Students</span>
+                                            <span>20 Students</span>
                                         </div>
                                     </div>
                                 </div>
@@ -317,7 +291,7 @@
                                         <span>(4.9/5.00)</span>
                                     </div>
                                     <div class="price cl-1">
-                                        $29.99
+                                        $30.00
                                     </div>
                                 </div>
                             </div>
@@ -327,26 +301,26 @@
                         <div class="course-item">
                             <div class="thumb">
                                 <a href="course-details.jsp">
-                                    <img src="assets/images/course/06.png" alt="course">
+                                    <img src="https://i.pinimg.com/564x/c4/0b/f1/c40bf15f649a337cb7414d20d8f000e9.jpg" alt="course">
                                 </a>
                             </div>
                             <div class="content">
                                 <h5 class="title">
-                                    <a href="course-details.jsp">Strategic Social Media & Marketing Policy</a>
+                                    <a href="course-details.jsp"> Portrait Painting</a>
                                 </h5>
                                 <div class="meta-area">
                                     <div class="meta">
                                         <div class="meta-item">
                                             <i class="fas fa-user"></i>
-                                            <span>Mark Parker</span>
+                                            <span>BÁ HUÂN</span>
                                         </div>
                                         <div class="meta-item">
                                             <i class="fas fa-photo-video"></i>
-                                            <span>15 Lessons</span>
+                                            <span>38 Lessons</span>
                                         </div>
                                         <div class="meta-item">
                                             <i class="fas fa-user-graduate"></i>
-                                            <span>25 Students</span>
+                                            <span>30 Students</span>
                                         </div>
                                     </div>
                                 </div>
@@ -360,136 +334,7 @@
                                         <span>(4.9/5.00)</span>
                                     </div>
                                     <div class="price cl-1">
-                                        $29.99
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-md-6 col-sm-10">
-                        <div class="course-item">
-                            <div class="thumb">
-                                <a href="course-details.jsp">
-                                    <img src="assets/images/course/01.png" alt="course">
-                                </a>
-                            </div>
-                            <div class="content">
-                                <h5 class="title">
-                                    <a href="course-details.jsp">Strategic Social Media & Marketing Policy</a>
-                                </h5>
-                                <div class="meta-area">
-                                    <div class="meta">
-                                        <div class="meta-item">
-                                            <i class="fas fa-user"></i>
-                                            <span>Mark Parker</span>
-                                        </div>
-                                        <div class="meta-item">
-                                            <i class="fas fa-photo-video"></i>
-                                            <span>15 Lessons</span>
-                                        </div>
-                                        <div class="meta-item">
-                                            <i class="fas fa-user-graduate"></i>
-                                            <span>25 Students</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="ratings-area">
-                                    <div class="ratings cl-theme">
-                                        <span><i class="fas fa-star"></i></span>
-                                        <span><i class="fas fa-star"></i></span>
-                                        <span><i class="fas fa-star"></i></span>
-                                        <span><i class="fas fa-star"></i></span>
-                                        <span class="cl-theme-light"><i class="fas fa-star"></i></span>
-                                        <span>(4.9/5.00)</span>
-                                    </div>
-                                    <div class="price cl-1">
-                                        $29.99
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-md-6 col-sm-10">
-                        <div class="course-item">
-                            <div class="thumb">
-                                <a href="course-details.jsp">
-                                    <img src="assets/images/course/02.png" alt="course">
-                                </a>
-                            </div>
-                            <div class="content">
-                                <h5 class="title">
-                                    <a href="course-details.jsp">Strategic Social Media & Marketing Policy</a>
-                                </h5>
-                                <div class="meta-area">
-                                    <div class="meta">
-                                        <div class="meta-item">
-                                            <i class="fas fa-user"></i>
-                                            <span>Mark Parker</span>
-                                        </div>
-                                        <div class="meta-item">
-                                            <i class="fas fa-photo-video"></i>
-                                            <span>15 Lessons</span>
-                                        </div>
-                                        <div class="meta-item">
-                                            <i class="fas fa-user-graduate"></i>
-                                            <span>25 Students</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="ratings-area">
-                                    <div class="ratings cl-theme">
-                                        <span><i class="fas fa-star"></i></span>
-                                        <span><i class="fas fa-star"></i></span>
-                                        <span><i class="fas fa-star"></i></span>
-                                        <span><i class="fas fa-star"></i></span>
-                                        <span class="cl-theme-light"><i class="fas fa-star"></i></span>
-                                        <span>(4.9/5.00)</span>
-                                    </div>
-                                    <div class="price cl-1">
-                                        $29.99
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-md-6 col-sm-10">
-                        <div class="course-item">
-                            <div class="thumb">
-                                <a href="course-details.jsp">
-                                    <img src="assets/images/course/03.png" alt="course">
-                                </a>
-                            </div>
-                            <div class="content">
-                                <h5 class="title">
-                                    <a href="course-details.jsp">Strategic Social Media & Marketing Policy</a>
-                                </h5>
-                                <div class="meta-area">
-                                    <div class="meta">
-                                        <div class="meta-item">
-                                            <i class="fas fa-user"></i>
-                                            <span>Mark Parker</span>
-                                        </div>
-                                        <div class="meta-item">
-                                            <i class="fas fa-photo-video"></i>
-                                            <span>15 Lessons</span>
-                                        </div>
-                                        <div class="meta-item">
-                                            <i class="fas fa-user-graduate"></i>
-                                            <span>25 Students</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="ratings-area">
-                                    <div class="ratings cl-theme">
-                                        <span><i class="fas fa-star"></i></span>
-                                        <span><i class="fas fa-star"></i></span>
-                                        <span><i class="fas fa-star"></i></span>
-                                        <span><i class="fas fa-star"></i></span>
-                                        <span class="cl-theme-light"><i class="fas fa-star"></i></span>
-                                        <span>(4.9/5.00)</span>
-                                    </div>
-                                    <div class="price cl-1">
-                                        $29.99
+                                        $30.00
                                     </div>
                                 </div>
                             </div>

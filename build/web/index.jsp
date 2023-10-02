@@ -158,15 +158,15 @@
                                     <div class="meta">
                                         <div class="meta-item">
                                             <i class="fas fa-user"></i>
-                                            <span>Mark Parker</span>
+                                            <span>NGÔ KHÁNH VÂN</span>
                                         </div>
                                         <div class="meta-item">
                                             <i class="fas fa-photo-video"></i>
-                                            <span>15 Lessons</span>
+                                            <span>38 Lessons</span>
                                         </div>
                                         <div class="meta-item">
                                             <i class="fas fa-user-graduate"></i>
-                                            <span>25 Students</span>
+                                            <span>20 Students</span>
                                         </div>
                                     </div>
                                 </div>
@@ -180,7 +180,7 @@
                                         <span>(4.9/5.00)</span>
                                     </div>
                                     <div class="price cl-1">
-                                        $29.99
+                                        40.00$
                                     </div>
                                 </div>
                             </div>
@@ -195,21 +195,21 @@
                             </div>
                             <div class="content">
                                 <h5 class="title">
-                                    <a href="course-details.jsp">Strategic Social Media & Marketing Policy</a>
+                                    <a href="course-details.jsp">Sketch Painting</a>
                                 </h5>
                                 <div class="meta-area">
                                     <div class="meta">
                                         <div class="meta-item">
                                             <i class="fas fa-user"></i>
-                                            <span>Mark Parker</span>
+                                            <span>HOÀNG MINH</span>
                                         </div>
                                         <div class="meta-item">
                                             <i class="fas fa-photo-video"></i>
-                                            <span>15 Lessons</span>
+                                            <span>38 Lessons</span>
                                         </div>
                                         <div class="meta-item">
                                             <i class="fas fa-user-graduate"></i>
-                                            <span>25 Students</span>
+                                            <span>20 Students</span>
                                         </div>
                                     </div>
                                 </div>
@@ -223,7 +223,7 @@
                                         <span>(4.9/5.00)</span>
                                     </div>
                                     <div class="price cl-1">
-                                        $29.99
+                                        $30.00
                                     </div>
                                 </div>
                             </div>
@@ -238,21 +238,21 @@
                             </div>
                             <div class="content">
                                 <h5 class="title">
-                                    <a href="course-details.jsp">Strategic Social Media & Marketing Policy</a>
+                                    <a href="course-details.jsp">Oil painting</a>
                                 </h5>
                                 <div class="meta-area">
                                     <div class="meta">
                                         <div class="meta-item">
                                             <i class="fas fa-user"></i>
-                                            <span>Mark Parker</span>
+                                            <span>MINH KHANG</span>
                                         </div>
                                         <div class="meta-item">
                                             <i class="fas fa-photo-video"></i>
-                                            <span>15 Lessons</span>
+                                            <span>38 Lessons</span>
                                         </div>
                                         <div class="meta-item">
                                             <i class="fas fa-user-graduate"></i>
-                                            <span>25 Students</span>
+                                            <span>30 Students</span>
                                         </div>
                                     </div>
                                 </div>
@@ -266,7 +266,7 @@
                                         <span>(4.9/5.00)</span>
                                     </div>
                                     <div class="price cl-1">
-                                        $29.99
+                                        $40.00
                                     </div>
                                 </div>
                             </div>
@@ -281,13 +281,13 @@
                             </div>
                             <div class="content">
                                 <h5 class="title">
-                                    <a href="course-details.jsp">Advanced drawing course for the bergining</a>
+                                    <a href="course-details.jsp">Gouache Painting</a>
                                 </h5>
                                 <div class="meta-area">
                                     <div class="meta">
                                         <div class="meta-item">
                                             <i class="fas fa-user"></i>
-                                            <span>Mark Parker</span>
+                                            <span>HOÀNG LINH</span>
                                         </div>
                                         <div class="meta-item">
                                             <i class="fas fa-photo-video"></i>
@@ -309,7 +309,7 @@
                                         <span>(4.9/5.00)</span>
                                     </div>
                                     <div class="price cl-1">
-                                        40$
+                                        40.00$
                                     </div>
                                 </div>
                             </div>
@@ -324,21 +324,21 @@
                             </div>
                             <div class="content">
                                 <h5 class="title">
-                                    <a href="course-details.jsp">Strategic Social Media & Marketing Policy</a>
+                                    <a href="course-details.jsp">Cube Drawing</a>
                                 </h5>
                                 <div class="meta-area">
                                     <div class="meta">
                                         <div class="meta-item">
                                             <i class="fas fa-user"></i>
-                                            <span>Mark Parker</span>
+                                            <span>THANH TRÚC</span>
                                         </div>
                                         <div class="meta-item">
                                             <i class="fas fa-photo-video"></i>
-                                            <span>15 Lessons</span>
+                                            <span>38 Lessons</span>
                                         </div>
                                         <div class="meta-item">
                                             <i class="fas fa-user-graduate"></i>
-                                            <span>25 Students</span>
+                                            <span>20 Students</span>
                                         </div>
                                     </div>
                                 </div>
@@ -352,7 +352,7 @@
                                         <span>(4.9/5.00)</span>
                                     </div>
                                     <div class="price cl-1">
-                                        $29.99
+                                        $30.00
                                     </div>
                                 </div>
                             </div>
@@ -367,21 +367,21 @@
                             </div>
                             <div class="content">
                                 <h5 class="title">
-                                    <a href="course-details.jsp">Strategic Social Media & Marketing Policy</a>
+                                    <a href="course-details.jsp"> Portrait Painting</a>
                                 </h5>
                                 <div class="meta-area">
                                     <div class="meta">
                                         <div class="meta-item">
                                             <i class="fas fa-user"></i>
-                                            <span>Mark Parker</span>
+                                            <span>BÁ HUÂN</span>
                                         </div>
                                         <div class="meta-item">
                                             <i class="fas fa-photo-video"></i>
-                                            <span>15 Lessons</span>
+                                            <span>38 Lessons</span>
                                         </div>
                                         <div class="meta-item">
                                             <i class="fas fa-user-graduate"></i>
-                                            <span>25 Students</span>
+                                            <span>30 Students</span>
                                         </div>
                                     </div>
                                 </div>
@@ -395,7 +395,7 @@
                                         <span>(4.9/5.00)</span>
                                     </div>
                                     <div class="price cl-1">
-                                        $29.99
+                                        $30.00
                                     </div>
                                 </div>
                             </div>
@@ -411,7 +411,7 @@
 
 
         <!-- ~~~ Counter Section ~~~ -->
-        <section class="counter-section pt-120 pb-120 title-lay bg_img" data-img="./assets/images/counter/counter-bg.jpg" id="apply">
+        <section class="counter-section pt-120 pb-120 title-lay bg_img" data-img="./assets/images/banner/banner.jpg" id="apply">
             <div class="container">
                 <div class="d-flex flex-wrap justify-content-between align-items-center">
                     <div class="odo-area">
@@ -419,8 +419,8 @@
                             <div class="odo-item">
                                 <div class="odo-in">
                                     <div class="odo-head">
-                                        <h2 class="title odometer" data-odo="60">0</h2>
-                                        <h2 class="title">+</h2>
+                                        <h2 class="title odometer" data-odo="60">1</h2>
+                                        <h2 class="title">2</h2>
                                     </div>
                                     <h5 class="subtitle">Teachers</h5>
                                 </div>
@@ -428,8 +428,8 @@
                             <div class="odo-item">
                                 <div class="odo-in">
                                     <div class="odo-head">
-                                        <h2 class="title odometer" data-odo="8">0</h2>
-                                        <h2 class="title">k+</h2>
+                                        <h2 class="title odometer" data-odo="8">10</h2>
+                                        <h2 class="title">0</h2>
                                     </div>
                                     <h5 class="subtitle">Students</h5>
                                 </div>
@@ -437,8 +437,8 @@
                             <div class="odo-item">
                                 <div class="odo-in">
                                     <div class="odo-head">
-                                        <h2 class="title odometer" data-odo="75">0</h2>
-                                        <h2 class="title">+</h2>
+                                        <h2 class="title odometer" data-odo="75">6</h2>
+                                        <h2 class="title"></h2>
                                     </div>
                                     <h5 class="subtitle">Courses</h5>
                                 </div>
@@ -446,7 +446,7 @@
                             <div class="odo-item">
                                 <div class="odo-in">
                                     <div class="odo-head">
-                                        <h2 class="title odometer" data-odo="13">0</h2>
+                                        <h2 class="title odometer" data-odo="13">2</h2>
                                         <h2 class="title">+</h2>
                                     </div>
                                     <h5 class="subtitle">National Awards</h5>

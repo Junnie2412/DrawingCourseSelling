@@ -906,7 +906,7 @@ input[type=submit] {
     }
 
     .pb-120 {
-        padding-bottom: 80px;
+        padding-bottom: 100px;
     }
 }
 /*Section Header*/
@@ -1008,7 +1008,7 @@ input[type=submit] {
 }
 
 .section-header .title span {
-    color: #FF7700;
+    color: #0ecace;
     font-weight: 300;
 }
 
@@ -2380,7 +2380,7 @@ header.active {
 }
 
 .header-area .custom-button {
-    background-color: rgba(31,191,177,0.87);
+    background-color: rgba(9,223,120,0.87);
     border: 2px solid rgba(226,127,142,1);
     box-shadow: 0 3px 6px rgba(61,115,130,0.3);
     margin-left: 20px;
@@ -3404,7 +3404,7 @@ div[class*=col]:nth-of-type(4n + 4) .feature-item:hover .content .shape {
     bottom: 0;
     top: 0;
     right: 0;
-    background: rgba(7, 41, 77, 0.87);
+    background: rgba(15, 67, 117, 0.87);
 }
 
 .title-lay .container {

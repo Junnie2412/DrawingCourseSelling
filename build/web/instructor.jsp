@@ -49,7 +49,7 @@
 
 
         <!-- ~~~ Hero Section ~~~ -->
-        <section class="hero-section banner-overlay bg_img" data-img="assets/images/banner/banner.png>
+        <section class="hero-section banner-overlay bg_img" data-img="assets/images/banner/banner.png">
             
             <div class="custom-container">
                 <div class="hero-content">
@@ -75,10 +75,10 @@
                     <div class="col-lg-3 col-sm-6">
                         <div class="instructor-item">
                             <div class="instructor-thumb">
-                                <a href="#0"><img src="assets/images/instructor/01.png" alt="instructor"></a>
+                                <a href="#0"><img src="assets/images/instructor/1.png" alt="instructor"></a>
                             </div>
                             <div class="instructor-content">
-                                <h6 class="title"><a href="#0">SANDRA RILEY</a></h6>
+                                <h6 class="title"><a href="#0">GIA BẢO</a></h6>
                                 <span class="details">TEACHER</span>
                             </div>
                         </div>
@@ -89,7 +89,7 @@
                                 <a href="#0"><img src="assets/images/instructor/02.png" alt="instructor"></a>
                             </div>
                             <div class="instructor-content">
-                                <h6 class="title"><a href="#0">Alison Bekar</a></h6>
+                                <h6 class="title"><a href="#0">NHẬT THÁI</a></h6>
                                 <span class="details">TEACHER</span>
                             </div>
                         </div>
@@ -100,7 +100,7 @@
                                 <a href="#0"><img src="assets/images/instructor/03.png" alt="instructor"></a>
                             </div>
                             <div class="instructor-content">
-                                <h6 class="title"><a href="#0">Frank Armany</a></h6>
+                                <h6 class="title"><a href="#0">BÁ HUÂN</a></h6>
                                 <span class="details">TEACHER</span>
                             </div>
                         </div>
@@ -111,7 +111,7 @@
                                 <a href="#0"><img src="assets/images/instructor/04.png" alt="instructor"></a>
                             </div>
                             <div class="instructor-content">
-                                <h6 class="title"><a href="#0">Manuel Nuer</a></h6>
+                                <h6 class="title"><a href="#0">NAM ĐY</a></h6>
                                 <span class="details">TEACHER</span>
                             </div>
                         </div>
@@ -119,10 +119,10 @@
                     <div class="col-lg-3 col-sm-6">
                         <div class="instructor-item">
                             <div class="instructor-thumb">
-                                <a href="#0"><img src="assets/images/instructor/01.png" alt="instructor"></a>
+                                <a href="#0"><img src="assets/images/instructor/05.png" alt="instructor"></a>
                             </div>
                             <div class="instructor-content">
-                                <h6 class="title"><a href="#0">SANDRA RILEY</a></h6>
+                                <h6 class="title"><a href="#0">BẢO VY</a></h6>
                                 <span class="details">TEACHER</span>
                             </div>
                         </div>
@@ -130,10 +130,10 @@
                     <div class="col-lg-3 col-sm-6">
                         <div class="instructor-item">
                             <div class="instructor-thumb">
-                                <a href="#0"><img src="assets/images/instructor/02.png" alt="instructor"></a>
+                                <a href="#0"><img src="assets/images/instructor/06.png" alt="instructor"></a>
                             </div>
                             <div class="instructor-content">
-                                <h6 class="title"><a href="#0">Alison Bekar</a></h6>
+                                <h6 class="title"><a href="#0">NGÔ KHÁNH HÂN</a></h6>
                                 <span class="details">TEACHER</span>
                             </div>
                         </div>
@@ -141,10 +141,10 @@
                     <div class="col-lg-3 col-sm-6">
                         <div class="instructor-item">
                             <div class="instructor-thumb">
-                                <a href="#0"><img src="assets/images/instructor/03.png" alt="instructor"></a>
+                                <a href="#0"><img src="assets/images/instructor/07.png" alt="instructor"></a>
                             </div>
                             <div class="instructor-content">
-                                <h6 class="title"><a href="#0">Frank Armany</a></h6>
+                                <h6 class="title"><a href="#0">HOÀNG MINH</a></h6>
                                 <span class="details">TEACHER</span>
                             </div>
                         </div>
@@ -152,10 +152,10 @@
                     <div class="col-lg-3 col-sm-6">
                         <div class="instructor-item">
                             <div class="instructor-thumb">
-                                <a href="#0"><img src="assets/images/instructor/04.png" alt="instructor"></a>
+                                <a href="#0"><img src="assets/images/instructor/08.png" alt="instructor"></a>
                             </div>
                             <div class="instructor-content">
-                                <h6 class="title"><a href="#0">Manuel Nuer</a></h6>
+                                <h6 class="title"><a href="#0">MINH KHANG</a></h6>
                                 <span class="details">TEACHER</span>
                             </div>
                         </div>
@@ -163,10 +163,10 @@
                     <div class="col-lg-3 col-sm-6">
                         <div class="instructor-item">
                             <div class="instructor-thumb">
-                                <a href="#0"><img src="assets/images/instructor/01.png" alt="instructor"></a>
+                                <a href="#0"><img src="assets/images/instructor/09.png" alt="instructor"></a>
                             </div>
                             <div class="instructor-content">
-                                <h6 class="title"><a href="#0">SANDRA RILEY</a></h6>
+                                <h6 class="title"><a href="#0">HOÀNG LINH</a></h6>
                                 <span class="details">TEACHER</span>
                             </div>
                         </div>
@@ -174,10 +174,10 @@
                     <div class="col-lg-3 col-sm-6">
                         <div class="instructor-item">
                             <div class="instructor-thumb">
-                                <a href="#0"><img src="assets/images/instructor/02.png" alt="instructor"></a>
+                                <a href="#0"><img src="assets/images/instructor/10.png" alt="instructor"></a>
                             </div>
                             <div class="instructor-content">
-                                <h6 class="title"><a href="#0">Alison Bekar</a></h6>
+                                <h6 class="title"><a href="#0">MINH THƯ</a></h6>
                                 <span class="details">TEACHER</span>
                             </div>
                         </div>
@@ -185,10 +185,10 @@
                     <div class="col-lg-3 col-sm-6">
                         <div class="instructor-item">
                             <div class="instructor-thumb">
-                                <a href="#0"><img src="assets/images/instructor/03.png" alt="instructor"></a>
+                                <a href="#0"><img src="assets/images/instructor/11.png" alt="instructor"></a>
                             </div>
                             <div class="instructor-content">
-                                <h6 class="title"><a href="#0">Frank Armany</a></h6>
+                                <h6 class="title"><a href="#0">THANH TRÚC</a></h6>
                                 <span class="details">TEACHER</span>
                             </div>
                         </div>
@@ -196,17 +196,17 @@
                     <div class="col-lg-3 col-sm-6">
                         <div class="instructor-item">
                             <div class="instructor-thumb">
-                                <a href="#0"><img src="assets/images/instructor/04.png" alt="instructor"></a>
+                                <a href="#0"><img src="assets/images/instructor/12.png" alt="instructor"></a>
                             </div>
                             <div class="instructor-content">
-                                <h6 class="title"><a href="#0">Manuel Nuer</a></h6>
+                                <h6 class="title"><a href="#0">THỊ HUYỀN</a></h6>
                                 <span class="details">TEACHER</span>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="text-center load-more mt-5">
-                    <a href="#0" class="custom-button theme-one">load more courses <i class="fas fa-angle-right"></i></a>
+                    <a href="courses.jsp" class="custom-button theme-one">load more courses <i class="fas fa-angle-right"></i></a>
                 </div>
             </div>
         </div>

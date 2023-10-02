@@ -85,7 +85,8 @@
                             <div class="content">
                                 <h6 class="title">Education Services</h6>
                                 <span class="shape"></span>
-                                <p class="fs-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis fermentum metus.</p>
+                                <p class="fs-sm">Students can have many opportunities to learn and experience many different drawing genres. In addition, we will provide you with a certificate trusted by companies and organizations once you complete each course.
+</p>
                             </div>
                         </div>
                     </div>
@@ -97,7 +98,8 @@
                             <div class="content">
                                 <h6 class="title">Online/Offline Class</h6>
                                 <span class="shape"></span>
-                                <p class="fs-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis fermentum metus.</p>
+                                <p class="fs-sm">To meet the need to learn without going to the school, each course will provide online videos for each student when registering for the course. You can access our website anytime, anywhere as long as you have a learning spirit and are willing to develop your creativity.
+</p>
                             </div>
                         </div>
                     </div>
@@ -109,7 +111,8 @@
                             <div class="content">
                                 <h6 class="title">Expert Mentor</h6>
                                 <span class="shape"></span>
-                                <p class="fs-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis fermentum metus.</p>
+                                <p class="fs-sm">Students will learn from instructors with degrees from famous art universities across the country. Each instructor will provide interesting lessons, from basic to advanced, in every drawing genre you have registered for.
+</p>
                             </div>
                         </div>
                     </div>
@@ -121,7 +124,7 @@
                             <div class="content">
                                 <h6 class="title">Lifetime Support</h6>
                                 <span class="shape"></span>
-                                <p class="fs-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis fermentum metus.</p>
+                                <p class="fs-sm">We will serve and support you quickly when you have questions or encounter difficulties in studying. There is also a forum where you can discuss and share useful courses while studying with us.</p>
                             </div>
                         </div>
                     </div>
@@ -143,17 +146,11 @@
                     <div class="col-lg-6 pb-120">
                         <div class="section-header text-lg-left mb-0">
                             <h2 class="title"><span>Read </span>About Us</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dui nulla, 
-                                finibus vitae blandit id, euismod vitae dolor. Nam eget tortor quam. Morbi 
-                                posuere, dolor a porttitor facilisis, odio ante suscipit felis, nec aliquet 
-                                ipsum dui sit amet massa. Nulla blandit mauris volutpat elit elementum, 
-                                sed posuere turpis vulputate. Suspendisse rhoncus ante rhoncus elit 
-                                ullamcorper egestas. Ut eu eleifend ipsum, vitae iaculis mauris. Aenean at 
-                                nisi feugiat, elementum sem sit amet, congue odio.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dui nulla, 
-                                finibus vitae blandit id, euismod vitae dolor. Nam eget tortor quam. Morbi 
-                                posuere, dolor a porttitor facilisis, odio.</p>
-                            <a href="#0" class="custom-button theme-one">get in touch</a>
+                            <p>Art Center is the first professional online drawing center in Vietnam specializing in online drawing lessons: learning to draw portraits, learning to draw for exams.
+
+With a team of teachers with over 13 years of experience and well-trained training, we have taught drawing online to thousands of domestic and international students, creating opportunities for those who are already married to continue their passion for drawing. Families, working people who don't have much free time, and students living far from the center who don't have to brave rain and shine to go to drawing class still have enough knowledge to take the exam to get into their favorite Architecture - Fine Arts school..</p>
+                            <p>The way to learn to draw online is completely similar to learning to draw in person, but has been modified to suit the online format. Students progress through practicing drawing according to a certain process including many exercises. Each exercise will train students in one or more certain skills.</p>
+                            
                         </div>
                     </div>
                 </div>
@@ -163,7 +160,7 @@
 
 
         <!-- ~~~ Counter Section ~~~ -->
-        <section class="counter-section pt-120 pb-120 title-lay bg_img" data-img="assets/images/counter/counter-bg.jpg">
+        <section class="counter-section pt-120 pb-120 title-lay bg_img" data-img="./assets/images/banner/banner.jpg" id="apply">
             <div class="container">
                 <div class="d-flex flex-wrap justify-content-between align-items-center">
                     <div class="odo-area">
@@ -171,8 +168,8 @@
                             <div class="odo-item">
                                 <div class="odo-in">
                                     <div class="odo-head">
-                                        <h2 class="title odometer" data-odo="60">0</h2>
-                                        <h2 class="title">+</h2>
+                                        <h2 class="title odometer" data-odo="60">1</h2>
+                                        <h2 class="title">2</h2>
                                     </div>
                                     <h5 class="subtitle">Teachers</h5>
                                 </div>
@@ -180,8 +177,8 @@
                             <div class="odo-item">
                                 <div class="odo-in">
                                     <div class="odo-head">
-                                        <h2 class="title odometer" data-odo="8">0</h2>
-                                        <h2 class="title">k+</h2>
+                                        <h2 class="title odometer" data-odo="8">10</h2>
+                                        <h2 class="title">0</h2>
                                     </div>
                                     <h5 class="subtitle">Students</h5>
                                 </div>
@@ -189,8 +186,8 @@
                             <div class="odo-item">
                                 <div class="odo-in">
                                     <div class="odo-head">
-                                        <h2 class="title odometer" data-odo="75">0</h2>
-                                        <h2 class="title">+</h2>
+                                        <h2 class="title odometer" data-odo="75">6</h2>
+                                        <h2 class="title"></h2>
                                     </div>
                                     <h5 class="subtitle">Courses</h5>
                                 </div>
@@ -198,7 +195,7 @@
                             <div class="odo-item">
                                 <div class="odo-in">
                                     <div class="odo-head">
-                                        <h2 class="title odometer" data-odo="13">0</h2>
+                                        <h2 class="title odometer" data-odo="13">2</h2>
                                         <h2 class="title">+</h2>
                                     </div>
                                     <h5 class="subtitle">National Awards</h5>
@@ -236,174 +233,7 @@
 
 
         <!-- ~~~ Testimonial Section ~~~ -->
-        <section class="testimonial-section pb-120 pt-120 pos-rel">
-            <div class="schedule-left-shape">
-                <img src="assets/images/course/course-top-shape.png" alt="course">
-            </div>
-            <div class="container">
-                <div class="slider-header">
-                    <div class="section-header left-style">
-                        <h2 class="title"><span>Our </span>Success Stories</h2>
-                    </div>
-                    <div class="slider-nav">
-                        <div class="testimoni-prev">
-                            <i class="fas fa-angle-left"></i>
-                        </div>
-                        <div class="testimoni-next active">
-                            <i class="fas fa-angle-right"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="m--15">
-                    <div class="testimonial-slider owl-theme owl-carousel">
-                        <div class="testimonial-item">
-                            <div class="rating-area">
-                                <div class="ratings cl-theme">
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="fas fa-star"></i></span>
-                                </div>
-                                <div class="quote">
-                                    "Best Services"
-                                </div>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet, consec tetur adipiscing elit. Donec scelerisque tortor at neque viverra posuere. Nam ut tortor viverra, accumsan felis sed, faci lisis est. Donec et mattis purus. Etiam leo lacus, luctus sit.</p>
-                            <div class="clients">
-                                <div class="thumb">
-                                    <img src="assets/images/client/client01.png" alt="client">
-                                </div>
-                                <div class="content">
-                                    <h6 class="title">Mark Parker</h6>
-                                    <span class="cl-1 fs-sm">CEO Of Fiverr</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="testimonial-item">
-                            <div class="rating-area">
-                                <div class="ratings cl-theme">
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="fas fa-star"></i></span>
-                                </div>
-                                <div class="quote">
-                                    "Best Services"
-                                </div>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet, consec tetur adipiscing elit. Donec scelerisque tortor at neque viverra posuere. Nam ut tortor viverra, accumsan felis sed, faci lisis est. Donec et mattis purus. Etiam leo lacus, luctus sit.</p>
-                            <div class="clients">
-                                <div class="thumb">
-                                    <img src="assets/images/client/client01.png" alt="client">
-                                </div>
-                                <div class="content">
-                                    <h6 class="title">Mark Parker</h6>
-                                    <span class="cl-1 fs-sm">CEO Of Fiverr</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="testimonial-item">
-                            <div class="rating-area">
-                                <div class="ratings cl-theme">
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="fas fa-star"></i></span>
-                                </div>
-                                <div class="quote">
-                                    "Best Services"
-                                </div>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet, consec tetur adipiscing elit. Donec scelerisque tortor at neque viverra posuere. Nam ut tortor viverra, accumsan felis sed, faci lisis est. Donec et mattis purus. Etiam leo lacus, luctus sit.</p>
-                            <div class="clients">
-                                <div class="thumb">
-                                    <img src="assets/images/client/client01.png" alt="client">
-                                </div>
-                                <div class="content">
-                                    <h6 class="title">Mark Parker</h6>
-                                    <span class="cl-1 fs-sm">CEO Of Fiverr</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="testimonial-item">
-                            <div class="rating-area">
-                                <div class="ratings cl-theme">
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="fas fa-star"></i></span>
-                                </div>
-                                <div class="quote">
-                                    "Best Services"
-                                </div>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet, consec tetur adipiscing elit. Donec scelerisque tortor at neque viverra posuere. Nam ut tortor viverra, accumsan felis sed, faci lisis est. Donec et mattis purus. Etiam leo lacus, luctus sit.</p>
-                            <div class="clients">
-                                <div class="thumb">
-                                    <img src="assets/images/client/client01.png" alt="client">
-                                </div>
-                                <div class="content">
-                                    <h6 class="title">Mark Parker</h6>
-                                    <span class="cl-1 fs-sm">CEO Of Fiverr</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="testimonial-item">
-                            <div class="rating-area">
-                                <div class="ratings cl-theme">
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="fas fa-star"></i></span>
-                                </div>
-                                <div class="quote">
-                                    "Best Services"
-                                </div>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet, consec tetur adipiscing elit. Donec scelerisque tortor at neque viverra posuere. Nam ut tortor viverra, accumsan felis sed, faci lisis est. Donec et mattis purus. Etiam leo lacus, luctus sit.</p>
-                            <div class="clients">
-                                <div class="thumb">
-                                    <img src="assets/images/client/client01.png" alt="client">
-                                </div>
-                                <div class="content">
-                                    <h6 class="title">Mark Parker</h6>
-                                    <span class="cl-1 fs-sm">CEO Of Fiverr</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="testimonial-item">
-                            <div class="rating-area">
-                                <div class="ratings cl-theme">
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="fas fa-star"></i></span>
-                                </div>
-                                <div class="quote">
-                                    "Best Services"
-                                </div>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet, consec tetur adipiscing elit. Donec scelerisque tortor at neque viverra posuere. Nam ut tortor viverra, accumsan felis sed, faci lisis est. Donec et mattis purus. Etiam leo lacus, luctus sit.</p>
-                            <div class="clients">
-                                <div class="thumb">
-                                    <img src="assets/images/client/client01.png" alt="client">
-                                </div>
-                                <div class="content">
-                                    <h6 class="title">Mark Parker</h6>
-                                    <span class="cl-1 fs-sm">CEO Of Fiverr</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        
         <!-- ~~~ Testimonial Section ~~~ -->
 
 
@@ -418,10 +248,10 @@
                     <div class="col-lg-3 col-sm-6">
                         <div class="instructor-item">
                             <div class="instructor-thumb">
-                                <a href="#0"><img src="assets/images/instructor/01.png" alt="instructor"></a>
+                                <a href="#0"><img src="assets/images/instructor/1.png" alt="instructor"></a>
                             </div>
                             <div class="instructor-content">
-                                <h6 class="title"><a href="#0">SANDRA RILEY</a></h6>
+                                <h6 class="title"><a href="#0">GIA BẢO</a></h6>
                                 <span class="details">TEACHER</span>
                             </div>
                         </div>
@@ -432,7 +262,7 @@
                                 <a href="#0"><img src="assets/images/instructor/02.png" alt="instructor"></a>
                             </div>
                             <div class="instructor-content">
-                                <h6 class="title"><a href="#0">Alison Bekar</a></h6>
+                                <h6 class="title"><a href="#0">NHẬT THÁI</a></h6>
                                 <span class="details">TEACHER</span>
                             </div>
                         </div>
@@ -443,7 +273,7 @@
                                 <a href="#0"><img src="assets/images/instructor/03.png" alt="instructor"></a>
                             </div>
                             <div class="instructor-content">
-                                <h6 class="title"><a href="#0">Frank Armany</a></h6>
+                                <h6 class="title"><a href="#0">BÁ HUÂN</a></h6>
                                 <span class="details">TEACHER</span>
                             </div>
                         </div>
@@ -454,7 +284,7 @@
                                 <a href="#0"><img src="assets/images/instructor/04.png" alt="instructor"></a>
                             </div>
                             <div class="instructor-content">
-                                <h6 class="title"><a href="#0">Manuel Nuer</a></h6>
+                                <h6 class="title"><a href="#0">NAM ĐY</a></h6>
                                 <span class="details">TEACHER</span>
                             </div>
                         </div>
@@ -466,55 +296,7 @@
 
 
         <!-- ~~~ Blog Section ~~~ -->
-        <section class="blog-section pb-120">
-            <div class="container">
-                <div class="slider-header">
-                    <div class="section-header left-style">
-                        <h2 class="title"><span>Our </span>Blog Posts</h2>
-                    </div>
-                    <div class="slider-nav">
-                        <div class="testimoni-prev">
-                            <i class="fas fa-angle-left"></i>
-                        </div>
-                        <div class="testimoni-next active">
-                            <i class="fas fa-angle-right"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="blog-slider owl-theme owl-carousel">
-                    <div class="blog-item">
-                        <div class="blog-thumb">
-                            <a href="blog-details.jsp">
-                                <img src="assets/images/blog/01.png" alt="blog">
-                            </a>
-                        </div>
-                        <div class="blog-content">
-                            <h5 class="title">
-                                <a href="blog-details.jsp">Learn by doing with Real World Projects</a>
-                            </h5>
-                            <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur 
-                                ridiculus mus. Pellentesque ipsum diam, ullamcorper consectetur ante nec, sollicitudin bibendum nulla. Curabitur non nunc ut eros vestibulum porta. Aliquam hendrerit, risus sed egestas.</p>
-                                <a href="blog-details.jsp" class="read-more">Read More</a>
-                        </div>
-                    </div>
-                    <div class="blog-item">
-                        <div class="blog-thumb">
-                            <a href="blog-details.jsp">
-                                <img src="assets/images/blog/02.png" alt="blog">
-                            </a>
-                        </div>
-                        <div class="blog-content">
-                            <h5 class="title">
-                                <a href="blog-details.jsp">Learn by doing with Real World Projects</a>
-                            </h5>
-                            <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur 
-                                ridiculus mus. Pellentesque ipsum diam, ullamcorper consectetur ante nec, sollicitudin bibendum nulla. Curabitur non nunc ut eros vestibulum porta. Aliquam hendrerit, risus sed egestas.</p>
-                            <a href="blog-details.jsp" class="read-more">Read More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        
         <!-- ~~~ Blog Section ~~~ -->
 
 <jsp:include page="layout/footer.jsp"/>
