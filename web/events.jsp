@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="assets/css/flaticon.css">
     <link rel="stylesheet" href="assets/css/main2.css">
 
-    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="assets/images/art1.png" type="image/x-icon">
 </head>
 
 
