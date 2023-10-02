@@ -45,7 +45,7 @@
         </div>
          
         <!-- ~~~ Banner Section ~~~ -->
-        <section class="banner-section banner-overlay bg_img" data-img="assets/images/banner/banner.png">
+        <section class="banner-section banner-overlay bg_img" data-img="assets/images/banner/banner.jpg">
             <div class="container">
                 <div class="banner-content cl-white">
                     <h3 class="subtitle">Join the drawing course now</h3>
