@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controllers;
+package controllers.userController;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -20,41 +20,55 @@ import users.UserDTO;
  *
  * @author HOANG DUNG
  */
-@WebServlet(name = "LoginController", urlPatterns = {"/LoginController"})
+@WebServlet(name = "LoginController", urlPatterns = {"/login"})
 public class LoginController extends HttpServlet {
 
-    private static final String SUCCESS = "index.jsp";
-    private static final String ERROR = "signin.jsp";
-    
-    private static final String ADMIN="Admin";
-    private static final String CUSTOMER="Customer";
-    private static final String STAFF="Staff";
-    private static final String INSTRUCTOR="Instructor";
-    
-    
+    private static final String SIGNIN_PAGE = "signin.jsp";
+    //
+    private static final String ADMIN_PAGE = "admin.jsp";
+    private static final String CUSTOMER_PAGE = "customer.jsp";
+    private static final String STAFF_PAGE = "staff.jsp";
+    private static final String INSTRUCTOR_PAGE = "instructor.jsp";
+    //
+    private static final String ADMIN = "Admin";
+    private static final String CUSTOMER = "Customer";
+    private static final String STAFF = "Staff";
+    private static final String INSTRUCTOR = "Instructor";
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        String url = ERROR;
-        
+
+        String url = SIGNIN_PAGE;
+
         try {
             String userName = request.getParameter("userName");
             String password = request.getParameter("password");
-            
             UserDAO dao = new UserDAO();
             UserDTO loginUser = dao.checkLogin(userName, password);
-            
-            if(loginUser == null){
+            if (loginUser == null) {
                 request.setAttribute("ERROR", "Username or Password is incorrect");
-            }else{
+            } else {
+                String role = loginUser.getRole();
                 HttpSession session = request.getSession();
-                session.setAttribute("LOGIN_USER", loginUser);
-                
-                url = SUCCESS;
+                if (role.equalsIgnoreCase(ADMIN)) {
+                    session.setAttribute("LOGIN_USER", loginUser);
+                    url = ADMIN_PAGE;
+                } else if (role.equalsIgnoreCase(STAFF)) {
+                    session.setAttribute("LOGIN_USER", loginUser);
+                    url = STAFF_PAGE;
+                } else if (role.equalsIgnoreCase(INSTRUCTOR)) {
+                    session.setAttribute("LOGIN_USER", loginUser);
+                    url = INSTRUCTOR_PAGE;
+                } else if (role.equalsIgnoreCase(CUSTOMER)) {
+                    session.setAttribute("LOGIN_USER", loginUser);
+                    url = CUSTOMER_PAGE;
+                } else {
+                    request.setAttribute("ERROR", "Your account is not supported yet!");
+                }
             }
-            
         } catch (Exception e) {
-        }finally{
+            log("Error at LoginController: " + e.toString());
+        } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }
     }
