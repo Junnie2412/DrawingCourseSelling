@@ -2318,7 +2318,7 @@ header.active {
     -moz-border-radius: 5px;
     border-radius: 5px;
     position: absolute;
-    right: 6px;
+    right: -1px;
     bottom: 5px;
     outline: none;
     border: none;
@@ -2381,7 +2381,6 @@ header.active {
 
 .header-area .custom-button {
     background-color: rgba(9,223,120,0.87);
-    border: 2px solid rgba(226,127,142,1);
     box-shadow: 0 3px 6px rgba(61,115,130,0.3);
     margin-left: 20px;
 }
@@ -6287,7 +6286,7 @@ blockquote::before {
     font-weight: 400;
     font-size: 16px;
     border-radius: 25px;
-    border: 1px solid #FF7700;
+    border: 1px solid #FFFFFF;
     cursor: pointer;
     
 }

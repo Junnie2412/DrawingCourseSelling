@@ -252,23 +252,7 @@
                                     </li>
                                 </ul>
                             </div>
-                            <div class="widget widget-meta">
-                                <h5 class="title">Meta</h5>
-                                <ul class="widget-meta-body">
-                                    <li>
-                                        <a href="#0">Log In</a>
-                                    </li>
-                                    <li>
-                                        <a href="#0">Entries RSS</a>
-                                    </li>
-                                    <li>
-                                        <a href="#0">Comments RSS</a>
-                                    </li>
-                                    <li>
-                                        <a href="#0">WordPress.Org</a>
-                                    </li>
-                                </ul>
-                            </div>
+                            
                         </aside>
                     </div>
                 </div>

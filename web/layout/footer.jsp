@@ -75,8 +75,8 @@
                                             <i class="fas fa-phone-alt"></i>
                                         </div>
                                         <div class="content">
-                                            <a href="Tel:+880551251558">+8987 5675 754 6</a>
-                                            <a href="Tel:+880551251558">+8987 5675 754 6</a>
+                                            <a href="Tel:+880551251558">+08 5590 1188</a><br>
+                                            <a href="Tel:+880551251558">+09 0488 6095</a>
                                         </div>
                                     </li>
                                     <li>
