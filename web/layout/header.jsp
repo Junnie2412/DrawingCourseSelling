@@ -4,10 +4,15 @@
     Author     : Admin
 --%>
 
+<%@page import="users.UserDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 
-
+        <%
+            UserDTO loginUser = (UserDTO) session.getAttribute(("LOGIN_USER"));
+            if(loginUser == null)
+                loginUser = new UserDTO();
+        %>
 
         <!-- ~~~ Header Section ~~~ -->
         <header>
@@ -27,8 +32,29 @@
                             <a href="about.jsp">About Us</a>
                         </li>
                         <li>
-                            <a href="courses.jsp">Courses</a>
-                            
+                            <%
+                                if(loginUser.getRole().equals("Admin")){
+                            %>
+                                <a href="adminCourse.jsp">Courses</a>
+                            <%
+                                }else if(loginUser.getRole().equals("Customer")){
+                            %>
+                                <a href="customerCourse.jsp">Courses</a>
+                            <%
+                                }else if(loginUser.getRole().equals("Instructor")){
+                            %>
+                                <a href="InstructorCourse.jsp">Courses</a>
+                            <%
+                                }else if(loginUser.getRole().equals("Staff")){
+                            %>
+                                <a href="staffCourse.jsp">Courses</a>
+                            <%
+                                }else{
+                            %>
+                                <a href="courses.jsp">Courses</a>
+                            <%
+                                }
+                            %>
                         </li>
                         <li>
                             <a href="instructor.jsp">Instructor</a>

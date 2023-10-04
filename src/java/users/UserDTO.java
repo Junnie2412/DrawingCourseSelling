@@ -22,6 +22,7 @@ public class UserDTO {
     private String email;
 
     public UserDTO() {
+        this.role="";
     }
 
     public UserDTO(String accountID, String password, String fullName, Date dateOfBirth, String role, boolean isActive, String image, String email) {
