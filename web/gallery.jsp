@@ -73,10 +73,10 @@
             <div class="container">
                 <div class="d-flex flex-wrap align-items-center mb-5 mb-sm-5">
                     <div class="gallery-header-left">
-                        <h2 class="title">Let's See Our <span class="cl-theme fw-400">Activites</span></h2>
+                        <h2 class="title">Let's See Our <span class="cl-theme fw-400">Gallery</span></h2>
                     </div>
                     <div class="gallery-header-right">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum leo leo, porta eget ex pretium, porta venenatis diam. Etiam fringilla nibh in eleifend viverra. Integer dignissim placerat ornare. Pellentesque porttitor.</p>
+                        <p>Let's see how the paintings of the students who have registered to study at the Art Center look like: the works are painted very meticulously and carefully by the students.</p>
                     </div>
                 </div>
                 <div class="m--15">
@@ -141,6 +141,7 @@
                                 <img src="assets/images/gallery/06.png" alt="gallery">
                             </div>
                         </div>
+                        
                         <div class="grid-item item--lg">
                             <div class="gallery-img">
                                 <div class="cont">
@@ -194,11 +195,11 @@
                         <div class="grid-item item--lg">
                             <div class="gallery-img">
                                 <div class="cont">
-                                    <a href="assets/images/gallery/lg-12.png" class="magnific_img_popup">
+                                    <a href="assets/images/gallery/lg-13.png" class="magnific_img_popup">
                                         <i class="flaticon-add"></i>
                                     </a>
                                 </div>
-                                <img src="assets/images/gallery/12.png" alt="gallery">
+                                <img width="90" height="450"src="assets/images/gallery/13.png" alt="gallery">
                             </div>
                         </div>
                     </div>
