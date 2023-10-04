@@ -15,6 +15,8 @@ public class MainController extends HttpServlet {
     private static final String HOMEPAGE = "index.jsp";
     private static final String SIGNIN = "Sign In";
     private static final String SIGNIN_CONTROLLER = "LoginController";
+    private static final String SIGNOUT = "Sign Out";
+    private static final String SIGNOUT_CONTROLLER = "LogoutController";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -25,7 +27,9 @@ public class MainController extends HttpServlet {
                 url = LOGIN_PAGE;
             } else if (action.equals(SIGNIN)) {
                 url = SIGNIN_CONTROLLER;
-            }
+            } else if (action.equals(SIGNOUT)) {
+                url = SIGNOUT_CONTROLLER;
+            } 
         } catch (Exception e) {
             log("Error at MainController: " + e.toString());
         } finally {
