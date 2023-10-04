@@ -16,7 +16,7 @@
         %>
 <% 
 
-boolean loggedIn = (session.getAttribute(("LOGIN_USER")) != null) && (Boolean) session.getAttribute(("LOGIN_USER"));
+boolean loggedIn = (loginUser == null);
 %>
         <!-- ~~~ Header Section ~~~ -->
         <header>
