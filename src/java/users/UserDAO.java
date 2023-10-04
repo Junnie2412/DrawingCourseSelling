@@ -18,6 +18,7 @@ import java.sql.SQLException;
  */
 public class UserDAO {
     private static final String LOGIN = "SELECT * FROM tblAccount WHERE accountID=? AND password=? ";
+    private static final String LOGINBYGOOGLE = "SELECT fullName, roleID FROM tblUsers WHERE userID=?";
     
     public UserDTO checkLogin(String userName, String password) throws SQLException{
         UserDTO user=null;
@@ -54,4 +55,43 @@ public class UserDAO {
         
         return user;
     } 
+    
+    
+    public UserDTO checkLoginByGoogle(String userID) throws SQLException {
+        UserDTO user = null;
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+
+        try {
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(LOGINBYGOOGLE);
+                ptm.setString(1, userID);                
+                rs = ptm.executeQuery();
+                if (rs.next()) {
+                    String fullName = rs.getString("fullName");
+                    Date dateOfBirth = rs.getDate("dateOfBirth");
+                    String role = rs.getString("role");
+                    Boolean isActive = rs.getBoolean("isActive");
+                    String image = rs.getString("image");
+                    String email = rs.getString("email");
+                    user = new UserDTO(fullName, "", fullName, dateOfBirth, role, isActive, image, email);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return user;
+    }
 }
