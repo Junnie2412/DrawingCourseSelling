@@ -8,12 +8,16 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 
+
         <%
             UserDTO loginUser = (UserDTO) session.getAttribute(("LOGIN_USER"));
             if(loginUser == null)
                 loginUser = new UserDTO();
         %>
+<% 
 
+boolean loggedIn = (session.getAttribute(("LOGIN_USER")) != null) && (Boolean) session.getAttribute(("LOGIN_USER"));
+%>
         <!-- ~~~ Header Section ~~~ -->
         <header>
             <div class="custom-container">
@@ -77,11 +81,16 @@
                         <span></span>
                         <span></span>
                     </div>
+                        
                     <form class="course-search-form ml-auto mr-4">
                         <input type="text" name="name" placeholder="Search Courses" class="rounded pl-0">
                         <button type="submit" class="rounded"><i class="flaticon-loupe"></i></button>
                     </form> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="signin.jsp" class="custom-button"><i class="fas fa-user"></i><span>Log In</span></a>
+                     <% if (!loggedIn) { %>
+            
+           <a href="signin.jsp" class="custom-button"><i class="fas fa-user"></i><span>Log In</span></a>
+        <% }else { %> <a href="signin.jsp" class="custom-button"><i class="fas fa-user"></i><span>Log Out</span></a> <% } %>
+                        
                 </div>
             </div>
         </header>
