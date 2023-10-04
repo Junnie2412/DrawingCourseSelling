@@ -10,38 +10,42 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author TienToan
  */
 public class CreateBlogController extends HttpServlet {
-    
+
     private static final String ERROR = "//";
     private static final String SUCCESS = "//";
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url=ERROR;
-        try {           
+        String url = ERROR;
+        try {
             String title = request.getParameter("title");
             String content = request.getParameter("content");
             String urlImage = request.getParameter("urlImage");
-            
+
             BlogDTO blogPost = new BlogDTO();
-            
+
             blogPost.setTitle(title);
             blogPost.setContent(content);
             blogPost.setImage(urlImage);
-            LocalDate localDate = LocalDate.now();
-            blogPost.setDateCreate(Date.valueOf(localDate));
             blogPost.setIsApproved(false);
             blogPost.setAccountID(request.getParameter("accountID"));
             //
             BlogDAO blogPostDAO = new BlogDAO();
-            blogPostDAO.createBlogPost(blogPost); 
-            
+            boolean check = blogPostDAO.createBlogPost(blogPost);
+            if (check) {
+                HttpSession session = request.getSession();
+                session.setAttribute("MESSAGE", "Your post is created! Waited to approve");
+                url = SUCCESS;
+            }
+
         } catch (Exception e) {
             log("Error at CreateBlogController");
         } finally {
