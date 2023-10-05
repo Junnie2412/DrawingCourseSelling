@@ -1,49 +1,41 @@
-package controllers;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
+ */
+package controllers.blog;
 
+import blog.BlogDAO;
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author HOANG DUNG
+ * @author TienToan
  */
-public class MainController extends HttpServlet {
-    private static final String LOGIN_PAGE = "signin.jsp";
-    private static final String HOMEPAGE = "index.jsp";
-    private static final String SIGNIN = "Sign In";
-    private static final String SIGNIN_CONTROLLER = "LoginController";
-    private static final String SIGNOUT = "Sign Out";
-    private static final String SIGNOUT_CONTROLLER = "LogoutController";
-    private static final String CREATEBLOG = "crateBlog";
-    private static final String CREATEBLOG_CONTROLLER = "CreateBlogController";
-    private static final String DELETEBLOG = "deleteBlog";
-    private static final String DELETEBLOG_CONTROLLER = "DeleteBlogController";
-    private static final String UPDATEBLOG = "updateBlog";
-    private static final String UPDATEBLOG_CONTROLLER = "UpdateBlogController";
+public class DeleteBlogController extends HttpServlet {
 
+    private static final String ERROR = "//";
+    private static final String SUCCESS = "//";
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String url = HOMEPAGE;
+        response.setContentType("text/html;charset=UTF-8");
+        String url = ERROR;
         try {
-            String action = request.getParameter("action");
-            if (action == null) {
-                url = LOGIN_PAGE;
-            } else if (action.equals(SIGNIN)) {
-                url = SIGNIN_CONTROLLER;
-            } else if (action.equals(SIGNOUT)) {
-                url = SIGNOUT_CONTROLLER;
-            } else if (action.equals(CREATEBLOG)) {
-                url = CREATEBLOG_CONTROLLER;
-            } else if (action.equals(DELETEBLOG)) {
-                url = DELETEBLOG_CONTROLLER;
-            } else if (action.equals(UPDATEBLOG)) {
-                url = UPDATEBLOG_CONTROLLER;
-            } 
+            int postID = Integer.parseInt(request.getParameter("postID"));
+            BlogDAO blogDao = new BlogDAO();
+            boolean check = blogDao.deleteBlog(postID);
+            if(check){
+                HttpSession session = request.getSession();
+                session.setAttribute("MESSAGE", "Your post is deleted!");
+                url = SUCCESS;
+            }
         } catch (Exception e) {
-            log("Error at MainController: " + e.toString());
+            log("Error at DeleteBlogController");
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }

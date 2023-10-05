@@ -1,4 +1,3 @@
-
 package blog;
 
 import java.sql.Connection;
@@ -13,9 +12,11 @@ import utils.DBUtil;
  * @author TienToan
  */
 public class BlogDAO {
+
     private static final String CREATE_BLOG = "INSERT INTO  VALUES (?,?,?,?,?,?,?)";
     private static final String UPDATE_BLOG = "UPDATE tblPost set title=?, content=?, image=? WHERE postID=?";
-    
+    private static final String DELETE_BLOG = "DELETE tblPost WHERE postID=?";
+
     public boolean createBlogPost(BlogDTO blogPost) throws SQLException {
         boolean check = false;
         Connection conn = null;
@@ -74,5 +75,30 @@ public class BlogDAO {
         }
         return check;
     }
-    
+
+    public boolean deleteBlog(int postID) throws SQLException {
+        boolean check = false;
+        Connection conn = null;
+        PreparedStatement ptm = null;
+
+        try {
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(DELETE_BLOG);
+                ptm.setInt(1, postID);
+                check = ptm.executeUpdate() > 0 ? true : false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return check;
+    }
+
 }
