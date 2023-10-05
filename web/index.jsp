@@ -1,5 +1,11 @@
 <!DOCTYPE html>
+<%@page import="users.UserDTO"%>
 <html lang="en">
+    <% 
+
+UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
+boolean loggedIn = (loginUser != null);
+%>
 
 <head>
     <meta charset="UTF-8">
@@ -53,7 +59,9 @@
                     <p>You can learn drawing skills from basic to advanced, by participating in the courses below.</p>
                     <div class="banner-button-area">
                         <a href="courses.jsp" class="custom-button btn-md">view courses<i class="fas fa-play-circle"></i></a>
+                        <% if (!loggedIn) { %>
                         <a href="#apply" class="custom-button btn-md theme-one">Create your account<i class="flaticon-tap-1"></i></a>
+                        <% } else { %><% } %>
                     </div>
                 </div>
             </div>
