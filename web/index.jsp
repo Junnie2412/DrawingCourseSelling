@@ -57,11 +57,16 @@ boolean loggedIn = (loginUser != null);
                     <h3 class="subtitle">Join the drawing course now</h3>
                     <h1 class="title">course creative</h1>
                     <p>You can learn drawing skills from basic to advanced, by participating in the courses below.</p>
-                    <div class="banner-button-area">
-                        <a href="courses.jsp" class="custom-button btn-md">view courses<i class="fas fa-play-circle"></i></a>
+                   
                         <% if (!loggedIn) { %>
+                        <div class="banner-button-area">
+                        <a href="courses.jsp" class="custom-button btn-md">view courses<i class="fas fa-play-circle"></i></a>
                         <a href="#apply" class="custom-button btn-md theme-one">Create your account<i class="flaticon-tap-1"></i></a>
-                        <% } else { %><% } %>
+                        <% } else { %><div class="banner-button-area">
+                        <a href="courses.jsp" class="custom-button btn-md">
+                        <span style="text-align: center;">view courses</span>
+                        <i class="fas fa-play-circle"></i>
+                        </a><% } %>
                     </div>
                 </div>
             </div>
