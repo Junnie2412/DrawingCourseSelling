@@ -20,6 +20,10 @@
         <servlet-name>DeleteBlogController</servlet-name>
         <servlet-class>controllers.blog.DeleteBlogController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SignupController</servlet-name>
+        <servlet-class>controllers.userController.SignupController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>MainController</servlet-name>
         <url-pattern>/MainController</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>DeleteBlogController</servlet-name>
         <url-pattern>/DeleteBlogController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SignupController</servlet-name>
+        <url-pattern>/SignupController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

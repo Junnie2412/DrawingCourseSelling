@@ -14,6 +14,10 @@ public class MainController extends HttpServlet {
     private static final String LOGIN_PAGE = "signin.jsp";
     private static final String HOMEPAGE = "index.jsp";
     
+    private static final String SIGNUP = "SignUp";
+    private static final String LOGIN = "LoginAfterSignup";
+    private static final String SIGNUP_CONTROLLER = "SignupController";
+    
     private static final String SIGNIN = "Sign In";
     private static final String SIGNIN_CONTROLLER = "LoginController";
     
@@ -40,6 +44,10 @@ public class MainController extends HttpServlet {
         try {
             String action = request.getParameter("action");
             if (action == null) {
+                url = LOGIN_PAGE;
+            } else if (action.equals(SIGNUP)) {
+                url = SIGNUP_CONTROLLER;
+            } else if (action.equals(LOGIN)) {
                 url = LOGIN_PAGE;
             } else if (action.equals(SIGNIN)) {
                 url = SIGNIN_CONTROLLER;

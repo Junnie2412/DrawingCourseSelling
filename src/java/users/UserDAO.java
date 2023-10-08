@@ -94,4 +94,55 @@ public class UserDAO {
         }
         return user;
     }
+
+    public UserDTO checkSignup(String emailSignup, String idSignup, String passwordSignup) {
+        UserDTO u = null;
+        try {
+            Connection cn = DBUtil.getConnection();
+            if (cn != null) {
+                String sql = "SELECT accountID, password, fullName, dateOfBirth, role, phone, isActive, image, email\n"
+                        + "FROM tblAccount\n"
+                        + "WHERE accountID = ? OR email = ? ";
+                PreparedStatement pst = cn.prepareStatement(sql);
+                pst.setString(1, idSignup);
+                pst.setString(2, emailSignup);
+                ResultSet rs = pst.executeQuery();
+                if (rs != null) {
+                    while (rs.next()) {
+                        String accountID = rs.getString("accountID");
+                        String password = rs.getString("password");
+                        String email = rs.getString("email");
+
+                        u = new UserDTO(accountID, password, email);
+                    }
+                    return u;
+                }
+            }
+            cn.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public UserDTO signUp(String emailSignup, String idSignup, String passwordSignup) {
+        UserDTO u = null;
+        try {
+            Connection cn = DBUtil.getConnection();
+            if (cn != null) {
+                String sql = "INSERT tblAccount VALUES(?, ?, '', '', 'Customer', '', 1, '', ?)";
+                PreparedStatement pst = cn.prepareStatement(sql);
+                pst.setString(1, idSignup);
+                pst.setString(2, passwordSignup);
+                pst.setString(3, emailSignup);
+                ResultSet rs = pst.executeQuery();
+            }
+            cn.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
