@@ -13,10 +13,20 @@ import javax.servlet.http.HttpServletResponse;
 public class MainController extends HttpServlet {
     private static final String LOGIN_PAGE = "signin.jsp";
     private static final String HOMEPAGE = "index.jsp";
+    
     private static final String SIGNIN = "Sign In";
     private static final String SIGNIN_CONTROLLER = "LoginController";
+    
     private static final String SIGNOUT = "Sign Out";
     private static final String SIGNOUT_CONTROLLER = "LogoutController";
+    
+    private static final String CREATE_NEW_COURSE="Create New Course";
+    private static final String CREATE_COURSE_PAGE="createCourse.jsp";
+    private static final String CREATE_COURSE="Create Course";
+    private static final String CREATE_COURSE_CONTROLLER="CreateCourseController";
+    private static final String TURN_BACK_COURSE="Turn Back to Courses";
+    private static final String COURSES_PAGE="instructorCourse.jsp";
+    
     private static final String CREATEBLOG = "crateBlog";
     private static final String CREATEBLOG_CONTROLLER = "CreateBlogController";
     private static final String DELETEBLOG = "deleteBlog";
@@ -35,6 +45,12 @@ public class MainController extends HttpServlet {
                 url = SIGNIN_CONTROLLER;
             } else if (action.equals(SIGNOUT)) {
                 url = SIGNOUT_CONTROLLER;
+            } else if (action.equals(CREATE_NEW_COURSE)) {
+                url = CREATE_COURSE_PAGE;
+            } else if (action.equals(CREATE_COURSE)) {
+                url = CREATE_COURSE_CONTROLLER;
+            } else if (action.equals(TURN_BACK_COURSE)) {
+                url = COURSES_PAGE;
             } else if (action.equals(CREATEBLOG)) {
                 url = CREATEBLOG_CONTROLLER;
             } else if (action.equals(DELETEBLOG)) {

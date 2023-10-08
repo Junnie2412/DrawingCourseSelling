@@ -47,7 +47,7 @@ boolean loggedIn = (loginUser == null);
                             <%
                                 }else if(loginUser.getRole().equals("Instructor")){
                             %>
-                                <a href="InstructorCourse.jsp">Courses</a>
+                                <a href="instructorCourse.jsp">Courses</a>
                             <%
                                 }else if(loginUser.getRole().equals("Staff")){
                             %>
