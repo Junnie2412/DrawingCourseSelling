@@ -75,6 +75,7 @@ public class AddStaffController extends HttpServlet {
                 UserDTO user = new UserDTO(accountID,password,fullName,dateOfBirth,role,isActive,img,email);
                 boolean checkInsert = dao.insertStaff(user);
                 if (checkInsert) {
+                    request.setAttribute("MESSAGE", "This account is added successfully!");
                     url = SUCCESS;
                 } else {
                     request.setAttribute("ERROR", "Unknown error!");

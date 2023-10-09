@@ -30,6 +30,12 @@ public class DeleteStaffController extends HttpServlet {
             String accountID = request.getParameter("accountID");
             UserDAO dao = new UserDAO();
             boolean checkDelete = dao.deleteStaff(accountID);
+            if(checkDelete){
+                request.setAttribute("MESSAGE", "This account is deleted!");
+                url=SUCCESS;
+            } else {
+                request.setAttribute("ERROR", "Unsuccessfully! Please try again!");
+            }
         } catch (Exception e) {
             log("Error at DeleteStaffController");
         } finally {

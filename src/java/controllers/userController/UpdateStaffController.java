@@ -65,7 +65,8 @@ public class UpdateStaffController extends HttpServlet {
                 UserDTO user = new UserDTO(accountID,password,fullName,dateOfBirth,role,isActive,img,email);
                 boolean checkUpdate = dao.updateStaff(user);
                 if (checkUpdate) {
-                    url = SUCCESS;
+                    request.setAttribute("MESSAGE", "Updated successfully");
+                    url = SUCCESS;                    
                 } else {
                     request.setAttribute("ERROR", "Something went wrong! Please try again!");
                 }
