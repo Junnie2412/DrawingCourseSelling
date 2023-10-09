@@ -13,17 +13,36 @@ import javax.servlet.http.HttpServletResponse;
 public class MainController extends HttpServlet {
     private static final String LOGIN_PAGE = "signin.jsp";
     private static final String HOMEPAGE = "index.jsp";
+    
+    private static final String SIGNUP = "SignUp";
+    private static final String LOGIN = "LoginAfterSignup";
+    private static final String SIGNUP_CONTROLLER = "SignupController";
+    
     private static final String SIGNIN = "Sign In";
     private static final String SIGNIN_CONTROLLER = "LoginController";
+    
     private static final String SIGNOUT = "Sign Out";
     private static final String SIGNOUT_CONTROLLER = "LogoutController";
+    
+    private static final String CREATE_NEW_COURSE="Create New Course";
+    private static final String CREATE_COURSE_PAGE="createCourse.jsp";
+    private static final String CREATE_COURSE="Create Course";
+    private static final String CREATE_COURSE_CONTROLLER="CreateCourseController";
+    private static final String TURN_BACK_COURSE="Turn Back to Courses";
+    private static final String COURSES_PAGE="instructorCourse.jsp";
+    
     private static final String CREATEBLOG = "crateBlog";
     private static final String CREATEBLOG_CONTROLLER = "CreateBlogController";
     private static final String DELETEBLOG = "deleteBlog";
     private static final String DELETEBLOG_CONTROLLER = "DeleteBlogController";
     private static final String UPDATEBLOG = "updateBlog";
     private static final String UPDATEBLOG_CONTROLLER = "UpdateBlogController";
-
+    
+    private static final String ADDSTAFF = "addStaff";
+    private static final String ADDSTAFF_CONTROLLER = "AddStaffController";
+    private static final String DELETESTAFF = "deleteStaff";
+    private static final String DELETESTAFF_CONTROLLER = "DeleteStaffController";
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String url = HOMEPAGE;
@@ -31,17 +50,31 @@ public class MainController extends HttpServlet {
             String action = request.getParameter("action");
             if (action == null) {
                 url = LOGIN_PAGE;
+            } else if (action.equals(SIGNUP)) {
+                url = SIGNUP_CONTROLLER;
+            } else if (action.equals(LOGIN)) {
+                url = LOGIN_PAGE;
             } else if (action.equals(SIGNIN)) {
                 url = SIGNIN_CONTROLLER;
             } else if (action.equals(SIGNOUT)) {
                 url = SIGNOUT_CONTROLLER;
+            } else if (action.equals(CREATE_NEW_COURSE)) {
+                url = CREATE_COURSE_PAGE;
+            } else if (action.equals(CREATE_COURSE)) {
+                url = CREATE_COURSE_CONTROLLER;
+            } else if (action.equals(TURN_BACK_COURSE)) {
+                url = COURSES_PAGE;
             } else if (action.equals(CREATEBLOG)) {
                 url = CREATEBLOG_CONTROLLER;
             } else if (action.equals(DELETEBLOG)) {
                 url = DELETEBLOG_CONTROLLER;
             } else if (action.equals(UPDATEBLOG)) {
                 url = UPDATEBLOG_CONTROLLER;
-            } 
+            } else if (action.equals(ADDSTAFF)) {
+                url = ADDSTAFF_CONTROLLER;
+            } else if (action.equals(DELETESTAFF)) {
+                url = DELETESTAFF_CONTROLLER;
+            }
         } catch (Exception e) {
             log("Error at MainController: " + e.toString());
         } finally {

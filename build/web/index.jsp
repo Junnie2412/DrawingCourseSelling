@@ -61,7 +61,7 @@ boolean loggedIn = (loginUser != null);
                         <% if (!loggedIn) { %>
                         <div class="banner-button-area">
                         <a href="courses.jsp" class="custom-button btn-md">view courses<i class="fas fa-play-circle"></i></a>
-                        <a href="#apply" class="custom-button btn-md theme-one">Create your account<i class="flaticon-tap-1"></i></a>
+                        <a href="signup.jsp" class="custom-button btn-md theme-one">Create your account<i class="flaticon-tap-1"></i></a>
                         <% } else { %><div class="banner-button-area">
                         <a href="courses.jsp" class="custom-button btn-md">
                         <span style="text-align: center;">view courses</span>

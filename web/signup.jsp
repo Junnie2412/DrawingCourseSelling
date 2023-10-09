@@ -66,18 +66,19 @@
                                     <p class="text-muted">Get your free ArtCenter account now</p>
                                 </div>
                                 <div class="p-2 mt-4">
-                                    <form class="needs-validation" novalidate action="https://themesbrand.com/velzon/html/material/index.jsp">
-
+                                    <!--<form class="needs-validation" novalidate action="https://themesbrand.com/velzon/html/material/index.jsp">-->
+                                    <form action="MainController" method="post">
+                                            <input type="hidden" value="SignUp" name="action"/>
                                         <div class="mb-3">
                                             <label for="useremail" class="form-label">Email <span class="text-danger">*</span></label>
-                                            <input type="email" class="form-control" id="useremail" placeholder="Enter email address" required>
+                                            <input type="email" class="form-control" id="useremail" placeholder="Enter email address" name="useremail" required>
                                             <div class="invalid-feedback">
                                                 Please enter email
                                             </div>
                                         </div>
                                         <div class="mb-3">
                                             <label for="username" class="form-label">Username <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" id="username" placeholder="Enter username" required>
+                                            <input type="text" class="form-control" id="username" placeholder="Enter username" name="username" required>
                                             <div class="invalid-feedback">
                                                 Please enter username
                                             </div>
@@ -86,7 +87,7 @@
                                         <div class="mb-3">
                                             <label class="form-label" for="password-input">Password</label>
                                             <div class="position-relative auth-pass-inputgroup">
-                                                <input type="password" class="form-control pe-5 password-input" onpaste="return false" placeholder="Enter password" id="password-input" aria-describedby="passwordInput" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+                                                <input type="password" class="form-control pe-5 password-input" onpaste="return false" placeholder="Enter password" id="password-input" aria-describedby="passwordInput" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" name="password" required>
                                                 <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none shadow-none text-muted password-addon" type="button" id="password-addon"><i class="ri-eye-fill align-middle"></i></button>
                                                 <div class="invalid-feedback">
                                                     Please enter password
