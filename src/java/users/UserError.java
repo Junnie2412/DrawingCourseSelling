@@ -9,6 +9,7 @@ public class UserError {
     private String userIDError;
     private String fullNameError;
     private String roleIDError;
+    private String emailError;
     private String passwordError;
     private String confirmError;
 
@@ -16,15 +17,17 @@ public class UserError {
         this.userIDError = "";
         this.fullNameError = "";
         this.roleIDError = "";
+        this.emailError = "";
         this.passwordError = "";
         this.confirmError = "";
         
     }
 
-    public UserError(String userIDError, String fullNameError, String roleIDError, String passwordError,String confirmError) {
+    public UserError(String userIDError, String fullNameError, String roleIDError, String emailError , String passwordError,String confirmError) {
         this.userIDError = userIDError;
         this.fullNameError = fullNameError;
         this.roleIDError = roleIDError;
+        this.emailError = emailError;
         this.passwordError = passwordError;
         this.confirmError = confirmError;
     }
@@ -68,4 +71,13 @@ public class UserError {
     public void setConfirmError(String confirmError) {
         this.confirmError = confirmError;
     }
+
+    public String getEmailError() {
+        return emailError;
+    }
+
+    public void setEmailError(String emailError) {
+        this.emailError = emailError;
+    }
+    
 }
