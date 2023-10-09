@@ -21,6 +21,7 @@ public class UserDAO {
     private static final String LOGINBYGOOGLE = "SELECT fullName, roleID FROM tblUsers WHERE userID=?";
     private static final String INSERTSTAFF = "INSERT INTO tblAccount VALUES (?,?,?,?,?,?,?,?)";
     private static final String DELETESTAFF = "DELETE tblAccount WHERE accountID=?";
+    private static final String UPDATESTAFF ="UPDATE tblAccount set password=?, fullName=?, dateOfBirth=?, isActive=?, image=?, email=? WHERE accountID=?";
     public UserDTO checkLogin(String userName, String password) throws SQLException{
         UserDTO user=null;
         
@@ -188,6 +189,36 @@ public class UserDAO {
             if (conn != null) {
                 ptm = conn.prepareStatement(DELETESTAFF);
                 ptm.setString(1, accountID);
+                check = ptm.executeUpdate() > 0 ? true : false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return check;
+    }
+
+    public boolean updateStaff(UserDTO user) throws SQLException {
+        boolean check = false;
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        try {
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(UPDATESTAFF);
+                ptm.setString(1, user.getPassword());
+                ptm.setString(2, user.getFullName());
+                ptm.setDate(3, user.getDateOfBirth());
+                ptm.setBoolean(4, user.isIsActive());
+                ptm.setString(5, user.getImage());
+                ptm.setString(6, user.getEmail());
+                ptm.setString(7, user.getAccountID());
                 check = ptm.executeUpdate() > 0 ? true : false;
             }
         } catch (Exception e) {
