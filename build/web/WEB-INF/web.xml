@@ -32,6 +32,10 @@
         <servlet-name>DeleteStaffController</servlet-name>
         <servlet-class>controllers.userController.DeleteStaffController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UpdateStaffController</servlet-name>
+        <servlet-class>controllers.userController.UpdateStaffController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>MainController</servlet-name>
         <url-pattern>/MainController</url-pattern>
@@ -63,6 +67,10 @@
     <servlet-mapping>
         <servlet-name>DeleteStaffController</servlet-name>
         <url-pattern>/DeleteStaffController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateStaffController</servlet-name>
+        <url-pattern>/UpdateStaffController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
