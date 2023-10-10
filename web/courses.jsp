@@ -112,6 +112,26 @@
     %>
         
         <!-- ~~~ End SEARCH by name~~~ -->
+        
+        <!-- ~~~ SEARCH by category~~~ -->
+        <form action="MainController">
+            Price
+            <input name="coursePrice" type="radio" value="Under-150000"/> Under-150000
+            <input name="coursePrice" type="radio" value="Approximately-150000"/>Approximately-150000
+            <input name="coursePrice" type="radio" value="Below-150000"/>Below-150000
+            
+            Type
+            <input name="courseType" type="radio" value="Digital"/> Digital
+            <input name="courseType" type="radio" value="Traditional"/> Traditional
+            
+            Level
+            <input name="courseLevel" type="radio" value="Basic"/>Basic
+            <input name="courseLevel" type="radio" value="Intermediate"/>Intermediate
+            <input name="courseLevel" type="radio" value="Advanced"/>Advanced
+        </form>
+        
+        <!-- ~~~ End SEARCH by category~~~ -->
+        
 
         <!-- ~~~ Course Section ~~~ -->
         <section class="course-section pt-120 pb-120 section-bg oh pos-rel">
