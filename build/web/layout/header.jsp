@@ -13,11 +13,9 @@
             UserDTO loginUser = (UserDTO) session.getAttribute(("LOGIN_USER"));
             if(loginUser == null)
                 loginUser = new UserDTO();
+            boolean loggedIn = (loginUser == null);
         %>
-<% 
 
-boolean loggedIn = (loginUser == null);
-%>
         <!-- ~~~ Header Section ~~~ -->
         <header>
             <div class="custom-container">
