@@ -1,4 +1,5 @@
-﻿USE [DrawingCourse]
+﻿CREATE DATABASE DrawingCourse;
+USE [DrawingCourse]
 GO
 /****** Object:  Table [dbo].[tblAccount]    Script Date: 10/1/2023 9:28:33 PM ******/
 SET ANSI_NULLS ON
