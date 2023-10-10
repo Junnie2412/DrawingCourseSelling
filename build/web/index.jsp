@@ -4,7 +4,7 @@
     <% 
 
 UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
-boolean loggedIn = false;
+boolean loggedIn = (loginUser != null);
 %>
 
 <head>

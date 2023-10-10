@@ -196,15 +196,16 @@
                     <td><br></td>
                 </tr>
                 <tr>
-                    <td><input type="submit" name="action" value="Create Course"></td>
                     <td><input type="submit" name="action" value="Turn Back to Courses"></td>
+                    <td><input type="submit" name="action" value="Create Course"></td>
+                    
                 </tr>
             </tbody>
         </table>
         </form>
         <script>
             document.getElementById("todayDate").valueAsDate = new Date();
-        </script>ments) ... -->
+        </script>
             </tbody>
         </table>
     </form>

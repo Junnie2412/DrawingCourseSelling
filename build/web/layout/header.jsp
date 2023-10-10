@@ -13,7 +13,7 @@
             UserDTO loginUser = (UserDTO) session.getAttribute(("LOGIN_USER"));
             if(loginUser == null)
                 loginUser = new UserDTO();
-            boolean loggedIn = false;
+            boolean loggedIn = (loginUser == null);
         %>
  
         <!-- ~~~ Header Section ~~~ -->
