@@ -4,6 +4,8 @@
     Author     : Admin
 --%>
 
+<%@page import="java.util.List"%>
+<%@page import="course.CourseDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,7 +68,50 @@
             </div>
         </section>
         <!-- ~~~ Hero Section ~~~ -->
+        
+        <!-- ~~~ SEARCH by name ~~~ -->
+        <%
+            List<CourseDTO> listCourse = (List<CourseDTO>) request.getAttribute("LIST_COURSE");
+            if(listCourse != null){
+                if(listCourse.size()>0){
+               
+        %>
+        
+        <%
+            for(CourseDTO course : listCourse){
+        %>
+        
+        <table border="1">
+           
+            <tbody>
+                <tr>
+                    <td><img src = "<%= course.getImage() %>"</td>
+                </tr>
+                <tr>
+                    <td><%= course.getName()%></td>
+                </tr>
+                <tr>
+                    <td><%= course.getAccountID()%></td>
+                </tr>
+                <tr>
+                    <td><%= course.getPrice()%></td>
+                </tr>
+                <tr>
+                    <td><%= course.getDuration()%></td>
+                </tr>
+                <tr>
+                    <td><%= course.getLevel()%></td>
+                </tr>
+            </tbody>
+        </table>
 
+        <% } %>
+        <%
+            }
+        }
+    %>
+        
+        <!-- ~~~ End SEARCH by name~~~ -->
 
         <!-- ~~~ Course Section ~~~ -->
         <section class="course-section pt-120 pb-120 section-bg oh pos-rel">
