@@ -517,7 +517,7 @@ SET IDENTITY_INSERT tblVideo OFF
 
 ------------------3/Add Lesson to Table----------------------
 SET IDENTITY_INSERT tblLesson ON
-INSERT INTO tblLesson(lessionID,title,description,videoID)
+INSERT INTO tblLesson(lessonID,title,description,videoID)
 VALUES('201','Introduction','Get ready with basic stuffs','301');
 SET IDENTITY_INSERT tblLesson OFF
 
