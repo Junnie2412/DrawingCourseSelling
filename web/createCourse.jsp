@@ -4,15 +4,72 @@
     Author     : HOANG DUNG
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Create Course</h1>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Create Course</title>
+    <style>
+      body {
+    font-family: Arial, sans-serif;
+    background-image: url('https://demoda.vn/wp-content/uploads/2022/01/background-xanh-duong-anh-sang-trang-chieu.jpg'); 
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-attachment: fixed; 
+    background-position: center center; 
+    color: #333;
+}
+
+        h1 {
+            text-align: center;
+            color: #0d00f1;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        table {
+            width: 100%;
+        }
+
+        table td {
+            padding: 10px;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        select {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    
+            <tbody>
+               <h1>Create Course</h1>
         <form action="MainController">
             <table>
             <tbody>
@@ -147,6 +204,12 @@
         </form>
         <script>
             document.getElementById("todayDate").valueAsDate = new Date();
-        </script>
-    </body>
+        </script>ments) ... -->
+            </tbody>
+        </table>
+    </form>
+    <script>
+        document.getElementById("todayDate").valueAsDate = new Date();
+    </script>
+</body>
 </html>
