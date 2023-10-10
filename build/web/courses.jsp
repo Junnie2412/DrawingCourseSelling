@@ -4,6 +4,8 @@
     Author     : Admin
 --%>
 
+<%@page import="java.util.List"%>
+<%@page import="course.CourseDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,7 +68,70 @@
             </div>
         </section>
         <!-- ~~~ Hero Section ~~~ -->
+        
+        <!-- ~~~ SEARCH by name ~~~ -->
+        <%
+            List<CourseDTO> listCourse = (List<CourseDTO>) request.getAttribute("LIST_COURSE");
+            if(listCourse != null){
+                if(listCourse.size()>0){
+               
+        %>
+        
+        <%
+            for(CourseDTO course : listCourse){
+        %>
+        
+        <table border="1">
+           
+            <tbody>
+                <tr>
+                    <td><img src = "<%= course.getImage() %>"</td>
+                </tr>
+                <tr>
+                    <td><%= course.getName()%></td>
+                </tr>
+                <tr>
+                    <td><%= course.getAccountID()%></td>
+                </tr>
+                <tr>
+                    <td><%= course.getPrice()%></td>
+                </tr>
+                <tr>
+                    <td><%= course.getDuration()%></td>
+                </tr>
+                <tr>
+                    <td><%= course.getLevel()%></td>
+                </tr>
+            </tbody>
+        </table>
 
+        <% } %>
+        <%
+            }
+        }
+    %>
+        
+        <!-- ~~~ End SEARCH by name~~~ -->
+        
+        <!-- ~~~ SEARCH by category~~~ -->
+        <form action="MainController">
+            Price
+            <input name="coursePrice" type="radio" value="Under-150000"/> Under-150000
+            <input name="coursePrice" type="radio" value="Approximately-150000"/>Approximately-150000
+            <input name="coursePrice" type="radio" value="Below-150000"/>Below-150000
+            
+            Type
+            <input name="courseType" type="radio" value="Digital"/> Digital
+            <input name="courseType" type="radio" value="Traditional"/> Traditional
+            
+            Level
+            <input name="courseLevel" type="radio" value="Basic"/>Basic
+            <input name="courseLevel" type="radio" value="Intermediate"/>Intermediate
+            <input name="courseLevel" type="radio" value="Advanced"/>Advanced
+        </form>
+        
+        <!-- ~~~ End SEARCH by category~~~ -->
+        
 
         <!-- ~~~ Course Section ~~~ -->
         <section class="course-section pt-120 pb-120 section-bg oh pos-rel">

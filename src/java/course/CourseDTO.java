@@ -8,7 +8,7 @@ import java.sql.Date;
  * @author TienToan
  */
 
-public class CourseDTO {
+public class CourseDTO extends DescriptionDTO{
     private String courseID;
     private String name;
     private float price;

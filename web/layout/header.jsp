@@ -81,10 +81,17 @@ boolean loggedIn = (loginUser == null);
                         <span></span>
                         <span></span>
                     </div>
-                        
+                    
+                    <%
+                        String search = request.getParameter("searchName");
+                        if (search == null) {
+                                search = "";
+                            }
+
+                    %> 
                     <form class="course-search-form ml-auto mr-4">
-                        <input type="text" name="name" placeholder="Search Courses" class="rounded pl-0">
-                        <button type="submit" class="rounded"><i class="flaticon-loupe"></i></button>
+                        <input type="text" name="searchName" value="<%= search%>" placeholder="Search Courses" class="rounded pl-0">
+                        <button type="submit" class="rounded" name="action" value="Search"><i class="flaticon-loupe"></i></button>
                     </form> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                      <% if (!loggedIn) { %>
             

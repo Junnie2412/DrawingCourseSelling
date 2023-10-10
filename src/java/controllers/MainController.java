@@ -30,6 +30,8 @@ public class MainController extends HttpServlet {
     private static final String CREATE_COURSE_CONTROLLER="CreateCourseController";
     private static final String TURN_BACK_COURSE="Turn Back to Courses";
     private static final String COURSES_PAGE="instructorCourse.jsp";
+    private static final String SEARCH_COURSE_NAME = "Search";
+    private static final String SEARCH_COURSE_NAME_CONTROLLER = "SearchController";
     
     private static final String CREATEBLOG = "crateBlog";
     private static final String CREATEBLOG_CONTROLLER = "CreateBlogController";
@@ -74,6 +76,8 @@ public class MainController extends HttpServlet {
                 url = ADDSTAFF_CONTROLLER;
             } else if (action.equals(DELETESTAFF)) {
                 url = DELETESTAFF_CONTROLLER;
+            }else if (action.equals(SEARCH_COURSE_NAME)) {
+                url = SEARCH_COURSE_NAME_CONTROLLER;
             }
         } catch (Exception e) {
             log("Error at MainController: " + e.toString());
