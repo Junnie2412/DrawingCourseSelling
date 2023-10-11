@@ -18,7 +18,7 @@ public class MainController extends HttpServlet {
     private static final String LOGIN = "LoginAfterSignup";
     private static final String SIGNUP_CONTROLLER = "SignupController";
     
-    private static final String SIGNIN = "SignIn";
+    private static final String SIGNIN = "Sign In";
     private static final String SIGNIN_CONTROLLER = "LoginController";
     
     private static final String SIGNOUT = "Sign Out";
