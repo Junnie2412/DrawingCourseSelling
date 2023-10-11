@@ -94,7 +94,14 @@
                                                 </div>
                                             </div>
                                         </div>
-
+                                        
+                                        <%
+                                            String msg = (String) request.getAttribute("ERROR");
+                                            if (msg != null) {
+                                                out.print("<h6>" + msg + "</h6>");
+                                            }
+                                        %>
+                                        
                                         <div class="mb-4">
                                             <p class="mb-0 fs-12 text-muted fst-italic">By registering you agree to the ArtCenter <a href="#" class="text-primary text-decoration-underline fst-normal fw-medium">Terms of Use</a></p>
                                         </div>
@@ -118,10 +125,10 @@
 
                                             <div>
                                                 <button type="button" class="btn btn-danger btn-icon waves-effect waves-light" style="width: 200px;"><i class="ri-google-fill fs-16"></i>  &nbsp; 
-  <span class="button-text ">Login with Google account</span>
+                                                    <span class="button-text ">Login with Google account</span>
     
  
-</button>
+                                                </button>
                                             </div>
                                         </div>
                                     </form>

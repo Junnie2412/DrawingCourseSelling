@@ -15,7 +15,6 @@ public class MainController extends HttpServlet {
     private static final String HOMEPAGE = "index.jsp";
     
     private static final String SIGNUP = "SignUp";
-    private static final String LOGIN = "LoginAfterSignup";
     private static final String SIGNUP_CONTROLLER = "SignupController";
     
     private static final String SIGNIN = "SignIn";
@@ -54,8 +53,6 @@ public class MainController extends HttpServlet {
                 url = LOGIN_PAGE;
             } else if (action.equals(SIGNUP)) {
                 url = SIGNUP_CONTROLLER;
-            } else if (action.equals(LOGIN)) {
-                url = LOGIN_PAGE;
             } else if (action.equals(SIGNIN)) {
                 url = SIGNIN_CONTROLLER;
             } else if (action.equals(SIGNOUT)) {
