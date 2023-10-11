@@ -9,6 +9,7 @@ import java.sql.Time;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import users.UserDTO;
 import utils.DBUtil;
 
 /**
@@ -23,6 +24,9 @@ public class CourseDAO {
     private static final String CREATE_MODULE = "INSERT INTO tblModule(title,lessonID) VALUES(?,?)";
     private static final String CREATE_DESCRIPTION = "INSERT INTO tblDescription(content, target, image,type, level) VALUES(?,?,?,?,?)";
     private static final String CREATE_COURSE = "INSERT INTO tblCourse(courseID, price, name, duration, isActive, datePublic, accountID, descriptionID, moduleID) VALUES(?,?,?,?,?,?,?,?,?)";
+    
+    private static final String GET_ACCOUNT_BY_COURSEID = "SELECT * FROM tblAccount WHERE accountID = (SELECT accountID FROM tblCourse WHERE courseID = ?)";
+    private static final String GET_DESCRIPTION_BY_COURSEID = "SELECT * FROM tblDescription WHERE descriptionID = (SELECT descriptionID FROM tblCourse WHERE courseID = ?)";
 
     public List<CourseDTO> getlistCourse(String search) throws ClassNotFoundException, SQLException {
         List<CourseDTO> list = new ArrayList<>();
@@ -48,7 +52,6 @@ public class CourseDAO {
                     int moduleID = rs.getInt("moduleID");
 
                     list.add(new CourseDTO(courseID, name, price, duration, isActive, datePublic, accountID, descriptionID, moduleID));
-
                 }
             }
         } catch (Exception e) {
@@ -82,7 +85,7 @@ public class CourseDAO {
                 ptm.setString(1, content);
                 ptm.setTime(2, Time.valueOf(time));
                 ptm.setBoolean(3, isActive);
-                rs = ptm.executeQuery();
+
                 check = ptm.executeUpdate() > 0 ? true : false;
             }
         } catch (Exception e) {
@@ -119,7 +122,6 @@ public class CourseDAO {
 
                 ptm.setInt(3, video.getVideoID());
 
-                rs = ptm.executeQuery();
                 check = ptm.executeUpdate() > 0 ? true : false;
             }
         } catch (Exception e) {
@@ -155,7 +157,6 @@ public class CourseDAO {
 
                 ptm.setInt(2, lesson.getLessonID());
 
-                rs = ptm.executeQuery();
                 check = ptm.executeUpdate() > 0 ? true : false;
             }
         } catch (Exception e) {
@@ -190,7 +191,6 @@ public class CourseDAO {
                 ptm.setString(4, descriptionType);
                 ptm.setString(5, descriptionLevel);
 
-                rs = ptm.executeQuery();
                 check = ptm.executeUpdate() > 0 ? true : false;
             }
         } catch (Exception e) {
@@ -209,9 +209,9 @@ public class CourseDAO {
         return check;
     }
 
-    public boolean createCourse(String courseID, float coursePrice, String courseName, int courseDuration, boolean courseIsActive, Date courseDatePublic,
-            String descriptionContent, String descriptionTarget, String descriptionImage, String descriptionType, String descriptionLevel,
-            String instructorID, String moduleTitle, String lessonTitle, String lessonDescription, String videoContent, LocalTime videoTime, boolean videoIsActive) throws ClassNotFoundException, SQLException {
+    public boolean createCourse(String courseID, float coursePrice, String courseName, int courseDuration, boolean courseIsActive, String courseDatePublic,
+                                String descriptionContent, String descriptionTarget, String descriptionImage, String descriptionType, String descriptionLevel,
+                                String instructorID, String moduleTitle, String lessonTitle, String lessonDescription, String videoContent, LocalTime videoTime, boolean videoIsActive) throws ClassNotFoundException, SQLException {
         boolean check = false;
         Connection conn = null;
         ResultSet rs = null;
@@ -220,14 +220,18 @@ public class CourseDAO {
         try {
             conn = DBUtil.getConnection();
             if (conn != null) {
-                if (createVideo(videoContent, videoTime, videoIsActive) && createLesson(lessonTitle, lessonDescription) && createModule(moduleTitle) && createDescription(descriptionContent, descriptionTarget, descriptionImage, descriptionType, descriptionLevel)) {
+                boolean checkVideo = createVideo(videoContent, videoTime, videoIsActive);
+                boolean checkLesson = createLesson(lessonTitle, lessonDescription);
+                boolean checkModule = createModule(moduleTitle);
+                boolean checkDescription = createDescription(descriptionContent, descriptionTarget, descriptionImage, descriptionType, descriptionLevel);
+                if (checkVideo && checkLesson && checkModule && checkDescription) {
                     ptm = conn.prepareStatement(CREATE_COURSE);
                     ptm.setString(1, courseID);
                     ptm.setFloat(2,coursePrice);
                     ptm.setString(3,courseName);
                     ptm.setInt(4,courseDuration);
                     ptm.setBoolean(5,courseIsActive);
-                    ptm.setDate(6,courseDatePublic);
+                    ptm.setDate(6,Date.valueOf(courseDatePublic));
                     ptm.setString(7,instructorID);
                     
                     DescriptionDAO descriptionDAO = new DescriptionDAO();
@@ -239,7 +243,6 @@ public class CourseDAO {
                     ModuleDTO module = moduleDAO.getLastestModule();
                     ptm.setInt(9, module.getModuleID());
 
-                    rs = ptm.executeQuery();
                     check = ptm.executeUpdate() > 0 ? true : false;
                 }
             }
@@ -259,5 +262,87 @@ public class CourseDAO {
         }
 
         return check;
+    }
+    
+    public UserDTO getAccount(String courseID) throws SQLException{
+        UserDTO instructor = null;
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement ptm = null;
+
+        try {
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(GET_ACCOUNT_BY_COURSEID);
+                ptm.setString(1, courseID);
+                rs = ptm.executeQuery();
+                
+                if(rs.next()){
+                    String accountID = rs.getString("accountID");
+                    String password = rs.getString("password");
+                    String fullName = rs.getString("fullName");
+                    Date dateOfBirth = rs.getDate("dateOfBirth");
+                    String role = rs.getString("role");
+                    boolean isActive = rs.getBoolean("isActive");
+                    String image = rs.getString("image");
+                    String email = rs.getString("email");
+                    
+                    instructor = new UserDTO(accountID, password, fullName, dateOfBirth, role, isActive, image, email);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return instructor;
+    }
+    
+    public DescriptionDTO getDescription(String courseID) throws SQLException{
+        DescriptionDTO description = null;
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement ptm = null;
+
+        try {
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(GET_DESCRIPTION_BY_COURSEID);
+                ptm.setString(1, courseID);
+                rs = ptm.executeQuery();
+                
+                if(rs.next()){
+                    int descriptionID = rs.getInt("descriptionID");
+                    String content = rs.getString("content");
+                    String target = rs.getString("target");
+                    String image = rs.getString("image");
+                    String type = rs.getString("type");
+                    String level = rs.getString("level");
+                    
+                    description = new DescriptionDTO(descriptionID, content, target, image, type, level);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return description;
     }
 }

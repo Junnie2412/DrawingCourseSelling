@@ -3,6 +3,7 @@
 
     <head>
 
+<<<<<<< HEAD
         <meta charset="utf-8" />
         <title>Leads | Velzon - Admin & Dashboard Template</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,15 @@
         <meta content="Themesbrand" name="author" />
         <!-- App favicon -->
         <link rel="shortcut icon" href="assets/images/favicon.ico">
+=======
+    <meta charset="utf-8" />
+    <title>ArtCenter - Online Drawing Course</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+    <meta content="Themesbrand" name="author" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
+>>>>>>> 0c844f84032ee9e3d48844e3713f95d08cd4c5d5
 
         <!-- Sweet Alert css-->
         <link href="assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />

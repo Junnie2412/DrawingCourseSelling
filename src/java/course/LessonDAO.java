@@ -29,6 +29,7 @@ public class LessonDAO {
              conn = DBUtil.getConnection();
             if(conn!=null){
                 ptm = conn.prepareStatement(LASTEST_LESSON);
+                rs = ptm.executeQuery();
                 if(rs.next()){
                     int lessonID = rs.getInt("lessonID");
                     String title = rs.getString("title");

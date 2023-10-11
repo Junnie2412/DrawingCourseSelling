@@ -28,9 +28,11 @@ public class VideoDAO {
         PreparedStatement ptm = null;
         
         try{
-             conn = DBUtil.getConnection();
+            conn = DBUtil.getConnection();
             if(conn!=null){
                 ptm = conn.prepareStatement(LASTEST_VIDEO);
+                rs=ptm.executeQuery();
+                
                 if(rs.next()){
                     int videoID = rs.getInt("videoID");
                     String content = rs.getString("content");
