@@ -114,22 +114,40 @@
         <!-- ~~~ End SEARCH by name~~~ -->
         
         <!-- ~~~ SEARCH by category~~~ -->
-        <form action="MainController">
-            Price
-            <input name="coursePrice" type="radio" value="Under-150000"/> Under-150000
-            <input name="coursePrice" type="radio" value="Approximately-150000"/>Approximately-150000
-            <input name="coursePrice" type="radio" value="Below-150000"/>Below-150000
+    <!--    <form action="MainController">
             
-            Type
-            <input name="courseType" type="radio" value="Digital"/> Digital
-            <input name="courseType" type="radio" value="Traditional"/> Traditional
+            <table border="1">
+                
+                <tbody>
+                    <tr>
+                        <td>
+                        Price
+                        <input name="coursePrice" type="radio" value="Under-150000"/> Under-150000
+                        <input name="coursePrice" type="radio" value="Approximately-150000"/>Approximately-150000
+                        <input name="coursePrice" type="radio" value="Below-150000"/>Below-150000    
+                            
+                        </td>
+                        <td>
+                        Type
+                        <input name="courseType" type="radio" value="Digital"/> Digital
+                        <input name="courseType" type="radio" value="Traditional"/> Traditional    
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        Level
+                        <input name="courseLevel" type="radio" value="Basic"/>Basic
+                        <input name="courseLevel" type="radio" value="Intermediate"/>Intermediate
+                        <input name="courseLevel" type="radio" value="Advanced"/>Advanced   
+                        </td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
             
-            Level
-            <input name="courseLevel" type="radio" value="Basic"/>Basic
-            <input name="courseLevel" type="radio" value="Intermediate"/>Intermediate
-            <input name="courseLevel" type="radio" value="Advanced"/>Advanced
+            Search button <button type="submit" name="action" value="SearchCategory"></button>
         </form>
-        
+        -->
         <!-- ~~~ End SEARCH by category~~~ -->
         
 
