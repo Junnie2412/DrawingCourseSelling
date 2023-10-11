@@ -32,12 +32,12 @@ public class SignupController extends HttpServlet {
             
             if (signupUser != null) {
                 request.setAttribute("ERROR", "Username or Email has already existed");
-                request.getRequestDispatcher(url).forward(request, response);
             } else {
                 signupUser = dao.signUp(emailSignup,idSignup,passwordSignup);
                 url = SIGNIN_PAGE;
-                response.sendRedirect(url);
+                request.setAttribute("SUCCESS", "Registered successfully! Please Sign In!");
             }
+            request.getRequestDispatcher(url).forward(request, response);
         } catch (Exception e) {
             log("Error at SignupController: " + e.toString());
         }

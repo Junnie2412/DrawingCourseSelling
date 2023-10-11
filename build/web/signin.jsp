@@ -65,6 +65,13 @@
                                 </div>
                                 <div class="p-2 mt-4">
                                     <form action="MainController">
+                                        
+                                        <%
+                                            String notication = (String) request.getAttribute("SUCCESS");
+                                            if (notication != null) {
+                                                out.print("<h6>" + notication + "</h6>");
+                                            }
+                                        %>
 
                                         <div class="mb-3">
                                             <label for="username" class="form-label">Username</label>
