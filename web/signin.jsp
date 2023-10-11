@@ -81,7 +81,14 @@
                                                 <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted shadow-none password-addon" type="button" id="password-addon"><i class="ri-eye-fill align-middle"></i></button>
                                             </div>
                                         </div>
-
+                                        
+                                        <%
+                                            String msg = (String) request.getAttribute("ERROR");
+                                            if (msg != null) {
+                                                out.print("<h6>" + msg + "</h6>");
+                                            }
+                                        %>
+                                        
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" value="" id="auth-remember-check">
                                             <label class="form-check-label" for="auth-remember-check">Remember me</label>

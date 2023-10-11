@@ -92,7 +92,7 @@
                         <td><%= course.getName()%></td>
                     </tr>
                     <tr>
-                        <td><%= courseDAO.getInstructor(course.getCourseID()).getFullName()%></td>
+                        <td><%= courseDAO.getAccount(course.getCourseID()).getFullName()%></td>
                     </tr>
                     <tr>
                         <td><%= course.getPrice()%></td>
@@ -447,48 +447,7 @@
             </div>
         </section>
         <!-- ~~~ Hero Section ~~~ -->
-        
-        <!-- ~~~ SEARCH by name ~~~ -->
-        <%
-            List<CourseDTO> listCourse = (List<CourseDTO>) request.getAttribute("LIST_COURSE");
-            if(listCourse != null){
-                if(listCourse.size()>0){
-               
-        %>
-        
-        <%
-            for(CourseDTO course : listCourse){
-        %>
-        
-        <table border="1">
-           
-            <tbody>
-                <tr>
-                    <td><img src = "<%= course.getImage() %>"</td>
-                </tr>
-                <tr>
-                    <td><%= course.getName()%></td>
-                </tr>
-                <tr>
-                    <td><%= course.getAccountID()%></td>
-                </tr>
-                <tr>
-                    <td><%= course.getPrice()%></td>
-                </tr>
-                <tr>
-                    <td><%= course.getDuration()%></td>
-                </tr>
-                <tr>
-                    <td><%= course.getLevel()%></td>
-                </tr>
-            </tbody>
-        </table>
-
-        <% } %>
-        <%
-            }
-        }
-    %>
+      
         
         <!-- ~~~ End SEARCH by name~~~ -->
         
