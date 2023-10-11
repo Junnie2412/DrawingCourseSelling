@@ -11,6 +11,8 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -22,6 +24,7 @@ public class UserDAO {
     private static final String INSERTSTAFF = "INSERT INTO tblAccount VALUES (?,?,?,?,?,?,?,?)";
     private static final String DELETESTAFF = "DELETE tblAccount WHERE accountID=?";
     private static final String UPDATESTAFF ="UPDATE tblAccount set password=?, fullName=?, dateOfBirth=?, isActive=?, image=?, email=? WHERE accountID=?";
+    private static final String LOADSTAFF = "SELECT * FROM tblAccount WHERE role = 'Staff'";
     public UserDTO checkLogin(String userName, String password) throws SQLException{
         UserDTO user=null;
         
@@ -232,5 +235,44 @@ public class UserDAO {
             }
         }
         return check;
+    }
+
+    public List<UserDTO> loadStaffList() throws SQLException {
+        List<UserDTO> staffList = new ArrayList<>();
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(LOADSTAFF);
+                rs = ptm.executeQuery();
+                while (rs.next()) {
+                    String accountID = rs.getString("accountID");
+                    String password = rs.getString("password");
+                    String fullName=rs.getString("fullName");
+                    Date dateOfBirth = rs.getDate("dateOfBirth");
+                    String role=rs.getString("role");
+                    Boolean isActive = rs.getBoolean("isActive");
+                    String image = rs.getString("image");
+                    String email=rs.getString("email");
+                    
+                    staffList.add(new UserDTO(accountID, password, fullName, dateOfBirth, role,isActive,image, email));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return staffList;
     }
 }
