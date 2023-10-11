@@ -25,7 +25,7 @@ public class CourseDAO {
     private static final String CREATE_DESCRIPTION = "INSERT INTO tblDescription(content, target, image,type, level) VALUES(?,?,?,?,?)";
     private static final String CREATE_COURSE = "INSERT INTO tblCourse(courseID, price, name, duration, isActive, datePublic, accountID, descriptionID, moduleID) VALUES(?,?,?,?,?,?,?,?,?)";
     
-    private static final String GET_INSTRUCTOR_BY_COURSEID = "SELECT * FROM tblAccount WHERE accountID = (SELECT accountID FROM tblCourse WHERE courseID = ?)";
+    private static final String GET_ACCOUNT_BY_COURSEID = "SELECT * FROM tblAccount WHERE accountID = (SELECT accountID FROM tblCourse WHERE courseID = ?)";
     private static final String GET_DESCRIPTION_BY_COURSEID = "SELECT * FROM tblDescription WHERE descriptionID = (SELECT descriptionID FROM tblCourse WHERE courseID = ?)";
 
     public List<CourseDTO> getlistCourse(String search) throws ClassNotFoundException, SQLException {
@@ -264,7 +264,7 @@ public class CourseDAO {
         return check;
     }
     
-    public UserDTO getInstructor(String courseID) throws SQLException{
+    public UserDTO getAccount(String courseID) throws SQLException{
         UserDTO instructor = null;
         Connection conn = null;
         ResultSet rs = null;
@@ -273,7 +273,7 @@ public class CourseDAO {
         try {
             conn = DBUtil.getConnection();
             if (conn != null) {
-                ptm = conn.prepareStatement(GET_INSTRUCTOR_BY_COURSEID);
+                ptm = conn.prepareStatement(GET_ACCOUNT_BY_COURSEID);
                 ptm.setString(1, courseID);
                 rs = ptm.executeQuery();
                 

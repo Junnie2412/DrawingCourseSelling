@@ -27,7 +27,6 @@
             }
 
             form {
-                max-width: 500px;
                 margin: 0 auto;
                 background-color: rgba(133, 134, 133, 0.8);
                 padding: 20px;
@@ -65,6 +64,22 @@
             button:hover {
                 background-color: #555;
             }
+            
+            .createTable{
+                display: flex;
+                
+            }
+            
+            .table1{
+                width: 40%;
+            }
+            
+            .table2{
+                width: 50%;
+            }
+            
+            
+            
         </style>
     </head>
     <body>
@@ -72,8 +87,9 @@
         <h1>CREATE COURSE</h1>
     </container>
             
-        <form action="MainController">
-            <table>
+        <form action="MainController" class="createTable">
+            <div class="table1">
+                <table>
                 <tbody>
                     <tr>
                         <td style="font-weight: bold;  color:black">Course ID</td>
@@ -133,6 +149,13 @@
                         <td><br></td>
                         <td><br></td>
                     </tr>
+                </tbody>
+            </table>
+            </div>
+            
+            <div class="table2">
+                <table>
+                <tbody>
                     <tr>
                         <td style="font-weight: bold; color:black">Module</td>
                         <td></td>
@@ -190,6 +213,7 @@
                     </tr>
                 </tbody>
             </table>
+            </div>
         </form>
         <script>
             document.getElementById("todayDate").valueAsDate = new Date();

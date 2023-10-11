@@ -110,7 +110,7 @@
                                         <td><%= course.getName()%></td>
                                     </tr>
                                     <tr>
-                                        <td><%= courseDAO.getInstructor(course.getCourseID()).getFullName()%></td>
+                                        <td><%= courseDAO.getAccount(course.getCourseID()).getFullName()%></td>
                                     </tr>
                                     <tr>
                                         <td><button type="submit" name="action" value="UpdateCourse">Update Course</button></td>
