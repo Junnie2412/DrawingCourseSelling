@@ -6,10 +6,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
-import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import users.UserDTO;
 import utils.DBUtil;
 
 /**
@@ -24,6 +24,9 @@ public class CourseDAO {
     private static final String CREATE_MODULE = "INSERT INTO tblModule(title,lessonID) VALUES(?,?)";
     private static final String CREATE_DESCRIPTION = "INSERT INTO tblDescription(content, target, image,type, level) VALUES(?,?,?,?,?)";
     private static final String CREATE_COURSE = "INSERT INTO tblCourse(courseID, price, name, duration, isActive, datePublic, accountID, descriptionID, moduleID) VALUES(?,?,?,?,?,?,?,?,?)";
+    
+    private static final String GET_INSTRUCTOR_BY_COURSEID = "SELECT * FROM tblAccount WHERE accountID = (SELECT accountID FROM tblCourse WHERE courseID = ?)";
+    private static final String GET_DESCRIPTION_BY_COURSEID = "SELECT * FROM tblDescription WHERE descriptionID = (SELECT descriptionID FROM tblCourse WHERE courseID = ?)";
 
     public List<CourseDTO> getlistCourse(String search) throws ClassNotFoundException, SQLException {
         List<CourseDTO> list = new ArrayList<>();
@@ -259,5 +262,87 @@ public class CourseDAO {
         }
 
         return check;
+    }
+    
+    public UserDTO getInstructor(String courseID) throws SQLException{
+        UserDTO instructor = null;
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement ptm = null;
+
+        try {
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(GET_INSTRUCTOR_BY_COURSEID);
+                ptm.setString(1, courseID);
+                rs = ptm.executeQuery();
+                
+                if(rs.next()){
+                    String accountID = rs.getString("accountID");
+                    String password = rs.getString("password");
+                    String fullName = rs.getString("fullName");
+                    Date dateOfBirth = rs.getDate("dateOfBirth");
+                    String role = rs.getString("role");
+                    boolean isActive = rs.getBoolean("isActive");
+                    String image = rs.getString("image");
+                    String email = rs.getString("email");
+                    
+                    instructor = new UserDTO(accountID, password, fullName, dateOfBirth, role, isActive, image, email);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return instructor;
+    }
+    
+    public DescriptionDTO getDescription(String courseID) throws SQLException{
+        DescriptionDTO description = null;
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement ptm = null;
+
+        try {
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(GET_DESCRIPTION_BY_COURSEID);
+                ptm.setString(1, courseID);
+                rs = ptm.executeQuery();
+                
+                if(rs.next()){
+                    int descriptionID = rs.getInt("descriptionID");
+                    String content = rs.getString("content");
+                    String target = rs.getString("target");
+                    String image = rs.getString("image");
+                    String type = rs.getString("type");
+                    String level = rs.getString("level");
+                    
+                    description = new DescriptionDTO(descriptionID, content, target, image, type, level);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return description;
     }
 }
