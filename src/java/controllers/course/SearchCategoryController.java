@@ -15,16 +15,28 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author HOANG DUNG
+ * @author PC
  */
-@WebServlet(name = "UpdateCourseController", urlPatterns = {"/UpdateCourseController"})
-public class UpdateCourseController extends HttpServlet {
+@WebServlet(name = "SearchCategoryController", urlPatterns = {"/SearchCategoryController"})
+public class SearchCategoryController extends HttpServlet {
 
-    
+    private static final String SUCCESS = "courses.jsp";
+    private static final String ERROR = "courses.jsp";
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        String url = ERROR;
+        
+        try{
+            String searchCategory = request.getParameter("SearchCategory");
+            
+            
+        }catch (Exception e){
+            log("Error at SearchCategoryController: " + e.toString());
+        }finally{
+            request.getRequestDispatcher(url).forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -26,9 +26,10 @@ public class ModuleDAO {
         PreparedStatement ptm = null;
         
         try{
-             conn = DBUtil.getConnection();
+            conn = DBUtil.getConnection();
             if(conn!=null){
                 ptm = conn.prepareStatement(LASTEST_MODULE);
+                rs = ptm.executeQuery();
                 if(rs.next()){
                     int moduleID = rs.getInt("moduleID");
                     String title = rs.getString("title");

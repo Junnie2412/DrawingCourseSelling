@@ -28,6 +28,7 @@ public class DescriptionDAO {
              conn = DBUtil.getConnection();
             if(conn!=null){
                 ptm = conn.prepareStatement(LASTEST_DESCRIPTION);
+                rs = ptm.executeQuery();
                 if(rs.next()){
                     int descriptionID = rs.getInt("descriptionID");
                     String content = rs.getString("content");
