@@ -80,7 +80,7 @@
                 <div class="section-header">
                     <h2 class="title"><span>Featured</span> Create Courses</h2>
                     <form action="MainController">
-                        <input type="submit" name="action" value="Create New Course">
+                        <button type="submit" name="action" value="CreateNewCourse">Create New Course</button>
                     </form>
                 </div>
                 <div class="section-header">

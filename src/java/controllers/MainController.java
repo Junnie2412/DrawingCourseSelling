@@ -18,17 +18,17 @@ public class MainController extends HttpServlet {
     private static final String LOGIN = "LoginAfterSignup";
     private static final String SIGNUP_CONTROLLER = "SignupController";
     
-    private static final String SIGNIN = "Sign In";
+    private static final String SIGNIN = "SignIn";
     private static final String SIGNIN_CONTROLLER = "LoginController";
     
     private static final String SIGNOUT = "Sign Out";
     private static final String SIGNOUT_CONTROLLER = "LogoutController";
     
-    private static final String CREATE_NEW_COURSE="Create New Course";
+    private static final String CREATE_NEW_COURSE="CreateNewCourse";
     private static final String CREATE_COURSE_PAGE="createCourse.jsp";
-    private static final String CREATE_COURSE="Create Course";
+    private static final String CREATE_COURSE="CreateCourse";
     private static final String CREATE_COURSE_CONTROLLER="CreateCourseController";
-    private static final String TURN_BACK_COURSE="Turn Back to Courses";
+    private static final String TURN_BACK_COURSE="TurnBackToCourses";
     private static final String COURSES_PAGE="instructorCourse.jsp";
     private static final String SEARCH_COURSE_NAME = "Search";
     private static final String SEARCH_COURSE_NAME_CONTROLLER = "SearchController";

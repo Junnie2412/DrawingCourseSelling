@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -48,7 +49,6 @@ public class CourseDAO {
                     int moduleID = rs.getInt("moduleID");
 
                     list.add(new CourseDTO(courseID, name, price, duration, isActive, datePublic, accountID, descriptionID, moduleID));
-
                 }
             }
         } catch (Exception e) {
@@ -82,7 +82,7 @@ public class CourseDAO {
                 ptm.setString(1, content);
                 ptm.setTime(2, Time.valueOf(time));
                 ptm.setBoolean(3, isActive);
-                rs = ptm.executeQuery();
+
                 check = ptm.executeUpdate() > 0 ? true : false;
             }
         } catch (Exception e) {
@@ -119,7 +119,6 @@ public class CourseDAO {
 
                 ptm.setInt(3, video.getVideoID());
 
-                rs = ptm.executeQuery();
                 check = ptm.executeUpdate() > 0 ? true : false;
             }
         } catch (Exception e) {
@@ -155,7 +154,6 @@ public class CourseDAO {
 
                 ptm.setInt(2, lesson.getLessonID());
 
-                rs = ptm.executeQuery();
                 check = ptm.executeUpdate() > 0 ? true : false;
             }
         } catch (Exception e) {
@@ -190,7 +188,6 @@ public class CourseDAO {
                 ptm.setString(4, descriptionType);
                 ptm.setString(5, descriptionLevel);
 
-                rs = ptm.executeQuery();
                 check = ptm.executeUpdate() > 0 ? true : false;
             }
         } catch (Exception e) {
@@ -209,9 +206,9 @@ public class CourseDAO {
         return check;
     }
 
-    public boolean createCourse(String courseID, float coursePrice, String courseName, int courseDuration, boolean courseIsActive, Date courseDatePublic,
-            String descriptionContent, String descriptionTarget, String descriptionImage, String descriptionType, String descriptionLevel,
-            String instructorID, String moduleTitle, String lessonTitle, String lessonDescription, String videoContent, LocalTime videoTime, boolean videoIsActive) throws ClassNotFoundException, SQLException {
+    public boolean createCourse(String courseID, float coursePrice, String courseName, int courseDuration, boolean courseIsActive, String courseDatePublic,
+                                String descriptionContent, String descriptionTarget, String descriptionImage, String descriptionType, String descriptionLevel,
+                                String instructorID, String moduleTitle, String lessonTitle, String lessonDescription, String videoContent, LocalTime videoTime, boolean videoIsActive) throws ClassNotFoundException, SQLException {
         boolean check = false;
         Connection conn = null;
         ResultSet rs = null;
@@ -220,14 +217,18 @@ public class CourseDAO {
         try {
             conn = DBUtil.getConnection();
             if (conn != null) {
-                if (createVideo(videoContent, videoTime, videoIsActive) && createLesson(lessonTitle, lessonDescription) && createModule(moduleTitle) && createDescription(descriptionContent, descriptionTarget, descriptionImage, descriptionType, descriptionLevel)) {
+                boolean checkVideo = createVideo(videoContent, videoTime, videoIsActive);
+                boolean checkLesson = createLesson(lessonTitle, lessonDescription);
+                boolean checkModule = createModule(moduleTitle);
+                boolean checkDescription = createDescription(descriptionContent, descriptionTarget, descriptionImage, descriptionType, descriptionLevel);
+                if (checkVideo && checkLesson && checkModule && checkDescription) {
                     ptm = conn.prepareStatement(CREATE_COURSE);
                     ptm.setString(1, courseID);
                     ptm.setFloat(2,coursePrice);
                     ptm.setString(3,courseName);
                     ptm.setInt(4,courseDuration);
                     ptm.setBoolean(5,courseIsActive);
-                    ptm.setDate(6,courseDatePublic);
+                    ptm.setDate(6,Date.valueOf(courseDatePublic));
                     ptm.setString(7,instructorID);
                     
                     DescriptionDAO descriptionDAO = new DescriptionDAO();
@@ -239,7 +240,6 @@ public class CourseDAO {
                     ModuleDTO module = moduleDAO.getLastestModule();
                     ptm.setInt(9, module.getModuleID());
 
-                    rs = ptm.executeQuery();
                     check = ptm.executeUpdate() > 0 ? true : false;
                 }
             }
