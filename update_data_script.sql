@@ -9,6 +9,10 @@ ALTER TABLE dbo.tblAccount
   SET content = 'https://youtu.be/WLU26nqcvfY?si=6wK36fN8tJigAjc1'
   WHERE videoID = '301';
 
+  UPDATE dbo.tblAccount
+  SET image = 'https://s120-ava-talk.zadn.vn/7/6/7/7/11/120/f1ed963fd72209896cf32ce6ada08879.jpg'
+  WHERE accountID = 'staff123';
+
 ------Tới đây nha-------
 
 ----Chỗ này add theo thứ tự nha-----
