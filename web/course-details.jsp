@@ -104,7 +104,7 @@
                                         <span><i class="fas fa-certificate"></i>Certificate</span><span>Yes</span>
                                     </li>
                                 </ul>
-                                <a href="#0" class="custom-button theme-one rounded">Enroll Now <i class="fas fa-angle-right"></i></a>
+                                <a href="#0" class="custom-button theme-one rounded">Add to cart <i class="fas fa-angle-right"></i></a>
                             </div>
                         </div>
                     </div>
