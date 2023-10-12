@@ -1,4 +1,4 @@
-﻿CREATE DATABASE DrawingCourse;
+CREATE DATABASE DrawingCourse;
 USE [DrawingCourse]
 GO
 /****** Object:  Table [dbo].[tblAccount]    Script Date: 10/1/2023 9:28:33 PM ******/
@@ -67,7 +67,6 @@ CREATE TABLE [dbo].[tblCourse](
 	[datePublic] [date] NULL,
 	[accountID] [varchar](250) NULL,
 	[descriptionID] [int] NULL,
-	[moduleID] [int] NULL,
 PRIMARY KEY CLUSTERED 
 (
 	[courseID] ASC
@@ -152,7 +151,7 @@ CREATE TABLE [dbo].[tblLesson](
 	[lessonID] [int] IDENTITY(1,1) NOT NULL,
 	[title] [varchar](250) NULL,
 	[description] [varchar](250) NULL,
-	[videoID] [int] NULL,
+	[moduleID] [int] NULL,
 PRIMARY KEY CLUSTERED 
 (
 	[lessonID] ASC
@@ -167,7 +166,7 @@ GO
 CREATE TABLE [dbo].[tblModule](
 	[moduleID] [int] IDENTITY(1,1) NOT NULL,
 	[title] [varchar](250) NULL,
-	[lessonID] [int] NULL,
+	[courseID] [varchar](250) NULL,
 PRIMARY KEY CLUSTERED 
 (
 	[moduleID] ASC
@@ -372,6 +371,7 @@ CREATE TABLE [dbo].[tblVideo](
 	[content] [varchar](250) NULL,
 	[time] [time](7) NULL,
 	[isActive] [bit] NULL,
+	[lessonID] [int] NULL,
 PRIMARY KEY CLUSTERED 
 (
 	[videoID] ASC
@@ -413,9 +413,6 @@ GO
 ALTER TABLE [dbo].[tblCourse]  WITH CHECK ADD FOREIGN KEY([descriptionID])
 REFERENCES [dbo].[tblDescription] ([descriptionID])
 GO
-ALTER TABLE [dbo].[tblCourse]  WITH CHECK ADD FOREIGN KEY([moduleID])
-REFERENCES [dbo].[tblModule] ([moduleID])
-GO
 ALTER TABLE [dbo].[tblCourseFeedback]  WITH CHECK ADD FOREIGN KEY([accountID])
 REFERENCES [dbo].[tblAccount] ([accountID])
 GO
@@ -431,10 +428,13 @@ GO
 ALTER TABLE [dbo].[tblGrade]  WITH CHECK ADD FOREIGN KEY([quizID])
 REFERENCES [dbo].[tblQuiz] ([quizID])
 GO
-ALTER TABLE [dbo].[tblLesson]  WITH CHECK ADD FOREIGN KEY([videoID])
-REFERENCES [dbo].[tblVideo] ([videoID])
+ALTER TABLE [dbo].[tblLesson]  WITH CHECK ADD FOREIGN KEY([moduleID])
+REFERENCES [dbo].[tblModule] ([moduleID])
 GO
-ALTER TABLE [dbo].[tblModule]  WITH CHECK ADD FOREIGN KEY([lessonID])
+ALTER TABLE [dbo].[tblModule]  WITH CHECK ADD FOREIGN KEY([courseID])
+REFERENCES [dbo].[tblCourse] ([courseID])
+GO
+ALTER TABLE [dbo].[tblVideo]  WITH CHECK ADD FOREIGN KEY([lessonID])
 REFERENCES [dbo].[tblLesson] ([lessonID])
 GO
 ALTER TABLE [dbo].[tblOrder]  WITH CHECK ADD FOREIGN KEY([accountID])
@@ -501,34 +501,5 @@ VALUES('ad','123','Nguyen Le Hoang Dung','1980-11-10','Admin','0325245427',1,'ht
 	  ('staff123','123','Le Hoang Trong','1990-05-23','Staff','03236382852',1,'https://drive.google.com/drive/folders/1XHZoN-_nXG1l-LaVB3JO1cweB1mDzrhK','tronghoang2322@gmail.com'),
 	  ('instructor123','123','Ngo Khanh Han','1994-05-12','Instructor','0323655552',1,'https://mythuatbui.edu.vn/wp-content/uploads/2022/12/24118CE0-DA81-4AEF-BAC0-3F0C593BA6AF-Ngo-Khanh-Han.jpeg','khanhHan231@gmail.com');
 
-------------------Add Từng cái vào nha, add 1 lần vào lỗi t kh có chịu đâu nha <3----------------------
 
-------------------1/Add Description to Table----------------------
-SET IDENTITY_INSERT tblDescription ON
-INSERT INTO tblDescription(descriptionID,content,target,image,type,level)
-VALUES('101','From this course, you can learn drawing basic hands and models. Fundamental theory in character building and combining perspective, color thinking, and composition.','Proficient in using Photoshop and Wacom software. Know how to use Photoshop in Digital Painting. Get Brush tools to draw.','https://img.freepik.com/premium-photo/painting-girl-woman-smooth-soft-skin-colorful_849906-592.jpg','Digital','Basic');
-SET IDENTITY_INSERT tblDescription OFF
 
-------------------2/Add Video to Table----------------------
-SET IDENTITY_INSERT tblVideo ON
-INSERT INTO tblVideo(videoID,topic,content,time,isActive)
-VALUES('301','Introduction','Get ready with basic stuffs','00:10:12',1);
-SET IDENTITY_INSERT tblVideo OFF
-
-------------------3/Add Lesson to Table----------------------
-SET IDENTITY_INSERT tblLesson ON
-INSERT INTO tblLesson(lessonID,title,description,videoID)
-VALUES('201','Introduction','Get ready with basic stuffs','301');
-SET IDENTITY_INSERT tblLesson OFF
-
-------------------4/Add Module to Table----------------------
-SET IDENTITY_INSERT tblModule ON
-INSERT INTO tblModule(moduleID,title,lessonID)
-VALUES('1001','Using Photoshop in Digital Painting','201');
-SET IDENTITY_INSERT tblModule OFF
-
-------------------5/Add Course to Table----------------------
-SET IDENTITY_INSERT tblCourse ON
-INSERT INTO tblCourse(courseID,price,name,duration,isActive,datePublic,accountID,descriptionID,moduleID)
-VALUES('bdp1','429000','Basic Digital Painting','98','1','2023-10-04','instructor123','101','1001');
-SET IDENTITY_INSERT tblCourse OFF
