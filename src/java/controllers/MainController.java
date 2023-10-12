@@ -43,6 +43,10 @@ public class MainController extends HttpServlet {
     private static final String ADDSTAFF_CONTROLLER = "AddStaffController";
     private static final String DELETESTAFF = "deleteStaff";
     private static final String DELETESTAFF_CONTROLLER = "DeleteStaffController";
+    private static final String UPDATESTAFF = "updateStaff";
+    private static final String UPDATESTAFF_CONTROLLER = "UpdateStaffController";
+    private static final String LOADSTAFF = "loadStaff";
+    private static final String LOADSTAFF_CONTROLLER = "LoadStaffController";
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -75,6 +79,10 @@ public class MainController extends HttpServlet {
                 url = DELETESTAFF_CONTROLLER;
             }else if (action.equals(SEARCH_COURSE_NAME)) {
                 url = SEARCH_COURSE_NAME_CONTROLLER;
+            }else if (action.equals(UPDATESTAFF)) {
+                url = UPDATESTAFF_CONTROLLER;
+            }else if (action.equals(LOADSTAFF)) {
+                url = LOADSTAFF_CONTROLLER;
             }
         } catch (Exception e) {
             log("Error at MainController: " + e.toString());
