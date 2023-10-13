@@ -24,9 +24,12 @@ public class CourseDAO {
     private static final String CREATE_MODULE = "INSERT INTO tblModule(title,lessonID) VALUES(?,?)";
     private static final String CREATE_DESCRIPTION = "INSERT INTO tblDescription(content, target, image,type, level) VALUES(?,?,?,?,?)";
     private static final String CREATE_COURSE = "INSERT INTO tblCourse(courseID, price, name, duration, isActive, datePublic, accountID, descriptionID, moduleID) VALUES(?,?,?,?,?,?,?,?,?)";
-    
+
     private static final String GET_ACCOUNT_BY_COURSEID = "SELECT * FROM tblAccount WHERE accountID = (SELECT accountID FROM tblCourse WHERE courseID = ?)";
     private static final String GET_DESCRIPTION_BY_COURSEID = "SELECT * FROM tblDescription WHERE descriptionID = (SELECT descriptionID FROM tblCourse WHERE courseID = ?)";
+    private static final String GET_ALL_COURSE = "SELECT * FROM tblCourse";
+    private static final String FILTER_COURSE_BY_LEVEL = "SELECT * FROM tblCourse WHERE level = ?";
+    private static final String FILTER_COURSE_BY_TYPE = "SELECT * FROM tblCourse WHERE type = ?";
 
     public List<CourseDTO> getlistCourse(String search) throws ClassNotFoundException, SQLException {
         List<CourseDTO> list = new ArrayList<>();
@@ -174,7 +177,7 @@ public class CourseDAO {
         }
         return check;
     }
-    
+
     public boolean createDescription(String descriptionContent, String descriptionTarget, String descriptionImage, String descriptionType, String descriptionLevel) throws SQLException {
         boolean check = false;
         Connection conn = null;
@@ -210,8 +213,8 @@ public class CourseDAO {
     }
 
     public boolean createCourse(String courseID, float coursePrice, String courseName, int courseDuration, boolean courseIsActive, String courseDatePublic,
-                                String descriptionContent, String descriptionTarget, String descriptionImage, String descriptionType, String descriptionLevel,
-                                String instructorID, String moduleTitle, String lessonTitle, String lessonDescription, String videoContent, LocalTime videoTime, boolean videoIsActive) throws ClassNotFoundException, SQLException {
+            String descriptionContent, String descriptionTarget, String descriptionImage, String descriptionType, String descriptionLevel,
+            String instructorID, String moduleTitle, String lessonTitle, String lessonDescription, String videoContent, LocalTime videoTime, boolean videoIsActive) throws ClassNotFoundException, SQLException {
         boolean check = false;
         Connection conn = null;
         ResultSet rs = null;
@@ -227,17 +230,17 @@ public class CourseDAO {
                 if (checkVideo && checkLesson && checkModule && checkDescription) {
                     ptm = conn.prepareStatement(CREATE_COURSE);
                     ptm.setString(1, courseID);
-                    ptm.setFloat(2,coursePrice);
-                    ptm.setString(3,courseName);
-                    ptm.setInt(4,courseDuration);
-                    ptm.setBoolean(5,courseIsActive);
-                    ptm.setDate(6,Date.valueOf(courseDatePublic));
-                    ptm.setString(7,instructorID);
-                    
+                    ptm.setFloat(2, coursePrice);
+                    ptm.setString(3, courseName);
+                    ptm.setInt(4, courseDuration);
+                    ptm.setBoolean(5, courseIsActive);
+                    ptm.setDate(6, Date.valueOf(courseDatePublic));
+                    ptm.setString(7, instructorID);
+
                     DescriptionDAO descriptionDAO = new DescriptionDAO();
                     DescriptionDTO description = descriptionDAO.getLastestDescription();
-                    
-                    ptm.setInt(8,description.getDescriptionID());
+
+                    ptm.setInt(8, description.getDescriptionID());
 
                     ModuleDAO moduleDAO = new ModuleDAO();
                     ModuleDTO module = moduleDAO.getLastestModule();
@@ -263,8 +266,8 @@ public class CourseDAO {
 
         return check;
     }
-    
-    public UserDTO getAccount(String courseID) throws SQLException{
+
+    public UserDTO getAccount(String courseID) throws SQLException {
         UserDTO instructor = null;
         Connection conn = null;
         ResultSet rs = null;
@@ -276,8 +279,8 @@ public class CourseDAO {
                 ptm = conn.prepareStatement(GET_ACCOUNT_BY_COURSEID);
                 ptm.setString(1, courseID);
                 rs = ptm.executeQuery();
-                
-                if(rs.next()){
+
+                if (rs.next()) {
                     String accountID = rs.getString("accountID");
                     String password = rs.getString("password");
                     String fullName = rs.getString("fullName");
@@ -286,7 +289,7 @@ public class CourseDAO {
                     boolean isActive = rs.getBoolean("isActive");
                     String image = rs.getString("image");
                     String email = rs.getString("email");
-                    
+
                     instructor = new UserDTO(accountID, password, fullName, dateOfBirth, role, isActive, image, email);
                 }
             }
@@ -305,8 +308,8 @@ public class CourseDAO {
         }
         return instructor;
     }
-    
-    public DescriptionDTO getDescription(String courseID) throws SQLException{
+
+    public DescriptionDTO getDescription(String courseID) throws SQLException {
         DescriptionDTO description = null;
         Connection conn = null;
         ResultSet rs = null;
@@ -318,15 +321,15 @@ public class CourseDAO {
                 ptm = conn.prepareStatement(GET_DESCRIPTION_BY_COURSEID);
                 ptm.setString(1, courseID);
                 rs = ptm.executeQuery();
-                
-                if(rs.next()){
+
+                if (rs.next()) {
                     int descriptionID = rs.getInt("descriptionID");
                     String content = rs.getString("content");
                     String target = rs.getString("target");
                     String image = rs.getString("image");
                     String type = rs.getString("type");
                     String level = rs.getString("level");
-                    
+
                     description = new DescriptionDTO(descriptionID, content, target, image, type, level);
                 }
             }
@@ -344,5 +347,175 @@ public class CourseDAO {
             }
         }
         return description;
+    }
+
+    public ArrayList<CourseDTO> getlistCourse() throws SQLException {
+        ArrayList<CourseDTO> list = new ArrayList<>();
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement ptm = null;
+
+        try {
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(GET_ALL_COURSE);
+                rs = ptm.executeQuery();
+                while (rs.next()) {
+                    String courseID = rs.getString("courseID");
+                    String name = rs.getString("name");
+                    float price = rs.getFloat("price");
+                    int duration = rs.getInt("duration");
+                    boolean isActive = rs.getBoolean("isActive");
+                    Date datePublic = rs.getDate("datePublic");
+                    String accountID = rs.getString("accountID");
+                    int descriptionID = rs.getInt("descriptionID");
+                    int moduleID = rs.getInt("moduleID");
+
+                    list.add(new CourseDTO(courseID, name, price, duration, isActive, datePublic, accountID, descriptionID, moduleID));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+
+        return list;
+    }
+
+    public List<CourseDTO> filterCourseByLevel(String typeLevel) throws SQLException {
+        List<CourseDTO> list = new ArrayList<>();
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement ptm = null;
+        try {
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(FILTER_COURSE_BY_LEVEL);
+                ptm.setString(1, typeLevel);
+                rs = ptm.executeQuery();
+                while (rs.next()) {
+                    String courseID = rs.getString("courseID");
+                    String name = rs.getString("name");
+                    float price = rs.getFloat("price");
+                    int duration = rs.getInt("duration");
+                    boolean isActive = rs.getBoolean("isActive");
+                    Date datePublic = rs.getDate("datePublic");
+                    String accountID = rs.getString("accountID");
+                    int descriptionID = rs.getInt("descriptionID");
+                    int moduleID = rs.getInt("moduleID");
+
+                    list.add(new CourseDTO(courseID, name, price, duration, isActive, datePublic, accountID, descriptionID, moduleID));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+
+        return list;
+    }
+
+    public List<CourseDTO> filterCourseByType(String type) throws SQLException {
+        List<CourseDTO> list = new ArrayList<>();
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement ptm = null;
+        try {
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(FILTER_COURSE_BY_TYPE);
+                ptm.setString(1, type);
+                rs = ptm.executeQuery();
+                while (rs.next()) {
+                    String courseID = rs.getString("courseID");
+                    String name = rs.getString("name");
+                    float price = rs.getFloat("price");
+                    int duration = rs.getInt("duration");
+                    boolean isActive = rs.getBoolean("isActive");
+                    Date datePublic = rs.getDate("datePublic");
+                    String accountID = rs.getString("accountID");
+                    int descriptionID = rs.getInt("descriptionID");
+                    int moduleID = rs.getInt("moduleID");
+
+                    list.add(new CourseDTO(courseID, name, price, duration, isActive, datePublic, accountID, descriptionID, moduleID));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return list;
+    }
+
+    public List<CourseDTO> filterCourseByPrice(String PriceRange) throws SQLException {
+        List<CourseDTO> list = new ArrayList<>();
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement ptm = null;
+        try {
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(FILTER_COURSE_BY_TYPE);
+                ptm.setString(1, PriceRange);
+                rs = ptm.executeQuery();
+                while (rs.next()) {
+                    String courseID = rs.getString("courseID");
+                    String name = rs.getString("name");
+                    float price = rs.getFloat("price");
+                    int duration = rs.getInt("duration");
+                    boolean isActive = rs.getBoolean("isActive");
+                    Date datePublic = rs.getDate("datePublic");
+                    String accountID = rs.getString("accountID");
+                    int descriptionID = rs.getInt("descriptionID");
+                    int moduleID = rs.getInt("moduleID");
+
+                    list.add(new CourseDTO(courseID, name, price, duration, isActive, datePublic, accountID, descriptionID, moduleID));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return list;
     }
 }

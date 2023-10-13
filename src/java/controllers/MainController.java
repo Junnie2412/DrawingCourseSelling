@@ -45,7 +45,7 @@ public class MainController extends HttpServlet {
     private static final String DELETESTAFF_CONTROLLER = "DeleteStaffController";
     private static final String UPDATESTAFF = "updateStaff";
     private static final String UPDATESTAFF_CONTROLLER = "UpdateStaffController";
-    private static final String LOADSTAFF = "loadStaff";
+    private static final String LOADSTAFF = "Staff Management";
     private static final String LOADSTAFF_CONTROLLER = "LoadStaffController";
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
