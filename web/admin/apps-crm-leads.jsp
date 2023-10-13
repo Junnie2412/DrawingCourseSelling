@@ -24,18 +24,21 @@
         >>>>>>> 0c844f84032ee9e3d48844e3713f95d08cd4c5d5
 
         <!-- Sweet Alert css-->
-        <link href="admin/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
 
         <!-- Layout config Js -->
-        <script src="admin/assets/js/layout.js"></script>
+        <script src="assets/js/layout.js"></script>
         <!-- Bootstrap Css -->
-        <link href="admin/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <!-- Icons Css -->
-        <link href="admin/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
         <!-- App Css-->
-        <link href="admin/assets/css/app.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
         <!-- custom Css-->
-        <link href="admin/assets/css/custom.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/custom.min.css" rel="stylesheet" type="text/css" />
+         
+        
+        
 
 
     </head>
@@ -128,16 +131,17 @@
                                                                     <input class="form-check-input" type="checkbox" id="checkAll" value="option">
                                                                 </div>
                                                             </th>
-                                                            <th class="sort" data-sort="counter">No</th>
-                                                            <th class="sort" data-sort="accountID">Account ID</th>
-                                                            <th class="sort" data-sort="password">Password</th>
-                                                            <th class="sort" data-sort="name">Name</th>
-                                                            <th class="sort" data-sort="date">Birth Day</th>                                    
+                                                            <th  data-sort="counter">No</th>
+                                                            <th  data-sort="accountID">Account ID</th>
+                                                            <th  data-sort="password">Password</th>
+                                                            <th  data-sort="name">Name</th>
+                                                            <th  data-sort="date">Birth Day</th>                                    
 
-                                                            <th class="sort" data-sort="isActive">Active</th>
-                                                            <th class="sort" data-sort="role">Role</th>
-                                                            <th class="sort" data-sort="email">Email</th>
-                                                            <th class="sort" data-sort="image">Image</th>
+                                                            <th  data-sort="isActive">Active</th>
+                                                            <th  data-sort="role">Role</th>
+                                                            <th  data-sort="email">Email</th>
+                                                            <th data-sort="image">Image</th>
+                                                            <th data-sort="function">Function</th>
 
                                                         </tr>
                                                     </thead>
@@ -186,8 +190,29 @@
 
                                                             </td>
                                                             <td class="image"><img src="<%=u.getImage()%>" alt="<%=u.getFullName()%>" width="80" height="120"></td>
+                                                            <td class="function">
+                                                                   <ul class="list-inline hstack gap-2 mb-0">
+                                                                <li class="list-inline-item edit" data-bs-toggle="tooltip"
+                                                                    data-bs-trigger="hover" data-bs-placement="top"
+                                                                    title="Edit">
+                                                                    <a href=""
+                                                                        data-bs-toggle="modal"
+                                                                        class="text-primary d-inline-block edit-item-btn">
+                                                                        <i class="ri-pencil-fill fs-16"></i>
+                                                                    </a>
+                                                                </li>
+                                                                <li class="list-inline-item" data-bs-toggle="tooltip"
+                                                                    data-bs-trigger="hover" data-bs-placement="top"
+                                                                    title="Remove">
+                                                                    <a href=""
+                                                                        class="link-danger fs-15"><i
+                                                                            class="ri-delete-bin-line"></i></a>
+                                                                                                                                    </li>
+                                                            </ul>
+                                                                </td>
 
                                                         </tr>
+                                                        
                                                     </form>
                                                     <%
                                                         }
