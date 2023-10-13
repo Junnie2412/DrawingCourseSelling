@@ -121,7 +121,7 @@
                 Price
                 <input name="coursePrice" type="radio" value="Under-150000"/> Under-150000
                 <input name="coursePrice" type="radio" value="Approximately-150000"/>Approximately-150000
-                <input name="coursePrice" type="radio" value="Below-150000"/>Below-150000
+                <input name="coursePrice" type="radio" value="Above-150000"/>Above-150000
 
                 Type
                 <input name="courseType" type="radio" value="Digital"/> Digital
