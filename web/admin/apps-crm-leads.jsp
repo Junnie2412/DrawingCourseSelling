@@ -84,21 +84,7 @@
                     <div class="container-fluid">
 
                         <!-- start page title -->
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                                    <h4 class="mb-sm-0">Leads</h4>
-
-                                    <div class="page-title-right">
-                                        <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);">CRM</a></li>
-                                            <li class="breadcrumb-item active">Leads</li>
-                                        </ol>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
+                        
                         <!-- end page title -->
 
                         <div class="row">
@@ -116,20 +102,9 @@
                                             <div class="col-sm-auto ms-auto">
                                                 <div class="hstack gap-2">
                                                     <button class="btn btn-soft-danger" id="remove-actions" onClick="deleteMultiple()"><i class="ri-delete-bin-2-line"></i></button>
-                                                    <button type="button" class="btn btn-info" data-bs-toggle="offcanvas" href="#offcanvasExample"><i class="ri-filter-3-line align-bottom me-1"></i> Fliters</button>
-                                                    <button type="button" class="btn btn-success add-btn" data-bs-toggle="modal" id="create-btn" data-bs-target="#showModal"><i class="ri-add-line align-bottom me-1"></i> Add Leads</button>
-                                                    <span class="dropdown">
-                                                        <button class="btn btn-soft-info btn-icon fs-14" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                                            <i class="ri-settings-4-line"></i>
-                                                        </button>
-                                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                                            <li><a class="dropdown-item" href="#">Copy</a></li>
-                                                            <li><a class="dropdown-item" href="#">Move to pipline</a></li>
-                                                            <li><a class="dropdown-item" href="#">Add to exceptions</a></li>
-                                                            <li><a class="dropdown-item" href="#">Switch to common form view</a></li>
-                                                            <li><a class="dropdown-item" href="#">Reset form view to default</a></li>
-                                                        </ul>
-                                                    </span>
+                                                    
+                                                    <button type="button" class="btn btn-success add-btn" data-bs-toggle="modal" id="create-btn" data-bs-target="#showModal"><i class="ri-add-line align-bottom me-1"></i> Add Staff</button>
+                                                    
                                                 </div>
                                             </div>
                                         </div>
@@ -146,16 +121,17 @@
                                                                     <input class="form-check-input" type="checkbox" id="checkAll" value="option">
                                                                 </div>
                                                             </th>
-                                                            <th class="sort" data-sort="counter">No</th>
-                                                            <th class="sort" data-sort="accountID">Account ID</th>
-                                                            <th class="sort" data-sort="password">Password</th>
-                                                            <th class="sort" data-sort="name">Name</th>
-                                                            <th class="sort" data-sort="date">Birth Day</th>                                    
-                                                            <th class="sort" data-sort="phone">Phone</th>               
-                                                            <th class="sort" data-sort="isActive">Active</th>
-                                                            <th class="sort" data-sort="role">Role</th>
-                                                            <th class="sort" data-sort="email">Email</th>
-                                                            <th class="sort" data-sort="image">Image</th>
+                                                            <th  data-sort="counter">No</th>
+                                                            <th  data-sort="accountID">Account ID</th>
+                                                            <th  data-sort="password">Password</th>
+                                                            <th  data-sort="name">Name</th>
+                                                            <th  data-sort="date">Birth Day</th>                                    
+                                                            <th  data-sort="phone">Phone</th>               
+                                                            <th  data-sort="isActive">Active</th>
+                                                            <th  data-sort="role">Role</th>
+                                                            <th  data-sort="email">Email</th>
+                                                            <th  data-sort="image">Image</th>
+                                                            <th  data-sort="Function">Function</th>
 
                                                         </tr>
                                                     </thead>
@@ -178,13 +154,38 @@
                                                                 <td class="name">${user.fullName}</td>
                                                                 <td class="date">${user.dayOfBirth}</td>
                                                                 <td class="phone">${user.phone}</td>
-                                                                <td class="isActive"><input type="radio"></td>
+                                                                <td class="isActive">
+                                                                    <select>
+                                                                        <option value="active">Active</option>
+                                                                        <option value="non-active">Non-Active</option>
+                                                                    </select>
+                                                                </td>
                                                                 <td class="tags">
                                                                     <span class="badge badge-soft-primary">Staff</span>
                                                                 </td>
                                                                 <td>
                                                                 <td class="email">${user.email}</td>
                                                                 <td class="image"><img src="${user.image}" alt="staff's image" width="500" height="600"></td>
+                                                                <td class="function">
+                                                                   <ul class="list-inline hstack gap-2 mb-0">
+                                                                <li class="list-inline-item edit" data-bs-toggle="tooltip"
+                                                                    data-bs-trigger="hover" data-bs-placement="top"
+                                                                    title="Edit">
+                                                                    <a href=""
+                                                                        data-bs-toggle="modal"
+                                                                        class="text-primary d-inline-block edit-item-btn">
+                                                                        <i class="ri-pencil-fill fs-16"></i>
+                                                                    </a>
+                                                                </li>
+                                                                <li class="list-inline-item" data-bs-toggle="tooltip"
+                                                                    data-bs-trigger="hover" data-bs-placement="top"
+                                                                    title="Remove">
+                                                                    <a href=""
+                                                                        class="link-danger fs-15"><i
+                                                                            class="ri-delete-bin-line"></i></a>
+                                                                                                                                    </li>
+                                                            </ul>
+                                                                </td>
                                                                 </td>
                                                             </tr>
                                                         </form>

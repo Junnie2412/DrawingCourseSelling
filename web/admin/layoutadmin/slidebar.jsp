@@ -50,7 +50,7 @@
                                     
                                    
                                     <li class="nav-item">
-                                        <a href="index.jsp" class="nav-link" data-key="t-ecommerce"> View static </a>
+                                        <a href="admin.jsp" class="nav-link" data-key="t-ecommerce"> View static </a>
                                     </li>
                                     
                                 </ul>
