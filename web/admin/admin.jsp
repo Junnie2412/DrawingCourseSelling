@@ -1359,7 +1359,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-6">
-                            <script>document.write(new Date().getFullYear())</script> © ArtCenter.
+                            <script>document.write(new Date().getFullYear())</script> ? ArtCenter.
                         </div>
                         
                     </div>
@@ -2131,20 +2131,20 @@
     <script src="assets/js/plugins.js"></script>
 
     <!-- apexcharts -->
-    <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
+    <script src="admin/assets/libs/apexcharts/apexcharts.min.js"></script>
 
     <!-- Vector map-->
-    <script src="assets/libs/jsvectormap/js/jsvectormap.min.js"></script>
-    <script src="assets/libs/jsvectormap/maps/world-merc.js"></script>
+    <script src="admin/assets/libs/jsvectormap/js/jsvectormap.min.js"></script>
+    <script src="admin/assets/libs/jsvectormap/maps/world-merc.js"></script>
 
     <!--Swiper slider js-->
-    <script src="assets/libs/swiper/swiper-bundle.min.js"></script>
+    <script src="admin/assets/libs/swiper/swiper-bundle.min.js"></script>
 
     <!-- Dashboard init -->
-    <script src="assets/js/pages/dashboard-ecommerce.init.js"></script>
+    <script src="admin/assets/js/pages/dashboard-ecommerce.init.js"></script>
 
     <!-- App js -->
-    <script src="assets/js/app.js"></script>
+    <script src="admin/assets/js/app.js"></script>
 </body>
 
 </html>
