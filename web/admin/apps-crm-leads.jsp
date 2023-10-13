@@ -1,9 +1,11 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="users.UserDTO"%>
 <!doctype html>
 <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable">
 
     <head>
 
-<<<<<<< HEAD
+        <<<<<<< HEAD
         <meta charset="utf-8" />
         <title>Leads | Velzon - Admin & Dashboard Template</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,29 +13,29 @@
         <meta content="Themesbrand" name="author" />
         <!-- App favicon -->
         <link rel="shortcut icon" href="assets/images/favicon.ico">
-=======
-    <meta charset="utf-8" />
-    <title>ArtCenter - Online Drawing Course</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
-    <meta content="Themesbrand" name="author" />
-    <!-- App favicon -->
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
->>>>>>> 0c844f84032ee9e3d48844e3713f95d08cd4c5d5
+        =======
+        <meta charset="utf-8" />
+        <title>ArtCenter - Online Drawing Course</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+        <meta content="Themesbrand" name="author" />
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="assets/images/favicon.ico">
+        >>>>>>> 0c844f84032ee9e3d48844e3713f95d08cd4c5d5
 
         <!-- Sweet Alert css-->
-        <link href="assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+        <link href="admin/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
 
         <!-- Layout config Js -->
-        <script src="assets/js/layout.js"></script>
+        <script src="admin/assets/js/layout.js"></script>
         <!-- Bootstrap Css -->
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="admin/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <!-- Icons Css -->
-        <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="admin/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
         <!-- App Css-->
-        <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
+        <link href="admin/assets/css/app.min.css" rel="stylesheet" type="text/css" />
         <!-- custom Css-->
-        <link href="assets/css/custom.min.css" rel="stylesheet" type="text/css" />
+        <link href="admin/assets/css/custom.min.css" rel="stylesheet" type="text/css" />
 
 
     </head>
@@ -84,7 +86,21 @@
                     <div class="container-fluid">
 
                         <!-- start page title -->
-                        
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                                    <h4 class="mb-sm-0">Leads</h4>
+
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">CRM</a></li>
+                                            <li class="breadcrumb-item active">Leads</li>
+                                        </ol>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
                         <!-- end page title -->
 
                         <div class="row">
@@ -102,15 +118,31 @@
                                             <div class="col-sm-auto ms-auto">
                                                 <div class="hstack gap-2">
                                                     <button class="btn btn-soft-danger" id="remove-actions" onClick="deleteMultiple()"><i class="ri-delete-bin-2-line"></i></button>
-                                                    
-                                                    <button type="button" class="btn btn-success add-btn" data-bs-toggle="modal" id="create-btn" data-bs-target="#showModal"><i class="ri-add-line align-bottom me-1"></i> Add Staff</button>
-                                                    
+                                                    <button type="button" class="btn btn-info" data-bs-toggle="offcanvas" href="#offcanvasExample"><i class="ri-filter-3-line align-bottom me-1"></i> Fliters</button>
+                                                    <button type="button" class="btn btn-success add-btn" data-bs-toggle="modal" id="create-btn" data-bs-target="#showModal"><i class="ri-add-line align-bottom me-1"></i> Add Leads</button>
+                                                    <span class="dropdown">
+                                                        <button class="btn btn-soft-info btn-icon fs-14" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                                            <i class="ri-settings-4-line"></i>
+                                                        </button>
+                                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                                            <li><a class="dropdown-item" href="#">Copy</a></li>
+                                                            <li><a class="dropdown-item" href="#">Move to pipline</a></li>
+                                                            <li><a class="dropdown-item" href="#">Add to exceptions</a></li>
+                                                            <li><a class="dropdown-item" href="#">Switch to common form view</a></li>
+                                                            <li><a class="dropdown-item" href="#">Reset form view to default</a></li>
+                                                        </ul>
+                                                    </span>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="card-body">
                                         <div>
+                                            <%
+                                                ArrayList<UserDTO> staffList = (ArrayList) session.getAttribute("STAFF_LIST");
+                                                if (staffList != null) {
+                                                    if (staffList.size() > 0) {
+                                            %>
                                             <div class="table-responsive table-card">
                                                 <table class="table align-middle" id="customerTable">
                                                     <thead class="table-light">
@@ -121,77 +153,77 @@
                                                                     <input class="form-check-input" type="checkbox" id="checkAll" value="option">
                                                                 </div>
                                                             </th>
-                                                            <th  data-sort="counter">No</th>
-                                                            <th  data-sort="accountID">Account ID</th>
-                                                            <th  data-sort="password">Password</th>
-                                                            <th  data-sort="name">Name</th>
-                                                            <th  data-sort="date">Birth Day</th>                                    
-                                                            <th  data-sort="phone">Phone</th>               
-                                                            <th  data-sort="isActive">Active</th>
-                                                            <th  data-sort="role">Role</th>
-                                                            <th  data-sort="email">Email</th>
-                                                            <th  data-sort="image">Image</th>
-                                                            <th  data-sort="Function">Function</th>
+                                                            <th class="sort" data-sort="counter">No</th>
+                                                            <th class="sort" data-sort="accountID">Account ID</th>
+                                                            <th class="sort" data-sort="password">Password</th>
+                                                            <th class="sort" data-sort="name">Name</th>
+                                                            <th class="sort" data-sort="date">Birth Day</th>                                    
+
+                                                            <th class="sort" data-sort="isActive">Active</th>
+                                                            <th class="sort" data-sort="role">Role</th>
+                                                            <th class="sort" data-sort="email">Email</th>
+                                                            <th class="sort" data-sort="image">Image</th>
 
                                                         </tr>
                                                     </thead>
                                                     <tbody class="list form-check-all">
-                                                    <c:forEach var="user" items="${requestScope.STAFF_LIST}" varStatus="counter">
-                                                        <form action="MainController" method="POST">
-                                                            <tr>
+                                                        <%
+                                                            int count = 1;
 
-                                                                <th scope="row">
-                                                                    <div class="form-check">
-                                                                        <input class="form-check-input" type="checkbox" name="chk_child" value="option1">
-                                                                    </div>
-                                                                </th>
-                                                                <td>${counter.count}</td>
-                                                                <td class="id" style="display:none;"><a href="javascript:void(0);" class="fw-medium link-primary">#VZ2101</a></td>
-                                                                <td>
-                                                                    <div class="accountID">${user.accountID}</div>
-                                                                </td>
-                                                                <td class="password">${user.password}</td>
-                                                                <td class="name">${user.fullName}</td>
-                                                                <td class="date">${user.dayOfBirth}</td>
-                                                                <td class="phone">${user.phone}</td>
-                                                                <td class="isActive">
-                                                                    <select>
-                                                                        <option value="active">Active</option>
-                                                                        <option value="non-active">Non-Active</option>
-                                                                    </select>
-                                                                </td>
-                                                                <td class="tags">
-                                                                    <span class="badge badge-soft-primary">Staff</span>
-                                                                </td>
-                                                                <td>
-                                                                <td class="email">${user.email}</td>
-                                                                <td class="image"><img src="${user.image}" alt="staff's image" width="500" height="600"></td>
-                                                                <td class="function">
-                                                                   <ul class="list-inline hstack gap-2 mb-0">
-                                                                <li class="list-inline-item edit" data-bs-toggle="tooltip"
-                                                                    data-bs-trigger="hover" data-bs-placement="top"
-                                                                    title="Edit">
-                                                                    <a href=""
-                                                                        data-bs-toggle="modal"
-                                                                        class="text-primary d-inline-block edit-item-btn">
-                                                                        <i class="ri-pencil-fill fs-16"></i>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="list-inline-item" data-bs-toggle="tooltip"
-                                                                    data-bs-trigger="hover" data-bs-placement="top"
-                                                                    title="Remove">
-                                                                    <a href=""
-                                                                        class="link-danger fs-15"><i
-                                                                            class="ri-delete-bin-line"></i></a>
-                                                                                                                                    </li>
-                                                            </ul>
-                                                                </td>
-                                                                </td>
-                                                            </tr>
-                                                        </form>
-                                                    </c:forEach>
+                                                            for (UserDTO u : staffList) {
+
+                                                        %>
+                                                    <form action="MainController" method="POST">
+                                                        <tr>
+                                                            <th scope="row">
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="checkbox" name="chk_child" value="option1">
+                                                                </div>
+                                                            </th>
+                                                            <td><%= count++%></td>
+                                                            <!-- <td class="id" style="display:none;"><a href="javascript:void(0);" class="fw-medium link-primary">#VZ2101</a></td>-->
+                                                            <td>
+                                                                <div class="accountID">
+                                                                    <input type="text" name="accountID" value="<%=u.getAccountID()%>" readonly=""/>
+                                                                </div>
+                                                            </td>
+                                                            <td class="password">
+                                                                <input type="text" name="password" value="<%=u.getPassword()%>" required=""/>
+
+                                                            </td>
+                                                            <td class="name">
+
+                                                                <input type="text" name="fullName" value="<%=u.getFullName()%>" required=""/>
+                                                            </td>
+                                                            <td class="date">
+                                                                <input type="date" id="birthday" name="dateOfbirth" value="<%=u.getDateOfBirth()%>" required=""/>
+
+                                                            </td>
+
+                                                            <td class="isActive">
+                                                                <input type="radio" name="isActive" value="<%=u.isIsActive()%>">
+                                                            </td>
+                                                            <td class="tags">
+                                                                <span class="badge badge-soft-primary">Staff</span>
+                                                            </td>                                                                
+                                                            <td class="email">
+                                                                <input type="text" name="email" value="<%=u.getEmail()%>" required=""/>
+
+                                                            </td>
+                                                            <td class="image"><img src="<%=u.getImage()%>" alt="<%=u.getFullName()%>" width="80" height="1200"></td>
+
+                                                        </tr>
+                                                    </form>
+                                                    <%
+                                                        }
+                                                    %>
                                                     </tbody>
                                                 </table>
+                                                <%
+                                                        }
+                                                    }
+                                                %>    
+
                                                 <div class="noresult" style="display: none">
                                                     <div class="text-center">
                                                         <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="loop" colors="primary:#121331,secondary:#08a88a" style="width:75px;height:75px"></lord-icon>

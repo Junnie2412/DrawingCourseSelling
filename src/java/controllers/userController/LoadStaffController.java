@@ -22,8 +22,8 @@ import users.UserDTO;
  */
 public class LoadStaffController extends HttpServlet {
 
-    private static final String ERROR = "apps-crm-leads.jsp";
-    private static final String SUCCESS = "apps-crm-leads.jsp";
+    private static final String ERROR = "admin/apps-crm-leads.jsp";
+    private static final String SUCCESS = "admin/apps-crm-leads.jsp";
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
