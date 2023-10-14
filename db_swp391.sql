@@ -12,7 +12,6 @@ CREATE TABLE [dbo].[tblAccount](
 	[fullName] [varchar](250) NULL,
 	[dateOfBirth] [date] NULL,
 	[role] [varchar](250) NULL,
-	[phone] [varchar](250) NULL,
 	[isActive] [bit] NULL,
 	[image] [varchar](250) NULL,
 	[email] [varchar](250) NULL,
@@ -367,7 +366,6 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[tblVideo](
 	[videoID] [int] IDENTITY(1,1) NOT NULL,
-	[topic] [varchar](250) NULL,
 	[content] [varchar](250) NULL,
 	[time] [time](7) NULL,
 	[isActive] [bit] NULL,
@@ -492,14 +490,7 @@ ALTER TABLE [dbo].[tblUserLog]  WITH CHECK ADD FOREIGN KEY([accountID])
 REFERENCES [dbo].[tblAccount] ([accountID])
 GO
 ALTER TABLE [dbo].[tblVoucher]  WITH CHECK ADD FOREIGN KEY([courseID])
-REFERENCES [dbo].[tblAccount] ([accountID])
+REFERENCES [dbo].[tblCourse] ([courseID])
 GO
-------------------Add Data to Table----------------------
-INSERT INTO tblAccount(accountID,password,fullName,dateOfBirth,role,phone,isActive,image,email)
-VALUES('ad','123','Nguyen Le Hoang Dung','1980-11-10','Admin','0325245427',1,'https://www.ecpi.edu/sites/default/files/buis.png','dungchan321@gmail.com'),
-	  ('user321','123','Nguyen Minh Nguyet','2000-12-24','Customer','03246673232',1,'https://drive.google.com/drive/folders/1XHZoN-_nXG1l-LaVB3JO1cweB1mDzrhK','junniehoang2412@gmail.com'),
-	  ('staff123','123','Le Hoang Trong','1990-05-23','Staff','03236382852',1,'https://drive.google.com/drive/folders/1XHZoN-_nXG1l-LaVB3JO1cweB1mDzrhK','tronghoang2322@gmail.com'),
-	  ('instructor123','123','Ngo Khanh Han','1994-05-12','Instructor','0323655552',1,'https://mythuatbui.edu.vn/wp-content/uploads/2022/12/24118CE0-DA81-4AEF-BAC0-3F0C593BA6AF-Ngo-Khanh-Han.jpeg','khanhHan231@gmail.com');
-
 
 
