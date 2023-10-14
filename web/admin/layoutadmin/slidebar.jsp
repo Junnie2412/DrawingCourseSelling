@@ -74,47 +74,9 @@
                             </form>                           
                         </li>
                                 </ul>
-                        <li class="menu-title"><i class="ri-more-fill"></i> <span data-key="t-components">Components</span></li>
+                        
 
-                        <li class="nav-item">
-                            <a class="nav-link menu-link" href="#sidebarUI" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarUI">
-                                <i class="mdi mdi-cube-outline"></i> <span data-key="t-base-ui">Base UI</span>
-                            </a>
-                            <div class="collapse menu-dropdown mega-dropdown-menu" id="sidebarUI">
-                                <div class="row">
-                                    <div class="col-lg-4">
-                                        <ul class="nav nav-sm flex-column">
-                                            <li class="nav-item">
-                                                <a href="ui-alerts.jsp" class="nav-link" data-key="t-alerts">Alerts</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="ui-badges.jsp" class="nav-link" data-key="t-badges">Badges</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="ui-buttons.jsp" class="nav-link" data-key="t-buttons">Buttons</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="ui-colors.jsp" class="nav-link" data-key="t-colors">Colors</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="ui-cards.jsp" class="nav-link" data-key="t-cards">Cards</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="ui-carousel.jsp" class="nav-link" data-key="t-carousel">Carousel</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="ui-dropdowns.jsp" class="nav-link" data-key="t-dropdowns">Dropdowns</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="ui-grid.jsp" class="nav-link" data-key="t-grid">Grid</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    
-                                    
-                                </div>
-                            </div>
-                        </li>
+                        
 
                         
 
