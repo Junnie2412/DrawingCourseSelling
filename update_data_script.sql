@@ -9,11 +9,11 @@ ALTER TABLE dbo.tblAccount
   SET image = 'https://s120-ava-talk.zadn.vn/7/6/7/7/11/120/f1ed963fd72209896cf32ce6ada08879.jpg'
   WHERE accountID = 'staff123';
 
-INSERT INTO tblAccount(accountID,password,fullName,dateOfBirth,role,phone,isActive,image,email)
+INSERT INTO tblAccount(accountID,password,fullName,dateOfBirth,role,isActive,image,email)
 VALUES('minh123','123','Nguyen Hoang Minh','1991-01-10','Instructor',1,'https://mythuatbui.edu.vn/wp-content/uploads/2023/01/3842E851-34F9-41FF-AEEB-14AD8CEE5D06-Nguyen-Hoang-Minh.jpeg','hoangminh91@gmail.com'),
 ('khang96','123','Tran Minh Khang','1996-03-27','Instructor',1,'https://mythuatbui.edu.vn/wp-content/uploads/2022/12/BN.jpg','khang27@gmail.com'),
 ('ql1996','123','Cao Thi Quynh Linh','1996-07-09','Instructor',1,'https://mythuatbui.edu.vn/wp-content/uploads/2022/12/z3653097294533_fcdf0a876f4e4dae6e79dc09e5463c1d-Cao-Thi-Quynh-Linh.jpg','caoql96@gmail.com'),
-('xuanhau','123','Kien Xuan Hau','1990-12-12','Instructor','1,'https://mythuatbui.edu.vn/wp-content/uploads/2022/12/Meme-BN.jpg','xuanhau@gmail.com'),
+('xuanhau','123','Kien Xuan Hau','1990-12-12','Instructor',1,'https://mythuatbui.edu.vn/wp-content/uploads/2022/12/Meme-BN.jpg','xuanhau@gmail.com'),
 ('giabao123','123','Hinh Dinh Gia Bao','1999-12-02','Instructor',1,'https://mythuatbui.edu.vn/wp-content/uploads/2022/12/GB.jpg','giabao123@gmail.com'),
 ('thaidui111','123','Nguyen Huynh Nhat Thai','1999-12-01','Instructor',1,'https://mythuatbui.edu.vn/wp-content/uploads/2022/12/IMG_20220612_005344_416-Thai-Nguyen-Huynh-Nhut.jpg','thaidui111@gmail.com'),
 ('minhthu11','123','Nguyen Minh Thu','1999-09-02','Instructor',1,'https://mythuatbui.edu.vn/wp-content/uploads/2022/12/received_476006377695940-Nguyen-Minh-Thu.jpeg','minhthu11@gmail.com'),
@@ -104,7 +104,7 @@ VALUES('1','Introduction','Learning to Draw Digitally for Beginners','1'),
 ('26','What is value scale and how it work?','Value Scale','5'),
 ('27','Blending and its importance','Blending Stumps - Do You Really Need Them At All?','5'),
 ('28','Different tools of blending and usages','4 blending tools | How to do Blending','5'),
-('29','Blending and mixing value in value scale','Value Shading in Layers','5');
+('29','Blending and mixing value in value scale','Value Shading in Layers','5'),
 ('30','Eye of girl','How to Draw Eyes ♡','6'),
 ('31','Eye of guy','How to draw male eyes step by step tutorial','6'),
 ('32','Closed eye','How to draw Realistic closed eye for beginners','6'),
