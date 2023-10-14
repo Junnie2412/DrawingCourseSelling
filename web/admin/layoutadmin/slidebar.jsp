@@ -61,12 +61,19 @@
                          <!-- end Dashboard Menu -->
 
                         <li class="menu-title"><i class="ri-more-fill"></i> <span data-key="t-pages">Pages</span></li>
+                         <li class="nav-item">
+                            <a class="nav-link menu-link" href="#sidebarAuth" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarAuth">
+                                <i class="mdi mdi-account-circle-outline"></i> <span data-key="t-authentication">Manager Staff account</span>
+                            </a>
+                             <div class="collapse menu-dropdown" id="sidebarAuth">
+                                <ul class="nav nav-sm flex-column">
 
                         <li class="nav-item">
                             <form action="MainController" method="post">
-                                <input type="submit" name="action" value="Staff Management">
+                                <input type="submit" name="action" value="All staff" class="custom-button" >
                             </form>                           
                         </li>
+                                </ul>
                         <li class="menu-title"><i class="ri-more-fill"></i> <span data-key="t-components">Components</span></li>
 
                         <li class="nav-item">
