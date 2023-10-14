@@ -32,6 +32,7 @@ public class CourseDAO {
     private static final String FILTER_COURSE_BY_TYPE = "SELECT * FROM tblCourse WHERE type = ?";
     
     private static final String CHECK_EXISTED_COURSE = "SELECT * FROM tblCourse WHERE courseID = ?";
+    private static final String LIST_UNAPPROVED_COURSE = "SELECT * FROM tblCOurse WHERE isActive = 1";
 
     public List<CourseDTO> getlistCourse(String search) throws ClassNotFoundException, SQLException {
         List<CourseDTO> list = new ArrayList<>();
@@ -551,5 +552,46 @@ public class CourseDAO {
             }
         }
         return check;
+    }
+    
+    public List<CourseDTO> getUnapprovedCoursesList() throws SQLException{
+        List<CourseDTO> list = new ArrayList<>();
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement ptm = null;
+        try {
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(LIST_UNAPPROVED_COURSE);
+                rs = ptm.executeQuery();
+                while (rs.next()) {
+                    String courseID = rs.getString("courseID");
+                    String name = rs.getString("name");
+                    float price = rs.getFloat("price");
+                    int duration = rs.getInt("duration");
+                    boolean isActive = rs.getBoolean("isActive");
+                    Date datePublic = rs.getDate("datePublic");
+                    String accountID = rs.getString("accountID");
+                    int descriptionID = rs.getInt("descriptionID");
+                    int moduleID = rs.getInt("moduleID");
+
+                    list.add(new CourseDTO(courseID, name, price, duration, isActive, datePublic, accountID, descriptionID, moduleID));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return list;
     }
 }

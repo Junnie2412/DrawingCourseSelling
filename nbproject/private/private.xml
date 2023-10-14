@@ -15,14 +15,17 @@
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/course/CourseDAO.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/controllers/order/CreateVoucherController.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/customerCourse.jsp</file>
+            <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/course/ModuleDAO.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/users/UserDTO.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/order/VoucherDTO.java</file>
+            <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/course/LessonDTO.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/contact.jsp</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/courses.jsp</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/order/VoucherDAO.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/createVoucher.jsp</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/users/UserError.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/controllers/userController/AddStaffController.java</file>
+            <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/email/SendEmail.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/blog/BlogDTO.java</file>
         </group>
     </open-files>
