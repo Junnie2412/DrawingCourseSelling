@@ -6,13 +6,6 @@
     <head>
 
         <<<<<<< HEAD
-        <meta charset="utf-8" />
-        <title>Leads | Velzon - Admin & Dashboard Template</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
-        <meta content="Themesbrand" name="author" />
-        <!-- App favicon -->
-        <link rel="shortcut icon" href="assets/images/favicon.ico">
         =======
         <meta charset="utf-8" />
         <title>ArtCenter - Online Drawing Course</title>
@@ -1310,24 +1303,24 @@
         </div>
 
         <!-- JAVASCRIPT -->
-        <script src="admin/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="admin/assets/libs/simplebar/simplebar.min.js"></script>
-        <script src="admin/assets/libs/node-waves/waves.min.js"></script>
-        <script src="admin/assets/libs/feather-icons/feather.min.js"></script>
-        <script src="admin/assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
-        <script src="admin/assets/js/plugins.js"></script>
+        <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/libs/simplebar/simplebar.min.js"></script>
+        <script src="assets/libs/node-waves/waves.min.js"></script>
+        <script src="assets/libs/feather-icons/feather.min.js"></script>
+        <script src="assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
+        <script src="assets/js/plugins.js"></script>
 
         <!-- list.js min js -->
-        <script src="admin/assets/libs/list.js/list.min.js"></script>
-        <script src="admin/assets/libs/list.pagination.js/list.pagination.min.js"></script>
+        <script src="assets/libs/list.js/list.min.js"></script>
+        <script src="assets/libs/list.pagination.js/list.pagination.min.js"></script>
 
         <!-- Sweet Alerts js -->
-        <script src="admin/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+        <script src="assets/libs/sweetalert2/sweetalert2.min.js"></script>
         <!-- crm leads init -->
-        <script src="admin/assets/js/pages/crm-leads.init.js"></script>
+        <script src="assets/js/pages/crm-leads.init.js"></script>
 
         <!-- App js -->
-        <script src="admin/assets/js/app.js"></script>
+        <script src="assets/js/app.js"></script>
     </body>
 
 </html>
