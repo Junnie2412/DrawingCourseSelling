@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <%@page import="java.util.ArrayList"%>
 <%@page import="users.UserDTO"%>
 <!doctype html>
