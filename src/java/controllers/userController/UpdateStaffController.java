@@ -19,8 +19,8 @@ import users.UserError;
  * @author TienToan
  */
 public class UpdateStaffController extends HttpServlet {
-    private static final String ERROR = "";
-    private static final String SUCCESS = "";
+    private static final String ERROR = "LoadStaffController";
+    private static final String SUCCESS = "LoadStaffController";
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -32,13 +32,13 @@ public class UpdateStaffController extends HttpServlet {
 
             String accountID = request.getParameter("accountID");
             String fullName = request.getParameter("fullName");
-            Date dateOfBirth = Date.valueOf(request.getParameter("dateOfbirth"));
+            String dateString = request.getParameter("dateOfbirth");        
+            Date dateOfBirth = Date.valueOf(dateString);
             String role = "Staff";
             boolean isActive = Boolean.parseBoolean(request.getParameter("isActive"));
             String email = request.getParameter("email");
             String img = request.getParameter("image");
             String password = request.getParameter("password");
-            String confirm = request.getParameter("confirm");
             UserDAO dao = new UserDAO();
             if (accountID.length() < 2 || accountID.length() > 10) {
                 userError.setUserIDError("Account ID must be in [2,10]");
@@ -47,11 +47,7 @@ public class UpdateStaffController extends HttpServlet {
             if (fullName.length() < 5 || fullName.length() > 20) {
                 userError.setFullNameError("Full Name must be in [5,20]");
                 checkValidation = false;
-            }
-            if (!password.equals(confirm)) {
-                userError.setConfirmError("two password are not match");
-                checkValidation = false;
-            }
+            }      
             //check email
             String regex = "^[A-Za-z0-9+_.-]+@(.+)$";  
             //Compile regular expression to get the pattern  
@@ -74,7 +70,7 @@ public class UpdateStaffController extends HttpServlet {
                 request.setAttribute("USER_ERROR", userError);
             }
         } catch (Exception e) {
-            log("Error at DeleteStaffController");            
+            log("Error at UpdateStaffController");            
         }finally {
             request.getRequestDispatcher(url).forward(request, response);
         }
