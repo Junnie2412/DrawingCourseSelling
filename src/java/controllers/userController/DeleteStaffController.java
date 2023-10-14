@@ -19,8 +19,8 @@ import users.UserDAO;
  */
 public class DeleteStaffController extends HttpServlet {
 
-    private static final String ERROR = "";
-    private static final String SUCCESS = "";
+    private static final String ERROR = "LoadStaffController";
+    private static final String SUCCESS = "LoadStaffController";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
