@@ -17,12 +17,11 @@ public class CourseDTO extends DescriptionDTO{
     private Date datePublic;
     private String accountID;
     private int descriptionID;
-    private int moduleID;
 
     public CourseDTO() {
     }
 
-    public CourseDTO(String courseID, String name, float price, int duration, boolean isActive, Date datePublic, String accountID, int descriptionID, int moduleID) {
+    public CourseDTO(String courseID, String name, float price, int duration, boolean isActive, Date datePublic, String accountID, int descriptionID) {
         this.courseID = courseID;
         this.name = name;
         this.price = price;
@@ -31,7 +30,6 @@ public class CourseDTO extends DescriptionDTO{
         this.datePublic = datePublic;
         this.accountID = accountID;
         this.descriptionID = descriptionID;
-        this.moduleID = moduleID;
     }
 
     public String getCourseID() {
@@ -98,17 +96,9 @@ public class CourseDTO extends DescriptionDTO{
         this.descriptionID = descriptionID;
     }
 
-    public int getModuleID() {
-        return moduleID;
-    }
-
-    public void setModuleID(int moduleID) {
-        this.moduleID = moduleID;
-    }
-
     @Override
     public String toString() {
-        return "CourseDTO{" + "courseID=" + courseID + ", name=" + name + ", price=" + price + ", duration=" + duration + ", isActive=" + isActive + ", datePublic=" + datePublic + ", accountID=" + accountID + ", descriptionID=" + descriptionID + ", moduleID=" + moduleID + '}';
+        return "CourseDTO{" + "courseID=" + courseID + ", name=" + name + ", price=" + price + ", duration=" + duration + ", isActive=" + isActive + ", datePublic=" + datePublic + ", accountID=" + accountID + ", descriptionID=" + descriptionID + '}';
     }
     
     

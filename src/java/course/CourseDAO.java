@@ -55,9 +55,8 @@ public class CourseDAO {
                     Date datePublic = rs.getDate("datePublic");
                     String accountID = rs.getString("accountID");
                     int descriptionID = rs.getInt("descriptionID");
-                    int moduleID = rs.getInt("moduleID");
 
-                    list.add(new CourseDTO(courseID, name, price, duration, isActive, datePublic, accountID, descriptionID, moduleID));
+                    list.add(new CourseDTO(courseID, name, price, duration, isActive, datePublic, accountID, descriptionID));
                 }
             }
         } catch (Exception e) {
@@ -372,9 +371,8 @@ public class CourseDAO {
                     Date datePublic = rs.getDate("datePublic");
                     String accountID = rs.getString("accountID");
                     int descriptionID = rs.getInt("descriptionID");
-                    int moduleID = rs.getInt("moduleID");
 
-                    list.add(new CourseDTO(courseID, name, price, duration, isActive, datePublic, accountID, descriptionID, moduleID));
+                    list.add(new CourseDTO(courseID, name, price, duration, isActive, datePublic, accountID, descriptionID));
                 }
             }
         } catch (Exception e) {
@@ -415,9 +413,8 @@ public class CourseDAO {
                     Date datePublic = rs.getDate("datePublic");
                     String accountID = rs.getString("accountID");
                     int descriptionID = rs.getInt("descriptionID");
-                    int moduleID = rs.getInt("moduleID");
 
-                    list.add(new CourseDTO(courseID, name, price, duration, isActive, datePublic, accountID, descriptionID, moduleID));
+                    list.add(new CourseDTO(courseID, name, price, duration, isActive, datePublic, accountID, descriptionID));
                 }
             }
         } catch (Exception e) {
@@ -458,9 +455,8 @@ public class CourseDAO {
                     Date datePublic = rs.getDate("datePublic");
                     String accountID = rs.getString("accountID");
                     int descriptionID = rs.getInt("descriptionID");
-                    int moduleID = rs.getInt("moduleID");
 
-                    list.add(new CourseDTO(courseID, name, price, duration, isActive, datePublic, accountID, descriptionID, moduleID));
+                    list.add(new CourseDTO(courseID, name, price, duration, isActive, datePublic, accountID, descriptionID));
                 }
             }
         } catch (Exception e) {
@@ -500,9 +496,8 @@ public class CourseDAO {
                     Date datePublic = rs.getDate("datePublic");
                     String accountID = rs.getString("accountID");
                     int descriptionID = rs.getInt("descriptionID");
-                    int moduleID = rs.getInt("moduleID");
 
-                    list.add(new CourseDTO(courseID, name, price, duration, isActive, datePublic, accountID, descriptionID, moduleID));
+                    list.add(new CourseDTO(courseID, name, price, duration, isActive, datePublic, accountID, descriptionID));
                 }
             }
         } catch (Exception e) {
@@ -573,9 +568,8 @@ public class CourseDAO {
                     Date datePublic = rs.getDate("datePublic");
                     String accountID = rs.getString("accountID");
                     int descriptionID = rs.getInt("descriptionID");
-                    int moduleID = rs.getInt("moduleID");
 
-                    list.add(new CourseDTO(courseID, name, price, duration, isActive, datePublic, accountID, descriptionID, moduleID));
+                    list.add(new CourseDTO(courseID, name, price, duration, isActive, datePublic, accountID, descriptionID));
                 }
             }
         } catch (Exception e) {
