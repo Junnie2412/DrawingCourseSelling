@@ -97,21 +97,28 @@
                                             <div class="mb-3">
                                             <label class="form-label" for="password-input">Confirm Password</label>
                                             <div class="position-relative auth-pass-inputgroup">
-                                                <input type="password" class="form-control pe-5 password-input" onpaste="return false" placeholder="Enter password" id="password-input" aria-describedby="passwordInput" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" name="password" required>
+                                                <input type="password" class="form-control pe-5 password-input" onpaste="return false" placeholder="Enter password" id="password-input" aria-describedby="passwordInput" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" name="passwordConfirm" required>
                                                 <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none shadow-none text-muted password-addon" type="button" id="password-addon"><i class="ri-eye-fill align-middle"></i></button>
                                                 <div class="invalid-feedback">
                                                     please check again password
                                                 </div>
                                             </div>
                                         </div>
-                                        
-                                    <%
-                                            String msg = (String) request.getAttribute("ERROR");
-                                                if (msg != null) {
-                                                     out.print("<h6 style=\"color: red;\">" + msg + "</h6>"); 
+
+                                        <%
+                                            String msgPass = (String) request.getAttribute("ErrorPassword");
+                                                if (msgPass != null) {
+                                                     out.print("<h6 style=\"color: red;\">" + msgPass + "</h6>"); 
                                                                                                     }
-                                    %>
+                                        %>
                                         
+                                        <%
+                                            String msgExist = (String) request.getAttribute("ErrorExisted");
+                                                if (msgExist != null) {
+                                                     out.print("<h6 style=\"color: red;\">" + msgExist + "</h6>"); 
+                                                                                                    }
+                                        %>
+                                    
                                         <div class="mb-4">
                                             <p class="mb-0 fs-12 text-muted fst-italic">By registering you agree to the ArtCenter <a href="#" class="text-primary text-decoration-underline fst-normal fw-medium">Terms of Use</a></p>
                                         </div>

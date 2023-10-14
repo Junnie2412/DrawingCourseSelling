@@ -13,57 +13,68 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
 /**
  *
  * @author HOANG DUNG
  */
 public class UserDAO {
+
+    private static final String CHECK_ACCOUNT = "SELECT accountID, password, fullName, dateOfBirth, role, isActive, image, email\n"
+                                                + "FROM tblAccount\n"
+                                                + "WHERE accountID = ? OR email = ? ";
+    private static final String SIGNUP = "INSERT tblAccount VALUES(?, ?, '', '', 'Customer', 1, '', ?)";
     private static final String LOGIN = "SELECT * FROM tblAccount WHERE accountID=? AND password=? ";
     private static final String LOGINBYGOOGLE = "SELECT fullName, roleID FROM tblUsers WHERE userID=?";
     private static final String INSERTSTAFF = "INSERT INTO tblAccount VALUES (?,?,?,?,?,?,?,?)";
     private static final String DELETESTAFF = "DELETE tblAccount WHERE accountID=?";
-    private static final String UPDATESTAFF ="UPDATE tblAccount set password=?, fullName=?, dateOfBirth=?, isActive=?, image=?, email=? WHERE accountID=?";
+    private static final String UPDATESTAFF = "UPDATE tblAccount set password=?, fullName=?, dateOfBirth=?, isActive=?, image=?, email=? WHERE accountID=?";
     private static final String LOADSTAFF = "SELECT * FROM tblAccount WHERE role = 'Staff'";
-    
+
     private static final String INSTRUCTOR_LIST = "SELECT * FROM tblAccount WHERE role = 'Instructor'";
-    
-    public UserDTO checkLogin(String userName, String password) throws SQLException{
-        UserDTO user=null;
-        
-        Connection conn=null;
-        PreparedStatement ptm=null;
-        ResultSet rs=null;
-        
-        try{
-            conn=DBUtil.getConnection();
-            if(conn!=null){
-                ptm=conn.prepareStatement(LOGIN);
+
+    public UserDTO checkLogin(String userName, String password) throws SQLException {
+        UserDTO user = null;
+
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+
+        try {
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(LOGIN);
                 ptm.setString(1, userName);
                 ptm.setString(2, password);
-                rs=ptm.executeQuery();
-                
-                if(rs.next()){
-                    String fullName=rs.getString("fullName");
+                rs = ptm.executeQuery();
+
+                if (rs.next()) {
+                    String fullName = rs.getString("fullName");
                     Date dateOfBirth = rs.getDate("dateOfBirth");
-                    String role=rs.getString("role");
+                    String role = rs.getString("role");
                     Boolean isActive = rs.getBoolean("isActive");
                     String image = rs.getString("image");
-                    String email=rs.getString("email");
-                    user=new UserDTO(userName, password, fullName, dateOfBirth, role,isActive,image, email);
+                    String email = rs.getString("email");
+                    user = new UserDTO(userName, password, fullName, dateOfBirth, role, isActive, image, email);
                 }
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally{
-            if(rs!=null) rs.close();
-            if(ptm!=null) ptm.close();
-            if(conn!=null) conn.close();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
         }
-        
+
         return user;
-    } 
-    
-    
+    }
+
     public UserDTO checkLoginByGoogle(String userID) throws SQLException {
         UserDTO user = null;
         Connection conn = null;
@@ -74,7 +85,7 @@ public class UserDAO {
             conn = DBUtil.getConnection();
             if (conn != null) {
                 ptm = conn.prepareStatement(LOGINBYGOOGLE);
-                ptm.setString(1, userID);                
+                ptm.setString(1, userID);
                 rs = ptm.executeQuery();
                 if (rs.next()) {
                     String fullName = rs.getString("fullName");
@@ -102,14 +113,12 @@ public class UserDAO {
         return user;
     }
 
-    public UserDTO checkSignup(String emailSignup, String idSignup, String passwordSignup) {
+    public UserDTO checkAccount(String emailSignup, String idSignup, String passwordSignup) {
         UserDTO u = null;
         try {
             Connection cn = DBUtil.getConnection();
             if (cn != null) {
-                String sql = "SELECT accountID, password, fullName, dateOfBirth, role, phone, isActive, image, email\n"
-                        + "FROM tblAccount\n"
-                        + "WHERE accountID = ? OR email = ? ";
+                String sql = CHECK_ACCOUNT;
                 PreparedStatement pst = cn.prepareStatement(sql);
                 pst.setString(1, idSignup);
                 pst.setString(2, emailSignup);
@@ -139,7 +148,7 @@ public class UserDAO {
         try {
             Connection cn = DBUtil.getConnection();
             if (cn != null) {
-                String sql = "INSERT tblAccount VALUES(?, ?, '', '', 'Customer', '', 1, '', ?)";
+                String sql = SIGNUP;
                 PreparedStatement pst = cn.prepareStatement(sql);
                 pst.setString(1, idSignup);
                 pst.setString(2, passwordSignup);
@@ -152,7 +161,6 @@ public class UserDAO {
         }
         return null;
     }
-    
 
     public boolean insertStaff(UserDTO user) throws SQLException, ClassNotFoundException {
         boolean check = false;
@@ -238,7 +246,7 @@ public class UserDAO {
         }
         return check;
     }
-    
+
     public List<UserDTO> loadStaffList() throws SQLException {
         List<UserDTO> staffList = new ArrayList<>();
         Connection conn = null;
@@ -252,14 +260,14 @@ public class UserDAO {
                 while (rs.next()) {
                     String accountID = rs.getString("accountID");
                     String password = rs.getString("password");
-                    String fullName=rs.getString("fullName");
+                    String fullName = rs.getString("fullName");
                     Date dateOfBirth = rs.getDate("dateOfBirth");
-                    String role=rs.getString("role");
+                    String role = rs.getString("role");
                     Boolean isActive = rs.getBoolean("isActive");
                     String image = rs.getString("image");
-                    String email=rs.getString("email");
-                    
-                    staffList.add(new UserDTO(accountID, password, fullName, dateOfBirth, role,isActive,image, email));
+                    String email = rs.getString("email");
+
+                    staffList.add(new UserDTO(accountID, password, fullName, dateOfBirth, role, isActive, image, email));
                 }
             }
         } catch (Exception e) {
@@ -277,7 +285,7 @@ public class UserDAO {
         }
         return staffList;
     }
-    
+
     public List<UserDTO> getInstructorList() throws SQLException {
         List<UserDTO> instructorList = new ArrayList<>();
         Connection conn = null;
@@ -291,14 +299,14 @@ public class UserDAO {
                 while (rs.next()) {
                     String accountID = rs.getString("accountID");
                     String password = rs.getString("password");
-                    String fullName=rs.getString("fullName");
+                    String fullName = rs.getString("fullName");
                     Date dateOfBirth = rs.getDate("dateOfBirth");
-                    String role=rs.getString("role");
+                    String role = rs.getString("role");
                     Boolean isActive = rs.getBoolean("isActive");
                     String image = rs.getString("image");
-                    String email=rs.getString("email");
-                    
-                    instructorList.add(new UserDTO(accountID, password, fullName, dateOfBirth, role,isActive,image, email));
+                    String email = rs.getString("email");
+
+                    instructorList.add(new UserDTO(accountID, password, fullName, dateOfBirth, role, isActive, image, email));
                 }
             }
         } catch (Exception e) {

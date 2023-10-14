@@ -26,17 +26,22 @@ public class SignupController extends HttpServlet {
             String emailSignup = request.getParameter("useremail");
             String idSignup = request.getParameter("username");
             String passwordSignup = request.getParameter("password");
+            String passwordConfirm = request.getParameter("passwordConfirm");
             
-            UserDAO dao = new UserDAO();            
-            UserDTO signupUser = dao.checkSignup(emailSignup,idSignup,passwordSignup);
+            UserDAO dao = new UserDAO();   
+            UserDTO signupUser = dao.checkAccount(emailSignup,idSignup,passwordSignup);
             
             if (signupUser != null) {
-                request.setAttribute("ERROR", "Username or Email has already existed");
+                request.setAttribute("ErrorExisted", "Username or Email has already existed");
             } else {
-                signupUser = dao.signUp(emailSignup,idSignup,passwordSignup);
-                url = SIGNIN_PAGE;
-                request.setAttribute("SUCCESS", "Registered successfully! Please Sign In!");
-            }
+                if ((passwordSignup == passwordConfirm) || (passwordSignup.equals(passwordConfirm))) {
+                    signupUser = dao.signUp(emailSignup,idSignup,passwordSignup);
+                    url = SIGNIN_PAGE;
+                    request.setAttribute("SUCCESS", "Registered successfully! Please Sign In!");
+                } else {
+                    request.setAttribute("ErrorPassword", "Password doesn't match!");
+                } 
+            }  
             request.getRequestDispatcher(url).forward(request, response);
         } catch (Exception e) {
             log("Error at SignupController: " + e.toString());
