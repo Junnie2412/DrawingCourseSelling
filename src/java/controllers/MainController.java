@@ -39,7 +39,7 @@ public class MainController extends HttpServlet {
     private static final String UPDATEBLOG = "updateBlog";
     private static final String UPDATEBLOG_CONTROLLER = "UpdateBlogController";
     
-    private static final String ADDSTAFF = "addStaff";
+    private static final String ADDSTAFF = "Add Staff";
     private static final String ADDSTAFF_CONTROLLER = "AddStaffController";
     private static final String DELETESTAFF = "deleteStaff";
     private static final String DELETESTAFF_CONTROLLER = "DeleteStaffController";

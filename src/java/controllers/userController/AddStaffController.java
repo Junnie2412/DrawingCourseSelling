@@ -24,8 +24,8 @@ import users.UserError;
  */
 public class AddStaffController extends HttpServlet {
 
-    private static final String ERROR = "managerstaff";
-    private static final String SUCCESS = "managerstaff";
+    private static final String ERROR = "admin/managerstaff.jsp";
+    private static final String SUCCESS = "admin/managerstaff.jsp";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
