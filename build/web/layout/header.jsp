@@ -13,7 +13,6 @@
             UserDTO loginUser = (UserDTO) session.getAttribute(("LOGIN_USER"));
             if(loginUser == null)
                 loginUser = new UserDTO();
-            boolean loggedIn = (loginUser == null);
         %>
  
         <!-- ~~~ Header Section ~~~ -->
@@ -91,10 +90,14 @@
                         <input type="text" name="searchName" value="<%= search%>" placeholder="Search Courses" class="rounded pl-0">
                         <button type="submit" class="rounded" name="action" value="Search"><i class="flaticon-loupe"></i></button>
                     </form> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                     <% if (!loggedIn) { %>
-            
-           <a href="signin.jsp" class="custom-button"><i class="fas fa-user"></i><span>Log In</span></a>
-        <% }else { %> <a href="signin.jsp" class="custom-button"><i class="fas fa-user"></i><span>Log Out</span></a> <% } %>
+                    <% 
+                         if (loginUser.getRole()=="") { 
+                    %>
+                        <a href="signin.jsp" class="custom-button"><i class="fas fa-user"></i><span>Log In</span></a>
+                    <% }else { 
+                    %>  
+                       <a href="MainController?action=SignOut" class="custom-button"><i class="fas fa-user"></i><span>Log Out</span></a>            
+                    <% } %>
                         
                 </div>
             </div>
