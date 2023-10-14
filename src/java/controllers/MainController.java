@@ -48,6 +48,9 @@ public class MainController extends HttpServlet {
     private static final String LOADSTAFF = "Staff Management";
     private static final String LOADSTAFF_CONTROLLER = "LoadStaffController";
     
+    private static final String CREATE_VOUCHER = "CreateVoucher";
+    private static final String CREATE_VOUCHER_CONTROLLER = "CreateVoucherController";
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String url = HOMEPAGE;
@@ -83,6 +86,8 @@ public class MainController extends HttpServlet {
                 url = UPDATESTAFF_CONTROLLER;
             }else if (action.equals(LOADSTAFF)) {
                 url = LOADSTAFF_CONTROLLER;
+            }else if (action.equals(CREATE_VOUCHER)) {
+                url = CREATE_VOUCHER_CONTROLLER;
             }
         } catch (Exception e) {
             log("Error at MainController: " + e.toString());

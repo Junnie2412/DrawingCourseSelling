@@ -30,6 +30,8 @@ public class CourseDAO {
     private static final String GET_ALL_COURSE = "SELECT * FROM tblCourse";
     private static final String FILTER_COURSE_BY_LEVEL = "SELECT * FROM tblCourse WHERE level = ?";
     private static final String FILTER_COURSE_BY_TYPE = "SELECT * FROM tblCourse WHERE type = ?";
+    
+    private static final String CHECK_EXISTED_COURSE = "SELECT * FROM tblCourse WHERE courseID = ?";
 
     public List<CourseDTO> getlistCourse(String search) throws ClassNotFoundException, SQLException {
         List<CourseDTO> list = new ArrayList<>();
@@ -517,5 +519,37 @@ public class CourseDAO {
             }
         }
         return list;
+    }
+    
+    public boolean checkExistedCourse(String courseID) throws SQLException{
+        boolean check = false;
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement ptm = null;
+
+        try {
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(CHECK_EXISTED_COURSE);
+                ptm.setString(1, courseID);
+                rs = ptm.executeQuery();
+                
+                if(rs.next())
+                    check = true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return check;
     }
 }
