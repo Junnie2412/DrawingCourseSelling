@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <%@page import="java.util.ArrayList"%>
 <%@page import="users.UserDTO"%>
 <!doctype html>
@@ -48,78 +47,172 @@
                             <li class="nav-item">
                                 <a class="nav-link" data-bs-toggle="tab" href="#manageStaff">Manage Staff Account</a>
                             </li>           
-                        </ul>
+                        </ul>   
                         <div class="tab-content">
                             <div class="tab-pane container active" id="addStaff">
-                                <div class="text-primary" style="margin-left: 40%;">
-                                    <h1>ADD STAFF ACCOUNT</h1>    
-                                </div>
-
-                                <div class="container mt-3">
-
+                                <div class="container" style="width: 40%;">                                 
                                     <%--    <div class="card-header border-0">
                                         <div class="row g-4 align-items-center">                                         
                                             <div class="col-sm-auto ms-auto">
                                                 <div> --%>
 
-
                                     <form action="MainController" method="POST">
-                                        <table class="table table-hover" border="1">
-                                            <thead>
+                                        <div class="mb-3">
+                                            <label for="accountID" class="form-label">Account ID</label>
+                                            <input type="text" class="form-control" name="accountID" required>
+                                            <p style="color: red;">${requestScope.USER_ERROR.userIDError}</p>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="password" class="form-label">Password</label>
+                                            <input type="password" class="form-control" name="password" required>
+                                            <p style="color: red;">${requestScope.USER_ERROR.passwordError}</p>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="confirm" class="form-label">Confirm</label>
+                                            <input type="password" class="form-control" name="confirm" required>
+                                            <p style="color: red;">${requestScope.USER_ERROR.confirmError}</p>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="fullname" class="form-label">Name</label>
+                                            <input type="text" class="form-control" name="fullname" required>
+                                            <p style="color: red;">${requestScope.USER_ERROR.fullNameError}</p>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="dateOfbirth" class="form-label">Date Of Birth</label>
+                                            <input type="date" class="form-control" name="dateOfbirth" required>
+
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="isActive" class="form-label">Status</label>
+                                            <select name="isActive">
+                                                <option value="active">Active</option>
+                                                <option value="inactive">Inactive</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="role" class="form-label">Role</label>
+                                            <input type="text" class="form-control" name="role" readonly="">
+
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="email" class="form-label">Email</label>
+                                            <input type="text" class="form-control" name="email" required>
+                                            <p style="color: red;">${requestScope.USER_ERROR.emailError}</p>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="image" class="form-label">Image</label>
+                                            <input type="text" class="form-control" name="image" required>
+
+                                        </div>
+
+                                        <input class="btn btn-outline-primary" type="submit" name="action" value="Add Staff">
+                                    </form>   
+                                </div>
+                            </div>
+                            <div class="tab-pane container fade" id="manageStaff">
+                                <div class="container mt-3">
+                                    <%
+                                        ArrayList<UserDTO> staffList = (ArrayList) session.getAttribute("STAFF_LIST");
+                                        if (staffList != null) {
+                                            if (staffList.size() > 0) {
+                                    %>
+                                    <div class="table-responsive table-card">
+                                        <table class="table align-middle" id="customerTable">
+                                            <thead class="table-light">
                                                 <tr>
-                                                    <th data-sort="accountID">Account ID</th>
-                                                    <th data-sort="password">Password</th>
-                                                    <th data-sort="confirm">Confirm</th>
-                                                    <th data-sort="fullname">Name</th>
-                                                    <th data-sort="date">Birth Day</th>
-                                                    <th data-sort="isActive">Active</th>
-                                                    <th data-sort="role">Role</th>
-                                                    <th data-sort="email">Email</th>
+                                                    <th scope="col" style="width: 50px;">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" id="checkAll" value="option">
+                                                        </div>
+                                                    </th>
+                                                    <th  data-sort="counter">No</th>
+                                                    <th  data-sort="accountID">Account ID</th>
+                                                    <th  data-sort="password">Password</th>
+                                                    <th  data-sort="name">Name</th>
+                                                    <th  data-sort="date">Birth Day</th>                                    
+
+                                                    <th  data-sort="isActive">Active</th>
+                                                    <th  data-sort="role">Role</th>
+                                                    <th  data-sort="email">Email</th>
                                                     <th data-sort="image">Image</th>
+                                                    <th data-sort="function">Function</th>
+
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody class="list form-check-all">
+                                                <%
+                                                    int count = 1;
+
+                                                    for (UserDTO u : staffList) {
+
+                                                %>
+                                            <form action="MainController" method="POST">
                                                 <tr>
+                                                    <th scope="row">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" name="chk_child" value="option1">
+                                                        </div>
+                                                    </th>
+                                                    <td><%= count++%></td>
+                                                    <!-- <td class="id" style="display:none;"><a href="javascript:void(0);" class="fw-medium link-primary">#VZ2101</a></td>-->
                                                     <td>
-                                                        <input type="text" name="accountID" value="" required="">
-                                                        <p style="color: red;">${requestScope.USER_ERROR.userIDError}</p>
+                                                        <div class="accountID">
+                                                            <input type="text" name="accountID" value="<%=u.getAccountID()%>" readonly=""/>
+                                                        </div>
                                                     </td>
-                                                    <td>
-                                                        <input type="text" name="password" value="" required="">
-                                                        <p style="color: red;">${requestScope.USER_ERROR.passwordError}</p>
+                                                    <td class="password">
+                                                        <input type="text" name="password" value="<%=u.getPassword()%>" required=""/>
+
                                                     </td>
-                                                    <td>
-                                                        <input type="text" name="confirm" value="" required="">
-                                                        <p style="color: red;">${requestScope.USER_ERROR.confirmError}</p>
+                                                    <td class="name">
+
+                                                        <input type="text" name="fullName" value="<%=u.getFullName()%>" required=""/>
                                                     </td>
-                                                    <td>
-                                                        <input type="text" name="fullName" value="" required="">
-                                                        <p style="color: red;">${requestScope.USER_ERROR.fullNameError}</p>
+                                                    <td class="date">
+                                                        <input type="date" name="dateOfbirth" value="<%=u.getDateOfBirth()%>" required=""/>
+
                                                     </td>
-                                                    <td>
-                                                        <input type="date" name="dateOfbirth" value="" required="">
+
+                                                    <td class="isActive">
+                                                        <input type="radio" name="isActive" value="<%=u.isIsActive()%>">
                                                     </td>
-                                                    <td>
-                                                        <select name="isActive">
-                                                            <option value="active">Active</option>
-                                                            <option value="inactive">Inactive</option>
-                                                        </select>
+                                                    <td class="tags">
+                                                        <span class="badge badge-soft-primary">Staff</span>
+                                                    </td>                                                                
+                                                    <td class="email">
+                                                        <input type="text" name="email" value="<%=u.getEmail()%>" required=""/>
+
                                                     </td>
-                                                    <td>
-                                                        <input type="text" name="role" value="Staff" readonly="">
+                                                    <td class="image"><img src="<%=u.getImage()%>" alt="<%=u.getFullName()%>" width="80" height="120">
+                                                        <input type="hidden" name="image" value="<%=u.getImage()%>">
                                                     </td>
-                                                    <td>
-                                                        <input type="text" name="email" value="" required="">
-                                                        <p style="color: red;">${requestScope.USER_ERROR.emailError}</p>
+                                                    <td class="function">
+                                                        <ul class="list-inline hstack gap-2 mb-0">
+                                                            <li class="list-inline-item edit" data-bs-toggle="tooltip"
+                                                                data-bs-trigger="hover" data-bs-placement="top"
+                                                                title="Edit">
+                                                                <input type="submit" name="action" value="updateStaff"/>
+                                                            </li>
+                                                            <li class="list-inline-item" data-bs-toggle="tooltip"
+                                                                data-bs-trigger="hover" data-bs-placement="top"
+                                                                title="Remove">
+                                                                <input type="submit" name="action" value="deleteStaff"/>
+                                                            </li>
+                                                        </ul>
                                                     </td>
-                                                    <td>
-                                                        <input type="text" name="image" value="" required="">
-                                                    </td>
+
                                                 </tr>
+                                            </form>
+                                            <%
+                                                }
+                                            %>
                                             </tbody>
-                                        </table>
-                                        <input class="btn btn-outline-primary" type="submit" name="action" value="addStaff">
-                                    </form>
+                                        </table>                                                                                                       
+                                        <%
+                                                }
+                                            }
+                                        %> 
+                                    </div>
 
                                 </div>
                             </div>
@@ -127,114 +220,8 @@
                     </div>
                 </div>
             </div>
-            <div class="tab-pane container fade" id="manageStaff">
-                <div class="container mt-3">
-                    <%
-                        ArrayList<UserDTO> staffList = (ArrayList) session.getAttribute("STAFF_LIST");
-                        if (staffList != null) {
-                            if (staffList.size() > 0) {
-                    %>
-                    <div class="table-responsive table-card">
-                        <table class="table align-middle" id="customerTable">
-                            <thead class="table-light">
-                                <tr>
-                                    <th scope="col" style="width: 50px;">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="checkAll" value="option">
-                                        </div>
-                                    </th>
-                                    <th  data-sort="counter">No</th>
-                                    <th  data-sort="accountID">Account ID</th>
-                                    <th  data-sort="password">Password</th>
-                                    <th  data-sort="name">Name</th>
-                                    <th  data-sort="date">Birth Day</th>                                    
-
-                                    <th  data-sort="isActive">Active</th>
-                                    <th  data-sort="role">Role</th>
-                                    <th  data-sort="email">Email</th>
-                                    <th data-sort="image">Image</th>
-                                    <th data-sort="function">Function</th>
-
-                                </tr>
-                            </thead>
-                            <tbody class="list form-check-all">
-                                <%
-                                    int count = 1;
-
-                                    for (UserDTO u : staffList) {
-
-                                %>
-                            <form action="MainController" method="POST">
-                                <tr>
-                                    <th scope="row">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="chk_child" value="option1">
-                                        </div>
-                                    </th>
-                                    <td><%= count++%></td>
-                                    <!-- <td class="id" style="display:none;"><a href="javascript:void(0);" class="fw-medium link-primary">#VZ2101</a></td>-->
-                                    <td>
-                                        <div class="accountID">
-                                            <input type="text" name="accountID" value="<%=u.getAccountID()%>" readonly=""/>
-                                        </div>
-                                    </td>
-                                    <td class="password">
-                                        <input type="text" name="password" value="<%=u.getPassword()%>" required=""/>
-
-                                    </td>
-                                    <td class="name">
-
-                                        <input type="text" name="fullName" value="<%=u.getFullName()%>" required=""/>
-                                    </td>
-                                    <td class="date">
-                                        <input type="date" name="dateOfbirth" value="<%=u.getDateOfBirth()%>" required=""/>
-
-                                    </td>
-
-                                    <td class="isActive">
-                                        <input type="radio" name="isActive" value="<%=u.isIsActive()%>">
-                                    </td>
-                                    <td class="tags">
-                                        <span class="badge badge-soft-primary">Staff</span>
-                                    </td>                                                                
-                                    <td class="email">
-                                        <input type="text" name="email" value="<%=u.getEmail()%>" required=""/>
-
-                                    </td>
-                                    <td class="image"><img src="<%=u.getImage()%>" alt="<%=u.getFullName()%>" width="80" height="120">
-                                        <input type="hidden" name="image" value="<%=u.getImage()%>">
-                                    </td>
-                                    <td class="function">
-                                        <ul class="list-inline hstack gap-2 mb-0">
-                                            <li class="list-inline-item edit" data-bs-toggle="tooltip"
-                                                data-bs-trigger="hover" data-bs-placement="top"
-                                                title="Edit">
-                                                <input type="submit" name="action" value="updateStaff"/>
-                                            </li>
-                                            <li class="list-inline-item" data-bs-toggle="tooltip"
-                                                data-bs-trigger="hover" data-bs-placement="top"
-                                                title="Remove">
-                                                <input type="submit" name="action" value="deleteStaff"/>
-                                            </li>
-                                        </ul>
-                                    </td>
-
-                                </tr>
-                            </form>
-                            <%
-                                }
-                            %>
-                            </tbody>
-                        </table>                                                                                                       
-                        <%
-                                }
-                            }
-                        %> 
-                    </div>
-
-                </div>
-            </div>
         </div>
+
 
 
 
