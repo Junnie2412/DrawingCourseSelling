@@ -1,3 +1,6 @@
+<%@page import="java.util.List"%>
+<%@page import="course.CourseDTO"%>
+<%@page import="course.CourseDAO"%>
 <!DOCTYPE html>
 <%@page import="users.UserDTO"%>
 <html lang="en">
@@ -156,22 +159,31 @@ boolean loggedIn = (loginUser != null);
                     <h2 class="title"><span>Featured</span> Online Courses</h2>
                 </div>
                 <div class="row justify-content-center mb-30-none">
+                    <% 
+                        CourseDAO courseDAO = new CourseDAO();
+                        List<CourseDTO> list = (List<CourseDTO>)request.getAttribute("listCourse");
+                        if (list != null) {
+                        if (list.size() > 0) {
+                        for (CourseDTO course : list) {
+                    %>
                     <div class="col-xl-4 col-md-6 col-sm-10">
                         <div class="course-item">
                             <div class="thumb">
                                 <a href="course-details.jsp">
-                                    <img src="https://pbs.twimg.com/media/FKq8fr2aUAQc2wq.jpg:large" alt="course">
+                                    <input type="hidden" value=<%= course.getCourseID() %> name="courseID"/>
+                                    <img src="<%= courseDAO.getDescription(course.getCourseID()).getImage()%>" alt="course">
                                 </a>
                             </div>
                             <div class="content">
                                 <h5 class="title">
-                                    <a href="course-details.jsp">Illustration with Mai Yoneyama</a>
+                                    <input type="hidden" value=<%= course.getCourseID() %> name="courseID"/>
+                                    <a href="course-details.jsp"><%= course.getName() %></a>
                                 </h5>
                                 <div class="meta-area">
                                     <div class="meta">
                                         <div class="meta-item">
                                             <i class="fas fa-user"></i>
-                                            <span>NGÔ KHÁNH VÂN</span>
+                                            <span><%= courseDAO.getAccount(course.getCourseID()).getFullName() %></span>
                                         </div>
                                         <div class="meta-item">
                                             <i class="fas fa-photo-video"></i>
@@ -193,304 +205,18 @@ boolean loggedIn = (loginUser != null);
                                         <span>(4.9/5.00)</span>
                                     </div>
                                     <div class="price cl-1">
-                                        40.00$
+                                        <%= course.getPrice() %>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-md-6 col-sm-10">
-                        <div class="course-item">
-                            <div class="thumb">
-                                <a href="course-details.jsp">
-                                    <img src="https://i.pinimg.com/564x/b5/f5/c5/b5f5c5c8f41ce9fe53579dc47b03a9f0.jpg" alt="course">
-                                </a>
-                            </div>
-                            <div class="content">
-                                <h5 class="title">
-                                    <a href="course-details.jsp">Sketch Painting</a>
-                                </h5>
-                                <div class="meta-area">
-                                    <div class="meta">
-                                        <div class="meta-item">
-                                            <i class="fas fa-user"></i>
-                                            <span>HOÀNG MINH</span>
-                                        </div>
-                                        <div class="meta-item">
-                                            <i class="fas fa-photo-video"></i>
-                                            <span>38 Lessons</span>
-                                        </div>
-                                        <div class="meta-item">
-                                            <i class="fas fa-user-graduate"></i>
-                                            <span>20 Students</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="ratings-area">
-                                    <div class="ratings cl-theme">
-                                        <span><i class="fas fa-star"></i></span>
-                                        <span><i class="fas fa-star"></i></span>
-                                        <span><i class="fas fa-star"></i></span>
-                                        <span><i class="fas fa-star"></i></span>
-                                        <span class="cl-theme-light"><i class="fas fa-star"></i></span>
-                                        <span>(4.9/5.00)</span>
-                                    </div>
-                                    <div class="price cl-1">
-                                        $30.00
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-md-6 col-sm-10">
-                        <div class="course-item">
-                            <div class="thumb">
-                                <a href="course-details.jsp">
-                                    <img src="https://i.pinimg.com/564x/7f/cd/cc/7fcdcc74d1d3e8cf0c111d7ea51a46b2.jpg" alt="course">
-                                </a>
-                            </div>
-                            <div class="content">
-                                <h5 class="title">
-                                    <a href="course-details.jsp">Oil painting</a>
-                                </h5>
-                                <div class="meta-area">
-                                    <div class="meta">
-                                        <div class="meta-item">
-                                            <i class="fas fa-user"></i>
-                                            <span>MINH KHANG</span>
-                                        </div>
-                                        <div class="meta-item">
-                                            <i class="fas fa-photo-video"></i>
-                                            <span>38 Lessons</span>
-                                        </div>
-                                        <div class="meta-item">
-                                            <i class="fas fa-user-graduate"></i>
-                                            <span>30 Students</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="ratings-area">
-                                    <div class="ratings cl-theme">
-                                        <span><i class="fas fa-star"></i></span>
-                                        <span><i class="fas fa-star"></i></span>
-                                        <span><i class="fas fa-star"></i></span>
-                                        <span><i class="fas fa-star"></i></span>
-                                        <span class="cl-theme-light"><i class="fas fa-star"></i></span>
-                                        <span>(4.9/5.00)</span>
-                                    </div>
-                                    <div class="price cl-1">
-                                        $40.00
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-md-6 col-sm-10">
-                        <div class="course-item">
-                            <div class="thumb">
-                                <a href="course-details.jsp">
-                                    <img src="https://i.pinimg.com/564x/74/46/10/744610b3ee5fbe4ae9495403710144e5.jpg" alt="course">
-                                </a>
-                            </div>
-                            <div class="content">
-                                <h5 class="title">
-                                    <a href="course-details.jsp">Gouache Painting</a>
-                                </h5>
-                                <div class="meta-area">
-                                    <div class="meta">
-                                        <div class="meta-item">
-                                            <i class="fas fa-user"></i>
-                                            <span>HOÀNG LINH</span>
-                                        </div>
-                                        <div class="meta-item">
-                                            <i class="fas fa-photo-video"></i>
-                                            <span>10 Lessons</span>
-                                        </div>
-                                        <div class="meta-item">
-                                            <i class="fas fa-user-graduate"></i>
-                                            <span>30 Students</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="ratings-area">
-                                    <div class="ratings cl-theme">
-                                        <span><i class="fas fa-star"></i></span>
-                                        <span><i class="fas fa-star"></i></span>
-                                        <span><i class="fas fa-star"></i></span>
-                                        <span><i class="fas fa-star"></i></span>
-                                        <span class="cl-theme-light"><i class="fas fa-star"></i></span>
-                                        <span>(4.9/5.00)</span>
-                                    </div>
-                                    <div class="price cl-1">
-                                        40.00$
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-md-6 col-sm-10">
-                        <div class="course-item">
-                            <div class="thumb">
-                                <a href="course-details.jsp">
-                                    <img src="https://i.pinimg.com/564x/02/74/c3/0274c3618020cba3164efff8a5ed0ed0.jpg" alt="course">
-                                </a>
-                            </div>
-                            <div class="content">
-                                <h5 class="title">
-                                    <a href="course-details.jsp">Cube Drawing</a>
-                                </h5>
-                                <div class="meta-area">
-                                    <div class="meta">
-                                        <div class="meta-item">
-                                            <i class="fas fa-user"></i>
-                                            <span>THANH TRÚC</span>
-                                        </div>
-                                        <div class="meta-item">
-                                            <i class="fas fa-photo-video"></i>
-                                            <span>38 Lessons</span>
-                                        </div>
-                                        <div class="meta-item">
-                                            <i class="fas fa-user-graduate"></i>
-                                            <span>20 Students</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="ratings-area">
-                                    <div class="ratings cl-theme">
-                                        <span><i class="fas fa-star"></i></span>
-                                        <span><i class="fas fa-star"></i></span>
-                                        <span><i class="fas fa-star"></i></span>
-                                        <span><i class="fas fa-star"></i></span>
-                                        <span class="cl-theme-light"><i class="fas fa-star"></i></span>
-                                        <span>(4.9/5.00)</span>
-                                    </div>
-                                    <div class="price cl-1">
-                                        $30.00
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-md-6 col-sm-10">
-                        <div class="course-item">
-                            <div class="thumb">
-                                <a href="course-details.jsp">
-                                    <img src="https://i.pinimg.com/564x/c4/0b/f1/c40bf15f649a337cb7414d20d8f000e9.jpg" alt="course">
-                                </a>
-                            </div>
-                            <div class="content">
-                                <h5 class="title">
-                                    <a href="course-details.jsp"> Portrait Painting</a>
-                                </h5>
-                                <div class="meta-area">
-                                    <div class="meta">
-                                        <div class="meta-item">
-                                            <i class="fas fa-user"></i>
-                                            <span>BÁ HUÂN</span>
-                                        </div>
-                                        <div class="meta-item">
-                                            <i class="fas fa-photo-video"></i>
-                                            <span>38 Lessons</span>
-                                        </div>
-                                        <div class="meta-item">
-                                            <i class="fas fa-user-graduate"></i>
-                                            <span>30 Students</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="ratings-area">
-                                    <div class="ratings cl-theme">
-                                        <span><i class="fas fa-star"></i></span>
-                                        <span><i class="fas fa-star"></i></span>
-                                        <span><i class="fas fa-star"></i></span>
-                                        <span><i class="fas fa-star"></i></span>
-                                        <span class="cl-theme-light"><i class="fas fa-star"></i></span>
-                                        <span>(4.9/5.00)</span>
-                                    </div>
-                                    <div class="price cl-1">
-                                        $30.00
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="text-center load-more mt-5">
-                    <a href="courses.jsp" class="custom-button theme-one">load more courses <i class="fas fa-angle-right"></i></a>
-                </div>
-            </div>
-        </section>
-        <!-- ~~~ Course Section ~~~ -->
-
-
-        <!-- ~~~ Counter Section ~~~ -->
-        <section class="counter-section pt-120 pb-120 title-lay bg_img" data-img="./assets/images/banner/banner.jpg" id="apply">
-            <div class="container">
-                <div class="d-flex flex-wrap justify-content-between align-items-center">
-                    <div class="odo-area">
-                        <div class="odo-wrap">
-                            <div class="odo-item">
-                                <div class="odo-in">
-                                    <div class="odo-head">
-                                        <h2 class="title odometer" data-odo="60">1</h2>
-                                        <h2 class="title">2</h2>
-                                    </div>
-                                    <h5 class="subtitle">Teachers</h5>
-                                </div>
-                            </div>
-                            <div class="odo-item">
-                                <div class="odo-in">
-                                    <div class="odo-head">
-                                        <h2 class="title odometer" data-odo="8">10</h2>
-                                        <h2 class="title">0</h2>
-                                    </div>
-                                    <h5 class="subtitle">Students</h5>
-                                </div>
-                            </div>
-                            <div class="odo-item">
-                                <div class="odo-in">
-                                    <div class="odo-head">
-                                        <h2 class="title odometer" data-odo="75">6</h2>
-                                        <h2 class="title"></h2>
-                                    </div>
-                                    <h5 class="subtitle">Courses</h5>
-                                </div>
-                            </div>
-                            <div class="odo-item">
-                                <div class="odo-in">
-                                    <div class="odo-head">
-                                        <h2 class="title odometer" data-odo="13">2</h2>
-                                        <h2 class="title">+</h2>
-                                    </div>
-                                    <h5 class="subtitle">National Awards</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="apply-form-wrapper">
-                        <h5 class="title">Apply Now</h5>
-                        <form class="apply-form">
-                            <div class="apply-group">
-                                <label for="name" class="label-name">Full Name</label>
-                                <label for="name" class="label-icon"><i class="fas fa-user"></i></label>
-                                <input type="text" id="name" name="name">
-                            </div>
-                            <div class="apply-group">
-                                <label for="email" class="label-name">Enter Email</label>
-                                <label for="email" class="label-icon"><i class="fas fa-envelope"></i></label>
-                                <input type="text" id="email" name="email">
-                            </div>
-                            <div class="apply-group">
-                                <label for="phone" class="label-name">Phone Number</label>
-                                <label for="phone" class="label-icon"><i class="fas fa-phone"></i></label>
-                                <input type="text"  id="phone" name="phone">
-                            </div>
-                            <div class="apply-group mb-0">
-                                <button type="submit">submit now <i class="fas fa-angle-right"></i></button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+        <%
+                    }
+                }
+            }
+        %>   
+                </div>    
             </div>
         </section>
         <!-- ~~~ Counter Section ~~~ -->

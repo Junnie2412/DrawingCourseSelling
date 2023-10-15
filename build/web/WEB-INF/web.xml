@@ -56,6 +56,11 @@
         <servlet-name>FilterByPrice</servlet-name>
         <servlet-class>controllers.course.filter.FilterByPrice</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CoursesOfHomeController</servlet-name>
+        <servlet-class>controllers.course.CoursesOfHomeController</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
     <servlet-mapping>
         <servlet-name>MainController</servlet-name>
         <url-pattern>/MainController</url-pattern>
@@ -112,9 +117,16 @@
         <servlet-name>FilterByPrice</servlet-name>
         <url-pattern>/FilterByPrice</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CoursesOfHomeController</servlet-name>
+        <url-pattern>/CoursesOfHomeController</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+    <welcome-file-list>
+        <welcome-file>CoursesOfHomeController</welcome-file>
+    </welcome-file-list>
 </web-app>
