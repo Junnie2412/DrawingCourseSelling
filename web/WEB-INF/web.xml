@@ -61,6 +61,10 @@
         <servlet-class>controllers.course.CoursesOfHomeController</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
+    <servlet>
+        <servlet-name>ViewCoursesController</servlet-name>
+        <servlet-class>controllers.course.ViewCoursesController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>MainController</servlet-name>
         <url-pattern>/MainController</url-pattern>
@@ -120,6 +124,10 @@
     <servlet-mapping>
         <servlet-name>CoursesOfHomeController</servlet-name>
         <url-pattern>/CoursesOfHomeController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewCoursesController</servlet-name>
+        <url-pattern>/ViewCoursesController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
