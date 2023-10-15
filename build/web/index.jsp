@@ -63,10 +63,10 @@ boolean loggedIn = (loginUser != null);
                    
                         <% if (!loggedIn) { %>
                         <div class="banner-button-area">
-                        <a href="MainController?action=ViewAllCourses" class="custom-button btn-md">view courses<i class="fas fa-play-circle"></i></a>
+                        <a href="courses.jsp" class="custom-button btn-md">view courses<i class="fas fa-play-circle"></i></a>
                         <a href="signup.jsp" class="custom-button btn-md theme-one">Create your account<i class="flaticon-tap-1"></i></a>
                         <% } else { %><div class="banner-button-area">
-                        <a href="MainController?action=ViewAllCourses" class="custom-button btn-md">
+                        <a href="courses.jsp" class="custom-button btn-md">
                         <span style="text-align: center;">view courses</span>
                         <i class="fas fa-play-circle"></i>
                         </a><% } %>
@@ -161,7 +161,7 @@ boolean loggedIn = (loginUser != null);
                 <div class="row justify-content-center mb-30-none">
                     <% 
                         CourseDAO courseDAO = new CourseDAO();
-                        List<CourseDTO> list = (List<CourseDTO>)request.getAttribute("listCourse");
+                        List<CourseDTO> list = courseDAO.getlistCourse();
                         if (list != null) {
                         if (list.size() > 0) {
                         for (CourseDTO course : list) {
@@ -169,15 +169,13 @@ boolean loggedIn = (loginUser != null);
                     <div class="col-xl-4 col-md-6 col-sm-10">
                         <div class="course-item">
                             <div class="thumb">
-                                <a href="course-details.jsp">
-                                    <input type="hidden" value=<%= course.getCourseID() %> name="courseID"/>
+                                <a href="course-details.jsp?courseID=<%= course.getCourseID() %>">
                                     <img src="<%= courseDAO.getDescription(course.getCourseID()).getImage()%>" alt="course">
                                 </a>
                             </div>
                             <div class="content">
                                 <h5 class="title">
-                                    <input type="hidden" value=<%= course.getCourseID() %> name="courseID"/>
-                                    <a href="course-details.jsp"><%= course.getName() %></a>
+                                    <a href="course-details.jsp?courseID=<%= course.getCourseID() %>"><%= course.getName() %></a>
                                 </h5>
                                 <div class="meta-area">
                                     <div class="meta">

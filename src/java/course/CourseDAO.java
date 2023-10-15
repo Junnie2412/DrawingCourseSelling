@@ -33,6 +33,8 @@ public class CourseDAO {
     
     private static final String CHECK_EXISTED_COURSE = "SELECT * FROM tblCourse WHERE courseID = ?";
     private static final String LIST_UNAPPROVED_COURSE = "SELECT * FROM tblCOurse WHERE isActive = 1";
+    
+    private static final String GET_COURSE_BY_COURSEID = "SELECT courseID, price, name, duration, isActive, datePublic, accountID, descriptionID FROM tblCourse WHERE courseID = ? ";
 
     public List<CourseDTO> getlistCourse(String search) throws ClassNotFoundException, SQLException {
         List<CourseDTO> list = new ArrayList<>();
@@ -587,5 +589,46 @@ public class CourseDAO {
             }
         }
         return list;
+    }
+
+    public CourseDTO getCourseByCourseID(String courseID) throws SQLException {
+        CourseDTO c = null;
+        Connection cn = null;
+        ResultSet rs = null;
+        PreparedStatement pst = null;
+        try {
+            cn = DBUtil.getConnection();
+            if (cn != null) {
+                pst = cn.prepareStatement(GET_COURSE_BY_COURSEID);
+                pst.setString(1, courseID);
+                rs = pst.executeQuery();
+                while (rs.next()) {
+                    String name = rs.getString("name");
+                    float price = rs.getFloat("price");
+                    int duration = rs.getInt("duration");
+                    boolean isActive = rs.getBoolean("isActive");
+                    Date datePublic = rs.getDate("datePublic");
+                    String accountID = rs.getString("accountID");
+                    int descriptionID = rs.getInt("descriptionID");
+
+                    c = new CourseDTO(courseID, name, price, duration, isActive, datePublic, accountID, descriptionID);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (pst != null) {
+                pst.close();
+            }
+            if (cn != null) {
+                cn.close();
+            }
+        }
+
+        return c;
     }
 }

@@ -4,6 +4,8 @@
     Author     : Admin
 --%>
 
+<%@page import="course.CourseDTO"%>
+<%@page import="course.CourseDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -72,13 +74,18 @@
         <section class="course-details-section pt-120 pb-120">
             <div class="container">
                 <div class="row">
+                    <%
+                        CourseDAO courseDAO = new CourseDAO();
+                        String courseID = request.getParameter("courseID");
+                        CourseDTO course = courseDAO.getCourseByCourseID(courseID);
+                    %>
                     <div class="col-lg-4">
                         <div class="course-video-area mb-lg-0">
                             <div class="video-area bg_img" data-img="assets/images/course/course-info.png">
                                 <a href="https://www.youtube.com/watch?v=XjU0lPXry5E" class="magnific_popup video-button"><i class="flaticon-play-button-inside-a-circle"></i></a>
                             </div>
                             <div class="course-video-content">
-                                <h6 class="title">Strategic Social Media & Marketing Policy</h6>
+                                <h6 class="title"><%= course.getName() %></h6>
                                 <div class="ratings cl-theme">
                                     <span><i class="fas fa-star"></i></span>
                                     <span><i class="fas fa-star"></i></span>
@@ -111,22 +118,22 @@
                     <div class="col-lg-8">
                         <div class="course-details">
                             <div class="price">
-                                $29.99
+                                $<%= course.getPrice() %>
                             </div>
                             <div class="course-header">
-                                <h4 class="title">Strategic Social Media & Marketing</h4>
+                                <h4 class="title"><%= course.getName() %></h4>
                                 <div class="meta">
                                     <div class="meta-item">
                                         <i class="fas fa-user"></i>
-                                        <span>Mark Parker</span>
+                                        <span><%= courseDAO.getAccount(course.getCourseID()).getFullName() %></span>
                                     </div>
                                     <div class="meta-item">
                                         <i class="fas fa-photo-video"></i>
-                                        <span>15 Lessons</span>
+                                        <span>38 Lessons</span>
                                     </div>
                                     <div class="meta-item">
                                         <i class="fas fa-user-graduate"></i>
-                                        <span>25 Students</span>
+                                        <span>20 Students</span>
                                     </div>
                                 </div>
                             </div>

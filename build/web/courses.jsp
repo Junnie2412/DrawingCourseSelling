@@ -151,7 +151,7 @@
                     </div>
                     <div class="row justify-content-center mb-30-none">
                         <% 
-                            List<CourseDTO> list = (List<CourseDTO>)request.getAttribute("listCourse");
+                            List<CourseDTO> list = courseDAO.getlistCourse();
                             if (list != null) {
                             if (list.size() > 0) {
                             for (CourseDTO course : list) {
@@ -159,15 +159,13 @@
                         <div class="col-xl-4 col-md-6 col-sm-10">
                         <div class="course-item">
                             <div class="thumb">
-                                <a href="course-details.jsp">
-                                    <input type="hidden" value=<%= course.getCourseID() %> name="courseID"/>
+                                <a href="course-details.jsp?courseID=<%= course.getCourseID() %>">
                                     <img src="<%= courseDAO.getDescription(course.getCourseID()).getImage()%>" alt="course">
                                 </a>
                             </div>
                             <div class="content">
                                 <h5 class="title">
-                                    <input type="hidden" value=<%= course.getCourseID() %> name="courseID"/>
-                                    <a href="course-details.jsp"><%= course.getName() %></a>
+                                    <a href="course-details.jsp?courseID=<%= course.getCourseID() %>"><%= course.getName() %></a>
                                 </h5>
                                 <div class="meta-area">
                                     <div class="meta">
@@ -195,7 +193,7 @@
                                         <span>(4.9/5.00)</span>
                                     </div>
                                     <div class="price cl-1">
-                                        <%= course.getPrice() %>
+                                        <%= course.getPrice() %>$
                                     </div>
                                 </div>
                             </div>
@@ -309,15 +307,13 @@
                         <div class="col-xl-4 col-md-6 col-sm-10">
                         <div class="course-item">
                             <div class="thumb">
-                                <a href="course-details.jsp">
-                                    <input type="hidden" value=<%= course.getCourseID() %> name="courseID"/>
+                                <a href="course-details.jsp?courseID=<%= course.getCourseID() %>">
                                     <img src="<%= courseDAO.getDescription(course.getCourseID()).getImage()%>" alt="course">
                                 </a>
                             </div>
                             <div class="content">
                                 <h5 class="title">
-                                    <input type="hidden" value=<%= course.getCourseID() %> name="courseID"/>
-                                    <a href="course-details.jsp"><%= course.getName() %></a>
+                                    <a href="course-details.jsp?courseID=<%= course.getCourseID() %>"><%= course.getName() %></a>
                                 </h5>
                                 <div class="meta-area">
                                     <div class="meta">
