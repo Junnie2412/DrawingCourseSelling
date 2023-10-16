@@ -19,6 +19,8 @@ import utils.DBUtil;
 public class LessonDAO {
     private static final String LASTEST_LESSON ="SELECT TOP 1 * FROM tblLesson ORDER BY lessonID DESC";
     
+    private static final String TOTAL_LESSONS ="SELECT COUNT(tblLesson.lessonID) AS totalLessons FROM tblCourse JOIN tblModule ON tblCourse.courseID = tblModule.courseID JOIN tblLesson ON tblModule.moduleID = tblLesson.moduleID WHERE tblCourse.courseID = ? ";
+    
     public LessonDTO getLastestLesson() throws SQLException{
         LessonDTO lesson = null;
         Connection conn = null;
@@ -47,6 +49,32 @@ public class LessonDAO {
             if(conn!=null) conn.close();
         }
         return lesson;
+    }
+    
+    public int getTotalLessons(String courseID) throws SQLException{
+        int totalLessons = 0;
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement ptm = null;
+        
+        try{
+             conn = DBUtil.getConnection();
+            if(conn!=null){
+                ptm = conn.prepareStatement(TOTAL_LESSONS);
+                ptm.setString(1, courseID);
+                rs = ptm.executeQuery();
+                if(rs.next()){
+                    totalLessons = rs.getInt("totalLessons");
+                }
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            if(rs!=null) rs.close();
+            if(ptm!=null) ptm.close();
+            if(conn!=null) conn.close();
+        }
+        return totalLessons;
     }
 }
 

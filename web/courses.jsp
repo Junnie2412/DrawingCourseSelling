@@ -4,6 +4,8 @@
     Author     : Admin
 --%>
 
+<%@page import="course.ModuleDAO"%>
+<%@page import="course.CourseFeedbackDAO"%>
 <%@page import="course.CourseDAO"%>
 <%@page import="java.util.List"%>
 <%@page import="course.CourseDTO"%>
@@ -151,6 +153,8 @@
                     </div>
                     <div class="row justify-content-center mb-30-none">
                         <% 
+                            CourseFeedbackDAO courseFeedbackDAO = new CourseFeedbackDAO();
+                            ModuleDAO moduleDAO = new ModuleDAO();
                             List<CourseDTO> list = courseDAO.getlistCourse();
                             if (list != null) {
                             if (list.size() > 0) {
@@ -175,7 +179,7 @@
                                         </div>
                                         <div class="meta-item">
                                             <i class="fas fa-photo-video"></i>
-                                            <span>38 Lessons</span>
+                                            <span><%= moduleDAO.getQuantityOfModules(course.getCourseID()) %> Modules</span>
                                         </div>
                                         <div class="meta-item">
                                             <i class="fas fa-user-graduate"></i>
@@ -190,10 +194,10 @@
                                         <span><i class="fas fa-star"></i></span>
                                         <span><i class="fas fa-star"></i></span>
                                         <span class="cl-theme-light"><i class="fas fa-star"></i></span>
-                                        <span>(4.9/5.00)</span>
+                                        <span>(<%= courseFeedbackDAO.getAverageRate(course.getCourseID()) %>/5.00)</span>
                                     </div>
                                     <div class="price cl-1">
-                                        <%= course.getPrice() %>$
+                                        <%= course.getPrice() %>đ
                                     </div>
                                 </div>
                             </div>
@@ -300,10 +304,10 @@
                 </div>
                 <div class="row justify-content-center mb-30-none">
                     <% 
-                            if (list != null) {
-                            if (list.size() > 0) {
-                            for (CourseDTO course : list) {
-                        %>
+                        if (list != null) {
+                        if (list.size() > 0) {
+                        for (CourseDTO course : list) {
+                    %>
                         <div class="col-xl-4 col-md-6 col-sm-10">
                         <div class="course-item">
                             <div class="thumb">
@@ -323,7 +327,7 @@
                                         </div>
                                         <div class="meta-item">
                                             <i class="fas fa-photo-video"></i>
-                                            <span>38 Lessons</span>
+                                            <span><%= moduleDAO.getQuantityOfModules(course.getCourseID()) %> Modules</span>
                                         </div>
                                         <div class="meta-item">
                                             <i class="fas fa-user-graduate"></i>
@@ -338,10 +342,10 @@
                                         <span><i class="fas fa-star"></i></span>
                                         <span><i class="fas fa-star"></i></span>
                                         <span class="cl-theme-light"><i class="fas fa-star"></i></span>
-                                        <span>(4.9/5.00)</span>
+                                        <span>(<%= courseFeedbackDAO.getAverageRate(course.getCourseID()) %>/5.00)</span>
                                     </div>
                                     <div class="price cl-1">
-                                        <%= course.getPrice() %>
+                                        <%= course.getPrice() %>đ
                                     </div>
                                 </div>
                             </div>

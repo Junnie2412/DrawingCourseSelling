@@ -4,6 +4,9 @@
     Author     : Admin
 --%>
 
+<%@page import="course.LessonDAO"%>
+<%@page import="course.ModuleDAO"%>
+<%@page import="course.CourseFeedbackDAO"%>
 <%@page import="course.CourseDTO"%>
 <%@page import="course.CourseDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -75,6 +78,9 @@
             <div class="container">
                 <div class="row">
                     <%
+                        CourseFeedbackDAO courseFeedbackDAO = new CourseFeedbackDAO();
+                        ModuleDAO moduleDAO = new ModuleDAO();
+                        LessonDAO lessonDAO = new LessonDAO();
                         CourseDAO courseDAO = new CourseDAO();
                         String courseID = request.getParameter("courseID");
                         CourseDTO course = courseDAO.getCourseByCourseID(courseID);
@@ -92,11 +98,11 @@
                                     <span><i class="fas fa-star"></i></span>
                                     <span><i class="fas fa-star"></i></span>
                                     <span class="cl-theme-light"><i class="fas fa-star"></i></span>
-                                    <span>(4.9/5.00)</span>
+                                    <span>(<%= courseFeedbackDAO.getAverageRate(course.getCourseID()) %>/5.00)</span>
                                 </div>
                                 <ul class="course-infos">
                                     <li>
-                                        <span><i class="fas fa-play-circle"></i>Total Lectures</span><span>55</span>
+                                        <span><i class="fas fa-play-circle"></i>Total Lessons</span><span><%= lessonDAO.getTotalLessons(course.getCourseID()) %></span>
                                     </li>
                                     <li>
                                         <span><i class="fas fa-clock"></i>Duration</span><span>3 Week</span>
@@ -118,7 +124,7 @@
                     <div class="col-lg-8">
                         <div class="course-details">
                             <div class="price">
-                                $<%= course.getPrice() %>
+                                <%= course.getPrice() %>đ
                             </div>
                             <div class="course-header">
                                 <h4 class="title"><%= course.getName() %></h4>
@@ -129,7 +135,7 @@
                                     </div>
                                     <div class="meta-item">
                                         <i class="fas fa-photo-video"></i>
-                                        <span>38 Lessons</span>
+                                        <span><%= moduleDAO.getQuantityOfModules(course.getCourseID()) %> Modules</span>
                                     </div>
                                     <div class="meta-item">
                                         <i class="fas fa-user-graduate"></i>

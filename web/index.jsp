@@ -1,6 +1,9 @@
+<%@page import="course.ModuleDAO"%>
+<%@page import="course.CourseFeedbackDAO"%>
 <%@page import="java.util.List"%>
 <%@page import="course.CourseDTO"%>
 <%@page import="course.CourseDAO"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@page import="users.UserDTO"%>
 <html lang="en">
@@ -160,6 +163,8 @@ boolean loggedIn = (loginUser != null);
                 </div>
                 <div class="row justify-content-center mb-30-none">
                     <% 
+                        CourseFeedbackDAO courseFeedbackDAO = new CourseFeedbackDAO();
+                        ModuleDAO moduleDAO = new ModuleDAO();
                         CourseDAO courseDAO = new CourseDAO();
                         List<CourseDTO> list = courseDAO.getlistCourse();
                         if (list != null) {
@@ -185,7 +190,7 @@ boolean loggedIn = (loginUser != null);
                                         </div>
                                         <div class="meta-item">
                                             <i class="fas fa-photo-video"></i>
-                                            <span>38 Lessons</span>
+                                            <span><%= moduleDAO.getQuantityOfModules(course.getCourseID()) %> Modules</span>
                                         </div>
                                         <div class="meta-item">
                                             <i class="fas fa-user-graduate"></i>
@@ -200,10 +205,10 @@ boolean loggedIn = (loginUser != null);
                                         <span><i class="fas fa-star"></i></span>
                                         <span><i class="fas fa-star"></i></span>
                                         <span class="cl-theme-light"><i class="fas fa-star"></i></span>
-                                        <span>(4.9/5.00)</span>
+                                        <span>(<%= courseFeedbackDAO.getAverageRate(course.getCourseID()) %>/5.00)</span>
                                     </div>
                                     <div class="price cl-1">
-                                        <%= course.getPrice() %>
+                                        <%= course.getPrice() %>ƒë
                                     </div>
                                 </div>
                             </div>
@@ -234,7 +239,7 @@ boolean loggedIn = (loginUser != null);
                                 <a href="#0"><img src="assets/images/instructor/06.png" alt="instructor"></a>
                             </div>
                             <div class="instructor-content">
-                                <h6 class="title"><a href="#0"> NgÙ Kh·nh H‚n
+                                <h6 class="title"><a href="#0"> Ng√¥ Kh√°nh H√¢n
 </a></h6>
                                 <span class="details">TEACHER</span>
                             </div>
@@ -246,7 +251,7 @@ boolean loggedIn = (loginUser != null);
                                 <a href="#0"><img src="assets/images/instructor/07.png" alt="instructor"></a>
                             </div>
                             <div class="instructor-content">
-                                <h6 class="title"><a href="#0"> Ho‡ng Minh
+                                <h6 class="title"><a href="#0"> Ho√†ng Minh
 </a></h6>
                                 <span class="details">TEACHER</span>
                             </div>
@@ -269,7 +274,7 @@ boolean loggedIn = (loginUser != null);
                                 <a href="#0"><img src="assets/images/instructor/09.png" alt="instructor"></a>
                             </div>
                             <div class="instructor-content">
-                                <h6 class="title"><a href="#0">Ho‡ng Linh</a></h6>
+                                <h6 class="title"><a href="#0">Ho√†ng Linh</a></h6>
                                 <span class="details">TEACHER</span>
                             </div>
                         </div>
