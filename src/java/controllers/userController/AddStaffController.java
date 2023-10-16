@@ -37,19 +37,27 @@ public class AddStaffController extends HttpServlet {
 
             String accountID = request.getParameter("accountID");
             String fullName = request.getParameter("fullName");
-            Date dateOfBirth = Date.valueOf(request.getParameter("dateOfbirth"));
+            String dateString = request.getParameter("dateOfbirth");
+            Date dateOfBirth = Date.valueOf(dateString);
             String role = "Staff";
-            boolean isActive = Boolean.parseBoolean(request.getParameter("isActive"));
+            boolean isActive = true;
+            String activeStr = request.getParameter("isActive");
+            if (activeStr.equalsIgnoreCase("active")) {
+                isActive = true;
+            } else if (activeStr.equalsIgnoreCase("inactive")) {
+                isActive = false;
+            }
             String email = request.getParameter("email");
             String img = request.getParameter("image");
             String password = request.getParameter("password");
             String confirm = request.getParameter("confirm");
             UserDAO dao = new UserDAO();
+            //////
             if (accountID.length() < 2 || accountID.length() > 10) {
                 userError.setUserIDError("Account ID must be in [2,10]");
                 checkValidation = false;
             }
-//            boolean checkDuplicate = dao.checkDuplicate(userID);
+//            boolean checkDuplicate = dao.checkDuplicate(accountID);
 //            if(checkDuplicate) {
 //                userError.setUserIDError("Duplicate User ID !");
 //                checkValidation=false;
@@ -63,16 +71,16 @@ public class AddStaffController extends HttpServlet {
                 checkValidation = false;
             }
             //check email
-            String regex = "^[A-Za-z0-9+_.-]+@(.+)$";  
+            String regex = "^[A-Za-z0-9+_.-]+@(.+)$";
             //Compile regular expression to get the pattern  
-            Pattern pattern = Pattern.compile(regex); 
-            Matcher matcher = pattern.matcher(email);  
-            if(!matcher.matches()){
+            Pattern pattern = Pattern.compile(regex);
+            Matcher matcher = pattern.matcher(email);
+            if (!matcher.matches()) {
                 userError.setEmailError("Your email is not valid!");
                 checkValidation = false;
             }
             if (checkValidation) {
-                UserDTO user = new UserDTO(accountID,password,fullName,dateOfBirth,role,isActive,img,email);
+                UserDTO user = new UserDTO(accountID, password, fullName, dateOfBirth, role, isActive, img, email);
                 boolean checkInsert = dao.insertStaff(user);
                 if (checkInsert) {
                     request.setAttribute("MESSAGE", "This account is added successfully!");
@@ -88,8 +96,8 @@ public class AddStaffController extends HttpServlet {
             if (e.toString().contains("duplicate")) {
                 userError.setUserIDError("UserID has already exist!");
                 request.setAttribute("USER_ERROR", userError);
-            }            
-        }finally {
+            }
+        } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }
     }
