@@ -29,6 +29,10 @@
         <servlet-class>controllers.userController.AddStaffController</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>UserGoogleHandler</servlet-name>
+        <servlet-class>userGoogle.UserGoogleHandler</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>DeleteStaffController</servlet-name>
         <servlet-class>controllers.userController.DeleteStaffController</servlet-class>
     </servlet>
@@ -111,6 +115,10 @@
     <servlet-mapping>
         <servlet-name>FilterByType</servlet-name>
         <url-pattern>/FilterByType</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserGoogleHandler</servlet-name>
+        <url-pattern>/UserGoogleHandler</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>FilterByPrice</servlet-name>
