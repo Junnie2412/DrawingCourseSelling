@@ -40,7 +40,7 @@
                             <%
                                 }else if(loginUser.getRole().equals("Customer")){
                             %>
-                                <a href="customerCourse.jsp">Courses</a>
+                                <a href="courses.jsp">Courses</a>
                             <%
                                 }else if(loginUser.getRole().equals("Instructor")){
                             %>

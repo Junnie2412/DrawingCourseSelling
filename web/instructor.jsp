@@ -113,7 +113,7 @@
                         %>
                     </div>
                     <div class="text-center load-more mt-5">
-                        <a href="instructor.jsp" class="custom-button theme-one">load more Instructors <i class="fas fa-angle-right"></i></a>
+                        <a href="instructor.jsp" class="custom-button theme-one">Load more Instructors <i class="fas fa-angle-right"></i></a>
                     </div>
                 </div>
             </div>

@@ -28,7 +28,7 @@ public class MainController extends HttpServlet {
     private static final String CREATE_COURSE="CreateCourse";
     private static final String CREATE_COURSE_CONTROLLER="CreateCourseController";
     private static final String TURN_BACK_COURSE="TurnBackToCourses";
-    private static final String COURSES_PAGE="instructorCourse.jsp";
+    private static final String COURSE_INSTRUCTOR_PAGE="instructorCourse.jsp";
     private static final String SEARCH_COURSE_NAME = "Search";
     private static final String SEARCH_COURSE_NAME_CONTROLLER = "SearchController";
     
@@ -50,6 +50,11 @@ public class MainController extends HttpServlet {
     
     private static final String CREATE_VOUCHER = "CreateVoucher";
     private static final String CREATE_VOUCHER_CONTROLLER = "CreateVoucherController";
+    
+    private static final String ADD_TO_CART = "AddToCart";
+    private static final String ADD_TO_CART_CONTROLLER = "AddToCartController";
+    private static final String REMOVE_COURSE_CART="Remove";
+    private static final String REMOVE_COURSE_CART_CONTROLLER="RemoveCartController";
  
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -69,7 +74,7 @@ public class MainController extends HttpServlet {
             } else if (action.equals(CREATE_COURSE)) {
                 url = CREATE_COURSE_CONTROLLER;
             } else if (action.equals(TURN_BACK_COURSE)) {
-                url = COURSES_PAGE;
+                url = COURSE_INSTRUCTOR_PAGE;
             } else if (action.equals(CREATEBLOG)) {
                 url = CREATEBLOG_CONTROLLER;
             } else if (action.equals(DELETEBLOG)) {
@@ -88,6 +93,10 @@ public class MainController extends HttpServlet {
                 url = LOADSTAFF_CONTROLLER;
             }else if (action.equals(CREATE_VOUCHER)) {
                 url = CREATE_VOUCHER_CONTROLLER;
+            }else if (action.equals(ADD_TO_CART)) {
+                url = ADD_TO_CART_CONTROLLER;
+            }else if (action.equals(REMOVE_COURSE_CART)) {
+                url = REMOVE_COURSE_CART_CONTROLLER;
             }
         } catch (Exception e) {
             log("Error at MainController: " + e.toString());

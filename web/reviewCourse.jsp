@@ -28,31 +28,55 @@
         <link rel="stylesheet" href="assets/css/main2.css">
 
         <link rel="shortcut icon" href="assets/images/art1.png" type="image/x-icon">
-        
+
         <style>
             body{
                 padding: 30px;
+            }
+
+            .unapproved-course-form img{
+                width: 300px;
+                height: 300px;
+                margin-bottom: 10px;
+            }
+
+            .course-form{
+                display: flex;
+            }
+
+            h3{
                 text-align: center;
             }
+
         </style>
     </head>
     <body>
         <h3>Unapproved Course</h3>
+        <br>
         <!-- Get list Unapproved Courses-->
-        <%
-            CourseDAO courseDAO = new CourseDAO();
-            List<CourseDTO> courseList = courseDAO.getUnapprovedCoursesList();
-            if (courseList.size() > 0) {
-                for (CourseDTO course : courseList) {
-        %>
-        <div class="col-lg-4 col-sm-6 unapproved-course-form">
-            <img src="<%=course.getImage()%>">
-            <h3><%=course.getName()%></h3>
-            <h3><%=course.getDatePublic()%></h3>
-        </div>
-        <%
+        <div class="unapproved-course-form">
+            <%
+                CourseDAO courseDAO = new CourseDAO();
+                List<CourseDTO> courseList = courseDAO.getUnapprovedCoursesList();
+                if (courseList.size() > 0) {
+                    for (CourseDTO course : courseList) {
+            %>
+            <div class="course-form">
+                <div>
+                    <img src="<%= courseDAO.getDescription(course.getCourseID()).getImage()%>">
+                </div>
+                <div>
+                    <h6><%=course.getName()%></h6><br>
+                    <p>Price: <%= course.getPrice()%></p>
+                    <p>Duration: <%= course.getDuration()%></p>
+                    <p>Instructor: <%= courseDAO.getAccount(course.getCourseID()).getFullName()%></p>
+                    <p><%=course.getDatePublic()%></p><br>
+                </div>
+            </div>
+            <%
+                    }
                 }
-            }
-        %>
+            %>
+        </div>
     </body>
 </html>
