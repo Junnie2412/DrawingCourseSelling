@@ -22,7 +22,7 @@ import users.UserDTO;
 public class UserGoogleHandler extends HttpServlet {
 
     private static final String SIGNIN_PAGE = "signin.jsp";
-    private static final String ADMIN_PAGE = "admin.jsp";
+    private static final String ADMIN_PAGE = "admin/admin.jsp";
     private static final String CUSTOMER_PAGE = "customer.jsp";
     private static final String STAFF_PAGE = "staff.jsp";
     private static final String INSTRUCTOR_PAGE = "instructor.jsp";
@@ -45,7 +45,8 @@ public class UserGoogleHandler extends HttpServlet {
             UserDTO loginUser = dao.checkLoginByGoogle(userID);
             if (loginUser == null) {
                 //create account
-
+                boolean creAccount = dao.createAccGoogle(userID);
+                
                 request.setAttribute("MSG_NEWACC", "Your account is already sign up!");
             } else {
                 String role = loginUser.getRole();
@@ -92,8 +93,8 @@ public class UserGoogleHandler extends HttpServlet {
         String response = Request.Get(link).execute().returnContent().asString();
 
         UserGoogleDTO googlePojo = new Gson().fromJson(response, UserGoogleDTO.class);
-
         return googlePojo;
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
