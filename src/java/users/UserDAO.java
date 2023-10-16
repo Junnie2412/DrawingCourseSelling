@@ -25,14 +25,14 @@ public class UserDAO {
                                                 + "WHERE accountID = ? OR email = ? ";
     private static final String SIGNUP = "INSERT tblAccount VALUES(?, ?, '', '', 'Customer', 1, '', ?)";
     private static final String LOGIN = "SELECT * FROM tblAccount WHERE accountID=? AND password=? ";
-    private static final String LOGINBYGOOGLE = "SELECT fullName, roleID FROM tblUsers WHERE userID=?";
+    private static final String LOGINBYGOOGLE = "SELECT role FROM tblAccount WHERE accountID=?";
     private static final String INSERTSTAFF = "INSERT INTO tblAccount VALUES (?,?,?,?,?,?,?,?)";
     private static final String DELETESTAFF = "DELETE tblAccount WHERE accountID=?";
     private static final String UPDATESTAFF = "UPDATE tblAccount set password=?, fullName=?, dateOfBirth=?, isActive=?, image=?, email=? WHERE accountID=?";
     private static final String LOADSTAFF = "SELECT * FROM tblAccount WHERE role = 'Staff'";
 
     private static final String INSTRUCTOR_LIST = "SELECT * FROM tblAccount WHERE role = 'Instructor'";
-
+    private static final String CREATEACCOUNTGOOGLE = "INSERT INTO tblAccount VALUES (?,?,?,?,?,?,?,?)";
     public UserDTO checkLogin(String userName, String password) throws SQLException {
         UserDTO user = null;
 
@@ -88,16 +88,11 @@ public class UserDAO {
                 ptm.setString(1, userID);
                 rs = ptm.executeQuery();
                 if (rs.next()) {
-                    String fullName = rs.getString("fullName");
-                    Date dateOfBirth = rs.getDate("dateOfBirth");
                     String role = rs.getString("role");
-                    Boolean isActive = rs.getBoolean("isActive");
-                    String image = rs.getString("image");
-                    String email = rs.getString("email");
-                    user = new UserDTO(fullName, "", fullName, dateOfBirth, role, isActive, image, email);
+                    user = new UserDTO(userID, role);
                 }
             }
-        } catch (Exception e) {
+        }catch (Exception e) {
             e.printStackTrace();
         } finally {
             if (rs != null) {
@@ -323,5 +318,28 @@ public class UserDAO {
             }
         }
         return instructorList;
+    }
+    public boolean createAccGoogle(String userID) throws SQLException {
+        boolean check = false;
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        try {
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(CREATEACCOUNTGOOGLE);
+                ptm.setString(1, userID);
+                check = ptm.executeUpdate() > 0 ? true : false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return check;
     }
 }
