@@ -4,6 +4,8 @@
     Author     : Admin
 --%>
 
+<%@page import="course.QuizDAO"%>
+<%@page import="course.VideoDAO"%>
 <%@page import="course.LessonDAO"%>
 <%@page import="course.ModuleDAO"%>
 <%@page import="course.CourseFeedbackDAO"%>
@@ -81,6 +83,8 @@
                         CourseFeedbackDAO courseFeedbackDAO = new CourseFeedbackDAO();
                         ModuleDAO moduleDAO = new ModuleDAO();
                         LessonDAO lessonDAO = new LessonDAO();
+                        VideoDAO videoDAO = new VideoDAO();
+                        QuizDAO quizDAO = new QuizDAO();
                         CourseDAO courseDAO = new CourseDAO();
                         String courseID = request.getParameter("courseID");
                         CourseDTO course = courseDAO.getCourseByCourseID(courseID);
@@ -88,7 +92,7 @@
                     <div class="col-lg-4">
                         <div class="course-video-area mb-lg-0">
                             <div class="video-area bg_img" data-img="assets/images/course/course-info.png">
-                                <a href="https://www.youtube.com/watch?v=XjU0lPXry5E" class="magnific_popup video-button"><i class="flaticon-play-button-inside-a-circle"></i></a>
+                                <a href="<%= videoDAO.getLastestVideoByCourseID(course.getCourseID()).getContent() %>" class="magnific_popup video-button"><i class="flaticon-play-button-inside-a-circle"></i></a>
                             </div>
                             <div class="course-video-content">
                                 <h6 class="title"><%= course.getName() %></h6>
@@ -105,16 +109,16 @@
                                         <span><i class="fas fa-play-circle"></i>Total Lessons</span><span><%= lessonDAO.getTotalLessons(course.getCourseID()) %></span>
                                     </li>
                                     <li>
-                                        <span><i class="fas fa-clock"></i>Duration</span><span>3 Week</span>
+                                        <span><i class="fas fa-clock"></i>Duration</span><span><%= course.getDuration() %></span>
                                     </li>
                                     <li>
-                                        <span><i class="fas fa-brain"></i>Quizzes</span><span>25</span>
+                                        <span><i class="fas fa-brain"></i>Quizzes</span><span><%= quizDAO.getTotalOfQuizzes(course.getCourseID()) %></span>
                                     </li>
                                     <li>
-                                        <span><i class="fas fa-puzzle-piece"></i>Skill Level</span><span>Beginner</span>
+                                        <span><i class="fas fa-puzzle-piece"></i>Skill Level</span><span><%= courseDAO.getDescription(course.getCourseID()).getLevel() %></span>
                                     </li>
                                     <li>
-                                        <span><i class="fas fa-certificate"></i>Certificate</span><span>Yes</span>
+                                        <span><i class="fas fa-certificate"></i>Certificate</span><span>No</span>
                                     </li>
                                 </ul>
                                 <a href="#0" class="custom-button theme-one rounded">Add to cart <i class="fas fa-angle-right"></i></a>
@@ -144,7 +148,7 @@
                                 </div>
                             </div>
                             <div class="course-thumb">
-                                <img src="assets/images/course/course-details.png" class="w-100" alt="course">
+                                <img src="<%= courseDAO.getDescription(course.getCourseID()).getImage()%>" class="w-100" alt="course">
                             </div>
                             <div class="course-details-content section-bg">
                                 <ul class="nav nav-tabs">

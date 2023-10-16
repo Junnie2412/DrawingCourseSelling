@@ -16,6 +16,7 @@ public class VideoDTO {
     private String content;
     private LocalTime time;
     private boolean isActive;
+    private int lessonID;
 
     public VideoDTO() {
     }
@@ -25,6 +26,14 @@ public class VideoDTO {
         this.content = content;
         this.time = time;
         this.isActive = isActive;
+    }
+
+    public VideoDTO(int videoID, String content, LocalTime time, boolean isActive, int lessonID) {
+        this.videoID = videoID;
+        this.content = content;
+        this.time = time;
+        this.isActive = isActive;
+        this.lessonID = lessonID;
     }
 
     public int getVideoID() {
