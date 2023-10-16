@@ -1,4 +1,3 @@
-
 package controllers.userController;
 
 import java.io.IOException;
@@ -19,9 +18,10 @@ import users.UserError;
  * @author TienToan
  */
 public class UpdateStaffController extends HttpServlet {
+
     private static final String ERROR = "LoadStaffController";
     private static final String SUCCESS = "LoadStaffController";
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -32,10 +32,18 @@ public class UpdateStaffController extends HttpServlet {
 
             String accountID = request.getParameter("accountID");
             String fullName = request.getParameter("fullName");
-            String dateString = request.getParameter("dateOfbirth");        
+            String dateString = request.getParameter("dateOfbirth");
             Date dateOfBirth = Date.valueOf(dateString);
             String role = "Staff";
-            boolean isActive = Boolean.parseBoolean(request.getParameter("isActive"));
+
+            boolean isActive=true;
+            String activeStr = request.getParameter("isActive");
+            if (activeStr.equalsIgnoreCase("active")) {
+                isActive = true;
+            } else if (activeStr.equalsIgnoreCase("inactive")) {
+                isActive = false;
+            }
+
             String email = request.getParameter("email");
             String img = request.getParameter("image");
             String password = request.getParameter("password");
@@ -47,22 +55,22 @@ public class UpdateStaffController extends HttpServlet {
             if (fullName.length() < 5 || fullName.length() > 20) {
                 userError.setFullNameError("Full Name must be in [5,20]");
                 checkValidation = false;
-            }      
+            }
             //check email
-            String regex = "^[A-Za-z0-9+_.-]+@(.+)$";  
+            String regex = "^[A-Za-z0-9+_.-]+@(.+)$";
             //Compile regular expression to get the pattern  
-            Pattern pattern = Pattern.compile(regex); 
-            Matcher matcher = pattern.matcher(email);  
-            if(!matcher.matches()){
+            Pattern pattern = Pattern.compile(regex);
+            Matcher matcher = pattern.matcher(email);
+            if (!matcher.matches()) {
                 userError.setEmailError("Your email is not valid!");
                 checkValidation = false;
             }
             if (checkValidation) {
-                UserDTO user = new UserDTO(accountID,password,fullName,dateOfBirth,role,isActive,img,email);
+                UserDTO user = new UserDTO(accountID, password, fullName, dateOfBirth, role, isActive, img, email);
                 boolean checkUpdate = dao.updateStaff(user);
                 if (checkUpdate) {
                     request.setAttribute("MESSAGE", "Updated successfully");
-                    url = SUCCESS;                    
+                    url = SUCCESS;
                 } else {
                     request.setAttribute("ERROR", "Something went wrong! Please try again!");
                 }
@@ -70,8 +78,8 @@ public class UpdateStaffController extends HttpServlet {
                 request.setAttribute("USER_ERROR", userError);
             }
         } catch (Exception e) {
-            log("Error at UpdateStaffController");            
-        }finally {
+            log("Error at UpdateStaffController");
+        } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }
     }
