@@ -70,7 +70,7 @@
 
                         <li class="nav-item">
                             <form action="MainController" method="post">
-                                <input type="submit" name="action" value="All staff" class="custom-button" >
+                                <input type="submit" name="action" value="All Staff" class="custom-button" >
                             </form>                           
                         </li>
                                 </ul>
