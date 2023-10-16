@@ -182,8 +182,7 @@ CREATE TABLE [dbo].[tblOrder](
 	[dateOrder] [datetime] NULL,
 	[total] [float] NULL,
 	[isSuccess] [bit] NULL,
-	[accountID] [varchar](250) NULL,
-	[voucherID] [int] NULL,
+	[accountID] [varchar](250) NULL
 PRIMARY KEY CLUSTERED 
 (
 	[orderID] ASC
@@ -201,6 +200,7 @@ CREATE TABLE [dbo].[tblOrderDetail](
 	[voucherCode] [varchar](20) NULL,
 	[quantity] [int] NULL,
 	[orderID] [int] NULL,
+	[courseID] [varchar](250) NULL,
 	[paymentDetailID] [int] NULL,
 PRIMARY KEY CLUSTERED 
 (
@@ -386,8 +386,7 @@ CREATE TABLE [dbo].[tblVoucher](
 	[discountPercent] [decimal](5, 2) NULL,
 	[voucherCode] [varchar](20) NULL,
 	[createdDay] [datetime] NULL,
-	[expireDay] [datetime] NOT NULL,
-	[courseID] [varchar](250) NULL,
+	[expiredDay] [datetime] NOT NULL
 PRIMARY KEY CLUSTERED 
 (
 	[voucherID] ASC
@@ -438,11 +437,11 @@ GO
 ALTER TABLE [dbo].[tblOrder]  WITH CHECK ADD FOREIGN KEY([accountID])
 REFERENCES [dbo].[tblAccount] ([accountID])
 GO
-ALTER TABLE [dbo].[tblOrder]  WITH CHECK ADD FOREIGN KEY([voucherID])
-REFERENCES [dbo].[tblVoucher] ([voucherID])
-GO
 ALTER TABLE [dbo].[tblOrderDetail]  WITH CHECK ADD FOREIGN KEY([orderID])
 REFERENCES [dbo].[tblOrder] ([orderID])
+GO
+ALTER TABLE [dbo].[tblOrderDetail]  WITH CHECK ADD FOREIGN KEY([courseID])
+REFERENCES [dbo].[tblCourse] ([courseID])
 GO
 ALTER TABLE [dbo].[tblOrderDetail]  WITH CHECK ADD FOREIGN KEY([paymentDetailID])
 REFERENCES [dbo].[tblPaymentDetail] ([paymentDetailID])
@@ -488,9 +487,6 @@ REFERENCES [dbo].[tblQuizQuestion] ([questionID])
 GO
 ALTER TABLE [dbo].[tblUserLog]  WITH CHECK ADD FOREIGN KEY([accountID])
 REFERENCES [dbo].[tblAccount] ([accountID])
-GO
-ALTER TABLE [dbo].[tblVoucher]  WITH CHECK ADD FOREIGN KEY([courseID])
-REFERENCES [dbo].[tblCourse] ([courseID])
 GO
 
 
