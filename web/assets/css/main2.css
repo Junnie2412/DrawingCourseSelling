@@ -6529,4 +6529,39 @@ blockquote::before {
 .all-sections {
     overflow: hidden;
 }
+.all-sections {
+    overflow: hidden;
+}
+
+.user-avatar {
+        width: 50px; /* Đặt chiều rộng cho hình ảnh */
+        height: 50px; /* Đặt chiều cao cho hình ảnh */
+        border-radius: 50%; /* Biến đổi hình ảnh thành hình tròn */
+    }
+
+    .centered-input {
+    text-align: center;
+    padding-left: 0;
+    width: 100%;
+    font-size: 18px;
+}
+ .voucher-label {
+    font-size: 14px; /* Điều chỉnh kích thước font chữ */
+    margin-left: 10px; /* Tạo khoảng cách giữa chữ "Voucher" và "Nhấn vào đây để nhập voucher" */
+    color: #007bff; /* Đổi màu chữ thành màu xanh (tuỳ chọn) */
+    cursor: pointer; /* Biến con trỏ thành dấu tay khi di chuột vào chữ này */
+}
+.voucher-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.custom-apply-button {
+    height: 50px; /* Thiet lap chieu cao cua nut "Apply" tu dong */
+    min-width: 50px; /* Dat chieu rong toi thieu cho nut "Apply" */
+    padding: 10px; /* Thiet lap khoang cach bo cuc ben trong nut "Apply" */
+    box-sizing: content-box;
+    color: white;
+    background-color: blue;
+}
 

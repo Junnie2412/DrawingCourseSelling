@@ -96,7 +96,16 @@
                         <a href="signin.jsp" class="custom-button"><i class="fas fa-user"></i><span>Log In</span></a>
                     <% }else { 
                     %>  
-                       <a href="MainController?action=SignOut" class="custom-button"><i class="fas fa-user"></i><span>Log Out</span></a>            
+                       <div class="user-info dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <img src=".." alt="Avatar" class="user-avatar" class="user-avatar">
+    </a>
+    <div class="dropdown-menu" aria-labelledby="userDropdown">
+        <a class="dropdown-item" href="#">View Course</a>
+        <a class="dropdown-item" href="#">Edit Account</a>
+        <a class="dropdown-item" href="#">Log Out</a>
+    </div>
+</div>           
                     <% } %>
                         
                 </div>
