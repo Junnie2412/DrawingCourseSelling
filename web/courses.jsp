@@ -208,21 +208,6 @@
                                                 <%= course.getPrice()%>đ
                                             </div>
                                         </div>
-                                        <div>
-                                            <%
-                                                UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
-                                                if (loginUser == null) {
-                                            %>
-                                            <button onclick="checkLoginFunction()">Add To Cart</button>
-                                            <%
-                                            } else {
-                                            %>
-                                            <button type="submit" name="action" value="AddToCart">Add To Cart</button>
-                                            <input type="hidden" name="courseID" value="<%= course.getCourseID()%>">
-                                            <%
-                                                }
-                                            %>
-                                        </div>
                                     </div>
                                 </div>
                             </form>
@@ -235,9 +220,6 @@
                     </div>
                     <div class="text-center load-more mt-5">
                         <a href="courses.jsp" class="custom-button theme-one">Load more courses <i class="fas fa-angle-right"></i></a>
-                    </div>
-                    <div class="text-center load-more mt-5">
-                        <a href="viewCart.jsp" class="custom-button theme-one">View Cart <i class="fas fa-angle-right"></i></a>
                     </div>
                 </div>
             </section>
@@ -266,11 +248,6 @@
         <script src="assets/js/owl.min.js"></script>
         <script src="assets/js/main.js"></script>
         
-        <script>
-            function checkLoginFunction() {
-                alert("Before Add to Cart, you must Login first");
-            }
-        </script>
     </body>
 
 </html>

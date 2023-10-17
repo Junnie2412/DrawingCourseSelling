@@ -5,7 +5,10 @@
  */
 package controllers.course;
 
-import course.Cart;
+import cart.Cart;
+import cart.CartDAO;
+import cart.CartItemDAO;
+import cart.CartItemDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -36,7 +39,14 @@ public class RemoveCartController extends HttpServlet {
             if (cart != null) {
                 if (cart.getCart().containsKey(courseID)) {
                     boolean check = cart.remove(courseID);
+                    
                     if (check) {
+                        CartItemDAO cartItemDAO = new CartItemDAO();
+                        CartDAO cartDAO = new CartDAO();
+                        
+                        
+                        
+                        boolean checkRemoveCartItem = cartItemDAO.removeCartItem(0);
                         session.setAttribute("CART", cart);
                         url = SUCCESS;
                     }

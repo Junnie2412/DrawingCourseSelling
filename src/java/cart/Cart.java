@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package course;
+package cart;
 
+import course.CourseDTO;
 import java.util.HashMap;
 import java.util.Map;
 

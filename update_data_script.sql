@@ -289,3 +289,6 @@ VALUES('1','https://www.youtube.com/watch?v=WLU26nqcvfY&t=36s','00:10:11',1,'1')
 ('103','https://www.youtube.com/watch?v=1GoZC30hq50','00:11:35',1,'103'),
 ('104','https://www.youtube.com/watch?v=ZgKmr2HF1WQ','00:04:14',1,'104');
 SET IDENTITY_INSERT tblVideo OFF
+
+-- Update dữ liệu trong voucher --
+INSERT INTO tblVoucher(discountPercent,voucherCode,createdDay,expiredDay) VALUES(0,'NO_DISCOUNT','2023-10-17','2025-10-17');

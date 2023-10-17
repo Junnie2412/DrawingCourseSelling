@@ -4,8 +4,8 @@
     Author     : HOANG DUNG
 --%>
 
+<%@page import="cart.Cart"%>
 <%@page import="course.CourseDTO"%>
-<%@page import="course.Cart"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
