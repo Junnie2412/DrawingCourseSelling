@@ -51,6 +51,9 @@ public class MainController extends HttpServlet {
     private static final String CREATE_VOUCHER = "CreateVoucher";
     private static final String CREATE_VOUCHER_CONTROLLER = "CreateVoucherController";
     
+    private static final String SHOW_LIST_INSTRUCTOR = "Show";
+    private static final String SHOW_LIST_INSTRUCTOR_CONTROLLER = "ShowListController";
+    
     private static final String ADD_TO_CART = "AddToCart";
     private static final String ADD_TO_CART_CONTROLLER = "AddToCartController";
     private static final String REMOVE_COURSE_CART="Remove";
@@ -97,6 +100,8 @@ public class MainController extends HttpServlet {
                 url = ADD_TO_CART_CONTROLLER;
             }else if (action.equals(REMOVE_COURSE_CART)) {
                 url = REMOVE_COURSE_CART_CONTROLLER;
+            }else if (action.equals(SHOW_LIST_INSTRUCTOR)) {
+                url = SHOW_LIST_INSTRUCTOR_CONTROLLER;
             }
         } catch (Exception e) {
             log("Error at MainController: " + e.toString());

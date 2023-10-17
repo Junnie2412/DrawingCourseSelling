@@ -14,5 +14,8 @@
     </head>
     <body>
         <h1>Management System (Staff)</h1>
+        <form action="MainController" method="POST">
+            <input type="button" name="action" value="Show"/>
+        </form>
     </body>
 </html>
