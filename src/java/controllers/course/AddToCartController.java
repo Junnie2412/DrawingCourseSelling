@@ -51,6 +51,7 @@ public class AddToCartController extends HttpServlet {
             
             if (check) {
                 session.setAttribute("CART", cart);
+                request.setAttribute("MESSAGE", "Add to Cart Successfully");
                 url = SUCCESS;
             }
         } catch (Exception e) {
