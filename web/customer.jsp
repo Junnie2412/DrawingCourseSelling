@@ -4,6 +4,7 @@
 <%@page import="course.CourseDAO"%>
 <%@page import="course.ModuleDAO"%>
 <%@page import="course.CourseFeedbackDAO"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@page import="users.UserDTO"%>
 <html lang="en">
@@ -194,21 +195,29 @@
                                             </div>
                                             <div class="meta-item">
                                                 <i class="fas fa-user-graduate"></i>
-                                                <span>20 Students</span>
+                                                <span><%= courseDAO.getDescription(course.getCourseID()).getType() %></span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="ratings-area">
                                         <div class="ratings cl-theme">
-                                            <span><i class="fas fa-star"></i></span>
-                                            <span><i class="fas fa-star"></i></span>
-                                            <span><i class="fas fa-star"></i></span>
-                                            <span><i class="fas fa-star"></i></span>
-                                            <span class="cl-theme-light"><i class="fas fa-star"></i></span>
+                                            <%
+                                                    float avgrate = courseFeedbackDAO.getAverageRate(course.getCourseID());
+                                                    for (int i = 0; i < avgrate; i++){
+                                                %>
+                                                    <span><i class="fas fa-star"></i></span>
+                                                <%
+                                                    }
+                                                    for (int i = 0; i < (5 - avgrate); i++){
+                                                %>
+                                                        <span class="cl-theme-light"><i class="fas fa-star"></i></span>
+                                                <%    
+                                                    }
+                                                %>
                                             <span>(<%= courseFeedbackDAO.getAverageRate(course.getCourseID())%>/5.00)</span>
                                         </div>
                                         <div class="price cl-1">
-                                            <%= course.getPrice()%>?
+                                            <%= course.getPrice()%>ƒë
                                         </div>
                                     </div>
                                 </div>
@@ -315,7 +324,7 @@
                                     <a href="#0"><img src="assets/images/instructor/06.png" alt="instructor"></a>
                                 </div>
                                 <div class="instructor-content">
-                                    <h6 class="title"><a href="#0"> NgÙ Kh·nh H‚n
+                                    <h6 class="title"><a href="#0"> Ng√¥ Kh√°nh H√¢n
                                         </a></h6>
                                     <span class="details">TEACHER</span>
                                 </div>
@@ -327,7 +336,7 @@
                                     <a href="#0"><img src="assets/images/instructor/07.png" alt="instructor"></a>
                                 </div>
                                 <div class="instructor-content">
-                                    <h6 class="title"><a href="#0"> Ho‡ng Minh
+                                    <h6 class="title"><a href="#0"> Ho√†ng Minh
                                         </a></h6>
                                     <span class="details">TEACHER</span>
                                 </div>
@@ -350,7 +359,7 @@
                                     <a href="#0"><img src="assets/images/instructor/09.png" alt="instructor"></a>
                                 </div>
                                 <div class="instructor-content">
-                                    <h6 class="title"><a href="#0">Ho‡ng Linh</a></h6>
+                                    <h6 class="title"><a href="#0">Ho√†ng Linh</a></h6>
                                     <span class="details">TEACHER</span>
                                 </div>
                             </div>
