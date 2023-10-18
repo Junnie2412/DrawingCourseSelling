@@ -41,13 +41,13 @@
                 <div class="main-content">  
                     <div class="page-content"> 
                         <ul class="nav nav-tabs">
-                            <li class="nav-item">
-                                <a class="nav-link active" data-bs-toggle="tab" href="#addStaff">Add Staff Account</a>
+                            <li class="nav-item mr-3">
+                                <a class="nav-link active bg-primary text-white" data-bs-toggle="tab" href="#addStaff">Add Staff Account</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" data-bs-toggle="tab" href="#manageStaff">Manage Staff Account</a>
+                                <a class="nav-link bg-primary text-white" data-bs-toggle="tab" href="#manageStaff">Manage Staff Account</a>
                             </li>           
-                        </ul>   
+                        </ul> 
                         <div class="tab-content">
                             <div class="tab-pane container active" id="addStaff">
                                 <div class="container" style="width: 40%;">                                 
