@@ -82,6 +82,8 @@
             <!-- ~~~ SEARCH by name ~~~ -->
             <%
                 CourseDAO courseDAO = new CourseDAO();
+                CourseFeedbackDAO courseFeedbackDAO = new CourseFeedbackDAO();
+                ModuleDAO moduleDAO = new ModuleDAO();
                 List<CourseDTO> listCourse = (List<CourseDTO>) request.getAttribute("LIST_COURSE");
                 if (listCourse != null) {
                     if (listCourse.size() > 0) {
@@ -90,31 +92,49 @@
 
             <%            for (CourseDTO course : listCourse) {
             %>
-
-            <table border="1">
-
-                <tbody>
-                    <tr>
-                        <td><img style="width: 400px; height:350px" src = "<%= courseDAO.getDescription(course.getCourseID()).getImage()%>"</td>
-                    </tr>
-                    <tr>
-                        <td><%= course.getName()%></td>
-                    </tr>
-                    <tr>
-                        <td><%= courseDAO.getAccount(course.getCourseID()).getFullName()%></td>
-                    </tr>
-                    <tr>
-                        <td><%= course.getPrice()%></td>
-                    </tr>
-                    <tr>
-                        <td><%= course.getDuration()%></td>
-                    </tr>
-                    <tr>
-                        <td><%= courseDAO.getDescription(course.getCourseID()).getLevel()%></td>
-                    </tr>
-                </tbody>
-            </table>
-
+                            <div class="col-xl-4 col-md-6 col-sm-10">
+                                <div class="course-item">
+                                    <div class="thumb">
+                                        <a href="course-details.jsp?courseID=<%= course.getCourseID()%>">
+                                            <img src="<%= courseDAO.getDescription(course.getCourseID()).getImage()%>" alt="course">
+                                        </a>
+                                    </div>
+                                    <div class="content">
+                                        <h5 class="title">
+                                            <a href="course-details.jsp?courseID=<%= course.getCourseID()%>"><%= course.getName()%></a>
+                                        </h5>
+                                        <div class="meta-area">
+                                            <div class="meta">
+                                                <div class="meta-item">
+                                                    <i class="fas fa-user"></i>
+                                                    <span><%= courseDAO.getAccount(course.getCourseID()).getFullName()%></span>
+                                                </div>
+                                                <div class="meta-item">
+                                                    <i class="fas fa-photo-video"></i>
+                                                    <span><%= moduleDAO.getQuantityOfModules(course.getCourseID())%> Modules</span>
+                                                </div>
+                                                <div class="meta-item">
+                                                    <i class="fas fa-user-graduate"></i>
+                                                    <span>20 Students</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ratings-area">
+                                            <div class="ratings cl-theme">
+                                                <span><i class="fas fa-star"></i></span>
+                                                <span><i class="fas fa-star"></i></span>
+                                                <span><i class="fas fa-star"></i></span>
+                                                <span><i class="fas fa-star"></i></span>
+                                                <span class="cl-theme-light"><i class="fas fa-star"></i></span>
+                                                <span>(<%= courseFeedbackDAO.getAverageRate(course.getCourseID())%>/5.00)</span>
+                                            </div>
+                                            <div class="price cl-1">
+                                                <%= course.getPrice()%>đ
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
             <%
                 }
             %>
@@ -126,6 +146,7 @@
             <!-- ~~~ End SEARCH by name~~~ -->
 
             <!-- ~~~ SEARCH by category~~~ -->
+            <!--
             <form action="MainController">
                 Price
                 <input name="coursePrice" type="radio" value="Under-150000"/> Under-150000
@@ -160,8 +181,7 @@
                     </div>
                     <div class="row justify-content-center mb-30-none">
                         <%
-                            CourseFeedbackDAO courseFeedbackDAO = new CourseFeedbackDAO();
-                            ModuleDAO moduleDAO = new ModuleDAO();
+                            
                             List<CourseDTO> list = courseDAO.getlistCourse();
                             if (list != null) {
                                 if (list.size() > 0) {
