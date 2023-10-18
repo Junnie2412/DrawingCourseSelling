@@ -24,7 +24,7 @@
     <!-- Icons Css -->
     <link href="admin/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
     <!-- App Css-->
-    <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
+    <link href="admin/assets/css/app.min.css" rel="stylesheet" type="text/css" />
     <!-- custom Css-->
     <link href="admin/assets/css/custom.min.css" rel="stylesheet" type="text/css" />
      <!-- custom Css-->
@@ -2128,12 +2128,12 @@
     </div>
 
     <!-- JAVASCRIPT -->
-    <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/libs/simplebar/simplebar.min.js"></script>
-    <script src="assets/libs/node-waves/waves.min.js"></script>
-    <script src="assets/libs/feather-icons/feather.min.js"></script>
-    <script src="assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
-    <script src="assets/js/plugins.js"></script>
+    <script src="admin/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="admin/assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="admin/assets/libs/node-waves/waves.min.js"></script>
+    <script src="admin/assets/libs/feather-icons/feather.min.js"></script>
+    <script src="admin/assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
+    <script src="admin/assets/js/plugins.js"></script>
 
     <!-- apexcharts -->
     <script src="admin/assets/libs/apexcharts/apexcharts.min.js"></script>

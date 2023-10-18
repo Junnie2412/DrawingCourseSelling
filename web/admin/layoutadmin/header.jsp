@@ -168,8 +168,8 @@
     </a>
     <div class="dropdown-menu" aria-labelledby="userDropdown">
         <a class="dropdown-item" href="#">View Course</a>
-        <a class="dropdown-item" href="#">Edit Account</a>
-        <a class="dropdown-item" href="#">Log Out</a>
+        <a class="dropdown-item" href="">Edit Account</a>
+        <a class="dropdown-item" href="MainController?action=SignOut">Log Out</a>
     </div>
 </div>           
                 
