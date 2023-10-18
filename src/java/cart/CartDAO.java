@@ -5,12 +5,15 @@
  */
 package cart;
 
+import course.CourseDTO;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import utils.DBUtil;
 
 /**
@@ -23,6 +26,7 @@ public class CartDAO {
     private static final String CHECK_CREATED_DAY_AND_USER = "SELECT * FROM tblCart WHERE createdDay = ? AND accountID =?";
     private static final String REMOVE_CART = "DELETE FROM tblCart WHERE cartItemID = ?";
     private static final String CHECK_ALREADY_ADD_COURSE = "SELECT * FROM tblCartItem ci join tblCart c on ci.cartID = c.cartID WHERE ci.courseID = ? AND accountID = ?";
+    private static final String GET_LIST_CREATED_DAY = "SELECT DISTINCT createdDay FROM tblCart WHERE accountID = ? ORDER BY createdDay DESC";
     
     public boolean createCart(Date createdDay, String accountID) throws SQLException {
         boolean check = false;
@@ -186,6 +190,40 @@ public class CartDAO {
             }
         }
         return check;
+    }
+    
+    public List<Date> getlistCreatedDay(String accountID) throws ClassNotFoundException, SQLException {
+        List<Date> list = new ArrayList<>();
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement ptm = null;
+
+        try {
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(GET_LIST_CREATED_DAY);
+                ptm.setString(1, accountID);
+                rs = ptm.executeQuery();
+                while (rs.next()) {
+                    list.add(rs.getDate("createdDay"));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+
+        return list;
     }
     
     public boolean removeCart(int cartItemID) throws SQLException {

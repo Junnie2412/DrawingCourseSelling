@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import users.UserDTO;
 
 /**
  *
@@ -36,20 +37,29 @@ public class RemoveCartController extends HttpServlet {
             String courseID = request.getParameter("courseID");
             HttpSession session = request.getSession();
             Cart cart = (Cart) session.getAttribute("CART");
+            UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
+
             if (cart != null) {
                 if (cart.getCart().containsKey(courseID)) {
                     boolean check = cart.remove(courseID);
-                    
-                    if (check) {
-                        CartItemDAO cartItemDAO = new CartItemDAO();
-                        CartDAO cartDAO = new CartDAO();
-                        
-                        
-                        
-                        boolean checkRemoveCartItem = cartItemDAO.removeCartItem(0);
+
+                    CartItemDAO cartItemDAO = new CartItemDAO();
+
+                    boolean checkRemoveCartItem = cartItemDAO.removeCartItem(loginUser.getAccountID(), courseID);
+
+                    if (checkRemoveCartItem) {
                         session.setAttribute("CART", cart);
                         url = SUCCESS;
                     }
+                }
+            } else {
+                CartItemDAO cartItemDAO = new CartItemDAO();
+
+                boolean checkRemoveCartItem = cartItemDAO.removeCartItem(loginUser.getAccountID(), courseID);
+
+                if (checkRemoveCartItem) {
+                    session.setAttribute("CART", cart);
+                    url = SUCCESS;
                 }
             }
 

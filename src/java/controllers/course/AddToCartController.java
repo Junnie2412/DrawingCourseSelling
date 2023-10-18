@@ -54,32 +54,40 @@ public class AddToCartController extends HttpServlet {
 
             boolean check = cart.add(course);
 
-            if (check) {
-                CartItemDAO cartItemDAO = new CartItemDAO();
-                CartDAO cartDAO = new CartDAO();
+            String action = request.getParameter("action");
 
-                UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
-                Date createdDay = Date.valueOf(request.getParameter("createdDay"));
+            if (!action.equals("AlreadyBuyNow") && !action.equals("AlreadyAddToCart")) {
+                if (check) {
+                    CartItemDAO cartItemDAO = new CartItemDAO();
+                    CartDAO cartDAO = new CartDAO();
 
-                if (!cartDAO.checkCreatedDayAndUser(createdDay, loginUser.getAccountID())) {
-                    boolean checkCreateCart = cartDAO.createCart(createdDay, loginUser.getAccountID());
-                }
+                    UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
+                    Date createdDay = Date.valueOf(request.getParameter("createdDay"));
 
-                CartDTO cartDTO = cartDAO.getCart(createdDay, loginUser.getAccountID());
+                    if (!cartDAO.checkCreatedDayAndUser(createdDay, loginUser.getAccountID())) {
+                        boolean checkCreateCart = cartDAO.createCart(createdDay, loginUser.getAccountID());
+                    }
 
-                boolean checkCreateCartItem = cartItemDAO.createCartItem(courseID, 1, cartDTO.getCartID());
+                    CartDTO cartDTO = cartDAO.getCart(createdDay, loginUser.getAccountID());
 
-                if (checkCreateCartItem) {
-                    session.setAttribute("CART", cart);
-                    request.setAttribute("MESSAGE", "Add to Cart Successfully");
+                    boolean checkCreateCartItem = cartItemDAO.createCartItem(courseID, 1, cartDTO.getCartID());
 
-                    String action = request.getParameter("action");
-                    if (action.equals("AddToCart")) {
-                        url = ADD_TO_CART;
+                    if (checkCreateCartItem) {
+                        session.setAttribute("CART", cart);
+                        request.setAttribute("MESSAGE", "Add to Cart Successfully");
 
+                        if (action.equals("AddToCart")) {
+                            url = ADD_TO_CART;
+
+                        }
                     }
                 }
             }
+            
+            if(action.equals("AlreadyAddToCart")){
+                url = ADD_TO_CART;
+            }
+
         } catch (Exception e) {
             log("Error at AddController: " + e.toString());
         } finally {

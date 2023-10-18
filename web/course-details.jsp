@@ -129,22 +129,23 @@
                                                 UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
                                                 if (loginUser == null) {
                                             %>
-                                            <button class="custom-button theme-one rounded" onclick="checkLoginFunction()">Buy Now<i class="fas fa-angle-right"></i></button>
-                                            <button class="custom-button theme-one rounded" onclick="checkLoginFunction()">Add To Cart<i class="fas fa-angle-right"></i></button>
+                                            <button class="custom-button theme-one rounded" onclick="checkLoginFunction()">Buy Now<i class="fas fa-angle-right"></i></button><br>
+                                            <button class="custom-button theme-one rounded" onclick="checkLoginFunction()">Add To Cart<i class="fas fa-angle-right"></i></button><br>
                                             <button class="custom-button theme-one rounded" type="submit" name="action" value="ViewCart">View Cart<i class="fas fa-angle-right"></i></button>
                                                 <%
                                                 } else {
                                                 %>
-                                            <button class="custom-button theme-one rounded" type="submit" name="action" value="BuyNow">Buy Now<i class="fas fa-angle-right"></i></button>
                                                 <%
                                                     CartDAO cartDAO = new CartDAO();
                                                     if (cartDAO.checkAlreadyAdd(courseID, loginUser.getAccountID())) {
                                                 %>
-                                            <button class="custom-button theme-one rounded" type="submit" name="action" value="AlreadyAddToCart">Already Add To Cart <i class="fas fa-angle-right"></i></button>
+                                            <button class="custom-button theme-one rounded" type="submit" name="action" value="AlreadyBuyNow">Buy Now<i class="fas fa-angle-right"></i></button><br>
+                                            <button class="custom-button theme-one rounded" type="submit" name="action" value="AlreadyAddToCart">Already Add To Cart <i class="fas fa-angle-right"></i></button><br>
                                                 <%
                                                 } else {
                                                 %>
-                                            <button class="custom-button theme-one rounded" type="submit" name="action" value="AddToCart">Add To Cart <i class="fas fa-angle-right"></i></button>
+                                            <button class="custom-button theme-one rounded" type="submit" name="action" value="BuyNow">Buy Now<i class="fas fa-angle-right"></i></button><br>
+                                            <button class="custom-button theme-one rounded" type="submit" name="action" value="AddToCart">Add To Cart <i class="fas fa-angle-right"></i></button><br>
                                                 <%
                                                     }
                                                 %>
