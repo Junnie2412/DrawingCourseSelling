@@ -31,20 +31,12 @@
         <link rel="stylesheet" href="assets/css/owl.min.css">
         <link rel="stylesheet" href="assets/css/magnific-popup.css">
         <link rel="stylesheet" href="assets/css/flaticon.css">
-        <link rel="stylesheet" href="assets/css/main2.css">
-
-
     </head>
 
     <body>
-
         <!-- Begin page -->
         <div id="layout-wrapper">
-
-
-
             <section class="hero-section banner-overlay bg_img" data-img="../assets/images/banner/banner.png">
-
                 <div class="custom-container">
                     <div class="hero-content">
                         <h1 class="title uppercase cl-white">Checkout</h1>
@@ -191,16 +183,8 @@
                                                                         <i data-feather="lock" class="text-muted icon-xs"></i> Your transaction is secured with SSL encryption
                                                                     </div>
                                                                 </div>
-
-
                                                             </div>
                                                         </div>
-
-
-
-
-
-
                                                     </div>
                                                 </div>
 
@@ -313,7 +297,16 @@
                                                     </tr>
                                                 </tbody>
                                             </table>
-
+                                            <%
+                                                    }
+                                                }
+                                            %>
+                                            <%
+                                                String error = (String) request.getAttribute("ERROR");
+                                                if (error == null) {
+                                                    error = "";
+                                                }
+                                            %>
                                         </div>
                                     </div>
                                     <!-- end card body -->
@@ -335,26 +328,6 @@
             <!-- end main content-->
 
         </div>
-        <!-- END layout-wrapper -->
-
-        <!-- removeItemModal -->
-        <!-- /.modal -->
-
-        <!-- editItemModal -->
-        <!-- /.modal -->
-
-
-
-        <!--start back-to-top-->
-
-        <!--end back-to-top-->
-
-        <!--preloader-->
-
-
-
-
-        <!-- Theme Settings -->
 
 
         <!-- JAVASCRIPT -->
