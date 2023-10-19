@@ -4,6 +4,9 @@
     Author     : Admin
 --%>
 
+<%@page import="course.CourseFeedbackDTO"%>
+<%@page import="java.util.List"%>
+<%@page import="users.ProfileDAO"%>
 <%@page import="cart.CartDAO"%>
 <%@page import="users.UserDTO"%>
 <%@page import="course.QuizDAO"%>
@@ -77,6 +80,7 @@
             <!-- ~~~ Hero Section ~~~ -->
 
             <%
+                ProfileDAO profileDAO = new ProfileDAO();
                 CourseFeedbackDAO courseFeedbackDAO = new CourseFeedbackDAO();
                 ModuleDAO moduleDAO = new ModuleDAO();
                 LessonDAO lessonDAO = new LessonDAO();
@@ -94,17 +98,25 @@
                         <div class="col-lg-4">
                             <form action="MainController" method="POST">
                                 <div class="course-video-area mb-lg-0">
-                                    <div class="video-area bg_img" data-img="assets/images/course/course-info.png">
+                                    <div class="video-area bg_img" data-img="assets/images/course/Thumnail-video-course-detail.jpg">
                                         <a href="<%= videoDAO.getLastestVideoByCourseID(course.getCourseID()).getContent()%>" class="magnific_popup video-button"><i class="flaticon-play-button-inside-a-circle"></i></a>
                                     </div>
                                     <div class="course-video-content">
                                         <h6 class="title"><%= course.getName()%></h6>
                                         <div class="ratings cl-theme">
-                                            <span><i class="fas fa-star"></i></span>
-                                            <span><i class="fas fa-star"></i></span>
-                                            <span><i class="fas fa-star"></i></span>
-                                            <span><i class="fas fa-star"></i></span>
-                                            <span class="cl-theme-light"><i class="fas fa-star"></i></span>
+                                            <%
+                                                float avgrate = courseFeedbackDAO.getAverageRate(courseID);
+                                                for (int i = 0; i < avgrate; i++){
+                                            %>
+                                                <span><i class="fas fa-star"></i></span>
+                                            <%
+                                                }
+                                                for (int i = 0; i < (5 - avgrate); i++){
+                                            %>
+                                                    <span class="cl-theme-light"><i class="fas fa-star"></i></span>
+                                            <%    
+                                                }
+                                            %>
                                             <span>(<%= courseFeedbackDAO.getAverageRate(course.getCourseID())%>/5.00)</span>
                                         </div>
                                         <ul class="course-infos">
@@ -112,7 +124,7 @@
                                                 <span><i class="fas fa-play-circle"></i>Total Lessons</span><span><%= lessonDAO.getTotalLessons(course.getCourseID())%></span>
                                             </li>
                                             <li>
-                                                <span><i class="fas fa-clock"></i>Duration</span><span><%= course.getDuration()%></span>
+                                                <span><i class="fas fa-clock"></i>Duration</span><span><%= course.getDuration()%> minutes</span>
                                             </li>
                                             <li>
                                                 <span><i class="fas fa-brain"></i>Quizzes</span><span><%= quizDAO.getTotalOfQuizzes(course.getCourseID())%></span>
@@ -179,7 +191,7 @@
                                         </div>
                                         <div class="meta-item">
                                             <i class="fas fa-user-graduate"></i>
-                                            <span>20 Students</span>
+                                            <span><%= courseDAO.getDescription(courseID).getType() %></span>
                                         </div>
                                     </div>
                                 </div>
@@ -192,7 +204,7 @@
                                             <a href="#overview" class="active" data-bs-toggle="tab">Overview</a>
                                         </li>
                                         <li>
-                                            <a href="#curriculum" data-bs-toggle="tab">Curriculum </a>
+                                            <a href="#curriculum" data-bs-toggle="tab">Target</a>
                                         </li>
                                         <li>
                                             <a href="#instructor" data-bs-toggle="tab">instructor</a>
@@ -204,24 +216,11 @@
                                     <div class="tab-content">
                                         <div class="tab-pane show fade active" id="overview">
                                             <div class="overview">
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-                                                    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
-                                                    laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in 
-                                                    voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
-                                                    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-                                                    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
-                                                    laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in 
-                                                    voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
-                                                    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                                <p>roin et eros varius, ornare turpis ac, dapibus nisi. Morbi luctus arcu non massa consequat, et 
-                                                    tristique velit semper. Curabitur interdum vulputate sagittis. Donec erat massa, tincidunt sed 
-                                                    feugiat id, suscipit in est. Proin laoreet orci quis augue eleifend varius. Donec hendrerit ex ut 
-                                                    lacus blandit euismod. </p>
+                                                <p><%= courseDAO.getDescription(courseID).getContent() %></p>
                                                 <div class="details-buttons-area">
-                                                    <a href="#0" class="custom-button theme-one">Enroll Now <i class="fas fa-angle-right"></i></a>
-                                                    <a href="#0" class="custom-button bg-white">get membership</a>
-                                                    <ul class="social-icons">
+                                                    <a href="#0" class="custom-button theme-one">Buy Now <i class="fas fa-angle-right"></i></a>
+                                                    <a href="#0" class="custom-button bg-white">Add to Cart</a>
+<!--                                                    <ul class="social-icons">
                                                         <li>
                                                             <a href="#0" class="active"><i class="fab fa-facebook-f"></i></a>
                                                         </li>
@@ -231,30 +230,17 @@
                                                         <li>
                                                             <a href="#0"><i class="fab fa-instagram"></i></a>
                                                         </li>
-                                                    </ul>
+                                                    </ul>-->
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="tab-pane fade" id="curriculum">
                                             <div class="overview">
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-                                                    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
-                                                    laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in 
-                                                    voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
-                                                    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-                                                    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
-                                                    laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in 
-                                                    voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
-                                                    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                                <p>roin et eros varius, ornare turpis ac, dapibus nisi. Morbi luctus arcu non massa consequat, et 
-                                                    tristique velit semper. Curabitur interdum vulputate sagittis. Donec erat massa, tincidunt sed 
-                                                    feugiat id, suscipit in est. Proin laoreet orci quis augue eleifend varius. Donec hendrerit ex ut 
-                                                    lacus blandit euismod. </p>
+                                                <p><%= courseDAO.getDescription(courseID).getTarget() %></p>
                                                 <div class="details-buttons-area">
-                                                    <a href="#0" class="custom-button theme-one">Enroll Now <i class="fas fa-angle-right"></i></a>
-                                                    <a href="#0" class="custom-button bg-white">get membership</a>
-                                                    <ul class="social-icons">
+                                                    <a href="#0" class="custom-button theme-one">Buy Now <i class="fas fa-angle-right"></i></a>
+                                                    <a href="#0" class="custom-button bg-white">Add to Cart</a>
+<!--                                                    <ul class="social-icons">
                                                         <li>
                                                             <a href="#0"><i class="fab fa-facebook-f"></i></a>
                                                         </li>
@@ -264,7 +250,7 @@
                                                         <li>
                                                             <a href="#0"><i class="fab fa-instagram"></i></a>
                                                         </li>
-                                                    </ul>
+                                                    </ul>-->
                                                 </div>
                                             </div>
                                         </div>
@@ -272,19 +258,16 @@
                                             <div class="overview text-center">
                                                 <div class="instructor-item">
                                                     <div class="instructor-thumb">
-                                                        <a href="#0"><img src="assets/images/instructor/04.png" alt="instructor"></a>
+                                                        <a href="#0"><img src="<%= courseDAO.getAccount(courseID).getImage() %>" alt="instructor"></a>
                                                     </div>
                                                     <div class="instructor-content">
-                                                        <h6 class="title"><a href="#0">Manuel Nuer</a></h6>
+                                                        <h6 class="title"><a href="#0"><%= courseDAO.getAccount(courseID).getFullName() %></a></h6>
                                                         <span class="details">TEACHER</span>
                                                     </div>
                                                 </div>
-                                                <p>Sed do eiusmod tempor incididunt ut 
-                                                    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
-                                                    laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in 
-                                                    voluptate velit esse cillum dolore eu fugiat nulla pariatur..</p>
+                                                <p><%= profileDAO.getProfileByCourseID(courseID) %></p>
                                                 <div class="details-buttons-area">
-                                                    <ul class="social-icons justify-content-center w-100">
+<!--                                                    <ul class="social-icons justify-content-center w-100">
                                                         <li>
                                                             <a href="#0"><i class="fab fa-facebook-f"></i></a>
                                                         </li>
@@ -294,69 +277,50 @@
                                                         <li>
                                                             <a href="#0"><i class="fab fa-instagram"></i></a>
                                                         </li>
-                                                    </ul>
+                                                    </ul>-->
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="tab-pane fade" id="reviews">
                                             <div class="client-review">
                                                 <div class="review-comments">
-                                                    <h6 class="review-title">Reviews (03)</h6>
+                                                    <h6 class="review-title">Reviews (<%= courseFeedbackDAO.getTotalFeedback(courseID) %>)</h6>
                                                     <ul class="review-contents">
+                                                        <%
+                                                            List<CourseFeedbackDTO> listFeedback = courseFeedbackDAO.getListCourseFeedback(courseID);
+                                                            if (listFeedback != null) {
+                                                                if (listFeedback.size() > 0) {
+                                                                    for (CourseFeedbackDTO feedback : listFeedback) {
+                                                        %>
                                                         <li>
                                                             <div class="thumb">
-                                                                <img src="assets/images/course/client/client04.png" alt="course">
+                                                                <img src="<%= courseFeedbackDAO.getAccount(feedback.getCourseFeedbackID()).getImage() %>" alt="course">
                                                             </div>
                                                             <div class="cont">
-                                                                <h6 class="subtitle">Robot Smith</h6>
+                                                                <h6 class="subtitle"><%= courseFeedbackDAO.getAccount(feedback.getCourseFeedbackID()).getFullName() %></h6>
                                                                 <div class="ratings cl-theme">
-                                                                    <span><i class="fas fa-star"></i></span>
-                                                                    <span><i class="fas fa-star"></i></span>
-                                                                    <span><i class="fas fa-star"></i></span>
-                                                                    <span><i class="fas fa-star"></i></span>
-                                                                    <span><i class="fas fa-star"></i></span>
+                                                                    <%
+                                                                        float rate = feedback.getRate();
+                                                                        for (int i = 0; i < rate; i++){
+                                                                    %>
+                                                                        <span><i class="fas fa-star"></i></span>
+                                                                    <%
+                                                                        }
+                                                                        for (int i = 0; i < (5 - rate); i++){
+                                                                    %>
+                                                                            <span class="cl-theme-light"><i class="fas fa-star"></i></span>
+                                                                    <%    
+                                                                        }
+                                                                    %>
                                                                 </div>
-                                                                <p>
-                                                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim unde et culpa voluptatibus repellat voluptates aliquid minima
-                                                                </p>
+                                                                <p><%= feedback.getFeedback() %></p>
                                                             </div>
                                                         </li>
-                                                        <li>
-                                                            <div class="thumb">
-                                                                <img src="assets/images/course/client/client02.png" alt="course">
-                                                            </div>
-                                                            <div class="cont">
-                                                                <h6 class="subtitle">Nicolas Anelca</h6>
-                                                                <div class="ratings cl-theme">
-                                                                    <span><i class="fas fa-star"></i></span>
-                                                                    <span><i class="fas fa-star"></i></span>
-                                                                    <span><i class="fas fa-star"></i></span>
-                                                                    <span><i class="fas fa-star"></i></span>
-                                                                    <span class="cl-theme-light"><i class="fas fa-star"></i></span>
-                                                                </div>
-                                                                <p>
-                                                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim unde et culpa voluptatibus repellat voluptates aliquid minima
-                                                                </p>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="thumb">
-                                                                <img src="assets/images/course/client/client03.png" alt="course">
-                                                            </div>
-                                                            <div class="cont">
-                                                                <h6 class="subtitle">Harry Johnshon</h6>
-                                                                <div class="ratings cl-theme">
-                                                                    <span><i class="fas fa-star"></i></span>
-                                                                    <span><i class="fas fa-star"></i></span>
-                                                                    <span><i class="fas fa-star"></i></span>
-                                                                    <span><i class="fas fa-star"></i></span>
-                                                                    <span><i class="fas fa-star"></i></span>
-                                                                </div>
-                                                                <p>
-                                                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim unde et culpa voluptatibus repellat voluptates aliquid minima
-                                                                </p>
-                                                            </div>
-                                                        </li>
+                                                        <%
+                                                                    }
+                                                                }
+                                                            }
+                                                        %> 
                                                     </ul>
                                                 </div>
                                                 <div class="review-form">

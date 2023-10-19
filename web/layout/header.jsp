@@ -90,9 +90,9 @@
                             }
 
                     %> 
-                    <form class="course-search-form ml-auto mr-4">
-                        <input type="text" name="searchName" value="<%= search%>" placeholder="Search Courses" class="rounded pl-0">
-                        <button type="submit" class="rounded" name="action" value="Search"><i class="flaticon-loupe"></i></button>
+                    <form class="course-search-form ml-auto mr-4" method="post" action="MainController?action=Search">
+                        <input type="text" name="searchName" value="<%= search %>" placeholder="Search Courses" class="rounded pl-0">
+                        <button type="submit" class="rounded" value="Search"><i class="flaticon-loupe"></i></button>
                     </form> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <% 
                          if (loginUser.getRole()=="") { 
@@ -100,16 +100,16 @@
                         <a href="signin.jsp" class="custom-button"><i class="fas fa-user"></i><span>Log In</span></a>
                     <% }else { 
                     %>  
-                       <div class="user-info dropdown">
-    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <img src=".." alt="Avatar" class="user-avatar" class="user-avatar">
-    </a>
-    <div class="dropdown-menu" aria-labelledby="userDropdown">
-        <a class="dropdown-item" href="#">View Course</a>
-        <a class="dropdown-item" href="Editaccount.jsp">Edit Account</a>
-        <a class="dropdown-item" href="MainController?action=SignOut">Log Out</a>
-    </div>
-</div>           
+                        <div class="user-info dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img src=".." alt="Avatar" class="user-avatar" class="user-avatar">
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="#">View Course</a>
+                                <a class="dropdown-item" href="Editaccount.jsp">Edit Account</a>
+                                <a class="dropdown-item" href="MainController?action=SignOut">Log Out</a>
+                            </div>
+                        </div>           
                     <% } %>
                         
                 </div>
