@@ -46,8 +46,11 @@ public class UserGoogleHandler extends HttpServlet {
             if (loginUser == null) {
                 //create account
                 boolean creAccount = dao.createAccGoogle(userID);
-                
-                request.setAttribute("MSG_NEWACC", "Your account is already sign up!");
+                if(creAccount){
+                    request.setAttribute("MSG_NEWACC", "Your account is already sign up!");
+                    url = CUSTOMER_PAGE;
+                    
+                }                
             } else {
                 String role = loginUser.getRole();
                 HttpSession session = request.getSession();

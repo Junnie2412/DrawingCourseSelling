@@ -92,49 +92,49 @@
 
             <%            for (CourseDTO course : listCourse) {
             %>
-                            <div class="col-xl-4 col-md-6 col-sm-10">
-                                <div class="course-item">
-                                    <div class="thumb">
-                                        <a href="course-details.jsp?courseID=<%= course.getCourseID()%>">
-                                            <img src="<%= courseDAO.getDescription(course.getCourseID()).getImage()%>" alt="course">
-                                        </a>
-                                    </div>
-                                    <div class="content">
-                                        <h5 class="title">
-                                            <a href="course-details.jsp?courseID=<%= course.getCourseID()%>"><%= course.getName()%></a>
-                                        </h5>
-                                        <div class="meta-area">
-                                            <div class="meta">
-                                                <div class="meta-item">
-                                                    <i class="fas fa-user"></i>
-                                                    <span><%= courseDAO.getAccount(course.getCourseID()).getFullName()%></span>
-                                                </div>
-                                                <div class="meta-item">
-                                                    <i class="fas fa-photo-video"></i>
-                                                    <span><%= moduleDAO.getQuantityOfModules(course.getCourseID())%> Modules</span>
-                                                </div>
-                                                <div class="meta-item">
-                                                    <i class="fas fa-user-graduate"></i>
-                                                    <span>20 Students</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="ratings-area">
-                                            <div class="ratings cl-theme">
-                                                <span><i class="fas fa-star"></i></span>
-                                                <span><i class="fas fa-star"></i></span>
-                                                <span><i class="fas fa-star"></i></span>
-                                                <span><i class="fas fa-star"></i></span>
-                                                <span class="cl-theme-light"><i class="fas fa-star"></i></span>
-                                                <span>(<%= courseFeedbackDAO.getAverageRate(course.getCourseID())%>/5.00)</span>
-                                            </div>
-                                            <div class="price cl-1">
-                                                <%= course.getPrice()%>đ
-                                            </div>
-                                        </div>
-                                    </div>
+            <div class="col-xl-4 col-md-6 col-sm-10">
+                <div class="course-item">
+                    <div class="thumb">
+                        <a href="course-details.jsp?courseID=<%= course.getCourseID()%>">
+                            <img src="<%= courseDAO.getDescription(course.getCourseID()).getImage()%>" alt="course">
+                        </a>
+                    </div>
+                    <div class="content">
+                        <h5 class="title">
+                            <a href="course-details.jsp?courseID=<%= course.getCourseID()%>"><%= course.getName()%></a>
+                        </h5>
+                        <div class="meta-area">
+                            <div class="meta">
+                                <div class="meta-item">
+                                    <i class="fas fa-user"></i>
+                                    <span><%= courseDAO.getAccount(course.getCourseID()).getFullName()%></span>
                                 </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-photo-video"></i>
+                                    <span><%= moduleDAO.getQuantityOfModules(course.getCourseID())%> Modules</span>
                                 </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-user-graduate"></i>
+                                    <span>20 Students</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ratings-area">
+                            <div class="ratings cl-theme">
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span>
+                                <span class="cl-theme-light"><i class="fas fa-star"></i></span>
+                                <span>(<%= courseFeedbackDAO.getAverageRate(course.getCourseID())%>/5.00)</span>
+                            </div>
+                            <div class="price cl-1">
+                                <%= course.getPrice()%>đ
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <%
                 }
             %>
@@ -146,25 +146,55 @@
             <!-- ~~~ End SEARCH by name~~~ -->
 
             <!-- ~~~ SEARCH by category~~~ -->
-            <!--
-            <form action="MainController">
-                Price
-                <input name="coursePrice" type="radio" value="Under-150000"/> Under-150000
-                <input name="coursePrice" type="radio" value="Approximately-150000"/>Approximately-150000
-                <input name="coursePrice" type="radio" value="Above-150000"/>Above-150000
+            <div class="container">
+                <form action="MainController" class="my-4">
+                    <div class="mb-3">
+                        <label class="form-label">Price</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="coursePrice" id="under150k" value="Under-150000">
+                            <label class="form-check-label" for="under150k">Under 150000</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="coursePrice" id="approx150k" value="Approximately-150000">
+                            <label class="form-check-label" for="approx150k">Approximately 150000</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="coursePrice" id="above150k" value="Above-150000">
+                            <label class="form-check-label" for="above150k">Above 150000</label>
+                        </div>
+                    </div>
 
-                Type
-                <input name="courseType" type="radio" value="Digital"/> Digital
-                <input name="courseType" type="radio" value="Traditional"/> Traditional
+                    <div class="mb-3">
+                        <label class="form-label">Type</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="courseType" id="digital" value="Digital">
+                            <label class="form-check-label" for="digital">Digital</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="courseType" id="traditional" value="Traditional">
+                            <label class="form-check-label" for="traditional">Traditional</label>
+                        </div>
+                    </div>
 
-                Level
-                <input name="courseLevel" type="radio" value="Basic"/>Basic
-                <input name="courseLevel" type="radio" value="Intermediate"/>Intermediate
-                <input name="courseLevel" type="radio" value="Advanced"/>Advanced
-            </form>
+                    <div class="mb-3">
+                        <label class="form-label">Level</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="courseLevel" id="basic" value="Basic">
+                            <label class="form-check-label" for="basic">Basic</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="courseLevel" id="intermediate" value="Intermediate">
+                            <label class="form-check-label" for="intermediate">Intermediate</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="courseLevel" id="advanced" value="Advanced">
+                            <label class="form-check-label" for="advanced">Advanced</label>
+                        </div>
+                    </div>
 
-            <!-- ~~~ End SEARCH by category~~~ -->
-
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </form>
+            </div>
 
             <!-- ~~~ Course Section ~~~ -->
             <section class="course-section pt-120 pb-120 section-bg oh pos-rel">
@@ -181,7 +211,6 @@
                     </div>
                     <div class="row justify-content-center mb-30-none">
                         <%
-                            
                             List<CourseDTO> list = courseDAO.getlistCourse();
                             if (list != null) {
                                 if (list.size() > 0) {
@@ -267,7 +296,7 @@
         <script src="assets/js/nice-select.js"></script>
         <script src="assets/js/owl.min.js"></script>
         <script src="assets/js/main.js"></script>
-        
+
     </body>
 
 </html>
