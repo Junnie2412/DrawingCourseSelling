@@ -24,10 +24,14 @@ public class UserDTO {
     public UserDTO() {
         this.role="";
     }
-    public UserDTO(String accountID, String role) {
+
+    public UserDTO(String accountID, String fullName, String role, String image) {
         this.accountID = accountID;
+        this.fullName = fullName;
         this.role = role;
+        this.image = image;
     }
+    
     public UserDTO(String accountID, String password, String fullName, Date dateOfBirth, String role, boolean isActive, String image, String email) {
         this.accountID = accountID;
         this.password = password;

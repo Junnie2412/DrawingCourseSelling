@@ -102,12 +102,12 @@
                     %>  
                         <div class="user-info dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src=".." alt="Avatar" class="user-avatar" class="user-avatar">
+                                <img src="<%=loginUser.getImage()%>" alt="<%=loginUser.getFullName()%>" class="user-avatar" class="user-avatar">
                             </a>
                             <div class="dropdown-menu" aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="#">View Course</a>
-                                <a class="dropdown-item" href="Editaccount.jsp">Edit Account</a>
-                                <a class="dropdown-item" href="MainController?action=SignOut">Log Out</a>
+                                <a class="dropdown-item" href="Editaccount.jsp">Manage your Account</a>
+                                <a class="dropdown-item" href="MainController?action=SignOut">Logout</a>
                             </div>
                         </div>           
                     <% } %>

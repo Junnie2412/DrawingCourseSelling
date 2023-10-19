@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import userGoogle.UserGoogleDTO;
 
 /**
  *
@@ -25,14 +26,14 @@ public class UserDAO {
                                                 + "WHERE accountID = ? OR email = ? ";
     private static final String SIGNUP = "INSERT tblAccount VALUES(?, ?, '', '', 'Customer', 1, '', ?)";
     private static final String LOGIN = "SELECT * FROM tblAccount WHERE accountID=? AND password=? ";
-    private static final String LOGINBYGOOGLE = "SELECT role FROM tblAccount WHERE accountID=?";
+    private static final String LOGINBYGOOGLE = "SELECT * FROM tblAccount WHERE accountID=?";
     private static final String INSERTSTAFF = "INSERT INTO tblAccount VALUES (?,?,?,?,?,?,?,?)";
     private static final String DELETESTAFF = "DELETE tblAccount WHERE accountID=?";
     private static final String UPDATESTAFF = "UPDATE tblAccount set password=?, fullName=?, dateOfBirth=?, isActive=?, image=?, email=? WHERE accountID=?";
     private static final String LOADSTAFF = "SELECT * FROM tblAccount WHERE role = 'Staff'";
 
     private static final String INSTRUCTOR_LIST = "SELECT * FROM tblAccount WHERE role = 'Instructor'";
-    private static final String CREATEACCOUNTGOOGLE = "INSERT INTO tblAccount VALUES (?)";
+    private static final String CREATEACCOUNTGOOGLE = "INSERT INTO tblAccount(accountID, fullName, role, image) VALUES (?,?,?,?)";
     public UserDTO checkLogin(String userName, String password) throws SQLException {
         UserDTO user = null;
 
@@ -88,8 +89,10 @@ public class UserDAO {
                 ptm.setString(1, userID);
                 rs = ptm.executeQuery();
                 if (rs.next()) {
+                    String fullName = rs.getString("fullName");
                     String role = rs.getString("role");
-                    user = new UserDTO(userID, role);
+                    String img = rs.getString("image");
+                    user = new UserDTO(userID, fullName, role, img);
                 }
             }
         }catch (Exception e) {
@@ -319,7 +322,7 @@ public class UserDAO {
         }
         return instructorList;
     }
-    public boolean createAccGoogle(String userID) throws SQLException {
+    public boolean createAccGoogle(UserGoogleDTO user) throws SQLException {
         boolean check = false;
         Connection conn = null;
         PreparedStatement ptm = null;
@@ -327,7 +330,10 @@ public class UserDAO {
             conn = DBUtil.getConnection();
             if (conn != null) {
                 ptm = conn.prepareStatement(CREATEACCOUNTGOOGLE);
-                ptm.setString(1, userID);
+                ptm.setString(1, user.getId());
+                ptm.setString(2, user.getGiven_name());
+                ptm.setString(3, "Customer");
+                ptm.setString(4, user.getPicture());
                 check = ptm.executeUpdate() > 0 ? true : false;
             }
         } catch (Exception e) {

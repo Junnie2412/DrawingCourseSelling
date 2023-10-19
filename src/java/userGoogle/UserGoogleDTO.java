@@ -32,7 +32,7 @@ public class UserGoogleDTO {
         this.family_name = family_name;
         this.picture = picture;
     }
-
+    
     public String getId() {
         return id;
     }
