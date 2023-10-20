@@ -115,17 +115,25 @@
                                                 </div>
                                                 <div class="meta-item">
                                                     <i class="fas fa-user-graduate"></i>
-                                                    <span>20 Students</span>
+                                                    <span><%= courseDAO.getDescription(course.getCourseID()).getType() %></span>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="ratings-area">
                                             <div class="ratings cl-theme">
-                                                <span><i class="fas fa-star"></i></span>
-                                                <span><i class="fas fa-star"></i></span>
-                                                <span><i class="fas fa-star"></i></span>
-                                                <span><i class="fas fa-star"></i></span>
-                                                <span class="cl-theme-light"><i class="fas fa-star"></i></span>
+                                                <%
+                                                    float avgrate = courseFeedbackDAO.getAverageRate(course.getCourseID());
+                                                    for (int i = 0; i < avgrate; i++){
+                                                %>
+                                                    <span><i class="fas fa-star"></i></span>
+                                                <%
+                                                    }
+                                                    for (int i = 0; i < (5 - avgrate); i++){
+                                                %>
+                                                        <span class="cl-theme-light"><i class="fas fa-star"></i></span>
+                                                <%    
+                                                    }
+                                                %>
                                                 <span>(<%= courseFeedbackDAO.getAverageRate(course.getCourseID())%>/5.00)</span>
                                             </div>
                                             <div class="price cl-1">
@@ -211,17 +219,25 @@
                                                 </div>
                                                 <div class="meta-item">
                                                     <i class="fas fa-user-graduate"></i>
-                                                    <span>20 Students</span>
+                                                    <span><%= courseDAO.getDescription(course.getCourseID()).getType() %></span>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="ratings-area">
                                             <div class="ratings cl-theme">
-                                                <span><i class="fas fa-star"></i></span>
-                                                <span><i class="fas fa-star"></i></span>
-                                                <span><i class="fas fa-star"></i></span>
-                                                <span><i class="fas fa-star"></i></span>
-                                                <span class="cl-theme-light"><i class="fas fa-star"></i></span>
+                                                <%
+                                                    float avgrate = courseFeedbackDAO.getAverageRate(course.getCourseID());
+                                                    for (int i = 0; i < avgrate; i++){
+                                                %>
+                                                    <span><i class="fas fa-star"></i></span>
+                                                <%
+                                                    }
+                                                    for (int i = 0; i < (5 - avgrate); i++){
+                                                %>
+                                                        <span class="cl-theme-light"><i class="fas fa-star"></i></span>
+                                                <%    
+                                                    }
+                                                %>
                                                 <span>(<%= courseFeedbackDAO.getAverageRate(course.getCourseID())%>/5.00)</span>
                                             </div>
                                             <div class="price cl-1">
