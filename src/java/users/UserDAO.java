@@ -32,7 +32,7 @@ public class UserDAO {
     private static final String LOADSTAFF = "SELECT * FROM tblAccount WHERE role = 'Staff'";
 
     private static final String INSTRUCTOR_LIST = "SELECT * FROM tblAccount WHERE role = 'Instructor'";
-    private static final String CREATEACCOUNTGOOGLE = "INSERT INTO tblAccount VALUES (?,?,?,?,?,?,?,?)";
+    private static final String CREATEACCOUNTGOOGLE = "INSERT INTO tblAccount VALUES (?)";
     public UserDTO checkLogin(String userName, String password) throws SQLException {
         UserDTO user = null;
 
