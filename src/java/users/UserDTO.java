@@ -24,10 +24,19 @@ public class UserDTO {
     public UserDTO() {
         this.role="";
     }
+
     public UserDTO(String accountID, String role) {
         this.accountID = accountID;
         this.role = role;
     }
+
+    public UserDTO(String accountID, String fullName, String role, String image) {
+        this.accountID = accountID;
+        this.fullName = fullName;
+        this.role = role;
+        this.image = image;
+    }
+    
     public UserDTO(String accountID, String password, String fullName, Date dateOfBirth, String role, boolean isActive, String image, String email) {
         this.accountID = accountID;
         this.password = password;
@@ -43,9 +52,7 @@ public class UserDTO {
         this.accountID = accountID;
         this.password = password;
         this.email = email;
-    }
-    
-    
+    }    
 
     public String getAccountID() {
         return accountID;

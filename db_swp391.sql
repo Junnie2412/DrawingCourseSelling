@@ -28,8 +28,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[tblCart](
 	[cartID] [int] IDENTITY(1,1) NOT NULL,
-	[quantity] [int] NULL,
-	[cartItemID] [int] NULL,
+	[createdDay] [date] NULL,
 	[accountID] [varchar](250) NULL,
 PRIMARY KEY CLUSTERED 
 (
@@ -44,8 +43,9 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[tblCartItem](
 	[cartItemID] [int] IDENTITY(1,1) NOT NULL,
-	[quantity] [int] NULL,
 	[courseID] [varchar](250) NULL,
+	[voucherID] [int] NULL,
+	[cartID] [int] NULL,
 PRIMARY KEY CLUSTERED 
 (
 	[cartItemID] ASC
@@ -398,11 +398,14 @@ GO
 ALTER TABLE [dbo].[tblCart]  WITH CHECK ADD FOREIGN KEY([accountID])
 REFERENCES [dbo].[tblAccount] ([accountID])
 GO
-ALTER TABLE [dbo].[tblCart]  WITH CHECK ADD FOREIGN KEY([cartItemID])
-REFERENCES [dbo].[tblCartItem] ([cartItemID])
-GO
 ALTER TABLE [dbo].[tblCartItem]  WITH CHECK ADD FOREIGN KEY([courseID])
 REFERENCES [dbo].[tblCourse] ([courseID])
+GO
+ALTER TABLE [dbo].[tblCartItem]  WITH CHECK ADD FOREIGN KEY([voucherID])
+REFERENCES [dbo].[tblVoucher] ([voucherID])
+GO
+ALTER TABLE [dbo].[tblCartItem]  WITH CHECK ADD FOREIGN KEY([cartID])
+REFERENCES [dbo].[tblCart] ([cartID])
 GO
 ALTER TABLE [dbo].[tblCourse]  WITH CHECK ADD FOREIGN KEY([accountID])
 REFERENCES [dbo].[tblAccount] ([accountID])

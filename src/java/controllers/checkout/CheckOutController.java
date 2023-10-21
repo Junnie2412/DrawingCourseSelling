@@ -1,16 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package controllers.course;
+package controllers.checkout;
 
-import cart.Cart;
-import cart.CartDAO;
-import cart.CartItemDAO;
-import cart.CartItemDTO;
+import course.CourseDAO;
+import course.CourseDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,44 +14,54 @@ import users.UserDTO;
 
 /**
  *
- * @author HOANG DUNG
+ * @author TienToan
  */
-public class RemoveCartController extends HttpServlet {
+public class CheckOutController extends HttpServlet {
 
-    private static final String ERROR = "viewCart.jsp";
-    private static final String SUCCESS = "viewCart.jsp";
+    private static final String ERROR = "checkout.jsp";
+    private static final String SUCCESS = "checkout.jsp";
+    private static final String CUS = "Customer";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
         String url = ERROR;
-
+        boolean check = false;
         try {
-            String courseID = request.getParameter("courseID");
             HttpSession session = request.getSession();
-            Cart cart = (Cart) session.getAttribute("CART");
-            UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
-            
-            CartItemDAO cartItemDAO = new CartItemDAO();
+            UserDTO userLogin = (UserDTO) session.getAttribute("LOGIN_USER");
+            if (userLogin != null) {
+                String roleID = userLogin.getRole();
+                if (CUS.equals(roleID)) {
+                    check = true;
+                }
+            } else {
+                request.setAttribute("MSG", "You need to login to buy course!");
+                request.getRequestDispatcher("signin.jsp").forward(request, response);
+                return;
+            }
+            if (check) {
+                //get cart in database
+                String accountID = userLogin.getAccountID();
+                CourseDAO dao = new CourseDAO();
+                List<CourseDTO> getCart = dao.getCart(accountID);
+                //get id from parameter
+                String courseID = request.getParameter("courseID");
+                CourseDTO course = dao.getCourseByCourseID(courseID);
+                if (course != null) {
+                    getCart.add(course);
 
-            boolean checkRemoveCartItem = cartItemDAO.removeCartItem(loginUser.getAccountID(), courseID);
-
-            if(checkRemoveCartItem){
-                boolean check = cart.remove(courseID);
-               
-                if(check){
-                    session.setAttribute("CART", cart);
-                    url = SUCCESS;
+                }
+                if (getCart == null) {
+                    request.setAttribute("ERROR", "You have no course, continue to buy course!");
+                } else {
+                    session.setAttribute("CART", getCart);
                 }
             }
-
         } catch (Exception e) {
-            log("Error at AddController: " + e.toString());
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

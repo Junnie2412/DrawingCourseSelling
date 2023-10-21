@@ -5,11 +5,16 @@
  */
 package controllers.course;
 
-import course.Cart;
+import cart.Cart;
+import cart.CartDAO;
+import cart.CartDTO;
+import cart.CartItemDAO;
+import cart.CartItemDTO;
 import course.CourseDAO;
 import course.CourseDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,33 +31,68 @@ import users.UserDTO;
 @WebServlet(name = "AddToCartController", urlPatterns = {"/AddToCartController"})
 public class AddToCartController extends HttpServlet {
 
-    private static final String ERROR = "courses.jsp";
-    private static final String SUCCESS = "courses.jsp";
+    private static final String BUY_NOW = "viewCart.jsp";
+    private static final String ADD_TO_CART = "course-details.jsp";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        String url = ERROR;
+        String url = BUY_NOW;
         try {
             String courseID = request.getParameter("courseID");
 
             HttpSession session = request.getSession();
             Cart cart = (Cart) session.getAttribute("CART");
-            
+
             if (cart == null) {
                 cart = new Cart();
             }
-            
+
             CourseDAO courseDAO = new CourseDAO();
             CourseDTO course = courseDAO.getCourseByCourseID(courseID);
-            
+
             boolean check = cart.add(course);
+
+            String action = request.getParameter("action");
             
-            if (check) {
+            if(check){
                 session.setAttribute("CART", cart);
-                url = SUCCESS;
+                request.setAttribute("MESSAGE", "Add to Cart Successfully");
             }
+
+            if (!action.equals("AlreadyBuyNow") && !action.equals("AlreadyAddToCart")) {
+                if (check) {
+                    CartItemDAO cartItemDAO = new CartItemDAO();
+                    CartDAO cartDAO = new CartDAO();
+
+                    UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
+                    Date createdDay = Date.valueOf(request.getParameter("createdDay"));
+
+                    if (!cartDAO.checkCreatedDayAndUser(createdDay, loginUser.getAccountID())) {
+                        boolean checkCreateCart = cartDAO.createCart(createdDay, loginUser.getAccountID());
+                    }
+
+                    CartDTO cartDTO = cartDAO.getCart(createdDay, loginUser.getAccountID());
+
+                    boolean checkCreateCartItem = cartItemDAO.createCartItem(courseID, 1, cartDTO.getCartID());
+
+                    if (checkCreateCartItem) {
+                        session.setAttribute("CART", cart);
+                        request.setAttribute("MESSAGE", "Add to Cart Successfully");
+
+                        if (action.equals("AddToCart")) {
+                            url = ADD_TO_CART;
+
+                        }
+                    }
+                }
+            }
+            
+            if(action.equals("AlreadyAddToCart")){
+                url = ADD_TO_CART;
+            }
+
         } catch (Exception e) {
             log("Error at AddController: " + e.toString());
         } finally {

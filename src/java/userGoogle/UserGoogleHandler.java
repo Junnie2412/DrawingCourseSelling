@@ -24,7 +24,7 @@ public class UserGoogleHandler extends HttpServlet {
     private static final String SIGNIN_PAGE = "signin.jsp";
     private static final String ADMIN_PAGE = "admin/admin.jsp";
     private static final String CUSTOMER_PAGE = "customer.jsp";
-    private static final String STAFF_PAGE = "staff.jsp";
+    private static final String STAFF_PAGE = "staff/staff.jsp";
     private static final String INSTRUCTOR_PAGE = "instructor.jsp";
     //
     private static final String ADMIN = "Admin";
@@ -37,6 +37,7 @@ public class UserGoogleHandler extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String url = SIGNIN_PAGE;
         try {
+            HttpSession session = request.getSession();
             String code = request.getParameter("code");
             String accessToken = getToken(code);
             UserGoogleDTO user = getUserInfo(accessToken);
@@ -45,12 +46,16 @@ public class UserGoogleHandler extends HttpServlet {
             UserDTO loginUser = dao.checkLoginByGoogle(userID);
             if (loginUser == null) {
                 //create account
-                boolean creAccount = dao.createAccGoogle(userID);
-                
-                request.setAttribute("MSG_NEWACC", "Your account is already sign up!");
+                boolean creAccount = dao.createAccGoogle(user);
+                if (creAccount) {
+                    UserDTO newLoginUser = dao.checkLoginByGoogle(userID);
+                    request.setAttribute("MSG_NEWACC", "Your account is already sign up!");
+                    session.setAttribute("LOGIN_USER", newLoginUser);
+                    url = CUSTOMER_PAGE;
+                }
             } else {
                 String role = loginUser.getRole();
-                HttpSession session = request.getSession();
+
                 if (role.equalsIgnoreCase(ADMIN)) {
                     session.setAttribute("LOGIN_USER", loginUser);
                     url = ADMIN_PAGE;
@@ -94,7 +99,7 @@ public class UserGoogleHandler extends HttpServlet {
 
         UserGoogleDTO googlePojo = new Gson().fromJson(response, UserGoogleDTO.class);
         return googlePojo;
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

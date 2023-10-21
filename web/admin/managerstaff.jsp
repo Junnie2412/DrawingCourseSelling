@@ -74,7 +74,7 @@
                                         </div>
                                         <div class="mb-3">
                                             <label for="fullname" class="form-label">Name</label>
-                                            <input type="text" class="form-control" name="fullName" required>
+                                            <input type="text" class="form-control" name="fullname" required>
                                             <p style="color: red;">${requestScope.USER_ERROR.fullNameError}</p>
                                         </div>
                                         <div class="mb-3">
@@ -91,7 +91,7 @@
                                         </div>
                                         <div class="mb-3">
                                             <label for="role" class="form-label">Role</label>
-                                            <input type="text" class="form-control" name="role" value="Staff" readonly="">
+                                            <input type="text" class="form-control" name="role" readonly="">
 
                                         </div>
                                         <div class="mb-3">
@@ -174,10 +174,7 @@
                                                     </td>
 
                                                     <td class="isActive">
-                                                        <select name="isActive">
-                                                            <option value="active">Active</option>
-                                                            <option value="inactive">Inactive</option>
-                                                        </select>
+                                                        <input type="radio" name="isActive" value="<%=u.isIsActive()%>">
                                                     </td>
                                                     <td class="tags">
                                                         <span class="badge badge-soft-primary">Staff</span>

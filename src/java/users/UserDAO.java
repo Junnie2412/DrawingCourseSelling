@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import userGoogle.UserGoogleDTO;
 
 /**
  *
@@ -23,7 +24,7 @@ public class UserDAO {
     private static final String CHECK_ACCOUNT = "SELECT accountID, password, fullName, dateOfBirth, role, isActive, image, email\n"
                                                 + "FROM tblAccount\n"
                                                 + "WHERE accountID = ? OR email = ? ";
-    private static final String SIGNUP = "INSERT tblAccount VALUES(?, ?, '', '', 'Customer', 1, '', ?)";
+    private static final String SIGNUP = "INSERT tblAccount VALUES(?, ?, ?, ?, 'Customer', 1, '', ?)";
     private static final String LOGIN = "SELECT * FROM tblAccount WHERE accountID=? AND password=? ";
     private static final String LOGINBYGOOGLE = "SELECT role FROM tblAccount WHERE accountID=?";
     private static final String INSERTSTAFF = "INSERT INTO tblAccount VALUES (?,?,?,?,?,?,?,?)";
@@ -32,7 +33,7 @@ public class UserDAO {
     private static final String LOADSTAFF = "SELECT * FROM tblAccount WHERE role = 'Staff'";
 
     private static final String INSTRUCTOR_LIST = "SELECT * FROM tblAccount WHERE role = 'Instructor'";
-    private static final String CREATEACCOUNTGOOGLE = "INSERT INTO tblAccount VALUES (?,?,?,?,?,?,?,?)";
+    private static final String CREATEACCOUNTGOOGLE = "INSERT INTO tblAccount VALUES (?)";
     public UserDTO checkLogin(String userName, String password) throws SQLException {
         UserDTO user = null;
 
@@ -138,7 +139,7 @@ public class UserDAO {
         return null;
     }
 
-    public UserDTO signUp(String emailSignup, String idSignup, String passwordSignup) {
+    public UserDTO signUp(String emailSignup, String fullName, String dateOfBirth, String idSignup, String passwordSignup) {
         UserDTO u = null;
         try {
             Connection cn = DBUtil.getConnection();
@@ -147,7 +148,9 @@ public class UserDAO {
                 PreparedStatement pst = cn.prepareStatement(sql);
                 pst.setString(1, idSignup);
                 pst.setString(2, passwordSignup);
-                pst.setString(3, emailSignup);
+                pst.setString(3, fullName);
+                pst.setString(4, dateOfBirth);
+                pst.setString(5, emailSignup);
                 ResultSet rs = pst.executeQuery();
             }
             cn.close();
@@ -341,5 +344,9 @@ public class UserDAO {
             }
         }
         return check;
+    }
+
+    public boolean createAccGoogle(UserGoogleDTO user) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

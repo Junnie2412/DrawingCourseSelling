@@ -54,8 +54,15 @@ public class MainController extends HttpServlet {
     private static final String SHOW_LIST_INSTRUCTOR = "Show";
     private static final String SHOW_LIST_INSTRUCTOR_CONTROLLER = "ShowListController";
     
+    private static final String VIEW_CART = "ViewCart";
+    private static final String VIEW_CART_PAGE = "viewCart.jsp";
+    private static final String ALREADY_ADD_TO_CART = "AlreadyAddToCart";
+    private static final String ALREADY_BUY_NOW = "AlreadyBuyNow";
     private static final String ADD_TO_CART = "AddToCart";
     private static final String ADD_TO_CART_CONTROLLER = "AddToCartController";
+    private static final String BUY_NOW = "BuyNow";
+    private static final String TURN_BACK = "TurnBack";
+    private static final String COURSE_DETAIL_PAGE = "course-details.jsp";
     private static final String REMOVE_COURSE_CART="Remove";
     private static final String REMOVE_COURSE_CART_CONTROLLER="RemoveCartController";
  
@@ -98,6 +105,16 @@ public class MainController extends HttpServlet {
                 url = CREATE_VOUCHER_CONTROLLER;
             }else if (action.equals(ADD_TO_CART)) {
                 url = ADD_TO_CART_CONTROLLER;
+            }else if (action.equals(ALREADY_ADD_TO_CART)) {
+                url = ADD_TO_CART_CONTROLLER;
+            }else if (action.equals(ALREADY_BUY_NOW)) {
+                url = ADD_TO_CART_CONTROLLER;
+            }else if (action.equals(BUY_NOW)) {
+                url = ADD_TO_CART_CONTROLLER;
+            }else if (action.equals(VIEW_CART)) {
+                url = VIEW_CART_PAGE;
+            }else if (action.equals(TURN_BACK)) {
+                url = COURSE_DETAIL_PAGE;
             }else if (action.equals(REMOVE_COURSE_CART)) {
                 url = REMOVE_COURSE_CART_CONTROLLER;
             }else if (action.equals(SHOW_LIST_INSTRUCTOR)) {

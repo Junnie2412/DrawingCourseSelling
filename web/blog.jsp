@@ -49,12 +49,12 @@
 
 
         <!-- ~~~ Hero Section ~~~ -->
-        <section class="hero-section banner-overlay bg_img" data-img="assets/images/banner/banner.png">
+        <section class="hero-section banner-overlay bg_img" data-img="https://images.unsplash.com/photo-1558522195-e1201b090344?auto=format&fit=crop&q=80&w=1470&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
             
             <div class="custom-container">
                 <div class="hero-content">
                     <h1 class="title uppercase cl-white">Blogs</h1>
-                    <ul class="breadcrumb cl-white p-0 m-0">
+                    <ul class="breadcrumb cl-white p-0 m-0" style="background-color: #e9ecef00">
                         <li>
                             <a href="index.jsp">Home</a>
                         </li>

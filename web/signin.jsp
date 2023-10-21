@@ -64,12 +64,12 @@
                                                 <p class="text-muted">Sign in to continue to ArtCenter.</p>
                                             </div>
                                             <div class="p-2 mt-4">
-                                                <form action="MainController">
+                                                <form action="MainController" method="POST">
 
                                                     <%
                                                         String notication = (String) request.getAttribute("SUCCESS");
                                                         if (notication != null) {
-                                                            out.print("<h6>" + notication + "</h6>");
+                                                            out.print("<h6 style=\"color: green;\">" + notication + "</h6>");
                                                         }
                                                     %>
 

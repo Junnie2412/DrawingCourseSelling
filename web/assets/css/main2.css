@@ -2412,7 +2412,7 @@ header.active {
     }
 
     .header-area .course-search-form {
-        width: 400px;
+        width: 500px;
     }
 
     .header-area .menu {
@@ -2649,7 +2649,7 @@ header.active {
 }
 
 .sliding-top img{
-    width: 1349px;
+    width: 100%;
 }
 
 .sliding-down{
@@ -4637,6 +4637,7 @@ header{
 
 .hero-section {
     padding: 118px 0 100px;
+    
 }
 
 @media (max-width: 991px) {
@@ -6529,4 +6530,69 @@ blockquote::before {
 .all-sections {
     overflow: hidden;
 }
+.all-sections {
+    overflow: hidden;
+}
 
+.user-avatar {
+        width: 50px; /* Đặt chiều rộng cho hình ảnh */
+        height: 50px; /* Đặt chiều cao cho hình ảnh */
+        border-radius: 50%; /* Biến đổi hình ảnh thành hình tròn */
+    }
+
+    .centered-input {
+    text-align: center;
+    padding-left: 0;
+    width: 100%;
+    font-size: 18px;
+}
+ .voucher-label {
+    font-size: 14px; /* Điều chỉnh kích thước font chữ */
+    margin-left: 10px; /* Tạo khoảng cách giữa chữ "Voucher" và "Nhấn vào đây để nhập voucher" */
+    color: #007bff; /* Đổi màu chữ thành màu xanh (tuỳ chọn) */
+    cursor: pointer; /* Biến con trỏ thành dấu tay khi di chuột vào chữ này */
+}
+.voucher-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.custom-apply-button {
+    height: 50px; /* Thiet lap chieu cao cua nut "Apply" tu dong */
+    min-width: 50px; /* Dat chieu rong toi thieu cho nut "Apply" */
+    padding: 10px; /* Thiet lap khoang cach bo cuc ben trong nut "Apply" */
+    box-sizing: content-box;
+    color: white;
+    background-color: blue;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    margin-top: 20px;
+}
+
+.btn-buy-now {
+    background-color: #007BFF; /* Màu của nút "Buy Now" */
+}
+
+.btn-add-to-cart {
+    background-color: #28A745; /* Màu của nút "Add to Cart" */
+}
+.custom-width {
+    width: 300px; 
+}
+
+
+.custom-account {
+    margin-top: 100px;
+   margin-bottom: 200px/* Điều chỉnh khoảng cách giữa "banner" và "account" bằng margin-top */
+}

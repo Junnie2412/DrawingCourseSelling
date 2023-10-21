@@ -61,27 +61,29 @@
 
 
             <!-- ~~~ Hero Section ~~~ -->
-            <section class="hero-section banner-overlay bg_img" data-img="assets/images/banner/banner.png">
-
-                <div class="custom-container">
-                    <div class="hero-content">
-                        <h1 class="title uppercase cl-white">Courses</h1>
-                        <ul class="breadcrumb cl-white p-0 m-0">
-                            <li>
-                                <a href="index.jsp">Home</a>
-                            </li>
-                            <li>
-                                Courses
-                            </li>
-                        </ul>
-                    </div>
+            <section class="hero-section banner-overlay bg_img" data-img="https://plus.unsplash.com/premium_photo-1673126682754-163189925db7?auto=format&fit=crop&q=80&w=1548&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+            
+            <div class="custom-container">
+                <div class="hero-content">
+                    <h1 class="title uppercase cl-white">Courses</h1>
+                    <ul class="breadcrumb cl-white p-0 m-0" style="background-color: #e9ecef00">
+                        <li>
+                            <a href="index.jsp">Home</a>
+                        </li>
+                        <li>
+                            Courses
+                        </li>
+                    </ul>
                 </div>
-            </section>
+            </div>
+        </section>
             <!-- ~~~ Hero Section ~~~ -->
 
             <!-- ~~~ SEARCH by name ~~~ -->
             <%
                 CourseDAO courseDAO = new CourseDAO();
+                CourseFeedbackDAO courseFeedbackDAO = new CourseFeedbackDAO();
+                ModuleDAO moduleDAO = new ModuleDAO();
                 List<CourseDTO> listCourse = (List<CourseDTO>) request.getAttribute("LIST_COURSE");
                 if (listCourse != null) {
                     if (listCourse.size() > 0) {
@@ -90,31 +92,57 @@
 
             <%            for (CourseDTO course : listCourse) {
             %>
-
-            <table border="1">
-
-                <tbody>
-                    <tr>
-                        <td><img style="width: 400px; height:350px" src = "<%= courseDAO.getDescription(course.getCourseID()).getImage()%>"</td>
-                    </tr>
-                    <tr>
-                        <td><%= course.getName()%></td>
-                    </tr>
-                    <tr>
-                        <td><%= courseDAO.getAccount(course.getCourseID()).getFullName()%></td>
-                    </tr>
-                    <tr>
-                        <td><%= course.getPrice()%></td>
-                    </tr>
-                    <tr>
-                        <td><%= course.getDuration()%></td>
-                    </tr>
-                    <tr>
-                        <td><%= courseDAO.getDescription(course.getCourseID()).getLevel()%></td>
-                    </tr>
-                </tbody>
-            </table>
-
+                            <div class="col-xl-4 col-md-6 col-sm-10">
+                                <div class="course-item">
+                                    <div class="thumb">
+                                        <a href="course-details.jsp?courseID=<%= course.getCourseID()%>">
+                                            <img src="<%= courseDAO.getDescription(course.getCourseID()).getImage()%>" alt="course">
+                                        </a>
+                                    </div>
+                                    <div class="content">
+                                        <h5 class="title">
+                                            <a href="course-details.jsp?courseID=<%= course.getCourseID()%>"><%= course.getName()%></a>
+                                        </h5>
+                                        <div class="meta-area">
+                                            <div class="meta">
+                                                <div class="meta-item">
+                                                    <i class="fas fa-user"></i>
+                                                    <span><%= courseDAO.getAccount(course.getCourseID()).getFullName()%></span>
+                                                </div>
+                                                <div class="meta-item">
+                                                    <i class="fas fa-photo-video"></i>
+                                                    <span><%= moduleDAO.getQuantityOfModules(course.getCourseID())%> Modules</span>
+                                                </div>
+                                                <div class="meta-item">
+                                                    <i class="fas fa-user-graduate"></i>
+                                                    <span><%= courseDAO.getDescription(course.getCourseID()).getType() %></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ratings-area">
+                                            <div class="ratings cl-theme">
+                                                <%
+                                                    float avgrate = courseFeedbackDAO.getAverageRate(course.getCourseID());
+                                                    for (int i = 0; i < avgrate; i++){
+                                                %>
+                                                    <span><i class="fas fa-star"></i></span>
+                                                <%
+                                                    }
+                                                    for (int i = 0; i < (5 - avgrate); i++){
+                                                %>
+                                                        <span class="cl-theme-light"><i class="fas fa-star"></i></span>
+                                                <%    
+                                                    }
+                                                %>
+                                                <span>(<%= courseFeedbackDAO.getAverageRate(course.getCourseID())%>/5.00)</span>
+                                            </div>
+                                            <div class="price cl-1">
+                                                <%= course.getPrice()%>đ
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
             <%
                 }
             %>
@@ -126,6 +154,7 @@
             <!-- ~~~ End SEARCH by name~~~ -->
 
             <!-- ~~~ SEARCH by category~~~ -->
+            <!--
             <form action="MainController">
                 Price
                 <input name="coursePrice" type="radio" value="Under-150000"/> Under-150000
@@ -160,8 +189,7 @@
                     </div>
                     <div class="row justify-content-center mb-30-none">
                         <%
-                            CourseFeedbackDAO courseFeedbackDAO = new CourseFeedbackDAO();
-                            ModuleDAO moduleDAO = new ModuleDAO();
+                            
                             List<CourseDTO> list = courseDAO.getlistCourse();
                             if (list != null) {
                                 if (list.size() > 0) {
@@ -191,42 +219,43 @@
                                                 </div>
                                                 <div class="meta-item">
                                                     <i class="fas fa-user-graduate"></i>
-                                                    <span>20 Students</span>
+                                                    <span><%= courseDAO.getDescription(course.getCourseID()).getType() %></span>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="ratings-area">
                                             <div class="ratings cl-theme">
-                                                <span><i class="fas fa-star"></i></span>
-                                                <span><i class="fas fa-star"></i></span>
-                                                <span><i class="fas fa-star"></i></span>
-                                                <span><i class="fas fa-star"></i></span>
-                                                <span class="cl-theme-light"><i class="fas fa-star"></i></span>
+                                                <%
+                                                    float avgrate = courseFeedbackDAO.getAverageRate(course.getCourseID());
+                                                    for (int i = 0; i < avgrate; i++){
+                                                %>
+                                                    <span><i class="fas fa-star"></i></span>
+                                                <%
+                                                    }
+                                                    for (int i = 0; i < (5 - avgrate); i++){
+                                                %>
+                                                        <span class="cl-theme-light"><i class="fas fa-star"></i></span>
+                                                <%    
+                                                    }
+                                                %>
                                                 <span>(<%= courseFeedbackDAO.getAverageRate(course.getCourseID())%>/5.00)</span>
                                             </div>
                                             <div class="price cl-1">
                                                 <%= course.getPrice()%>đ
                                             </div>
                                         </div>
-                                        <div>
-                                            <%
-                                                UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
-                                                if (loginUser == null) {
-                                            %>
-                                            <button onclick="checkLoginFunction()">Add To Cart</button>
-                                            <%
-                                            } else {
-                                            %>
-                                            <button type="submit" name="action" value="AddToCart">Add To Cart</button>
-                                            <input type="hidden" name="courseID" value="<%= course.getCourseID()%>">
-                                            <%
-                                                }
-                                            %>
-                                        </div>
+                                            
                                     </div>
+                                          
+                                            <div class="custom-width">
+                                                <button class="btn btn-success" name="action" value="payment">Add to Cart</button>
+                                                <button class="btn btn-primary" name="action" value="payment">Buy Now</button>
+                                            </div>                             
                                 </div>
+                                            
                             </form>
                         </div>
+                                            
                         <%
                                     }
                                 }
@@ -235,9 +264,6 @@
                     </div>
                     <div class="text-center load-more mt-5">
                         <a href="courses.jsp" class="custom-button theme-one">Load more courses <i class="fas fa-angle-right"></i></a>
-                    </div>
-                    <div class="text-center load-more mt-5">
-                        <a href="viewCart.jsp" class="custom-button theme-one">View Cart <i class="fas fa-angle-right"></i></a>
                     </div>
                 </div>
             </section>
@@ -266,11 +292,6 @@
         <script src="assets/js/owl.min.js"></script>
         <script src="assets/js/main.js"></script>
         
-        <script>
-            function checkLoginFunction() {
-                alert("Before Add to Cart, you must Login first");
-            }
-        </script>
     </body>
 
 </html>

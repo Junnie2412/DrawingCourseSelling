@@ -64,6 +64,10 @@
         <servlet-name>RemoveCartController</servlet-name>
         <servlet-class>controllers.course.RemoveCartController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CheckOutController</servlet-name>
+        <servlet-class>controllers.checkout.CheckOutController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>MainController</servlet-name>
         <url-pattern>/MainController</url-pattern>
@@ -127,6 +131,10 @@
     <servlet-mapping>
         <servlet-name>RemoveCartController</servlet-name>
         <url-pattern>/RemoveCartController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CheckOutController</servlet-name>
+        <url-pattern>/CheckOutController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

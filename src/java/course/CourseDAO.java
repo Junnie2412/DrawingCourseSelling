@@ -1,11 +1,13 @@
 package course;
 
+import cart.Cart;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,10 +32,18 @@ public class CourseDAO {
     private static final String GET_ALL_COURSE = "SELECT * FROM tblCourse";
     private static final String FILTER_COURSE_BY_LEVEL = "SELECT * FROM tblCourse WHERE level = ?";
     private static final String FILTER_COURSE_BY_TYPE = "SELECT * FROM tblCourse WHERE type = ?";
-    
+
     private static final String CHECK_EXISTED_COURSE = "SELECT * FROM tblCourse WHERE courseID = ?";
     private static final String LIST_UNAPPROVED_COURSE = "SELECT * FROM tblCOurse WHERE isActive = 1";
-    
+
+    private static final String GET_CART_BY_ACCOUNTID = "SELECT DISTINCT ci.courseID\n"
+            + "FROM [dbo].[tblCart] c\n"
+            + "INNER JOIN [dbo].[tblCartItem] ci ON c.cartItemID = ci.cartItemID\n"
+            + "WHERE c.accountID = ?;";
+    private static final String INSERT_ORDER = "INSERT INTO orders VALUES (?,?,?,?)";
+    private static final String GET_ORDERID = "SELECT TOP 1 orderID FROM [tblOrder] ORDER BY orderID DESC";
+    private static final String INSERT_ORDER_DETAIL = "INSERT INTO orderDetail VALUES (?,?,?,?,?,?)";
+
     private static final String GET_COURSE_BY_COURSEID = "SELECT courseID, price, name, duration, isActive, datePublic, accountID, descriptionID FROM tblCourse WHERE courseID = ? ";
 
     public List<CourseDTO> getlistCourse(String search) throws ClassNotFoundException, SQLException {
@@ -518,8 +528,8 @@ public class CourseDAO {
         }
         return list;
     }
-    
-    public boolean checkExistedCourse(String courseID) throws SQLException{
+
+    public boolean checkExistedCourse(String courseID) throws SQLException {
         boolean check = false;
         Connection conn = null;
         ResultSet rs = null;
@@ -531,9 +541,10 @@ public class CourseDAO {
                 ptm = conn.prepareStatement(CHECK_EXISTED_COURSE);
                 ptm.setString(1, courseID);
                 rs = ptm.executeQuery();
-                
-                if(rs.next())
+
+                if (rs.next()) {
                     check = true;
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -550,8 +561,8 @@ public class CourseDAO {
         }
         return check;
     }
-    
-    public List<CourseDTO> getUnapprovedCoursesList() throws SQLException{
+
+    public List<CourseDTO> getUnapprovedCoursesList() throws SQLException {
         List<CourseDTO> list = new ArrayList<>();
         Connection conn = null;
         ResultSet rs = null;
@@ -630,5 +641,114 @@ public class CourseDAO {
         }
 
         return c;
+    }
+
+    public List<CourseDTO> getCart(String accountID) throws SQLException {
+        List<CourseDTO> list = new ArrayList<>();
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement ptm = null;
+        try {
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(GET_CART_BY_ACCOUNTID);
+                rs = ptm.executeQuery();
+                while (rs.next()) {
+                    String courseID = rs.getString("courseID");
+
+                    if (getCourseByCourseID(courseID) != null) {
+                        String name = rs.getString("name");
+                        float price = rs.getFloat("price");
+                        int duration = rs.getInt("duration");
+                        boolean isActive = rs.getBoolean("isActive");
+                        Date datePublic = rs.getDate("datePublic");
+                        int descriptionID = rs.getInt("descriptionID");
+                        list.add(new CourseDTO(courseID, name, price, duration, isActive, datePublic, accountID, descriptionID));
+
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return list;
+    }
+
+    public boolean inserOrder(UserDTO loginUser, Cart cart) throws SQLException {
+        //voucher
+        //payment
+        //order
+        //orderdetailed
+        double total = 0;
+        for (CourseDTO c : cart.getCart().values()) {
+            total += c.getPrice();
+        }
+        boolean checkOrder = false;
+        boolean check = false;
+        
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        
+        LocalDate curDate = LocalDate.now();
+        String date = curDate.toString();
+        //
+        //xu ly thanh toan
+        try {
+            //add orders table
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(INSERT_ORDER);
+                ptm.setString(1, date);
+                ptm.setDouble(2, total);
+                ptm.setBoolean(3, true);
+                ptm.setString(4, loginUser.getAccountID());
+                checkOrder = ptm.executeUpdate() > 0;
+                //add orderDetail
+                if (checkOrder) {
+                    ptm = conn.prepareStatement(GET_ORDERID);
+                    rs = ptm.executeQuery();
+                    if (rs.next()) {
+                        int orderID = rs.getInt("orderID");
+                        for (CourseDTO course : cart.getCart().values()) {
+                            ptm = conn.prepareStatement(INSERT_ORDER_DETAIL);
+                            ptm.setDouble(1, course.getPrice());
+                            ptm.setString(2, "voucher"); //chua handle
+                            ptm.setInt(3, 1);
+                            ptm.setInt(4, orderID);
+                            ptm.setString(5, course.getCourseID());
+                            ptm.setInt(6, 1); //chua biet
+                            ptm.executeUpdate();
+                        }
+                    }
+
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return check;
     }
 }
