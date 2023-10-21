@@ -76,6 +76,23 @@
                                                 Please enter email
                                             </div>
                                         </div>
+                                        
+                                        <div class="mb-3">
+                                            <label for="fullname" class="form-label">Full Name<span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="fullname" placeholder="Enter full name" name="fullname" required>
+                                            <div class="invalid-feedback">
+                                                Please enter full name
+                                            </div>
+                                        </div>
+                                            
+                                        <div class="mb-3">
+                                            <label for="dateofbirth" class="form-label">Date of Birth <span class="text-danger">*</span></label>
+                                            <input type="date" class="form-control" id="dateofbirth" placeholder="Enter date of birth" name="dateofbirth" required>
+                                            <div class="invalid-feedback">
+                                                Please enter date of birth
+                                            </div>
+                                        </div>
+                                        
                                         <div class="mb-3">
                                             <label for="username" class="form-label">Username <span class="text-danger">*</span></label>
                                             <input type="text" class="form-control" id="username" placeholder="Enter username" name="username" required>
@@ -85,7 +102,7 @@
                                         </div>
 
                                         <div class="mb-3">
-                                            <label class="form-label" for="password-input">Password</label>
+                                            <label class="form-label" for="password-input">Password <span class="text-danger">*</span></label>
                                             <div class="position-relative auth-pass-inputgroup">
                                                 <input type="password" class="form-control pe-5 password-input" onpaste="return false" placeholder="Enter password" id="password-input" aria-describedby="passwordInput" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" name="password" required>
                                                 <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none shadow-none text-muted password-addon" type="button" id="password-addon"><i class="ri-eye-fill align-middle"></i></button>
@@ -95,7 +112,7 @@
                                             </div>
                                         </div>
                                             <div class="mb-3">
-                                            <label class="form-label" for="password-input">Confirm Password</label>
+                                            <label class="form-label" for="password-input">Confirm Password <span class="text-danger">*</span></label>
                                             <div class="position-relative auth-pass-inputgroup">
                                                 <input type="password" class="form-control pe-5 password-input" onpaste="return false" placeholder="Enter password" id="password-input" aria-describedby="passwordInput" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" name="passwordConfirm" required>
                                                 <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none shadow-none text-muted password-addon" type="button" id="password-addon"><i class="ri-eye-fill align-middle"></i></button>
