@@ -27,6 +27,8 @@ public class SignupController extends HttpServlet {
             String idSignup = request.getParameter("username");
             String passwordSignup = request.getParameter("password");
             String passwordConfirm = request.getParameter("passwordConfirm");
+            String fullName = request.getParameter("fullname");
+            String dateOfBirth = request.getParameter("dateofbirth");
             
             UserDAO dao = new UserDAO();   
             UserDTO signupUser = dao.checkAccount(emailSignup,idSignup,passwordSignup);
@@ -35,7 +37,7 @@ public class SignupController extends HttpServlet {
                 request.setAttribute("ErrorExisted", "Username or Email has already existed");
             } else {
                 if ((passwordSignup == passwordConfirm) || (passwordSignup.equals(passwordConfirm))) {
-                    signupUser = dao.signUp(emailSignup,idSignup,passwordSignup);
+                    signupUser = dao.signUp(emailSignup,fullName,dateOfBirth,idSignup,passwordSignup);
                     url = SIGNIN_PAGE;
                     request.setAttribute("SUCCESS", "Registered successfully! Please Sign In!");
                 } else {

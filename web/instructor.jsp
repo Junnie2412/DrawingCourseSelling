@@ -61,21 +61,21 @@
 
             <!-- ~~~ Hero Section ~~~ -->
             <section class="hero-section banner-overlay bg_img" data-img="assets/images/banner/banner.png">
-
-                <div class="custom-container">
-                    <div class="hero-content">
-                        <h1 class="title uppercase cl-white">Instructors</h1>
-                        <ul class="breadcrumb cl-white p-0 m-0">
-                            <li>
-                                <a href="index.jsp">Home</a>
-                            </li>
-                            <li>
-                                Instructors
-                            </li>
-                        </ul>
-                    </div>
+            
+            <div class="custom-container">
+                <div class="hero-content">
+                    <h1 class="title uppercase cl-white">Instructor</h1>
+                    <ul class="breadcrumb cl-white p-0 m-0" style="background-color: #e9ecef00">
+                        <li>
+                            <a href="index.jsp">Home</a>
+                        </li>
+                        <li>
+                            Instructor
+                        </li>
+                    </ul>
                 </div>
-            </section>
+            </div>
+        </section>
             <!-- ~~~ Hero Section ~~~ -->
 
             <!-- Load Instructor List->

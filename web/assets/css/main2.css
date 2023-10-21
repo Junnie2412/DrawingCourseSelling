@@ -2412,7 +2412,7 @@ header.active {
     }
 
     .header-area .course-search-form {
-        width: 400px;
+        width: 500px;
     }
 
     .header-area .menu {
@@ -4637,6 +4637,7 @@ header{
 
 .hero-section {
     padding: 118px 0 100px;
+    
 }
 
 @media (max-width: 991px) {
@@ -6565,3 +6566,33 @@ blockquote::before {
     background-color: blue;
 }
 
+.actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    margin-top: 20px;
+}
+
+.btn-buy-now {
+    background-color: #007BFF; /* Màu của nút "Buy Now" */
+}
+
+.btn-add-to-cart {
+    background-color: #28A745; /* Màu của nút "Add to Cart" */
+}
+.custom-width {
+    width: 300px; 
+}
+
+
+.custom-account {
+    margin-top: 100px;
+   margin-bottom: 200px/* Điều chỉnh khoảng cách giữa "banner" và "account" bằng margin-top */
+}

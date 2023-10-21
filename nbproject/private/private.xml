@@ -3,20 +3,39 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Win%2010/OneDrive/Máy%20tính/Showup_SWP/SWP391/web/admin/managerstaff.jsp</file>
-            <file>file:/C:/Users/Win%2010/OneDrive/Máy%20tính/Showup_SWP/SWP391/src/java/controllers/userController/LoginController.java</file>
-            <file>file:/C:/Users/Win%2010/OneDrive/Máy%20tính/Showup_SWP/SWP391/src/java/users/UserDTO.java</file>
-            <file>file:/C:/Users/Win%2010/OneDrive/Máy%20tính/Showup_SWP/SWP391/src/java/controllers/blog/UpdateBlogController.java</file>
-            <file>file:/C:/Users/Win%2010/OneDrive/Máy%20tính/Showup_SWP/SWP391/src/java/userGoogle/UserGoogleHandler.java</file>
-            <file>file:/C:/Users/Win%2010/OneDrive/Máy%20tính/Showup_SWP/SWP391/web/staff.jsp</file>
-            <file>file:/C:/Users/Win%2010/OneDrive/Máy%20tính/Showup_SWP/SWP391/web/instructor.jsp</file>
-            <file>file:/C:/Users/Win%2010/OneDrive/Máy%20tính/Showup_SWP/SWP391/src/java/course/CourseDAO.java</file>
-            <file>file:/C:/Users/Win%2010/OneDrive/Máy%20tính/Showup_SWP/SWP391/src/java/email/SendEmail.java</file>
-            <file>file:/C:/Users/Win%2010/OneDrive/Máy%20tính/Showup_SWP/SWP391/src/java/userGoogle/UserGoogleDTO.java</file>
-            <file>file:/C:/Users/Win%2010/OneDrive/Máy%20tính/Showup_SWP/SWP391/web/staff/staff.jsp</file>
-            <file>file:/C:/Users/Win%2010/OneDrive/Máy%20tính/Showup_SWP/SWP391/web/checkout.jsp</file>
-            <file>file:/C:/Users/Win%2010/OneDrive/Máy%20tính/Showup_SWP/SWP391/src/java/controllers/checkout/CheckOutController.java</file>
-            <file>file:/C:/Users/Win%2010/OneDrive/Máy%20tính/Showup_SWP/SWP391/src/java/users/UserDAO.java</file>
+            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/SWP391_2/web/course-details.jsp</file>
+            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/SWP391_2/web/createCourse.jsp</file>
+            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/SWP391_2/src/java/controllers/MainController.java</file>
+            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/SWP391_2/web/about.jsp</file>
+            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/SWP391_2/web/customer.jsp</file>
+            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/SWP391_2/web/index.jsp</file>
+            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/SWP391_2/web/blog-details.jsp</file>
+            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/SWP391_2/web/instructor.jsp</file>
+            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/SWP391_2/web/admin/managerstaff.jsp</file>
+            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/SWP391_2/web/staff/poststaff.jsp</file>
+            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/SWP391_2/web/admin/layoutadmin/footer.jsp</file>
+            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/SWP391_2/web/customerCourse.jsp</file>
+            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/SWP391_2/src/java/users/UserDTO.java</file>
+            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/SWP391_2/web/admin/layoutadmin/slidebar.jsp</file>
+            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/SWP391_2/web/layout/header.jsp</file>
+            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/SWP391_2/web/blog.jsp</file>
+            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/SWP391_2/web/createVoucher.jsp</file>
+            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/SWP391_2/web/checkout.jsp</file>
+            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/SWP391_2/web/editaccount.jsp</file>
+            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/SWP391_2/web/adminCourse.jsp</file>
+            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/SWP391_2/web/staff/coursestaff.jsp</file>
+            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/SWP391_2/web/staff/managerintrustor.jsp</file>
+            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/SWP391_2/src/java/userGoogle/UserGoogleHandler.java</file>
+            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/SWP391_2/web/courses.jsp</file>
+            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/SWP391_2/web/admin/admin.jsp</file>
+            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/SWP391_2/web/admin/assets/css/app.min.css</file>
+            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/SWP391_2/src/java/users/UserDAO.java</file>
+            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/SWP391_2/web/contact.jsp</file>
+            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/SWP391_2/src/java/controllers/userController/LoginController.java</file>
+            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/SWP391_2/web/admin/layoutadmin/header.jsp</file>
+            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/SWP391_2/web/assets/css/main2.css</file>
+            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/SWP391_2/web/staff/staff.jsp</file>
+            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/SWP391_2/src/java/utils/DBUtil.java</file>
         </group>
     </open-files>
 </project-private>

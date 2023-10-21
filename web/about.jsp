@@ -52,15 +52,15 @@
         <!-- ~~~ Hero Section ~~~ -->
         <section class="hero-section banner-overlay bg_img" data-img="assets/images/banner/banner.png">
             
-            <div class="container">
+            <div class="custom-container">
                 <div class="hero-content">
-                    <h1 class="title cl-white">About Us</h1>
-                    <ul class="breadcrumb cl-white p-0 m-0">
+                    <h1 class="title uppercase cl-white">About</h1>
+                    <ul class="breadcrumb cl-white p-0 m-0" style="background-color: #e9ecef00">
                         <li>
                             <a href="index.jsp">Home</a>
                         </li>
                         <li>
-                            About us
+                            About
                         </li>
                     </ul>
                 </div>

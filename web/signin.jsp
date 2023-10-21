@@ -69,7 +69,7 @@
                                                     <%
                                                         String notication = (String) request.getAttribute("SUCCESS");
                                                         if (notication != null) {
-                                                            out.print("<h6>" + notication + "</h6>");
+                                                            out.print("<h6 style=\"color: green;\">" + notication + "</h6>");
                                                         }
                                                     %>
 

@@ -62,21 +62,21 @@
 
             <!-- ~~~ Hero Section ~~~ -->
             <section class="hero-section banner-overlay bg_img" data-img="assets/images/banner/banner.png">
-
-                <div class="custom-container">
-                    <div class="hero-content">
-                        <h1 class="title uppercase cl-white">Courses</h1>
-                        <ul class="breadcrumb cl-white p-0 m-0">
-                            <li>
-                                <a href="index.jsp">Home</a>
-                            </li>
-                            <li>
-                                Courses
-                            </li>
-                        </ul>
-                    </div>
+            
+            <div class="custom-container">
+                <div class="hero-content">
+                    <h1 class="title uppercase cl-white">Courses</h1>
+                    <ul class="breadcrumb cl-white p-0 m-0" style="background-color: #e9ecef00">
+                        <li>
+                            <a href="index.jsp">Home</a>
+                        </li>
+                        <li>
+                            Courses
+                        </li>
+                    </ul>
                 </div>
-            </section>
+            </div>
+        </section>
             <!-- ~~~ Hero Section ~~~ -->
 
             <!-- ~~~ SEARCH by name ~~~ -->
@@ -244,10 +244,18 @@
                                                 <%= course.getPrice()%>đ
                                             </div>
                                         </div>
+                                            
                                     </div>
+                                          
+                                            <div class="custom-width">
+                                                <button class="btn btn-success" name="action" value="payment">Add to Cart</button>
+                                                <button class="btn btn-primary" name="action" value="payment">Buy Now</button>
+                                            </div>                             
                                 </div>
+                                            
                             </form>
                         </div>
+                                            
                         <%
                                     }
                                 }
