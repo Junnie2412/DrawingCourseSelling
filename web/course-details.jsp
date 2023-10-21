@@ -143,7 +143,6 @@
                                             %>
                                             <button class="custom-button theme-one rounded" onclick="checkLoginFunction()">Buy Now<i class="fas fa-angle-right"></i></button><br>
                                             <button class="custom-button theme-one rounded" onclick="checkLoginFunction()">Add To Cart<i class="fas fa-angle-right"></i></button><br>
-                                            <button class="custom-button theme-one rounded" type="submit" name="action" value="ViewCart">View Cart<i class="fas fa-angle-right"></i></button>
                                                 <%
                                                 } else {
                                                 %>
@@ -161,8 +160,6 @@
                                                 <%
                                                     }
                                                 %>
-
-                                            <button class="custom-button theme-one rounded" type="submit" name="action" value="ViewCart">View Cart<i class="fas fa-angle-right"></i></button>
                                             <input type="hidden" name="courseID" value="<%= course.getCourseID()%>">
                                             <input type="date" hidden="" name="createdDay" id="todayDate">
                                             <%

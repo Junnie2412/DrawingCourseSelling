@@ -38,26 +38,15 @@ public class RemoveCartController extends HttpServlet {
             HttpSession session = request.getSession();
             Cart cart = (Cart) session.getAttribute("CART");
             UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
+            
+            CartItemDAO cartItemDAO = new CartItemDAO();
 
-            if (cart != null) {
-                if (cart.getCart().containsKey(courseID)) {
-                    boolean check = cart.remove(courseID);
+            boolean checkRemoveCartItem = cartItemDAO.removeCartItem(loginUser.getAccountID(), courseID);
 
-                    CartItemDAO cartItemDAO = new CartItemDAO();
-
-                    boolean checkRemoveCartItem = cartItemDAO.removeCartItem(loginUser.getAccountID(), courseID);
-
-                    if (checkRemoveCartItem) {
-                        session.setAttribute("CART", cart);
-                        url = SUCCESS;
-                    }
-                }
-            } else {
-                CartItemDAO cartItemDAO = new CartItemDAO();
-
-                boolean checkRemoveCartItem = cartItemDAO.removeCartItem(loginUser.getAccountID(), courseID);
-
-                if (checkRemoveCartItem) {
+            if(checkRemoveCartItem){
+                boolean check = cart.remove(courseID);
+               
+                if(check){
                     session.setAttribute("CART", cart);
                     url = SUCCESS;
                 }

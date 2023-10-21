@@ -24,7 +24,7 @@
     <body>
         <%
             Cart cart = (Cart) session.getAttribute("CART");
-
+            
             CartDAO cartDAO = new CartDAO();
             CartItemDAO cartItemDAO = new CartItemDAO();
 
@@ -37,7 +37,7 @@
         %>
         <div>
             <div>
-                Date: <%= createdDayList.get(0)%>
+                Waiting to Buy Now
             </div>
             <table>
                 <thead>
@@ -100,13 +100,14 @@
                         int count = 1;
                         for (CartItemDTO cartItem : cartItemList) {
                             CourseDTO course = cartItemDAO.getCourseFromCartItem(cartItem.getCourseID());
+                            if (cart == null || !cart.getCart().containsKey(course.getCourseID())) {
                 %>
                 <tbody>
                 <form action="MainController" method="POST">
                     <tr>
                         <td><%= count++%></td>
                         <td><input type="text" name="name" value="<%=course.getName()%>" readonly=""></td>
-                        <td><%= course.getPrice()%>$</td>
+                        <td><%= course.getPrice()%> VND</td>
                         <td>
                             <input type="submit" name="action" value="Remove">
                             <input type="hidden" name="courseID" value="<%= course.getCourseID()%>">
@@ -115,6 +116,7 @@
                 </form>
                 </tbody>
                 <%
+                            }
                         }
                     }
                 %>
@@ -124,5 +126,10 @@
                 }
             }
         %>
+        <br>
+        <form action="MainController" method="POST">
+            <button type="submit" name="action" value="TurnBack">Turn Back</button>
+            <button type="submit" name="action" value="Checkout">Check Out</button>
+        </form>
     </body>
 </html>

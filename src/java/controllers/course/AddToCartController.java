@@ -55,6 +55,11 @@ public class AddToCartController extends HttpServlet {
             boolean check = cart.add(course);
 
             String action = request.getParameter("action");
+            
+            if(check){
+                session.setAttribute("CART", cart);
+                request.setAttribute("MESSAGE", "Add to Cart Successfully");
+            }
 
             if (!action.equals("AlreadyBuyNow") && !action.equals("AlreadyAddToCart")) {
                 if (check) {

@@ -142,7 +142,7 @@ public class CartItemDAO {
         return course;
     }
     
-    public boolean removeCartItem(String courseID, String accountID) throws SQLException {
+    public boolean removeCartItem(String accountID, String courseID) throws SQLException {
         boolean check = false;
         Connection conn = null;
         ResultSet rs = null;
