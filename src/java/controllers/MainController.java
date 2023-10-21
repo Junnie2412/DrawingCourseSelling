@@ -51,7 +51,7 @@ public class MainController extends HttpServlet {
     private static final String CREATE_VOUCHER = "CreateVoucher";
     private static final String CREATE_VOUCHER_CONTROLLER = "CreateVoucherController";
     
-    private static final String SHOW_LIST_INSTRUCTOR = "Show";
+    private static final String SHOW_LIST_INSTRUCTOR = "All intructors";
     private static final String SHOW_LIST_INSTRUCTOR_CONTROLLER = "ShowListController";
     
     private static final String VIEW_CART = "ViewCart";
