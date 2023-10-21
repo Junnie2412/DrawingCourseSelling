@@ -4,6 +4,7 @@
     Author     : Admin
 --%>
 
+<%@page import="users.UserDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -11,6 +12,10 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <!DOCTYPE html>
 <header id="page-topbar">
+    <%
+
+        UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
+    %>
     <div class="layout-width">
         <div class="navbar-header">
             <div class="d-flex">
@@ -45,7 +50,7 @@
 
                 <!-- App Search-->
                 <form class="app-search d-none d-md-block">
-                    
+
                     <div class="dropdown-menu dropdown-menu-lg" id="search-dropdown">
                         <div data-simplebar style="max-height: 320px;">
                             <!-- item-->
@@ -129,7 +134,7 @@
             <div class="d-flex align-items-center">
 
                 <div class="dropdown d-md-none topbar-head-dropdown header-item">
-                    
+
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0" aria-labelledby="page-header-search-dropdown">
                         <form class="p-3">
                             <div class="form-group m-0">
@@ -141,14 +146,9 @@
                         </form>
                     </div>
                 </div>
-
-                
-
-                
-
                 <div class="dropdown topbar-head-dropdown ms-1 header-item">
-                    
-                    
+
+
                 </div>
 
                 <div class="ms-1 header-item d-none d-sm-flex">
@@ -162,19 +162,19 @@
                         <i class='bx bx-moon fs-22'></i>
                     </button>
                 </div>
-                    <div class="user-info dropdown">
-    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <img src=".." alt="Avatar" class="user-avatar" class="user-avatar">
-    </a>
-    <div class="dropdown-menu" aria-labelledby="userDropdown">
-        <a class="dropdown-item" href="#">View Course</a>
-        <a class="dropdown-item" href="">Edit Account</a>
-        <a class="dropdown-item" href="MainController?action=SignOut">Log Out</a>
-    </div>
-</div>           
-                
+                <div class="user-info dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="<%=loginUser.getImage()%>" alt="<%=loginUser.getFullName()%>" class="user-avatar" class="user-avatar">
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="userDropdown">
+                        <a class="dropdown-item" href="#">View Course</a>
+                        <a class="dropdown-item" href="">Edit Account</a>
+                        <a class="dropdown-item" href="MainController?action=SignOut">Logout</a>
+                    </div>
+                </div>           
 
-                
+
+
             </div>
         </div>
     </div>

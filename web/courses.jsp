@@ -244,10 +244,18 @@
                                                 <%= course.getPrice()%>đ
                                             </div>
                                         </div>
+                                            
                                     </div>
+                                          
+                                            <div class="custom-width">
+                                                <button class="btn btn-success" name="action" value="payment">Add to Cart</button>
+                                                <button class="btn btn-primary" name="action" value="payment">Buy Now</button>
+                                            </div>                             
                                 </div>
+                                            
                             </form>
                         </div>
+                                            
                         <%
                                     }
                                 }
