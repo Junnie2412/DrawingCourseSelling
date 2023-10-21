@@ -61,12 +61,12 @@
 
 
             <!-- ~~~ Hero Section ~~~ -->
-            <section class="hero-section banner-overlay bg_img" data-img="assets/images/banner/banner.png">
+            <section class="hero-section banner-overlay bg_img" data-img="https://images.unsplash.com/photo-1614278390641-835b276fab2c?auto=format&fit=crop&q=80&w=1480&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
 
                 <div class="custom-container">
                     <div class="hero-content">
                         <h1 class="title uppercase cl-white">Course Details</h1>
-                        <ul class="breadcrumb cl-white p-0 m-0">
+                        <ul class="breadcrumb cl-white p-0 m-0 bg-transparent">
                             <li>
                                 <a href="index.jsp">Home</a>
                             </li>
@@ -214,21 +214,6 @@
                                         <div class="tab-pane show fade active" id="overview">
                                             <div class="overview">
                                                 <p><%= courseDAO.getDescription(courseID).getContent() %></p>
-                                                <div class="details-buttons-area">
-                                                    <a href="#0" class="custom-button theme-one">Buy Now <i class="fas fa-angle-right"></i></a>
-                                                    <a href="#0" class="custom-button bg-white">Add to Cart</a>
-<!--                                                    <ul class="social-icons">
-                                                        <li>
-                                                            <a href="#0" class="active"><i class="fab fa-facebook-f"></i></a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#0"><i class="fab fa-twitter"></i></a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#0"><i class="fab fa-instagram"></i></a>
-                                                        </li>
-                                                    </ul>-->
-                                                </div>
                                             </div>
                                         </div>
                                         <div class="tab-pane fade" id="curriculum">

@@ -131,10 +131,10 @@
             %>  
             <div class="user-info dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img src="https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745" class="user-avatar" class="user-avatar">
+                    <img src="<%=loginUser.getImage()%>" class="user-avatar" class="user-avatar">
                 </a>
                 <div class="dropdown-menu" aria-labelledby="userDropdown">
-                    <a class="dropdown-item" href="#">View Course</a>
+                    <a class="dropdown-item" href="courses.jsp">View Course</a>
                     <a class="dropdown-item" href="Editaccount.jsp">Manage your Account</a>
                     <a class="dropdown-item" href="viewCart.jsp">View Cart</a>
                     <a class="dropdown-item" href="MainController?action=SignOut">Logout</a>

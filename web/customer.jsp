@@ -32,6 +32,46 @@
         <link href="assets/css/main2.css" rel="stylesheet" type="text/css"/>
 
         <link rel="shortcut icon" href="assets/images/art1.png" type="image/x-icon">
+        
+        <style>
+            .sliding-top img{
+                width: 100%;
+                height: auto;
+            }
+
+            .sliding-down img{
+                width: 100%;
+                height: auto;
+            }
+            .banner-overlay::before {
+                left: 0;
+                bottom: 0;
+                top: 0;
+                right: 0;
+                background: rgba(59, 65, 66, 0.4);
+            }
+            
+            .btn-viewCourse {
+                width: 170px;
+                height: 50px;
+                background-image: linear-gradient(to right, #ff6e7f 0%, #bfe9ff  51%, #ff6e7f  100%);
+                margin: 10px;
+                padding: 15px 20px;
+                text-align: center;
+                text-transform: uppercase;
+                transition: 0.5s;
+                background-size: 200% auto;
+                color: white;            
+                border-radius: 50px;
+                display: block;
+            }
+
+            .btn-viewCourse:hover {
+                background-position: right center; /* change the direction of the change here */
+                color: #fff;
+                text-decoration: none;
+            }
+        </style>
     </head>
 
 
@@ -58,7 +98,7 @@
             </div>
 
             <!-- ~~~ Banner Section ~~~ -->
-            <section class="banner-section banner-overlay bg_img" data-img="assets/images/banner/banner.jpg">
+            <section class="banner-section banner-overlay bg_img" data-img="https://images.unsplash.com/photo-1532949293134-3eb646d213f1?auto=format&fit=crop&q=80&w=1470&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
                 <div class="container">
                     <div class="banner-content cl-white">
                         <h3 class="subtitle">Join the drawing course now</h3>
@@ -68,9 +108,9 @@
                         <% if (!loggedIn) { %>
                         <div class="banner-button-area">
                             <a href="courses.jsp" class="custom-button btn-md">view courses<i class="fas fa-play-circle"></i></a>
-                            <a href="signup.jsp" class="custom-button btn-md theme-one">Create your account<i class="flaticon-tap-1"></i></a>
+                            <a href="signup.jsp" class="btn-viewCourse btn-md theme-one">Create your account<i class="flaticon-tap-1"></i></a>
                             <% } else { %><div class="banner-button-area">
-                                <a href="courses.jsp" class="custom-button btn-md">
+                                <a href="courses.jsp" class="btn-viewCourse btn-md">
                                     <span style="text-align: center;">view courses</span>
                                     <i class="fas fa-play-circle"></i>
                                 </a><% } %>
