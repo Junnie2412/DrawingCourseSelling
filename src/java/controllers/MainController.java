@@ -53,7 +53,7 @@ public class MainController extends HttpServlet {
     private static final String TURN_BACK_STAFF = "TurnBackStaff";
     private static final String STAFF_PAGE = "staff/staff.jsp";
     
-    private static final String SHOW_LIST_INSTRUCTOR = "Show";
+    private static final String SHOW_LIST_INSTRUCTOR = "All intructors";
     private static final String SHOW_LIST_INSTRUCTOR_CONTROLLER = "ShowListController";
     
     private static final String VIEW_CART = "ViewCart";
