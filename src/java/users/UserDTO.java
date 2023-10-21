@@ -48,6 +48,10 @@ public class UserDTO {
         this.password = password;
         this.email = email;
     }
+
+    UserDTO(String userID, String role) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
 

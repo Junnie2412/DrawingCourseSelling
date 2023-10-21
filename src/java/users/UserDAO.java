@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import userGoogle.UserGoogleDTO;
 
 /**
  *
@@ -341,5 +342,9 @@ public class UserDAO {
             }
         }
         return check;
+    }
+
+    public boolean createAccGoogle(UserGoogleDTO user) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

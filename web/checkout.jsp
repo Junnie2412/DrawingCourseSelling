@@ -198,7 +198,7 @@
                                                         <h5>Thank you ! Your Order is Completed !</h5>
                                                         <p class="text-muted">You will receive an order confirmation email with details of your order.</p>
 
-                                                        <h3 class="fw-semibold">Order ID: <a href="apps-ecommerce-order-details.html" class="text-decoration-underline">VZ2451</a></h3>
+                                                        <h3 class="fw-semibold">Order ID: <a href="apps-ecommerce-order-details.html" class="text-decoration-underline"></a></h3>
                                                     </div>
                                                 </div>
                                                 <!-- end tab pane -->
