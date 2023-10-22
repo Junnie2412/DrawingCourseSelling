@@ -32,7 +32,7 @@
         <link href="assets/css/main2.css" rel="stylesheet" type="text/css"/>
 
         <link rel="shortcut icon" href="assets/images/art1.png" type="image/x-icon">
-        
+
         <style>
             .sliding-top img{
                 width: 100%;
@@ -50,7 +50,7 @@
                 right: 0;
                 background: rgba(59, 65, 66, 0.4);
             }
-            
+
             .btn-viewCourse {
                 width: 170px;
                 height: 50px;
@@ -71,6 +71,18 @@
                 color: #fff;
                 text-decoration: none;
             }
+
+            .nav-bar{
+                width: 100vw;
+                background-color: rgba(59, 65, 66, 0.1);
+            }
+            .banner-overlay::before {
+                left: 0;
+                bottom: 0;
+                top: 0;
+                right: 0;
+                background: rgba(59, 65, 66, 0.5);
+            }
         </style>
     </head>
 
@@ -90,7 +102,9 @@
             </span>
             <!-- ~~~ Loader & Go-Top ~~~ -->
 
-            <jsp:include page="layout/header.jsp"/>
+            <div class="nav-bar">
+                <jsp:include page="layout/header.jsp"/>
+            </div>
 
 
             <div class="sliding-top">
@@ -235,23 +249,23 @@
                                             </div>
                                             <div class="meta-item">
                                                 <i class="fas fa-user-graduate"></i>
-                                                <span><%= courseDAO.getDescription(course.getCourseID()).getType() %></span>
+                                                <span><%= courseDAO.getDescription(course.getCourseID()).getType()%></span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="ratings-area">
                                         <div class="ratings cl-theme">
                                             <%
-                                                    float avgrate = courseFeedbackDAO.getAverageRate(course.getCourseID());
-                                                    for (int i = 0; i < avgrate; i++){
-                                                %>
-                                                    <span><i class="fas fa-star"></i></span>
+                                                float avgrate = courseFeedbackDAO.getAverageRate(course.getCourseID());
+                                                for (int i = 0; i < avgrate; i++) {
+                                            %>
+                                            <span><i class="fas fa-star"></i></span>
                                                 <%
                                                     }
-                                                    for (int i = 0; i < (5 - avgrate); i++){
+                                                    for (int i = 0; i < (5 - avgrate); i++) {
                                                 %>
-                                                        <span class="cl-theme-light"><i class="fas fa-star"></i></span>
-                                                <%    
+                                            <span class="cl-theme-light"><i class="fas fa-star"></i></span>
+                                                <%
                                                     }
                                                 %>
                                             <span>(<%= courseFeedbackDAO.getAverageRate(course.getCourseID())%>/5.00)</span>
