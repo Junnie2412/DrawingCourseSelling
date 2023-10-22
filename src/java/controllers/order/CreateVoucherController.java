@@ -38,10 +38,8 @@ public class CreateVoucherController extends HttpServlet {
             String voucherCode = request.getParameter("voucherCode");
             Date createdDay = Date.valueOf(request.getParameter("createdDay"));
             Date expiredDay = Date.valueOf(request.getParameter("expiredDay"));
-            String courseID = request.getParameter("courseID");
             
             VoucherDAO voucherDAO = new VoucherDAO();
-            CourseDAO courseDAO = new CourseDAO();
             VoucherError voucherError = new VoucherError();
             boolean check = true;
             
@@ -57,13 +55,9 @@ public class CreateVoucherController extends HttpServlet {
                 check = false;
                 voucherError.setExpiredDayError("The expired Day must be after the created Day!");
             }
-            if(!courseDAO.checkExistedCourse(courseID)){
-                check = false;
-                voucherError.setCourseIDError("This CourseID is not existed");
-            }
             
             if(check){
-                if(voucherDAO.createVoucher(discountPercent, voucherCode, createdDay, expiredDay, courseID)){
+                if(voucherDAO.createVoucher(discountPercent, voucherCode, createdDay, expiredDay)){
                     url = SUCCESS;
                     request.setAttribute("MESSAGE", "Create Voucher Successfully");
                 }

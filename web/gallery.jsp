@@ -49,12 +49,12 @@
 
 
         <!-- ~~~ Hero Section ~~~ -->
-        <section class="hero-section banner-overlay bg_img" data-img="assets/images/banner/banner.png">
+        <section class="hero-section banner-overlay bg_img" data-img="https://images.unsplash.com/photo-1578926078640-668b1fb75403?auto=format&fit=crop&q=80&w=1366&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
             
             <div class="custom-container">
                 <div class="hero-content">
                     <h1 class="title uppercase cl-white">Gallery</h1>
-                    <ul class="breadcrumb cl-white p-0 m-0">
+                    <ul class="breadcrumb cl-white p-0 m-0 bg-transparent">
                         <li>
                             <a href="index.jsp">Home</a>
                         </li>
@@ -84,122 +84,122 @@
                         <div class="grid-item item--lg">
                             <div class="gallery-img">
                                 <div class="cont">
-                                    <a href="assets/images/gallery/lg-1.png" class="magnific_img_popup">
+                                    <a href="https://images.unsplash.com/photo-1584285405429-136bf988919c?auto=format&fit=crop&q=80&w=1473&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="magnific_img_popup">
                                         <i class="flaticon-add"></i>
                                     </a>
                                 </div>
-                                <img src="assets/images/gallery/01.png" alt="gallery">
+                                <img src="https://images.unsplash.com/photo-1584285405429-136bf988919c?auto=format&fit=crop&q=80&w=1473&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="gallery">
                             </div>
                         </div>
                         <div class="grid-item">
                             <div class="gallery-img">
                                 <div class="cont">
-                                    <a href="assets/images/gallery/lg-2.png" class="magnific_img_popup">
+                                    <a href="https://i.pinimg.com/originals/1f/0a/2f/1f0a2f6f47d3738e115b9d2fc7522bd8.jpg" class="magnific_img_popup">
                                         <i class="flaticon-add"></i>
                                     </a>
                                 </div>
-                                <img src="assets/images/gallery/02.png" alt="gallery">
+                                <img src="https://i.pinimg.com/originals/1f/0a/2f/1f0a2f6f47d3738e115b9d2fc7522bd8.jpg" alt="gallery">
                             </div>
                         </div>
                         <div class="grid-item">
                             <div class="gallery-img">
                                 <div class="cont">
-                                    <a href="assets/images/gallery/lg-3.png" class="magnific_img_popup">
+                                    <a href="https://images.unsplash.com/photo-1584278773680-8d940a213dcf?auto=format&fit=crop&q=80&w=1480&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="magnific_img_popup">
                                         <i class="flaticon-add"></i>
                                     </a>
                                 </div>
-                                <img src="assets/images/gallery/03.png" alt="gallery">
+                                <img src="https://images.unsplash.com/photo-1584278773680-8d940a213dcf?auto=format&fit=crop&q=80&w=1480&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="gallery">
                             </div>
                         </div>
                         <div class="grid-item">
                             <div class="gallery-img">
                                 <div class="cont">
-                                    <a href="assets/images/gallery/lg-4.png" class="magnific_img_popup">
+                                    <a href="https://www.everwallpaper.co.uk/cdn/shop/collections/kid_s_room_wallpaper.jpg?v=1660119168" class="magnific_img_popup">
                                         <i class="flaticon-add"></i>
                                     </a>
                                 </div>
-                                <img src="assets/images/gallery/04.png" alt="gallery">
+                                <img src="https://www.everwallpaper.co.uk/cdn/shop/collections/kid_s_room_wallpaper.jpg?v=1660119168" alt="gallery">
                             </div>
                         </div>
                         <div class="grid-item">
                             <div class="gallery-img">
                                 <div class="cont">
-                                    <a href="assets/images/gallery/lg-5.png" class="magnific_img_popup">
+                                    <a href="https://images.unsplash.com/photo-1575995872537-3793d29d972c?auto=format&fit=crop&q=80&w=1448&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="magnific_img_popup">
                                         <i class="flaticon-add"></i>
                                     </a>
                                 </div>
-                                <img src="assets/images/gallery/05.png" alt="gallery">
+                                <img src="https://images.unsplash.com/photo-1575995872537-3793d29d972c?auto=format&fit=crop&q=80&w=1448&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="gallery">
                             </div>
                         </div>
                         <div class="grid-item item--lg">
                             <div class="gallery-img">
                                 <div class="cont">
-                                    <a href="assets/images/gallery/lg-6.png" class="magnific_img_popup">
+                                    <a href="https://images.unsplash.com/photo-1581343109298-4a103c86d940?auto=format&fit=crop&q=80&w=1412&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="magnific_img_popup">
                                         <i class="flaticon-add"></i>
                                     </a>
                                 </div>
-                                <img src="assets/images/gallery/06.png" alt="gallery">
+                                <img src="https://images.unsplash.com/photo-1581343109298-4a103c86d940?auto=format&fit=crop&q=80&w=1412&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="gallery">
                             </div>
                         </div>
                         
                         <div class="grid-item item--lg">
                             <div class="gallery-img">
                                 <div class="cont">
-                                    <a href="assets/images/gallery/lg-7.png" class="magnific_img_popup">
+                                    <a href="https://images.unsplash.com/photo-1581342995886-14044cadee77?auto=format&fit=crop&q=80&w=1555&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="magnific_img_popup">
                                         <i class="flaticon-add"></i>
                                     </a>
                                 </div>
-                                <img src="assets/images/gallery/07.png" alt="gallery">
+                                <img src="https://images.unsplash.com/photo-1581342995886-14044cadee77?auto=format&fit=crop&q=80&w=1555&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="gallery">
                             </div>
                         </div>
                         <div class="grid-item">
                             <div class="gallery-img">
                                 <div class="cont">
-                                    <a href="assets/images/gallery/lg-8.png" class="magnific_img_popup">
+                                    <a href="https://i.pinimg.com/564x/11/f0/46/11f046e43f3beecfd6b37b9d90f94616.jpg" class="magnific_img_popup">
                                         <i class="flaticon-add"></i>
                                     </a>
                                 </div>
-                                <img src="assets/images/gallery/08.png" alt="gallery">
+                                <img src="https://i.pinimg.com/564x/11/f0/46/11f046e43f3beecfd6b37b9d90f94616.jpg" alt="gallery">
                             </div>
                         </div>
                         <div class="grid-item">
                             <div class="gallery-img">
                                 <div class="cont">
-                                    <a href="assets/images/gallery/lg-9.png" class="magnific_img_popup">
+                                    <a href="https://images.unsplash.com/photo-1597730945481-f35a5cf39021?auto=format&fit=crop&q=80&w=1470&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="magnific_img_popup">
                                         <i class="flaticon-add"></i>
                                     </a>
                                 </div>
-                                <img src="assets/images/gallery/09.png" alt="gallery">
+                                <img src="https://images.unsplash.com/photo-1597730945481-f35a5cf39021?auto=format&fit=crop&q=80&w=1470&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="gallery">
                             </div>
                         </div>
                         <div class="grid-item">
                             <div class="gallery-img">
                                 <div class="cont">
-                                    <a href="assets/images/gallery/lg-10.png" class="magnific_img_popup">
+                                    <a href="https://images.unsplash.com/photo-1579762593175-20226054cad0?auto=format&fit=crop&q=80&w=1536&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="magnific_img_popup">
                                         <i class="flaticon-add"></i>
                                     </a>
                                 </div>
-                                <img src="assets/images/gallery/10.png" alt="gallery">
+                                <img src="https://images.unsplash.com/photo-1579762593175-20226054cad0?auto=format&fit=crop&q=80&w=1536&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="gallery">
                             </div>
                         </div>
                         <div class="grid-item">
                             <div class="gallery-img">
                                 <div class="cont">
-                                    <a href="assets/images/gallery/lg-11.png" class="magnific_img_popup">
+                                    <a href="https://images.unsplash.com/photo-1579783901586-d88db74b4fe4?auto=format&fit=crop&q=80&w=1496&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="magnific_img_popup">
                                         <i class="flaticon-add"></i>
                                     </a>
                                 </div>
-                                <img src="assets/images/gallery/11.png" alt="gallery">
+                                <img src="https://images.unsplash.com/photo-1579783901586-d88db74b4fe4?auto=format&fit=crop&q=80&w=1496&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="gallery">
                             </div>
                         </div>
                         <div class="grid-item item--lg">
                             <div class="gallery-img">
                                 <div class="cont">
-                                    <a href="assets/images/gallery/lg-13.png" class="magnific_img_popup">
+                                    <a href="https://images.unsplash.com/photo-1583502071282-169ac4fead6a?auto=format&fit=crop&q=80&w=1489&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="magnific_img_popup">
                                         <i class="flaticon-add"></i>
                                     </a>
                                 </div>
-                                <img width="90" height="450"src="assets/images/gallery/13.png" alt="gallery">
+                                <img width="90" height="450"src="https://images.unsplash.com/photo-1583502071282-169ac4fead6a?auto=format&fit=crop&q=80&w=1489&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="gallery">
                             </div>
                         </div>
                     </div>

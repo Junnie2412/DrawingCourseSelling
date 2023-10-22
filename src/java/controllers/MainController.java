@@ -50,8 +50,10 @@ public class MainController extends HttpServlet {
     
     private static final String CREATE_VOUCHER = "CreateVoucher";
     private static final String CREATE_VOUCHER_CONTROLLER = "CreateVoucherController";
+    private static final String TURN_BACK_STAFF = "TurnBackStaff";
+    private static final String STAFF_PAGE = "staff/staff.jsp";
     
-    private static final String SHOW_LIST_INSTRUCTOR = "Show";
+    private static final String SHOW_LIST_INSTRUCTOR = "All intructors";
     private static final String SHOW_LIST_INSTRUCTOR_CONTROLLER = "ShowListController";
     
     private static final String VIEW_CART = "ViewCart";
@@ -61,6 +63,8 @@ public class MainController extends HttpServlet {
     private static final String ADD_TO_CART = "AddToCart";
     private static final String ADD_TO_CART_CONTROLLER = "AddToCartController";
     private static final String BUY_NOW = "BuyNow";
+    private static final String TURN_BACK = "TurnBack";
+    private static final String COURSE_DETAIL_PAGE = "courses.jsp";
     private static final String REMOVE_COURSE_CART="Remove";
     private static final String REMOVE_COURSE_CART_CONTROLLER="RemoveCartController";
  
@@ -101,6 +105,8 @@ public class MainController extends HttpServlet {
                 url = LOADSTAFF_CONTROLLER;
             }else if (action.equals(CREATE_VOUCHER)) {
                 url = CREATE_VOUCHER_CONTROLLER;
+            }else if (action.equals(TURN_BACK_STAFF)) {
+                url = STAFF_PAGE;
             }else if (action.equals(ADD_TO_CART)) {
                 url = ADD_TO_CART_CONTROLLER;
             }else if (action.equals(ALREADY_ADD_TO_CART)) {
@@ -111,6 +117,8 @@ public class MainController extends HttpServlet {
                 url = ADD_TO_CART_CONTROLLER;
             }else if (action.equals(VIEW_CART)) {
                 url = VIEW_CART_PAGE;
+            }else if (action.equals(TURN_BACK)) {
+                url = COURSE_DETAIL_PAGE;
             }else if (action.equals(REMOVE_COURSE_CART)) {
                 url = REMOVE_COURSE_CART_CONTROLLER;
             }else if (action.equals(SHOW_LIST_INSTRUCTOR)) {

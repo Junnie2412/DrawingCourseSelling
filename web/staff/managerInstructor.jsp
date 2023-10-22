@@ -1,3 +1,4 @@
+<%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="users.UserDTO"%>
 <!doctype html>
@@ -5,8 +6,7 @@
 
     <head>
 
-        <<<<<<< HEAD
-        =======
+
         <meta charset="utf-8" />
         <title>ArtCenter - Online Drawing Course</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,21 +14,21 @@
         <meta content="Themesbrand" name="author" />
         <!-- App favicon -->
         <link rel="shortcut icon" href="assets/images/favicon.ico">
-        >>>>>>> 0c844f84032ee9e3d48844e3713f95d08cd4c5d5
+
 
         <!-- Sweet Alert css-->
-        <link href="assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+        <link href="staff/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
 
         <!-- Layout config Js -->
-        <script src="assets/js/layout.js"></script>
+        <script src="staff/assets/js/layout.js"></script>
         <!-- Bootstrap Css -->
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="staff/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <!-- Icons Css -->
-        <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="staff/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
         <!-- App Css-->
-        <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
+        <link href="staff/assets/css/app.min.css" rel="stylesheet" type="text/css" />
         <!-- custom Css-->
-        <link href="assets/css/custom.min.css" rel="stylesheet" type="text/css" />
+        <link href="staff/assets/css/custom.min.css" rel="stylesheet" type="text/css" />
          
         
         
@@ -88,9 +88,9 @@
                                     <div class="card-body">
                                         <div>
                                             <%
-                                                ArrayList<UserDTO> staffList = (ArrayList) session.getAttribute("STAFF_LIST");
-                                                if (staffList != null) {
-                                                    if (staffList.size() > 0) {
+                                                List<UserDTO> listInstructor = (List<UserDTO>) request.getAttribute("LIST_INSTRUCTOR");
+                                                if (listInstructor != null) {
+                                                    if (listInstructor.size() > 0) {
                                             %>
                                             <div class="table-responsive table-card">
                                                 <table class="table align-middle" id="customerTable">
@@ -120,7 +120,7 @@
                                                         <%
                                                             int count = 1;
 
-                                                            for (UserDTO u : staffList) {
+                                                            for (UserDTO u : listInstructor) {
 
                                                         %>
                                                     <form action="MainController" method="POST">
@@ -151,7 +151,7 @@
                                                             </td>
 
                                                             <td class="isActive">
-                                                                <input type="radio" name="isActive" value="<%=u.isIsActive()%>">
+                                                                <input type="radio" checked="true" name="isActive" value="<%=u.isIsActive()%>" readonly="">
                                                             </td>
                                                             <td class="tags">
                                                                 <span class="badge badge-soft-primary">Staff</span>

@@ -2649,7 +2649,7 @@ header.active {
 }
 
 .sliding-top img{
-    width: 1349px;
+    width: 100%;
 }
 
 .sliding-down{
@@ -2944,7 +2944,7 @@ header.active {
     -webkit-transition: all ease 0.3s;
     -moz-transition: all ease 0.3s;
     transition: all ease 0.3s;
-    height: 450px;
+    height: 460px;
     
     
 }

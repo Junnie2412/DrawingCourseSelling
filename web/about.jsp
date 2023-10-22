@@ -26,6 +26,12 @@
     <link rel="stylesheet" href="assets/css/main2.css">
 
     <link rel="shortcut icon" href="assets/images/art1.png" type="image/x-icon">
+    
+    <style>
+        .feature-item {
+            height: 470px;
+        }
+    </style>
 </head>
 
 
@@ -50,7 +56,7 @@
 
 
         <!-- ~~~ Hero Section ~~~ -->
-        <section class="hero-section banner-overlay bg_img" data-img="assets/images/banner/banner.png">
+        <section class="hero-section banner-overlay bg_img" data-img="https://images.unsplash.com/photo-1536924940846-227afb31e2a5?auto=format&fit=crop&q=80&w=1466&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
             
             <div class="custom-container">
                 <div class="hero-content">
@@ -140,7 +146,7 @@
                 <div class="row">
                     <div class="col-lg-6 align-self-end d-none d-lg-block">
                         <div class="about-thumb rtl">
-                            <img src="assets/images/about/about.png" alt="about">
+                            <img src="" alt="about">
                         </div>
                     </div>
                     <div class="col-lg-6 pb-120">
@@ -160,76 +166,7 @@ With a team of teachers with over 13 years of experience and well-trained traini
 
 
         <!-- ~~~ Counter Section ~~~ -->
-        <section class="counter-section pt-120 pb-120 title-lay bg_img" data-img="./assets/images/banner/banner.jpg" id="apply">
-            <div class="container">
-                <div class="d-flex flex-wrap justify-content-between align-items-center">
-                    <div class="odo-area">
-                        <div class="odo-wrap">
-                            <div class="odo-item">
-                                <div class="odo-in">
-                                    <div class="odo-head">
-                                        <h2 class="title odometer" data-odo="60">1</h2>
-                                        <h2 class="title">2</h2>
-                                    </div>
-                                    <h5 class="subtitle">Teachers</h5>
-                                </div>
-                            </div>
-                            <div class="odo-item">
-                                <div class="odo-in">
-                                    <div class="odo-head">
-                                        <h2 class="title odometer" data-odo="8">10</h2>
-                                        <h2 class="title">0</h2>
-                                    </div>
-                                    <h5 class="subtitle">Students</h5>
-                                </div>
-                            </div>
-                            <div class="odo-item">
-                                <div class="odo-in">
-                                    <div class="odo-head">
-                                        <h2 class="title odometer" data-odo="75">6</h2>
-                                        <h2 class="title"></h2>
-                                    </div>
-                                    <h5 class="subtitle">Courses</h5>
-                                </div>
-                            </div>
-                            <div class="odo-item">
-                                <div class="odo-in">
-                                    <div class="odo-head">
-                                        <h2 class="title odometer" data-odo="13">2</h2>
-                                        <h2 class="title">+</h2>
-                                    </div>
-                                    <h5 class="subtitle">National Awards</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="apply-form-wrapper">
-                        <h5 class="title">Apply Now</h5>
-                        <form class="apply-form">
-                            <div class="apply-group">
-                                <label for="name" class="label-name">Full Name</label>
-                                <label for="name" class="label-icon"><i class="fas fa-user"></i></label>
-                                <input type="text" id="name" name="name">
-                            </div>
-                            <div class="apply-group">
-                                <label for="email" class="label-name">Enter Email</label>
-                                <label for="email" class="label-icon"><i class="fas fa-envelope"></i></label>
-                                <input type="text" id="email" name="email">
-                            </div>
-                            <div class="apply-group">
-                                <label for="phone" class="label-name">Phone Number</label>
-                                <label for="phone" class="label-icon"><i class="fas fa-phone"></i></label>
-                                <input type="text"  id="phone" name="phone">
-                            </div>
-                            <div class="apply-group mb-0">
-                                <button type="submit">submit now <i class="fas fa-angle-right"></i></button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- ~~~ Counter Section ~~~ -->
+       
 
 
         <!-- ~~~ Testimonial Section ~~~ -->
