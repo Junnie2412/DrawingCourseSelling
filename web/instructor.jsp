@@ -39,6 +39,7 @@
                 width: 100vw;
                 background-color: rgba(59, 65, 66, 0.1);
             }
+            
             .banner-overlay::before {
                 left: 0;
                 bottom: 0;

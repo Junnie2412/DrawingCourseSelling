@@ -152,7 +152,7 @@
             <!-- ~~~ Banner Section ~~~ -->
 
             <!-- ~~~ Feature Section ~~~ -->
-            <section class="feature-section pt-120 pb-120" style="background-color:#ebecec">
+            <section class="feature-section pt-120 pb-120" style="background-color: #ebecec">
                 <div class="container container-feature">
                     <div class="section-header">
 
