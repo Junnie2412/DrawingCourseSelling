@@ -38,9 +38,17 @@
         <link rel="stylesheet" href="assets/css/main2.css">
 
         <link rel="shortcut icon" href="assets/images/art1.png" type="image/x-icon">
+        <style>
+            .nav-bar{
+                width: 100vw;
+                background-color: rgba(59, 65, 66, 0.1);
+            }
+        </style>
     </head>
-    <jsp:include page="layout/header.jsp"/>
 
+    <div class="nav-bar">
+        <jsp:include page="layout/header.jsp"/>
+    </div>
     <body>
 
 
@@ -106,17 +114,17 @@
                                         <div class="ratings cl-theme">
                                             <%
                                                 float avgrate = courseFeedbackDAO.getAverageRate(courseID);
-                                                for (int i = 0; i < avgrate; i++){
+                                                for (int i = 0; i < avgrate; i++) {
                                             %>
-                                                <span><i class="fas fa-star"></i></span>
-                                            <%
-                                                }
-                                                for (int i = 0; i < (5 - avgrate); i++){
-                                            %>
-                                                    <span class="cl-theme-light"><i class="fas fa-star"></i></span>
-                                            <%    
-                                                }
-                                            %>
+                                            <span><i class="fas fa-star"></i></span>
+                                                <%
+                                                    }
+                                                    for (int i = 0; i < (5 - avgrate); i++) {
+                                                %>
+                                            <span class="cl-theme-light"><i class="fas fa-star"></i></span>
+                                                <%
+                                                    }
+                                                %>
                                             <span>(<%= courseFeedbackDAO.getAverageRate(course.getCourseID())%>/5.00)</span>
                                         </div>
                                         <ul class="course-infos">
@@ -188,7 +196,7 @@
                                         </div>
                                         <div class="meta-item">
                                             <i class="fas fa-user-graduate"></i>
-                                            <span><%= courseDAO.getDescription(courseID).getType() %></span>
+                                            <span><%= courseDAO.getDescription(courseID).getType()%></span>
                                         </div>
                                     </div>
                                 </div>
@@ -213,26 +221,26 @@
                                     <div class="tab-content">
                                         <div class="tab-pane show fade active" id="overview">
                                             <div class="overview">
-                                                <p><%= courseDAO.getDescription(courseID).getContent() %></p>
+                                                <p><%= courseDAO.getDescription(courseID).getContent()%></p>
                                             </div>
                                         </div>
                                         <div class="tab-pane fade" id="curriculum">
                                             <div class="overview">
-                                                <p><%= courseDAO.getDescription(courseID).getTarget() %></p>
+                                                <p><%= courseDAO.getDescription(courseID).getTarget()%></p>
                                                 <div class="details-buttons-area">
                                                     <a href="#0" class="custom-button theme-one">Buy Now <i class="fas fa-angle-right"></i></a>
                                                     <a href="#0" class="custom-button bg-white">Add to Cart</a>
-<!--                                                    <ul class="social-icons">
-                                                        <li>
-                                                            <a href="#0"><i class="fab fa-facebook-f"></i></a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#0"><i class="fab fa-twitter"></i></a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#0"><i class="fab fa-instagram"></i></a>
-                                                        </li>
-                                                    </ul>-->
+                                                    <!--                                                    <ul class="social-icons">
+                                                                                                            <li>
+                                                                                                                <a href="#0"><i class="fab fa-facebook-f"></i></a>
+                                                                                                            </li>
+                                                                                                            <li>
+                                                                                                                <a href="#0"><i class="fab fa-twitter"></i></a>
+                                                                                                            </li>
+                                                                                                            <li>
+                                                                                                                <a href="#0"><i class="fab fa-instagram"></i></a>
+                                                                                                            </li>
+                                                                                                        </ul>-->
                                                 </div>
                                             </div>
                                         </div>
@@ -240,33 +248,33 @@
                                             <div class="overview text-center">
                                                 <div class="instructor-item">
                                                     <div class="instructor-thumb">
-                                                        <a href="#0"><img src="<%= courseDAO.getAccount(courseID).getImage() %>" alt="instructor"></a>
+                                                        <a href="#0"><img src="<%= courseDAO.getAccount(courseID).getImage()%>" alt="instructor"></a>
                                                     </div>
                                                     <div class="instructor-content">
-                                                        <h6 class="title"><a href="#0"><%= courseDAO.getAccount(courseID).getFullName() %></a></h6>
+                                                        <h6 class="title"><a href="#0"><%= courseDAO.getAccount(courseID).getFullName()%></a></h6>
                                                         <span class="details">TEACHER</span>
                                                     </div>
                                                 </div>
-                                                <p><%= profileDAO.getProfileByCourseID(courseID) %></p>
+                                                <p><%= profileDAO.getProfileByCourseID(courseID)%></p>
                                                 <div class="details-buttons-area">
-<!--                                                    <ul class="social-icons justify-content-center w-100">
-                                                        <li>
-                                                            <a href="#0"><i class="fab fa-facebook-f"></i></a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#0" class="active"><i class="fab fa-twitter"></i></a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#0"><i class="fab fa-instagram"></i></a>
-                                                        </li>
-                                                    </ul>-->
+                                                    <!--                                                    <ul class="social-icons justify-content-center w-100">
+                                                                                                            <li>
+                                                                                                                <a href="#0"><i class="fab fa-facebook-f"></i></a>
+                                                                                                            </li>
+                                                                                                            <li>
+                                                                                                                <a href="#0" class="active"><i class="fab fa-twitter"></i></a>
+                                                                                                            </li>
+                                                                                                            <li>
+                                                                                                                <a href="#0"><i class="fab fa-instagram"></i></a>
+                                                                                                            </li>
+                                                                                                        </ul>-->
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="tab-pane fade" id="reviews">
                                             <div class="client-review">
                                                 <div class="review-comments">
-                                                    <h6 class="review-title">Reviews (<%= courseFeedbackDAO.getTotalFeedback(courseID) %>)</h6>
+                                                    <h6 class="review-title">Reviews (<%= courseFeedbackDAO.getTotalFeedback(courseID)%>)</h6>
                                                     <ul class="review-contents">
                                                         <%
                                                             List<CourseFeedbackDTO> listFeedback = courseFeedbackDAO.getListCourseFeedback(courseID);
@@ -276,26 +284,26 @@
                                                         %>
                                                         <li>
                                                             <div class="thumb">
-                                                                <img src="<%= courseFeedbackDAO.getAccount(feedback.getCourseFeedbackID()).getImage() %>" alt="course">
+                                                                <img src="<%= courseFeedbackDAO.getAccount(feedback.getCourseFeedbackID()).getImage()%>" alt="course">
                                                             </div>
                                                             <div class="cont">
-                                                                <h6 class="subtitle"><%= courseFeedbackDAO.getAccount(feedback.getCourseFeedbackID()).getFullName() %></h6>
+                                                                <h6 class="subtitle"><%= courseFeedbackDAO.getAccount(feedback.getCourseFeedbackID()).getFullName()%></h6>
                                                                 <div class="ratings cl-theme">
                                                                     <%
                                                                         float rate = feedback.getRate();
-                                                                        for (int i = 0; i < rate; i++){
+                                                                        for (int i = 0; i < rate; i++) {
                                                                     %>
-                                                                        <span><i class="fas fa-star"></i></span>
-                                                                    <%
-                                                                        }
-                                                                        for (int i = 0; i < (5 - rate); i++){
-                                                                    %>
-                                                                            <span class="cl-theme-light"><i class="fas fa-star"></i></span>
-                                                                    <%    
-                                                                        }
-                                                                    %>
+                                                                    <span><i class="fas fa-star"></i></span>
+                                                                        <%
+                                                                            }
+                                                                            for (int i = 0; i < (5 - rate); i++) {
+                                                                        %>
+                                                                    <span class="cl-theme-light"><i class="fas fa-star"></i></span>
+                                                                        <%
+                                                                            }
+                                                                        %>
                                                                 </div>
-                                                                <p><%= feedback.getFeedback() %></p>
+                                                                <p><%= feedback.getFeedback()%></p>
                                                             </div>
                                                         </li>
                                                         <%
