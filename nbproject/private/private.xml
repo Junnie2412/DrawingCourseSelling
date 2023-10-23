@@ -3,7 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/SWP391/SWP391/web/staff/layoutadmin/slidebar.jsp</file>
+            <file>file:/D:/SWP391/SWP391/src/java/controllers/userController/AddStaffController.java</file>
+            <file>file:/D:/SWP391/SWP391/src/java/controllers/staff/AddInstructorController.java</file>
+            <file>file:/D:/SWP391/SWP391/web/staff/managerInstructor.jsp</file>
+            <file>file:/D:/SWP391/SWP391/src/java/users/UserDAO.java</file>
         </group>
     </open-files>
 </project-private>

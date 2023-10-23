@@ -34,6 +34,8 @@ public class UserDAO {
 
     private static final String INSTRUCTOR_LIST = "SELECT * FROM tblAccount WHERE role = 'Instructor'";
     private static final String CREATEACCOUNTGOOGLE = "INSERT INTO tblAccount VALUES (?)";
+    private static final String INSERT_INSTRUCTOR = "INSERT INTO tblAccount VALUES (?,?,?,?,?,?,?,?)";
+    
     public UserDTO checkLogin(String userName, String password) throws SQLException {
         UserDTO user = null;
 
@@ -190,6 +192,7 @@ public class UserDAO {
         return check;
     }
 
+    
     public boolean deleteStaff(String accountID) throws SQLException {
         boolean check = false;
         Connection conn = null;
@@ -348,5 +351,35 @@ public class UserDAO {
 
     public boolean createAccGoogle(UserGoogleDTO user) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public boolean insertInstructor(UserDTO user) throws ClassNotFoundException, SQLException {
+        boolean check = false;
+        Connection conn = null;
+        PreparedStatement ptm = null;
+
+        try {
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(INSERT_INSTRUCTOR);
+                ptm.setString(1, user.getAccountID());
+                ptm.setString(2, user.getPassword());
+                ptm.setString(3, user.getFullName());
+                ptm.setDate(4, user.getDateOfBirth());
+                ptm.setString(5, user.getRole());
+                ptm.setBoolean(6, user.isIsActive());
+                ptm.setString(7, user.getImage());
+                ptm.setString(8, user.getEmail());
+                check = ptm.executeUpdate() > 0 ? true : false;
+            }
+        } finally {
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return check;
     }
 }
