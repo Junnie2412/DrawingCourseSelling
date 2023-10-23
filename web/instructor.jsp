@@ -30,10 +30,22 @@
         <link rel="stylesheet" href="assets/css/main2.css">
 
         <link rel="shortcut icon" href="assets/images/art1.png" type="image/x-icon">
-        
+
         <style>
             .instructor-content{
                 max-width: 400px;
+            }
+            .nav-bar{
+                width: 100vw;
+                background-color: rgba(59, 65, 66, 0.1);
+            }
+            
+            .banner-overlay::before {
+                left: 0;
+                bottom: 0;
+                top: 0;
+                right: 0;
+                background: rgba(59, 65, 66, 0.5);
             }
         </style>
     </head>
@@ -41,7 +53,7 @@
 
     <body>
 
-        
+
 
 
         <div class="all-sections oh">
@@ -56,26 +68,28 @@
             <!-- ~~~ Loader & Go-Top ~~~ -->
 
 
-            <jsp:include page="layout/header.jsp"/>
+            <div class="nav-bar">
+                <jsp:include page="layout/header.jsp"/>
+            </div>
 
 
             <!-- ~~~ Hero Section ~~~ -->
             <section class="hero-section banner-overlay bg_img" data-img="https://images.unsplash.com/photo-1541753866388-0b3c701627d3?auto=format&fit=crop&q=80&w=1374&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
-            
-            <div class="custom-container">
-                <div class="hero-content">
-                    <h1 class="title uppercase cl-white">Instructor</h1>
-                    <ul class="breadcrumb cl-white p-0 m-0" style="background-color: #e9ecef00">
-                        <li>
-                            <a href="index.jsp">Home</a>
-                        </li>
-                        <li>
-                            Instructor
-                        </li>
-                    </ul>
+
+                <div class="custom-container">
+                    <div class="hero-content">
+                        <h1 class="title uppercase cl-white">Instructor</h1>
+                        <ul class="breadcrumb cl-white p-0 m-0" style="background-color: #e9ecef00">
+                            <li>
+                                <a href="index.jsp">Home</a>
+                            </li>
+                            <li>
+                                Instructor
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
             <!-- ~~~ Hero Section ~~~ -->
 
             <!-- Load Instructor List->
