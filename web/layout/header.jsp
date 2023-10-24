@@ -122,7 +122,7 @@
             <form class="course-search-form ml-auto mr-4" method="post" action="MainController?action=Search">
                 <input type="text" name="searchName" value="<%= search%>" placeholder="Search Courses" class="rounded pl-0">
                 <button type="submit" class="rounded" value="Search"><i class="flaticon-loupe"></i></button>
-            </form> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </form> 
             <%
                 if (loginUser.getRole() == "") {
             %>
@@ -135,7 +135,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="userDropdown">
                     <a class="dropdown-item" href="#">View Course</a>
-                    <a class="dropdown-item" href="Editaccount.jsp">Manage your Account</a>
+                    <a class="dropdown-item" href="UpdateUserController?action=updateUser">Manage your Account</a>
                     <a class="dropdown-item" href="viewCart.jsp">View Cart</a>
                     <a class="dropdown-item" href="MainController?action=SignOut">Logout</a>
                 </div>

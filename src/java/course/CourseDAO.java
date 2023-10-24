@@ -6,6 +6,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -21,11 +22,11 @@ import utils.DBUtil;
 public class CourseDAO {
 
     private static final String SEARCH_COURSE_NAME = "SELECT * FROM tblCourse WHERE name like ?";
-    private static final String CREATE_VIDEO = "INSERT INTO tblVideo(content, time, isActive) VALUES(?,?,?)";
-    private static final String CREATE_LESSON = "INSERT INTO tblLesson(title, description, videoID) VALUES(?,?,?)";
-    private static final String CREATE_MODULE = "INSERT INTO tblModule(title,lessonID) VALUES(?,?)";
+    private static final String CREATE_VIDEO = "INSERT INTO tblVideo(content, time, isActive, lessonID) VALUES(?,?,?,?)";
+    private static final String CREATE_LESSON = "INSERT INTO tblLesson(title, description, moduleID) VALUES(?,?,?)";
+    private static final String CREATE_MODULE = "INSERT INTO tblModule(title,courseID) VALUES(?,?)";
     private static final String CREATE_DESCRIPTION = "INSERT INTO tblDescription(content, target, image,type, level) VALUES(?,?,?,?,?)";
-    private static final String CREATE_COURSE = "INSERT INTO tblCourse(courseID, price, name, duration, isActive, datePublic, accountID, descriptionID, moduleID) VALUES(?,?,?,?,?,?,?,?,?)";
+    private static final String CREATE_COURSE = "INSERT INTO tblCourse(courseID, price, name, duration, isActive, datePublic, accountID, descriptionID) VALUES(?,?,?,?,?,?,?,?)";
 
     private static final String GET_ACCOUNT_BY_COURSEID = "SELECT * FROM tblAccount WHERE accountID = (SELECT accountID FROM tblCourse WHERE courseID = ?)";
     private static final String GET_DESCRIPTION_BY_COURSEID = "SELECT * FROM tblDescription WHERE descriptionID = (SELECT descriptionID FROM tblCourse WHERE courseID = ?)";
@@ -44,6 +45,7 @@ public class CourseDAO {
     private static final String GET_ORDERID = "SELECT TOP 1 orderID FROM [tblOrder] ORDER BY orderID DESC";
     private static final String INSERT_ORDER_DETAIL = "INSERT INTO orderDetail VALUES (?,?,?,?,?,?)";
 
+    private static final String UPDATE_COURSE = "update tblCourse set price = ?, name = ?, duration = ?, datePublic = ? where courseID = ?";
     private static final String GET_COURSE_BY_COURSEID = "SELECT courseID, price, name, duration, isActive, datePublic, accountID, descriptionID FROM tblCourse WHERE courseID = ? ";
 
     public List<CourseDTO> getlistCourse(String search) throws ClassNotFoundException, SQLException {
@@ -89,7 +91,7 @@ public class CourseDAO {
         return list;
     }
 
-    public boolean createVideo(String content, LocalTime time, boolean isActive) throws SQLException {
+    public int createVideo(String content, LocalTime time, boolean isActive, int lessionId) throws SQLException {
         boolean check = false;
         Connection conn = null;
         ResultSet rs = null;
@@ -98,12 +100,19 @@ public class CourseDAO {
         try {
             conn = DBUtil.getConnection();
             if (conn != null) {
-                ptm = conn.prepareStatement(CREATE_VIDEO);
+               ptm = conn.prepareStatement(CREATE_VIDEO, Statement.RETURN_GENERATED_KEYS);
                 ptm.setString(1, content);
                 ptm.setTime(2, Time.valueOf(time));
                 ptm.setBoolean(3, isActive);
-
-                check = ptm.executeUpdate() > 0 ? true : false;
+                 ptm.setInt(4, lessionId);
+                 int rowsAffected = ptm.executeUpdate();
+                if (rowsAffected > 0) {
+                    rs = ptm.getGeneratedKeys();
+                    if (rs.next()) {
+                        int id = rs.getInt(1);
+                        return id;
+                    }
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -118,11 +127,10 @@ public class CourseDAO {
                 conn.close();
             }
         }
-        return check;
-    }
+        return -1;
+        }
 
-    public boolean createLesson(String title, String description) throws SQLException {
-        boolean check = false;
+    public int createLesson(String title, String description, int moduleId) throws SQLException {
         Connection conn = null;
         ResultSet rs = null;
         PreparedStatement ptm = null;
@@ -130,16 +138,19 @@ public class CourseDAO {
         try {
             conn = DBUtil.getConnection();
             if (conn != null) {
-                ptm = conn.prepareStatement(CREATE_LESSON);
+                ptm = conn.prepareStatement(CREATE_LESSON, Statement.RETURN_GENERATED_KEYS);
                 ptm.setString(1, title);
                 ptm.setString(2, description);
+                ptm.setInt(3, moduleId);
 
-                VideoDAO videoDAO = new VideoDAO();
-                VideoDTO video = videoDAO.getLastestVideo();
-
-                ptm.setInt(3, video.getVideoID());
-
-                check = ptm.executeUpdate() > 0 ? true : false;
+                int rowsAffected = ptm.executeUpdate();
+                if (rowsAffected > 0) {
+                    rs = ptm.getGeneratedKeys();
+                    if (rs.next()) {
+                        int id = rs.getInt(1);
+                        return id;
+                    }
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -154,11 +165,10 @@ public class CourseDAO {
                 conn.close();
             }
         }
-        return check;
+        return -1;
     }
 
-    public boolean createModule(String title) throws SQLException {
-        boolean check = false;
+   public int createModule(String title, String courseId) throws SQLException {
         Connection conn = null;
         ResultSet rs = null;
         PreparedStatement ptm = null;
@@ -166,15 +176,19 @@ public class CourseDAO {
         try {
             conn = DBUtil.getConnection();
             if (conn != null) {
-                ptm = conn.prepareStatement(CREATE_MODULE);
+                ptm = conn.prepareStatement(CREATE_MODULE, Statement.RETURN_GENERATED_KEYS);
                 ptm.setString(1, title);
+                ptm.setString(2, courseId);
 
-                LessonDAO lessonDAO = new LessonDAO();
-                LessonDTO lesson = lessonDAO.getLastestLesson();
+                int rowsAffected = ptm.executeUpdate();
 
-                ptm.setInt(2, lesson.getLessonID());
-
-                check = ptm.executeUpdate() > 0 ? true : false;
+                if (rowsAffected > 0) {
+                    rs = ptm.getGeneratedKeys();
+                    if (rs.next()) {
+                        int id = rs.getInt(1);
+                        return id;
+                    }
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -189,11 +203,10 @@ public class CourseDAO {
                 conn.close();
             }
         }
-        return check;
+        return -1;
     }
 
-    public boolean createDescription(String descriptionContent, String descriptionTarget, String descriptionImage, String descriptionType, String descriptionLevel) throws SQLException {
-        boolean check = false;
+     public int createDescription(String descriptionContent, String descriptionTarget, String descriptionImage, String descriptionType, String descriptionLevel) throws SQLException {
         Connection conn = null;
         ResultSet rs = null;
         PreparedStatement ptm = null;
@@ -201,14 +214,22 @@ public class CourseDAO {
         try {
             conn = DBUtil.getConnection();
             if (conn != null) {
-                ptm = conn.prepareStatement(CREATE_DESCRIPTION);
+                ptm = conn.prepareStatement(CREATE_DESCRIPTION, Statement.RETURN_GENERATED_KEYS);
                 ptm.setString(1, descriptionContent);
                 ptm.setString(2, descriptionTarget);
                 ptm.setString(3, descriptionImage);
                 ptm.setString(4, descriptionType);
                 ptm.setString(5, descriptionLevel);
 
-                check = ptm.executeUpdate() > 0 ? true : false;
+                int rowsAffected = ptm.executeUpdate();
+
+                if (rowsAffected > 0) {
+                    rs = ptm.getGeneratedKeys();
+                    if (rs.next()) {
+                        int pk = rs.getInt(1);
+                        return pk;
+                    }
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -223,13 +244,12 @@ public class CourseDAO {
                 conn.close();
             }
         }
-        return check;
+        return -1;
     }
 
     public boolean createCourse(String courseID, float coursePrice, String courseName, int courseDuration, boolean courseIsActive, String courseDatePublic,
             String descriptionContent, String descriptionTarget, String descriptionImage, String descriptionType, String descriptionLevel,
             String instructorID, String moduleTitle, String lessonTitle, String lessonDescription, String videoContent, LocalTime videoTime, boolean videoIsActive) throws ClassNotFoundException, SQLException {
-        boolean check = false;
         Connection conn = null;
         ResultSet rs = null;
         PreparedStatement ptm = null;
@@ -237,31 +257,26 @@ public class CourseDAO {
         try {
             conn = DBUtil.getConnection();
             if (conn != null) {
-                boolean checkVideo = createVideo(videoContent, videoTime, videoIsActive);
-                boolean checkLesson = createLesson(lessonTitle, lessonDescription);
-                boolean checkModule = createModule(moduleTitle);
-                boolean checkDescription = createDescription(descriptionContent, descriptionTarget, descriptionImage, descriptionType, descriptionLevel);
-                if (checkVideo && checkLesson && checkModule && checkDescription) {
-                    ptm = conn.prepareStatement(CREATE_COURSE);
-                    ptm.setString(1, courseID);
-                    ptm.setFloat(2, coursePrice);
-                    ptm.setString(3, courseName);
-                    ptm.setInt(4, courseDuration);
-                    ptm.setBoolean(5, courseIsActive);
-                    ptm.setDate(6, Date.valueOf(courseDatePublic));
-                    ptm.setString(7, instructorID);
+                int descriptionID = createDescription(descriptionContent, descriptionTarget, descriptionImage, descriptionType, descriptionLevel);
 
-                    DescriptionDAO descriptionDAO = new DescriptionDAO();
-                    DescriptionDTO description = descriptionDAO.getLastestDescription();
+                // Create course
+                ptm = conn.prepareStatement(CREATE_COURSE, Statement.RETURN_GENERATED_KEYS);
+                ptm.setString(1, courseID);
+                ptm.setFloat(2, coursePrice);
+                ptm.setString(3, courseName);
+                ptm.setInt(4, courseDuration);
+                ptm.setBoolean(5, courseIsActive);
+                ptm.setDate(6, Date.valueOf(courseDatePublic));
+                ptm.setString(7, instructorID);
+                ptm.setInt(8, descriptionID);
 
-                    ptm.setInt(8, description.getDescriptionID());
+                ptm.executeUpdate();
 
-                    ModuleDAO moduleDAO = new ModuleDAO();
-                    ModuleDTO module = moduleDAO.getLastestModule();
-                    ptm.setInt(9, module.getModuleID());
-
-                    check = ptm.executeUpdate() > 0 ? true : false;
-                }
+                int moduleId = createModule(moduleTitle, courseID);
+                int lessionId = createLesson(lessonTitle, lessonDescription, moduleId);
+                int videoId = createVideo(videoContent, videoTime, videoIsActive, lessionId);
+                
+                if (videoId != -1) return true;
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -278,7 +293,7 @@ public class CourseDAO {
             }
         }
 
-        return check;
+        return false;
     }
 
     public UserDTO getAccount(String courseID) throws SQLException {
@@ -404,6 +419,7 @@ public class CourseDAO {
 
         return list;
     }
+
 
     public List<CourseDTO> filterCourseByLevel(String typeLevel) throws SQLException {
         List<CourseDTO> list = new ArrayList<>();
@@ -751,4 +767,39 @@ public class CourseDAO {
         }
         return check;
     }
+     public boolean updateCourse(String courseId, float price, String name, int duration, String datePublic) throws SQLException {
+        Connection cn = null;
+        ResultSet rs = null;
+        PreparedStatement pst = null;
+        try {
+            cn = DBUtil.getConnection();
+            if (cn != null) {
+                pst = cn.prepareStatement(UPDATE_COURSE);
+                pst.setFloat(1, price);
+                pst.setString(2, name);
+                pst.setInt(3, duration);
+                pst.setString(4, datePublic);
+                pst.setString(5, courseId);
+                int rows = pst.executeUpdate();
+                
+                if (rows > 0) return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (pst != null) {
+                pst.close();
+            }
+            if (cn != null) {
+                cn.close();
+            }
+        }
+
+        return false;
+    }
 }
+

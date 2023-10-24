@@ -5,6 +5,7 @@
  */
 package users;
 
+import course.CourseDTO;
 import utils.DBUtil;
 import java.sql.Connection;
 import java.sql.Date;
@@ -31,6 +32,10 @@ public class UserDAO {
     private static final String DELETESTAFF = "DELETE tblAccount WHERE accountID=?";
     private static final String UPDATESTAFF = "UPDATE tblAccount set password=?, fullName=?, dateOfBirth=?, isActive=?, image=?, email=? WHERE accountID=?";
     private static final String LOADSTAFF = "SELECT * FROM tblAccount WHERE role = 'Staff'";
+    private static final String LOADUSER = "SELECT * FROM tblAccount";
+    private static final String UPDATEUSER = "UPDATE tblAccount set password=?, fullName=?, dateOfBirth=?, image=?, email=? WHERE accountID=?";
+     private static final String GET_USER_BY_USERID = "SELECT password, fullName, dateOfBirth, image, email from tblAccount where accountID= ? ";
+   
 
     private static final String INSTRUCTOR_LIST = "SELECT * FROM tblAccount WHERE role = 'Instructor'";
     private static final String CREATEACCOUNTGOOGLE = "INSERT INTO tblAccount VALUES (?)";
@@ -349,4 +354,124 @@ public class UserDAO {
     public boolean createAccGoogle(UserGoogleDTO user) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    
+    
+    public List<UserDTO> loadUserList() throws SQLException {
+        List<UserDTO> userList = new ArrayList<>();
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(LOADUSER);
+                rs = ptm.executeQuery();
+                while (rs.next()) {
+               
+                    String password = rs.getString("password");
+                    String fullName = rs.getString("fullName");
+                    Date dateOfBirth = rs.getDate("dateOfBirth");
+                    
+                    
+                    String image = rs.getString("image");
+                    String email = rs.getString("email");
+
+                    userList.add(new UserDTO( password, fullName, dateOfBirth, image, email));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return userList;
+    }
+ public UserDTO getUserByUserID(String userID) throws SQLException {
+        UserDTO c = null;
+        Connection cn = null;
+        ResultSet rs = null;
+        PreparedStatement pst = null;
+        try {
+            cn = DBUtil.getConnection();
+            if (cn != null) {
+                pst = cn.prepareStatement(GET_USER_BY_USERID);
+                pst.setString(1, userID);
+                rs = pst.executeQuery();
+                while (rs.next()) {
+                    String password = rs.getString("password");
+                    String fullName = rs.getString("fullName");
+                    Date dateOfBirth = rs.getDate("dateOfBirth");
+                    
+                    
+                    String image = rs.getString("image");
+                    String email = rs.getString("email");
+
+                    c = new UserDTO(password, fullName , dateOfBirth, image , email);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (pst != null) {
+                pst.close();
+            }
+            if (cn != null) {
+                cn.close();
+            }
+        }
+
+        return c;
+    }
+
+    public boolean updateUser(String fullName, Date dateOfBirth, String email, String password) 
+        throws SQLException {
+        Connection cn = null;
+        ResultSet rs = null;
+        PreparedStatement pst = null;
+        try {
+            cn = DBUtil.getConnection();
+            if (cn != null) {
+                pst = cn.prepareStatement(UPDATEUSER);
+                
+                pst.setString(1, fullName);
+                pst.setDate(2, dateOfBirth);
+                pst.setString(3, email);
+                pst.setString(4, password);
+                int rows = pst.executeUpdate();
+                
+                if (rows > 0) return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (pst != null) {
+                pst.close();
+            }
+            if (cn != null) {
+                cn.close();
+            }
+        }
+
+        return false;
+    }
 }
+
+
+

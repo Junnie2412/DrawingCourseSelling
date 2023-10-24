@@ -47,6 +47,11 @@ public class MainController extends HttpServlet {
     private static final String UPDATESTAFF_CONTROLLER = "UpdateStaffController";
     private static final String LOADSTAFF = "All Staff";
     private static final String LOADSTAFF_CONTROLLER = "LoadStaffController";
+   
+   
+    private static final String LOADUSER = "All USER";
+    private static final String LOADUSER_CONTROLLER = "LoadUserController";
+  
     
     private static final String CREATE_VOUCHER = "CreateVoucher";
     private static final String CREATE_VOUCHER_CONTROLLER = "CreateVoucherController";
@@ -65,6 +70,7 @@ public class MainController extends HttpServlet {
     private static final String COURSE_DETAIL_PAGE = "course-details.jsp";
     private static final String REMOVE_COURSE_CART="Remove";
     private static final String REMOVE_COURSE_CART_CONTROLLER="RemoveCartController";
+    
  
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -101,6 +107,8 @@ public class MainController extends HttpServlet {
                 url = UPDATESTAFF_CONTROLLER;
             }else if (action.equals(LOADSTAFF)) {
                 url = LOADSTAFF_CONTROLLER;
+            
+           
             }else if (action.equals(CREATE_VOUCHER)) {
                 url = CREATE_VOUCHER_CONTROLLER;
             }else if (action.equals(ADD_TO_CART)) {
