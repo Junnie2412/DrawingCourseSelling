@@ -18,10 +18,10 @@ import utils.DBUtil;
  * @author HOANG DUNG
  */
 public class VoucherDAO {
-    private static final String CREATE_VOUCHER = "INSERT INTO tblVoucher(discountPercent, voucherCode, createdDay, expireDay, courseID) VALUES(?,?,?,?,?)";
+    private static final String CREATE_VOUCHER = "INSERT INTO tblVoucher(discountPercent, voucherCode, createdDay, expiredDay) VALUES(?,?,?,?)";
     private static final String CHECK_DUPLICATED_VOUCHER_CODE ="SELECT * FROM tblVoucher WHERE voucherCode = ?";
    
-    public boolean createVoucher(float discountVoucher, String voucherCode, Date createdDay, Date expiredDay, String courseID) throws SQLException{
+    public boolean createVoucher(float discountVoucher, String voucherCode, Date createdDay, Date expiredDay) throws SQLException{
         boolean check = false;
         Connection conn = null;
         ResultSet rs = null;
@@ -35,7 +35,6 @@ public class VoucherDAO {
                 ptm.setString(2, voucherCode);
                 ptm.setDate(3, createdDay);
                 ptm.setDate(4, expiredDay);
-                ptm.setString(5, courseID);
 
                 check = ptm.executeUpdate() > 0 ? true : false;
             }

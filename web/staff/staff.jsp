@@ -9,10 +9,10 @@
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="assets/images/art1.png" type="image/x-icon">
+    <link rel="shortcut icon" href="staff/assets/images/art1.png">
 
     <!-- jsvectormap css -->
-    <link href="staff/assets/libs/jsvectormap/css/jsvectormap.min.css" rel="stylesheet" type="text/css" />
+    <link href="staff/libs/jsvectormap/css/jsvectormap.min.css" rel="stylesheet" type="text/css" />
 
     <!--Swiper slider css-->
     <link href="staff/assets/libs/swiper/swiper-bundle.min.css" rel="stylesheet" type="text/css" />

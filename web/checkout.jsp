@@ -290,7 +290,9 @@
                                                     <tr>
                                                         <td colspan="3" class="text-end">
                                                             <form action="MainController" method="POST">
+                                                                
                                                                 <button name="action" value="payment" class="btn btn-primary">Pay</button>
+                                                                <input type="hidden" name="total" value="<%= total%>">
                                                             </form>
 
                                                         </td>

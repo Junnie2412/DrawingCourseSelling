@@ -55,9 +55,16 @@ public class MainController extends HttpServlet {
     
     private static final String CREATE_VOUCHER = "CreateVoucher";
     private static final String CREATE_VOUCHER_CONTROLLER = "CreateVoucherController";
+    private static final String TURN_BACK_STAFF = "TurnBackStaff";
+    private static final String STAFF_PAGE = "staff/staff.jsp";
     
     private static final String SHOW_LIST_INSTRUCTOR = "All intructors";
     private static final String SHOW_LIST_INSTRUCTOR_CONTROLLER = "ShowListController";
+    private static final String ADD_INSTRUCTOR = "Add Instructor";
+    private static final String ADD_INSTRUCTOR_CONTROLLER = "AddInstructorController";
+    private static final String SEARCH_INSTRUCTOR = "SearchIns";
+    private static final String SEARCH_INSTRUCTOR_CONTROLLER = "SearchInstructorController";
+    
     
     private static final String VIEW_CART = "ViewCart";
     private static final String VIEW_CART_PAGE = "viewCart.jsp";
@@ -67,7 +74,7 @@ public class MainController extends HttpServlet {
     private static final String ADD_TO_CART_CONTROLLER = "AddToCartController";
     private static final String BUY_NOW = "BuyNow";
     private static final String TURN_BACK = "TurnBack";
-    private static final String COURSE_DETAIL_PAGE = "course-details.jsp";
+    private static final String COURSE_DETAIL_PAGE = "courses.jsp";
     private static final String REMOVE_COURSE_CART="Remove";
     private static final String REMOVE_COURSE_CART_CONTROLLER="RemoveCartController";
     
@@ -111,6 +118,8 @@ public class MainController extends HttpServlet {
            
             }else if (action.equals(CREATE_VOUCHER)) {
                 url = CREATE_VOUCHER_CONTROLLER;
+            }else if (action.equals(TURN_BACK_STAFF)) {
+                url = STAFF_PAGE;
             }else if (action.equals(ADD_TO_CART)) {
                 url = ADD_TO_CART_CONTROLLER;
             }else if (action.equals(ALREADY_ADD_TO_CART)) {

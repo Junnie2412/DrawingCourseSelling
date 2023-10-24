@@ -20,6 +20,7 @@
                 background-attachment: fixed; 
                 background-position: center center; 
                 color: white;
+                padding-top: 30px;
             }
 
             h1 {
@@ -106,13 +107,6 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>Course ID</td>
-                        <td>
-                            <input type="text" name="courseID">
-                            <%= voucherError.getCourseIDError()%>
-                        </td>
-                    </tr>
-                    <tr>
                         <td><%
                                 String message = (String) request.getAttribute("MESSAGE");
                                 if(message == null)
@@ -123,7 +117,10 @@
                     </tr>
                     <tr>
                         <td></td>
-                        <td><button type="submit" name="action" value="CreateVoucher">Create Voucher</button></td>
+                        <td>
+                            <button type="submit" name="action" value="TurnBackStaff">Turn Back</button><span>&nbsp; &nbsp; &nbsp; &nbsp;</span>
+                            <button type="submit" name="action" value="CreateVoucher">Create Voucher</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>

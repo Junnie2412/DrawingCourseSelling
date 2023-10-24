@@ -29,6 +29,19 @@
         <link rel="stylesheet" href="assets/css/main2.css">
 
         <link rel="shortcut icon" href="assets/images/art1.png" type="image/x-icon">
+        <style>
+            .nav-bar{
+                width: 100vw;
+                background-color: rgba(59, 65, 66, 0.1);
+            }
+            .banner-overlay::before {
+                left: 0;
+                bottom: 0;
+                top: 0;
+                right: 0;
+                background: rgba(59, 65, 66, 0.5);
+            }
+        </style>
     </head>
 
 
@@ -48,7 +61,9 @@
             <!-- ~~~ Loader & Go-Top ~~~ -->
 
 
-            <jsp:include page="layout/header.jsp"/>
+            <div class="nav-bar">
+                <jsp:include page="layout/header.jsp"/>
+            </div>
 
 
             <!-- ~~~ Hero Section ~~~ -->

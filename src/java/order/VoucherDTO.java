@@ -17,15 +17,13 @@ public class VoucherDTO {
     private String voucherCode;
     private Date createdDay;
     private Date expiredDay;
-    private String courseID;
 
-    public VoucherDTO(int voucherID, float discountPercent, String voucherCode, Date createdDay, Date expiredDay, String courseID) {
+    public VoucherDTO(int voucherID, float discountPercent, String voucherCode, Date createdDay, Date expiredDay) {
         this.voucherID = voucherID;
         this.discountPercent = discountPercent;
         this.voucherCode = voucherCode;
         this.createdDay = createdDay;
         this.expiredDay = expiredDay;
-        this.courseID = courseID;
     }
 
     public VoucherDTO() {
@@ -69,13 +67,5 @@ public class VoucherDTO {
 
     public void setExpiredDay(Date expireDay) {
         this.expiredDay = expireDay;
-    }
-
-    public String getCourseID() {
-        return courseID;
-    }
-
-    public void setCourseID(String courseID) {
-        this.courseID = courseID;
     }
 }

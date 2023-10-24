@@ -32,6 +32,79 @@
         <link href="assets/css/main2.css" rel="stylesheet" type="text/css"/>
 
         <link rel="shortcut icon" href="assets/images/art1.png" type="image/x-icon">
+
+        <style>
+            .banner-overlay::before {
+                left: 0;
+                bottom: 0;
+                top: 0;
+                right: 0;
+                background: rgba(59, 65, 66, 0.5);
+            }
+
+            .btn-viewCourse {
+                background-color: #ebecec;
+                color: black;
+                border-radius: 0px;
+                padding: 18px 36px;
+                display: inline-block;
+                font-family: "Lucida Console", Monaco, monospace;
+                font-size: 14px;
+                letter-spacing: 1px;
+                cursor: pointer;
+                box-shadow: inset 0 0 0 0 #eacda3;
+                -webkit-transition: ease-out 0.4s;
+                -moz-transition: ease-out 0.4s;
+                transition: ease-out 0.7s;
+            }
+
+            .slide_right:hover {
+                color: black;
+                box-shadow: inset 400px 0 0 0 #eacda3;
+            }
+
+            .btn-createAccount {
+                background-color: #eacda3;
+                color: black;
+                border-radius: 0px;
+                padding: 18px 36px;
+                display: inline-block;
+                font-family: "Lucida Console", Monaco, monospace;
+                font-size: 14px;
+                letter-spacing: 1px;
+                cursor: pointer;
+                box-shadow: inset 0 0 0 0 #eacda3;
+                -webkit-transition: ease-out 0.4s;
+                -moz-transition: ease-out 0.4s;
+                transition: ease-out 0.7s;
+            }
+
+            .slide_right2:hover {
+                color: black;
+                box-shadow: inset 400px 0 0 0 #ebecec;
+            }
+
+            .banner-button-area{
+                display: flex;
+            }
+
+            .nav-bar{
+                width: 100vw;
+                background-color: rgba(59, 65, 66, 0.1);
+            }
+
+            .bg-banner{
+                height: 570px;
+            }
+
+            .feature-item {
+                border: 2px solid black;
+            }
+
+            .feature-item1{
+                background-color: rgba(230, 211, 154, 0.1);
+            }
+        </style>
     </head>
 
 
@@ -50,28 +123,25 @@
             </span>
             <!-- ~~~ Loader & Go-Top ~~~ -->
 
-            <jsp:include page="layout/header.jsp"/>
-
-
-            <div class="sliding-top">
-                <img src="https://webdesign-finder.com/html/canabro/images/mask-top-subtract.png" alt="">
+            <div class="nav-bar">
+                <jsp:include page="layout/header.jsp"/>
             </div>
 
             <!-- ~~~ Banner Section ~~~ -->
-            <section class="banner-section banner-overlay bg_img" data-img="assets/images/banner/banner.jpg">
+            <section class="banner-section banner-overlay bg_img bg-banner" data-img="https://images.unsplash.com/photo-1626243048109-e2ef80ff5b31?auto=format&fit=crop&q=80&w=1470&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
                 <div class="container">
                     <div class="banner-content cl-white">
-                        <h3 class="subtitle">Join the drawing course now</h3>
-                        <h1 class="title">course creative</h1>
+                        <h3 class="subtitle subtitle-banner">Join the drawing course now</h3>
+                        <h1 class="title title-banner">course creative</h1>
                         <p>You can learn drawing skills from basic to advanced, by participating in the courses below.</p>
 
                         <% if (!loggedIn) { %>
                         <div class="banner-button-area">
-                            <a href="courses.jsp" class="custom-button btn-md">view courses<i class="fas fa-play-circle"></i></a>
-                            <a href="signup.jsp" class="custom-button btn-md theme-one">Create your account<i class="flaticon-tap-1"></i></a>
+                            <a href="courses.jsp" class=" btn-md btn-viewCourse slide_right">VIEW COURSES <i class="fas fa-play-circle"></i></a>
+                            <a href="signup.jsp" class="btn-createAccount slide_right2 btn-md theme-one">CREATE YOUR ACCOUNT <i class="flaticon-tap-1"></i></a>
                             <% } else { %><div class="banner-button-area">
-                                <a href="courses.jsp" class="custom-button btn-md">
-                                    <span style="text-align: center;">view courses</span>
+                                <a href="courses.jsp" class=" btn-md btn-viewCourse slide_right">
+                                    <span style="text-align: center;">VIEW COURSES</span>
                                     <i class="fas fa-play-circle"></i>
                                 </a><% } %>
                             </div>
@@ -80,20 +150,17 @@
 
             </section>
             <!-- ~~~ Banner Section ~~~ -->
-            <div class="sliding-down">
-                <img src="https://webdesign-finder.com/html/canabro/images/mask-bottom-subtract.png" alt="">
-            </div>
 
             <!-- ~~~ Feature Section ~~~ -->
-            <section class="feature-section pt-120 pb-120">
-                <div class="container">
+            <section class="feature-section pt-120 pb-120" style="background-color: #ebecec">
+                <div class="container container-feature">
                     <div class="section-header">
 
                         <h2 class="title"><span>Our Special</span> Features</h2>
                     </div>
                     <div class="row justify-content-center mb-30-none">
                         <div class="col-xl-3 col-md-6 col-sm-10">
-                            <div class="feature-item">
+                            <div class="feature-item feature-item1">
                                 <div class="icon">
                                     <i class="fas fa-book-reader"></i>
                                 </div>
@@ -119,7 +186,7 @@
                             </div>
                         </div>
                         <div class="col-xl-3 col-md-6 col-sm-10">
-                            <div class="feature-item">
+                            <div class="feature-item feature-item1">
                                 <div class="icon">
                                     <i class="fas fa-chalkboard-teacher"></i>
                                 </div>
@@ -195,23 +262,23 @@
                                             </div>
                                             <div class="meta-item">
                                                 <i class="fas fa-user-graduate"></i>
-                                                <span><%= courseDAO.getDescription(course.getCourseID()).getType() %></span>
+                                                <span><%= courseDAO.getDescription(course.getCourseID()).getType()%></span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="ratings-area">
                                         <div class="ratings cl-theme">
                                             <%
-                                                    float avgrate = courseFeedbackDAO.getAverageRate(course.getCourseID());
-                                                    for (int i = 0; i < avgrate; i++){
-                                                %>
-                                                    <span><i class="fas fa-star"></i></span>
+                                                float avgrate = courseFeedbackDAO.getAverageRate(course.getCourseID());
+                                                for (int i = 0; i < avgrate; i++) {
+                                            %>
+                                            <span><i class="fas fa-star"></i></span>
                                                 <%
                                                     }
-                                                    for (int i = 0; i < (5 - avgrate); i++){
+                                                    for (int i = 0; i < (5 - avgrate); i++) {
                                                 %>
-                                                        <span class="cl-theme-light"><i class="fas fa-star"></i></span>
-                                                <%    
+                                            <span class="cl-theme-light"><i class="fas fa-star"></i></span>
+                                                <%
                                                     }
                                                 %>
                                             <span>(<%= courseFeedbackDAO.getAverageRate(course.getCourseID())%>/5.00)</span>
