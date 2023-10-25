@@ -120,9 +120,9 @@
 
             %> 
             <form class="course-search-form ml-auto mr-4" method="post" action="MainController?action=Search">
-                <input type="text" name="searchName" value="<%= search%>" placeholder="Search Courses" class="rounded pl-0">
+                <input type="text" name="searchName" value="<%= search%>" placeholder="Search Courses"  class="rounded " >
                 <button type="submit" class="rounded" value="Search"><i class="flaticon-loupe"></i></button>
-            </form> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </form> 
             <%
                 if (loginUser.getRole() == "") {
             %>
@@ -131,11 +131,15 @@
             %>  
             <div class="user-info dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img src="<%=loginUser.getImage()%>" class="user-avatar" class="user-avatar">
+                    <% if (loginUser.getImage() != null && !loginUser.getImage().isEmpty()) {%>
+                    <img src="<%= loginUser.getImage()%>" class="user-avatar">
+                    <% } else { %>
+                    <img src="https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png" class="user-avatar">
+                    <% } %>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="userDropdown">
-                    <a class="dropdown-item" href="courses.jsp">View Course</a>
-                    <a class="dropdown-item" href="Editaccount.jsp">Manage your Account</a>
+                    <a class="dropdown-item" href="#">View Course</a>
+                    <a class="dropdown-item" href="UpdateUserController?action=updateUser">Manage your Account</a>
                     <a class="dropdown-item" href="viewCart.jsp">View Cart</a>
                     <a class="dropdown-item" href="MainController?action=SignOut">Logout</a>
                 </div>

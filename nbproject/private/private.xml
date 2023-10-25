@@ -5,11 +5,17 @@
         <group>
             <file>file:/C:/Users/Win%2010/OneDrive/Máy%20tính/Showup_SWP/SWP391/web/checkout/vnpay_querydr.jsp</file>
             <file>file:/C:/Users/Win%2010/OneDrive/Máy%20tính/Showup_SWP/SWP391/web/checkout/assets/jquery-1.11.3.min.js</file>
+            <file>file:/C:/Users/Win%2010/OneDrive/Máy%20tính/Showup_SWP/SWP391/web/about.jsp</file>
             <file>file:/C:/Users/Win%2010/OneDrive/Máy%20tính/Showup_SWP/SWP391/web/checkout/vnpay_pay.jsp</file>
+            <file>file:/C:/Users/Win%2010/OneDrive/Máy%20tính/Showup_SWP/SWP391/web/staff/managerInstructor.jsp</file>
             <file>file:/C:/Users/Win%2010/OneDrive/Máy%20tính/Showup_SWP/SWP391/web/checkout/assets/bootstrap.min.css</file>
             <file>file:/C:/Users/Win%2010/OneDrive/Máy%20tính/Showup_SWP/SWP391/web/checkout/vnpay_refund.jsp</file>
+            <file>file:/C:/Users/Win%2010/OneDrive/Máy%20tính/Showup_SWP/SWP391/web/instructor.jsp</file>
+            <file>file:/C:/Users/Win%2010/OneDrive/Máy%20tính/Showup_SWP/SWP391/web/WEB-INF/web.xml</file>
             <file>file:/C:/Users/Win%2010/OneDrive/Máy%20tính/Showup_SWP/SWP391/web/META-INF/context.xml</file>
+            <file>file:/C:/Users/Win%2010/OneDrive/Máy%20tính/Showup_SWP/SWP391/web/staff/poststaff.jsp</file>
             <file>file:/C:/Users/Win%2010/OneDrive/Máy%20tính/Showup_SWP/SWP391/web/viewCart.jsp</file>
+            <file>file:/C:/Users/Win%2010/OneDrive/Máy%20tính/Showup_SWP/SWP391/web/checkout/vnpay_ipn.jsp</file>
             <file>file:/C:/Users/Win%2010/OneDrive/Máy%20tính/Showup_SWP/SWP391/src/java/com/vnpay/common/Config.java</file>
             <file>file:/C:/Users/Win%2010/OneDrive/Máy%20tính/Showup_SWP/SWP391/web/checkout/assets/jumbotron-narrow.css</file>
             <file>file:/C:/Users/Win%2010/OneDrive/Máy%20tính/Showup_SWP/SWP391/src/java/course/CourseDTO.java</file>
@@ -17,6 +23,7 @@
             <file>file:/C:/Users/Win%2010/OneDrive/Máy%20tính/Showup_SWP/SWP391/web/checkout.jsp</file>
             <file>file:/C:/Users/Win%2010/OneDrive/Máy%20tính/Showup_SWP/SWP391/src/java/controllers/userController/UpdateStaffController.java</file>
             <file>file:/C:/Users/Win%2010/OneDrive/Máy%20tính/Showup_SWP/SWP391/web/checkout/vnpay_return.jsp</file>
+            <file>file:/C:/Users/Win%2010/OneDrive/Máy%20tính/Showup_SWP/SWP391/src/java/controllers/userController/UpdateUserController.java</file>
         </group>
     </open-files>
 </project-private>

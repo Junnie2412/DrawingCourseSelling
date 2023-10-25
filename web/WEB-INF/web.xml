@@ -41,8 +41,16 @@
         <servlet-class>controllers.userController.UpdateStaffController</servlet-class>
     </servlet>
     <servlet>
+    <servlet-name>UpdateUserController</servlet-name>
+    <servlet-class>controllers.userController.UpdateUserController</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>LoadStaffController</servlet-name>
         <servlet-class>controllers.userController.LoadStaffController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LoadUserController</servlet-name>
+        <servlet-class>controllers.userController.LoadUserController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>SortCourseController</servlet-name>
@@ -117,8 +125,16 @@
         <url-pattern>/UpdateStaffController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+    <servlet-name>UpdateUserController</servlet-name>
+    <url-pattern>/UpdateUserController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>LoadStaffController</servlet-name>
         <url-pattern>/LoadStaffController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoadUserController</servlet-name>
+        <url-pattern>/LoadUserController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>SortCourseController</servlet-name>

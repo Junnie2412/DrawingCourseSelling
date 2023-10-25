@@ -54,6 +54,36 @@ public class UserDTO {
         this.email = email;
     }    
 
+    public UserDTO(String accountID, String password, String fullName, Date dateOfBirth, String email) {
+         this.accountID = accountID;
+        this.password = password;
+        this.fullName = fullName;
+        this.dateOfBirth = dateOfBirth;
+        
+        this.email = email;//To change body of generated methods, choose Tools | Templates.
+    }
+
+    public UserDTO( String fullName, Date dateOfBirth, String email, String password) {
+         
+        
+        this.fullName = fullName;
+        this.dateOfBirth = dateOfBirth;
+       
+        this.email = email;
+        this.password = password;
+    }
+
+    UserDTO(String password, String fullName, Date dateOfBirth, String image, String email) {
+         
+        this.password = password;
+        this.fullName = fullName;
+        this.dateOfBirth = dateOfBirth;
+        
+        
+        this.image = image;
+        this.email = email;
+    }
+
     public String getAccountID() {
         return accountID;
     }

@@ -4,6 +4,12 @@
     Author     : Admin
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="users.UserDTO"%>
+<%@page import="java.util.List"%>
+
+<%@page import="java.sql.Date"%>
+
 <!doctype html>
 <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable">
 
@@ -40,7 +46,15 @@
 
 </head>
 
+
+
 <body>
+    <%
+    UserDTO loginUser = (UserDTO) session.getAttribute(("LOGIN_USER"));
+    if (loginUser == null) {
+        loginUser = new UserDTO();
+    }
+%>
 
 
 <div class="all-sections oh">
@@ -59,13 +73,13 @@
         <section class="hero-section banner-overlay bg_img" data-img="assets/images/banner/banner.png">
     <div class="custom-container">
         <div class="hero-content">
-            <h1 class="title uppercase cl-white">Blogs</h1>
+            <h1 class="title uppercase cl-white">Account edit</h1>
             <ul class="breadcrumb cl-white p-0 m-0" style="background-color: #e9ecef00">
                 <li>
                     <a href="index.jsp">Home</a>
                 </li>
                 <li>
-                    Blogs
+                    
                 </li>
             </ul>
         </div>
@@ -88,7 +102,7 @@
                                 <div class="card-body p-4">
                                     <div class="text-center">
                                         <div class="profile-user position-relative d-inline-block mx-auto  mb-4">
-                                            <img src="assets/images/users/avatar-1.jpg" class="rounded-circle avatar-xl img-thumbnail user-profile-image  shadow" alt="user-profile-image">
+                                            <img src="<%=loginUser.getImage()%>" class="rounded-circle avatar-xl img-thumbnail user-profile-image  shadow" alt="user-profile-image">
                                             <div class="avatar-xs p-0 rounded-circle profile-photo-edit">
                                                 <input id="profile-img-file-input" type="file" class="profile-img-file-input">
                                                 <label for="profile-img-file-input" class="profile-photo-edit avatar-xs">
@@ -98,8 +112,8 @@
                                                 </label>
                                             </div>
                                         </div>
-                                        <h5 class="fs-16 mb-1">Anna Adame</h5>
-                                        <p class="text-muted mb-0">Lead Designer / Developer</p>
+                                        <h5 class="fs-16 mb-1"><%=loginUser.getFullName()%></h5>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -123,40 +137,39 @@
                                         
                                     </ul>
                                 </div>
-                                <div class="card-body p-4">
-                                    <div class="tab-content">
-                                        <div class="tab-pane active" id="personalDetails" role="tabpanel">
-                                            <form action="javascript:void(0);">
-                                                <div class="row">
-                                                    <div class="col-lg-6">
+                                
+                               
+                                
+                                  
+                                    
+                                   
+                                                 
+                                
+                                   <form action="UpdateUserController" method="POST">
+                                    <div class="col-lg-6">
                                                         <div class="mb-3">
-                                                            <label for="firstnameInput" class="form-label">Username</label>
-                                                            <input type="text" class="form-control" id="firstnameInput" placeholder="Enter your username" value="Dave">
+                                                            <label for="firstnameInput" class="name">Username</label>
+                                                            <input type="text" name="fullName" value="<%=loginUser.getFullName()%>" required=""/>
                                                         </div>
                                                     </div>
-                                                    <!--end col-->
-                                                                                                        <!--end col-->
-                                                    
-                                                    <!--end col-->
-                                                    <div class="col-lg-6">
+                                                        <div class="col-lg-6">
                                                         <div class="mb-3">
-                                                            <label for="emailInput" class="form-label">Email Address</label>
-                                                            <input type="email" class="form-control" id="emailInput" placeholder="Enter your email" value="daveadame@velzon.com">
+                                                            <label for="emailInput" class="email">Email Address</label>
+                                                            <input type="text" name="email" value="<%=loginUser.getEmail()%>" required=""/>
                                                         </div>
                                                     </div>
-                                                    <!--end col-->
-                                                    <div class="col-lg-12">
+                                                        <div class="col-lg-12">
                                                         <div class="mb-3">
-                                                            <label for="JoiningdatInput" class="form-label">Date</label>
-                                                            <input type="text" class="form-control" data-provider="flatpickr" id="JoiningdatInput" data-date-format="d M, Y" data-deafult-date="24 Nov, 2021" placeholder="Select date" />
+                                                            <label for="JoiningdatInput" class="date">Date</label>
+                                                            <input type="date" name="dateOfbirth" value="<%=loginUser.getDateOfBirth()%>" required=""/>
                                                         </div>
                                                     </div>
-                                                    <div class="container">
+                                                        <div class="container">
                                                         <div class="row">
                                                             <label for="oldpasswordInput">Change Password</label>
                                                             <div class="col-lg-4">
                                                                 <div class="mb-3">
-                                                                    <input type="password" class="form-control" id="oldpasswordInput" placeholder="Old Password">
+                                                                    <input type="password" class="form-control" name="password" placeholder="Old Password">
                                                                 </div>
                                                             </div>
                                                             <div class="col-lg-4">
@@ -171,16 +184,24 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    </div>                                                    
-                                                    <div class="col-lg-12">
-                                                        <div class="hstack gap-2 justify-content-end">
-                                                            <button type="submit" class="btn btn-primary">Save change</button>
-                                                        </div>
-                                                    </div>
-                                                    <!--end col-->
-                                                </div>
+                                                       <li class="list-inline-item edit" data-bs-toggle="tooltip"
+            data-bs-trigger="hover" data-bs-placement="top"
+            title="Edit">
+                                                           <button type="submit" class="btn btn-primary" value="updateUser">Save Change</button>
+        </li>
+
+
+
+
+                                    
+                                    
+                                    
+                                </form>
+                                                  
+                                                  
+                                
                                                 <!--end row-->
-                                            </form>
+                                            
                                         </div>
                                         <!--end tab-pane-->
                                         
@@ -193,6 +214,7 @@
                                 </div>
                             </div>
                         </div>
+                                         
                         <!--end col-->
                     </div>
                     <!--end row-->
