@@ -167,7 +167,7 @@
                     <a class="dropdown-item" href="#">View Course</a> 
                     <% }%>
 
-                    <a class="dropdown-item" href="UpdateUserController?action=updateUser">Manage your Account</a>
+                    <a class="dropdown-item" href="LoadUserController">Manage your Account</a>
                     <%
                         if (loginUser.getRole().equals("Instructor")) {
                     %>

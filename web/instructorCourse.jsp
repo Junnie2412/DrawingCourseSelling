@@ -4,6 +4,7 @@
     Author     : Admin
 --%>
 
+<%@page import="users.UserDTO"%>
 <%@page import="java.util.List"%>
 <%@page import="course.CourseDTO"%>
 <%@page import="course.CourseDAO"%>
@@ -112,7 +113,8 @@
                     <%
                         CourseDAO courseDAO = new CourseDAO();
                         ModuleDAO moduleDAO = new ModuleDAO();
-                        List<CourseDTO> listCourse = courseDAO.getlistCourse("");
+                        
+    List<CourseDTO> listCourse = courseDAO.getlistCourse("", ((UserDTO)session.getAttribute("LOGIN_USER")).getAccountID());
                     %>
                     <div class="row justify-content-center mb-30-none">
                         <%
@@ -158,7 +160,7 @@
                                             </div>
                                             <div class="meta-item">
                                                 <i class="fas fa-photo-video"></i>
-                                          <span><%= moduleDAO.getQuantityOfModules(course.getCourseID())%> Modules</span>
+                                                <span><%= moduleDAO.getQuantityOfModules(course.getCourseID())%> Modules</span>
                                             </div>
                                             <div class="meta-item">
                                                 <i class="fas fa-user-graduate"></i>
@@ -167,23 +169,23 @@
                                         </div>
                                     </div>
                                     <div class="ratings-area">
-                                       <div class="price cl-1">
+                                        <div class="price cl-1">
                                             <%= course.getPrice()%>$
                                         </div>
                                     </div>
                                     <button type="submit" name="action" value="UpdateCourse" class="btn btn-primary">Update Course</button>
                                 </div>
-                          
+
                             </div>
                         </form>
                         <%
                             }
                         %>
-<div class="text-center load-more mt-5">
-                        <a href="courses.jsp" class="custom-button theme-one">See full courses <i class="fas fa-angle-right"></i></a>
+                        <div class="text-center load-more mt-5">
+                            <a href="courses.jsp" class="custom-button theme-one">See full courses <i class="fas fa-angle-right"></i></a>
+                        </div>
                     </div>
-                    </div>
-                                    </div>
+                </div>
             </section>
             <!-- ~~~ Course Section ~~~ -->
 
