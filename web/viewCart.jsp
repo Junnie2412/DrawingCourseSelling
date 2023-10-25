@@ -4,6 +4,7 @@
     Author     : HOANG DUNG
 --%>
 
+<%@page import="java.util.ArrayList"%>
 <%@page import="course.DescriptionDTO"%>
 <%@page import="course.CourseDAO"%>
 <%@page import="cart.CartItemDTO"%>
@@ -24,7 +25,7 @@
     <body>
         <%
             Cart cart = (Cart) session.getAttribute("CART");
-            
+
             CartDAO cartDAO = new CartDAO();
             CartItemDAO cartItemDAO = new CartItemDAO();
 
@@ -95,11 +96,14 @@
                     </tr>
                 </thead>
                 <%
+                    List<CourseDTO> listCou = new ArrayList<>();
                     List<CartItemDTO> cartItemList = cartItemDAO.getlistCartItem(loginUser.getAccountID(), createdDay);
+                    session.setAttribute("CARTITEM", cartItemList);
                     if (cartItemList.size() > 0) {
                         int count = 1;
                         for (CartItemDTO cartItem : cartItemList) {
                             CourseDTO course = cartItemDAO.getCourseFromCartItem(cartItem.getCourseID());
+                            listCou.add(course);
                             if (cart == null || !cart.getCart().containsKey(course.getCourseID())) {
                 %>
                 <tbody>
@@ -118,6 +122,7 @@
                 <%
                             }
                         }
+                        session.setAttribute("LISTBUYCOURSE", listCou);
                     }
                 %>
             </table>
@@ -129,7 +134,10 @@
         <br>
         <form action="MainController" method="POST">
             <button type="submit" name="action" value="TurnBack">Turn Back</button>
-            <button type="submit" name="action" value="Checkout">Check Out</button>
+            
         </form>
+        <a href="checkout.jsp">
+                <button type="submit"> Check Out </button>
+            </a>
     </body>
 </html>
