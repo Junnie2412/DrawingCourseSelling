@@ -42,11 +42,15 @@ public class UserGoogleHandler extends HttpServlet {
             String accessToken = getToken(code);
             UserGoogleDTO user = getUserInfo(accessToken);
             String userID = user.getId();
+
             UserDAO dao = new UserDAO();
             UserDTO loginUser = dao.checkLoginByGoogle(userID);
             if (loginUser == null) {
                 //create account
-                boolean creAccount = dao.createAccGoogle(user);
+                String image = user.getPicture();
+                String fullName = user.getGiven_name();
+                UserDTO creAcc = new UserDTO(userID,fullName,"Customer",image);
+                boolean creAccount = dao.createAccGoogle(creAcc);
                 if (creAccount) {
                     UserDTO newLoginUser = dao.checkLoginByGoogle(userID);
                     request.setAttribute("MSG_NEWACC", "Your account is already sign up!");

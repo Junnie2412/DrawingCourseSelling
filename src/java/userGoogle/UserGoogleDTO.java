@@ -23,6 +23,12 @@ public class UserGoogleDTO {
     public UserGoogleDTO() {
     }
 
+    public UserGoogleDTO(String id, String given_name, String picture) {
+        this.id = id;
+        this.given_name = given_name;
+        this.picture = picture;
+    }
+    
     public UserGoogleDTO(String id, String email, boolean verified_email, String name, String given_name, String family_name, String picture) {
         this.id = id;
         this.email = email;
