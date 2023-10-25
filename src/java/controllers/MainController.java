@@ -11,34 +11,35 @@ import javax.servlet.http.HttpServletResponse;
  * @author HOANG DUNG
  */
 public class MainController extends HttpServlet {
+
     private static final String LOGIN_PAGE = "signin.jsp";
     private static final String HOMEPAGE = "index.jsp";
-    
+
     private static final String SIGNUP = "SignUp";
     private static final String SIGNUP_CONTROLLER = "SignupController";
-    
+
     private static final String SIGNIN = "SignIn";
     private static final String SIGNIN_CONTROLLER = "LoginController";
-    
+
     private static final String SIGNOUT = "SignOut";
     private static final String SIGNOUT_CONTROLLER = "LogoutController";
-    
-    private static final String CREATE_NEW_COURSE="CreateNewCourse";
-    private static final String CREATE_COURSE_PAGE="createCourse.jsp";
-    private static final String CREATE_COURSE="CreateCourse";
-    private static final String CREATE_COURSE_CONTROLLER="CreateCourseController";
-    private static final String TURN_BACK_COURSE="TurnBackToCourses";
-    private static final String COURSE_INSTRUCTOR_PAGE="instructorCourse.jsp";
+
+    private static final String CREATE_NEW_COURSE = "CreateNewCourse";
+    private static final String CREATE_COURSE_PAGE = "createCourse.jsp";
+    private static final String CREATE_COURSE = "CreateCourse";
+    private static final String CREATE_COURSE_CONTROLLER = "CreateCourseController";
+    private static final String TURN_BACK_COURSE = "TurnBackToCourses";
+    private static final String COURSE_INSTRUCTOR_PAGE = "instructorCourse.jsp";
     private static final String SEARCH_COURSE_NAME = "Search";
     private static final String SEARCH_COURSE_NAME_CONTROLLER = "SearchController";
-    
+
     private static final String CREATEBLOG = "crateBlog";
     private static final String CREATEBLOG_CONTROLLER = "CreateBlogController";
     private static final String DELETEBLOG = "deleteBlog";
     private static final String DELETEBLOG_CONTROLLER = "DeleteBlogController";
     private static final String UPDATEBLOG = "updateBlog";
     private static final String UPDATEBLOG_CONTROLLER = "UpdateBlogController";
-    
+
     private static final String ADDSTAFF = "Add Staff";
     private static final String ADDSTAFF_CONTROLLER = "AddStaffController";
     private static final String DELETESTAFF = "deleteStaff";
@@ -47,25 +48,15 @@ public class MainController extends HttpServlet {
     private static final String UPDATESTAFF_CONTROLLER = "UpdateStaffController";
     private static final String LOADSTAFF = "All Staff";
     private static final String LOADSTAFF_CONTROLLER = "LoadStaffController";
-   
-   
-    private static final String LOADUSER = "All USER";
-    private static final String LOADUSER_CONTROLLER = "LoadUserController";
-  
-    
+
     private static final String CREATE_VOUCHER = "CreateVoucher";
     private static final String CREATE_VOUCHER_CONTROLLER = "CreateVoucherController";
     private static final String TURN_BACK_STAFF = "TurnBackStaff";
     private static final String STAFF_PAGE = "staff/staff.jsp";
-    
+
     private static final String SHOW_LIST_INSTRUCTOR = "All intructors";
     private static final String SHOW_LIST_INSTRUCTOR_CONTROLLER = "ShowListController";
-    private static final String ADD_INSTRUCTOR = "Add Instructor";
-    private static final String ADD_INSTRUCTOR_CONTROLLER = "AddInstructorController";
-    private static final String SEARCH_INSTRUCTOR = "SearchIns";
-    private static final String SEARCH_INSTRUCTOR_CONTROLLER = "SearchInstructorController";
-    
-    
+
     private static final String VIEW_CART = "ViewCart";
     private static final String VIEW_CART_PAGE = "viewCart.jsp";
     private static final String ALREADY_ADD_TO_CART = "AlreadyAddToCart";
@@ -75,10 +66,12 @@ public class MainController extends HttpServlet {
     private static final String BUY_NOW = "BuyNow";
     private static final String TURN_BACK = "TurnBack";
     private static final String COURSE_DETAIL_PAGE = "courses.jsp";
-    private static final String REMOVE_COURSE_CART="Remove";
-    private static final String REMOVE_COURSE_CART_CONTROLLER="RemoveCartController";
-    
- 
+    private static final String REMOVE_COURSE_CART = "Remove";
+    private static final String REMOVE_COURSE_CART_CONTROLLER = "RemoveCartController";
+
+    private static final String HANDLE_VNPAY = "goToVNPay";
+    private static final String VNPAY_CONTROLLER = "ajaxServlet";
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String url = HOMEPAGE;
@@ -108,36 +101,34 @@ public class MainController extends HttpServlet {
                 url = ADDSTAFF_CONTROLLER;
             } else if (action.equals(DELETESTAFF)) {
                 url = DELETESTAFF_CONTROLLER;
-            }else if (action.equals(SEARCH_COURSE_NAME)) {
+            } else if (action.equals(SEARCH_COURSE_NAME)) {
                 url = SEARCH_COURSE_NAME_CONTROLLER;
-            }else if (action.equals(UPDATESTAFF)) {
+            } else if (action.equals(UPDATESTAFF)) {
                 url = UPDATESTAFF_CONTROLLER;
-            }else if (action.equals(LOADSTAFF)) {
+            } else if (action.equals(LOADSTAFF)) {
                 url = LOADSTAFF_CONTROLLER;
-            }else if (action.equals(CREATE_VOUCHER)) {
+            } else if (action.equals(CREATE_VOUCHER)) {
                 url = CREATE_VOUCHER_CONTROLLER;
-            }else if (action.equals(TURN_BACK_STAFF)) {
+            } else if (action.equals(TURN_BACK_STAFF)) {
                 url = STAFF_PAGE;
-            }else if (action.equals(ADD_TO_CART)) {
+            } else if (action.equals(ADD_TO_CART)) {
                 url = ADD_TO_CART_CONTROLLER;
-            }else if (action.equals(ALREADY_ADD_TO_CART)) {
+            } else if (action.equals(ALREADY_ADD_TO_CART)) {
                 url = ADD_TO_CART_CONTROLLER;
-            }else if (action.equals(ALREADY_BUY_NOW)) {
+            } else if (action.equals(ALREADY_BUY_NOW)) {
                 url = ADD_TO_CART_CONTROLLER;
-            }else if (action.equals(BUY_NOW)) {
+            } else if (action.equals(BUY_NOW)) {
                 url = ADD_TO_CART_CONTROLLER;
-            }else if (action.equals(VIEW_CART)) {
+            } else if (action.equals(VIEW_CART)) {
                 url = VIEW_CART_PAGE;
-            }else if (action.equals(TURN_BACK)) {
+            } else if (action.equals(TURN_BACK)) {
                 url = COURSE_DETAIL_PAGE;
-            }else if (action.equals(REMOVE_COURSE_CART)) {
+            } else if (action.equals(REMOVE_COURSE_CART)) {
                 url = REMOVE_COURSE_CART_CONTROLLER;
-            }else if (action.equals(SHOW_LIST_INSTRUCTOR)) {
+            } else if (action.equals(SHOW_LIST_INSTRUCTOR)) {
                 url = SHOW_LIST_INSTRUCTOR_CONTROLLER;
-            }else if (action.equals(ADD_INSTRUCTOR)) {
-                url = ADD_INSTRUCTOR_CONTROLLER;
-            }else if (action.equals(SEARCH_INSTRUCTOR)) {
-                url = SEARCH_INSTRUCTOR_CONTROLLER;
+            } else if (action.equals(HANDLE_VNPAY)) {
+                url = VNPAY_CONTROLLER;
             }
         } catch (Exception e) {
             log("Error at MainController: " + e.toString());

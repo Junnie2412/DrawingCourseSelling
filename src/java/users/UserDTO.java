@@ -83,6 +83,7 @@ public class UserDTO {
         this.image = image;
         this.email = email;
     }
+    
 
     public String getAccountID() {
         return accountID;

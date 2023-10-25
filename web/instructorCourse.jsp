@@ -173,12 +173,15 @@
                                     </div>
                                     <button type="submit" name="action" value="UpdateCourse" class="btn btn-primary">Update Course</button>
                                 </div>
+                          
                             </div>
                         </form>
                         <%
                             }
                         %>
-
+<div class="text-center load-more mt-5">
+                        <a href="courses.jsp" class="custom-button theme-one">See full courses <i class="fas fa-angle-right"></i></a>
+                    </div>
                     </div>
                                     </div>
             </section>
