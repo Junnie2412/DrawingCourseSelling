@@ -1,3 +1,7 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="cart.CartItemDTO"%>
+<%@page import="java.util.List"%>
+<%@page import="users.UserDTO"%>
 <%@page import="course.CourseDTO"%>
 <%@page import="cart.Cart"%>
 <!doctype html>
@@ -30,7 +34,7 @@
         <link rel="stylesheet" href="assets/css/nice-select.css">
         <link rel="stylesheet" href="assets/css/owl.min.css">
         <link rel="stylesheet" href="assets/css/magnific-popup.css">
-        <link rel="stylesheet" href="assets/css/flaticon.css">
+        <link rel="stylesheet" href="assets/css/flaticon.css">       
     </head>
 
     <body>
@@ -78,17 +82,12 @@
                                 </div>
                             </div>
                         </div>
-
                         <!-- end page title -->
-
                         <div class="row">
                             <div class="col-xl-8">
                                 <div class="card">
                                     <div class="card-body checkout-tab">
-
                                         <form action="#">
-
-
                                             <div class="tab-content">
                                                 <div class="tab-pane fade show active" id="pills-bill-info" role="tabpanel" aria-labelledby="pills-bill-info-tab">
                                                     <div>
@@ -97,18 +96,21 @@
                                                     </div>
 
                                                     <div>
+                                                        <%
+                                                            UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
+                                                        %>
                                                         <div class="row">
                                                             <div class="col-sm-6">
                                                                 <div class="mb-3">
-                                                                    <label for="billinginfo-firstName" class="form-label">First Name</label>
-                                                                    <input type="text" class="form-control" id="billinginfo-firstName" placeholder="Enter first name" value="">
+                                                                    <label for="billinginfo-firstName" class="form-label">Full Name</label>
+                                                                    <input type="text" class="form-control" id="billinginfo-firstName" placeholder="Enter first name" value="<%=loginUser.getFullName()%>">
                                                                 </div>
                                                             </div>
 
                                                             <div class="col-sm-6">
                                                                 <div class="mb-3">
-                                                                    <label for="billinginfo-lastName" class="form-label">Last Name</label>
-                                                                    <input type="text" class="form-control" id="billinginfo-lastName" placeholder="Enter last name" value="">
+                                                                    <label for="billinginfo-lastName" class="form-label">Account ID</label>
+                                                                    <input type="text" class="form-control" id="billinginfo-lastName" placeholder="Account ID" value="<%=loginUser.getAccountID()%>" readonly="">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -116,14 +118,14 @@
                                                         <div class="row">
                                                             <div class="col-sm-6">
                                                                 <div class="mb-3">
-                                                                    <label for="billinginfo-email" class="form-label">Email <span class="text-muted">(Optional)</span></label>
-                                                                    <input type="email" class="form-control" id="billinginfo-email" placeholder="Enter email">
+                                                                    <label for="billinginfo-email" class="form-label">Email</label>
+                                                                    <input type="email" class="form-control" id="billinginfo-email" placeholder="Enter email" required="">
                                                                 </div>
                                                             </div>
 
                                                             <div class="col-sm-6">
                                                                 <div class="mb-3">
-                                                                    <label for="billinginfo-phone" class="form-label">Phone</label>
+                                                                    <label for="billinginfo-phone" class="form-label">Phone <span class="text-muted">(Optional)</span></label>
                                                                     <input type="text" class="form-control" id="billinginfo-phone" placeholder="Enter phone no.">
                                                                 </div>
                                                             </div>
@@ -132,84 +134,31 @@
                                                                 <p class="text-muted mb-4">Please select and enter your billing information</p>
                                                             </div>
                                                             <div class="row g-4">
+
                                                                 <div class="col-lg-4 col-sm-6">
-                                                                    <div data-bs-toggle="collapse" data-bs-target="#paymentmethodCollapse.show" aria-expanded="false" aria-controls="paymentmethodCollapse">
-                                                                        <div class="form-check card-radio">
-                                                                            <input id="paymentMethod01" name="paymentMethod" type="radio" class="form-check-input">
-                                                                            <label class="form-check-label" for="paymentMethod01">
-                                                                                <span class="fs-16 text-muted me-2"><i class="ri-paypal-fill align-bottom"></i></span>
-                                                                                <span class="fs-14 text-wrap">Paypal</span>
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-lg-4 col-sm-6">
-                                                                    <div data-bs-toggle="collapse" data-bs-target="#paymentmethodCollapse" aria-expanded="true" aria-controls="paymentmethodCollapse">
-                                                                        <div class="form-check card-radio">
-                                                                            <input id="paymentMethod02" name="paymentMethod" type="radio" class="form-check-input" checked>
-                                                                            <label class="form-check-label" for="paymentMethod02">
-                                                                                <span class="fs-16 text-muted me-2"><i class="ri-bank-card-fill align-bottom"></i></span>
-                                                                                <span class="fs-14 text-wrap">Credit / Debit Card</span>
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="collapse show" id="paymentmethodCollapse">
-                                                                    <div class="card p-4 border shadow-none mb-0 mt-4">
-                                                                        <div class="row gy-3">
-                                                                            <div class="col-md-12">
-                                                                                <label for="cc-name" class="form-label">Name on card</label>
-                                                                                <input type="text" class="form-control" id="cc-name" placeholder="Enter name">
-                                                                                <small class="text-muted">Full name as displayed on card</small>
-                                                                            </div>
 
-                                                                            <div class="col-md-6">
-                                                                                <label for="cc-number" class="form-label">Credit card number</label>
-                                                                                <input type="text" class="form-control" id="cc-number" placeholder="xxxx xxxx xxxx xxxx">
-                                                                            </div>
-
-                                                                            <div class="col-md-3">
-                                                                                <label for="cc-expiration" class="form-label">Expiration</label>
-                                                                                <input type="text" class="form-control" id="cc-expiration" placeholder="MM/YY">
-                                                                            </div>
-
-                                                                            <div class="col-md-3">
-                                                                                <label for="cc-cvv" class="form-label">CVV</label>
-                                                                                <input type="text" class="form-control" id="cc-cvv" placeholder="xxx">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="text-muted mt-2 fst-italic">
-                                                                        <i data-feather="lock" class="text-muted icon-xs"></i> Your transaction is secured with SSL encryption
+                                                                    <div class="form-check card-radio">
+                                                                        <input id="paymentMethod02" name="paymentMethod" type="radio" class="form-check-input" checked>
+                                                                        <label class="form-check-label" for="paymentMethod02">
+                                                                            <span class="fs-16 text-muted me-2"><i class="ri-bank-card-fill align-bottom"></i></span>
+                                                                            <span class="fs-14 text-wrap">Credit / Debit Card</span>
+                                                                        </label>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-
-
-                                                <div class="tab-pane fade" id="pills-finish" role="tabpanel" aria-labelledby="pills-finish-tab">
-                                                    <div class="text-center py-5">
-
-                                                        <div class="mb-4">
-                                                            <lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" colors="primary:#0ab39c,secondary:#405189" style="width:120px;height:120px"></lord-icon>
-                                                        </div>
-                                                        <h5>Thank you ! Your Order is Completed !</h5>
-                                                        <p class="text-muted">You will receive an order confirmation email with details of your order.</p>
-
-                                                        <h3 class="fw-semibold">Order ID: <a href="apps-ecommerce-order-details.html" class="text-decoration-underline"></a></h3>
-                                                    </div>
-                                                </div>
-                                                <!-- end tab pane -->
                                             </div>
-                                            <!-- end tab content -->
-                                        </form>
+
                                     </div>
-                                    <!-- end card body -->
+                                    <!-- end tab content -->
+
                                 </div>
-                                <!-- end card -->
+                                <!-- end card body -->
                             </div>
+                            <!-- end card -->
+
                             <!-- end col -->
 
                             <div class="col-xl-4">
@@ -224,9 +173,14 @@
                                     <div class="card-body">
                                         <div class="table-responsive table-card">
                                             <%
-                                                Cart cart = (Cart) session.getAttribute("CART");
-                                                if (cart != null) {
-                                                    if (cart.getCart().size() > 0) {
+                                                //List<CartItemDTO> cartItemList = (List<CartItemDTO>) session.getAttribute("CARTITEM");
+                                                //if (cartItemList != null) {
+                                                //for (CartItemDTO cartItem : cartItemList) {
+                                                int finalTotal = 0;
+                                                List<CourseDTO> listCourseCheckout = (List<CourseDTO>) session.getAttribute("LISTBUYCOURSE");
+                                                if (listCourseCheckout != null) {
+                                                    if (listCourseCheckout.size() > 0) {
+
                                             %>
                                             <table class="table table-borderless align-middle mb-0">
                                                 <thead class="table-light text-muted">
@@ -237,9 +191,8 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <%
-                                                        double total = 0;
-                                                        for (CourseDTO c : cart.getCart().values()) {
+                                                    <%                                                        float total = 0;
+                                                        for (CourseDTO c : listCourseCheckout) {
                                                             total += c.getPrice();
                                                     %>
                                                     <tr>
@@ -267,40 +220,35 @@
                                                             <div class="d-flex gap-2">
                                                                 <form action="MainController" method="POST">
                                                                     <input type="text"  id="voucher" placeholder="Input voucher">
-                                                                    <button id="applyVoucher" class="btn btn-success">Apply</button>
+                                                                    <button name="action" value="checkVoucher" class="btn btn-success">Apply</button>
                                                                 </form>
-
                                                             </div>
                                                         </td>
-
                                                     </tr>
                                                     <tr>
                                                         <td colspan="3" style="height: 20px;"></td>
                                                     </tr>
 
-
                                                     <tr class="table-active">
-                                                        <th colspan="2">Total (VND) :</th>
+                                                        <th colspan="2">Total (VND) </th>
                                                         <td class="text-end">
                                                             <span class="fw-semibold">
-                                                                $353.15
+                                                                <%= total%>
                                                             </span>
                                                         </td>
                                                     </tr>
-                                                    <tr>
+                                                    <tr>    
+                                                        <% int intTotal = (int) total;%>
                                                         <td colspan="3" class="text-end">
-                                                            <form action="MainController" method="POST">
-                                                                
-                                                                <button name="action" value="payment" class="btn btn-primary">Pay</button>
-                                                                <input type="hidden" name="total" value="<%= total%>">
-                                                            </form>
-
+                                                            <form action="checkout/vnpay_pay.jsp" method="post">
+                                                                <input type="hidden" name="amount" value="<%=intTotal%>">
+                                                                <button type="submit" class="btn btn-danger">Go to payment</button>
+                                                            </form>                                                       
                                                         </td>
                                                     </tr>
                                                 </tbody>
                                             </table>
-                                            <%
-                                                    }
+                                            <%                                                }
                                                 }
                                             %>
                                             <%
@@ -309,6 +257,7 @@
                                                     error = "";
                                                 }
                                             %>
+
                                         </div>
                                     </div>
                                     <!-- end card body -->
@@ -317,22 +266,20 @@
                             </div>
                             <!-- end col -->
                         </div>
-                        <!-- end row -->
-
                     </div>
-                    <!-- container-fluid -->
+                    <!-- end row -->
+
                 </div>
-                <!-- End Page-content -->
-
-
+                <!-- container-fluid -->
             </div>
-            <jsp:include page="layout/footer.jsp"/>
-            <!-- end main content-->
+            <!-- End Page-content -->
+
 
         </div>
-
-
+        <jsp:include page="layout/footer.jsp"/>
+        <!-- end main content-->
         <!-- JAVASCRIPT -->
+
         <script src="admin/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="admin/assets/libs/simplebar/simplebar.min.js"></script>
         <script src="admin/assets/libs/node-waves/waves.min.js"></script>
@@ -345,6 +292,7 @@
 
         <!-- App js -->
         <script src="admin/assets/js/app.js"></script>
+
     </body>
 
 </html>

@@ -150,15 +150,15 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ajaxServlet</servlet-name>
-        <url-pattern>/ajaxServlet</url-pattern>
+        <url-pattern>/vnpayajax/*</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>vnpayQuery</servlet-name>
-        <url-pattern>/vnpayQuery</url-pattern>
+        <url-pattern>/vnpayquery/*</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>vnpayRefund</servlet-name>
-        <url-pattern>/vnpayRefund</url-pattern>
+        <url-pattern>/vnpayrefund/*</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
