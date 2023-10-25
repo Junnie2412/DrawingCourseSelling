@@ -7,6 +7,8 @@
 <%@page import="java.util.List"%>
 <%@page import="course.CourseDTO"%>
 <%@page import="course.CourseDAO"%>
+<%@page import="course.ModuleDAO"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -67,12 +69,12 @@
 
 
             <!-- ~~~ Hero Section ~~~ -->
-            <section class="hero-section banner-overlay bg_img" data-img="assets/images/banner/banner.png">
+            <section  class="hero-section banner-overlay bg_img" data-img="https://plus.unsplash.com/premium_photo-1673126682754-163189925db7?auto=format&fit=crop&q=80&w=1548&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
 
                 <div class="custom-container">
                     <div class="hero-content">
-                        <h1 class="title uppercase cl-white">Courses</h1>
-                        <ul class="breadcrumb cl-white p-0 m-0">
+                        <h1 class="title uppercase cl-white">Manager Courses</h1>
+                        <ul class="breadcrumb cl-white p-0 m-0" style="background-color: #e9ecef00">
                             <li>
                                 <a href="index.jsp">Home</a>
                             </li>
@@ -98,7 +100,7 @@
                     <div class="section-header">
                         <h2 class="title"><span>Featured</span> Create Courses</h2>
                         <form action="MainController">
-                            <button type="submit" name="action" value="CreateNewCourse">Create New Course</button>
+                            <button type="submit" name="action" value="CreateNewCourse" class="btn btn-primary">Create New Course</button>
                         </form>
                     </div>
                     <div class="section-header">
@@ -109,6 +111,7 @@
                     <!-- Update Course-->
                     <%
                         CourseDAO courseDAO = new CourseDAO();
+                        ModuleDAO moduleDAO = new ModuleDAO();
                         List<CourseDTO> listCourse = courseDAO.getlistCourse("");
                     %>
                     <div class="row justify-content-center mb-30-none">
@@ -155,24 +158,16 @@
                                             </div>
                                             <div class="meta-item">
                                                 <i class="fas fa-photo-video"></i>
-                                                <span>38 Lessons</span>
+                                          <span><%= moduleDAO.getQuantityOfModules(course.getCourseID())%> Modules</span>
                                             </div>
                                             <div class="meta-item">
                                                 <i class="fas fa-user-graduate"></i>
-                                                <span>20 Students</span>
+                                                <span><%= courseDAO.getDescription(course.getCourseID()).getType()%></span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="ratings-area">
-                                        <div class="ratings cl-theme">
-                                            <span><i class="fas fa-star"></i></span>
-                                            <span><i class="fas fa-star"></i></span>
-                                            <span><i class="fas fa-star"></i></span>
-                                            <span><i class="fas fa-star"></i></span>
-                                            <span class="cl-theme-light"><i class="fas fa-star"></i></span>
-                                            <span>(4.9/5.00)</span>
-                                        </div>
-                                        <div class="price cl-1">
+                                       <div class="price cl-1">
                                             <%= course.getPrice()%>$
                                         </div>
                                     </div>
@@ -185,10 +180,7 @@
                         %>
 
                     </div>
-                    <div class="text-center load-more mt-5">
-                        <a href="courses.jsp" class="custom-button theme-one">load more courses <i class="fas fa-angle-right"></i></a>
-                    </div>
-                </div>
+                                    </div>
             </section>
             <!-- ~~~ Course Section ~~~ -->
 

@@ -95,6 +95,12 @@
 
             <!-- ~~~ SEARCH by name ~~~ -->
             <%
+    UserDTO loginUser = (UserDTO) session.getAttribute(("LOGIN_USER"));
+    if (loginUser == null) {
+        loginUser = new UserDTO();
+    }
+%>
+            <%
                 CourseDAO courseDAO = new CourseDAO();
                 CourseFeedbackDAO courseFeedbackDAO = new CourseFeedbackDAO();
                 ModuleDAO moduleDAO = new ModuleDAO();
@@ -275,9 +281,15 @@
                             }
                         %> 
                     </div>
-                    <div class="text-center load-more mt-5">
-                        <a href="courses.jsp" class="custom-button theme-one">Load more courses <i class="fas fa-angle-right"></i></a>
                     </div>
+                    <div> 
+                    
+              
+                 <div class="text-center load-more mt-5">
+                        <a href="courses.jsp" class="custom-button theme-one">load more courses <i class="fas fa-angle-right"></i></a>
+                    </div>    
+            
+            </div>
                 </div>
             </section>
             <!-- ~~~ Course Section ~~~ -->
