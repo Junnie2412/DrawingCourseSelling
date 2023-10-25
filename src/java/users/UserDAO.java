@@ -22,8 +22,8 @@ import userGoogle.UserGoogleDTO;
 public class UserDAO {
 
     private static final String CHECK_ACCOUNT = "SELECT accountID, password, fullName, dateOfBirth, role, isActive, image, email\n"
-                                                + "FROM tblAccount\n"
-                                                + "WHERE accountID = ? OR email = ? ";
+            + "FROM tblAccount\n"
+            + "WHERE accountID = ? OR email = ? ";
     private static final String SIGNUP = "INSERT tblAccount VALUES(?, ?, ?, ?, 'Customer', 1, '', ?)";
     private static final String LOGIN = "SELECT * FROM tblAccount WHERE accountID=? AND password=? ";
     private static final String LOGINBYGOOGLE = "SELECT role FROM tblAccount WHERE accountID=?";
@@ -31,14 +31,14 @@ public class UserDAO {
     private static final String DELETESTAFF = "DELETE tblAccount WHERE accountID=?";
     private static final String UPDATESTAFF = "UPDATE tblAccount set password=?, fullName=?, dateOfBirth=?, isActive=?, image=?, email=? WHERE accountID=?";
     private static final String LOADSTAFF = "SELECT * FROM tblAccount WHERE role = 'Staff'";
-     private static final String LOADUSER = "SELECT * FROM tblAccount";
+    private static final String LOADUSER = "SELECT * FROM tblAccount";
     private static final String UPDATEUSER = "UPDATE tblAccount set fullName=?, dateOfBirth=?, email=? WHERE accountID=?";
     private static final String CHANGE_PASSWORD = "UPDATE tblAccount set password=? WHERE accountID=?";
 
     private static final String INSTRUCTOR_LIST = "SELECT * FROM tblAccount WHERE role = 'Instructor'";
-    private static final String CREATEACCOUNTGOOGLE = "INSERT INTO tblAccount VALUES (?)";
+    private static final String CREATEACCOUNTGOOGLE = "INSERT INTO tblAccount(accountID,fullName,role,isActive,image) VALUES (?,?,?,?,?)";
     private static final String INSERT_INSTRUCTOR = "INSERT INTO tblAccount VALUES (?,?,?,?,?,?,?,?)";
-    
+
     public UserDTO checkLogin(String userName, String password) throws SQLException {
         UserDTO user = null;
 
@@ -98,7 +98,7 @@ public class UserDAO {
                     user = new UserDTO(userID, role);
                 }
             }
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
             if (rs != null) {
@@ -195,7 +195,6 @@ public class UserDAO {
         return check;
     }
 
-    
     public boolean deleteStaff(String accountID) throws SQLException {
         boolean check = false;
         Connection conn = null;
@@ -328,7 +327,8 @@ public class UserDAO {
         }
         return instructorList;
     }
-    public boolean createAccGoogle(String userID) throws SQLException {
+
+    public boolean createAccGoogle(UserDTO user) throws SQLException {
         boolean check = false;
         Connection conn = null;
         PreparedStatement ptm = null;
@@ -336,7 +336,11 @@ public class UserDAO {
             conn = DBUtil.getConnection();
             if (conn != null) {
                 ptm = conn.prepareStatement(CREATEACCOUNTGOOGLE);
-                ptm.setString(1, userID);
+                ptm.setString(1, user.getAccountID());
+                ptm.setString(2,user.getFullName() );
+                ptm.setString(3, user.getRole());
+                ptm.setBoolean(4, true);
+                ptm.setString(5, user.getImage());
                 check = ptm.executeUpdate() > 0 ? true : false;
             }
         } catch (Exception e) {
@@ -350,10 +354,6 @@ public class UserDAO {
             }
         }
         return check;
-    }
-
-    public boolean createAccGoogle(UserGoogleDTO user) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public boolean insertInstructor(UserDTO user) throws ClassNotFoundException, SQLException {
@@ -385,7 +385,8 @@ public class UserDAO {
         }
         return check;
     }
-     public boolean updateUser(String fullName, String dob, String email, String accountId) throws SQLException {
+
+    public boolean updateUser(String fullName, String dob, String email, String accountId) throws SQLException {
         boolean check = false;
         Connection conn = null;
         PreparedStatement ptm = null;
@@ -397,7 +398,7 @@ public class UserDAO {
                 ptm.setString(2, dob);
                 ptm.setString(3, email);
                 ptm.setString(4, accountId);
-                
+
                 check = ptm.executeUpdate() > 0 ? true : false;
             }
         } catch (Exception e) {
@@ -412,7 +413,7 @@ public class UserDAO {
         }
         return check;
     }
-    
+
     public List<UserDTO> loadUserList() throws SQLException {
         List<UserDTO> userList = new ArrayList<>();
         Connection conn = null;
@@ -424,16 +425,15 @@ public class UserDAO {
                 ptm = conn.prepareStatement(LOADUSER);
                 rs = ptm.executeQuery();
                 while (rs.next()) {
-               
+
                     String password = rs.getString("password");
                     String fullName = rs.getString("fullName");
                     Date dateOfBirth = rs.getDate("dateOfBirth");
-                    
-                    
+
                     String image = rs.getString("image");
                     String email = rs.getString("email");
 
-                    userList.add(new UserDTO( password, fullName, dateOfBirth, image, email));
+                    userList.add(new UserDTO(password, fullName, dateOfBirth, image, email));
                 }
             }
         } catch (Exception e) {
@@ -451,7 +451,7 @@ public class UserDAO {
         }
         return userList;
     }
-    
+
     public boolean changePassword(String accountId, String password) throws SQLException {
         Connection conn = null;
         PreparedStatement ptm = null;
@@ -462,7 +462,7 @@ public class UserDAO {
                 ptm = conn.prepareStatement(CHANGE_PASSWORD);
                 ptm.setString(1, password);
                 ptm.setString(2, accountId);
-                
+
                 return ptm.executeUpdate() > 0;
             }
         } catch (Exception e) {
