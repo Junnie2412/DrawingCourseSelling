@@ -140,8 +140,8 @@
                             <a href="courses.jsp" class=" btn-md btn-viewCourse slide_right">VIEW COURSES <i class="fas fa-play-circle"></i></a>
                             <a href="signup.jsp" class="btn-createAccount slide_right2 btn-md theme-one">CREATE YOUR ACCOUNT <i class="flaticon-tap-1"></i></a>
                             <% } else { %><div class="banner-button-area">
-                                <a href="courses.jsp" class=" btn-md btn-viewCourse slide_right">
-                                    <span style="text-align: center;">VIEW COURSES</span>
+                                <a href="learning.jsp" class=" btn-md btn-viewCourse slide_right">
+                                    <span style="text-align: center;">LEARNING</span>
                                     <i class="fas fa-play-circle"></i>
                                 </a><% } %>
                             </div>

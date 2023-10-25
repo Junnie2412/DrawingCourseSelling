@@ -35,9 +35,14 @@
 
         <style>
             .course-item{
-                height: 550px;
+                height: 450px;
+                border-radius: 25px;
+                background: rgba(59, 65, 66, 0.03);
             }
 
+            .course-item img{
+                border-radius: 25px;
+            }
             .nav-bar{
                 width: 100vw;
                 background-color: rgba(59, 65, 66, 0.1);
@@ -258,12 +263,7 @@
                                             </div>
                                         </div>
 
-                                    </div>
-
-                                    <div class="custom-width">
-                                        <button class="btn btn-success" name="action" value="payment">Add to Cart</button>
-                                        <button class="btn btn-primary" name="action" value="payment">Buy Now</button>
-                                    </div>                             
+                                    </div>                          
                                 </div>
 
                             </form>
