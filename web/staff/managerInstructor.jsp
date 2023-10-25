@@ -74,6 +74,7 @@
                                                 <div> --%>
 
                                     <form action="MainController" method="POST">
+                                        
                                         <div class="mb-3">
                                             <label for="accountID" class="form-label">Account ID</label>
                                             <input type="text" class="form-control" name="accountID" required>
@@ -99,13 +100,7 @@
                                             <input type="date" class="form-control" name="dateOfbirth" required>
 
                                         </div>
-                                        <div class="mb-3">
-                                            <label for="isActive" class="form-label">Status</label>
-                                            <select name="isActive">
-                                                <option value="active">Active</option>
-                                                <option value="inactive">Inactive</option>
-                                            </select>
-                                        </div>
+                                        
                                         <div class="mb-3">
                                             <label for="role" class="form-label">Role</label>
                                             <input type="text" class="form-control" name="role" readonly="" placeholder="Instructor">
@@ -123,10 +118,17 @@
                                         </div>
 
                                         <input class="btn btn-outline-primary" type="submit" name="action" value="Add Instructor">
+                                        <%
+                                         String noti = (String)request.getAttribute("MESSAGE");
+                                        if (noti != null) {
+                                            out.print("<h6 style=\"color: green;\">" + noti + "</h6>");
+                                        }
+                                        %>
                                     </form>   
                                 </div>
                             </div>
                         </div>    
+                                        
                         <div class="tab-pane container active" id="manageInstructor">
                             <%
                                     String search = request.getParameter("searchName");

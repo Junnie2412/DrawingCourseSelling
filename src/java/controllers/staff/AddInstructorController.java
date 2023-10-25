@@ -26,7 +26,7 @@ import users.UserError;
 @WebServlet(name = "AddInstructorController", urlPatterns = {"/AddInstructorController"})
 public class AddInstructorController extends HttpServlet {
 
-    private static final String SUCCESS = "staff/managerInstructor.jsp";
+    private static final String SUCCESS = "ShowListController";
     private static final String ERROR = "staff/managerInstructor.jsp";
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -39,18 +39,11 @@ public class AddInstructorController extends HttpServlet {
             boolean checkValidation = true;
             
             String accountID = request.getParameter("accountID");
-            String fullName = request.getParameter("fullName");
+            String fullName = request.getParameter("fullname");
             String dateString = request.getParameter("dateOfbirth");
             Date dateOfBirth = Date.valueOf(dateString);
             String role = "Instructor";
             boolean isActive = true;
-            String activeStr = request.getParameter("isActive");
-            if (activeStr.equalsIgnoreCase("active")) {
-                isActive = true;
-            } else if (activeStr.equalsIgnoreCase("inactive")) {
-                isActive = false;
-            }
-            
             String email = request.getParameter("email");
             String img = request.getParameter("image");
             String password = request.getParameter("password");
@@ -71,7 +64,7 @@ public class AddInstructorController extends HttpServlet {
                 checkValidation = false;
             }
             if (!password.equals(confirm)) {
-                userError.setConfirmError("two password are not match");
+                userError.setConfirmError("Two password are not match");
                 checkValidation = false;
             }
             //check email

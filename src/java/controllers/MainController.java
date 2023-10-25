@@ -114,8 +114,6 @@ public class MainController extends HttpServlet {
                 url = UPDATESTAFF_CONTROLLER;
             }else if (action.equals(LOADSTAFF)) {
                 url = LOADSTAFF_CONTROLLER;
-            
-           
             }else if (action.equals(CREATE_VOUCHER)) {
                 url = CREATE_VOUCHER_CONTROLLER;
             }else if (action.equals(TURN_BACK_STAFF)) {
@@ -136,6 +134,10 @@ public class MainController extends HttpServlet {
                 url = REMOVE_COURSE_CART_CONTROLLER;
             }else if (action.equals(SHOW_LIST_INSTRUCTOR)) {
                 url = SHOW_LIST_INSTRUCTOR_CONTROLLER;
+            }else if (action.equals(ADD_INSTRUCTOR)) {
+                url = ADD_INSTRUCTOR_CONTROLLER;
+            }else if (action.equals(SEARCH_INSTRUCTOR)) {
+                url = SEARCH_INSTRUCTOR_CONTROLLER;
             }
         } catch (Exception e) {
             log("Error at MainController: " + e.toString());
