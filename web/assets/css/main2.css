@@ -2300,6 +2300,7 @@ header.active {
     border-radius: 5px;
     background: #F1F5F9;
     color: #07294D;
+     
 }
 
 .course-search-form input.rounded {
@@ -6595,4 +6596,17 @@ blockquote::before {
 .custom-account {
     margin-top: 100px;
    margin-bottom: 200px/* Điều chỉnh khoảng cách giữa "banner" và "account" bằng margin-top */
+}
+
+.create-course-button {
+    background-color: #007bff; /* Màu nền nút */
+    color: #fff; /* Màu chữ trắng */
+    padding: 10px 20px; /* Khoảng cách giữa nội dung và biên nút */
+    border: none; /* Loại bỏ viền */
+    border-radius: 5px; /* Bo góc */
+    font-weight: bold; /* Chữ đậm */
+}
+
+.create-course-button:hover {
+    background-color: #0056b3; /* Màu nền nút khi rê chuột vào */
 }

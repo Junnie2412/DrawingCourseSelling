@@ -22,6 +22,11 @@ public class ModuleDTO {
         this.title = title;
         this.lessonID = lessonID;
     }
+    public ModuleDTO(int moduleID, String title) {
+        this.moduleID = moduleID;
+        this.title = title;
+    }
+
 
     public int getModuleID() {
         return moduleID;

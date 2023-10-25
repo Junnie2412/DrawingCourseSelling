@@ -49,136 +49,6 @@
             text-decoration: none;
         }
 
-        .btnfos {
-            color: black;
-            cursor: pointer;
-            display: block;
-            font-size: 16px;
-            font-weight: 400;
-            line-height: 45px;
-            max-width: 160px;
-            margin: 0 auto 2em;
-            position: relative;
-            text-transform: uppercase;
-            vertical-align: middle;
-            width: 100%;
-            transition: 1s;
-        }
-
-        .btnfos-1 {
-            margin-top: 20px;
-            background: #ebecec;
-            text-align: center;
-            font-weight: 100;
-        }
-        .btnfos-1 svg {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 45px;
-        }
-        .btnfos-1 rect {
-            fill: none;
-            stroke: black;
-            stroke-width: 1;
-            stroke-dasharray: 422, 0;
-        }
-
-        .btnfos-1:hover {
-            background: #ebecec;
-            letter-spacing: 1px;
-            font-weight: 500;
-            transition: 1s;
-        }
-        .btnfos-1:hover rect {
-            stroke-width: 5;
-            stroke-dasharray: 15, 310;
-            stroke-dashoffset: 48;
-            -webkit-transition: all 1.35s cubic-bezier(0.19, 1, 0.22, 1);
-            transition: all 1.35s cubic-bezier(0.19, 1, 0.22, 1);
-        }
-
-        .course-search-form input {
-            height: 40px;
-            -webkit-border-radius: 5px;
-            -moz-border-radius: 5px;
-            border-radius: 5px;
-            background: #ebecec;
-            color: black;
-        }
-
-        .course-search-form input.rounded {
-            -webkit-border-radius: 31px !important;
-            -moz-border-radius: 31px !important;
-            border-radius: 40px !important;
-        }
-
-        .course-search-form button {
-            width: 30px;
-            height: 30px;
-            font-size: 15px;
-            color: #ebecec;
-            background: #07294D;
-            -webkit-border-radius: 5px;
-            -moz-border-radius: 5px;
-            border-radius: 5px;
-            position: absolute;
-            right: -1px;
-            bottom: 5px;
-            outline: none;
-            border: none;
-        }
-
-        .course-search-form button.rounded {
-            -webkit-border-radius: 20px !important;
-            -moz-border-radius: 20px !important;
-            border-radius: 20px !important;
-
-        }
-
-        .course-search-form .select-bar {
-            -webkit-border-radius: 5px;
-            -moz-border-radius: 5px;
-            border-radius: 5px;
-            height: 52px;
-            position: absolute;
-            top: 5px;
-            left: 5px;
-            width: 133px;
-        }
-
-        .course-search-form .select-bar.rounded {
-            -webkit-border-radius: 26px !important;
-            -moz-border-radius: 26px !important;
-            border-radius: 26px !important;
-        }
-
-        .course-search-form .select-bar .list {
-            max-height: 200px;
-            overflow-y: auto;
-        }
-
-        .course-search-form .select-bar .list .option {
-            padding-top: 0;
-            padding-bottom: 0;
-        }
-
-        .course-search-form .select-bar .list .option.selected {
-            font-weight: 500;
-        }
-
-        .course-search-form .select-bar::after {
-            right: 20px;
-            width: 8px;
-            height: 8px;
-            border-color: #d6ae7b;
-        }
-
-        .course-search-form .select-bar .current {
-            line-height: 50px;
-            color: #d6ae7b;
-        }
     </style>
     <div class="custom-container">
         <div class="header-area">
@@ -191,10 +61,17 @@
                 <li>
                     <a href="index.jsp">Home</a>
                 </li>
-
-                <li>
-                    <a href="about.jsp">About Us</a>
-                </li>
+                   
+                <%
+                if (loginUser.getRole().equals("Instructor")) {
+            %>
+             
+            <% } else {
+            %>  
+                   <li>
+                       <a href="about.jsp">About us</a>
+                </li>   
+            <% }%>
                 <li>
                     <%
                         if (loginUser.getRole().equals("Admin")) {
@@ -207,7 +84,7 @@
                     <%
                     } else if (loginUser.getRole().equals("Instructor")) {
                     %>
-                    <a href="instructorCourse.jsp">Courses</a>
+                    <a href="instructorCourse.jsp">Manager Courses</a>
                     <%
                     } else if (loginUser.getRole().equals("Staff")) {
                     %>
@@ -228,13 +105,26 @@
                     <a href="gallery.jsp">Gallery</a>
 
                 </li>
+                <%
+                    if (loginUser.getRole().equals("Instructor")) {
+                %>
+
+                <% } else {
+                %>  
                 <li>
                     <a href="blog.jsp">Blogs</a>
+                </li>   
+                <% }%>
+                <%
+                    if (loginUser.getRole().equals("Instructor")) {
+                %>
 
-                </li>
+                <% } else {
+                %>  
                 <li>
-                    <a href="contact.jsp">Contact</a>
-                </li>
+                    <a href="contact.jsp">Contacts</a>
+                </li>   
+                <% }%>
             </ul>
             <div class="header-bar ml-4">
                 <span></span>
@@ -250,29 +140,30 @@
 
             %> 
             <form class="course-search-form ml-auto mr-4" method="post" action="MainController?action=Search">
-                <input type="text" name="searchName" value="<%= search%>" placeholder="Search Courses" class="rounded pl-0">
+                <input type="text" name="searchName" value="<%= search%>" placeholder="Search Courses"  class="rounded " >
                 <button type="submit" class="rounded" value="Search"><i class="flaticon-loupe"></i></button>
-            </form> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </form> 
             <%
                 if (loginUser.getRole() == "") {
             %>
-            <a class="btnfos btnfos-1" href="signin.jsp">
-                <svg>
-                <rect x="0" y="0" fill="none" width="100%" height="100%"/>
-                </svg>
-                Login
-            </a> 
+            <a href="signin.jsp" class="btn-grad"><i class="fas fa-user"></i> <span> Log In</span></a>
             <% } else {
             %>  
             <div class="user-info dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img src="<%=loginUser.getImage()%>" class="user-avatar" class="user-avatar">
+                    <% if (loginUser.getImage() != null && !loginUser.getImage().isEmpty()) {%>
+                    <img src="<%= loginUser.getImage()%>" class="user-avatar">
+                    <% } else { %>
+                    <img src="https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png" class="user-avatar">
+                    <% } %>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="userDropdown">
                     <a class="dropdown-item" href="courses.jsp">View Course</a>
                     <a class="dropdown-item" href="learning.jsp">Learning</a>
                     <a class="dropdown-item" href="Editaccount.jsp">Manage your Account</a>
                     <a class="dropdown-item" href="viewCart.jsp">View Cart</a>
+                    <% }%>
+
                     <a class="dropdown-item" href="MainController?action=SignOut">Logout</a>
                 </div>
             </div>           
@@ -290,16 +181,7 @@
     </span>
     <div class="w-100 d-flex flex-wrap justify-content-center align-items-center">
         <form class="course-search-form mr-sm-4">
-            <select class="select-bar rounded">
-                <option value="01">Category</option>
-                <option value="02">Physics</option>
-                <option value="03">Chemistry</option>
-                <option value="04">History</option>
-                <option value="05">Geometry</option>
-                <option value="06">LoremIp</option>
-                <option value="07">UI/UX</option>
-                <option value="08">Laravel</option>
-            </select>
+            
             <input type="text" name="name" placeholder="Search Courses" class="rounded">
             <button type="submit" class="rounded"><i class="flaticon-loupe"></i></button>
         </form>
@@ -308,14 +190,7 @@
             <ul class="menu">
                 <li>
                     <a href="#0">Home</a>
-                    <ul class="submenu">
-                        <li>
-                            <a href="index.jsp">Home 1</a>
-                        </li>
-                        <li>
-                            <a href="index2.jsp">Home 2</a>
-                        </li>
-                    </ul>
+                    
                 </li>
                 <li>
                     <a href="about.jsp">About Us</a>

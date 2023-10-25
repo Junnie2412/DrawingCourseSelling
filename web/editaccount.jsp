@@ -4,6 +4,9 @@
     Author     : Admin
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="users.UserDTO"%>
+
 <!doctype html>
 <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable">
 
@@ -37,23 +40,18 @@
         <link rel="stylesheet" href="assets/css/flaticon.css">
         <link href="assets/css/main2.css" rel="stylesheet" type="text/css"/>
 
-        <style>
-            .nav-bar{
-                width: 100vw;
-                background-color: rgba(59, 65, 66, 0.1);
-            }
-            .banner-overlay::before {
-                left: 0;
-                bottom: 0;
-                top: 0;
-                right: 0;
-                background: rgba(59, 65, 66, 0.5);
-            }
-        </style>
 
     </head>
 
+
+
     <body>
+        <%
+            UserDTO loginUser = (UserDTO) session.getAttribute(("LOGIN_USER"));
+            if (loginUser == null) {
+                loginUser = new UserDTO();
+            }
+        %>
 
 
         <div class="all-sections oh">
@@ -65,22 +63,20 @@
             <!-- ~~~ Loader & Go-Top ~~~ -->
 
 
-            <div class="nav-bar">
-                <jsp:include page="layout/header.jsp"/>
-            </div>
+            <jsp:include page="layout/header.jsp"/>
 
 
             <!-- ~~~ Hero Section ~~~ -->
             <section class="hero-section banner-overlay bg_img" data-img="assets/images/banner/banner.png">
                 <div class="custom-container">
                     <div class="hero-content">
-                        <h1 class="title uppercase cl-white">Blogs</h1>
+                        <h1 class="title uppercase cl-white">Account edit</h1>
                         <ul class="breadcrumb cl-white p-0 m-0" style="background-color: #e9ecef00">
                             <li>
                                 <a href="index.jsp">Home</a>
                             </li>
                             <li>
-                                Blogs
+
                             </li>
                         </ul>
                     </div>
@@ -103,7 +99,7 @@
                                     <div class="card-body p-4">
                                         <div class="text-center">
                                             <div class="profile-user position-relative d-inline-block mx-auto  mb-4">
-                                                <img src="assets/images/users/avatar-1.jpg" class="rounded-circle avatar-xl img-thumbnail user-profile-image  shadow" alt="user-profile-image">
+                                                <img src="<%=loginUser.getImage()%>" class="rounded-circle avatar-xl img-thumbnail user-profile-image  shadow" alt="user-profile-image">
                                                 <div class="avatar-xs p-0 rounded-circle profile-photo-edit">
                                                     <input id="profile-img-file-input" type="file" class="profile-img-file-input">
                                                     <label for="profile-img-file-input" class="profile-photo-edit avatar-xs">
@@ -113,8 +109,8 @@
                                                     </label>
                                                 </div>
                                             </div>
-                                            <h5 class="fs-16 mb-1">Anna Adame</h5>
-                                            <p class="text-muted mb-0">Lead Designer / Developer</p>
+                                            <h5 class="fs-16 mb-1"><%=loginUser.getFullName()%></h5>
+
                                         </div>
                                     </div>
                                 </div>
@@ -133,119 +129,138 @@
                                                     <i class="fas fa-home"></i> Account
                                                 </a>
                                             </li>
-
-
-
                                         </ul>
                                     </div>
-                                    <div class="card-body p-4">
-                                        <div class="tab-content">
-                                            <div class="tab-pane active" id="personalDetails" role="tabpanel">
-                                                <form action="javascript:void(0);">
-                                                    <div class="row">
-                                                        <div class="col-lg-6">
-                                                            <div class="mb-3">
-                                                                <label for="firstnameInput" class="form-label">Username</label>
-                                                                <input type="text" class="form-control" id="firstnameInput" placeholder="Enter your username" value="Dave">
-                                                            </div>
-                                                        </div>
-                                                        <!--end col-->
-                                                        <!--end col-->
-
-                                                        <!--end col-->
-                                                        <div class="col-lg-6">
-                                                            <div class="mb-3">
-                                                                <label for="emailInput" class="form-label">Email Address</label>
-                                                                <input type="email" class="form-control" id="emailInput" placeholder="Enter your email" value="daveadame@velzon.com">
-                                                            </div>
-                                                        </div>
-                                                        <!--end col-->
-                                                        <div class="col-lg-12">
-                                                            <div class="mb-3">
-                                                                <label for="JoiningdatInput" class="form-label">Date</label>
-                                                                <input type="text" class="form-control" data-provider="flatpickr" id="JoiningdatInput" data-date-format="d M, Y" data-deafult-date="24 Nov, 2021" placeholder="Select date" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="container">
-                                                            <div class="row">
-                                                                <label for="oldpasswordInput">Change Password</label>
-                                                                <div class="col-lg-4">
-                                                                    <div class="mb-3">
-                                                                        <input type="password" class="form-control" id="oldpasswordInput" placeholder="Old Password">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-lg-4">
-                                                                    <div class="mb-3">
-                                                                        <input type="password" class="form-control" id="newpasswordInput" placeholder="New Password">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-lg-4">
-                                                                    <div class="mb-3">
-                                                                        <input type="password" class="form-control" id="confirmpasswordInput" placeholder="Confirm Password">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>                                                    
-                                                    <div class="col-lg-12">
-                                                        <div class="hstack gap-2 justify-content-end">
-                                                            <button type="submit" class="btn btn-primary">Save change</button>
-                                                        </div>
-                                                    </div>
-                                                    <!--end col-->
+                                    <form action="UpdateUserController" method="POST">
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label for="firstnameInput" class="name">Username</label>
+                                                <input type="text" name="fullName" value="<%=loginUser.getFullName()%>" required=""/>
                                             </div>
-                                            <!--end row-->
-                                            </form>
                                         </div>
-                                        <!--end tab-pane-->
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label for="emailInput" class="email">Email Address</label>
+                                                <input type="text" name="email" value="<%=loginUser.getEmail()%>" required=""/>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="mb-3">
+                                                <label for="JoiningdatInput" class="date">Date</label>
+                                                <input type="date" name="dateOfbirth" value="<%=loginUser.getDateOfBirth()%>" required=""/>
+                                            </div>
+                                        </div>
+                                        <li class="list-inline-item edit" data-bs-toggle="tooltip"
+                                            data-bs-trigger="hover" data-bs-placement="top"
+                                            title="Edit">
+                                            <button type="submit" name="action" value="updateUser" class="btn btn-primary">Save Change</button>
+                                        </li>    
+                                    </form>
 
-                                        <!--end tab-pane-->
 
-                                        <!--end tab-pane-->
 
-                                        <!--end tab-pane-->
-                                    </div>
+                                    <!--end row-->
+
                                 </div>
+                                <!--end tab-pane-->
+
+                                <div class="card mt-xxl-n5 mt-5">
+                                    <div class="card-header">
+                                        <ul class="nav nav-tabs-custom rounded card-header-tabs border-bottom-0" role="tablist">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" data-bs-toggle="tab" href="#personalDetails" role="tab">
+                                                    <i class="fas fa-home"></i> Password
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <form action="ChangePasswordController" method="POST">
+                                        <div class="container">
+                                            <div class="row">
+                                                <label for="oldpasswordInput">Change Password</label>
+                                                <div class="col-lg-4">
+                                                    <div class="mb-3">
+                                                        <input type="password" class="form-control" name="password" placeholder="Old Password">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <div class="mb-3">
+                                                        <input type="password" class="form-control" name="newPassword" id="newpasswordInput" placeholder="New Password">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <div class="mb-3">
+                                                        <input type="password" class="form-control" name="confirmNewPassword" id="confirmpasswordInput" placeholder="Confirm Password">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <% if (request.getAttribute("msgError") != null) {%>
+                                        <div style="color: red;"><%= request.getAttribute("msgError") %></div>
+                                        <% }%>
+                                        <% if (request.getAttribute("msgSuccess") != null) {%>
+                                        <div style="color: green;"><%= request.getAttribute("msgSuccess") %></div>
+                                        <% }%>
+                                        <li class="list-inline-item edit" data-bs-toggle="tooltip"
+                                            data-bs-trigger="hover" data-bs-placement="top"
+                                            title="Edit">
+                                            <button type="submit" name="action" value="updateUser" class="btn btn-primary">Save Change</button>
+                                        </li>    
+                                    </form>
+
+
+
+                                    <!--end row-->
+
+                                </div>
+                                <!--end tab-pane-->
+
+                                <!--end tab-pane-->
+
+                                <!--end tab-pane-->
                             </div>
                         </div>
-                        <!--end col-->
                     </div>
-                    <!--end row-->
-
                 </div>
-                <!-- container-fluid -->
-            </div><!-- End Page-content -->
 
+                <!--end col-->
+            </div>
+            <!--end row-->
 
         </div>
-        <!-- end main content-->
+        <!-- container-fluid -->
+    </div><!-- End Page-content -->
 
 
-        <!-- END layout-wrapper -->
-
-        <jsp:include page="layout/footer.jsp"/>
-
-        <!--start back-to-top-->
+</div>
+<!-- end main content-->
 
 
+<!-- END layout-wrapper -->
+
+<jsp:include page="layout/footer.jsp"/>
+
+<!--start back-to-top-->
 
 
 
-    </div>
 
-    <!-- JAVASCRIPT -->
-    <script src="admin/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="admin/assets/libs/simplebar/simplebar.min.js"></script>
-    <script src="admin/assets/libs/node-waves/waves.min.js"></script>
-    <script src="admin/assets/libs/feather-icons/feather.min.js"></script>
-    <script src="admin/assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
-    <script src="admin/assets/js/plugins.js"></script>
 
-    <!-- profile-setting init js -->
-    <script src="admin/assets/js/pages/profile-setting.init.js"></script>
+</div>
 
-    <!-- App js -->
-    <script src="admin/assets/js/app.js"></script>
+<!-- JAVASCRIPT -->
+<script src="admin/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="admin/assets/libs/simplebar/simplebar.min.js"></script>
+<script src="admin/assets/libs/node-waves/waves.min.js"></script>
+<script src="admin/assets/libs/feather-icons/feather.min.js"></script>
+<script src="admin/assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
+<script src="admin/assets/js/plugins.js"></script>
+
+<!-- profile-setting init js -->
+<script src="admin/assets/js/pages/profile-setting.init.js"></script>
+
+<!-- App js -->
+<script src="admin/assets/js/app.js"></script>
 </body>
 
 </html>

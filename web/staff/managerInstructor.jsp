@@ -13,7 +13,7 @@
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="Themesbrand" name="author" />
         <!-- App favicon -->
-        <link rel="shortcut icon" href="assets/images/favicon.ico">
+        <link rel="shortcut icon" href="assets/images/art1.png" type="image/x-icon">
 
 
         <!-- Sweet Alert css-->
@@ -29,9 +29,9 @@
         <link href="staff/assets/css/app.min.css" rel="stylesheet" type="text/css" />
         <!-- custom Css-->
         <link href="staff/assets/css/custom.min.css" rel="stylesheet" type="text/css" />
-         
-        
-        
+
+
+
 
 
     </head>
@@ -44,7 +44,7 @@
             <jsp:include page="layoutadmin/header.jsp"/>
 
             <!-- removeNotificationModal -->
-            
+
             <!-- ========== App Menu ========== -->
             <jsp:include page="layoutadmin/slidebar.jsp"/>
             <!-- Left Sidebar End -->
@@ -54,184 +54,249 @@
             <!-- ============================================================== -->
             <!-- Start right Content here -->
             <!-- ============================================================== -->
-            <div class="main-content">
-
-                <div class="page-content">
-                    <div class="container-fluid">
-
-                        <!-- start page title -->
-
-                        <!-- end page title -->
-
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="card" id="leadsList">
-                                    <div class="card-header border-0">
-
-                                        <div class="row g-4 align-items-center">
-                                            <div class="col-sm-3">
-                                                <div class="search-box">
-                                                    <input type="text" class="form-control search" placeholder="Search for...">
-                                                    <i class="ri-search-line search-icon"></i>
-                                                </div>
-                                            </div>
+            <div class="container-fluid">
+                <div class="main-content">
+                    <div class="page-content"> 
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-bs-toggle="tab" href="#addInstructor">Add Instructor Account</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="tab" href="#manageInstructor">Manage Instructor Account</a>
+                            </li>           
+                        </ul>   
+                        <div class="tab-content">
+                            <div class="tab-pane container active" id="addInstructor">
+                                <div class="container" style="width: 40%;">                                 
+                                    <%--    <div class="card-header border-0">
+                                        <div class="row g-4 align-items-center">                                         
                                             <div class="col-sm-auto ms-auto">
-                                                <div class="hstack gap-2">
-                                                    <button class="btn btn-soft-danger" id="remove-actions" onClick="deleteMultiple()"><i class="ri-delete-bin-2-line"></i></button>
+                                                <div> --%>
 
-                                                    <button type="button" class="btn btn-success add-btn" data-bs-toggle="modal" id="create-btn" data-bs-target="#showModal"><i class="ri-add-line align-bottom me-1"></i> Add Staff</button>
-
-                                                </div>
-                                            </div>
+                                    <form action="MainController" method="POST">
+                                        <div class="mb-3">
+                                            <label for="accountID" class="form-label">Account ID</label>
+                                            <input type="text" class="form-control" name="accountID" required>
+                                            <p style="color: red;">${requestScope.USER_ERROR.userIDError}</p>
                                         </div>
-                                    </div>
-                                    <div class="card-body">
-                                        <div>
-                                            <%
-                                                List<UserDTO> listInstructor = (List<UserDTO>) request.getAttribute("LIST_INSTRUCTOR");
-                                                if (listInstructor != null) {
-                                                    if (listInstructor.size() > 0) {
-                                            %>
-                                            <div class="table-responsive table-card">
-                                                <table class="table align-middle" id="customerTable">
-                                                    <thead class="table-light">
-
-                                                        <tr>
-                                                            <th scope="col" style="width: 50px;">
-                                                                <div class="form-check">
-                                                                    <input class="form-check-input" type="checkbox" id="checkAll" value="option">
-                                                                </div>
-                                                            </th>
-                                                            <th  data-sort="counter">No</th>
-                                                            <th  data-sort="accountID">Account ID</th>
-                                                            <th  data-sort="password">Password</th>
-                                                            <th  data-sort="name">Name</th>
-                                                            <th  data-sort="date">Birth Day</th>                                    
-
-                                                            <th  data-sort="isActive">Active</th>
-                                                            <th  data-sort="role">Role</th>
-                                                            <th  data-sort="email">Email</th>
-                                                            <th data-sort="image">Image</th>
-                                                            <th data-sort="function">Function</th>
-
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody class="list form-check-all">
-                                                        <%
-                                                            int count = 1;
-
-                                                            for (UserDTO u : listInstructor) {
-
-                                                        %>
-                                                    <form action="MainController" method="POST">
-                                                        <tr>
-                                                            <th scope="row">
-                                                                <div class="form-check">
-                                                                    <input class="form-check-input" type="checkbox" name="chk_child" value="option1">
-                                                                </div>
-                                                            </th>
-                                                            <td><%= count++%></td>
-                                                            <!-- <td class="id" style="display:none;"><a href="javascript:void(0);" class="fw-medium link-primary">#VZ2101</a></td>-->
-                                                            <td>
-                                                                <div class="accountID">
-                                                                    <input type="text" name="accountID" value="<%=u.getAccountID()%>" readonly=""/>
-                                                                </div>
-                                                            </td>
-                                                            <td class="password">
-                                                                <input type="text" name="password" value="<%=u.getPassword()%>" required=""/>
-
-                                                            </td>
-                                                            <td class="name">
-
-                                                                <input type="text" name="fullName" value="<%=u.getFullName()%>" required=""/>
-                                                            </td>
-                                                            <td class="date">
-                                                                <input type="date" id="birthday" name="dateOfbirth" value="<%=u.getDateOfBirth()%>" required=""/>
-
-                                                            </td>
-
-                                                            <td class="isActive">
-                                                                <input type="radio" checked="true" name="isActive" value="<%=u.isIsActive()%>" readonly="">
-                                                            </td>
-                                                            <td class="tags">
-                                                                <span class="badge badge-soft-primary">Staff</span>
-                                                            </td>                                                                
-                                                            <td class="email">
-                                                                <input type="text" name="email" value="<%=u.getEmail()%>" required=""/>
-
-                                                            </td>
-                                                            <td class="image"><img src="<%=u.getImage()%>" alt="<%=u.getFullName()%>" width="80" height="120"></td>
-                                                            <td class="function">
-                                                                   <ul class="list-inline hstack gap-2 mb-0">
-                                                                <li class="list-inline-item edit" data-bs-toggle="tooltip"
-                                                                    data-bs-trigger="hover" data-bs-placement="top"
-                                                                    title="Edit">
-                                                                    <a href=""
-                                                                        data-bs-toggle="modal"
-                                                                        class="text-primary d-inline-block edit-item-btn">
-                                                                        <i class="ri-pencil-fill fs-16"></i>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="list-inline-item" data-bs-toggle="tooltip"
-                                                                    data-bs-trigger="hover" data-bs-placement="top"
-                                                                    title="Remove">
-                                                                    <a href=""
-                                                                        class="link-danger fs-15"><i
-                                                                            class="ri-delete-bin-line"></i></a>
-                                                                                                                                    </li>
-                                                            </ul>
-                                                                </td>
-
-                                                        </tr>
-                                                        
-                                                    </form>
-                                                    <%
-                                                        }
-                                                    %>
-                                                    </tbody>
-                                                </table>                                                                                                       
-                                                <%
-                                                        }
-                                                    }
-                                                %> 
-                                                
-                                            </div>
-                                            <div class="d-flex justify-content-end mt-3">
-                                                <div class="pagination-wrap hstack gap-2">
-                                                    <a class="page-item pagination-prev disabled" href="#">
-                                                        Previous
-                                                    </a>
-                                                    <ul class="pagination listjs-pagination mb-0"></ul>
-                                                    <a class="page-item pagination-next" href="#">
-                                                        Next
-                                                    </a>
-                                                </div>
-                                            </div>
+                                        <div class="mb-3">
+                                            <label for="password" class="form-label">Password</label>
+                                            <input type="password" class="form-control" name="password" required>
+                                            <p style="color: red;">${requestScope.USER_ERROR.passwordError}</p>
                                         </div>
-                                        
-                                       
+                                        <div class="mb-3">
+                                            <label for="confirm" class="form-label">Confirm</label>
+                                            <input type="password" class="form-control" name="confirm" required>
+                                            <p style="color: red;">${requestScope.USER_ERROR.confirmError}</p>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="fullname" class="form-label">Name</label>
+                                            <input type="text" class="form-control" name="fullname" required>
+                                            <p style="color: red;">${requestScope.USER_ERROR.fullNameError}</p>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="dateOfbirth" class="form-label">Date Of Birth</label>
+                                            <input type="date" class="form-control" name="dateOfbirth" required>
 
-                                    </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="isActive" class="form-label">Status</label>
+                                            <select name="isActive">
+                                                <option value="active">Active</option>
+                                                <option value="inactive">Inactive</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="role" class="form-label">Role</label>
+                                            <input type="text" class="form-control" name="role" readonly="" placeholder="Instructor">
+
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="email" class="form-label">Email</label>
+                                            <input type="text" class="form-control" name="email" required>
+                                            <p style="color: red;">${requestScope.USER_ERROR.emailError}</p>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="image" class="form-label">Image</label>
+                                            <input type="text" class="form-control" name="image" required>
+
+                                        </div>
+
+                                        <input class="btn btn-outline-primary" type="submit" name="action" value="Add Instructor">
+                                    </form>   
                                 </div>
-
                             </div>
-                            <!--end col-->
-                        </div>
-                        <!--end row-->
 
+                            <div class="tab-pane container active" id="manageInstructor">
+                                <%
+                                    String search = request.getParameter("searchName");
+                                    if (search == null) {
+                                        search = "";
+                                    }
+
+                                %>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="card" id="leadsList">
+                                            <div class="card-header border-0">
+
+                                                <div class="row g-4 align-items-center">
+                                                    <div class="col-sm-3">
+                                                        <div class="search-box">
+                                                            <form action="MainController" method="POST">
+                                                                <input type="text" class="form-control search" placeholder="Search for..." name="searchName" value="<%= search%>">
+                                                                <button type="submit" name="action" value="SearchIns"> Search Instructor</button>
+                                                            </form>
+
+                                                            <i class="ri-search-line search-icon"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-auto ms-auto">
+                                                        <div class="hstack gap-2">
+                                                            <button class="btn btn-soft-danger" id="remove-actions" onClick="deleteMultiple()"><i class="ri-delete-bin-2-line"></i></button>
+
+                                                            <button type="button" class="btn btn-success add-btn" data-bs-toggle="modal" id="create-btn" data-bs-target="#showModal"><i class="ri-add-line align-bottom me-1"></i> Add Staff</button>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <div>
+                                                    <%
+                                                        List<UserDTO> listInstructor = (List<UserDTO>) request.getAttribute("LIST_INSTRUCTOR");
+                                                        if (listInstructor != null) {
+                                                            if (listInstructor.size() > 0) {
+                                                    %>
+                                                    <div class="table-responsive table-card">
+                                                        <table class="table align-middle" id="customerTable">
+                                                            <thead class="table-light">
+
+                                                                <tr>
+                                                                    <th scope="col" style="width: 50px;">
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input" type="checkbox" id="checkAll" value="option">
+                                                                        </div>
+                                                                    </th>
+                                                                    <th  data-sort="counter">No</th>
+                                                                    <th  data-sort="accountID">Account ID</th>
+                                                                    <th  data-sort="password">Password</th>
+                                                                    <th  data-sort="name">Name</th>
+                                                                    <th  data-sort="date">Birth Day</th>                                    
+
+                                                                    <th  data-sort="isActive">Active</th>
+                                                                    <th  data-sort="role">Role</th>
+                                                                    <th  data-sort="email">Email</th>
+                                                                    <th data-sort="image">Image</th>
+                                                                    <th data-sort="function">Function</th>
+
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody class="list form-check-all">
+                                                                <%
+                                                                    int count = 1;
+
+                                                                    for (UserDTO u : listInstructor) {
+
+                                                                %>
+                                                            <form action="MainController" method="POST">
+                                                                <tr>
+                                                                    <th scope="row">
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input" type="checkbox" name="chk_child" value="option1">
+                                                                        </div>
+                                                                    </th>
+                                                                    <td><%= count++%></td>
+                                                                    <!-- <td class="id" style="display:none;"><a href="javascript:void(0);" class="fw-medium link-primary">#VZ2101</a></td>-->
+                                                                    <td>
+                                                                        <div class="accountID">
+                                                                            <input type="text" name="accountID" value="<%=u.getAccountID()%>" readonly=""/>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="password">
+                                                                        <input type="text" name="password" value="<%=u.getPassword()%>" required=""/>
+
+                                                                    </td>
+                                                                    <td class="name">
+
+                                                                        <input type="text" name="fullName" value="<%=u.getFullName()%>" required=""/>
+                                                                    </td>
+                                                                    <td class="date">
+                                                                        <input type="date" id="birthday" name="dateOfbirth" value="<%=u.getDateOfBirth()%>" required=""/>
+
+                                                                    </td>
+
+                                                                    <td class="isActive">
+                                                                        <input type="radio" checked="true" name="isActive" value="<%=u.isIsActive()%>" readonly="">
+                                                                    </td>
+                                                                    <td class="tags">
+                                                                        <span class="badge badge-soft-primary">Instructor</span>
+                                                                    </td>                                                                
+                                                                    <td class="email">
+                                                                        <input type="text" name="email" value="<%=u.getEmail()%>" required=""/>
+
+                                                                    </td>
+                                                                    <td class="image"><img src="<%=u.getImage()%>" alt="<%=u.getFullName()%>" width="80" height="120"></td>
+                                                                    <td class="function">
+                                                                        <ul class="list-inline hstack gap-2 mb-0">
+                                                                            <li class="list-inline-item edit" data-bs-toggle="tooltip"
+                                                                                data-bs-trigger="hover" data-bs-placement="top"
+                                                                                title="Edit">
+                                                                                <a href=""
+                                                                                   data-bs-toggle="modal"
+                                                                                   class="text-primary d-inline-block edit-item-btn">
+                                                                                    <i class="ri-pencil-fill fs-16"></i>
+                                                                                </a>
+                                                                            </li>
+                                                                            <li class="list-inline-item" data-bs-toggle="tooltip"
+                                                                                data-bs-trigger="hover" data-bs-placement="top"
+                                                                                title="Remove">
+                                                                                <a href=""
+                                                                                   class="link-danger fs-15"><i
+                                                                                        class="ri-delete-bin-line"></i></a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </td>
+
+                                                                </tr>
+
+                                                            </form>
+                                                            <%
+                                                                }
+                                                            %>
+                                                            </tbody>
+                                                        </table>                                                                                                       
+                                                        <%
+                                                                }
+                                                            }
+                                                        %> 
+
+                                                    </div>
+                                                    <div class="d-flex justify-content-end mt-3">
+                                                        <div class="pagination-wrap hstack gap-2">
+                                                            <a class="page-item pagination-prev disabled" href="#">
+                                                                Previous
+                                                            </a>
+                                                            <ul class="pagination listjs-pagination mb-0"></ul>
+                                                            <a class="page-item pagination-next" href="#">
+                                                                Next
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--end col-->
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <!-- container-fluid -->
                 </div>
-                <!-- End Page-content -->
-
-                <jsp:include page="layoutadmin/footer.jsp"/>
             </div>
-            <!-- end main content-->
-
+            <jsp:include page="layoutadmin/footer.jsp"/>
         </div>
-        <!-- END layout-wrapper -->
-
-
 
         <!--start back-to-top-->
         <button onclick="topFunction()" class="btn btn-danger btn-icon" id="back-to-top">
@@ -248,7 +313,7 @@
             </div>
         </div>
 
-        
+
 
         <!-- Theme Settings -->
         <div class="offcanvas offcanvas-end border-0" tabindex="-1" id="theme-settings-offcanvas">

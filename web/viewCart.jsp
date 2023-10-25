@@ -4,6 +4,7 @@
     Author     : HOANG DUNG
 --%>
 
+<%@page import="java.util.ArrayList"%>
 <%@page import="course.DescriptionDTO"%>
 <%@page import="course.CourseDAO"%>
 <%@page import="cart.CartItemDTO"%>
@@ -265,6 +266,7 @@
                 </div>
                 <%
                         }
+                        session.setAttribute("LISTBUYCOURSE", listCou);
                     }
                 %>
                 <br><br>
