@@ -120,7 +120,7 @@
 
             %> 
             <form class="course-search-form ml-auto mr-4" method="post" action="MainController?action=Search">
-                <input type="text" name="searchName" value="<%= search%>" placeholder="Search Courses" class="rounded pl-0">
+                <input type="text" name="searchName" value="<%= search%>" placeholder="Search Courses"  class="rounded " >
                 <button type="submit" class="rounded" value="Search"><i class="flaticon-loupe"></i></button>
             </form> 
             <%

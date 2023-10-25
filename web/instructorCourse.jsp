@@ -171,7 +171,7 @@
                                             <%= course.getPrice()%>$
                                         </div>
                                     </div>
-                                    <button type="submit" name="action" value="UpdateCourse">Update Course</button>
+                                    <button type="submit" name="action" value="UpdateCourse" class="btn btn-primary">Update Course</button>
                                 </div>
                             </div>
                         </form>
