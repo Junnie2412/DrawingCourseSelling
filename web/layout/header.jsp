@@ -131,7 +131,11 @@
             %>  
             <div class="user-info dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img src="https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745" class="user-avatar" class="user-avatar">
+                    <% if (loginUser.getImage() != null && !loginUser.getImage().isEmpty()) {%>
+                    <img src="<%= loginUser.getImage()%>" class="user-avatar">
+                    <% } else { %>
+                    <img src="https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png" class="user-avatar">
+                    <% } %>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="userDropdown">
                     <a class="dropdown-item" href="#">View Course</a>
