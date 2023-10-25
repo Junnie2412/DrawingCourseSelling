@@ -56,6 +56,10 @@ public class MainController extends HttpServlet {
 
     private static final String SHOW_LIST_INSTRUCTOR = "All intructors";
     private static final String SHOW_LIST_INSTRUCTOR_CONTROLLER = "ShowListController";
+    private static final String ADD_INSTRUCTOR = "Add Instructor";
+    private static final String ADD_INSTRUCTOR_CONTROLLER = "AddInstructorController";
+    private static final String SEARCH_INSTRUCTOR = "SearchIns";
+    private static final String SEARCH_INSTRUCTOR_CONTROLLER = "SearchInstructorController";
 
     private static final String VIEW_CART = "ViewCart";
     private static final String VIEW_CART_PAGE = "viewCart.jsp";
@@ -129,6 +133,10 @@ public class MainController extends HttpServlet {
                 url = SHOW_LIST_INSTRUCTOR_CONTROLLER;
             } else if (action.equals(HANDLE_VNPAY)) {
                 url = VNPAY_CONTROLLER;
+            }else if (action.equals(ADD_INSTRUCTOR)) {
+                url = ADD_INSTRUCTOR_CONTROLLER;
+            }else if (action.equals(SEARCH_INSTRUCTOR)) {
+                url = SEARCH_INSTRUCTOR_CONTROLLER;
             }
         } catch (Exception e) {
             log("Error at MainController: " + e.toString());
