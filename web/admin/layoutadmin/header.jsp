@@ -162,16 +162,37 @@
                         <i class='bx bx-moon fs-22'></i>
                     </button>
                 </div>
-                <div class="user-info dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="<%=loginUser.getImage()%>" alt="<%=loginUser.getFullName()%>" class="user-avatar" class="user-avatar">
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="#">View Course</a>
-                        <a class="dropdown-item" href="">Edit Account</a>
-                        <a class="dropdown-item" href="MainController?action=SignOut">Logout</a>
-                    </div>
-                </div>           
+               <div class="user-info dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <% if (loginUser.getImage() != null && !loginUser.getImage().isEmpty()) {%>
+                    <img src="<%=loginUser.getImage()%>" class="user-avatar " style="width: 40px; height: 40px;">
+                    <% } else { %>
+                    <img src="https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png" class="user-avatar" style="width: 40px; height: 40px;">
+                    <% } %>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="userDropdown">
+                    <%
+                        if (loginUser.getRole().equals("Instructor")) {
+                    %>
+
+                    <% } else {
+                    %>  
+                    <a class="dropdown-item" href="#">View Course</a> 
+                    <% }%>
+
+                    <a class="dropdown-item" href="UpdateUserController?action=updateUser">Manage your Account</a>
+                    <%
+                        if (loginUser.getRole().equals("Instructor")) {
+                    %>
+
+                    <% } else {
+                    %>  
+                    <a class="dropdown-item" href="viewCart.jsp">View Cart</a>
+                    <% }%>
+
+                    <a class="dropdown-item" href="MainController?action=SignOut">Logout</a>
+                </div>
+            </div>               
 
 
 
