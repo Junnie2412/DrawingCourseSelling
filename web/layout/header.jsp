@@ -61,10 +61,17 @@
                 <li>
                     <a href="index.jsp">Home</a>
                 </li>
-
-                <li>
-                    <a href="about.jsp">About Us</a>
-                </li>
+                   
+                <%
+                if (loginUser.getRole().equals("Instructor")) {
+            %>
+             
+            <% } else {
+            %>  
+                   <li>
+                       <a href="about.jsp">About us</a>
+                </li>   
+            <% }%>
                 <li>
                     <%
                         if (loginUser.getRole().equals("Admin")) {
@@ -77,7 +84,7 @@
                     <%
                     } else if (loginUser.getRole().equals("Instructor")) {
                     %>
-                    <a href="instructorCourse.jsp">Courses</a>
+                    <a href="instructorCourse.jsp">Manager Courses</a>
                     <%
                     } else if (loginUser.getRole().equals("Staff")) {
                     %>
@@ -98,13 +105,26 @@
                     <a href="gallery.jsp">Gallery</a>
 
                 </li>
+                <%
+                    if (loginUser.getRole().equals("Instructor")) {
+                %>
+
+                <% } else {
+                %>  
                 <li>
                     <a href="blog.jsp">Blogs</a>
+                </li>   
+                <% }%>
+                <%
+                    if (loginUser.getRole().equals("Instructor")) {
+                %>
 
-                </li>
+                <% } else {
+                %>  
                 <li>
-                    <a href="contact.jsp">Contact</a>
-                </li>
+                    <a href="contact.jsp">Contacts</a>
+                </li>   
+                <% }%>
             </ul>
             <div class="header-bar ml-4">
                 <span></span>
@@ -138,9 +158,25 @@
                     <% } %>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="userDropdown">
-                    <a class="dropdown-item" href="#">View Course</a>
+                    <%
+                        if (loginUser.getRole().equals("Instructor")) {
+                    %>
+
+                    <% } else {
+                    %>  
+                    <a class="dropdown-item" href="#">View Course</a> 
+                    <% }%>
+
                     <a class="dropdown-item" href="UpdateUserController?action=updateUser">Manage your Account</a>
+                    <%
+                        if (loginUser.getRole().equals("Instructor")) {
+                    %>
+
+                    <% } else {
+                    %>  
                     <a class="dropdown-item" href="viewCart.jsp">View Cart</a>
+                    <% }%>
+
                     <a class="dropdown-item" href="MainController?action=SignOut">Logout</a>
                 </div>
             </div>           
@@ -158,16 +194,7 @@
     </span>
     <div class="w-100 d-flex flex-wrap justify-content-center align-items-center">
         <form class="course-search-form mr-sm-4">
-            <select class="select-bar rounded">
-                <option value="01">Category</option>
-                <option value="02">Physics</option>
-                <option value="03">Chemistry</option>
-                <option value="04">History</option>
-                <option value="05">Geometry</option>
-                <option value="06">LoremIp</option>
-                <option value="07">UI/UX</option>
-                <option value="08">Laravel</option>
-            </select>
+            
             <input type="text" name="name" placeholder="Search Courses" class="rounded">
             <button type="submit" class="rounded"><i class="flaticon-loupe"></i></button>
         </form>
@@ -176,14 +203,7 @@
             <ul class="menu">
                 <li>
                     <a href="#0">Home</a>
-                    <ul class="submenu">
-                        <li>
-                            <a href="index.jsp">Home 1</a>
-                        </li>
-                        <li>
-                            <a href="index2.jsp">Home 2</a>
-                        </li>
-                    </ul>
+                    
                 </li>
                 <li>
                     <a href="about.jsp">About Us</a>

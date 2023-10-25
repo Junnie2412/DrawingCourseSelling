@@ -285,9 +285,18 @@
                     <div> 
                     
               
-                 <div class="text-center load-more mt-5">
+                 <%
+                if (loginUser.getRole().equals("Instructor")) {
+            %>
+           <div class="text-center load-more mt-5">
+                        <a href="instructorCourse.jsp" class="custom-button theme-one">Turn back to manager courses  <i class="fas fa-angle-right"></i></a>
+                    </div>    
+            <% } else {
+            %>  
+                   <div class="text-center load-more mt-5">
                         <a href="courses.jsp" class="custom-button theme-one">load more courses <i class="fas fa-angle-right"></i></a>
                     </div>    
+            <% }%>
             
             </div>
                 </div>
