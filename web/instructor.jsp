@@ -49,6 +49,12 @@
             }
         </style>
     </head>
+    <%
+    UserDTO loginUser = (UserDTO) session.getAttribute(("LOGIN_USER"));
+    if (loginUser == null) {
+        loginUser = new UserDTO();
+    }
+%>
 
 
     <body>
@@ -78,7 +84,16 @@
 
                 <div class="custom-container">
                     <div class="hero-content">
-                        <h1 class="title uppercase cl-white">Instructor</h1>
+                        <%
+                            if (loginUser.getRole().equals("Instructor")) {
+                        %>
+                        <h1 class="title uppercase cl-white">Hello Instructor</h1>
+                        <% } else {
+                        %>  
+                        <li>
+                            <h1 class="title uppercase cl-white">Instructor</h1>
+                        </li>   
+                        <% }%>
                         <ul class="breadcrumb cl-white p-0 m-0" style="background-color: #e9ecef00">
                             <li>
                                 <a href="index.jsp">Home</a>
