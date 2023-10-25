@@ -158,22 +158,9 @@
                     <% } %>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="userDropdown">
-                    <%
-                        if (loginUser.getRole().equals("Instructor")) {
-                    %>
-
-                    <% } else {
-                    %>  
-                    <a class="dropdown-item" href="#">View Course</a> 
-                    <% }%>
-
-                    <a class="dropdown-item" href="LoadUserController">Manage your Account</a>
-                    <%
-                        if (loginUser.getRole().equals("Instructor")) {
-                    %>
-
-                    <% } else {
-                    %>  
+                    <a class="dropdown-item" href="courses.jsp">View Course</a>
+                    <a class="dropdown-item" href="learning.jsp">Learning</a>
+                    <a class="dropdown-item" href="Editaccount.jsp">Manage your Account</a>
                     <a class="dropdown-item" href="viewCart.jsp">View Cart</a>
                     <% }%>
 
