@@ -60,7 +60,7 @@
         <!-- Start right Content here -->
         <div class="main-content overflow-hidden container">
 
-            <div class="page-content" container>
+            <div class="page-content container">
                 <div class="container-fluid">
                    
                     <!-- end page title -->
@@ -151,7 +151,7 @@
                                             //List<CartItemDTO> cartItemList = (List<CartItemDTO>) session.getAttribute("CARTITEM");
                                             //if (cartItemList != null) {
                                             //for (CartItemDTO cartItem : cartItemList) {
-                                            int finalTotal = 0;
+                                            
                                             List<CourseDTO> listCourseCheckout = (List<CourseDTO>) session.getAttribute("LISTBUYCOURSE");
                                             if (listCourseCheckout != null) {
                                                 if (listCourseCheckout.size() > 0) {

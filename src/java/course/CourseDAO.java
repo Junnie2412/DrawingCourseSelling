@@ -41,9 +41,9 @@ public class CourseDAO {
             + "FROM [dbo].[tblCart] c\n"
             + "INNER JOIN [dbo].[tblCartItem] ci ON c.cartItemID = ci.cartItemID\n"
             + "WHERE c.accountID = ?;";
-    private static final String INSERT_ORDER = "INSERT INTO orders VALUES (?,?,?,?)";
+    private static final String INSERT_ORDER = "INSERT INTO tblOrder VALUES (?,?,?,?)";
     private static final String GET_ORDERID = "SELECT TOP 1 orderID FROM [tblOrder] ORDER BY orderID DESC";
-    private static final String INSERT_ORDER_DETAIL = "INSERT INTO orderDetail VALUES (?,?,?,?,?,?)";
+    private static final String INSERT_ORDER_DETAIL = "INSERT INTO tblOrderDetail VALUES (?,?,?,?,?,?)";
 
     private static final String UPDATE_COURSE = "update tblCourse set price = ?, name = ?, duration = ?, datePublic = ? where courseID = ?";
     private static final String GET_COURSE_BY_COURSEID = "SELECT courseID, price, name, duration, isActive, datePublic, accountID, descriptionID FROM tblCourse WHERE courseID = ? ";
@@ -100,12 +100,12 @@ public class CourseDAO {
         try {
             conn = DBUtil.getConnection();
             if (conn != null) {
-               ptm = conn.prepareStatement(CREATE_VIDEO, Statement.RETURN_GENERATED_KEYS);
+                ptm = conn.prepareStatement(CREATE_VIDEO, Statement.RETURN_GENERATED_KEYS);
                 ptm.setString(1, content);
                 ptm.setTime(2, Time.valueOf(time));
                 ptm.setBoolean(3, isActive);
-                 ptm.setInt(4, lessionId);
-                 int rowsAffected = ptm.executeUpdate();
+                ptm.setInt(4, lessionId);
+                int rowsAffected = ptm.executeUpdate();
                 if (rowsAffected > 0) {
                     rs = ptm.getGeneratedKeys();
                     if (rs.next()) {
@@ -128,7 +128,7 @@ public class CourseDAO {
             }
         }
         return -1;
-        }
+    }
 
     public int createLesson(String title, String description, int moduleId) throws SQLException {
         Connection conn = null;
@@ -168,7 +168,7 @@ public class CourseDAO {
         return -1;
     }
 
-   public int createModule(String title, String courseId) throws SQLException {
+    public int createModule(String title, String courseId) throws SQLException {
         Connection conn = null;
         ResultSet rs = null;
         PreparedStatement ptm = null;
@@ -206,7 +206,7 @@ public class CourseDAO {
         return -1;
     }
 
-     public int createDescription(String descriptionContent, String descriptionTarget, String descriptionImage, String descriptionType, String descriptionLevel) throws SQLException {
+    public int createDescription(String descriptionContent, String descriptionTarget, String descriptionImage, String descriptionType, String descriptionLevel) throws SQLException {
         Connection conn = null;
         ResultSet rs = null;
         PreparedStatement ptm = null;
@@ -275,8 +275,10 @@ public class CourseDAO {
                 int moduleId = createModule(moduleTitle, courseID);
                 int lessionId = createLesson(lessonTitle, lessonDescription, moduleId);
                 int videoId = createVideo(videoContent, videoTime, videoIsActive, lessionId);
-                
-                if (videoId != -1) return true;
+
+                if (videoId != -1) {
+                    return true;
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -419,7 +421,6 @@ public class CourseDAO {
 
         return list;
     }
-
 
     public List<CourseDTO> filterCourseByLevel(String typeLevel) throws SQLException {
         List<CourseDTO> list = new ArrayList<>();
@@ -701,22 +702,22 @@ public class CourseDAO {
         return list;
     }
 
-    public boolean inserOrder(UserDTO loginUser, Cart cart) throws SQLException {
+    public boolean inserOrder(UserDTO loginUser, List<CourseDTO> Listcourse) throws SQLException {
         //voucher
         //payment
         //order
         //orderdetailed
         double total = 0;
-        for (CourseDTO c : cart.getCart().values()) {
+        for (CourseDTO c : Listcourse) {
             total += c.getPrice();
         }
         boolean checkOrder = false;
         boolean check = false;
-        
+
         Connection conn = null;
         PreparedStatement ptm = null;
         ResultSet rs = null;
-        
+
         LocalDate curDate = LocalDate.now();
         String date = curDate.toString();
         //
@@ -737,15 +738,15 @@ public class CourseDAO {
                     rs = ptm.executeQuery();
                     if (rs.next()) {
                         int orderID = rs.getInt("orderID");
-                        for (CourseDTO course : cart.getCart().values()) {
+                        for (CourseDTO course : Listcourse) {
                             ptm = conn.prepareStatement(INSERT_ORDER_DETAIL);
                             ptm.setDouble(1, course.getPrice());
-                            ptm.setString(2, "voucher"); //chua handle
+                            ptm.setString(2, "NVPAY");
                             ptm.setInt(3, 1);
                             ptm.setInt(4, orderID);
                             ptm.setString(5, course.getCourseID());
                             ptm.setInt(6, 1); //chua biet
-                            ptm.executeUpdate();
+                            check = ptm.executeUpdate() > 0;
                         }
                     }
 
@@ -767,7 +768,8 @@ public class CourseDAO {
         }
         return check;
     }
-     public boolean updateCourse(String courseId, float price, String name, int duration, String datePublic) throws SQLException {
+
+    public boolean updateCourse(String courseId, float price, String name, int duration, String datePublic) throws SQLException {
         Connection cn = null;
         ResultSet rs = null;
         PreparedStatement pst = null;
@@ -781,8 +783,10 @@ public class CourseDAO {
                 pst.setString(4, datePublic);
                 pst.setString(5, courseId);
                 int rows = pst.executeUpdate();
-                
-                if (rows > 0) return true;
+
+                if (rows > 0) {
+                    return true;
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -802,4 +806,3 @@ public class CourseDAO {
         return false;
     }
 }
-
