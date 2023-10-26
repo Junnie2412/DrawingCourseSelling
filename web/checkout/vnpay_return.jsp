@@ -1,3 +1,6 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="order.TransactionDTO"%>
+<%@page import="java.sql.Date"%>
 <%@page import="course.CourseDTO"%>
 <%@page import="users.UserDTO"%>
 <%@page import="course.CourseDAO"%>
@@ -32,70 +35,13 @@
         <script src="/Wedproject2_temp1/assets/jquery-1.11.3.min.js"></script>
         <link href="admin/assets/css/custom.min.css" rel="stylesheet" type="text/css" />     
     </head>
-    
+
     <body>
         <div class="vertical-overlay"></div>
         <div class="main-content overflow-hidden container">
             <div class="page-content container">
                 <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-xl-5">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="table-responsive table-card">
-                                        <%
-                                            List<CourseDTO> listCourseCheckout = (List<CourseDTO>) session.getAttribute("LISTBUYCOURSE");
-                                            if (listCourseCheckout != null) {
-                                                if (listCourseCheckout.size() > 0) {
-                                        %>
-                                        <table class="table table-borderless align-middle mb-0">
-                                            <thead class="table-light text-muted">
-                                                <tr>
-                                                    <th style="width: 90px;" scope="col">Product</th>
-                                                    <th scope="col">Product Info</th>
-                                                    <th scope="col" class="text-end">Price</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <%                                        float total = 0;
-                                                    for (CourseDTO c : listCourseCheckout) {
-                                                        total += c.getPrice();
-                                                %>
-                                                <tr>
-                                                    <td>
-                                                        <div class="avatar-md bg-light rounded p-1">
-                                                            <img src="<%=c.getImage()%>" alt="" class="img-fluid d-block">
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <h5 class="fs-14"><a href="apps-ecommerce-product-details.html" class="text-dark"><%=c.getName()%></a></h5>
-                                                    </td>
-                                                    <td class="text-end"><%=c.getPrice()%></td>
-                                                </tr>
-                                                <%
-                                                    }
-                                                %>                                 
-                                                <tr>
-                                                    <td colspan="3" style="height: 20px;"></td>
-                                                </tr>
-                                                <tr class="table-active">
-                                                    <th colspan="2">Total (VND) </th>
-                                                    <td class="text-end">
-                                                        <span class="fw-semibold">
-                                                            <%= total%>
-                                                        </span>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        <%
-                                                }
-                                            }
-                                        %>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="row">              
                         <div class="col-xl-7">
                             <div class="card">
                                 <div class="card-body checkout-tab">
@@ -119,9 +65,6 @@
                                             fields.remove("vnp_SecureHash");
                                         }
                                         String signValue = Config.hashAllFields(fields);
-                                        ////
-                                        CourseDAO dao = new CourseDAO();
-                                        boolean check = dao.inserOrder(user, listCourseCheckout);
 
                                     %>
                                     <!--Begin display -->
@@ -137,19 +80,7 @@
                                             <div class="form-group">
                                                 <label >Số tiền: VND</label>
                                                 <label><%=request.getParameter("vnp_Amount")%></label>
-                                            </div>  
-                                            <div class="form-group">
-                                                <label >Mô tả giao dịch:</label>
-                                                <label><%=request.getParameter("vnp_OrderInfo")%></label>
-                                            </div> 
-                                            <%--   <div class="form-group">
-                                                    <label >Mã lỗi thanh toán:</label>
-                                                    <label><%=request.getParameter("vnp_ResponseCode")%></label>
-                                                </div> --%>
-                                            <div class="form-group">
-                                                <label >Mã giao dịch tại CTT VNPAY-QR:</label>
-                                                <label><%=request.getParameter("vnp_TransactionNo")%></label>
-                                            </div> 
+                                            </div>                                              
                                             <div class="form-group">
                                                 <label >Ngân hàng thanh toán:</label>
                                                 <label><%=request.getParameter("vnp_BankCode")%></label>
@@ -183,6 +114,90 @@
                                         </footer>
                                     </div>  
 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="table-responsive table-card">
+                                        <%
+                                            List<CourseDTO> listCourseCheckout = (List<CourseDTO>) session.getAttribute("LISTBUYCOURSE");
+                                            if (listCourseCheckout != null) {
+                                                if (listCourseCheckout.size() > 0) {
+                                        %>
+                                        <table class="table table-borderless align-middle mb-0">
+                                            <thead class="table-light text-muted">
+                                                <tr>
+                                                    <th style="width: 90px;" scope="col">Product</th>
+                                                    <th scope="col">Product Info</th>
+                                                    <th scope="col" class="text-end">Price</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <%
+                                                    float total = 0;
+                                                    for (CourseDTO c : listCourseCheckout) {
+                                                        total += c.getPrice();
+                                                %>
+                                                <tr>
+                                                    <td>
+                                                        <div class="avatar-md bg-light rounded p-1">
+                                                            <img src="<%=c.getImage()%>" alt="" class="img-fluid d-block">
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <h5 class="fs-14"><a href="apps-ecommerce-product-details.html" class="text-dark"><%=c.getName()%></a></h5>
+                                                    </td>
+                                                    <td class="text-end"><%=c.getPrice()%></td>
+                                                </tr>
+                                                <%
+                                                    }
+                                                %>                                 
+                                                <tr>
+                                                    <td colspan="3" style="height: 20px;"></td>
+                                                </tr>
+                                                <tr class="table-active">
+                                                    <th colspan="2">Total (VND) </th>
+                                                    <td class="text-end">
+                                                        <span class="fw-semibold">
+                                                            <%= total%>
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <%
+                                                }
+                                            }
+                                            String transactionID = request.getParameter("vnp_TxnRef");
+                                            String bankName = request.getParameter("vnp_BankCode");
+                                            int amount = Integer.parseInt(request.getParameter("vnp_Amount"));
+                                            boolean flag = false;
+                                            if (signValue.equals(vnp_SecureHash)) {
+                                                if ("00".equals(request.getParameter("vnp_TransactionStatus"))) {
+                                                    flag = true;
+                                                }
+                                            }
+                                            boolean status = flag;
+                                            //
+
+                                            TransactionDTO trans = new TransactionDTO();
+                                            trans.setTransactionID(transactionID);
+                                            trans.setBankName(bankName);
+                                            trans.setStatus(status);
+                                            trans.setAmount(amount);
+                                            //
+                                            CourseDAO dao = new CourseDAO();
+                                            boolean check = dao.inserOrder(user, listCourseCheckout, trans);
+                                            if (check) {
+                                            // cart clear
+                                        %>
+                                        <h1>OK ROI NE</h1>
+                                        <%
+                                            }
+                                        %>
+                                    </div>
                                 </div>
                             </div>
                         </div>
