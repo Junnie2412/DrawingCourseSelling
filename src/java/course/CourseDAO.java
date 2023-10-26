@@ -12,6 +12,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import order.TransactionDTO;
 import users.UserDTO;
 import utils.DBUtil;
 
@@ -21,7 +22,7 @@ import utils.DBUtil;
  */
 public class CourseDAO {
 
-     private static final String SEARCH_COURSE_NAME = "SELECT * FROM tblCourse WHERE name like ? and accountID = ?";
+    private static final String SEARCH_COURSE_NAME = "SELECT * FROM tblCourse WHERE name like ? and accountID = ?";
     private static final String CREATE_VIDEO = "INSERT INTO tblVideo(content, time, isActive, lessonID) VALUES(?,?,?,?)";
     private static final String CREATE_LESSON = "INSERT INTO tblLesson(title, description, moduleID) VALUES(?,?,?)";
     private static final String CREATE_MODULE = "INSERT INTO tblModule(title,courseID) VALUES(?,?)";
@@ -43,12 +44,14 @@ public class CourseDAO {
             + "WHERE c.accountID = ?;";
     private static final String INSERT_ORDER = "INSERT INTO tblOrder VALUES (?,?,?,?)";
     private static final String GET_ORDERID = "SELECT TOP 1 orderID FROM [tblOrder] ORDER BY orderID DESC";
+    private static final String GET_PAYMENTID = "SELECT TOP 1 paymentDetailID FROM [tblPaymentDetail] ORDER BY paymentDetailID DESC";
     private static final String INSERT_ORDER_DETAIL = "INSERT INTO tblOrderDetail VALUES (?,?,?,?,?,?)";
+    private static final String INSERT_PAYMENTDETAIL = "INSERT INTO tblPaymentDetail VALUES (?,?,?,?,?,?)";
 
     private static final String UPDATE_COURSE = "update tblCourse set price = ?, name = ?, duration = ?, datePublic = ? where courseID = ?";
     private static final String GET_COURSE_BY_COURSEID = "SELECT courseID, price, name, duration, isActive, datePublic, accountID, descriptionID FROM tblCourse WHERE courseID = ? ";
 
-     public List<CourseDTO> getlistCourse(String search, String accountId) throws ClassNotFoundException, SQLException {
+    public List<CourseDTO> getlistCourse(String search, String accountId) throws ClassNotFoundException, SQLException {
         List<CourseDTO> list = new ArrayList<>();
         Connection conn = null;
         ResultSet rs = null;
@@ -703,7 +706,7 @@ public class CourseDAO {
         return list;
     }
 
-    public boolean inserOrder(UserDTO loginUser, List<CourseDTO> Listcourse) throws SQLException {
+    public boolean inserOrder(UserDTO loginUser, List<CourseDTO> Listcourse, TransactionDTO trans) throws SQLException {
         //voucher
         //payment
         //order
@@ -714,7 +717,7 @@ public class CourseDAO {
         }
         boolean checkOrder = false;
         boolean check = false;
-
+        boolean check1 = false;
         Connection conn = null;
         PreparedStatement ptm = null;
         ResultSet rs = null;
@@ -739,18 +742,32 @@ public class CourseDAO {
                     rs = ptm.executeQuery();
                     if (rs.next()) {
                         int orderID = rs.getInt("orderID");
-                        for (CourseDTO course : Listcourse) {
-                            ptm = conn.prepareStatement(INSERT_ORDER_DETAIL);
-                            ptm.setDouble(1, course.getPrice());
-                            ptm.setString(2, "NVPAY");
-                            ptm.setInt(3, 1);
-                            ptm.setInt(4, orderID);
-                            ptm.setString(5, course.getCourseID());
-                            ptm.setInt(6, 1); //chua biet
-                            check = ptm.executeUpdate() > 0;
+                        ptm = conn.prepareStatement(GET_PAYMENTID);
+                        rs = ptm.executeQuery();
+                        if (rs.next()) {
+                            int paymentID = rs.getInt("paymentDetailID") + 1;
+                            for (CourseDTO course : Listcourse) {
+                                ptm = conn.prepareStatement(INSERT_ORDER_DETAIL);
+                                ptm.setDouble(1, course.getPrice());
+                                ptm.setString(2, "NVPAY");
+                                ptm.setInt(3, 1);
+                                ptm.setInt(4, orderID);
+                                ptm.setString(5, course.getCourseID());
+                                ptm.setInt(6, paymentID);
+                                check = ptm.executeUpdate() > 0;
+                            }
+                            if (check) {
+                                ptm = conn.prepareStatement(INSERT_PAYMENTDETAIL);
+                                ptm.setDouble(1, trans.getAmount());
+                                ptm.setString(2, trans.getBankName());
+                                ptm.setBoolean(3, trans.isStatus());
+                                ptm.setString(4, date);
+                                ptm.setString(5, "");
+                                ptm.setString(6, trans.getTransactionID());
+                                check1 = ptm.executeUpdate() > 0;
+                            }
                         }
                     }
-
                 }
             }
 
@@ -767,7 +784,7 @@ public class CourseDAO {
                 conn.close();
             }
         }
-        return check;
+        return check1;
     }
 
     public boolean updateCourse(String courseId, float price, String name, int duration, String datePublic) throws SQLException {

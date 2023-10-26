@@ -114,12 +114,12 @@
             }
 
             .shopping-cart-container{
-                padding: 60px; 
+                padding: 60px;
                 background-color: rgba(59, 65, 66, 0.1);
             }
 
             table th{
-                padding: 20px;s
+                padding: 20px;
                 text-align: center;
             }
 
@@ -266,7 +266,7 @@
                 </div>
                 <%
                         }
-                        session.setAttribute("LISTBUYCOURSE", listCou);
+
                     }
                 %>
                 <br><br>
@@ -286,12 +286,14 @@
                             </tr>
                         </thead>
                         <%
+                            List<CourseDTO> listCou = new ArrayList<>();
                             List<CartItemDTO> cartItemList = cartItemDAO.getlistCartItem(loginUser.getAccountID());
                             if (cartItemList.size() > 0) {
                                 int count = 1;
                                 for (CartItemDTO cartItem : cartItemList) {
                                     CourseDTO course = cartItemDAO.getCourseFromCartItem(cartItem.getCourseID());
                                     if (cart == null || !cart.getCart().containsKey(course.getCourseID())) {
+                                        listCou.add(course);
                         %>
                         <tbody>
                         <form action="MainController" method="POST">
@@ -310,6 +312,7 @@
                         <%
                                     }
                                 }
+                                session.setAttribute("LISTBUYCOURSE", listCou);
                             }
                         %>
                     </table>
@@ -319,16 +322,16 @@
                     <div class="total">
                         Total: <span id="result"></span> VND
                     </div>
-                    <form action="MainController" method="POST">
-                        <button type="submit" name="action" value="Checkout">Check Out</button>
-                    </form>
+                    <a href="checkout.jsp">
+                        <button type="submit"> Check Out </button>
+                    </a>
                 </div>
             </div>
         </div>
 
         <script>
-            
-            function loadPage(){
+
+            function loadPage() {
                 var input = document.getElementsByName("cartPrice");
                 var total = 0;
                 for (var i = 0; i < input.length; i++) {
@@ -336,7 +339,7 @@
                 }
                 document.getElementById("result").innerHTML = total.toFixed(3);
             }
-            
+
             function calculation() {
                 var input = document.getElementsByName("price");
                 var total = 0;
