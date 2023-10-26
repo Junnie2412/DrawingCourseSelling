@@ -55,8 +55,8 @@ public class AddToCartController extends HttpServlet {
             boolean check = cart.add(course);
 
             String action = request.getParameter("action");
-            
-            if(check){
+
+            if (check) {
                 session.setAttribute("CART", cart);
                 request.setAttribute("MESSAGE", "Add to Cart Successfully");
             }
@@ -69,27 +69,28 @@ public class AddToCartController extends HttpServlet {
                     UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
                     Date createdDay = Date.valueOf(request.getParameter("createdDay"));
 
-                    if (!cartDAO.checkCreatedDayAndUser(createdDay, loginUser.getAccountID())) {
-                        boolean checkCreateCart = cartDAO.createCart(createdDay, loginUser.getAccountID());
-                    }
+                    if (!cartItemDAO.checkExistedItem(loginUser.getAccountID(), courseID)) {
+                        if (!cartDAO.checkCreatedDayAndUser(createdDay, loginUser.getAccountID())) {
+                            boolean checkCreateCart = cartDAO.createCart(createdDay, loginUser.getAccountID());
+                        }
 
-                    CartDTO cartDTO = cartDAO.getCart(createdDay, loginUser.getAccountID());
+                        CartDTO cartDTO = cartDAO.getCart(createdDay, loginUser.getAccountID());
 
-                    boolean checkCreateCartItem = cartItemDAO.createCartItem(courseID, 1, cartDTO.getCartID());
+                        boolean checkCreateCartItem = cartItemDAO.createCartItem(courseID, 1, cartDTO.getCartID());
 
-                    if (checkCreateCartItem) {
-                        session.setAttribute("CART", cart);
-                        request.setAttribute("MESSAGE", "Add to Cart Successfully");
+                        if (checkCreateCartItem) {
+                            session.setAttribute("CART", cart);
+                            request.setAttribute("MESSAGE", "Add to Cart Successfully");
 
-                        if (action.equals("AddToCart")) {
-                            url = ADD_TO_CART;
-
+                            if (action.equals("AddToCart")) {
+                                url = ADD_TO_CART;
+                            }
                         }
                     }
                 }
             }
-            
-            if(action.equals("AlreadyAddToCart")){
+
+            if (action.equals("AlreadyAddToCart")) {
                 url = ADD_TO_CART;
             }
 

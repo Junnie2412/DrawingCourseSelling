@@ -27,6 +27,7 @@ public class CartItemDAO {
     private static final String REMOVE_CART_ITEM = "DELETE tblCartItem FROM tblCartItem ci JOIN tblCart c ON c.cartID = ci.cartID WHERE c.accountID = ? AND ci.courseID = ?";
     
     private static final String GET_COURSE_FROM_CART_ITEM = "SELECT * FROM tblCourse WHERE courseID = ?";
+    private static final String CHECK_EXISTED_ITEM ="SELECT * FROM tblCartItem ci JOIN tblCart c ON c.cartID = ci.cartID WHERE c.accountID = ? AND ci.courseID = ?"; 
     
     public boolean createCartItem(String courseID, int voucherID, int cartID) throws SQLException {
         boolean check = false;
@@ -155,6 +156,40 @@ public class CartItemDAO {
                 ptm.setString(2, courseID);
 
                 check = ptm.executeUpdate() > 0 ? true : false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return check;
+    }
+    
+    public boolean checkExistedItem(String accountID, String courseID) throws SQLException {
+        boolean check = false;
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement ptm = null;
+
+        try {
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(CHECK_EXISTED_ITEM);
+                ptm.setString(1, accountID);
+                ptm.setString(2, courseID);
+                rs = ptm.executeQuery();
+                
+                if(rs.next()){
+                    check = true;
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();

@@ -49,6 +49,137 @@
             text-decoration: none;
         }
 
+        .btnfos {
+            color: black;
+            cursor: pointer;
+            display: block;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 45px;
+            max-width: 160px;
+            margin: 0 auto 2em;
+            position: relative;
+            text-transform: uppercase;
+            vertical-align: middle;
+            width: 100%;
+            transition: 1s;
+        }
+
+        .btnfos-1 {
+            margin-top: 20px;
+            background: #ebecec;
+            text-align: center;
+            font-weight: 100;
+        }
+        .btnfos-1 svg {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 45px;
+        }
+        .btnfos-1 rect {
+            fill: none;
+            stroke: black;
+            stroke-width: 1;
+            stroke-dasharray: 422, 0;
+        }
+
+        .btnfos-1:hover {
+            background: #ebecec;
+            letter-spacing: 1px;
+            font-weight: 500;
+            transition: 1s;
+        }
+        .btnfos-1:hover rect {
+            stroke-width: 5;
+            stroke-dasharray: 15, 310;
+            stroke-dashoffset: 48;
+            -webkit-transition: all 1.35s cubic-bezier(0.19, 1, 0.22, 1);
+            transition: all 1.35s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .course-search-form input {
+            height: 40px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            background: #ebecec;
+            color: black;
+        }
+
+        .course-search-form input.rounded {
+            -webkit-border-radius: 31px !important;
+            -moz-border-radius: 31px !important;
+            border-radius: 40px !important;
+        }
+
+        .course-search-form button {
+            width: 30px;
+            height: 30px;
+            font-size: 15px;
+            color: #ebecec;
+            background: #07294D;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            position: absolute;
+            right: -1px;
+            bottom: 5px;
+            outline: none;
+            border: none;
+        }
+
+        .course-search-form button.rounded {
+            -webkit-border-radius: 20px !important;
+            -moz-border-radius: 20px !important;
+            border-radius: 20px !important;
+
+        }
+
+        .course-search-form .select-bar {
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            height: 52px;
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: 133px;
+        }
+
+        .course-search-form .select-bar.rounded {
+            -webkit-border-radius: 26px !important;
+            -moz-border-radius: 26px !important;
+            border-radius: 26px !important;
+        }
+
+        .course-search-form .select-bar .list {
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .course-search-form .select-bar .list .option {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+
+        .course-search-form .select-bar .list .option.selected {
+            font-weight: 500;
+        }
+
+        .course-search-form .select-bar::after {
+            right: 20px;
+            width: 8px;
+            height: 8px;
+            border-color: #d6ae7b;
+        }
+
+        .course-search-form .select-bar .current {
+            line-height: 50px;
+            color: #d6ae7b;
+        }
+
     </style>
     <div class="custom-container">
         <div class="header-area">
@@ -61,17 +192,17 @@
                 <li>
                     <a href="index.jsp">Home</a>
                 </li>
-                   
+
                 <%
-                if (loginUser.getRole().equals("Instructor")) {
-            %>
-             
-            <% } else {
-            %>  
-                   <li>
-                       <a href="about.jsp">About us</a>
+                    if (loginUser.getRole().equals("Instructor")) {
+                %>
+
+                <% } else {
+                %>  
+                <li>
+                    <a href="about.jsp">About us</a>
                 </li>   
-            <% }%>
+                <% }%>
                 <li>
                     <%
                         if (loginUser.getRole().equals("Admin")) {
@@ -146,7 +277,12 @@
             <%
                 if (loginUser.getRole() == "") {
             %>
-            <a href="signin.jsp" class="btn-grad"><i class="fas fa-user"></i> <span> Log In</span></a>
+            <a class="btnfos btnfos-1" href="signin.jsp">
+                <svg>
+                <rect x="0" y="0" fill="none" width="100%" height="100%"/>
+                </svg>
+                Login
+            </a> 
             <% } else {
             %>  
             <div class="user-info dropdown">
@@ -194,7 +330,7 @@
     </span>
     <div class="w-100 d-flex flex-wrap justify-content-center align-items-center">
         <form class="course-search-form mr-sm-4">
-            
+
             <input type="text" name="name" placeholder="Search Courses" class="rounded">
             <button type="submit" class="rounded"><i class="flaticon-loupe"></i></button>
         </form>
@@ -203,7 +339,7 @@
             <ul class="menu">
                 <li>
                     <a href="#0">Home</a>
-                    
+
                 </li>
                 <li>
                     <a href="about.jsp">About Us</a>
