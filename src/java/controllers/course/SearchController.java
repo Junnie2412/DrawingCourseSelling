@@ -3,6 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package controllers.course;
 
 import course.CourseDAO;
@@ -15,6 +20,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import users.UserDTO;
 
 /**
  *
@@ -31,10 +38,13 @@ public class SearchController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String url = ERROR;
         
+        HttpSession session = request.getSession();
+        UserDTO user = (UserDTO)session.getAttribute("USER_LOGIN");
+        
         try{
             String search = request.getParameter("searchName");
             CourseDAO dao = new CourseDAO();
-            List<CourseDTO> listCourse = dao.getlistCourse(search);
+            List<CourseDTO> listCourse = dao.getlistCourse(search, user.getAccountID());
             if(listCourse.size() > 0){
                 request.setAttribute("LIST_COURSE", listCourse);
                 url = SUCCESS;
@@ -82,7 +92,7 @@ public class SearchController extends HttpServlet {
      *
      * @return a String containing servlet description
      */
-    @Override
+@Override
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>

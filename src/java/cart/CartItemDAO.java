@@ -23,7 +23,7 @@ import utils.DBUtil;
  */
 public class CartItemDAO {
     private static final String ADD_CART_ITEM = "INSERT INTO tblCartItem(courseID, voucherID, cartID) VALUES(?,?,?)";
-    private static final String GET_LIST_ITEM = "SELECT * FROM tblCartItem ci JOIN tblCart c ON ci.cartID = c.cartID  WHERE c.accountID = ? AND c.createdDay = ? ORDER BY c.createdDay";
+    private static final String GET_LIST_ITEM = "SELECT * FROM tblCartItem ci JOIN tblCart c ON ci.cartID = c.cartID  WHERE c.accountID = ?";
     private static final String REMOVE_CART_ITEM = "DELETE tblCartItem FROM tblCartItem ci JOIN tblCart c ON c.cartID = ci.cartID WHERE c.accountID = ? AND ci.courseID = ?";
     
     private static final String GET_COURSE_FROM_CART_ITEM = "SELECT * FROM tblCourse WHERE courseID = ?";
@@ -60,7 +60,7 @@ public class CartItemDAO {
         return check;
     }
     
-    public List<CartItemDTO> getlistCartItem(String accountID, Date createdDay) throws ClassNotFoundException, SQLException {
+    public List<CartItemDTO> getlistCartItem(String accountID) throws ClassNotFoundException, SQLException {
         List<CartItemDTO> list = new ArrayList<>();
         Connection conn = null;
         ResultSet rs = null;
@@ -71,7 +71,6 @@ public class CartItemDAO {
             if (conn != null) {
                 ptm = conn.prepareStatement(GET_LIST_ITEM);
                 ptm.setString(1, accountID);
-                ptm.setDate(2, createdDay);
                 rs = ptm.executeQuery();
                 while (rs.next()) {
                     int cartItemID = rs.getInt("cartItemID");
