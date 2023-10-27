@@ -279,7 +279,7 @@
                                     <button>Description</button>
                                 </div>
                                 <div>
-                                    <a>Learn</a>
+                                    <button type="button" class="btn-primary" href="course-learn.jsp">Learn</button>
                                 </div>
                             </div>
                         </div>
