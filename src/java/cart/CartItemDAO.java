@@ -28,6 +28,7 @@ public class CartItemDAO {
     
     private static final String GET_COURSE_FROM_CART_ITEM = "SELECT * FROM tblCourse WHERE courseID = ?";
     private static final String CHECK_EXISTED_ITEM ="SELECT * FROM tblCartItem ci JOIN tblCart c ON c.cartID = ci.cartID WHERE c.accountID = ? AND ci.courseID = ?"; 
+   
     
     public boolean createCartItem(String courseID, int voucherID, int cartID) throws SQLException {
         boolean check = false;

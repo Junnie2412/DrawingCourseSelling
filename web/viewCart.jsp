@@ -230,6 +230,7 @@
 
                 <!-- use DAO -->
                 <%
+                    List<CourseDTO> listCou = new ArrayList<>();
                     Cart cart = (Cart) session.getAttribute("CART");
 
                     CartItemDAO cartItemDAO = new CartItemDAO();
@@ -259,6 +260,7 @@
                             <%
                                 int count = 1;
                                 for (CourseDTO course : cart.getCart().values()) {
+                                    listCou.add(course);
                             %>
                         <form action="MainController" method="POST">
                             <tr style="border-top: 2px solid gray;">
@@ -302,7 +304,6 @@
                             </tr>
                         </thead>
                         <%
-                            List<CourseDTO> listCou = new ArrayList<>();
                             List<CartItemDTO> cartItemList = cartItemDAO.getlistCartItem(loginUser.getAccountID());
                             if (cartItemList.size() > 0) {
                                 int count = 1;
@@ -339,7 +340,7 @@
                         Total: <span id="result"></span> VND
                     </div>
                     <div class="play-ground">
-                        <a href="checkout.jsp"><button class="checkout-button" style="width: 150px; font-weight: bold"> Check Out <i class="fa fa-regular fa-money-check"></i></button></a>
+                        <a href="checkout.jsp"><button class="checkout-button" style="width: 150px; font-weight: bold"> Check Out &nbsp; <i class="fa fa-regular fa-money-check"></i></button></a>
                     </div>
                 </div>
             </div>
