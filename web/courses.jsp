@@ -56,11 +56,7 @@
             }
         </style>
     </head>
-
-
-    <body>
-
-
+    <body onload="loadPage()">
 
         <div class="all-sections oh">
             <!-- ~~~ Loader & Go-Top ~~~ -->
@@ -264,8 +260,8 @@
                                                     %>
                                                 <span>(<%= courseFeedbackDAO.getAverageRate(course.getCourseID())%>/5.00)</span>
                                             </div>
-                                            <div class="price cl-1">
-                                                <%= course.getPrice()%>đ
+                                            <div class="price cl-1"><input type="hidden" name="price" value="<%=course.getPrice()%>">
+                                                <span name="priceValue"></span> VND
                                             </div>
                                         </div>
 
@@ -281,51 +277,63 @@
                             }
                         %> 
                     </div>
-                    </div>
-                    <div> 
-                    
-              
-                 <%
-                if (loginUser.getRole().equals("Instructor")) {
-            %>
-           <div class="text-center load-more mt-5">
+                </div>
+                <div> 
+
+
+                    <%
+                        if (loginUser.getRole().equals("Instructor")) {
+                    %>
+                    <div class="text-center load-more mt-5">
                         <a href="instructorCourse.jsp" class="custom-button theme-one">Turn back to manager courses  <i class="fas fa-angle-right"></i></a>
                     </div>    
-            <% } else {
-            %>  
-                   <div class="text-center load-more mt-5">
+                    <% } else {
+                    %>  
+                    <div class="text-center load-more mt-5">
                         <a href="courses.jsp" class="custom-button theme-one">load more courses <i class="fas fa-angle-right"></i></a>
                     </div>    
-            <% }%>
-            
-            </div>
+                    <% }%>
+
                 </div>
-            </section>
-            <!-- ~~~ Course Section ~~~ -->
-
-
-            <!-- ~~~ Footer Section ~~~ -->
-            <jsp:include page="layout/footer.jsp"/>
-            <!-- ~~~ Footer Section ~~~ -->
         </div>
+    </section>
+    <!-- ~~~ Course Section ~~~ -->
 
-        <script data-cfasync="false" src="../../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/jquery-3.6.0.min.js"></script>
 
-        <script src="assets/js/bootstrap.min.js"></script>
-        <script src="assets/js/isotope.pkgd.min.js"></script>
-        <script src="assets/js/magnific-popup.min.js"></script>
+    <!-- ~~~ Footer Section ~~~ -->
+    <jsp:include page="layout/footer.jsp"/>
+    <!-- ~~~ Footer Section ~~~ -->
+</div>
 
-        <script src="assets/js/odometer.min.js"></script>
-        <script src="assets/js/viewport.jquery.js"></script>
-        <script src="assets/js/nice-select.js"></script>
-        <script src="assets/js/owl.min.js"></script>
-        <script src="assets/js/main.js"></script>
-        <script src="assets/js/odometer.min.js"></script>
-        <script src="assets/js/viewport.jquery.js"></script>
-        <script src="assets/js/nice-select.js"></script>
-        <script src="assets/js/owl.min.js"></script>
-        <script src="assets/js/main.js"></script>
+<script>
+    function loadPage() {
 
-    </body>
+        var input = document.getElementsByName("price");
+        var tmp1 = 0;
+        for (var i = 0; i < input.length; i++) {
+            tmp1 = parseFloat(input[i].value);
+            document.getElementsByName("priceValue")[i].innerHTML = Intl.NumberFormat().format(tmp1.toFixed(3));
+        }
+    }
+</script>
+
+<script data-cfasync="false" src="../../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/jquery-3.6.0.min.js"></script>
+
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/isotope.pkgd.min.js"></script>
+<script src="assets/js/magnific-popup.min.js"></script>
+
+<script src="assets/js/odometer.min.js"></script>
+<script src="assets/js/viewport.jquery.js"></script>
+<script src="assets/js/nice-select.js"></script>
+<script src="assets/js/owl.min.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/odometer.min.js"></script>
+<script src="assets/js/viewport.jquery.js"></script>
+<script src="assets/js/nice-select.js"></script>
+<script src="assets/js/owl.min.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
 
 </html>

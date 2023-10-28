@@ -36,7 +36,7 @@ public class ChangePasswordController extends HttpServlet {
 
         if (!newPassword.equals(confirmNewPassword)) {
             request.setAttribute("msgError", "Confirm password not match");
-            request.getRequestDispatcher("editaccount.jsp").forward(request, response);
+            request.getRequestDispatcher("editAccount.jsp").forward(request, response);
         }
 
         HttpSession session = request.getSession();
@@ -47,7 +47,7 @@ public class ChangePasswordController extends HttpServlet {
 
         if (!user.getPassword().equals(oldPassword)) {
             request.setAttribute("msgError", "Old password invalid");
-            request.getRequestDispatcher("editaccount.jsp").forward(request, response);
+            request.getRequestDispatcher("editAccount.jsp").forward(request, response);
         }
 
         UserDAO ud = new UserDAO();
@@ -59,7 +59,7 @@ public class ChangePasswordController extends HttpServlet {
             } else {
                 request.setAttribute("msgError", "Server error");
             }
-            request.getRequestDispatcher("editaccount.jsp").forward(request, response);
+            request.getRequestDispatcher("editAccount.jsp").forward(request, response);
         } catch (SQLException ex) {
             Logger.getLogger(ChangePasswordController.class.getName()).log(Level.SEVERE, null, ex);
         }
