@@ -13,7 +13,7 @@ public class LessonDTO {
     private int lessonID;
     private String title;
     private String description;
-    private int videoID;
+    private int moduleID;
 
     public LessonDTO() {
     }
@@ -22,7 +22,7 @@ public class LessonDTO {
         this.lessonID = lessonID;
         this.title = title;
         this.description = description;
-        this.videoID = videoID;
+        this.moduleID = moduleID;
     }
 
     public int getLessonID() {
@@ -49,13 +49,13 @@ public class LessonDTO {
         this.description = description;
     }
 
-    public int getVideoID() {
-        return videoID;
+    public int getModuleID() {
+        return moduleID;
     }
 
-    public void setVideoID(int videoID) {
-        this.videoID = videoID;
+    public void setModuleID(int moduleID) {
+        this.moduleID = moduleID;
     }
-    
+  
     
 }

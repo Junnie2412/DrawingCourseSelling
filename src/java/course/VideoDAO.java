@@ -27,6 +27,31 @@ public class VideoDAO {
     private static final String GET_VIDEOS_OF_LESSON = "select * from tblVideo where lessonID = ?";
     private static final String CREATE_VIDEO = "insert into tblVideo(content, time, isActive, lessonID) values (?,?,?,?)";
     
+    public VideoDTO getVideoByLessonId(int lessonId) throws SQLException {
+        VideoDTO video = null;
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement ptm = null;
+        try{
+            conn = DBUtil.getConnection();
+            if(conn!=null){
+                ptm = conn.prepareStatement(GET_VIDEOS_OF_LESSON);
+                ptm.setInt(1, lessonId);
+                rs=ptm.executeQuery();
+                while (rs.next()){
+                    video = new VideoDTO(rs.getInt(1), rs.getString(2), rs.getTime(3).toLocalTime(), rs.getBoolean(4));
+                }
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            if(rs!=null) rs.close();
+            if(ptm!=null) ptm.close();
+            if(conn!=null) conn.close();
+        }
+        return video;
+    }
+    
     public VideoDTO getLastestVideo() throws SQLException{
         VideoDTO video = null;
         Connection conn = null;
