@@ -110,7 +110,15 @@
                     if (listCourse.size() > 0) {
 
             %>
-
+            <section class="course-section pt-120 pb-120 section-bg oh pos-rel">    
+                <div class="course-top-shape">
+                    <img src="assets/images/course/course-top-shape.png" alt="course">
+                </div>
+                <div class="course-bottom-shape">
+                    <img src="assets/images/course/course-bottom-shape.png" alt="course">
+                </div>
+                <div class="container">
+                <div class="row justify-content-center mb-30-none">
             <%            for (CourseDTO course : listCourse) {
             %>
             <div class="col-xl-4 col-md-6 col-sm-10">
@@ -167,9 +175,12 @@
             <%
                 }
             %>
+                </div>
+                </div>
+            </section>
             <%
                     }
-                }
+                } else {
             %>
 
             <!-- ~~~ End SEARCH by name~~~ -->
@@ -297,6 +308,9 @@
                 </div>
         </div>
     </section>
+    <%
+        }
+    %>                
     <!-- ~~~ Course Section ~~~ -->
 
 
