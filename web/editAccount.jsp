@@ -44,19 +44,19 @@
     </head>
     <style>
         .nav-bar {
-    height: 100px; 
-    width: 1600px;
-}
+            height: 100px; 
+            width: 1600px;
+        }
     </style>
 
 
 
     <body>
-        
-        
-        
+
+
+
         <%
-            UserDTO loginUser = (UserDTO) session.getAttribute(("LOGIN_USER"));
+            UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
             if (loginUser == null) {
                 loginUser = new UserDTO();
             }
@@ -71,13 +71,13 @@
             </span>
             <!-- ~~~ Loader & Go-Top ~~~ -->
 
-<div class="nav-bar">
+            <div class="nav-bar">
                 <jsp:include page="layout/header.jsp"/>
             </div>
 
 
             <!-- ~~~ Hero Section ~~~ -->
-            <section class="hero-section banner-overlay bg_img" data-img="../https://plus.unsplash.com/premium_photo-1673126682754-163189925db7?auto=format&fit=crop&q=80&w=1548&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+            <section class="hero-section banner-overlay bg_img" data-img="https://images.unsplash.com/photo-1459908676235-d5f02a50184b?auto=format&fit=crop&q=80&w=1470&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
 
                 <div class="custom-container">
                     <div class="hero-content">
@@ -93,7 +93,7 @@
                     </div>
                 </div>
             </section>
-            
+
 
 
 
@@ -142,80 +142,80 @@
                                                 </a>
                                             </li>
                                             <li class="nav-item">
-                                            <a class="nav-link" data-bs-toggle="tab" href="#changePassword" role="tab">
-                                                <i class="far fa-user"></i> Change Password
-                                            </a>
-                                        </li>
+                                                <a class="nav-link" data-bs-toggle="tab" href="#changePassword" role="tab">
+                                                    <i class="far fa-user"></i> Change Password
+                                                </a>
+                                            </li>
                                         </ul>
                                     </div>
                                     <div class="card-body p-4">
-                                    <div class="tab-content">
-                                        <div class="tab-pane active" id="personalDetails" role="tabpanel">
-                                            <form action="UpdateUserController" method="POST">
-                                        <div class="col-lg-6">
-                                            <div class="mb-3">
-                                                <label for="firstnameInput" class="name">Username</label>
-                                                <input type="text" name="fullName" value="<%=loginUser.getFullName()%>" required=""/>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="mb-3">
-                                                <label for="emailInput" class="email">Email Address</label>
-                                                <input type="text" name="email" value="<%=loginUser.getEmail()%>" required=""/>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12">
-                                            <div class="mb-3">
-                                                <label for="JoiningdatInput" class="date">Date</label>
-                                                <input type="date" name="dateOfbirth" value="<%=loginUser.getDateOfBirth()%>" required=""/>
-                                            </div>
-                                        </div>
-                                        <li class="list-inline-item edit" data-bs-toggle="tooltip"
-                                            data-bs-trigger="hover" data-bs-placement="top"
-                                            title="Edit">
-                                            <button type="submit" name="action" value="updateUser" class="btn btn-primary">Save Change</button>
-                                        </li>    
-                                    </form>
-                                        </div>
-                                        <!--end tab-pane-->
-                                        <div class="tab-pane" id="changePassword" role="tabpanel">
-                                            <form action="ChangePasswordController" method="POST">
-                                        <div class="container">
-                                            <div class="row">
-                                                
-                                                <div class="col-lg-4">
-                                                    <div class="mb-3">
-                                                        <input type="password" class="form-control" name="password" placeholder="Old Password">
+                                        <div class="tab-content">
+                                            <div class="tab-pane active" id="personalDetails" role="tabpanel">
+                                                <form action="UpdateUserController" method="POST">
+                                                    <div class="col-lg-6">
+                                                        <div class="mb-3">
+                                                            <label for="firstnameInput" class="name">Username</label>
+                                                            <input type="text" name="fullName" value="<%=loginUser.getFullName()%>" required=""/>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <div class="mb-3">
-                                                        <input type="password" class="form-control" name="newPassword" id="newpasswordInput" placeholder="New Password">
+                                                    <div class="col-lg-6">
+                                                        <div class="mb-3">
+                                                            <label for="emailInput" class="email">Email Address</label>
+                                                            <input type="text" name="email" value="<%=loginUser.getEmail()%>" required=""/>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <div class="mb-3">
-                                                        <input type="password" class="form-control" name="confirmNewPassword" id="confirmpasswordInput" placeholder="Confirm Password">
+                                                    <div class="col-lg-12">
+                                                        <div class="mb-3">
+                                                            <label for="JoiningdatInput" class="date">Date</label>
+                                                            <input type="date" name="dateOfbirth" value="<%=loginUser.getDateOfBirth()%>" required=""/>
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                    <li class="list-inline-item edit" data-bs-toggle="tooltip"
+                                                        data-bs-trigger="hover" data-bs-placement="top"
+                                                        title="Edit">
+                                                        <button type="submit" name="action" value="updateUser" class="btn btn-primary">Save Change</button>
+                                                    </li>    
+                                                </form>
                                             </div>
+                                            <!--end tab-pane-->
+                                            <div class="tab-pane" id="changePassword" role="tabpanel">
+                                                <form action="ChangePasswordController" method="POST">
+                                                    <div class="container">
+                                                        <div class="row">
+
+                                                            <div class="col-lg-4">
+                                                                <div class="mb-3">
+                                                                    <input type="password" class="form-control" name="password" placeholder="Old Password">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-4">
+                                                                <div class="mb-3">
+                                                                    <input type="password" class="form-control" name="newPassword" id="newpasswordInput" placeholder="New Password">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-4">
+                                                                <div class="mb-3">
+                                                                    <input type="password" class="form-control" name="confirmNewPassword" id="confirmpasswordInput" placeholder="Confirm Password">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <% if (request.getAttribute("msgError") != null) {%>
+                                                    <div style="color: red;"><%= request.getAttribute("msgError")%></div>
+                                                    <% }%>
+                                                    <% if (request.getAttribute("msgSuccess") != null) {%>
+                                                    <div style="color: green;"><%= request.getAttribute("msgSuccess")%></div>
+                                                    <% }%>
+                                                    <li class="list-inline-item edit" data-bs-toggle="tooltip"
+                                                        data-bs-trigger="hover" data-bs-placement="top"
+                                                        title="Edit">
+                                                        <button type="submit" name="action" value="updateUser" class="btn btn-primary">Save Change</button>
+                                                    </li>    
+                                                </form>
+
+                                            </div>
+                                            <!--end tab-pane-->
                                         </div>
-                                        <% if (request.getAttribute("msgError") != null) {%>
-                                        <div style="color: red;"><%= request.getAttribute("msgError") %></div>
-                                        <% }%>
-                                        <% if (request.getAttribute("msgSuccess") != null) {%>
-                                        <div style="color: green;"><%= request.getAttribute("msgSuccess") %></div>
-                                        <% }%>
-                                        <li class="list-inline-item edit" data-bs-toggle="tooltip"
-                                            data-bs-trigger="hover" data-bs-placement="top"
-                                            title="Edit">
-                                            <button type="submit" name="action" value="updateUser" class="btn btn-primary">Save Change</button>
-                                        </li>    
-                                    </form>
-                                            
-                                        </div>
-                                        <!--end tab-pane-->
-                                    </div>
                                     </div>
                                 </div>
                             </div>
@@ -225,40 +225,34 @@
                         <!--end row-->
 
                     </div>
-                    </div>
-                    <!-- container-fluid -->
-                </div><!-- End Page-content -->
+                </div>
+                <!-- container-fluid -->
+            </div><!-- End Page-content -->
 
 
-            </div>
-            <!-- end main content-->
+        </div>
+        <!-- end main content-->
 
 
-            <!-- END layout-wrapper -->
+        <!-- END layout-wrapper -->
 
-            <jsp:include page="layout/footer.jsp"/>
+        <jsp:include page="layout/footer.jsp"/>
 
-            <!--start back-to-top-->
+        <!--start back-to-top-->
 
+        <!-- JAVASCRIPT -->
+        <script src="admin/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="admin/assets/libs/simplebar/simplebar.min.js"></script>
+        <script src="admin/assets/libs/node-waves/waves.min.js"></script>
+        <script src="admin/assets/libs/feather-icons/feather.min.js"></script>
+        <script src="admin/assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
+        <script src="admin/assets/js/plugins.js"></script>
 
+        <!-- profile-setting init js -->
+        <script src="admin/assets/js/pages/profile-setting.init.js"></script>
 
-
-
-        
-
-<!-- JAVASCRIPT -->
-<script src="admin/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="admin/assets/libs/simplebar/simplebar.min.js"></script>
-<script src="admin/assets/libs/node-waves/waves.min.js"></script>
-<script src="admin/assets/libs/feather-icons/feather.min.js"></script>
-<script src="admin/assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
-<script src="admin/assets/js/plugins.js"></script>
-
-<!-- profile-setting init js -->
-<script src="admin/assets/js/pages/profile-setting.init.js"></script>
-
-<!-- App js -->
-<script src="admin/assets/js/app.js"></script>
-</body>
+        <!-- App js -->
+        <script src="admin/assets/js/app.js"></script>
+    </body>
 
 </html>

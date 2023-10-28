@@ -8,14 +8,15 @@
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/controllers/course/RemoveCartController.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/staffCourse.jsp</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/updateCourse.jsp</file>
+            <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/controllers/userController/LoadUserController.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/learning.jsp</file>
+            <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/editAccount.jsp</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/instructorVideo.jsp</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/blog-details.jsp</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/cart/CartItemDAO.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/learningCourse/LearningCourseDTO.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/assets/css/main2.css</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/about.jsp</file>
-            <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/editaccount.jsp</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/signin.jsp</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/learningCourse/LearningCourseDAO.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/contact.jsp</file>
@@ -33,6 +34,7 @@
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/course-details.jsp</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/createCourse.jsp</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/signup.jsp</file>
+            <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/course-learn.jsp</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/course/CourseDAO.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/customerCourse.jsp</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/adminCourse.jsp</file>
