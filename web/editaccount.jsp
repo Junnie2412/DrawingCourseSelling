@@ -129,9 +129,17 @@
                                                     <i class="fas fa-home"></i> Account
                                                 </a>
                                             </li>
+                                            <li class="nav-item">
+                                            <a class="nav-link" data-bs-toggle="tab" href="#changePassword" role="tab">
+                                                <i class="far fa-user"></i> Change Password
+                                            </a>
+                                        </li>
                                         </ul>
                                     </div>
-                                    <form action="UpdateUserController" method="POST">
+                                    <div class="card-body p-4">
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="personalDetails" role="tabpanel">
+                                            <form action="UpdateUserController" method="POST">
                                         <div class="col-lg-6">
                                             <div class="mb-3">
                                                 <label for="firstnameInput" class="name">Username</label>
@@ -156,28 +164,13 @@
                                             <button type="submit" name="action" value="updateUser" class="btn btn-primary">Save Change</button>
                                         </li>    
                                     </form>
-
-
-
-                                    <!--end row-->
-
-                                </div>
-                                <!--end tab-pane-->
-
-                                <div class="card mt-xxl-n5 mt-5">
-                                    <div class="card-header">
-                                        <ul class="nav nav-tabs-custom rounded card-header-tabs border-bottom-0" role="tablist">
-                                            <li class="nav-item">
-                                                <a class="nav-link active" data-bs-toggle="tab" href="#personalDetails" role="tab">
-                                                    <i class="fas fa-home"></i> Password
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <form action="ChangePasswordController" method="POST">
+                                        </div>
+                                        <!--end tab-pane-->
+                                        <div class="tab-pane" id="changePassword" role="tabpanel">
+                                            <form action="ChangePasswordController" method="POST">
                                         <div class="container">
                                             <div class="row">
-                                                <label for="oldpasswordInput">Change Password</label>
+                                                
                                                 <div class="col-lg-4">
                                                     <div class="mb-3">
                                                         <input type="password" class="form-control" name="password" placeholder="Old Password">
@@ -207,19 +200,11 @@
                                             <button type="submit" name="action" value="updateUser" class="btn btn-primary">Save Change</button>
                                         </li>    
                                     </form>
-
-
-
-                                    <!--end row-->
-
-                                </div>
-                                <!--end tab-pane-->
-
-                                <!--end tab-pane-->
-
-                                <!--end tab-pane-->
-                            </div>
-                        </div>
+                                            
+                                        </div>
+                                        <!--end tab-pane-->
+                                                                                    </div>
+                                        </div>
                     </div>
                 </div>
 

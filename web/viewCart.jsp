@@ -98,7 +98,7 @@
 
             .nav-bar{
                 width: 100vw;
-                background-color: rgba(59, 65, 66, 0.1);
+                background-color: white;
             }
 
             .bg-banner{
@@ -166,7 +166,7 @@
                 height: 60px;
                 color: white;
                 border-radius: 8px;
-                background: linear-gradient(to right, rgb(88,100,125) 50%, rgba(252,232,191,255) 50%);
+                background: linear-gradient(to right, rgb(88,100,125) 50%, rgba(221,168,75,255) 50%);
                 background-size: 200% 100%;
                 background-position: left;
             }
@@ -174,6 +174,25 @@
             .turn-back-button:hover{
                 color: black;
                 background-position: right;
+            }
+
+            .checkout-button{
+                margin-top: 20px;
+                margin-left: 20px;
+                font-size: 14px;
+                width: 60px;
+                height: 60px;
+                color: white;
+                border-radius: 8px;
+                background: linear-gradient(to right, rgba(221,168,75,255) 50%, rgb(88,100,125) 50%);
+                background-size: 200% 100%;
+                background-position: right bottom;
+                transition: all .5s ease-out;
+            }
+
+            .checkout-button:hover{
+                color: black;
+                background-position: left bottom;
             }
 
         </style>
@@ -211,15 +230,13 @@
 
                 <!-- use DAO -->
                 <%
+                    List<CourseDTO> listCou = new ArrayList<>();
                     Cart cart = (Cart) session.getAttribute("CART");
 
-                    CartDAO cartDAO = new CartDAO();
                     CartItemDAO cartItemDAO = new CartItemDAO();
                     CourseDAO courseDAO = new CourseDAO();
 
                     UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
-
-                    List<Date> createdDayList = cartDAO.getlistCreatedDay(loginUser.getAccountID());
 
                     if (cart != null) {
                         if (cart.getCart().size() > 0) {
@@ -243,14 +260,15 @@
                             <%
                                 int count = 1;
                                 for (CourseDTO course : cart.getCart().values()) {
+                                    listCou.add(course);
                             %>
                         <form action="MainController" method="POST">
                             <tr style="border-top: 2px solid gray;">
                                 <td><input name="price" value="<%= course.getPrice()%>" type="checkbox" checked onclick="calculation()"></td>
                                 <td><%= count++%></td>
                                 <td><img style="width: 100px; height: 100px" src="<%=courseDAO.getDescription(course.getCourseID()).getImage()%>"></td>
-                                <td style="text-align: left; font-weight: bold"><%=course.getName()%>"</td>
-                                <td style="font-weight: bold"><input  name="cartPrice" value="<%= course.getPrice()%>" type="hidden"><%= course.getPrice()%> VND</td>
+                                <td style="text-align: left; font-weight: bold"><%=course.getName()%></td>
+                                <td style="font-weight: bold"><input name="cartPrice" value="<%= course.getPrice()%>" type="hidden"><span name="cartPriceValue"></span> VND</td>
                                 <td>
                                     <a style="color: black; font-size: 15px" href="MainController?action=Remove&courseID=<%=course.getCourseID()%>"><i class="fa fa-light fa-trash"></i></a>
                                 </td>
@@ -286,7 +304,6 @@
                             </tr>
                         </thead>
                         <%
-                            List<CourseDTO> listCou = new ArrayList<>();
                             List<CartItemDTO> cartItemList = cartItemDAO.getlistCartItem(loginUser.getAccountID());
                             if (cartItemList.size() > 0) {
                                 int count = 1;
@@ -302,7 +319,7 @@
                                 <td><%= count++%></td>
                                 <td><img style="width: 100px; height: 100px" src="<%=courseDAO.getDescription(course.getCourseID()).getImage()%>"></td>
                                 <td style="text-align: left; font-weight: bold"><%=course.getName()%>"</td>
-                                <td style="font-weight: bold" name="price" value="<%=course.getPrice()%>"><%= (int) course.getPrice()%> VND</td>
+                                <td style="font-weight: bold"><input type="hidden" name="priceList" value="<%=course.getPrice()%>"><span name="priceValue"></span> VND</td>
                                 <td>
                                     <a style="color: black; font-size: 15px" href="MainController?action=Remove&courseID=<%=course.getCourseID()%>"><i class="fa fa-light fa-trash"></i></a>
                                 </td>
@@ -319,12 +336,12 @@
                 </div>
                 <br>
                 <div style="text-align: right">
-                    <div class="total">
+                    <div class="total" style="font-weight: bold; font-size: 20px">
                         Total: <span id="result"></span> VND
                     </div>
-                    <a href="checkout.jsp">
-                        <button type="submit"> Check Out </button>
-                    </a>
+                    <div class="play-ground">
+                        <a href="checkout.jsp"><button class="checkout-button" style="width: 150px; font-weight: bold"> Check Out &nbsp; <i class="fa fa-regular fa-money-check"></i></button></a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -332,12 +349,26 @@
         <script>
 
             function loadPage() {
+
                 var input = document.getElementsByName("cartPrice");
                 var total = 0;
                 for (var i = 0; i < input.length; i++) {
                     total += parseFloat(input[i].value);
                 }
-                document.getElementById("result").innerHTML = total.toFixed(3);
+                document.getElementById("result").innerHTML = Intl.NumberFormat().format(total.toFixed(3));
+
+                var tmp1 = 0;
+                for (var i = 0; i < input.length; i++) {
+                    tmp1 = parseFloat(input[i].value);
+                    document.getElementsByName("cartPriceValue")[i].innerHTML = Intl.NumberFormat().format(tmp1.toFixed(3));
+                }
+
+                var input2 = document.getElementsByName("priceList");
+                var tmp2 = 0;
+                for (var i = 0; i < input2.length; i++) {
+                    tmp2 = parseFloat(input2[i].value);
+                    document.getElementsByName("priceValue")[i].innerHTML = Intl.NumberFormat().format(tmp2.toFixed(3));
+                }
             }
 
             function calculation() {
@@ -348,7 +379,7 @@
                         total += parseFloat(input[i].value);
                     }
                 }
-                document.getElementById("result").innerHTML = total.toFixed(3);
+                document.getElementById("result").innerHTML = Intl.NumberFormat().format(total.toFixed(3));
             }
         </script>
 
