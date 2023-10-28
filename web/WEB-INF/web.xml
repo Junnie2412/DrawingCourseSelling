@@ -41,8 +41,8 @@
         <servlet-class>controllers.userController.UpdateStaffController</servlet-class>
     </servlet>
     <servlet>
-    <servlet-name>UpdateUserController</servlet-name>
-    <servlet-class>controllers.userController.UpdateUserController</servlet-class>
+        <servlet-name>UpdateUserController</servlet-name>
+        <servlet-class>controllers.userController.UpdateUserController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>LoadStaffController</servlet-name>
@@ -88,6 +88,10 @@
         <servlet-name>vnpayRefund</servlet-name>
         <servlet-class>com.vnpay.common.vnpayRefund</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ApplyVoucherController</servlet-name>
+        <servlet-class>controllers.order.ApplyVoucherController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>MainController</servlet-name>
         <url-pattern>/MainController</url-pattern>
@@ -125,8 +129,8 @@
         <url-pattern>/UpdateStaffController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-    <servlet-name>UpdateUserController</servlet-name>
-    <url-pattern>/UpdateUserController</url-pattern>
+        <servlet-name>UpdateUserController</servlet-name>
+        <url-pattern>/UpdateUserController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>LoadStaffController</servlet-name>
@@ -175,6 +179,10 @@
     <servlet-mapping>
         <servlet-name>vnpayRefund</servlet-name>
         <url-pattern>/vnpayrefund/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ApplyVoucherController</servlet-name>
+        <url-pattern>/ApplyVoucherController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -42,10 +42,10 @@ public class CourseDAO {
             + "FROM [dbo].[tblCart] c\n"
             + "INNER JOIN [dbo].[tblCartItem] ci ON c.cartItemID = ci.cartItemID\n"
             + "WHERE c.accountID = ?;";
-    private static final String INSERT_ORDER = "INSERT INTO tblOrder VALUES (?,?,?,?)";
+    private static final String INSERT_ORDER = "INSERT INTO tblOrder VALUES (?,?,?,?,?)";
     private static final String GET_ORDERID = "SELECT TOP 1 orderID FROM [tblOrder] ORDER BY orderID DESC";
     private static final String GET_PAYMENTID = "SELECT TOP 1 paymentDetailID FROM [tblPaymentDetail] ORDER BY paymentDetailID DESC";
-    private static final String INSERT_ORDER_DETAIL = "INSERT INTO tblOrderDetail VALUES (?,?,?,?,?,?)";
+    private static final String INSERT_ORDER_DETAIL = "INSERT INTO tblOrderDetail VALUES (?,?,?,?)";
     private static final String INSERT_PAYMENTDETAIL = "INSERT INTO tblPaymentDetail VALUES (?,?,?,?,?,?)";
 
     private static final String UPDATE_COURSE = "update tblCourse set price = ?, name = ?, duration = ?, datePublic = ? where courseID = ?";
@@ -706,15 +706,13 @@ public class CourseDAO {
         return list;
     }
 
-    public boolean inserOrder(UserDTO loginUser, List<CourseDTO> Listcourse, TransactionDTO trans) throws SQLException {
+    public boolean inserOrder(UserDTO loginUser, List<CourseDTO> Listcourse, TransactionDTO trans, int totalInt) throws SQLException {
         //voucher
         //payment
         //order
         //orderdetailed
-        double total = 0;
-        for (CourseDTO c : Listcourse) {
-            total += c.getPrice();
-        }
+        double total = (double) totalInt;
+        
         boolean checkOrder = false;
         boolean check = false;
         boolean check1 = false;
@@ -732,9 +730,10 @@ public class CourseDAO {
             if (conn != null) {
                 ptm = conn.prepareStatement(INSERT_ORDER);
                 ptm.setString(1, date);
-                ptm.setDouble(2, total);
-                ptm.setBoolean(3, true);
-                ptm.setString(4, loginUser.getAccountID());
+                ptm.setString(2, "NVPAY");
+                ptm.setDouble(3, total);
+                ptm.setBoolean(4, true);
+                ptm.setString(5, loginUser.getAccountID());
                 checkOrder = ptm.executeUpdate() > 0;
                 //add orderDetail
                 if (checkOrder) {
@@ -742,30 +741,29 @@ public class CourseDAO {
                     rs = ptm.executeQuery();
                     if (rs.next()) {
                         int orderID = rs.getInt("orderID");
-                        ptm = conn.prepareStatement(GET_PAYMENTID);
+                        for (CourseDTO course : Listcourse) {
+                            ptm = conn.prepareStatement(INSERT_ORDER_DETAIL);
+                            ptm.setDouble(1, course.getPrice());
+
+                            ptm.setInt(2, 1);
+                            ptm.setInt(3, orderID);
+                            ptm.setString(4, course.getCourseID());
+                            check = ptm.executeUpdate() > 0;
+                        }
+                    }
+                    if (checkOrder) {
+                        ptm = conn.prepareStatement(GET_ORDERID);
                         rs = ptm.executeQuery();
                         if (rs.next()) {
-                            int paymentID = rs.getInt("paymentDetailID") + 1;
-                            for (CourseDTO course : Listcourse) {
-                                ptm = conn.prepareStatement(INSERT_ORDER_DETAIL);
-                                ptm.setDouble(1, course.getPrice());
-                                ptm.setString(2, "NVPAY");
-                                ptm.setInt(3, 1);
-                                ptm.setInt(4, orderID);
-                                ptm.setString(5, course.getCourseID());
-                                ptm.setInt(6, paymentID);
-                                check = ptm.executeUpdate() > 0;
-                            }
-                            if (check) {
-                                ptm = conn.prepareStatement(INSERT_PAYMENTDETAIL);
-                                ptm.setDouble(1, trans.getAmount());
-                                ptm.setString(2, trans.getBankName());
-                                ptm.setBoolean(3, trans.isStatus());
-                                ptm.setString(4, date);
-                                ptm.setString(5, "");
-                                ptm.setString(6, trans.getTransactionID());
-                                check1 = ptm.executeUpdate() > 0;
-                            }
+                            int orderID = rs.getInt("orderID");
+                            ptm = conn.prepareStatement(INSERT_PAYMENTDETAIL);
+                            ptm.setDouble(1, trans.getAmount());
+                            ptm.setString(2, trans.getTransactionID());
+                            ptm.setInt(3, orderID);
+                            ptm.setString(4, trans.getBankName());
+                            ptm.setBoolean(5, trans.isStatus());
+                            ptm.setString(6, date);
+                            check1 = ptm.executeUpdate() > 0;
                         }
                     }
                 }
@@ -784,7 +782,7 @@ public class CourseDAO {
                 conn.close();
             }
         }
-        return check1;
+        return (check && check1);
     }
 
     public boolean updateCourse(String courseId, float price, String name, int duration, String datePublic) throws SQLException {
