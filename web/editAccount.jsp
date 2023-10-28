@@ -13,7 +13,7 @@
     <head>
 
         <meta charset="utf-8" />
-        <title>Profile Settings | Velzon - Admin & Dashboard Template</title>
+        <title>ArtCenter - Online Drawing Course</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="Themesbrand" name="author" />
@@ -39,6 +39,7 @@
         <link rel="stylesheet" href="assets/css/magnific-popup.css">
         <link rel="stylesheet" href="assets/css/flaticon.css">
         <link href="assets/css/main2.css" rel="stylesheet" type="text/css"/>
+        <link rel="shortcut icon" href="assets/images/art1.png" type="image/x-icon">
 
 
     </head>
@@ -77,17 +78,17 @@
 
 
             <!-- ~~~ Hero Section ~~~ -->
-            <section class="hero-section banner-overlay bg_img" data-img="../https://plus.unsplash.com/premium_photo-1673126682754-163189925db7?auto=format&fit=crop&q=80&w=1548&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+            <section class="hero-section banner-overlay bg_img" data-img="../assets/images/banner.png">
 
                 <div class="custom-container">
                     <div class="hero-content">
-                        <h1 class="title uppercase cl-white">Courses</h1>
+                        <h1 class="title uppercase cl-white">Account</h1>
                         <ul class="breadcrumb cl-white p-0 m-0" style="background-color: #e9ecef00">
                             <li>
                                 <a href="index.jsp">Home</a>
                             </li>
                             <li>
-                                Courses
+                                My Account
                             </li>
                         </ul>
                     </div>
@@ -259,6 +260,7 @@
 
 <!-- App js -->
 <script src="admin/assets/js/app.js"></script>
+
 </body>
 
 </html>
