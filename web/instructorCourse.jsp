@@ -35,7 +35,7 @@
         <style>
             .nav-bar{
                 width: 100vw;
-                background-color: rgba(59, 65, 66, 0.1);
+                background-color: white;
             }
             .banner-overlay::before {
                 left: 0;
