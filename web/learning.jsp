@@ -451,7 +451,7 @@
                 for (var i = 0; i < check2.length; i++) {
                     check2[i].style.visibility = "hidden";
                 }
-
+                
                 document.getElementById("finishedBtnID").style.backgroundColor = 'black';
                 document.getElementById("finishedBtnID").style.color = 'white';
                 document.getElementById("processedBtnID").style.backgroundColor = 'white';
