@@ -1,46 +1,48 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package controllers.userController;
+package controllers.order;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import users.UserDAO;
-import users.UserDTO;
+import order.VoucherDAO;
 
 /**
  *
  * @author TienToan
  */
-public class LoadUserController extends HttpServlet {
+public class ApplyVoucherController extends HttpServlet {
 
-    private static final String ERROR = "index.jsp";
-    private static final String SUCCESS = "editAccount.jsp";
-    
+    private static final String ERROR = "checkout.jsp";
+    private static final String SUCCESS = "checkout.jsp";
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String url = ERROR;
+
         try {
-            UserDAO dao = new UserDAO();
-            List<UserDTO> loadUserList = dao.loadUserList();
-            HttpSession session = request.getSession(true);
-            if (loadUserList.size() > 0) {
-                session.setAttribute("USER_LIST", loadUserList);
-                url = SUCCESS;
+            HttpSession session = request.getSession();
+            float total = Float.parseFloat(request.getParameter("total"));
+            String voucherCode = request.getParameter("voucherCode");
+            VoucherDAO vouDao = new VoucherDAO();
+            boolean checkExist = vouDao.checkDuplicatedVoucherCode(voucherCode);
+            if (checkExist) {
+                int discount = vouDao.checkVoucherCodeExist(voucherCode, total);
+                if (discount != 0) {
+                    session.setAttribute("DISCOUNT", discount);
+                } else {
+                    request.setAttribute("ERROR", "The code is expired!");
+                    session.setAttribute("DISCOUNT", 0);
+                }
             } else {
-                request.setAttribute("ERROR", "Your request is fail. Please try again!");
+                request.setAttribute("ERROR", "The code is not exist!");
+                session.setAttribute("DISCOUNT", 0);
             }
         } catch (Exception e) {
-            log("Error at LoadUserController: " + e.toString());
+            log("Error at ApplyVoucherController");
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }

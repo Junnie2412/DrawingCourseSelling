@@ -1,3 +1,4 @@
+<%@page import="cart.CartItemDAO"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="order.TransactionDTO"%>
 <%@page import="java.sql.Date"%>
@@ -47,6 +48,7 @@
                                 <div class="card-body checkout-tab">
                                     <%
                                         UserDTO user = (UserDTO) session.getAttribute("LOGIN_USER");
+                                        int totalInt = (int) session.getAttribute("total");
                                         //Begin process return from VNPAY
                                         Map fields = new HashMap();
                                         for (Enumeration params = request.getParameterNames(); params.hasMoreElements();) {
@@ -136,9 +138,9 @@
                                             </thead>
                                             <tbody>
                                                 <%
-                                                    float total = 0;
+                                                    
                                                     for (CourseDTO c : listCourseCheckout) {
-                                                        total += c.getPrice();
+                                                        
                                                 %>
                                                 <tr>
                                                     <td>
@@ -161,7 +163,7 @@
                                                     <th colspan="2">Total (VND) </th>
                                                     <td class="text-end">
                                                         <span class="fw-semibold">
-                                                            <%= total%>
+                                                            <%= totalInt%>
                                                         </span>
                                                     </td>
                                                 </tr>
@@ -181,7 +183,6 @@
                                             }
                                             boolean status = flag;
                                             //
-
                                             TransactionDTO trans = new TransactionDTO();
                                             trans.setTransactionID(transactionID);
                                             trans.setBankName(bankName);
@@ -189,13 +190,17 @@
                                             trans.setAmount(amount);
                                             //
                                             CourseDAO dao = new CourseDAO();
-                                            boolean check = dao.inserOrder(user, listCourseCheckout, trans);
+                                            boolean check = dao.inserOrder(user, listCourseCheckout, trans,totalInt);
                                             if (check) {
-                                            // cart clear
+                                                // cart clear
+                                                CartItemDAO cartDao = new CartItemDAO();
+                                                for (CourseDTO course : listCourseCheckout) {
+                                                    cartDao.removeCartItem(user.getAccountID(), course.getCourseID());
+                                                }
+
                                         %>
                                         <h1>OK ROI NE</h1>
-                                        <%
-                                            }
+                                        <%                                            }
                                         %>
                                     </div>
                                 </div>
