@@ -4,6 +4,10 @@
     Author     : HOANG DUNG
 --%>
 
+<%@page import="course.CourseDAO"%>
+<%@page import="learningCourse.LearningCourseDTO"%>
+<%@page import="java.util.List"%>
+<%@page import="learningCourse.LearningCourseDAO"%>
 <%@page import="users.UserDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -73,21 +77,26 @@
             .processedBtn{
                 margin-right: 30px;
             }
+            .showListCourse{
+                padding-left: 120px;
+                padding-right: 120px;
+            }
             .courseBox{
-                padding-left: 50px;
-                padding-right: 50px;
                 width: 100%;
                 display: flex;
                 align-items: center;
+                background-color: rgb(6,57,112);
             }
 
             .courseTitle{
+                color: white;
                 font-size: 25px;
                 font-weight: bold;
                 margin-bottom: 10px;   
             }
 
             .courseInstructor{
+                color: white;
                 font-size: 15px;
             }
 
@@ -192,16 +201,97 @@
                     padding: 12px 50px;
                 }
             }
-            
+
             .coursePicture img{
-                width: 200px; 
-                height: 200px;
+                height: 210px;
+                width: 210px;
                 margin-right: 50px;
             }
+            .learnBtn{
+                text-align: right;
+            }
+            .courseTitle{
+                margin-top: 10px;
+                margin-left: 50px;
+            }
+            .courseInstructor{
+                margin-left: 50px;
+            }
 
+            .coursePicture{
+                width: 15%;
+                padding-right: 20px;
+                background-color: white;
+            }
+            .courseContent{
+                width: 82%;
+            }
+            .description{
+                text-align: center;
+            }
+            .description button{
+                width: 90%;
+                margin-top: 20px;
+                margin-bottom: 20px;
+            }
+            .descriptBtn {
+                background-color: #fbeee0;
+                border: 2px solid #422800;
+                box-shadow: #422800 4px 4px 0 0;
+                color: #422800;
+                cursor: pointer;
+                display: inline-block;
+                font-weight: 600;
+                font-size: 18px;
+                padding: 0 18px;
+                line-height: 50px;
+                text-align: center;
+                text-decoration: none;
+                user-select: none;
+                -webkit-user-select: none;
+                touch-action: manipulation;
+            }
+
+            .descriptBtn:hover {
+                background-color: #fff;
+            }
+
+            .descriptBtn:active {
+                box-shadow: #422800 2px 2px 0 0;
+                transform: translate(2px, 2px);
+            }
+
+            @media (min-width: 768px) {
+                .descriptBtn {
+                    min-width: 120px;
+                    padding: 0 25px;
+                }
+            }
+            .learnBtn{
+                color: white;
+                margin-right: 40px;
+                margin-bottom: 10px;
+            }
+            .learnBtn a{
+                color: white;
+            }
+            .learnBtn a:hover{
+                color: rgb(234,182,118);
+            }
+            .showListCourseActive{
+                width: 100%;
+                max-height: 0;
+                padding-left: 70px;
+                padding-right: 70px;
+            }
+            .showListCourseNotActive{
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 70px;
+            }
         </style>
     </head>
-    <body>
+    <body onload="loadPage()">
         <div class="all-sections oh">
             <!-- ~~~ Loader & Go-Top ~~~ -->
             <div class="overlayer"></div>
@@ -263,60 +353,129 @@
                     <div class="title-courses">
                         <h3>My Courses</h3>
                     </div>
-                    <div class="showListCourse">
+
+                    <%
+                        LearningCourseDAO learningCourseDAO = new LearningCourseDAO();
+                        CourseDAO courseDAO = new CourseDAO();
+                        List<LearningCourseDTO> listActive = learningCourseDAO.getlistLearningCourseActive(loginUser.getAccountID());
+                        List<LearningCourseDTO> listNotActive = learningCourseDAO.getlistLearningCourseNotActive(loginUser.getAccountID());
+                    %>
+
+                    <%
+                        for (LearningCourseDTO learningCourse : listActive) {
+                    %>
+                    <div class="showListCourseActive active">
                         <div class="courseBox">
                             <div class="coursePicture">
-                                <img src="https://images.squarespace-cdn.com/content/v1/5c93cd28f8135a1ac9578e4e/1560090560832-BY2TPFF1S9VABD0OBXOC/Envisage_sketch_Drazil_Final_01.jpg">
+                                <img src="<%=courseDAO.getDescription(learningCourse.getCourseID()).getImage()%>">
                             </div>
                             <div class="courseContent">
                                 <div class="courseTitle">
-                                    Architecture Sketching
+                                    <%=courseDAO.getCourseByCourseID(learningCourse.getCourseID()).getName()%>
                                 </div>
                                 <div class="courseInstructor">
-                                    Nguyen Le Hoang Dung
+                                    <%=courseDAO.getAccount(learningCourse.getCourseID()).getFullName()%>
                                 </div>
-                                <div>
-                                    <button>Description</button>
+                                <div class="description">
+                                    <button class="descriptBtn" onclick="showDescription()">Description</button>
+                                    <p style="display: none">
+                                        <%=courseDAO.getDescription(learningCourse.getCourseID()).getContent()%>
+                                    </p>
                                 </div>
-                                <div>
-                                    <button type="button" class="btn-primary" href="course-learn.jsp">Learn</button>
+                                <div class="learnBtn">
+                                    <a href="course-learn.jsp?courseID=<%=learningCourse.getCourseID()%>">Learn <i class="fa fa-light fa-arrow-right"></i></a>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <%
+                        }
+                    %>
+
+                    <%
+                        for (LearningCourseDTO learningCourse : listNotActive) {
+                    %>
+                    <div class="showListCourseNotActive notActive">
+                        <div class="courseBox">
+                            <div class="coursePicture">
+                                <img src="<%=courseDAO.getDescription(learningCourse.getCourseID()).getImage()%>">
+                            </div>
+                            <div class="courseContent">
+                                <div class="courseTitle">
+                                    <%=courseDAO.getCourseByCourseID(learningCourse.getCourseID()).getName()%>
+                                </div>
+                                <div class="courseInstructor">
+                                    <%=courseDAO.getAccount(learningCourse.getCourseID()).getFullName()%>
+                                </div>
+                                <div class="description">
+                                    <button class="descriptBtn" onclick="showDescription()">Description</button>
+                                    <p style="display: none">
+                                        <%=courseDAO.getDescription(learningCourse.getCourseID()).getContent()%>
+                                    </p>
+                                </div>
+                                <div class="learnBtn">
+                                    <a href="course-learn.jsp?courseID=<%=learningCourse.getCourseID()%>">Get Certificate <i class="fa fa-light fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <%
+                        }
+                    %>
                 </div>
             </div>
             <%
                 }
             %>
-
-
-            <!-- ~~~ Footer Section ~~~ -->
-            <jsp:include page="layout/footer.jsp"/>
-            <!-- ~~~ Footer Section ~~~ -->
         </div>
 
         <script>
-            function changeFinishedBtn(){
-                var finishedBtn = document.getElementById("finishedBtnID");
-                var processedBtn = document.getElementById("processedBtnID");
-                
-                finishedBtn.style.backgroundColor = 'black';
-                finishedBtn.style.color = 'white';
-                processedBtn.style.backgroundColor = 'white';
-                processedBtn.style.color = 'black';
+            function loadPage() {
+                var check2 = document.getElementsByClassName("notActive");
+                for (var i = 0; i < check2.length; i++) {
+                    check2[i].style.visibility = "hidden";
+                }
             }
-            
-            function changeProcessedBtn(){
-                var finishedBtn = document.getElementById("finishedBtnID");
-                var processedBtn = document.getElementById("processedBtnID");
-                
-                finishedBtn.style.backgroundColor = 'white';
-                finishedBtn.style.color = 'black';
-                processedBtn.style.backgroundColor = 'black';
-                processedBtn.style.color = 'white';
+
+            function changeFinishedBtn() {
+                var check1 = document.getElementsByClassName("notActive");
+                for (var i = 0; i < check1.length; i++) {
+                    check1[i].style.visibility = "visible";
+                }
+
+                var check2 = document.getElementsByClassName("active");
+                for (var i = 0; i < check2.length; i++) {
+                    check2[i].style.visibility = "hidden";
+                }
+
+                document.getElementById("finishedBtnID").style.backgroundColor = 'black';
+                document.getElementById("finishedBtnID").style.color = 'white';
+                document.getElementById("processedBtnID").style.backgroundColor = 'white';
+                document.getElementById("processedBtnID").style.color = 'black';
+
             }
-            
+
+            function changeProcessedBtn() {
+                var check1 = document.getElementsByClassName("active");
+                for (var i = 0; i < check1.length; i++) {
+                    check1[i].style.visibility = "visible";
+                }
+
+                var check2 = document.getElementsByClassName("notActive");
+                for (var i = 0; i < check2.length; i++) {
+                    check2[i].style.visibility = "hidden";
+                }
+
+                document.getElementById("finishedBtnID").style.backgroundColor = 'white';
+                document.getElementById("finishedBtnID").style.color = 'black';
+                document.getElementById("processedBtnID").style.backgroundColor = 'black';
+                document.getElementById("processedBtnID").style.color = 'white';
+            }
+
         </script>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"></script>

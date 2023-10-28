@@ -24,10 +24,11 @@ import utils.DBUtil;
  */
 public class LearningCourseDAO {
 
-    private static final String GET_ALL_LEARNING_COURSE = "SELECT * FROM tblLearningCourse WHERE courseID=? AND accountID=?";
+    private static final String GET_ALL_LEARNING_COURSE_ACTIVE = "SELECT * FROM tblLearningCourse WHERE accountID=? AND isLearning=1";
+    private static final String GET_ALL_LEARNING_COURSE_NOT_ACTIVE = "SELECT * FROM tblLearningCourse WHERE accountID=? AND isLearning=0";
     private static final String CREATE_LEARNING_COURSE = "INSERT INTO tblLearningCourse(isLearning, expiredDay, courseID, accountID) VALUES(?,?,?,?)";
 
-    public List<LearningCourseDTO> getlistLearningCourse(String courseID, String accountID) throws ClassNotFoundException, SQLException {
+    public List<LearningCourseDTO> getlistLearningCourseActive(String accountID) throws ClassNotFoundException, SQLException {
         List<LearningCourseDTO> list = new ArrayList<>();
         Connection conn = null;
         ResultSet rs = null;
@@ -36,15 +37,55 @@ public class LearningCourseDAO {
         try {
             conn = DBUtil.getConnection();
             if (conn != null) {
-                ptm = conn.prepareStatement(GET_ALL_LEARNING_COURSE);
-                ptm.setString(1, courseID);
-                ptm.setString(2, accountID);
+                ptm = conn.prepareStatement(GET_ALL_LEARNING_COURSE_ACTIVE);
+                ptm.setString(1, accountID);
                 rs = ptm.executeQuery();
                 while (rs.next()) {
                     
                     int learningCourseID = rs.getInt("learningCourseID");
                     boolean isLearning = rs.getBoolean("isLearning");
                     Date expiredDay = rs.getDate("expiredDay");
+                    String courseID = rs.getString("courseID");
+
+                    list.add(new LearningCourseDTO(learningCourseID, isLearning, expiredDay, courseID, accountID));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+
+        return list;
+    }
+    
+    public List<LearningCourseDTO> getlistLearningCourseNotActive(String accountID) throws ClassNotFoundException, SQLException {
+        List<LearningCourseDTO> list = new ArrayList<>();
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement ptm = null;
+
+        try {
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(GET_ALL_LEARNING_COURSE_NOT_ACTIVE);
+                ptm.setString(1, accountID);
+                rs = ptm.executeQuery();
+                while (rs.next()) {
+                    
+                    int learningCourseID = rs.getInt("learningCourseID");
+                    boolean isLearning = rs.getBoolean("isLearning");
+                    Date expiredDay = rs.getDate("expiredDay");
+                    String courseID = rs.getString("courseID");
 
                     list.add(new LearningCourseDTO(learningCourseID, isLearning, expiredDay, courseID, accountID));
                 }
