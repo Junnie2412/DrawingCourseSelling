@@ -22,7 +22,7 @@ import utils.DBUtil;
  */
 public class CourseDAO {
 
-    private static final String SEARCH_COURSE_NAME = "SELECT * FROM tblCourse WHERE name like ? and accountID = ?";
+    private static final String SEARCH_COURSE_NAME = "SELECT * FROM tblCourse WHERE name like ? ";
     private static final String CREATE_VIDEO = "INSERT INTO tblVideo(content, time, isActive, lessonID) VALUES(?,?,?,?)";
     private static final String CREATE_LESSON = "INSERT INTO tblLesson(title, description, moduleID) VALUES(?,?,?)";
     private static final String CREATE_MODULE = "INSERT INTO tblModule(title,courseID) VALUES(?,?)";
@@ -51,7 +51,7 @@ public class CourseDAO {
     private static final String UPDATE_COURSE = "update tblCourse set price = ?, name = ?, duration = ?, datePublic = ? where courseID = ?";
     private static final String GET_COURSE_BY_COURSEID = "SELECT courseID, price, name, duration, isActive, datePublic, accountID, descriptionID FROM tblCourse WHERE courseID = ? ";
 
-    public List<CourseDTO> getlistCourse(String search, String accountId) throws ClassNotFoundException, SQLException {
+    public List<CourseDTO> getlistCourse(String search) throws ClassNotFoundException, SQLException {
         List<CourseDTO> list = new ArrayList<>();
         Connection conn = null;
         ResultSet rs = null;
@@ -62,7 +62,6 @@ public class CourseDAO {
             if (conn != null) {
                 ptm = conn.prepareStatement(SEARCH_COURSE_NAME);
                 ptm.setString(1, "%" + search + "%");
-                ptm.setString(2, accountId);
                 rs = ptm.executeQuery();
                 while (rs.next()) {
                     String courseID = rs.getString("courseID");

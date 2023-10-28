@@ -100,11 +100,11 @@
 
             <!-- ~~~ SEARCH by name ~~~ -->
             <%
-    UserDTO loginUser = (UserDTO) session.getAttribute(("LOGIN_USER"));
-    if (loginUser == null) {
-        loginUser = new UserDTO();
-    }
-%>
+                UserDTO loginUser = (UserDTO) session.getAttribute(("LOGIN_USER"));
+                if (loginUser == null) {
+                    loginUser = new UserDTO();
+                }
+            %>
             <%
                 CourseDAO courseDAO = new CourseDAO();
                 CourseFeedbackDAO courseFeedbackDAO = new CourseFeedbackDAO();

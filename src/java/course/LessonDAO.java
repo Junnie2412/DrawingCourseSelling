@@ -16,11 +16,48 @@ import utils.DBUtil;
 public class LessonDAO {
 
     private static final String LASTEST_LESSON = "SELECT TOP 1 * FROM tblLesson ORDER BY lessonID DESC";
-
+    private static final String GET_LESSON_BY_LESSONID = "SELECT * FROM tblLesson WHERE lessonID = ? ";
     private static final String TOTAL_LESSONS = "SELECT COUNT(tblLesson.lessonID) AS totalLessons FROM tblCourse JOIN tblModule ON tblCourse.courseID = tblModule.courseID JOIN tblLesson ON tblModule.moduleID = tblLesson.moduleID WHERE tblCourse.courseID = ? ";
     private static final String LESSON_OF_MODULE = "select * from tblLesson where moduleID = ?";
     private static final String CREATE_LESSON = "insert into tblLesson(title, description, moduleID) values(?,?,?)";
 
+    public LessonDTO getLessonByLessonId(int lessonId) throws SQLException {
+        LessonDTO lesson = null;
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement ptm = null;
+
+        try {
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(GET_LESSON_BY_LESSONID);
+                ptm.setInt(1, lessonId);
+                rs = ptm.executeQuery();
+                while (rs.next()) {
+                    int lessonID = rs.getInt("lessonID");
+                    String title = rs.getString("title");
+                    String description = rs.getString("description");
+                    int moduleID = rs.getInt("moduleID");
+                    
+                    lesson = new LessonDTO(lessonID, title, description, moduleID);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return lesson;
+    }
+    
     public LessonDTO getLastestLesson() throws SQLException {
         LessonDTO lesson = null;
         Connection conn = null;

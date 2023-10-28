@@ -1,3 +1,11 @@
+<%@page import="course.VideoDAO"%>
+<%@page import="course.LessonDTO"%>
+<%@page import="course.ModuleDTO"%>
+<%@page import="java.util.List"%>
+<%@page import="course.LessonDAO"%>
+<%@page import="course.ModuleDAO"%>
+<%@page import="course.CourseDTO"%>
+<%@page import="course.CourseDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -32,6 +40,18 @@
     </head>
     <body>
         <jsp:include page="layout/header.jsp"/>
+        
+        <% 
+            CourseDAO courseDAO = new CourseDAO();
+//        String courseID = request.getParameter("courseID");
+            String courseID = "vector1";
+            CourseDTO course = courseDAO.getCourseByCourseID(courseID);
+            ModuleDAO moduleDAO = new ModuleDAO();
+            int countModule = 0;
+            LessonDAO lessonDAO = new LessonDAO();
+            int countLesson = 0;
+            VideoDAO videoDAO = new VideoDAO();
+        %>
         <div style="min-height: 100vh;">
             <div style="height: 60px; background-color: wheat">
 
@@ -39,79 +59,63 @@
             <div class="row" style="width: 101%;">
                 <div class="col-3" style="min-height: calc(100vh - 60px); border-right: 1px solid #ccc; padding-right: 0;">
                     <div style="padding: 1rem .5rem;">
-                        <h3>Course name</h3>
+                        <h3><%= course.getName() %></h3>
                     </div>
                     <div id="accordion">
+                    <%  
+                        List<ModuleDTO> listModule = moduleDAO.getModulesByCourseId(courseID);         
+                        if (listModule != null) {
+                                if (listModule.size() > 0) {
+                                    for (ModuleDTO module : listModule) {
+                                        countModule++;
+                    %>
                         <div class="card" style="border-radius: 0;">
                             <div class="card-header" id="headingOne" style="padding: 0;">
-                                <button style="width: 100%; height: 100%; padding: 1rem;" class="btn" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
-                                    Module 1
+                                <button style="width: 100%; height: 100%; padding: 1rem;" class="btn" data-toggle="collapse" data-target="#collapse<%= countModule %>" aria-expanded="true" aria-controls="collapse<%= countModule %>">
+                                    <%= module.getTitle() %>
                                 </button>
                             </div>
 
-                            <div id="collapse1" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                            <div id="collapse<%= countModule %>" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                            <%   
+                                List<LessonDTO> listLesson = lessonDAO.getLessonByModuleId(module.getModuleID());                                
+                                if (listLesson != null) {
+                                        if (listLesson.size() > 0) {
+                                            for (LessonDTO lesson : listLesson) {
+                                                countLesson++;
+                            %>     
                                 <div class="lesson">
                                     <span data-toggle="collapse" data-target="#lesson1-content">
-                                        lesson l
+                                        <%= lesson.getTitle() %>
                                     </span>
                                     <span>
                                         &#10140;
                                     </span>
                                 </div>
-
-                                
-                                <div class="lesson">
-                                    <span>
-                                        Lesson 2
-                                    </span>                                        
-                                    <span>
-                                        &#10140;
-                                    </span>
-                                </div>
-                                <div class="lesson">
-                                    <span>
-                                        Lesson 3
-                                    </span>                                        
-                                    <span>
-                                        &#10140;
-                                    </span>
-                                </div>
+                            <%
+                                        }
+                                    }
+                                }
+                            %>    
                             </div>
                         </div>
-                        <div class="card" style="border-radius: 0;">
-                            <div class="card-header" id="headingTwo" style="padding: 0;">
-                                <button style="width: 100%; height: 100%; padding: 1rem;" class="btn" data-toggle="collapse" data-target="#collapse2" aria-expanded="true" aria-controls="collapse2">
-                                    Module 2
-                                </button>
-                            </div>
-
-                            <div id="collapse2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                                <div class="lesson">
-                                    <span>
-                                        Lesson 1
-                                    </span>                                        
-                                    <span>
-                                        &#10140;
-                                    </span>
-                                </div>
-                                <div class="lesson">
-                                    <span>
-                                        Lesson 2
-                                    </span>                                        
-                                    <span>
-                                        &#10140;
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
+                    <%
+                                }
+                            }
+                        }
+                    %>
+                        
                     </div>
                 </div>
                 <div class="col-9" style="padding: 0;">
+                <%         
+                    LessonDTO lesson = lessonDAO.getLastestLesson();
+                %>    
                     <div style="padding: 1rem .5rem 1rem 2rem;">
-                        <h3>Name lesson</h3>
+                        <h3><%= lesson.getTitle() %></h3>
                     </div>
-                    <div class="d-flex justify-content-center align-items-center" style="height: 400px; background-color: #24C6DC">
-                        video
+                    <div class="d-flex justify-content-center align-items-center" style="height: 468px; background-color: #00000">
+                        <iframe width="805" height="468" src="<%= videoDAO.getVideoByLessonId(lesson.getLessonID()).getContent() %>?rel=0" frameborder="0" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>

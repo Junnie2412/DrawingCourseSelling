@@ -37,14 +37,11 @@ public class SearchController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String url = ERROR;
-        
-        HttpSession session = request.getSession();
-        UserDTO user = (UserDTO)session.getAttribute("USER_LOGIN");
-        
+         
         try{
             String search = request.getParameter("searchName");
             CourseDAO dao = new CourseDAO();
-            List<CourseDTO> listCourse = dao.getlistCourse(search, user.getAccountID());
+            List<CourseDTO> listCourse = dao.getlistCourse(search);
             if(listCourse.size() > 0){
                 request.setAttribute("LIST_COURSE", listCourse);
                 url = SUCCESS;
