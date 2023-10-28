@@ -104,4 +104,4 @@ update tblVideo set content = 'https://www.youtube.com/embed/23udufdFaQ0' where 
 update tblVideo set content = 'https://www.youtube.com/embed/1GoZC30hq50' where  videoID = 103
 update tblVideo set content = 'https://www.youtube.com/embed/ZgKmr2HF1WQ' where  videoID = 104
 
-
+update tblAccount set image = 'https://mythuatbui.edu.vn/wp-content/uploads/2018/10/50850119_140559256955461_1464493657917751296_n-Tuy%E1%BA%BFn-%C4%90o%C3%A0n-Th%E1%BB%8B.jpg' where accountID = 'baovi90'
