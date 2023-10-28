@@ -13,7 +13,7 @@
     <head>
 
         <meta charset="utf-8" />
-        <title>Profile Settings | Velzon - Admin & Dashboard Template</title>
+        <title>ArtCenter - Online Drawing Course</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="Themesbrand" name="author" />
@@ -39,6 +39,7 @@
         <link rel="stylesheet" href="assets/css/magnific-popup.css">
         <link rel="stylesheet" href="assets/css/flaticon.css">
         <link href="assets/css/main2.css" rel="stylesheet" type="text/css"/>
+        <link rel="shortcut icon" href="assets/images/art1.png" type="image/x-icon">
 
 
     </head>
@@ -77,17 +78,17 @@
 
 
             <!-- ~~~ Hero Section ~~~ -->
-            <section class="hero-section banner-overlay bg_img" data-img="https://images.unsplash.com/photo-1459908676235-d5f02a50184b?auto=format&fit=crop&q=80&w=1470&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+            <section class="hero-section banner-overlay bg_img" data-img="../assets/images/banner.png">
 
                 <div class="custom-container">
                     <div class="hero-content">
-                        <h1 class="title uppercase cl-white">Courses</h1>
+                        <h1 class="title uppercase cl-white">Account</h1>
                         <ul class="breadcrumb cl-white p-0 m-0" style="background-color: #e9ecef00">
                             <li>
                                 <a href="index.jsp">Home</a>
                             </li>
                             <li>
-                                Courses
+                                My Account
                             </li>
                         </ul>
                     </div>
@@ -251,8 +252,24 @@
         <!-- profile-setting init js -->
         <script src="admin/assets/js/pages/profile-setting.init.js"></script>
 
-        <!-- App js -->
-        <script src="admin/assets/js/app.js"></script>
-    </body>
+
+
+        
+
+<!-- JAVASCRIPT -->
+<script src="admin/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="admin/assets/libs/simplebar/simplebar.min.js"></script>
+<script src="admin/assets/libs/node-waves/waves.min.js"></script>
+<script src="admin/assets/libs/feather-icons/feather.min.js"></script>
+<script src="admin/assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
+<script src="admin/assets/js/plugins.js"></script>
+
+<!-- profile-setting init js -->
+<script src="admin/assets/js/pages/profile-setting.init.js"></script>
+
+<!-- App js -->
+<script src="admin/assets/js/app.js"></script>
+
+</body>
 
 </html>
