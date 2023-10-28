@@ -7,12 +7,6 @@
 <!DOCTYPE html>
 <%@page import="users.UserDTO"%>
 <html lang="en">
-    <%
-
-        UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
-        boolean loggedIn = (loginUser != null);
-    %>
-
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -109,7 +103,12 @@
 
     <body>
 
+        <%
 
+            UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
+            if(loginUser == null)
+                loginUser = new UserDTO();
+        %>
 
         <div class="all-sections">
             <!-- ~~~ Loader & Go-Top ~~~ -->
@@ -139,19 +138,19 @@
                             <%
                                 if (loginUser.getRole() == "") {
                             %>
-                                <a href="courses.jsp" class=" btn-md btn-viewCourse slide_right">VIEW COURSES <i class="fas fa-play-circle"></i></a>
-                                <a href="signup.jsp" class="btn-createAccount slide_right2 btn-md theme-one">CREATE YOUR ACCOUNT <i class="flaticon-tap-1"></i></a>
-                            <%
+                            <a href="courses.jsp" class=" btn-md btn-viewCourse slide_right">VIEW COURSES <i class="fas fa-play-circle"></i></a>
+                            <a href="signup.jsp" class="btn-createAccount slide_right2 btn-md theme-one">CREATE YOUR ACCOUNT <i class="flaticon-tap-1"></i></a>
+                                <%
                                 } else if (loginUser.getRole().equals("Customer")) {
-                            %>
-                                <a href="learning.jsp" class=" btn-md btn-viewCourse slide_right"><span style="text-align: center;">LEARNING</span> <i class="fa fa-book" aria-hidden="true"></i></a>
-                            <%
-                                }else if(loginUser.getRole().equals("Instructor")){
-                            %>
-                                <a href="courses.jsp" class=" btn-md btn-viewCourse slide_right">VIEW COURSES <i class="fas fa-play-circle"></i></a>
-                            <%
-                                }
-                            %>
+                                %>
+                            <a href="learning.jsp" class=" btn-md btn-viewCourse slide_right"><span style="text-align: center;">LEARNING</span> <i class="fa fa-book" aria-hidden="true"></i></a>
+                                <%
+                                } else if (loginUser.getRole().equals("Instructor")) {
+                                %>
+                            <a href="courses.jsp" class=" btn-md btn-viewCourse slide_right">VIEW COURSES <i class="fas fa-play-circle"></i></a>
+                                <%
+                                    }
+                                %>
                         </div>
                     </div>
                 </div>
