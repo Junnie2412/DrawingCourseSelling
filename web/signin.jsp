@@ -47,7 +47,7 @@
                             <div class="text-center mt-sm-5 mb-4 text-white-50">
                                 <div>
                                     <a href="index.jsp" class="d-inline-block auth-logo">
-                                        <img src="admin/assets/images/logomain.png" alt="logo" height="90">
+                                        <img src="admin/assets/images/art1.png" alt="logo" height="90">
                                     </a>
 
                                 </div>

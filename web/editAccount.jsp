@@ -42,10 +42,19 @@
 
 
     </head>
+    <style>
+        .nav-bar {
+    height: 100px; 
+    width: 1600px;
+}
+    </style>
 
 
 
     <body>
+        
+        
+        
         <%
             UserDTO loginUser = (UserDTO) session.getAttribute(("LOGIN_USER"));
             if (loginUser == null) {
@@ -62,26 +71,29 @@
             </span>
             <!-- ~~~ Loader & Go-Top ~~~ -->
 
-
-            <jsp:include page="layout/header.jsp"/>
+<div class="nav-bar">
+                <jsp:include page="layout/header.jsp"/>
+            </div>
 
 
             <!-- ~~~ Hero Section ~~~ -->
-            <section class="hero-section banner-overlay bg_img" data-img="assets/images/banner/banner.png">
+            <section class="hero-section banner-overlay bg_img" data-img="../https://plus.unsplash.com/premium_photo-1673126682754-163189925db7?auto=format&fit=crop&q=80&w=1548&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+
                 <div class="custom-container">
                     <div class="hero-content">
-                        <h1 class="title uppercase cl-white">Account edit</h1>
+                        <h1 class="title uppercase cl-white">Courses</h1>
                         <ul class="breadcrumb cl-white p-0 m-0" style="background-color: #e9ecef00">
                             <li>
                                 <a href="index.jsp">Home</a>
                             </li>
                             <li>
-
+                                Courses
                             </li>
                         </ul>
                     </div>
                 </div>
             </section>
+            
 
 
 
@@ -203,35 +215,36 @@
                                             
                                         </div>
                                         <!--end tab-pane-->
-                                                                                    </div>
-                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--end col-->
+                        </div>
+                        <!--end row-->
+
                     </div>
-                </div>
+                    </div>
+                    <!-- container-fluid -->
+                </div><!-- End Page-content -->
 
-                <!--end col-->
+
             </div>
-            <!--end row-->
-
-        </div>
-        <!-- container-fluid -->
-    </div><!-- End Page-content -->
+            <!-- end main content-->
 
 
-</div>
-<!-- end main content-->
+            <!-- END layout-wrapper -->
 
+            <jsp:include page="layout/footer.jsp"/>
 
-<!-- END layout-wrapper -->
-
-<jsp:include page="layout/footer.jsp"/>
-
-<!--start back-to-top-->
+            <!--start back-to-top-->
 
 
 
 
 
-</div>
+        
 
 <!-- JAVASCRIPT -->
 <script src="admin/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
