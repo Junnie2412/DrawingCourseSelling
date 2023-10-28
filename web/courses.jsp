@@ -175,7 +175,12 @@
             <%
                 }
             %>
-                </div>
+                        <div class="text-center">    
+                            <p class="mb-0 text-muted">
+                                This is all of results.
+                            </p>
+                        </div>
+                    </div>    
                 </div>
             </section>
             <%
