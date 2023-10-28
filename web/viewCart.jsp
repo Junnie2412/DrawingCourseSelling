@@ -346,6 +346,10 @@
             </div>
         </div>
 
+        <!-- ~~~ Footer Section ~~~ -->
+        <jsp:include page="layout/footer.jsp"/>
+        <!-- ~~~ Footer Section ~~~ -->
+        
         <script>
 
             function loadPage() {
