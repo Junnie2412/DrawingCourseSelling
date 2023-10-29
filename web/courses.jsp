@@ -167,8 +167,8 @@
                                                     %>
                                                 <span>(<%= courseFeedbackDAO.getAverageRate(course.getCourseID())%>/5.00)</span>
                                             </div>
-                                            <div class="price cl-1">
-                                                <%= course.getPrice()%>đ
+                                            <div class="price cl-1"><input type="hidden" name="price" value="<%=course.getPrice()%>">
+                                                <span name="priceValue"></span> VND
                                             </div>
                                         </div>
                                     </div>
@@ -185,6 +185,23 @@
                         </div>
                     </div>    
                 </div>
+                <div> 
+
+
+                    <%
+                        if (loginUser.getRole().equals("Instructor")) {
+                    %>
+                    <div class="text-center load-more mt-5">
+                        <a href="instructorCourse.jsp" class="custom-button theme-one">Turn back to manager courses  <i class="fas fa-angle-right"></i></a>
+                    </div>    
+                    <% } else {
+                    %>  
+                    <div class="text-center load-more mt-5">
+                        <a href="courses.jsp" class="custom-button theme-one">load more courses <i class="fas fa-angle-right"></i></a>
+                    </div>    
+                    <% }%>
+
+                </div>
             </section>
             <%
                 }
@@ -199,6 +216,65 @@
                     <img src="assets/images/course/course-bottom-shape.png" alt="course">
                 </div>
                 <div class="container">
+                    <div class="user-info dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Filter
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="userDropdown">
+                            <div class="column">
+                                <p>Filter by Price:</p>
+                                <div class="dropdown-item">
+
+                                    <form action="MainController?action=FilterByPrice" method="POST">
+                                        <input type="hidden" value="Under-300000" name="priceFilter"/>
+                                        <input type="submit" value="Under-300000">
+                                    </form>
+                                </div>
+                                <div class="dropdown-item">
+                                    <form action="MainController?action=FilterByPrice" method="POST">
+                                        <input type="hidden" value="Above-300000" name="priceFilter"/>
+                                        <input type="submit" value="Above-300000">
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <p>Filter by Type:</p>
+                                <div class="dropdown-item">
+                                    <form action="MainController?action=FilterByType" method="POST">
+                                        <input type="hidden" value="Digital" name="typeFilter"/>
+                                        <input type="submit" value="Digital">
+                                    </form>
+                                </div>
+                                <div class="dropdown-item">
+                                    <form action="MainController?action=FilterByType" method="POST">
+                                        <input type="hidden" value="Traditional" name="typeFilter"/>
+                                        <input type="submit" value="Traditional">
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <p>Filter by Level:</p>
+                                <form action="MainController?action=FilterByLevel" method="POST">
+                                    <div class="dropdown-item">
+                                        <input type="hidden" value="Basic" name="levelFilter"/>
+                                        <input type="submit" value="Basic">
+                                    </div>
+                                </form>
+                                <form action="MainController?action=FilterByLevel" method="POST">
+                                    <div class="dropdown-item">
+                                        <input type="hidden" value="Intermediate" name="levelFilter"/>
+                                        <input type="submit" value="Intermediate">
+                                    </div>
+                                </form>
+                                <form action="MainController?action=FilterByLevel" method="POST">
+                                    <div class="dropdown-item">
+                                        <input type="hidden" value="Advanced" name="levelFilter"/>
+                                        <input type="submit" value="Advanced">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                     <div class="row justify-content-center mb-30-none">
                         <%            for (CourseDTO course : listCourseFilter) {
                         %>
@@ -247,8 +323,8 @@
                                                     %>
                                                 <span>(<%= courseFeedbackDAO.getAverageRate(course.getCourseID())%>/5.00)</span>
                                             </div>
-                                            <div class="price cl-1">
-                                                <%= course.getPrice()%>đ
+                                            <div class="price cl-1"><input type="hidden" name="price" value="<%=course.getPrice()%>">
+                                                <span name="priceValue"></span> VND
                                             </div>
                                         </div>
                                     </div>
@@ -264,6 +340,23 @@
                             </p>
                         </div>
                     </div>    
+                </div>
+                <div> 
+
+
+                    <%
+                        if (loginUser.getRole().equals("Instructor")) {
+                    %>
+                    <div class="text-center load-more mt-5">
+                        <a href="instructorCourse.jsp" class="custom-button theme-one">Turn back to manager courses  <i class="fas fa-angle-right"></i></a>
+                    </div>    
+                    <% } else {
+                    %>  
+                    <div class="text-center load-more mt-5">
+                        <a href="courses.jsp" class="custom-button theme-one">load more courses <i class="fas fa-angle-right"></i></a>
+                    </div>    
+                    <% }%>
+
                 </div>
             </section>
             <%
@@ -311,58 +404,52 @@
                             Filter
                         </a>
                         <div class="dropdown-menu" aria-labelledby="userDropdown">
-
                             <div class="column">
-<!--                                <form action="MainController?action=FilterByPrice" method="POST">-->
-                                    <p>Filter by Price:</p>
-                                    <div class="dropdown-item">
-                                        
-                                        <form action="MainController?action=FilterByPrice" method="POST">
+                                <p>Filter by Price:</p>
+                                <div class="dropdown-item">
+
+                                    <form action="MainController?action=FilterByPrice" method="POST">
                                         <input type="hidden" value="Under-300000" name="priceFilter"/>
                                         <input type="submit" value="Under-300000">
-                                        </form>
-                                    </div>
-                                    <div class="dropdown-item">
-                                       <form action="MainController?action=FilterByPrice" method="POST">
+                                    </form>
+                                </div>
+                                <div class="dropdown-item">
+                                    <form action="MainController?action=FilterByPrice" method="POST">
                                         <input type="hidden" value="Above-300000" name="priceFilter"/>
                                         <input type="submit" value="Above-300000">
-                                        </form>
-                                    </div>
-                                <!--</form>-->
+                                    </form>
+                                </div>
                             </div>
                             <div class="column">
-<!--                                <form action="MainController?action=FilterByType" method="POST">-->
-                                    <p>Filter by Type:</p>
-                                    <div class="dropdown-item">
-                                        <form action="MainController?action=FilterByType" method="POST">
+                                <p>Filter by Type:</p>
+                                <div class="dropdown-item">
+                                    <form action="MainController?action=FilterByType" method="POST">
                                         <input type="hidden" value="Digital" name="typeFilter"/>
                                         <input type="submit" value="Digital">
-                                        </form>
-                                    </div>
-                                    <div class="dropdown-item">
-                                        <form action="MainController?action=FilterByType" method="POST">
+                                    </form>
+                                </div>
+                                <div class="dropdown-item">
+                                    <form action="MainController?action=FilterByType" method="POST">
                                         <input type="hidden" value="Traditional" name="typeFilter"/>
                                         <input type="submit" value="Traditional">
-                                        </form>
-                                    </div>
-                                <!--</form>-->
+                                    </form>
+                                </div>
                             </div>
                             <div class="column">
-<!--                                <form action="MainController?action=FilterByLevel" method="POST">-->
-                                    <p>Filter by Level:</p>
-                                    <form action="MainController?action=FilterByLevel" method="POST">
+                                <p>Filter by Level:</p>
+                                <form action="MainController?action=FilterByLevel" method="POST">
                                     <div class="dropdown-item">
                                         <input type="hidden" value="Basic" name="levelFilter"/>
                                         <input type="submit" value="Basic">
                                     </div>
-                                    </form>
-                                    <form action="MainController?action=FilterByLevel" method="POST">
+                                </form>
+                                <form action="MainController?action=FilterByLevel" method="POST">
                                     <div class="dropdown-item">
                                         <input type="hidden" value="Intermediate" name="levelFilter"/>
                                         <input type="submit" value="Intermediate">
                                     </div>
-                                    </form>
-                                    <form action="MainController?action=FilterByLevel" method="POST">
+                                </form>
+                                <form action="MainController?action=FilterByLevel" method="POST">
                                     <div class="dropdown-item">
                                         <input type="hidden" value="Advanced" name="levelFilter"/>
                                         <input type="submit" value="Advanced">
@@ -458,48 +545,47 @@
                     <% }%>
 
                 </div>
+            </section>
+            <%
+                }
+            %>                
+            <!-- ~~~ Course Section ~~~ -->
+
+
+            <!-- ~~~ Footer Section ~~~ -->
+            <jsp:include page="layout/footer.jsp"/>
+            <!-- ~~~ Footer Section ~~~ -->
         </div>
-    </section>
-    <%
-        }
-    %>                
-    <!-- ~~~ Course Section ~~~ -->
 
+        <script>
+            function loadPage() {
 
-    <!-- ~~~ Footer Section ~~~ -->
-    <jsp:include page="layout/footer.jsp"/>
-    <!-- ~~~ Footer Section ~~~ -->
-</div>
+                var input = document.getElementsByName("price");
+                var tmp1 = 0;
+                for (var i = 0; i < input.length; i++) {
+                    tmp1 = parseFloat(input[i].value);
+                    document.getElementsByName("priceValue")[i].innerHTML = Intl.NumberFormat().format(tmp1.toFixed(3));
+                }
+            }
+        </script>
 
-<script>
-    function loadPage() {
+        <script data-cfasync="false" src="../../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/jquery-3.6.0.min.js"></script>
 
-        var input = document.getElementsByName("price");
-        var tmp1 = 0;
-        for (var i = 0; i < input.length; i++) {
-            tmp1 = parseFloat(input[i].value);
-            document.getElementsByName("priceValue")[i].innerHTML = Intl.NumberFormat().format(tmp1.toFixed(3));
-        }
-    }
-</script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/isotope.pkgd.min.js"></script>
+        <script src="assets/js/magnific-popup.min.js"></script>
 
-<script data-cfasync="false" src="../../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/jquery-3.6.0.min.js"></script>
+        <script src="assets/js/odometer.min.js"></script>
+        <script src="assets/js/viewport.jquery.js"></script>
+        <script src="assets/js/nice-select.js"></script>
+        <script src="assets/js/owl.min.js"></script>
+        <script src="assets/js/main.js"></script>
+        <script src="assets/js/odometer.min.js"></script>
+        <script src="assets/js/viewport.jquery.js"></script>
+        <script src="assets/js/nice-select.js"></script>
+        <script src="assets/js/owl.min.js"></script>
+        <script src="assets/js/main.js"></script>
 
-<script src="assets/js/bootstrap.min.js"></script>
-<script src="assets/js/isotope.pkgd.min.js"></script>
-<script src="assets/js/magnific-popup.min.js"></script>
-
-<script src="assets/js/odometer.min.js"></script>
-<script src="assets/js/viewport.jquery.js"></script>
-<script src="assets/js/nice-select.js"></script>
-<script src="assets/js/owl.min.js"></script>
-<script src="assets/js/main.js"></script>
-<script src="assets/js/odometer.min.js"></script>
-<script src="assets/js/viewport.jquery.js"></script>
-<script src="assets/js/nice-select.js"></script>
-<script src="assets/js/owl.min.js"></script>
-<script src="assets/js/main.js"></script>
-
-</body>
+    </body>
 
 </html>
