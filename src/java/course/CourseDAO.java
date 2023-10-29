@@ -22,7 +22,7 @@ import utils.DBUtil;
  */
 public class CourseDAO {
 
-    private static final String SEARCH_COURSE_NAME = "SELECT * FROM tblCourse WHERE name like ? and accountID = ?";
+    private static final String SEARCH_COURSE_NAME = "SELECT * FROM tblCourse WHERE isActive = '1' AND name like ? ";
     private static final String CREATE_VIDEO = "INSERT INTO tblVideo(content, time, isActive, lessonID) VALUES(?,?,?,?)";
     private static final String CREATE_LESSON = "INSERT INTO tblLesson(title, description, moduleID) VALUES(?,?,?)";
     private static final String CREATE_MODULE = "INSERT INTO tblModule(title,courseID) VALUES(?,?)";
@@ -31,10 +31,12 @@ public class CourseDAO {
 
     private static final String GET_ACCOUNT_BY_COURSEID = "SELECT * FROM tblAccount WHERE accountID = (SELECT accountID FROM tblCourse WHERE courseID = ?)";
     private static final String GET_DESCRIPTION_BY_COURSEID = "SELECT * FROM tblDescription WHERE descriptionID = (SELECT descriptionID FROM tblCourse WHERE courseID = ?)";
-    private static final String GET_ALL_COURSE = "SELECT * FROM tblCourse";
-    private static final String FILTER_COURSE_BY_LEVEL = "SELECT * FROM tblCourse WHERE level = ?";
-    private static final String FILTER_COURSE_BY_TYPE = "SELECT * FROM tblCourse WHERE type = ?";
-
+    private static final String GET_ALL_COURSE = "SELECT * FROM tblCourse WHERE isActive = '1'";
+    private static final String FILTER_COURSE_BY_LEVEL = "SELECT c.* FROM tblCourse AS c JOIN tblDescription AS d ON c.descriptionID = d.descriptionID WHERE c.isActive = '1' AND d.level = ? ";
+    private static final String FILTER_COURSE_BY_TYPE = "SELECT c.* FROM tblCourse AS c JOIN tblDescription AS d ON c.descriptionID = d.descriptionID WHERE c.isActive = '1' AND d.type = ? ";
+    private static final String FILTER_COURSE_BY_PRICE_UNDER_300000 = "SELECT * FROM tblCourse WHERE isActive = '1' AND price <300000";
+    private static final String FILTER_COURSE_BY_PRICE_ABOVE_300000 = "SELECT * FROM tblCourse WHERE isActive = '1' AND price >300000";
+            
     private static final String CHECK_EXISTED_COURSE = "SELECT * FROM tblCourse WHERE courseID = ?";
     private static final String LIST_UNAPPROVED_COURSE = "SELECT * FROM tblCOurse WHERE isActive = 1";
 
@@ -51,7 +53,7 @@ public class CourseDAO {
     private static final String UPDATE_COURSE = "update tblCourse set price = ?, name = ?, duration = ?, datePublic = ? where courseID = ?";
     private static final String GET_COURSE_BY_COURSEID = "SELECT courseID, price, name, duration, isActive, datePublic, accountID, descriptionID FROM tblCourse WHERE courseID = ? ";
 
-    public List<CourseDTO> getlistCourse(String search, String accountId) throws ClassNotFoundException, SQLException {
+    public List<CourseDTO> getlistCourse(String search) throws ClassNotFoundException, SQLException {
         List<CourseDTO> list = new ArrayList<>();
         Connection conn = null;
         ResultSet rs = null;
@@ -62,7 +64,6 @@ public class CourseDAO {
             if (conn != null) {
                 ptm = conn.prepareStatement(SEARCH_COURSE_NAME);
                 ptm.setString(1, "%" + search + "%");
-                ptm.setString(2, accountId);
                 rs = ptm.executeQuery();
                 while (rs.next()) {
                     String courseID = rs.getString("courseID");
@@ -517,8 +518,11 @@ public class CourseDAO {
         try {
             conn = DBUtil.getConnection();
             if (conn != null) {
-                ptm = conn.prepareStatement(FILTER_COURSE_BY_TYPE);
-                ptm.setString(1, PriceRange);
+                if(PriceRange.contentEquals("Under-300000")){
+                    ptm = conn.prepareStatement(FILTER_COURSE_BY_PRICE_UNDER_300000);
+                } else {
+                    ptm = conn.prepareStatement(FILTER_COURSE_BY_PRICE_ABOVE_300000);
+                }
                 rs = ptm.executeQuery();
                 while (rs.next()) {
                     String courseID = rs.getString("courseID");

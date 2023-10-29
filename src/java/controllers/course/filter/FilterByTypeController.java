@@ -1,10 +1,15 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package controllers.course.filter;
 
 import course.CourseDAO;
 import course.CourseDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -15,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author TienToan
  */
-public class FilterByPrice extends HttpServlet {
+public class FilterByTypeController extends HttpServlet {
 
     private static final String SUCCESS = "courses.jsp";
     private static final String ERROR = "courses.jsp";
@@ -24,13 +29,12 @@ public class FilterByPrice extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String url = ERROR;
-        //not done price range
         try {
-            String PriceRange = request.getParameter("price"); //price
+            String type = request.getParameter("typeFilter"); //type
             CourseDAO dao = new CourseDAO();
-            List<CourseDTO> listCourse = dao.filterCourseByPrice(PriceRange);
+            List<CourseDTO> listCourse = dao.filterCourseByType(type);
             if (listCourse.size() > 0) {
-                request.setAttribute("LIST_COURSE", listCourse);
+                request.setAttribute("LIST_COURSE_FILTER", listCourse);
                 url = SUCCESS;
             } else {
                 request.setAttribute("ERROR", "Sorry! Have nothing that you need!");
@@ -42,6 +46,16 @@ public class FilterByPrice extends HttpServlet {
         }
 
     }
+    public static void main(String[] args) throws SQLException {
+        CourseDAO dao = new CourseDAO();
+        List<CourseDTO> listCourse = dao.filterCourseByType("Digital");
+        if (listCourse.size() > 0) {
+            for (CourseDTO course : listCourse) {
+                System.out.println(course.getName());
+            }
+        }
+    }
+
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

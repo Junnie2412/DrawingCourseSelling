@@ -17,18 +17,18 @@ import javax.servlet.http.HttpServletResponse;
 public class FilterByLevelController extends HttpServlet {
 
     private static final String SUCCESS = "courses.jsp";
-    private static final String ERROR = "courses.jsp";
+    private static final String ERROR = "index.jsp";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String url = ERROR;
         try {
-            String typeLevel = request.getParameter("typeLevel"); //level
+            String level = request.getParameter("levelFilter"); //level
             CourseDAO dao = new CourseDAO();
-            List<CourseDTO> listCourse = dao.filterCourseByLevel(typeLevel);
+            List<CourseDTO> listCourse = dao.filterCourseByLevel(level);
             if (listCourse.size() > 0) {
-                request.setAttribute("LIST_COURSE", listCourse);
+                request.setAttribute("LIST_COURSE_FILTER", listCourse);
                 url = SUCCESS;
             } else {
                 request.setAttribute("ERROR", "Sorry! Have nothing that you need!");

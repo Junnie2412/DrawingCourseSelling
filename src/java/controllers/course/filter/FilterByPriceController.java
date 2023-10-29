@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package controllers.course;
+
+package controllers.course.filter;
 
 import course.CourseDAO;
 import course.CourseDTO;
@@ -16,42 +7,39 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import users.UserDTO;
 
 /**
  *
- * @author PC
+ * @author TienToan
  */
-@WebServlet(name = "SearchController", urlPatterns = {"/SearchController"})
-public class SearchController extends HttpServlet {
+public class FilterByPriceController extends HttpServlet {
 
-    private static String SUCCESS = "courses.jsp";
-    private static String ERROR = "index.jsp";
-    
+    private static final String SUCCESS = "courses.jsp";
+    private static final String ERROR = "index.jsp";
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String url = ERROR;
-         
-        try{
-            String search = request.getParameter("searchName");
+        //not done price range
+        try {
+            String PriceRange = request.getParameter("priceFilter"); //price
             CourseDAO dao = new CourseDAO();
-            List<CourseDTO> listCourse = dao.getlistCourse(search);
-            if(listCourse.size() > 0){
-                request.setAttribute("LIST_COURSE", listCourse);
+            List<CourseDTO> listCourse = dao.filterCourseByPrice(PriceRange);
+            if (listCourse.size() > 0) {
+                request.setAttribute("LIST_COURSE_FILTER", listCourse);
                 url = SUCCESS;
+            } else {
+                request.setAttribute("ERROR", "Sorry! Have nothing that you need!");
             }
-        }catch(Exception e){
-            log("Error at SearchController: " + e.toString());
-        }finally{
+        } catch (Exception e) {
+            log("Error at FilterByTypeController: " + e.toString());
+        } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }
-
 
     }
 
@@ -89,7 +77,7 @@ public class SearchController extends HttpServlet {
      *
      * @return a String containing servlet description
      */
-@Override
+    @Override
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>

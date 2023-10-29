@@ -393,6 +393,25 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
+/****** Object:  Table [dbo].[tblLearningCourse]    Script Date: 10/1/2023 9:28:33 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tblLearningCourse](
+	[learningCourseID] [int] IDENTITY(1,1) NOT NULL,
+	[isLearning] [bit] NULL,
+	[expiredDay] [date] NULL,
+	[courseID] [varchar](250) NULL,
+	[accountID] [varchar](250) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[learningCourseID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
 ALTER TABLE [dbo].[tblOrderDetail] ADD  DEFAULT ((1)) FOR [quantity]
 GO
 ALTER TABLE [dbo].[tblCart]  WITH CHECK ADD FOREIGN KEY([accountID])
@@ -491,5 +510,9 @@ GO
 ALTER TABLE [dbo].[tblUserLog]  WITH CHECK ADD FOREIGN KEY([accountID])
 REFERENCES [dbo].[tblAccount] ([accountID])
 GO
-
-
+ALTER TABLE [dbo].[tblLearningCourse]  WITH CHECK ADD FOREIGN KEY([accountID])
+REFERENCES [dbo].[tblAccount] ([accountID])
+GO
+ALTER TABLE [dbo].[tblLearningCourse]  WITH CHECK ADD FOREIGN KEY([courseID])
+REFERENCES [dbo].[tblAccount] ([accountID])
+GO

@@ -283,8 +283,7 @@
         </div>
         <!-- End Page-content -->
 
-    </div>
-    <jsp:include page="layout/footer.jsp"/>
+ 
     <!-- end main content-->
     <!-- JAVASCRIPT -->
 

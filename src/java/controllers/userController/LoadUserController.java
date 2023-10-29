@@ -23,7 +23,7 @@ import users.UserDTO;
 public class LoadUserController extends HttpServlet {
 
     private static final String ERROR = "index.jsp";
-    private static final String SUCCESS = "editaccount.jsp";
+    private static final String SUCCESS = "editAccount.jsp";
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
