@@ -316,6 +316,7 @@
 <!--                                <form action="MainController?action=FilterByPrice" method="POST">-->
                                     <p>Filter by Price:</p>
                                     <div class="dropdown-item">
+                                        
                                         <form action="MainController?action=FilterByPrice" method="POST">
                                         <input type="hidden" value="Under-300000" name="priceFilter"/>
                                         <input type="submit" value="Under-300000">

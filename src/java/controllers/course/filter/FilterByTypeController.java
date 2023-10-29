@@ -9,6 +9,7 @@ import course.CourseDAO;
 import course.CourseDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -44,6 +45,15 @@ public class FilterByTypeController extends HttpServlet {
             request.getRequestDispatcher(url).forward(request, response);
         }
 
+    }
+    public static void main(String[] args) throws SQLException {
+        CourseDAO dao = new CourseDAO();
+        List<CourseDTO> listCourse = dao.filterCourseByType("Digital");
+        if (listCourse.size() > 0) {
+            for (CourseDTO course : listCourse) {
+                System.out.println(course.getName());
+            }
+        }
     }
 
 

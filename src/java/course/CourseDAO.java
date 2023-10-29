@@ -22,7 +22,7 @@ import utils.DBUtil;
  */
 public class CourseDAO {
 
-    private static final String SEARCH_COURSE_NAME = "SELECT * FROM tblCourse WHERE name like ? ";
+    private static final String SEARCH_COURSE_NAME = "SELECT * FROM tblCourse WHERE isActive = '1' AND name like ? ";
     private static final String CREATE_VIDEO = "INSERT INTO tblVideo(content, time, isActive, lessonID) VALUES(?,?,?,?)";
     private static final String CREATE_LESSON = "INSERT INTO tblLesson(title, description, moduleID) VALUES(?,?,?)";
     private static final String CREATE_MODULE = "INSERT INTO tblModule(title,courseID) VALUES(?,?)";
@@ -31,11 +31,11 @@ public class CourseDAO {
 
     private static final String GET_ACCOUNT_BY_COURSEID = "SELECT * FROM tblAccount WHERE accountID = (SELECT accountID FROM tblCourse WHERE courseID = ?)";
     private static final String GET_DESCRIPTION_BY_COURSEID = "SELECT * FROM tblDescription WHERE descriptionID = (SELECT descriptionID FROM tblCourse WHERE courseID = ?)";
-    private static final String GET_ALL_COURSE = "SELECT * FROM tblCourse";
-    private static final String FILTER_COURSE_BY_LEVEL = "SELECT c.courseID, d.descriptionID FROM tblCourse AS c JOIN tblDescription AS d ON c.descriptionID = d.descriptionID WHERE d.level = ? ";
-    private static final String FILTER_COURSE_BY_TYPE = "SELECT c.courseID, d.descriptionID FROM tblCourse AS c JOIN tblDescription AS d ON c.descriptionID = d.descriptionID WHERE d.type = ? ";
-    private static final String FILTER_COURSE_BY_PRICE_UNDER_300000 = "SELECT * FROM tblCourse WHERE price <300000";
-    private static final String FILTER_COURSE_BY_PRICE_ABOVE_300000 = "SELECT * FROM tblCourse WHERE price >300000";
+    private static final String GET_ALL_COURSE = "SELECT * FROM tblCourse WHERE isActive = '1'";
+    private static final String FILTER_COURSE_BY_LEVEL = "SELECT c.* FROM tblCourse AS c JOIN tblDescription AS d ON c.descriptionID = d.descriptionID WHERE c.isActive = '1' AND d.level = ? ";
+    private static final String FILTER_COURSE_BY_TYPE = "SELECT c.* FROM tblCourse AS c JOIN tblDescription AS d ON c.descriptionID = d.descriptionID WHERE c.isActive = '1' AND d.type = ? ";
+    private static final String FILTER_COURSE_BY_PRICE_UNDER_300000 = "SELECT * FROM tblCourse WHERE isActive = '1' AND price <300000";
+    private static final String FILTER_COURSE_BY_PRICE_ABOVE_300000 = "SELECT * FROM tblCourse WHERE isActive = '1' AND price >300000";
             
     private static final String CHECK_EXISTED_COURSE = "SELECT * FROM tblCourse WHERE courseID = ?";
     private static final String LIST_UNAPPROVED_COURSE = "SELECT * FROM tblCOurse WHERE isActive = 1";
