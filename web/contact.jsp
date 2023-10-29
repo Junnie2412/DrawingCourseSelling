@@ -40,12 +40,7 @@
             }
         </style>
     </head>
-
-
     <body>
-
-
-
         <div class="all-sections oh">
             <!-- ~~~ Loader & Go-Top ~~~ -->
             <div class="overlayer"></div>

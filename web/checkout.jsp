@@ -230,8 +230,8 @@
                                             <tr class="table-active">
                                                 <th colspan="2">Discount </th>
                                                 <td class="text-end">
-                                                    <span class="fw-semibold text-decoration-line-through" style="color: green;font-style: italic;">
-                                                        <%=discount%>
+                                                    <span class="fw-semibold" style="color: green;font-style: italic;">
+                                                        -<%=discount%>
                                                     </span>
                                                 </td>
                                             </tr><!-- comment -->
