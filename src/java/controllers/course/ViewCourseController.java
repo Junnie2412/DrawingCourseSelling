@@ -1,44 +1,33 @@
-package controllers.course.filter;
 
-import course.CourseDAO;
-import course.CourseDTO;
+package controllers.course;
+
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author TienToan
- */
-public class FilterByLevelController extends HttpServlet {
+public class ViewCourseController extends HttpServlet {
 
-    private static final String SUCCESS = "courses.jsp";
-    private static final String ERROR = "courses.jsp";
-
+    private static String SUCCESS = "course-details.jsp";
+    private static String ERROR = "courses.jsp";
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        String url = ERROR;
-        try {
-            String level = request.getParameter("levelFilter"); //level
-            CourseDAO dao = new CourseDAO();
-            List<CourseDTO> listCourse = dao.filterCourseByLevel(level);
-            if (listCourse.size() > 0) {
-                request.setAttribute("LIST_COURSE_FILTER", listCourse);
-                url = SUCCESS;
-            } else {
-                request.setAttribute("ERROR", "Sorry! Have nothing that you need!");
-            }
-        } catch (Exception e) {
-            log("Error at FilterByLevelController: " + e.toString());
-        } finally {
-            request.getRequestDispatcher(url).forward(request, response);
-        }
 
+            try{
+                /* TODO output your page here. You may use following sample code. */
+                String url = ERROR;
+
+                String courseID = request.getParameter("courseID");
+                request.setAttribute("courseID", courseID);
+                url = SUCCESS;
+                request.getRequestDispatcher(url).forward(request, response);
+            }catch(Exception e){
+                log("Error at SearchController: " + e.toString());
+            }
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

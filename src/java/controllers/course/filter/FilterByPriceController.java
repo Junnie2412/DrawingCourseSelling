@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package controllers.course.filter;
 
 import course.CourseDAO;
@@ -19,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author TienToan
  */
-public class FilterByType extends HttpServlet {
+public class FilterByPriceController extends HttpServlet {
 
     private static final String SUCCESS = "courses.jsp";
     private static final String ERROR = "courses.jsp";
@@ -28,12 +24,13 @@ public class FilterByType extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String url = ERROR;
+        //not done price range
         try {
-            String type = request.getParameter("type"); //type
+            String PriceRange = request.getParameter("priceFilter"); //price
             CourseDAO dao = new CourseDAO();
-            List<CourseDTO> listCourse = dao.filterCourseByType(type);
+            List<CourseDTO> listCourse = dao.filterCourseByPrice(PriceRange);
             if (listCourse.size() > 0) {
-                request.setAttribute("LIST_COURSE", listCourse);
+                request.setAttribute("LIST_COURSE_FILTER", listCourse);
                 url = SUCCESS;
             } else {
                 request.setAttribute("ERROR", "Sorry! Have nothing that you need!");
@@ -45,7 +42,6 @@ public class FilterByType extends HttpServlet {
         }
 
     }
-
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
