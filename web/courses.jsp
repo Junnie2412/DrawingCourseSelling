@@ -313,42 +313,55 @@
                         <div class="dropdown-menu" aria-labelledby="userDropdown">
 
                             <div class="column">
-                                <form action="MainController?action=FilterByPrice" method="POST">
+<!--                                <form action="MainController?action=FilterByPrice" method="POST">-->
                                     <p>Filter by Price:</p>
                                     <div class="dropdown-item">
+                                        <form action="MainController?action=FilterByPrice" method="POST">
                                         <input type="hidden" value="Under-300000" name="priceFilter"/>
                                         <input type="submit" value="Under-300000">
+                                        </form>
                                     </div>
                                     <div class="dropdown-item">
+                                       <form action="MainController?action=FilterByPrice" method="POST">
                                         <input type="hidden" value="Above-300000" name="priceFilter"/>
                                         <input type="submit" value="Above-300000">
+                                        </form>
                                     </div>
-                                </form>
+                                <!--</form>-->
                             </div>
                             <div class="column">
-                                <form action="MainController?action=FilterByType" method="POST">
+<!--                                <form action="MainController?action=FilterByType" method="POST">-->
                                     <p>Filter by Type:</p>
                                     <div class="dropdown-item">
+                                        <form action="MainController?action=FilterByType" method="POST">
                                         <input type="hidden" value="Digital" name="typeFilter"/>
                                         <input type="submit" value="Digital">
+                                        </form>
                                     </div>
                                     <div class="dropdown-item">
+                                        <form action="MainController?action=FilterByType" method="POST">
                                         <input type="hidden" value="Traditional" name="typeFilter"/>
                                         <input type="submit" value="Traditional">
+                                        </form>
                                     </div>
-                                </form>
+                                <!--</form>-->
                             </div>
                             <div class="column">
-                                <form action="MainController?action=FilterByLevel" method="POST">
+<!--                                <form action="MainController?action=FilterByLevel" method="POST">-->
                                     <p>Filter by Level:</p>
+                                    <form action="MainController?action=FilterByLevel" method="POST">
                                     <div class="dropdown-item">
                                         <input type="hidden" value="Basic" name="levelFilter"/>
                                         <input type="submit" value="Basic">
                                     </div>
+                                    </form>
+                                    <form action="MainController?action=FilterByLevel" method="POST">
                                     <div class="dropdown-item">
                                         <input type="hidden" value="Intermediate" name="levelFilter"/>
                                         <input type="submit" value="Intermediate">
                                     </div>
+                                    </form>
+                                    <form action="MainController?action=FilterByLevel" method="POST">
                                     <div class="dropdown-item">
                                         <input type="hidden" value="Advanced" name="levelFilter"/>
                                         <input type="submit" value="Advanced">

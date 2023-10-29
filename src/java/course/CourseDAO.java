@@ -32,9 +32,11 @@ public class CourseDAO {
     private static final String GET_ACCOUNT_BY_COURSEID = "SELECT * FROM tblAccount WHERE accountID = (SELECT accountID FROM tblCourse WHERE courseID = ?)";
     private static final String GET_DESCRIPTION_BY_COURSEID = "SELECT * FROM tblDescription WHERE descriptionID = (SELECT descriptionID FROM tblCourse WHERE courseID = ?)";
     private static final String GET_ALL_COURSE = "SELECT * FROM tblCourse";
-    private static final String FILTER_COURSE_BY_LEVEL = "SELECT * FROM tblCourse WHERE level = ?";
-    private static final String FILTER_COURSE_BY_TYPE = "SELECT * FROM tblCourse WHERE type = ?";
-
+    private static final String FILTER_COURSE_BY_LEVEL = "SELECT c.courseID, d.descriptionID FROM tblCourse AS c JOIN tblDescription AS d ON c.descriptionID = d.descriptionID WHERE d.level = ? ";
+    private static final String FILTER_COURSE_BY_TYPE = "SELECT c.courseID, d.descriptionID FROM tblCourse AS c JOIN tblDescription AS d ON c.descriptionID = d.descriptionID WHERE d.type = ? ";
+    private static final String FILTER_COURSE_BY_PRICE_UNDER_300000 = "SELECT * FROM tblCourse WHERE price <300000";
+    private static final String FILTER_COURSE_BY_PRICE_ABOVE_300000 = "SELECT * FROM tblCourse WHERE price >300000";
+            
     private static final String CHECK_EXISTED_COURSE = "SELECT * FROM tblCourse WHERE courseID = ?";
     private static final String LIST_UNAPPROVED_COURSE = "SELECT * FROM tblCOurse WHERE isActive = 1";
 
@@ -516,8 +518,11 @@ public class CourseDAO {
         try {
             conn = DBUtil.getConnection();
             if (conn != null) {
-                ptm = conn.prepareStatement(FILTER_COURSE_BY_TYPE);
-                ptm.setString(1, PriceRange);
+                if(PriceRange.contentEquals("Under-300000")){
+                    ptm = conn.prepareStatement(FILTER_COURSE_BY_PRICE_UNDER_300000);
+                } else {
+                    ptm = conn.prepareStatement(FILTER_COURSE_BY_PRICE_ABOVE_300000);
+                }
                 rs = ptm.executeQuery();
                 while (rs.next()) {
                     String courseID = rs.getString("courseID");

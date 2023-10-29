@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 public class FilterByPriceController extends HttpServlet {
 
     private static final String SUCCESS = "courses.jsp";
-    private static final String ERROR = "courses.jsp";
+    private static final String ERROR = "index.jsp";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
