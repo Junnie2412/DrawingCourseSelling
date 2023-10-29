@@ -26,6 +26,7 @@ public class VideoDAO {
     private static final String GET_LASTEST_VIDEO_BY_COURSEID = "SELECT TOP 1 v.videoID, v.content, v.time, v.isActive, v.lessonID FROM tblVideo v JOIN tblLesson l ON v.lessonID = l.lessonID JOIN tblModule m ON l.moduleID = m.moduleID JOIN tblCourse c ON m.courseID = c.courseID WHERE c.courseID = ? ";
     private static final String GET_VIDEOS_OF_LESSON = "select * from tblVideo where lessonID = ?";
     private static final String CREATE_VIDEO = "insert into tblVideo(content, time, isActive, lessonID) values (?,?,?,?)";
+    private static final String UPDATE_VIDEO = "update tblVideo set content = ?, time = ? where videoID = ?";
     
     public VideoDTO getVideoByLessonId(int lessonId) throws SQLException {
         VideoDTO video = null;
@@ -151,6 +152,32 @@ public class VideoDAO {
                 ptm.setTime(2, Time.valueOf(time));
                 ptm.setBoolean(3, isActive);
                 ptm.setInt(4, lessonId);
+                
+                int row =ptm.executeUpdate();
+                if (row > 0) return true;
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            if(rs!=null) rs.close();
+            if(ptm!=null) ptm.close();
+            if(conn!=null) conn.close();
+        }
+        return false;
+    }
+    
+    public boolean updateVideo(int videoId, String content, LocalTime time) throws SQLException {
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement ptm = null;
+        
+        try {
+            conn = DBUtil.getConnection();
+            if(conn!=null){
+                ptm = conn.prepareStatement(UPDATE_VIDEO);
+                ptm.setString(1, content);
+                ptm.setTime(2, Time.valueOf(time));
+                ptm.setInt(3, videoId);
                 
                 int row =ptm.executeUpdate();
                 if (row > 0) return true;

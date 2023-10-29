@@ -180,16 +180,17 @@ GO
 CREATE TABLE [dbo].[tblOrder](
 	[orderID] [int] IDENTITY(1,1) NOT NULL,
 	[dateOrder] [datetime] NULL,
+	[voucherCode] [varchar](20) NULL,
 	[total] [float] NULL,
 	[isSuccess] [bit] NULL,
-	[accountID] [varchar](250) NULL
+	[accountID] [varchar](250) NULL,
 PRIMARY KEY CLUSTERED 
 (
 	[orderID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tblOrderDetail]    Script Date: 10/1/2023 9:28:33 PM ******/
+/****** Object:  Table [dbo].[tblOrderDetail]    Script Date: 10/28/2023 3:09:12 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -197,18 +198,12 @@ GO
 CREATE TABLE [dbo].[tblOrderDetail](
 	[orderDetailID] [int] IDENTITY(1,1) NOT NULL,
 	[price] [float] NULL,
-	[voucherCode] [varchar](20) NULL,
 	[quantity] [int] NULL,
 	[orderID] [int] NULL,
-	[courseID] [varchar](250) NULL,
-	[paymentDetailID] [int] NULL,
-PRIMARY KEY CLUSTERED 
-(
-	[orderDetailID] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+	[courseID] [varchar](250) NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tblPaymentDetail]    Script Date: 10/1/2023 9:28:33 PM ******/
+/****** Object:  Table [dbo].[tblPaymentDetail]    Script Date: 10/28/2023 3:09:12 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -216,14 +211,11 @@ GO
 CREATE TABLE [dbo].[tblPaymentDetail](
 	[paymentDetailID] [int] IDENTITY(1,1) NOT NULL,
 	[amount] [float] NULL,
+	[numTransaction] [varchar](250) NULL,
+	[orderID] [int] NULL,
 	[provider] [varchar](250) NULL,
 	[status] [bit] NULL,
-	[createdAt] [datetime] NULL,
-	[modifiedAt] [datetime] NULL,
-PRIMARY KEY CLUSTERED 
-(
-	[paymentDetailID] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+	[createdAt] [datetime] NULL
 ) ON [PRIMARY]
 GO
 /****** Object:  Table [dbo].[tblPost]    Script Date: 10/1/2023 9:28:33 PM ******/
@@ -459,14 +451,15 @@ GO
 ALTER TABLE [dbo].[tblOrder]  WITH CHECK ADD FOREIGN KEY([accountID])
 REFERENCES [dbo].[tblAccount] ([accountID])
 GO
-ALTER TABLE [dbo].[tblOrderDetail]  WITH CHECK ADD FOREIGN KEY([orderID])
-REFERENCES [dbo].[tblOrder] ([orderID])
-GO
 ALTER TABLE [dbo].[tblOrderDetail]  WITH CHECK ADD FOREIGN KEY([courseID])
 REFERENCES [dbo].[tblCourse] ([courseID])
 GO
-ALTER TABLE [dbo].[tblOrderDetail]  WITH CHECK ADD FOREIGN KEY([paymentDetailID])
-REFERENCES [dbo].[tblPaymentDetail] ([paymentDetailID])
+ALTER TABLE [dbo].[tblOrderDetail]  WITH CHECK ADD FOREIGN KEY([orderID])
+REFERENCES [dbo].[tblOrder] ([orderID])
+GO
+ALTER TABLE [dbo].[tblPaymentDetail]  WITH CHECK ADD FOREIGN KEY([orderID])
+REFERENCES [dbo].[tblOrder] ([orderID])
+
 GO
 ALTER TABLE [dbo].[tblPost]  WITH CHECK ADD FOREIGN KEY([accountID])
 REFERENCES [dbo].[tblAccount] ([accountID])
