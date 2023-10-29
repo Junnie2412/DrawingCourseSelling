@@ -75,6 +75,16 @@ public class MainController extends HttpServlet {
 
     private static final String HANDLE_VNPAY = "goToVNPay";
     private static final String VNPAY_CONTROLLER = "ajaxServlet";
+    
+    private static final String VIEW_COURSE = "ViewCourse";
+    private static final String VIEW_COURSE_DETAIL_CONTROLLER = "ViewCourseController";
+    
+    private static final String FILTER_BY_TYPE = "FilterByType";
+    private static final String FILTER_BY_PRICE = "FilterByPrice";
+    private static final String FILTER_BY_LEVEL = "FilterByLevel";
+    private static final String FILTER_BY_TYPE_CONTROLLER = "FilterByTypeController";
+    private static final String FILTER_BY_PRICE_CONTROLLER = "FilterByPriceController";
+    private static final String FILTER_BY_LEVEL_CONTROLLER = "FilterByLevelController";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -137,6 +147,14 @@ public class MainController extends HttpServlet {
                 url = ADD_INSTRUCTOR_CONTROLLER;
             }else if (action.equals(SEARCH_INSTRUCTOR)) {
                 url = SEARCH_INSTRUCTOR_CONTROLLER;
+            }else if (action.equals(VIEW_COURSE)) {
+                url = VIEW_COURSE_DETAIL_CONTROLLER;
+            }else if (action.equals(FILTER_BY_TYPE)) {
+                url = FILTER_BY_TYPE_CONTROLLER;
+            }else if (action.equals(FILTER_BY_PRICE)) {
+                url = FILTER_BY_PRICE_CONTROLLER;
+            }else if (action.equals(FILTER_BY_LEVEL)) {
+                url = FILTER_BY_LEVEL_CONTROLLER;
             }
         } catch (Exception e) {
             log("Error at MainController: " + e.toString());

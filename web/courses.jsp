@@ -106,6 +106,7 @@
                 CourseFeedbackDAO courseFeedbackDAO = new CourseFeedbackDAO();
                 ModuleDAO moduleDAO = new ModuleDAO();
                 List<CourseDTO> listCourse = (List<CourseDTO>) request.getAttribute("LIST_COURSE");
+                List<CourseDTO> listCourseFilter = (List<CourseDTO>) request.getAttribute("LIST_COURSE_FILTER");
                 if (listCourse != null) {
                     if (listCourse.size() > 0) {
 
@@ -118,63 +119,65 @@
                     <img src="assets/images/course/course-bottom-shape.png" alt="course">
                 </div>
                 <div class="container">
-                <div class="row justify-content-center mb-30-none">
-            <%            for (CourseDTO course : listCourse) {
-            %>
-            <div class="col-xl-4 col-md-6 col-sm-10">
-                <div class="course-item">
-                    <div class="thumb">
-                        <a href="course-details.jsp?courseID=<%= course.getCourseID()%>">
-                            <img src="<%= courseDAO.getDescription(course.getCourseID()).getImage()%>" alt="course">
-                        </a>
-                    </div>
-                    <div class="content">
-                        <h5 class="title">
-                            <a href="course-details.jsp?courseID=<%= course.getCourseID()%>"><%= course.getName()%></a>
-                        </h5>
-                        <div class="meta-area">
-                            <div class="meta">
-                                <div class="meta-item">
-                                    <i class="fas fa-user"></i>
-                                    <span><%= courseDAO.getAccount(course.getCourseID()).getFullName()%></span>
-                                </div>
-                                <div class="meta-item">
-                                    <i class="fas fa-photo-video"></i>
-                                    <span><%= moduleDAO.getQuantityOfModules(course.getCourseID())%> Modules</span>
-                                </div>
-                                <div class="meta-item">
-                                    <i class="fas fa-user-graduate"></i>
-                                    <span><%= courseDAO.getDescription(course.getCourseID()).getType()%></span>
-                                </div>
+                    <div class="row justify-content-center mb-30-none">
+                        <%            for (CourseDTO course : listCourse) {
+                        %>
+                        <div class="col-xl-4 col-md-6 col-sm-10">
+                            <div class="course-item">
+                                <form action="MainController?action=ViewCourse" method="POST">
+                                    <div class="thumb">
+                                        <a href="course-details.jsp?courseID=<%= course.getCourseID()%>">
+                                            <img src="<%= courseDAO.getDescription(course.getCourseID()).getImage()%>" alt="course">
+                                        </a>
+                                    </div>
+                                    <div class="content">
+                                        <h5 class="title">
+                                            <a href="course-details.jsp?courseID=<%= course.getCourseID()%>"><%= course.getName()%></a>
+                                        </h5>
+                                        <div class="meta-area">
+                                            <div class="meta">
+                                                <div class="meta-item">
+                                                    <i class="fas fa-user"></i>
+                                                    <span><%= courseDAO.getAccount(course.getCourseID()).getFullName()%></span>
+                                                </div>
+                                                <div class="meta-item">
+                                                    <i class="fas fa-photo-video"></i>
+                                                    <span><%= moduleDAO.getQuantityOfModules(course.getCourseID())%> Modules</span>
+                                                </div>
+                                                <div class="meta-item">
+                                                    <i class="fas fa-user-graduate"></i>
+                                                    <span><%= courseDAO.getDescription(course.getCourseID()).getType()%></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ratings-area">
+                                            <div class="ratings cl-theme">
+                                                <%
+                                                    float avgrate = courseFeedbackDAO.getAverageRate(course.getCourseID());
+                                                    for (int i = 0; i < avgrate; i++) {
+                                                %>
+                                                <span><i class="fas fa-star"></i></span>
+                                                    <%
+                                                        }
+                                                        for (int i = 0; i < (5 - avgrate); i++) {
+                                                    %>
+                                                <span class="cl-theme-light"><i class="fas fa-star"></i></span>
+                                                    <%
+                                                        }
+                                                    %>
+                                                <span>(<%= courseFeedbackDAO.getAverageRate(course.getCourseID())%>/5.00)</span>
+                                            </div>
+                                            <div class="price cl-1"><input type="hidden" name="price" value="<%=course.getPrice()%>">
+                                                <span name="priceValue"></span> VND
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>        
                             </div>
                         </div>
-                        <div class="ratings-area">
-                            <div class="ratings cl-theme">
-                                <%
-                                    float avgrate = courseFeedbackDAO.getAverageRate(course.getCourseID());
-                                    for (int i = 0; i < avgrate; i++) {
-                                %>
-                                <span><i class="fas fa-star"></i></span>
-                                    <%
-                                        }
-                                        for (int i = 0; i < (5 - avgrate); i++) {
-                                    %>
-                                <span class="cl-theme-light"><i class="fas fa-star"></i></span>
-                                    <%
-                                        }
-                                    %>
-                                <span>(<%= courseFeedbackDAO.getAverageRate(course.getCourseID())%>/5.00)</span>
-                            </div>
-                            <div class="price cl-1">
-                                <%= course.getPrice()%>đ
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <%
-                }
-            %>
+                        <%
+                            }
+                        %>
                         <div class="text-center">    
                             <p class="mb-0 text-muted">
                                 This is all of results.
@@ -182,10 +185,183 @@
                         </div>
                     </div>    
                 </div>
+                <div> 
+
+
+                    <%
+                        if (loginUser.getRole().equals("Instructor")) {
+                    %>
+                    <div class="text-center load-more mt-5">
+                        <a href="instructorCourse.jsp" class="custom-button theme-one">Turn back to manager courses  <i class="fas fa-angle-right"></i></a>
+                    </div>    
+                    <% } else {
+                    %>  
+                    <div class="text-center load-more mt-5">
+                        <a href="courses.jsp" class="custom-button theme-one">load more courses <i class="fas fa-angle-right"></i></a>
+                    </div>    
+                    <% }%>
+
+                </div>
             </section>
             <%
-                    }
-                } else {
+                }
+            } else if (listCourseFilter != null) {
+                if (listCourseFilter.size() > 0) {
+            %>
+            <section class="course-section pt-120 pb-120 section-bg oh pos-rel">    
+                <div class="course-top-shape">
+                    <img src="assets/images/course/course-top-shape.png" alt="course">
+                </div>
+                <div class="course-bottom-shape">
+                    <img src="assets/images/course/course-bottom-shape.png" alt="course">
+                </div>
+                <div class="container">
+                    <div class="user-info dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Filter
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="userDropdown">
+                            <div class="column">
+                                <p>Filter by Price:</p>
+                                <div class="dropdown-item">
+
+                                    <form action="MainController?action=FilterByPrice" method="POST">
+                                        <input type="hidden" value="Under-300000" name="priceFilter"/>
+                                        <input type="submit" value="Under-300000">
+                                    </form>
+                                </div>
+                                <div class="dropdown-item">
+                                    <form action="MainController?action=FilterByPrice" method="POST">
+                                        <input type="hidden" value="Above-300000" name="priceFilter"/>
+                                        <input type="submit" value="Above-300000">
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <p>Filter by Type:</p>
+                                <div class="dropdown-item">
+                                    <form action="MainController?action=FilterByType" method="POST">
+                                        <input type="hidden" value="Digital" name="typeFilter"/>
+                                        <input type="submit" value="Digital">
+                                    </form>
+                                </div>
+                                <div class="dropdown-item">
+                                    <form action="MainController?action=FilterByType" method="POST">
+                                        <input type="hidden" value="Traditional" name="typeFilter"/>
+                                        <input type="submit" value="Traditional">
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <p>Filter by Level:</p>
+                                <form action="MainController?action=FilterByLevel" method="POST">
+                                    <div class="dropdown-item">
+                                        <input type="hidden" value="Basic" name="levelFilter"/>
+                                        <input type="submit" value="Basic">
+                                    </div>
+                                </form>
+                                <form action="MainController?action=FilterByLevel" method="POST">
+                                    <div class="dropdown-item">
+                                        <input type="hidden" value="Intermediate" name="levelFilter"/>
+                                        <input type="submit" value="Intermediate">
+                                    </div>
+                                </form>
+                                <form action="MainController?action=FilterByLevel" method="POST">
+                                    <div class="dropdown-item">
+                                        <input type="hidden" value="Advanced" name="levelFilter"/>
+                                        <input type="submit" value="Advanced">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center mb-30-none">
+                        <%            for (CourseDTO course : listCourseFilter) {
+                        %>
+                        <div class="col-xl-4 col-md-6 col-sm-10">
+                            <div class="course-item">
+                                <form action="MainController?action=ViewCourse" method="POST">
+                                    <div class="thumb">
+                                        <a href="course-details.jsp?courseID=<%= course.getCourseID()%>">
+                                            <img src="<%= courseDAO.getDescription(course.getCourseID()).getImage()%>" alt="course">
+                                        </a>
+                                    </div>
+                                    <div class="content">
+                                        <h5 class="title">
+                                            <a href="course-details.jsp?courseID=<%= course.getCourseID()%>"><%= course.getName()%></a>
+                                        </h5>
+                                        <div class="meta-area">
+                                            <div class="meta">
+                                                <div class="meta-item">
+                                                    <i class="fas fa-user"></i>
+                                                    <span><%= courseDAO.getAccount(course.getCourseID()).getFullName()%></span>
+                                                </div>
+                                                <div class="meta-item">
+                                                    <i class="fas fa-photo-video"></i>
+                                                    <span><%= moduleDAO.getQuantityOfModules(course.getCourseID())%> Modules</span>
+                                                </div>
+                                                <div class="meta-item">
+                                                    <i class="fas fa-user-graduate"></i>
+                                                    <span><%= courseDAO.getDescription(course.getCourseID()).getType()%></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ratings-area">
+                                            <div class="ratings cl-theme">
+                                                <%
+                                                    float avgrate = courseFeedbackDAO.getAverageRate(course.getCourseID());
+                                                    for (int i = 0; i < avgrate; i++) {
+                                                %>
+                                                <span><i class="fas fa-star"></i></span>
+                                                    <%
+                                                        }
+                                                        for (int i = 0; i < (5 - avgrate); i++) {
+                                                    %>
+                                                <span class="cl-theme-light"><i class="fas fa-star"></i></span>
+                                                    <%
+                                                        }
+                                                    %>
+                                                <span>(<%= courseFeedbackDAO.getAverageRate(course.getCourseID())%>/5.00)</span>
+                                            </div>
+                                            <div class="price cl-1"><input type="hidden" name="price" value="<%=course.getPrice()%>">
+                                                <span name="priceValue"></span> VND
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>        
+                            </div>
+                        </div>
+                        <%
+                            }
+                        %>
+                        <div class="text-center">    
+                            <p class="mb-0 text-muted">
+                                This is all of results.
+                            </p>
+                        </div>
+                    </div>    
+                </div>
+                <div> 
+
+
+                    <%
+                        if (loginUser.getRole().equals("Instructor")) {
+                    %>
+                    <div class="text-center load-more mt-5">
+                        <a href="instructorCourse.jsp" class="custom-button theme-one">Turn back to manager courses  <i class="fas fa-angle-right"></i></a>
+                    </div>    
+                    <% } else {
+                    %>  
+                    <div class="text-center load-more mt-5">
+                        <a href="courses.jsp" class="custom-button theme-one">load more courses <i class="fas fa-angle-right"></i></a>
+                    </div>    
+                    <% }%>
+
+                </div>
+            </section>
+            <%
+                }
+            } else {
             %>
 
             <!-- ~~~ End SEARCH by name~~~ -->
@@ -221,8 +397,66 @@
                 </div>
                 <div class="container">
                     <div class="section-header">
-
                         <h2 class="title"><span>Featured</span> Online Courses</h2>
+                    </div>
+                    <div class="user-info dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Filter
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="userDropdown">
+                            <div class="column">
+                                <p>Filter by Price:</p>
+                                <div class="dropdown-item">
+
+                                    <form action="MainController?action=FilterByPrice" method="POST">
+                                        <input type="hidden" value="Under-300000" name="priceFilter"/>
+                                        <input type="submit" value="Under-300000">
+                                    </form>
+                                </div>
+                                <div class="dropdown-item">
+                                    <form action="MainController?action=FilterByPrice" method="POST">
+                                        <input type="hidden" value="Above-300000" name="priceFilter"/>
+                                        <input type="submit" value="Above-300000">
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <p>Filter by Type:</p>
+                                <div class="dropdown-item">
+                                    <form action="MainController?action=FilterByType" method="POST">
+                                        <input type="hidden" value="Digital" name="typeFilter"/>
+                                        <input type="submit" value="Digital">
+                                    </form>
+                                </div>
+                                <div class="dropdown-item">
+                                    <form action="MainController?action=FilterByType" method="POST">
+                                        <input type="hidden" value="Traditional" name="typeFilter"/>
+                                        <input type="submit" value="Traditional">
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <p>Filter by Level:</p>
+                                <form action="MainController?action=FilterByLevel" method="POST">
+                                    <div class="dropdown-item">
+                                        <input type="hidden" value="Basic" name="levelFilter"/>
+                                        <input type="submit" value="Basic">
+                                    </div>
+                                </form>
+                                <form action="MainController?action=FilterByLevel" method="POST">
+                                    <div class="dropdown-item">
+                                        <input type="hidden" value="Intermediate" name="levelFilter"/>
+                                        <input type="submit" value="Intermediate">
+                                    </div>
+                                </form>
+                                <form action="MainController?action=FilterByLevel" method="POST">
+                                    <div class="dropdown-item">
+                                        <input type="hidden" value="Advanced" name="levelFilter"/>
+                                        <input type="submit" value="Advanced">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                     <div class="row justify-content-center mb-30-none">
                         <%
@@ -311,48 +545,47 @@
                     <% }%>
 
                 </div>
+            </section>
+            <%
+                }
+            %>                
+            <!-- ~~~ Course Section ~~~ -->
+
+
+            <!-- ~~~ Footer Section ~~~ -->
+            <jsp:include page="layout/footer.jsp"/>
+            <!-- ~~~ Footer Section ~~~ -->
         </div>
-    </section>
-    <%
-        }
-    %>                
-    <!-- ~~~ Course Section ~~~ -->
 
+        <script>
+            function loadPage() {
 
-    <!-- ~~~ Footer Section ~~~ -->
-    <jsp:include page="layout/footer.jsp"/>
-    <!-- ~~~ Footer Section ~~~ -->
-</div>
+                var input = document.getElementsByName("price");
+                var tmp1 = 0;
+                for (var i = 0; i < input.length; i++) {
+                    tmp1 = parseFloat(input[i].value);
+                    document.getElementsByName("priceValue")[i].innerHTML = Intl.NumberFormat().format(tmp1.toFixed(3));
+                }
+            }
+        </script>
 
-<script>
-    function loadPage() {
+        <script data-cfasync="false" src="../../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/jquery-3.6.0.min.js"></script>
 
-        var input = document.getElementsByName("price");
-        var tmp1 = 0;
-        for (var i = 0; i < input.length; i++) {
-            tmp1 = parseFloat(input[i].value);
-            document.getElementsByName("priceValue")[i].innerHTML = Intl.NumberFormat().format(tmp1.toFixed(3));
-        }
-    }
-</script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/isotope.pkgd.min.js"></script>
+        <script src="assets/js/magnific-popup.min.js"></script>
 
-<script data-cfasync="false" src="../../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/jquery-3.6.0.min.js"></script>
+        <script src="assets/js/odometer.min.js"></script>
+        <script src="assets/js/viewport.jquery.js"></script>
+        <script src="assets/js/nice-select.js"></script>
+        <script src="assets/js/owl.min.js"></script>
+        <script src="assets/js/main.js"></script>
+        <script src="assets/js/odometer.min.js"></script>
+        <script src="assets/js/viewport.jquery.js"></script>
+        <script src="assets/js/nice-select.js"></script>
+        <script src="assets/js/owl.min.js"></script>
+        <script src="assets/js/main.js"></script>
 
-<script src="assets/js/bootstrap.min.js"></script>
-<script src="assets/js/isotope.pkgd.min.js"></script>
-<script src="assets/js/magnific-popup.min.js"></script>
-
-<script src="assets/js/odometer.min.js"></script>
-<script src="assets/js/viewport.jquery.js"></script>
-<script src="assets/js/nice-select.js"></script>
-<script src="assets/js/owl.min.js"></script>
-<script src="assets/js/main.js"></script>
-<script src="assets/js/odometer.min.js"></script>
-<script src="assets/js/viewport.jquery.js"></script>
-<script src="assets/js/nice-select.js"></script>
-<script src="assets/js/owl.min.js"></script>
-<script src="assets/js/main.js"></script>
-
-</body>
+    </body>
 
 </html>

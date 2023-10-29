@@ -42,6 +42,7 @@
         <div class="main-content overflow-hidden container">
             <div class="page-content container">
                 <div class="container-fluid">
+
                     <div class="row">              
                         <div class="col-xl-7">
                             <div class="card">
@@ -71,6 +72,7 @@
                                     %>
                                     <!--Begin display -->
                                     <div class="container">
+                                        
                                         <div class="header clearfix">
                                             <h3 class="text-muted">KẾT QUẢ THANH TOÁN</h3>
                                         </div>
@@ -138,9 +140,8 @@
                                             </thead>
                                             <tbody>
                                                 <%
-                                                    
                                                     for (CourseDTO c : listCourseCheckout) {
-                                                        
+
                                                 %>
                                                 <tr>
                                                     <td>
@@ -190,7 +191,7 @@
                                             trans.setAmount(amount);
                                             //
                                             CourseDAO dao = new CourseDAO();
-                                            boolean check = dao.inserOrder(user, listCourseCheckout, trans,totalInt);
+                                            boolean check = dao.inserOrder(user, listCourseCheckout, trans, totalInt);
                                             if (check) {
                                                 // cart clear
                                                 CartItemDAO cartDao = new CartItemDAO();
@@ -199,9 +200,9 @@
                                                 }
 
                                         %>
-                                        <h1>OK ROI NE</h1>
-                                        <%                                            }
-                                        %>
+                                        <a href="learning.jsp" class=" btn-md btn-viewCourse slide_right"><span style="text-align: center;border-radius: 25px;">LEARNING</span> <i class="fa fa-book" aria-hidden="true"></i></a>
+                                            <%                                            }
+                                            %>
                                     </div>
                                 </div>
                             </div>

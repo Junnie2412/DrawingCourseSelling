@@ -318,10 +318,7 @@
                         <ul class="breadcrumb cl-white p-0 m-0" style="background-color: #e9ecef00">
                             <li>
                                 <a href="index.jsp">Home</a>
-                            </li>
-                            <li>
-                                Learning
-                            </li>
+                            </li>                           
                         </ul>
                     </div>
                 </div>

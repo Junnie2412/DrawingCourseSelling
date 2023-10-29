@@ -61,12 +61,12 @@
         <servlet-class>controllers.course.filter.FilterByLevelController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>FilterByType</servlet-name>
-        <servlet-class>controllers.course.filter.FilterByType</servlet-class>
+        <servlet-name>FilterByTypeController</servlet-name>
+        <servlet-class>controllers.course.filter.FilterByTypeController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>FilterByPrice</servlet-name>
-        <servlet-class>controllers.course.filter.FilterByPrice</servlet-class>
+        <servlet-name>FilterByPriceController</servlet-name>
+        <servlet-class>controllers.course.filter.FilterByPriceController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>RemoveCartController</servlet-name>
@@ -91,6 +91,10 @@
     <servlet>
         <servlet-name>ApplyVoucherController</servlet-name>
         <servlet-class>controllers.order.ApplyVoucherController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewCourseController</servlet-name>
+        <servlet-class>controllers.course.ViewCourseController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>MainController</servlet-name>
@@ -149,16 +153,16 @@
         <url-pattern>/FilterByLevelController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>FilterByType</servlet-name>
-        <url-pattern>/FilterByType</url-pattern>
+        <servlet-name>FilterByTypeController</servlet-name>
+        <url-pattern>/FilterByTypeController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>UserGoogleHandler</servlet-name>
         <url-pattern>/UserGoogleHandler</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>FilterByPrice</servlet-name>
-        <url-pattern>/FilterByPrice</url-pattern>
+        <servlet-name>FilterByPriceController</servlet-name>
+        <url-pattern>/FilterByPriceController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>RemoveCartController</servlet-name>
@@ -183,6 +187,10 @@
     <servlet-mapping>
         <servlet-name>ApplyVoucherController</servlet-name>
         <url-pattern>/ApplyVoucherController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewCourseController</servlet-name>
+        <url-pattern>/ViewCourseController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

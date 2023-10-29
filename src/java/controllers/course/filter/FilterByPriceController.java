@@ -1,3 +1,4 @@
+
 package controllers.course.filter;
 
 import course.CourseDAO;
@@ -14,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author TienToan
  */
-public class FilterByLevelController extends HttpServlet {
+public class FilterByPriceController extends HttpServlet {
 
     private static final String SUCCESS = "courses.jsp";
     private static final String ERROR = "index.jsp";
@@ -23,10 +24,11 @@ public class FilterByLevelController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String url = ERROR;
+        //not done price range
         try {
-            String level = request.getParameter("levelFilter"); //level
+            String PriceRange = request.getParameter("priceFilter"); //price
             CourseDAO dao = new CourseDAO();
-            List<CourseDTO> listCourse = dao.filterCourseByLevel(level);
+            List<CourseDTO> listCourse = dao.filterCourseByPrice(PriceRange);
             if (listCourse.size() > 0) {
                 request.setAttribute("LIST_COURSE_FILTER", listCourse);
                 url = SUCCESS;
@@ -34,7 +36,7 @@ public class FilterByLevelController extends HttpServlet {
                 request.setAttribute("ERROR", "Sorry! Have nothing that you need!");
             }
         } catch (Exception e) {
-            log("Error at FilterByLevelController: " + e.toString());
+            log("Error at FilterByTypeController: " + e.toString());
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }
