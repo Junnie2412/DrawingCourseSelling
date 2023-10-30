@@ -48,7 +48,7 @@
     #billing-information {
        
         width: 100%;
-        height: 350px; 
+        height: 450px; 
         
     }
     
@@ -67,26 +67,39 @@
     font-size: 14px;
     font-weight: bold;
     color: #333; 
-}
+}    
+
+     .page-container {
+        background-color: rgba(59, 65, 66, 0.1); 
+    }
+    .section-title {
+        font-weight: bold;
+        font-size: 18px;
+        color: #333; /* Màu ch? */
+        margin-bottom: 10px; /* Kho?ng cách d??i */
+    }
+</style>
     
     
 </style>
 
     <body>
         <!-- Begin page -->
-        <div class="nav-bar">
-                <jsp:include page="layout/header.jsp"/>
-            </div>
+        <div class="page-container">
+    <div class="nav-bar">
+            <jsp:include page="layout/header.jsp"/>
+    </div>
+            
 
         <div id="layout-wrapper">
-            <section class="hero-section banner-overlay bg_img" data-img="" style="height: 290px; display: flex; align-items: center;">
+            <section class="hero-section banner-overlay bg_img" data-img="../assets/images/banner/banner.png" style="height: 290px; display: flex; align-items: center;">
 
                 <div class="custom-container">
                     <div class="hero-content">
                         <h1 class="title uppercase cl-white" style="margin: 0 auto;">Check Out</h1>
                         <ul class="breadcrumb cl-white p-0 m-0" style="background-color: #e9ecef00">
                             <li>
-                                <a href="index.jsp">Home</a>
+                                <a href="index.jsp" class="fa fa-home" aria-hidden="true">Home</a>
                             </li>
                             <li>
                                 Checkout
@@ -99,9 +112,9 @@
         
 
         <!-- Start right Content here -->
-        <div class="main-content overflow-hidden container custom-billing >
+        <div class="main-content overflow-hidden container custom-billing "> 
 
-            <div class="page-content container">
+            <div class="page-content">
                 <div class="container-fluid">
 
                     <!-- end page title -->
@@ -113,7 +126,7 @@
                                     <div class="tab-content">
                                         <div class="tab-pane fade show active" id="pills-bill-info" role="tabpanel" aria-labelledby="pills-bill-info-tab">
                                             <div>
-                                                <h5 class="mb-1">Billing Information</h5>
+                                                <h5 class="mb-1 section-title">Billing Information</h5>
 
                                             </div>
 
@@ -122,7 +135,7 @@
                                                     UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
                                                 %>
                                                 <div class="row">
-                                                    <div class="col-sm-6">
+                                                    <div >
                                                         <div class="mb-3">
                                                             <label for="billinginfo-firstName" class="form-label">Full Name</label>
                                                             <input type="text" class="form-control" id="billinginfo-firstName" placeholder="Enter first name" value="<%=loginUser.getFullName()%>">
@@ -133,14 +146,14 @@
                                                 </div>
 
                                                 <div class="row">
-                                                    <div class="col-sm-6">
+                                                    <div >
                                                         <div class="mb-3">
                                                             <label for="billinginfo-email" class="form-label">Email</label>
                                                             <input type="email" class="form-control" id="billinginfo-email" placeholder="Enter email" value="<%=loginUser.getEmail()%>">
                                                         </div>
                                                     </div>
 
-                                                    <div class="col-sm-6">
+                                                    <div >
                                                         <div class="mb-3">
                                                             <label for="billinginfo-phone" class="form-label">Phone <span class="text-muted">(Optional)</span></label>
                                                             <input type="text" class="form-control" id="billinginfo-phone" placeholder="Enter phone no.">
@@ -179,7 +192,7 @@
                                 <div class="card-header">
                                     <div class="d-flex">
                                         <div class="flex-grow-1">
-                                            <h5 class="card-title mb-0">Order Summary</h5>
+                                            <h5 class="card-title mb-0 section-title">Order Summary</h5>
                                         </div>
                                     </div>
                                 </div>
@@ -224,14 +237,14 @@
                                                     <td class="fw-semibold text-end"><%= total%></td>
                                                 </tr>
                                                 <tr>
-                                                    <td colspan="3">
+                                                    <td colspan="1">
                                                         <label for="voucher">Voucher:</label>
-                                                        <div class="d-flex gap-2">
+                                                        <div style="overflow: hidden;">
                                                             <form action="ApplyVoucherController" method="POST">
-                                                                <input type="text"  id="voucher" placeholder="Input voucher" name="voucherCode" value="">
-                                                                <input type="hidden" name="total" value="<%= total%>">
-                                                                <button name="action" value="checkVoucher" class="btn btn-success">Apply</button>
-                                                            </form>
+                                                                <input type="text" style="width: 300px; float: left;" id="voucher" placeholder="Input voucher" name="voucherCode" value="">
+                                                                <button name="action" value="checkVoucher" class="btn btn-success" style="float: right; position: relative; top: -20px;  width: 100px; ">Apply</button>
+                                                                <div style="clear: both;"></div>
+</form>
                                                         </div>
                                                     </td>
                                                 </tr>
