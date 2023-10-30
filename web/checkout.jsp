@@ -76,55 +76,55 @@
 
                                             </div>
 
-                                            <div>
-                                                <%
-                                                    UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
-                                                %>
-                                                <div class="row">
-                                                    <div class="col-sm-6">
-                                                        <div class="mb-3">
-                                                            <label for="billinginfo-firstName" class="form-label">Full Name</label>
-                                                            <input type="text" class="form-control" id="billinginfo-firstName" placeholder="Enter first name" value="<%=loginUser.getFullName()%>">
-                                                        </div>
-                                                    </div>
 
-                                                    <div class="col-sm-6">
-                                                        <div class="mb-3">
-                                                            <label for="billinginfo-lastName" class="form-label">Account ID</label>
-                                                            <input type="text" class="form-control" id="billinginfo-lastName" placeholder="Account ID" value="<%=loginUser.getAccountID()%>" readonly="">
-                                                        </div>
+                                            <%
+                                                UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
+                                            %>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="mb-3">
+                                                        <label for="billinginfo-firstName" class="form-label">Full Name</label>
+                                                        <input type="text" class="form-control" id="billinginfo-firstName" placeholder="Enter first name" value="<%=loginUser.getFullName()%>">
                                                     </div>
                                                 </div>
 
-                                                <div class="row">
-                                                    <div class="col-sm-6">
-                                                        <div class="mb-3">
-                                                            <label for="billinginfo-email" class="form-label">Email</label>
-                                                            <input type="email" class="form-control" id="billinginfo-email" placeholder="Enter email" value="<%=loginUser.getEmail()%>">
-                                                        </div>
+                                                <div class="col-sm-6">
+                                                    <div class="mb-3">
+                                                        <label for="billinginfo-lastName" class="form-label">Account ID</label>
+                                                        <input type="text" class="form-control" id="billinginfo-lastName" placeholder="Account ID" value="<%=loginUser.getAccountID()%>" readonly="">
                                                     </div>
-
-                                                    <div class="col-sm-6">
-                                                        <div class="mb-3">
-                                                            <label for="billinginfo-phone" class="form-label">Phone <span class="text-muted">(Optional)</span></label>
-                                                            <input type="text" class="form-control" id="billinginfo-phone" placeholder="Enter phone no.">
-                                                        </div>
-                                                    </div>
-                                                    <div>
-                                                        <h5 class="mb-1">Payment </h5>
-
-                                                        <div class="col-sm-3">
-                                                            <div class="form-check card-radio">
-                                                                <input id="paymentMethod02" name="paymentMethod" type="radio" class="form-check-input" checked>
-                                                                <label class="form-check-label" for="paymentMethod02">
-                                                                    <span class="fs-16 text-muted me-2"><i class="ri-bank-card-fill align-bottom"></i></span>
-                                                                    <span class="fs-14 text-wrap">VNPAY</span>
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                    </div>                                                            
                                                 </div>
                                             </div>
+
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="mb-3">
+                                                        <label for="billinginfo-email" class="form-label">Email</label>
+                                                        <input type="email" class="form-control" id="billinginfo-email" placeholder="Enter email" value="<%=loginUser.getEmail()%>">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-6">
+                                                    <div class="mb-3">
+                                                        <label for="billinginfo-phone" class="form-label">Phone <span class="text-muted">(Optional)</span></label>
+                                                        <input type="text" class="form-control" id="billinginfo-phone" placeholder="Enter phone no.">
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <h5 class="mb-1">Payment </h5>
+
+                                                    <div class="col-sm-3">
+                                                        <div class="form-check card-radio">
+                                                            <input id="paymentMethod02" name="paymentMethod" type="radio" class="form-check-input" checked>
+                                                            <label class="form-check-label" for="paymentMethod02">
+                                                                <span class="fs-16 text-muted me-2"><i class="ri-bank-card-fill align-bottom"></i></span>
+                                                                <span class="fs-14 text-wrap">VNPAY</span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>                                                            
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -283,22 +283,22 @@
         </div>
         <!-- End Page-content -->
 
- 
-    <!-- end main content-->
-    <!-- JAVASCRIPT -->
 
-    <script src="admin/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="admin/assets/libs/simplebar/simplebar.min.js"></script>
-    <script src="admin/assets/libs/node-waves/waves.min.js"></script>
-    <script src="admin/assets/libs/feather-icons/feather.min.js"></script>
-    <script src="admin/assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
-    <script src="admin/assets/js/plugins.js"></script>
+        <!-- end main content-->
+        <!-- JAVASCRIPT -->
 
-    <!-- init js -->
-    <script src="admin/assets/js/pages/ecommerce-product-checkout.init.js"></script>
+        <script src="admin/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="admin/assets/libs/simplebar/simplebar.min.js"></script>
+        <script src="admin/assets/libs/node-waves/waves.min.js"></script>
+        <script src="admin/assets/libs/feather-icons/feather.min.js"></script>
+        <script src="admin/assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
+        <script src="admin/assets/js/plugins.js"></script>
 
-    <!-- App js -->
-    <script src="admin/assets/js/app.js"></script>
+        <!-- init js -->
+        <script src="admin/assets/js/pages/ecommerce-product-checkout.init.js"></script>
 
-</body>
+        <!-- App js -->
+        <script src="admin/assets/js/app.js"></script>
+
+    </body>
 </html>

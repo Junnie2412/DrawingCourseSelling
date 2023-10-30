@@ -75,16 +75,23 @@ public class MainController extends HttpServlet {
 
     private static final String HANDLE_VNPAY = "goToVNPay";
     private static final String VNPAY_CONTROLLER = "ajaxServlet";
-    
+
     private static final String VIEW_COURSE = "ViewCourse";
     private static final String VIEW_COURSE_DETAIL_CONTROLLER = "ViewCourseController";
-    
+
     private static final String FILTER_BY_TYPE = "FilterByType";
     private static final String FILTER_BY_PRICE = "FilterByPrice";
     private static final String FILTER_BY_LEVEL = "FilterByLevel";
     private static final String FILTER_BY_TYPE_CONTROLLER = "FilterByTypeController";
     private static final String FILTER_BY_PRICE_CONTROLLER = "FilterByPriceController";
     private static final String FILTER_BY_LEVEL_CONTROLLER = "FilterByLevelController";
+
+    private static final String RESET_PASSWORD = "Reset Password";
+    private static final String FORGOT_PASSWORD_CONTROLLER = "ForgotPasswordController";
+    private static final String GET_OTP = "Verify OTP";
+    private static final String HANDLE_OTP_CONTROLLER = "HandlerOTPController";
+    private static final String SET_NEW_PASSWORD = "Reset Password";
+    private static final String SET_NEW_PASSWORD_CONTROLLER = "CompletePasswordResetController";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -143,19 +150,26 @@ public class MainController extends HttpServlet {
                 url = SHOW_LIST_INSTRUCTOR_CONTROLLER;
             } else if (action.equals(HANDLE_VNPAY)) {
                 url = VNPAY_CONTROLLER;
-            }else if (action.equals(ADD_INSTRUCTOR)) {
+            } else if (action.equals(ADD_INSTRUCTOR)) {
                 url = ADD_INSTRUCTOR_CONTROLLER;
-            }else if (action.equals(SEARCH_INSTRUCTOR)) {
+            } else if (action.equals(SEARCH_INSTRUCTOR)) {
                 url = SEARCH_INSTRUCTOR_CONTROLLER;
-            }else if (action.equals(VIEW_COURSE)) {
+            } else if (action.equals(VIEW_COURSE)) {
                 url = VIEW_COURSE_DETAIL_CONTROLLER;
-            }else if (action.equals(FILTER_BY_TYPE)) {
+            } else if (action.equals(FILTER_BY_TYPE)) {
                 url = FILTER_BY_TYPE_CONTROLLER;
-            }else if (action.equals(FILTER_BY_PRICE)) {
+            } else if (action.equals(FILTER_BY_PRICE)) {
                 url = FILTER_BY_PRICE_CONTROLLER;
-            }else if (action.equals(FILTER_BY_LEVEL)) {
+            } else if (action.equals(FILTER_BY_LEVEL)) {
                 url = FILTER_BY_LEVEL_CONTROLLER;
+            } else if (action.equals(RESET_PASSWORD)) {
+                url = FORGOT_PASSWORD_CONTROLLER;
+            } else if (action.equals(GET_OTP)) {
+                url = HANDLE_OTP_CONTROLLER;
+            } else if (action.equals(SET_NEW_PASSWORD)) {
+                url = SET_NEW_PASSWORD_CONTROLLER;
             }
+
         } catch (Exception e) {
             log("Error at MainController: " + e.toString());
         } finally {
