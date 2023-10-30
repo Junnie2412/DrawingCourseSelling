@@ -44,7 +44,7 @@ public class SearchController extends HttpServlet {
         try{
             String search = request.getParameter("searchName");
             CourseDAO dao = new CourseDAO();
-            List<CourseDTO> listCourse = dao.getlistCourse(search, user.getAccountID());
+            List<CourseDTO> listCourse = dao.getlistCourse(search);
             if(listCourse.size() > 0){
                 request.setAttribute("LIST_COURSE", listCourse);
                 url = SUCCESS;
