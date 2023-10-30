@@ -72,7 +72,7 @@
                         <h1 class="title uppercase cl-white" style="margin: 0 auto;">Payment Result</h1>
                         <ul class="breadcrumb cl-white p-0 m-0" style="background-color: #e9ecef00">
                             <li>
-                                <a href="index.jsp">Home</a>
+                                <a href="../index.jsp">Home</a>
                             </li>
                             
                         </ul>
