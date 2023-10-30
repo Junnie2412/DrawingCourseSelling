@@ -26,47 +26,88 @@
         <!-- App Css-->
         <link href="admin/assets/css/app.min.css" rel="stylesheet" type="text/css" />
         <!-- custom Css-->
-        <link href="admin/assets/css/custom.min.css" rel="stylesheet" type="text/css" />
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+       <link rel="stylesheet" href="assets/css/bootstrap.min.css">
         <link rel="stylesheet" href="assets/css/all.min.css">
         <link rel="stylesheet" href="assets/css/animate.css">
         <link rel="stylesheet" href="assets/css/odometer.css">
         <link rel="stylesheet" href="assets/css/nice-select.css">
         <link rel="stylesheet" href="assets/css/owl.min.css">
         <link rel="stylesheet" href="assets/css/magnific-popup.css">
-        <link rel="stylesheet" href="assets/css/flaticon.css">       
+        <link rel="stylesheet" href="assets/css/flaticon.css">
+        <link href="assets/css/main2.css" rel="stylesheet" type="text/css"/>
+
+        <link rel="shortcut icon" href="assets/images/art1.png" type="image/x-icon">      
     </head>
+    <style>
+    #order-summary {
+        
+        width: 100%;
+        height: 600px; 
+    }
+
+    #billing-information {
+       
+        width: 100%;
+        height: 350px; 
+        
+    }
+    
+    .payment-method {
+    display: flex;
+    align-items: center;
+    width: 200px;     
+    
+}
+
+.payment-icon {
+    margin-right: 5px;
+}
+
+.payment-text {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333; 
+}
+    
+    
+</style>
 
     <body>
         <!-- Begin page -->
+        <div class="nav-bar">
+                <jsp:include page="layout/header.jsp"/>
+            </div>
 
         <div id="layout-wrapper">
-            <section class="hero-section banner-overlay bg_img" data-img="../assets/images/banner/banner.png">
-                <div class="container" style="padding: 30px;">
-                    <div class="hero-content">
-                        <h1 class="title uppercase cl-white">ART CENTER | <span style="color: red;">Checkout</span></h1>
-                        <ul class="breadcrumb cl-white p-0 m-0">
-                            <li>
-                                <a href="index.jsp">Home</a><br>
-                            </li>
+            <section class="hero-section banner-overlay bg_img" data-img="" style="height: 290px; display: flex; align-items: center;">
 
+                <div class="custom-container">
+                    <div class="hero-content">
+                        <h1 class="title uppercase cl-white" style="margin: 0 auto;">Check Out</h1>
+                        <ul class="breadcrumb cl-white p-0 m-0" style="background-color: #e9ecef00">
+                            <li>
+                                <a href="index.jsp">Home</a>
+                            </li>
+                            <li>
+                                Checkout
+                            </li>
                         </ul>
                     </div>
                 </div>
             </section>
         </div>
-        <div class="vertical-overlay"></div>
+        
 
         <!-- Start right Content here -->
-        <div class="main-content overflow-hidden container">
+        <div class="main-content overflow-hidden container custom-billing >
 
             <div class="page-content container">
                 <div class="container-fluid">
 
                     <!-- end page title -->
                     <div class="row">
-                        <div class="col-xl-7">
-                            <div class="card">
+                        <div class="col-xl-5">
+                            <div class="card" id="billing-information">
                                 <div class="card-body checkout-tab">
 
                                     <div class="tab-content">
@@ -88,12 +129,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="col-sm-6">
-                                                        <div class="mb-3">
-                                                            <label for="billinginfo-lastName" class="form-label">Account ID</label>
-                                                            <input type="text" class="form-control" id="billinginfo-lastName" placeholder="Account ID" value="<%=loginUser.getAccountID()%>" readonly="">
-                                                        </div>
-                                                    </div>
+                                                    
                                                 </div>
 
                                                 <div class="row">
@@ -111,14 +147,16 @@
                                                         </div>
                                                     </div>
                                                     <div>
-                                                        <h5 class="mb-1">Payment </h5>
+                                                        <h5 class="mb-3">Payment Method</h5>
 
-                                                        <div class="col-sm-3">
+                                                        <div class="col-sm-6">
                                                             <div class="form-check card-radio">
                                                                 <input id="paymentMethod02" name="paymentMethod" type="radio" class="form-check-input" checked>
-                                                                <label class="form-check-label" for="paymentMethod02">
-                                                                    <span class="fs-16 text-muted me-2"><i class="ri-bank-card-fill align-bottom"></i></span>
-                                                                    <span class="fs-14 text-wrap">VNPAY</span>
+                                                                <label for="paymentMethod02" class="form-check-label">
+                                                                    <div class="payment-method">
+                                                                        <span class="payment-icon"><i class="ri-bank-card-fill align-bottom fs-18"></i></span>
+                                                                        <span class="payment-text">VNPAY</span>
+                                                                    </div>
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -136,8 +174,8 @@
 
                         <!-- end col -->
 
-                        <div class="col-xl-5">
-                            <div class="card">
+                        <div class="col-xl-7">
+                            <div class="card" id="order-summary">
                                 <div class="card-header">
                                     <div class="d-flex">
                                         <div class="flex-grow-1">
@@ -160,9 +198,9 @@
                                         <table class="table table-borderless align-middle mb-0">
                                             <thead class="table-light text-muted">
                                                 <tr>
-                                                    <th style="width: 90px;" scope="col">Product</th>
+                                                    
                                                     <th scope="col">Product Info</th>
-                                                    <th scope="col" class="text-end">Price</th>
+                                                    <th scope="col" class="text-end" colspan="2">Price</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -171,15 +209,11 @@
                                                         total += c.getPrice();
                                                 %>
                                                 <tr>
-                                                    <td>
-                                                        <div class="avatar-md bg-light rounded p-1">
-                                                            <img src="<%=c.getImage()%>" alt="" class="img-fluid d-block">
-                                                        </div>
-                                                    </td>
+                                                    
                                                     <td>
                                                         <h5 class="fs-14"><a href="apps-ecommerce-product-details.html" class="text-dark"><%=c.getName()%></a></h5>
                                                     </td>
-                                                    <td class="text-end"><%=c.getPrice()%></td>
+                                                    <td class="text-end" colspan="2"><%=c.getPrice()%></td>
                                                 </tr>
                                                 <%
                                                     }
@@ -244,6 +278,7 @@
                                                     </span>
                                                 </td>
                                             </tr>
+                                            
                                             <tr>    
                                                 <% int intTotal = (int) total;%>
                                                 <td colspan="3" class="text-end">
@@ -277,11 +312,15 @@
                     </div>
                 </div>
                 <!-- end row -->
-
+                   
+               
+          
             </div>
             <!-- container-fluid -->
         </div>
+    
         <!-- End Page-content -->
+        <jsp:include page="layout/footer.jsp"/>
 
  
     <!-- end main content-->

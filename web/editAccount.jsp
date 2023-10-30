@@ -230,7 +230,9 @@
                 <!-- container-fluid -->
             </div><!-- End Page-content -->
 
-
+                
+                <jsp:include page="layout/footer.jsp"/>
+            
         </div>
         <!-- end main content-->
 

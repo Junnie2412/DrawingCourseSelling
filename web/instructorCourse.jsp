@@ -114,7 +114,7 @@
                         CourseDAO courseDAO = new CourseDAO();
                         ModuleDAO moduleDAO = new ModuleDAO();
                         
-    List<CourseDTO> listCourse = courseDAO.getlistCourse("", ((UserDTO)session.getAttribute("LOGIN_USER")).getAccountID());
+    List<CourseDTO> listCourse = courseDAO.getlistCourse();
                     %>
                     <div class="row justify-content-center mb-30-none">
                         <%
