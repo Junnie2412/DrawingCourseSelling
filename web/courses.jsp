@@ -122,17 +122,18 @@
                     <div class="row justify-content-center mb-30-none">
                         <%            for (CourseDTO course : listCourse) {
                         %>
-                        <div class="col-xl-4 col-md-6 col-sm-10">
-                            <div class="course-item">
-                                <form action="MainController?action=ViewCourse" method="POST">
+                        <div class="col-xl-4 col-md-6 col-sm-10">  
+                            <form action="MainController" method="POST" id="courseForm<%= course.getCourseID()%>">
+                                <input type="hidden" value="ViewCourseDetail" name="action"/>
+                                <input type="hidden" name="courseID" value="<%= course.getCourseID()%>">
+                                <input type="hidden" name="courseName" value="<%= course.getName()%>">
+                                <div class="course-item">
                                     <div class="thumb">
-                                        <a href="course-details.jsp?courseID=<%= course.getCourseID()%>">
-                                            <img src="<%= courseDAO.getDescription(course.getCourseID()).getImage()%>" alt="course">
-                                        </a>
+                                        <img src="<%= courseDAO.getDescription(course.getCourseID()).getImage()%>" alt="course" id="courseImage">
                                     </div>
                                     <div class="content">
                                         <h5 class="title">
-                                            <a href="course-details.jsp?courseID=<%= course.getCourseID()%>"><%= course.getName()%></a>
+                                            <p id="courseName"><%= course.getName()%></p>
                                         </h5>
                                         <div class="meta-area">
                                             <div class="meta">
@@ -171,9 +172,9 @@
                                                 <span name="priceValue"></span> VND
                                             </div>
                                         </div>
-                                    </div>
-                                </form>        
-                            </div>
+                                    </div>           
+                                </div>  
+                            </form>                     
                         </div>
                         <%
                             }
@@ -208,6 +209,11 @@
             } else if (listCourseFilter != null) {
                 if (listCourseFilter.size() > 0) {
             %>
+            
+            <!-- ~~~ End SEARCH by name~~~ -->
+            
+            <!-- ~~~ FILTER~~~ -->
+            
             <section class="course-section pt-120 pb-120 section-bg oh pos-rel">    
                 <div class="course-top-shape">
                     <img src="assets/images/course/course-top-shape.png" alt="course">
@@ -224,7 +230,6 @@
                             <div class="column">
                                 <p>Filter by Price:</p>
                                 <div class="dropdown-item">
-
                                     <form action="MainController?action=FilterByPrice" method="POST">
                                         <input type="hidden" value="Under-300000" name="priceFilter"/>
                                         <input type="submit" value="Under-300000">
@@ -253,42 +258,43 @@
                                 </div>
                             </div>
                             <div class="column">
-                                <p>Filter by Level:</p>
-                                <form action="MainController?action=FilterByLevel" method="POST">
-                                    <div class="dropdown-item">
+                                <p>Filter by Level:</p>           
+                                <div class="dropdown-item">
+                                    <form action="MainController?action=FilterByLevel" method="POST">
                                         <input type="hidden" value="Basic" name="levelFilter"/>
                                         <input type="submit" value="Basic">
-                                    </div>
-                                </form>
-                                <form action="MainController?action=FilterByLevel" method="POST">
-                                    <div class="dropdown-item">
+                                    </form>
+                                </div>
+                                <div class="dropdown-item">
+                                    <form action="MainController?action=FilterByLevel" method="POST">
                                         <input type="hidden" value="Intermediate" name="levelFilter"/>
                                         <input type="submit" value="Intermediate">
-                                    </div>
-                                </form>
-                                <form action="MainController?action=FilterByLevel" method="POST">
-                                    <div class="dropdown-item">
+                                    </form>    
+                                </div>
+                                <div class="dropdown-item">
+                                    <form action="MainController?action=FilterByLevel" method="POST">
                                         <input type="hidden" value="Advanced" name="levelFilter"/>
                                         <input type="submit" value="Advanced">
-                                    </div>
-                                </form>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="row justify-content-center mb-30-none">
                         <%            for (CourseDTO course : listCourseFilter) {
                         %>
-                        <div class="col-xl-4 col-md-6 col-sm-10">
-                            <div class="course-item">
-                                <form action="MainController?action=ViewCourse" method="POST">
+                        <div class="col-xl-4 col-md-6 col-sm-10">  
+                            <form action="MainController" method="POST" id="courseForm<%= course.getCourseID()%>">
+                                <input type="hidden" value="ViewCourseDetail" name="action"/>
+                                <input type="hidden" name="courseID" value="<%= course.getCourseID()%>">
+                                <input type="hidden" name="courseName" value="<%= course.getName()%>">
+                                <div class="course-item">
                                     <div class="thumb">
-                                        <a href="course-details.jsp?courseID=<%= course.getCourseID()%>">
-                                            <img src="<%= courseDAO.getDescription(course.getCourseID()).getImage()%>" alt="course">
-                                        </a>
+                                        <img src="<%= courseDAO.getDescription(course.getCourseID()).getImage()%>" alt="course" id="courseImage">
                                     </div>
                                     <div class="content">
                                         <h5 class="title">
-                                            <a href="course-details.jsp?courseID=<%= course.getCourseID()%>"><%= course.getName()%></a>
+                                            <p id="courseName"><%= course.getName()%></p>
                                         </h5>
                                         <div class="meta-area">
                                             <div class="meta">
@@ -327,9 +333,9 @@
                                                 <span name="priceValue"></span> VND
                                             </div>
                                         </div>
-                                    </div>
-                                </form>        
-                            </div>
+                                    </div>           
+                                </div>  
+                            </form>                     
                         </div>
                         <%
                             }
@@ -358,13 +364,14 @@
                     <% }%>
 
                 </div>
-            </section>
+            </section>    
+
             <%
                 }
             } else {
             %>
 
-            <!-- ~~~ End SEARCH by name~~~ -->
+            <!-- ~~~ END FILTER ~~~ -->
 
             <!-- ~~~ SEARCH by category~~~ -->
             <!--
@@ -407,7 +414,6 @@
                             <div class="column">
                                 <p>Filter by Price:</p>
                                 <div class="dropdown-item">
-
                                     <form action="MainController?action=FilterByPrice" method="POST">
                                         <input type="hidden" value="Under-300000" name="priceFilter"/>
                                         <input type="submit" value="Under-300000">
@@ -437,24 +443,24 @@
                             </div>
                             <div class="column">
                                 <p>Filter by Level:</p>
-                                <form action="MainController?action=FilterByLevel" method="POST">
-                                    <div class="dropdown-item">
+                                <div class="dropdown-item">
+                                    <form action="MainController?action=FilterByLevel" method="POST">
                                         <input type="hidden" value="Basic" name="levelFilter"/>
                                         <input type="submit" value="Basic">
-                                    </div>
-                                </form>
-                                <form action="MainController?action=FilterByLevel" method="POST">
-                                    <div class="dropdown-item">
+                                    </form>
+                                </div>
+                                <div class="dropdown-item">
+                                    <form action="MainController?action=FilterByLevel" method="POST">
                                         <input type="hidden" value="Intermediate" name="levelFilter"/>
                                         <input type="submit" value="Intermediate">
-                                    </div>
-                                </form>
-                                <form action="MainController?action=FilterByLevel" method="POST">
-                                    <div class="dropdown-item">
+                                    </form>
+                                </div>
+                                <div class="dropdown-item">
+                                    <form action="MainController?action=FilterByLevel" method="POST">
                                         <input type="hidden" value="Advanced" name="levelFilter"/>
                                         <input type="submit" value="Advanced">
-                                    </div>
-                                </form>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -465,17 +471,18 @@
                                 if (list.size() > 0) {
                                     for (CourseDTO course : list) {
                         %>
-                        <div class="col-xl-4 col-md-6 col-sm-10">
-                            <form action="MainController" method="POST">
+                        <div class="col-xl-4 col-md-6 col-sm-10">  
+                            <form action="MainController" method="POST" id="courseForm<%= course.getCourseID()%>">
+                                <input type="hidden" value="ViewCourseDetail" name="action"/>
+                                <input type="hidden" name="courseID" value="<%= course.getCourseID()%>">
+                                <input type="hidden" name="courseName" value="<%= course.getName()%>">
                                 <div class="course-item">
                                     <div class="thumb">
-                                        <a href="course-details.jsp?courseID=<%= course.getCourseID()%>">
-                                            <img src="<%= courseDAO.getDescription(course.getCourseID()).getImage()%>" alt="course">
-                                        </a>
+                                        <img src="<%= courseDAO.getDescription(course.getCourseID()).getImage()%>" alt="course" id="courseImage">
                                     </div>
                                     <div class="content">
                                         <h5 class="title">
-                                            <a href="course-details.jsp?courseID=<%= course.getCourseID()%>"><%= course.getName()%></a>
+                                            <p id="courseName"><%= course.getName()%></p>
                                         </h5>
                                         <div class="meta-area">
                                             <div class="meta">
@@ -514,11 +521,9 @@
                                                 <span name="priceValue"></span> VND
                                             </div>
                                         </div>
-
-                                    </div>                          
-                                </div>
-
-                            </form>
+                                    </div>           
+                                </div>  
+                            </form>                     
                         </div>
 
                         <%
@@ -568,6 +573,23 @@
                 }
             }
         </script>
+        
+        <script>
+            var courseForms = document.querySelectorAll('form[id^="courseForm"]');
+
+            courseForms.forEach(function(form) {
+                var courseImage = form.querySelector('#courseImage');
+                var courseName = form.querySelector('#courseName');
+
+                courseImage.addEventListener('click', function() {
+                    form.submit(); 
+                });
+
+                courseName.addEventListener('click', function() {
+                    form.submit(); 
+                });
+            });
+        </script>
 
         <script data-cfasync="false" src="../../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/jquery-3.6.0.min.js"></script>
 
@@ -575,11 +597,6 @@
         <script src="assets/js/isotope.pkgd.min.js"></script>
         <script src="assets/js/magnific-popup.min.js"></script>
 
-        <script src="assets/js/odometer.min.js"></script>
-        <script src="assets/js/viewport.jquery.js"></script>
-        <script src="assets/js/nice-select.js"></script>
-        <script src="assets/js/owl.min.js"></script>
-        <script src="assets/js/main.js"></script>
         <script src="assets/js/odometer.min.js"></script>
         <script src="assets/js/viewport.jquery.js"></script>
         <script src="assets/js/nice-select.js"></script>
