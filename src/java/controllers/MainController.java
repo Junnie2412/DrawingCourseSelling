@@ -76,7 +76,7 @@ public class MainController extends HttpServlet {
     private static final String HANDLE_VNPAY = "goToVNPay";
     private static final String VNPAY_CONTROLLER = "ajaxServlet";
 
-    private static final String VIEW_COURSE = "ViewCourse";
+    private static final String VIEW_COURSE_DETAIL = "ViewCourseDetail";
     private static final String VIEW_COURSE_DETAIL_CONTROLLER = "ViewCourseController";
 
     private static final String FILTER_BY_TYPE = "FilterByType";
@@ -154,7 +154,7 @@ public class MainController extends HttpServlet {
                 url = ADD_INSTRUCTOR_CONTROLLER;
             } else if (action.equals(SEARCH_INSTRUCTOR)) {
                 url = SEARCH_INSTRUCTOR_CONTROLLER;
-            } else if (action.equals(VIEW_COURSE)) {
+            } else if (action.equals(VIEW_COURSE_DETAIL)) {
                 url = VIEW_COURSE_DETAIL_CONTROLLER;
             } else if (action.equals(FILTER_BY_TYPE)) {
                 url = FILTER_BY_TYPE_CONTROLLER;
