@@ -96,6 +96,18 @@
         <servlet-name>ViewCourseController</servlet-name>
         <servlet-class>controllers.course.ViewCourseController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ForgotPasswordController</servlet-name>
+        <servlet-class>controllers.forgotpassword.ForgotPasswordController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>HandlerOTPController</servlet-name>
+        <servlet-class>controllers.forgotpassword.HandlerOTPController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CompletePasswordResetController</servlet-name>
+        <servlet-class>controllers.forgotpassword.CompletePasswordResetController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>MainController</servlet-name>
         <url-pattern>/MainController</url-pattern>
@@ -191,6 +203,18 @@
     <servlet-mapping>
         <servlet-name>ViewCourseController</servlet-name>
         <url-pattern>/ViewCourseController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ForgotPasswordController</servlet-name>
+        <url-pattern>/ForgotPasswordController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HandlerOTPController</servlet-name>
+        <url-pattern>/HandlerOTPController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CompletePasswordResetController</servlet-name>
+        <url-pattern>/CompletePasswordResetController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
