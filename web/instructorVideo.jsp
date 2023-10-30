@@ -99,11 +99,43 @@
                 <tr>
                     <td>
                         <%= video.getContent()%>
-                        <span style="color: #333;"><%= video.getTime() %></span>
+                        <span style="color: #333;"><%= video.getTime()%></span>
                     </td>
                     <td>
-                        <a href="#">Edit</a>
+                        <a href="#" data-toggle="modal" data-target="#modal-update-<%= video.getVideoID()%>">Edit</a>
+                        <div class="modal fade" id="modal-update-<%= video.getVideoID()%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <form class="modal-content" style="padding: 0;" action="UpdateVideoController" method="POST">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel" style="color: #333">Update video</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <table>
+                                            <input type="hidden" name="lessonId" value="${requestScope.lessonId}"/>
+                                            <input type="hidden" name="videoId" value="<%= video.getVideoID() %>"/>
+                                            <tr>
+                                                <td style="color: #333;">Content</td>
+                                                <td><input type="text" name="content" value="<%= video.getContent() %>"></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="color: #333;">Time</td>
+                                                <td><input type="text" name="time" value="<%= video.getTime() %>"></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </td>
+
+                    <!--Modal-->
                 </tr>
                 <% }%>
                 <tr>

@@ -34,13 +34,57 @@
         <!-- Custom styles for this template -->
         <link href="assets/jumbotron-narrow.css" rel="stylesheet"> 
         <script src="/Wedproject2_temp1/assets/jquery-1.11.3.min.js"></script>
-        <link href="admin/assets/css/custom.min.css" rel="stylesheet" type="text/css" />     
+        <link href="../assets/css/custom.min.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../assets/css/all.min.css">
+        <link rel="stylesheet" href="../assets/css/animate.css">
+        <link rel="stylesheet" href="../assets/css/odometer.css">
+        <link rel="stylesheet" href="../assets/css/nice-select.css">
+        <link rel="stylesheet" href="../assets/css/owl.min.css">
+        <link rel="stylesheet" href="../assets/css/magnific-popup.css">
+        <link rel="stylesheet" href="../assets/css/flaticon.css">
+        <link href="../assets/css/main2.css" rel="stylesheet" type="text/css"/>
+
+        <link rel="shortcut icon" href="../assets/images/art1.png" type="image/x-icon"> 
     </head>
+    <style>
+        .nav-bar {
+            height: 100px; 
+            width: 1600px;
+        }
+        .learning-button {
+    margin-top: 15px; 
+}
+    </style>
+    
 
     <body>
-        <div class="vertical-overlay"></div>
-        <div class="main-content overflow-hidden container">
-            <div class="page-content container">
+        
+        <jsp:include page="../layout/header.jsp"/>
+        
+        
+        
+        <div id="layout-wrapper">
+            <section class="hero-section banner-overlay bg_img" data-img="" style="height: 290px; display: flex; align-items: center;">
+
+                <div class="custom-container">
+                    <div class="hero-content">
+                        <h1 class="title uppercase cl-white" style="margin: 0 auto;">Payment Result</h1>
+                        <ul class="breadcrumb cl-white p-0 m-0" style="background-color: #e9ecef00">
+                            <li>
+                                <a href="../index.jsp">Home</a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+        
+        
+        <div class="main-content container custom-billing ">
+            <div class="page-content">
                 <div class="container-fluid">
 
                     <div class="row">              
@@ -113,9 +157,7 @@
                                         <p>
                                             &nbsp;
                                         </p>
-                                        <footer class="footer">
-                                            <p>&copy; VNPAY 2020</p>
-                                        </footer>
+                                       
                                     </div>  
 
                                 </div>
@@ -200,16 +242,22 @@
                                                 }
 
                                         %>
-                                        <a href="learning.jsp" class=" btn-md btn-viewCourse slide_right"><span style="text-align: center;border-radius: 25px;">LEARNING</span> <i class="fa fa-book" aria-hidden="true"></i></a>
+                                        <a href="learning.jsp" class=" btn-md btn-viewCourse slide_right learning-button"><span style="text-align: center;border-radius: 25px;">LEARNING</span> <i class="fa fa-book" aria-hidden="true"></i></a>
                                             <%                                            }
                                             %>
+                                            
                                     </div>
+                                    
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                                    
             </div>
+                                   
         </div>
+                       
     </body>
+     
 </html>

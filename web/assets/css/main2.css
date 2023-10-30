@@ -6597,6 +6597,10 @@ blockquote::before {
     margin-top: 100px;
    margin-bottom: 200px/* Điều chỉnh khoảng cách giữa "banner" và "account" bằng margin-top */
 }
+.custom-billing{
+    margin-top: 50px;
+   margin-bottom: 150px;
+}
 
 .create-course-button {
     background-color: #007bff; /* Màu nền nút */
@@ -6609,4 +6613,7 @@ blockquote::before {
 
 .create-course-button:hover {
     background-color: #0056b3; /* Màu nền nút khi rê chuột vào */
+}
+.checkout-background{
+    background-color: rgba(59, 65, 66, 0.1);
 }
