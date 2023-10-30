@@ -242,10 +242,10 @@
                                                 }
 
                                         %>
-                                        
+                                        <a href="learning.jsp" class=" btn-md btn-viewCourse slide_right learning-button"><span style="text-align: center;border-radius: 25px;">LEARNING</span> <i class="fa fa-book" aria-hidden="true"></i></a>
                                             <%                                            }
                                             %>
-                                            <a href="learning.jsp" class=" btn-md btn-viewCourse slide_right learning-button"><span style="text-align: center;border-radius: 25px;">LEARNING</span> <i class="fa fa-book" aria-hidden="true"></i></a>
+                                            
                                     </div>
                                     
                                 </div>
