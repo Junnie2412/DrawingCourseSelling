@@ -315,7 +315,7 @@
                         <tbody>
                         <form action="MainController" method="POST">
                             <tr style="border-top: 2px solid gray;">
-                                <td><input type="checkbox" onclick="calculation()" name="price" value="<%= (int) course.getPrice()%>"></td>
+                                <td><input type="checkbox" onclick="calculation()" name="price" value="<%= course.getPrice()%>"></td>
                                 <td><%= count++%></td>
                                 <td><img style="width: 100px; height: 100px" src="<%=courseDAO.getDescription(course.getCourseID()).getImage()%>"></td>
                                 <td style="text-align: left; font-weight: bold"><%=course.getName()%>"</td>

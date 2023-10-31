@@ -146,57 +146,6 @@
                         </td>
                     </tr>
                     <tr>
-                        <td><br></td>
-                        <td><br></td>
-                    </tr>
-                </tbody>
-            </table>
-            </div>
-            
-            <div class="table2">
-                <table>
-                <tbody>
-                    <tr>
-                        <td style="font-weight: bold; color:black">Module</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Title</td>
-                        <td><input type="text" name="moduleTitle"></td>
-                    </tr>
-                    <tr>
-                        <td><br></td>
-                        <td><br></td>
-                    </tr>
-                    <tr>
-                        <td style="font-weight: bold; color:black">Lesson</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Title</td>
-                        <td><input type="text" name="lessonTitle"></td>
-                    </tr>
-                    <tr>
-                        <td>Description</td>
-                        <td><input type="text" name="lessonDescription"></td>
-                    </tr>
-                    <tr>
-                        <td><br></td>
-                        <td><br></td>
-                    </tr>
-                    <tr>
-                        <td style="font-weight: bold;  color:black">Video</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Content</td>
-                        <td><input type="text" name="videoContent"></td>
-                    </tr>
-                    <tr>
-                        <td>Time</td>
-                        <td><input type="text" name="videoTime"></td>
-                    </tr>
-                    <tr>
                         <%
                             String message = (String) request.getAttribute("MESSAGE");
                             if (message == null) {
@@ -214,6 +163,7 @@
                 </tbody>
             </table>
             </div>
+            
         </form>
         <script>
             document.getElementById("todayDate").valueAsDate = new Date();
