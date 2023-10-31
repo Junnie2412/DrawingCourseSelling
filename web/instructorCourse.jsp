@@ -113,8 +113,10 @@
                     <%
                         CourseDAO courseDAO = new CourseDAO();
                         ModuleDAO moduleDAO = new ModuleDAO();
-                        
-    List<CourseDTO> listCourse = courseDAO.getlistCourse();
+
+                        UserDTO user = (UserDTO) session.getAttribute("LOGIN_USER");
+
+                        List<CourseDTO> listCourse = courseDAO.getlistCourseInstructor(user.getAccountID());
                     %>
                     <div class="row justify-content-center mb-30-none">
                         <%

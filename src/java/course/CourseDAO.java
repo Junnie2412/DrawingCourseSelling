@@ -31,7 +31,7 @@ public class CourseDAO {
 
     private static final String GET_ACCOUNT_BY_COURSEID = "SELECT * FROM tblAccount WHERE accountID = (SELECT accountID FROM tblCourse WHERE courseID = ?)";
     private static final String GET_DESCRIPTION_BY_COURSEID = "SELECT * FROM tblDescription WHERE descriptionID = (SELECT descriptionID FROM tblCourse WHERE courseID = ?)";
-    private static final String GET_ALL_COURSE = "SELECT * FROM tblCourse WHERE isActive = '1'";
+    private static final String GET_ALL_COURSE = "SELECT * FROM tblCourse WHERE accountID = ?";
     private static final String FILTER_COURSE_BY_LEVEL = "SELECT c.* FROM tblCourse AS c JOIN tblDescription AS d ON c.descriptionID = d.descriptionID WHERE c.isActive = '1' AND d.level = ? ";
     private static final String FILTER_COURSE_BY_TYPE = "SELECT c.* FROM tblCourse AS c JOIN tblDescription AS d ON c.descriptionID = d.descriptionID WHERE c.isActive = '1' AND d.type = ? ";
     private static final String FILTER_COURSE_BY_PRICE_UNDER_300000 = "SELECT * FROM tblCourse WHERE isActive = '1' AND price <300000";
@@ -254,7 +254,7 @@ public class CourseDAO {
 
     public boolean createCourse(String courseID, float coursePrice, String courseName, int courseDuration, boolean courseIsActive, String courseDatePublic,
             String descriptionContent, String descriptionTarget, String descriptionImage, String descriptionType, String descriptionLevel,
-            String instructorID, String moduleTitle, String lessonTitle, String lessonDescription, String videoContent, LocalTime videoTime, boolean videoIsActive) throws ClassNotFoundException, SQLException {
+            String instructorID) throws ClassNotFoundException, SQLException {
         Connection conn = null;
         ResultSet rs = null;
         PreparedStatement ptm = null;
@@ -275,15 +275,7 @@ public class CourseDAO {
                 ptm.setString(7, instructorID);
                 ptm.setInt(8, descriptionID);
 
-                ptm.executeUpdate();
-
-                int moduleId = createModule(moduleTitle, courseID);
-                int lessionId = createLesson(lessonTitle, lessonDescription, moduleId);
-                int videoId = createVideo(videoContent, videoTime, videoIsActive, lessionId);
-
-                if (videoId != -1) {
-                    return true;
-                }
+                return ptm.executeUpdate() > 0;
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -385,7 +377,7 @@ public class CourseDAO {
         return description;
     }
 
-    public ArrayList<CourseDTO> getlistCourse() throws SQLException {
+    public ArrayList<CourseDTO> getlistCourseInstructor(String accountId) throws SQLException {
         ArrayList<CourseDTO> list = new ArrayList<>();
         Connection conn = null;
         ResultSet rs = null;
@@ -395,6 +387,7 @@ public class CourseDAO {
             conn = DBUtil.getConnection();
             if (conn != null) {
                 ptm = conn.prepareStatement(GET_ALL_COURSE);
+                ptm.setString(1, accountId);
                 rs = ptm.executeQuery();
                 while (rs.next()) {
                     String courseID = rs.getString("courseID");
