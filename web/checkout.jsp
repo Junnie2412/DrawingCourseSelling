@@ -78,6 +78,19 @@
         color: #333; /* Màu ch? */
         margin-bottom: 10px; /* Kho?ng cách d??i */
     }
+    .payment-button{
+                margin-top: 20px;
+                margin-left: 20px;
+                font-size: 14px;
+                width: 60px;
+                height: 60px;
+                color: white;
+                border-radius: 8px;
+                background: linear-gradient(to right, rgba(221,168,75,255) 50%, rgb(88,100,125) 50%);
+                background-size: 200% 100%;
+                background-position: right bottom;
+                transition: all .5s ease-out;
+            }
 </style>
     
     
@@ -99,7 +112,7 @@
                         <h1 class="title uppercase cl-white" style="margin: 0 auto;">Check Out</h1>
                         <ul class="breadcrumb cl-white p-0 m-0" style="background-color: #e9ecef00">
                             <li>
-                                <a href="index.jsp" class="fa fa-home" aria-hidden="true">Home</a>
+                                <a href="index.jsp" class="fa fa-home" aria-hidden="true" >  Home</a>
                             </li>
                             <li>
                                 Checkout
@@ -297,7 +310,7 @@
                                                 <td colspan="3" class="text-end">
                                                     <form action="checkout/vnpay_pay.jsp" method="post">
                                                         <input type="hidden" name="amount" value="<%=intTotal%>">
-                                                        <button type="submit" class="btn btn-danger">Go to payment</button>
+                                                        <button type="submit" class="btn btn-danger ">Go to payment</button>
                                                     </form>                                                       
                                                 </td>
                                             </tr>
