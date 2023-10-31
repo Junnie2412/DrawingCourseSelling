@@ -256,7 +256,7 @@ public class CourseDAO {
 
     public boolean createCourse(String courseID, float coursePrice, String courseName, int courseDuration, boolean courseIsActive, String courseDatePublic,
             String descriptionContent, String descriptionTarget, String descriptionImage, String descriptionType, String descriptionLevel,
-            String instructorID, String moduleTitle, String lessonTitle, String lessonDescription, String videoContent, LocalTime videoTime, boolean videoIsActive) throws ClassNotFoundException, SQLException {
+            String instructorID) throws ClassNotFoundException, SQLException {
         Connection conn = null;
         ResultSet rs = null;
         PreparedStatement ptm = null;
@@ -277,15 +277,11 @@ public class CourseDAO {
                 ptm.setString(7, instructorID);
                 ptm.setInt(8, descriptionID);
 
-                ptm.executeUpdate();
+                return ptm.executeUpdate() >0;
 
-                int moduleId = createModule(moduleTitle, courseID);
-                int lessionId = createLesson(lessonTitle, lessonDescription, moduleId);
-                int videoId = createVideo(videoContent, videoTime, videoIsActive, lessionId);
+               
 
-                if (videoId != -1) {
-                    return true;
-                }
+               
             }
         } catch (Exception e) {
             e.printStackTrace();
