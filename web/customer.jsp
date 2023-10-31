@@ -1,20 +1,12 @@
-<%@page import="java.util.List"%>
-<%@page import="course.CourseDTO"%>
-<%@page import="course.CourseDTO"%>
-<%@page import="course.CourseDAO"%>
 <%@page import="course.ModuleDAO"%>
 <%@page import="course.CourseFeedbackDAO"%>
+<%@page import="java.util.List"%>
+<%@page import="course.CourseDTO"%>
+<%@page import="course.CourseDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@page import="users.UserDTO"%>
 <html lang="en">
-    <%
-        UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
-        if (loginUser == null) {
-            loginUser = new UserDTO();
-        }
-    %>
-
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -111,7 +103,12 @@
 
     <body>
 
+        <%
 
+            UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
+            if(loginUser == null)
+                loginUser = new UserDTO();
+        %>
 
         <div class="all-sections">
             <!-- ~~~ Loader & Go-Top ~~~ -->
@@ -128,6 +125,7 @@
                 <jsp:include page="layout/header.jsp"/>
             </div>
 
+
             <!-- ~~~ Banner Section ~~~ -->
             <section class="banner-section banner-overlay bg_img bg-banner" data-img="https://images.unsplash.com/photo-1626243048109-e2ef80ff5b31?auto=format&fit=crop&q=80&w=1470&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
                 <div class="container">
@@ -140,19 +138,19 @@
                             <%
                                 if (loginUser.getRole() == "") {
                             %>
-                                <a href="courses.jsp" class=" btn-md btn-viewCourse slide_right">VIEW COURSES <i class="fas fa-play-circle"></i></a>
-                                <a href="signup.jsp" class="btn-createAccount slide_right2 btn-md theme-one">CREATE YOUR ACCOUNT <i class="flaticon-tap-1"></i></a>
-                            <%
+                            <a href="courses.jsp" class=" btn-md btn-viewCourse slide_right">VIEW COURSES <i class="fas fa-play-circle"></i></a>
+                            <a href="signup.jsp" class="btn-createAccount slide_right2 btn-md theme-one">CREATE YOUR ACCOUNT <i class="flaticon-tap-1"></i></a>
+                                <%
                                 } else if (loginUser.getRole().equals("Customer")) {
-                            %>
-                                <a href="learning.jsp" class=" btn-md btn-viewCourse slide_right"><span style="text-align: center;">LEARNING</span> <i class="fa fa-book" aria-hidden="true"></i></a>
-                            <%
-                                }else if(loginUser.getRole().equals("Instructor")){
-                            %>
-                                <a href="courses.jsp" class=" btn-md btn-viewCourse slide_right">VIEW COURSES <i class="fas fa-play-circle"></i></a>
-                            <%
-                                }
-                            %>
+                                %>
+                            <a href="learning.jsp" class=" btn-md btn-viewCourse slide_right"><span style="text-align: center;">LEARNING</span> <i class="fa fa-book" aria-hidden="true"></i></a>
+                                <%
+                                } else if (loginUser.getRole().equals("Instructor")) {
+                                %>
+                            <a href="courses.jsp" class=" btn-md btn-viewCourse slide_right">VIEW COURSES <i class="fas fa-play-circle"></i></a>
+                                <%
+                                    }
+                                %>
                         </div>
                     </div>
                 </div>
@@ -226,14 +224,6 @@
 
 
             <!-- ~~~ Course Section ~~~ -->
-            <%
-                CourseFeedbackDAO courseFeedbackDAO = new CourseFeedbackDAO();
-                ModuleDAO moduleDAO = new ModuleDAO();
-                CourseDAO courseDAO = new CourseDAO();
-                List<CourseDTO> list = courseDAO.getlistCourse();
-                if (list != null) {
-                    if (list.size() > 0) {
-            %>
             <section class="course-section pt-120 pb-120 section-bg oh pos-rel">
                 <div class="course-top-shape">
                     <img src="assets/images/course/course-top-shape.png" alt="course">
@@ -248,147 +238,71 @@
                     </div>
                     <div class="row justify-content-center mb-30-none">
                         <%
+                            CourseFeedbackDAO courseFeedbackDAO = new CourseFeedbackDAO();
+                            ModuleDAO moduleDAO = new ModuleDAO();
+                            CourseDAO courseDAO = new CourseDAO();
+                            List<CourseDTO> list = courseDAO.getlistCourse("");
+                            if (list != null) {
+                                if (list.size() > 0) {
                                     for (CourseDTO course : list) {
                         %>
-                        <div class="col-xl-4 col-md-6 col-sm-10">  
-                            <form action="MainController" method="POST" id="courseForm<%= course.getCourseID()%>">
-                                <input type="hidden" value="ViewCourseDetail" name="action"/>
-                                <input type="hidden" name="courseID" value="<%= course.getCourseID()%>">
-                                <input type="hidden" name="courseName" value="<%= course.getName()%>">
-                                <div class="course-item">
-                                    <div class="thumb">
-                                        <img src="<%= courseDAO.getDescription(course.getCourseID()).getImage()%>" alt="course" id="courseImage">
-                                    </div>
-                                    <div class="content">
-                                        <h5 class="title">
-                                            <p id="courseName"><%= course.getName()%></p>
-                                        </h5>
-                                        <div class="meta-area">
-                                            <div class="meta">
-                                                <div class="meta-item">
-                                                    <i class="fas fa-user"></i>
-                                                    <span><%= courseDAO.getAccount(course.getCourseID()).getFullName()%></span>
-                                                </div>
-                                                <div class="meta-item">
-                                                    <i class="fas fa-photo-video"></i>
-                                                    <span><%= moduleDAO.getQuantityOfModules(course.getCourseID())%> Modules</span>
-                                                </div>
-                                                <div class="meta-item">
-                                                    <i class="fas fa-user-graduate"></i>
-                                                    <span><%= courseDAO.getDescription(course.getCourseID()).getType()%></span>
-                                                </div>
+                        <div class="col-xl-4 col-md-6 col-sm-10">
+                            <div class="course-item">
+                                <div class="thumb">
+                                    <a href="course-details.jsp?courseID=<%= course.getCourseID()%>">
+                                        <img src="<%= courseDAO.getDescription(course.getCourseID()).getImage()%>" alt="course">
+                                    </a>
+                                </div>
+                                <div class="content">
+                                    <h5 class="title">
+                                        <a href="course-details.jsp?courseID=<%= course.getCourseID()%>"><%= course.getName()%></a>
+                                    </h5>
+                                    <div class="meta-area">
+                                        <div class="meta">
+                                            <div class="meta-item">
+                                                <i class="fas fa-user"></i>
+                                                <span><%= courseDAO.getAccount(course.getCourseID()).getFullName()%></span>
+                                            </div>
+                                            <div class="meta-item">
+                                                <i class="fas fa-photo-video"></i>
+                                                <span><%= moduleDAO.getQuantityOfModules(course.getCourseID())%> Modules</span>
+                                            </div>
+                                            <div class="meta-item">
+                                                <i class="fas fa-user-graduate"></i>
+                                                <span><%= courseDAO.getDescription(course.getCourseID()).getType()%></span>
                                             </div>
                                         </div>
-                                        <div class="ratings-area">
-                                            <div class="ratings cl-theme">
+                                    </div>
+                                    <div class="ratings-area">
+                                        <div class="ratings cl-theme">
+                                            <%
+                                                float avgrate = courseFeedbackDAO.getAverageRate(course.getCourseID());
+                                                for (int i = 0; i < avgrate; i++) {
+                                            %>
+                                            <span><i class="fas fa-star"></i></span>
                                                 <%
-                                                    float avgrate = courseFeedbackDAO.getAverageRate(course.getCourseID());
-                                                    for (int i = 0; i < avgrate; i++) {
+                                                    }
+                                                    for (int i = 0; i < (5 - avgrate); i++) {
                                                 %>
-                                                <span><i class="fas fa-star"></i></span>
-                                                    <%
-                                                        }
-                                                        for (int i = 0; i < (5 - avgrate); i++) {
-                                                    %>
-                                                <span class="cl-theme-light"><i class="fas fa-star"></i></span>
-                                                    <%
-                                                        }
-                                                    %>
-                                                <span>(<%= courseFeedbackDAO.getAverageRate(course.getCourseID())%>/5.00)</span>
-                                            </div>
-                                            <div class="price cl-1"><input type="hidden" name="price" value="<%=course.getPrice()%>">
-                                                <span name="priceValue"></span> VND
-                                            </div>
+                                            <span class="cl-theme-light"><i class="fas fa-star"></i></span>
+                                                <%
+                                                    }
+                                                %>
+                                            <span>(<%= courseFeedbackDAO.getAverageRate(course.getCourseID())%>/5.00)</span>
                                         </div>
-                                    </div>           
-                                </div>  
-                            </form>                     
-                        </div>
-                        <%
-                            }
-                        %>   
-                    </div>    
-                    <div class="text-center load-more mt-5">
-                        <a href="courses.jsp" class="custom-button theme-one">load more courses <i class="fas fa-angle-right"></i></a>
-                    </div>
-                </div>
-            </section>
-            <%
-                    }
-                }           
-            %>
-            
-            <!-- ~~~ Course Section ~~~ -->
-
-
-            <!-- ~~~ Counter Section ~~~ -->
-            <section class="counter-section pt-120 pb-120 title-lay bg_img" data-img="./assets/images/banner/banner.jpg" id="apply">
-                <div class="container">
-                    <div class="d-flex flex-wrap justify-content-between align-items-center">
-                        <div class="odo-area">
-                            <div class="odo-wrap">
-                                <div class="odo-item">
-                                    <div class="odo-in">
-                                        <div class="odo-head">
-                                            <h2 class="title odometer" data-odo="60">1</h2>
-                                            <h2 class="title">2</h2>
+                                        <div class="price cl-1">
+                                            <%= course.getPrice()%>đ
                                         </div>
-                                        <h5 class="subtitle">Teachers</h5>
-                                    </div>
-                                </div>
-                                <div class="odo-item">
-                                    <div class="odo-in">
-                                        <div class="odo-head">
-                                            <h2 class="title odometer" data-odo="8">10</h2>
-                                            <h2 class="title">0</h2>
-                                        </div>
-                                        <h5 class="subtitle">Students</h5>
-                                    </div>
-                                </div>
-                                <div class="odo-item">
-                                    <div class="odo-in">
-                                        <div class="odo-head">
-                                            <h2 class="title odometer" data-odo="75">6</h2>
-                                            <h2 class="title"></h2>
-                                        </div>
-                                        <h5 class="subtitle">Courses</h5>
-                                    </div>
-                                </div>
-                                <div class="odo-item">
-                                    <div class="odo-in">
-                                        <div class="odo-head">
-                                            <h2 class="title odometer" data-odo="13">2</h2>
-                                            <h2 class="title">+</h2>
-                                        </div>
-                                        <h5 class="subtitle">National Awards</h5>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="apply-form-wrapper">
-                            <h5 class="title">Apply Now</h5>
-                            <form class="apply-form">
-                                <div class="apply-group">
-                                    <label for="name" class="label-name">Full Name</label>
-                                    <label for="name" class="label-icon"><i class="fas fa-user"></i></label>
-                                    <input type="text" id="name" name="name">
-                                </div>
-                                <div class="apply-group">
-                                    <label for="email" class="label-name">Enter Email</label>
-                                    <label for="email" class="label-icon"><i class="fas fa-envelope"></i></label>
-                                    <input type="text" id="email" name="email">
-                                </div>
-                                <div class="apply-group">
-                                    <label for="phone" class="label-name">Phone Number</label>
-                                    <label for="phone" class="label-icon"><i class="fas fa-phone"></i></label>
-                                    <input type="text"  id="phone" name="phone">
-                                </div>
-                                <div class="apply-group mb-0">
-                                    <button type="submit">submit now <i class="fas fa-angle-right"></i></button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+                        <%
+                                    }
+                                }
+                            }
+                        %>   
+                    </div>    
                 </div>
             </section>
             <!-- ~~~ Counter Section ~~~ -->
@@ -502,33 +416,6 @@
             <!-- ~~~ Footer Section ~~~ -->
         </div>
 
-        <script>
-            var courseForms = document.querySelectorAll('form[id^="courseForm"]');
-
-            courseForms.forEach(function(form) {
-                var courseImage = form.querySelector('#courseImage');
-                var courseName = form.querySelector('#courseName');
-
-                courseImage.addEventListener('click', function() {
-                    form.submit(); 
-                });
-
-                courseName.addEventListener('click', function() {
-                    form.submit(); 
-                });
-            });
-        </script>
-        
-        <script>
-            window.addEventListener('load', function() {
-                var input = document.getElementsByName("price");
-                var tmp1 = 0;
-                for (var i = 0; i < input.length; i++) {
-                    tmp1 = parseFloat(input[i].value);
-                    document.getElementsByName("priceValue")[i].innerHTML = Intl.NumberFormat().format(tmp1.toFixed(3));
-                }
-            });
-        </script>
 
         <script data-cfasync="false" src="../../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/jquery-3.6.0.min.js"></script>
 

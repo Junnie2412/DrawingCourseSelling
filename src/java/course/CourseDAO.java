@@ -377,7 +377,7 @@ public class CourseDAO {
         return description;
     }
 
-    public ArrayList<CourseDTO> getlistCourseInstructor(String accountId) throws SQLException {
+     public ArrayList<CourseDTO> getlistCourseInstructor(String accountId) throws SQLException {
         ArrayList<CourseDTO> list = new ArrayList<>();
         Connection conn = null;
         ResultSet rs = null;

@@ -5,6 +5,67 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable">
+<head>
+    <head>
+
+
+        <meta charset="utf-8" />
+        <title>ArtCenter - Online Drawing Course</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+        <meta content="Themesbrand" name="author" />
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="assets/images/art1.png" type="image/x-icon">
+
+
+        <!-- Sweet Alert css-->
+        <link href="staff/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+
+        <!-- Layout config Js -->
+        <script src="staff/assets/js/layout.js"></script>
+        <!-- Bootstrap Css -->
+        <link href="staff/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <!-- Icons Css -->
+        <link href="staff/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <!-- App Css-->
+        <link href="staff/assets/css/app.min.css" rel="stylesheet" type="text/css" />
+        <!-- custom Css-->
+        
+
+
+
+
+
+    </head>
+</head>
+<style>
+    /* Thay đổi màu nền của sidebar */
+    .app-menu.navbar-menu {
+        background-color: #336699; /* Thay đổi màu nền tại đây */
+    }
+
+    /* Thay đổi màu chữ của các menu item */
+    .navbar-menu .menu-link {
+        color: #fff; /* Thay đổi màu chữ tại đây */
+    }
+
+    /* Thay đổi màu nền khi hover trên menu item */
+    .navbar-menu .menu-link:hover {
+        background-color: #3a75b7; /* Thay đổi màu nền khi hover tại đây */
+    }
+
+    /* Thay đổi màu nền của các sub-menu */
+    .navbar-menu .menu-dropdown {
+        background-color: #2b4d80; /* Thay đổi màu nền của sub-menu tại đây */
+    }
+
+    /* Thay đổi màu chữ của các sub-menu item */
+    .navbar-menu .menu-dropdown a {
+        color: #fff; /* Thay đổi màu chữ của sub-menu item tại đây */
+    }
+</style>
+<body>
 <!DOCTYPE html>
 <div class="app-menu navbar-menu">
             <!-- LOGO -->
@@ -15,7 +76,7 @@
                         <div class="text-center mt-sm-5 mb-4 text-white-50">
                             <div>
                                 <a href="../index.jsp"class="d-inline-block auth-logo">
-                                    <img src="admin/assets/images/logomain.png" alt="logo" height="70" >
+                                    <img src="admin/assets/images/art1.png" alt="logo" height="70" >
                                 </a>
                             
                     </div>
@@ -99,8 +160,27 @@
                 <!-- Sidebar -->
             </div>
 
-            <div class="sidebar-background"></div>
+            
         </div>
-        <!-- Left Sidebar End -->
-        <!-- Vertical Overlay-->
-        <div class="vertical-overlay"></div>
+            </body>
+       <!-- JAVASCRIPT -->
+        <script src="admin/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="admin/assets/libs/simplebar/simplebar.min.js"></script>
+        <script src="admin/assets/libs/node-waves/waves.min.js"></script>
+        <script src="admin/assets/libs/feather-icons/feather.min.js"></script>
+        <script src="admin/assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
+        <script src="admin/assets/js/plugins.js"></script>
+
+        <!-- list.js min js -->
+        <script src="admin/assets/libs/list.js/list.min.js"></script>
+        <script src="admin/assets/libs/list.pagination.js/list.pagination.min.js"></script>
+
+        <!-- Sweet Alerts js -->
+        <script src="admin/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+        <!-- crm leads init -->
+        <script src="admin/assets/js/pages/crm-leads.init.js"></script>
+
+        <!-- App js -->
+        <script src="admin/assets/js/app.js"></script>
+</html>
+       
