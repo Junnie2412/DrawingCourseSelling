@@ -33,6 +33,7 @@ public class ApplyVoucherController extends HttpServlet {
                 int discount = vouDao.checkVoucherCodeExist(voucherCode, total);
                 if (discount != 0) {
                     session.setAttribute("DISCOUNT", discount);
+                    session.setAttribute("VOUCHERCODE", voucherCode);
                 } else {
                     request.setAttribute("ERROR", "The code is expired!");
                     session.setAttribute("DISCOUNT", 0);

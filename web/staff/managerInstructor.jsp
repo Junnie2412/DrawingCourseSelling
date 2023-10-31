@@ -99,7 +99,7 @@
                                             <input type="date" class="form-control" name="dateOfbirth" required>
 
                                         </div>
-                                        
+
                                         <div class="mb-3">
                                             <label for="role" class="form-label">Role</label>
                                             <input type="text" class="form-control" name="role" readonly="" placeholder="Instructor">
