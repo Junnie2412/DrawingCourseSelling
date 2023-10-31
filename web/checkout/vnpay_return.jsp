@@ -125,7 +125,11 @@
                                             </div>    
                                             <div class="form-group">
                                                 <label >Số tiền: VND</label>
-                                                <label><%=request.getParameter("vnp_Amount")%></label>
+                                                <% String soTien = request.getParameter("vnp_Amount");
+                                                   int soTienInt = Integer.parseInt(soTien);
+                                                   soTienInt = soTienInt/100;
+                                                %>
+                                                <label><%=soTienInt%></label>
                                             </div>                                              
                                             <div class="form-group">
                                                 <label >Ngân hàng thanh toán:</label>
@@ -217,6 +221,7 @@
                                             String bankName = request.getParameter("vnp_BankCode");
                                             int amount = Integer.parseInt(request.getParameter("vnp_Amount"));
                                             boolean flag = false;
+                                            String voucherCode = (String) session.getAttribute("VOUCHERCODE");
                                             if (signValue.equals(vnp_SecureHash)) {
                                                 if ("00".equals(request.getParameter("vnp_TransactionStatus"))) {
                                                     flag = true;
@@ -231,7 +236,7 @@
                                             trans.setAmount(amount);
                                             //
                                             CourseDAO dao = new CourseDAO();
-                                            boolean check = dao.inserOrder(user, listCourseCheckout, trans, totalInt);
+                                            boolean check = dao.inserOrder(user, listCourseCheckout, trans, totalInt,voucherCode);
                                             if (check) {
                                                 // cart clear
                                                 CartItemDAO cartDao = new CartItemDAO();
@@ -240,7 +245,7 @@
                                                 }
 
                                         %>
-                                        <a href="learning.jsp" class=" btn-md btn-viewCourse slide_right learning-button"><span style="text-align: center;border-radius: 25px;">LEARNING</span> <i class="fa fa-book" aria-hidden="true"></i></a>
+                                        <a href="/Wedproject2_temp1/learning.jsp" class=" btn-md btn-viewCourse slide_right learning-button"><span style="text-align: center;border-radius: 25px;">LEARNING</span> <i class="fa fa-book" aria-hidden="true"></i></a>
                                             <%                                            }
                                             %>
                                             

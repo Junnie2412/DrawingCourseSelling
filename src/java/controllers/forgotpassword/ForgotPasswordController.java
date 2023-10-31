@@ -28,8 +28,8 @@ public class ForgotPasswordController extends HttpServlet {
             if (accountIsExist) {
                 String getEmailByAccountID = dao.getEmailByAccountID(accountID);
                 if (getEmailByAccountID != null) {
-                    String otp = generateOTP(6);                    
-                    boolean check = SendMail.send(getEmailByAccountID, "Your OTP to reset your password", "<h3>Your OPT is: "+otp+" </h3>");
+                    String otp = generateOTP(6);
+                    boolean check = SendMail.send(getEmailByAccountID, "Your OTP to reset your password", "<h3>Your OPT is: " + otp + " </h3>" + "<p>Plase dont share your OTP to anyone</p>");
                     if (check) {
                         request.setAttribute("resetOTP", otp);
                         url = SUCCESS;
