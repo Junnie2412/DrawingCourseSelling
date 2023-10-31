@@ -337,7 +337,7 @@ public class UserDAO {
             if (conn != null) {
                 ptm = conn.prepareStatement(CREATEACCOUNTGOOGLE);
                 ptm.setString(1, user.getAccountID());
-                ptm.setString(2,user.getFullName() );
+                ptm.setString(2, user.getFullName());
                 ptm.setString(3, user.getRole());
                 ptm.setBoolean(4, true);
                 ptm.setString(5, user.getImage());
@@ -481,11 +481,73 @@ public class UserDAO {
         return false;
     }
 
-    public boolean accountIsExist(String accountID) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public boolean accountIsExist(String accountID) throws SQLException {
+        boolean check = false;
+        //
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        //
+        try {
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement("SELECT * FROM tblAccount WHERE accountID = ?");
+                ptm.setString(1, accountID);
+                rs = ptm.executeQuery();
+                if (rs != null) {
+                    if (rs.next()) {
+                        check = true;
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+            return check;
+
+        }
     }
 
-    public String getEmailByAccountID(String accountID) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public String getEmailByAccountID(String accountID) throws SQLException {
+        String email = null;
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        //
+        try {
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement("SELECT * FROM tblAccount WHERE accountID = ?");
+                ptm.setString(1, accountID);
+                rs = ptm.executeQuery();
+                if (rs != null) {
+                    if (rs.next()) {
+                        email = rs.getString("email");
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return email;
     }
 }

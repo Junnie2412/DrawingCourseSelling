@@ -3,68 +3,46 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controllers.course;
+package controllers.staff;
 
-import course.CourseDAO;
-import course.CourseDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import users.UserDTO;
 
 /**
  *
- * @author TienToan
+ * @author PC
  */
-public class SortCourseController extends HttpServlet {
+@WebServlet(name = "HideInstructorController", urlPatterns = {"/HideInstructorController"})
+public class HideInstructorController extends HttpServlet {
 
-    private static final String SUCCESS = "courses.jsp";
-    private static final String ERROR = "index.jsp";
-    private static final String SORTBYNAME = "sortByName";
-    private static final String SORTBYPRICE = "sortByPrice";
-
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = ERROR;
-        boolean flag = false;
-                
-        try {
-            CourseDAO dao = new CourseDAO();
-            List<CourseDTO> listCourse = dao.getlistCourse("");
-            if (listCourse != null) {
-                if (request.getParameter("sort").equalsIgnoreCase(SORTBYNAME)) {
-                    Collections.sort(listCourse, (a, b) -> a.getName().compareTo(b.getName()));
-                    flag = true;
-                } else if (request.getParameter("sort").equalsIgnoreCase(SORTBYPRICE)) {
-                    for (int i = 0; i < listCourse.size() - 1; i++) {
-                        for (int j = 1; j < i + 1; j++) {
-                            if (listCourse.get(i).getPrice() > listCourse.get(j).getPrice()) {
-                                Collections.swap(listCourse, i, j);
-                            }
-                        }
-                    }
-                    flag = true;
-                }
-            } else {
-                request.setAttribute("ERROR", "Fail to load course!");
-            }
-            if (flag) {
-                request.setAttribute("LIST_COURSE", listCourse);
-                url = SUCCESS;
-            }
-        } catch (Exception e) {
-            log("Error at SortController: " + e.toString());
-        } finally {
-            request.getRequestDispatcher(url).forward(request, response);
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet HideInstructorController</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet HideInstructorController at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 

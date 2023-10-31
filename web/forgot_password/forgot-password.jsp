@@ -8,11 +8,11 @@
         <title>Password Recovery</title>
     </head>
     <body>
-        <form action="MainController" method="POST">
+        <form action="/Wedproject2_temp1/MainController" method="POST">
             
             Enter your AccountID:
             <input type="text" name="accountID" required>
-            <input type="submit" value="Reset Password">
+            <input type="submit" name="action" value="Reset Password">
         </form>
     </body>
 </html>

@@ -60,6 +60,10 @@ public class MainController extends HttpServlet {
     private static final String ADD_INSTRUCTOR_CONTROLLER = "AddInstructorController";
     private static final String SEARCH_INSTRUCTOR = "SearchIns";
     private static final String SEARCH_INSTRUCTOR_CONTROLLER = "SearchInstructorController";
+    private static final String EDIT_INSTRUCTOR = "editInstructor";
+    private static final String EDIT_INSTRUCTOR_CONTROLLER = "EditInstructorController";
+    private static final String HIDE_INSTRUCTOR = "hideInstructor";
+    private static final String HIDE_INSTRUCTOR_CONTROLLER = "HideInstructorController";
 
     private static final String VIEW_CART = "ViewCart";
     private static final String VIEW_CART_PAGE = "viewCart.jsp";
@@ -168,6 +172,10 @@ public class MainController extends HttpServlet {
                 url = HANDLE_OTP_CONTROLLER;
             } else if (action.equals(SET_NEW_PASSWORD)) {
                 url = SET_NEW_PASSWORD_CONTROLLER;
+            }else if (action.equals(EDIT_INSTRUCTOR)) {
+                url = EDIT_INSTRUCTOR_CONTROLLER;
+            }else if (action.equals(HIDE_INSTRUCTOR)) {
+                url = HIDE_INSTRUCTOR_CONTROLLER;
             }
 
         } catch (Exception e) {

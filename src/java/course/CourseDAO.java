@@ -53,6 +53,48 @@ public class CourseDAO {
     private static final String UPDATE_COURSE = "update tblCourse set price = ?, name = ?, duration = ?, datePublic = ? where courseID = ?";
     private static final String GET_COURSE_BY_COURSEID = "SELECT courseID, price, name, duration, isActive, datePublic, accountID, descriptionID FROM tblCourse WHERE courseID = ? ";
 
+    public ArrayList<CourseDTO> getlistCourse() throws SQLException {
+        ArrayList<CourseDTO> list = new ArrayList<>();
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement ptm = null;
+
+        try {
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(GET_ALL_COURSE);
+                rs = ptm.executeQuery();
+                while (rs.next()) {
+                    String courseID = rs.getString("courseID");
+                    String name = rs.getString("name");
+                    float price = rs.getFloat("price");
+                    int duration = rs.getInt("duration");
+                    boolean isActive = rs.getBoolean("isActive");
+                    Date datePublic = rs.getDate("datePublic");
+                    String accountID = rs.getString("accountID");
+                    int descriptionID = rs.getInt("descriptionID");
+
+                    list.add(new CourseDTO(courseID, name, price, duration, isActive, datePublic, accountID, descriptionID));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+
+        return list;
+    }
+
     public List<CourseDTO> getlistCourse(String search) throws ClassNotFoundException, SQLException {
         List<CourseDTO> list = new ArrayList<>();
         Connection conn = null;
@@ -254,7 +296,7 @@ public class CourseDAO {
 
     public boolean createCourse(String courseID, float coursePrice, String courseName, int courseDuration, boolean courseIsActive, String courseDatePublic,
             String descriptionContent, String descriptionTarget, String descriptionImage, String descriptionType, String descriptionLevel,
-            String instructorID, String moduleTitle, String lessonTitle, String lessonDescription, String videoContent, LocalTime videoTime, boolean videoIsActive) throws ClassNotFoundException, SQLException {
+            String instructorID) throws ClassNotFoundException, SQLException {
         Connection conn = null;
         ResultSet rs = null;
         PreparedStatement ptm = null;
@@ -275,15 +317,7 @@ public class CourseDAO {
                 ptm.setString(7, instructorID);
                 ptm.setInt(8, descriptionID);
 
-                ptm.executeUpdate();
-
-                int moduleId = createModule(moduleTitle, courseID);
-                int lessionId = createLesson(lessonTitle, lessonDescription, moduleId);
-                int videoId = createVideo(videoContent, videoTime, videoIsActive, lessionId);
-
-                if (videoId != -1) {
-                    return true;
-                }
+                return ptm.executeUpdate() > 0;
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -385,7 +419,7 @@ public class CourseDAO {
         return description;
     }
 
-    public ArrayList<CourseDTO> getlistCourse() throws SQLException {
+    public ArrayList<CourseDTO> getlistCourseInstructor(String accountId) throws SQLException {
         ArrayList<CourseDTO> list = new ArrayList<>();
         Connection conn = null;
         ResultSet rs = null;
@@ -395,6 +429,7 @@ public class CourseDAO {
             conn = DBUtil.getConnection();
             if (conn != null) {
                 ptm = conn.prepareStatement(GET_ALL_COURSE);
+                ptm.setString(1, accountId);
                 rs = ptm.executeQuery();
                 while (rs.next()) {
                     String courseID = rs.getString("courseID");

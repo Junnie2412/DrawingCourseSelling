@@ -62,10 +62,8 @@
         
         <jsp:include page="../layout/header.jsp"/>
         
-        
-        
         <div id="layout-wrapper">
-            <section class="hero-section banner-overlay bg_img" data-img="" style="height: 290px; display: flex; align-items: center;">
+            <section class="hero-section banner-overlay bg_img" data-img="assets/images/hinhnen.png" style="height: 290px; display: flex; align-items: center;">
 
                 <div class="custom-container">
                     <div class="hero-content">

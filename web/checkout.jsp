@@ -73,8 +73,8 @@
         .section-title {
             font-weight: bold;
             font-size: 18px;
-            color: #333; /* Màu ch? */
-            margin-bottom: 10px; /* Kho?ng cách d??i */
+            color: #333; /* Mï¿½u ch? */
+            margin-bottom: 10px; /* Kho?ng cï¿½ch d??i */
         }
         .nav-bar{
             width: 100vw;
