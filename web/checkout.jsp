@@ -26,7 +26,7 @@
         <!-- App Css-->
         <link href="admin/assets/css/app.min.css" rel="stylesheet" type="text/css" />
         <!-- custom Css-->
-       <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
         <link rel="stylesheet" href="assets/css/all.min.css">
         <link rel="stylesheet" href="assets/css/animate.css">
         <link rel="stylesheet" href="assets/css/odometer.css">
@@ -39,70 +39,70 @@
         <link rel="shortcut icon" href="assets/images/art1.png" type="image/x-icon">      
     </head>
     <style>
-    #order-summary {
-        
-        width: 100%;
-        height: 600px; 
-    }
+        #order-summary {
 
-    #billing-information {
-       
-        width: 100%;
-        height: 450px; 
-        
-    }
-    
-    .payment-method {
-    display: flex;
-    align-items: center;
-    width: 200px;     
-    
-}
+            width: 100%;
+            height: 600px;
+        }
 
-.payment-icon {
-    margin-right: 5px;
-}
+        #billing-information {
 
-.payment-text {
-    font-size: 14px;
-    font-weight: bold;
-    color: #333; 
-}    
+            width: 100%;
+            height: 450px;
 
-     .page-container {
-        background-color: rgba(59, 65, 66, 0.1); 
-    }
-    .section-title {
-        font-weight: bold;
-        font-size: 18px;
-        color: #333; /* Màu ch? */
-        margin-bottom: 10px; /* Kho?ng cách d??i */
-    }
-    .payment-button{
-                margin-top: 20px;
-                margin-left: 20px;
-                font-size: 14px;
-                width: 60px;
-                height: 60px;
-                color: white;
-                border-radius: 8px;
-                background: linear-gradient(to right, rgba(221,168,75,255) 50%, rgb(88,100,125) 50%);
-                background-size: 200% 100%;
-                background-position: right bottom;
-                transition: all .5s ease-out;
-            }
+        }
+
+        .payment-method {
+            display: flex;
+            align-items: center;
+            width: 200px;
+
+        }
+
+        .payment-icon {
+            margin-right: 5px;
+        }
+
+        .payment-text {
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .page-container {
+            background-color: rgba(59, 65, 66, 0.1);
+        }
+        .section-title {
+            font-weight: bold;
+            font-size: 18px;
+            color: #333; /* Màu ch? */
+            margin-bottom: 10px; /* Kho?ng cách d??i */
+        }
+        .payment-button{
+            margin-top: 20px;
+            margin-left: 20px;
+            font-size: 14px;
+            width: 60px;
+            height: 60px;
+            color: white;
+            border-radius: 8px;
+            background: linear-gradient(to right, rgba(221,168,75,255) 50%, rgb(88,100,125) 50%);
+            background-size: 200% 100%;
+            background-position: right bottom;
+            transition: all .5s ease-out;
+        }
+    </style>
+
+
 </style>
-    
-    
-</style>
 
-    <body>
-        <!-- Begin page -->
-        <div class="page-container">
-    <div class="nav-bar">
+<body>
+    <!-- Begin page -->
+    <div class="page-container">
+        <div class="nav-bar">
             <jsp:include page="layout/header.jsp"/>
-    </div>
-            
+        </div>
+
 
         <div id="layout-wrapper">
             <section class="hero-section banner-overlay bg_img" data-img="../assets/images/banner/banner.png" style="height: 290px; display: flex; align-items: center;">
@@ -122,7 +122,7 @@
                 </div>
             </section>
         </div>
-        
+
 
         <!-- Start right Content here -->
         <div class="main-content overflow-hidden container custom-billing "> 
@@ -155,7 +155,7 @@
                                                         </div>
                                                     </div>
 
-                                                    
+
                                                 </div>
 
                                                 <div class="row">
@@ -224,7 +224,7 @@
                                         <table class="table table-borderless align-middle mb-0">
                                             <thead class="table-light text-muted">
                                                 <tr>
-                                                    
+
                                                     <th scope="col">Product Info</th>
                                                     <th scope="col" class="text-end" colspan="2">Price</th>
                                                 </tr>
@@ -235,7 +235,7 @@
                                                         total += c.getPrice();
                                                 %>
                                                 <tr>
-                                                    
+
                                                     <td>
                                                         <h5 class="fs-14"><a href="apps-ecommerce-product-details.html" class="text-dark"><%=c.getName()%></a></h5>
                                                     </td>
@@ -255,9 +255,10 @@
                                                         <div style="overflow: hidden;">
                                                             <form action="ApplyVoucherController" method="POST">
                                                                 <input type="text" style="width: 300px; float: left;" id="voucher" placeholder="Input voucher" name="voucherCode" value="">
+                                                                <input type="hidden" name="total" value="<%= total%>">
                                                                 <button name="action" value="checkVoucher" class="btn btn-success" style="float: right; position: relative; top: -20px;  width: 100px; ">Apply</button>
                                                                 <div style="clear: both;"></div>
-</form>
+                                                            </form>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -304,7 +305,7 @@
                                                     </span>
                                                 </td>
                                             </tr>
-                                            
+
                                             <tr>    
                                                 <% int intTotal = (int) total;%>
                                                 <td colspan="3" class="text-end">
@@ -338,32 +339,32 @@
                     </div>
                 </div>
                 <!-- end row -->
-                   
-               
-          
+
+
+
             </div>
             <!-- container-fluid -->
         </div>
-    
+
         <!-- End Page-content -->
         <jsp:include page="layout/footer.jsp"/>
 
- 
-    <!-- end main content-->
-    <!-- JAVASCRIPT -->
 
-    <script src="admin/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="admin/assets/libs/simplebar/simplebar.min.js"></script>
-    <script src="admin/assets/libs/node-waves/waves.min.js"></script>
-    <script src="admin/assets/libs/feather-icons/feather.min.js"></script>
-    <script src="admin/assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
-    <script src="admin/assets/js/plugins.js"></script>
+        <!-- end main content-->
+        <!-- JAVASCRIPT -->
 
-    <!-- init js -->
-    <script src="admin/assets/js/pages/ecommerce-product-checkout.init.js"></script>
+        <script src="admin/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="admin/assets/libs/simplebar/simplebar.min.js"></script>
+        <script src="admin/assets/libs/node-waves/waves.min.js"></script>
+        <script src="admin/assets/libs/feather-icons/feather.min.js"></script>
+        <script src="admin/assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
+        <script src="admin/assets/js/plugins.js"></script>
 
-    <!-- App js -->
-    <script src="admin/assets/js/app.js"></script>
+        <!-- init js -->
+        <script src="admin/assets/js/pages/ecommerce-product-checkout.init.js"></script>
+
+        <!-- App js -->
+        <script src="admin/assets/js/app.js"></script>
 
 </body>
 </html>
