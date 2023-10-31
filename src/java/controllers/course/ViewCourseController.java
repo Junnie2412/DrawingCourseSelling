@@ -28,7 +28,6 @@ public class ViewCourseController extends HttpServlet {
                 log("Error at SearchController: " + e.toString());
             }
         }
-    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

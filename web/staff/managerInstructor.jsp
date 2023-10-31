@@ -99,13 +99,7 @@
                                             <input type="date" class="form-control" name="dateOfbirth" required>
 
                                         </div>
-                                        <div class="mb-3">
-                                            <label for="isActive" class="form-label">Status</label>
-                                            <select name="isActive">
-                                                <option value="active">Active</option>
-                                                <option value="inactive">Inactive</option>
-                                            </select>
-                                        </div>
+                                        
                                         <div class="mb-3">
                                             <label for="role" class="form-label">Role</label>
                                             <input type="text" class="form-control" name="role" readonly="" placeholder="Instructor">
@@ -210,11 +204,11 @@
                                                                     <!-- <td class="id" style="display:none;"><a href="javascript:void(0);" class="fw-medium link-primary">#VZ2101</a></td>-->
                                                                     <td>
                                                                         <div class="accountID">
-                                                                            <input type="text" name="accountID" value="<%=u.getAccountID()%>" readonly=""/>
+                                                                            <input type="password" name="accountID" value="<%=u.getAccountID()%>" readonly=""/>
                                                                         </div>
                                                                     </td>
                                                                     <td class="password">
-                                                                        <input type="text" name="password" value="<%=u.getPassword()%>" required=""/>
+                                                                        <input type="password" name="password" value="<%=u.getPassword()%>" readonly=""/>
 
                                                                     </td>
                                                                     <td class="name">
@@ -242,18 +236,12 @@
                                                                             <li class="list-inline-item edit" data-bs-toggle="tooltip"
                                                                                 data-bs-trigger="hover" data-bs-placement="top"
                                                                                 title="Edit">
-                                                                                <a href=""
-                                                                                   data-bs-toggle="modal"
-                                                                                   class="text-primary d-inline-block edit-item-btn">
-                                                                                    <i class="ri-pencil-fill fs-16"></i>
-                                                                                </a>
+                                                                                <button type="submit" name="action" value="editInstructor">Edit</button>
                                                                             </li>
                                                                             <li class="list-inline-item" data-bs-toggle="tooltip"
                                                                                 data-bs-trigger="hover" data-bs-placement="top"
-                                                                                title="Remove">
-                                                                                <a href=""
-                                                                                   class="link-danger fs-15"><i
-                                                                                        class="ri-delete-bin-line"></i></a>
+                                                                                title="Deactive">
+                                                                                <button type="submit" name="action" value="hideInstructor">Deactive</button>
                                                                             </li>
                                                                         </ul>
                                                                     </td>
