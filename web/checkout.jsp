@@ -253,6 +253,7 @@
                                                             <div style="overflow: hidden;">
                                                                 <form action="ApplyVoucherController" method="POST">
                                                                     <input type="text" style="width: 300px; float: left;" id="voucher" placeholder="Input voucher" name="voucherCode" value="">
+                                                                    <input type="hidden" name="total" value="<%= total%>">
                                                                     <button name="action" value="checkVoucher" class="btn btn-success" style="float: right; position: relative; top: -20px;  width: 100px; ">Apply</button>
                                                                     <div style="clear: both;"></div>
                                                                 </form>
