@@ -3,7 +3,6 @@
     Created on : Oct 10, 2023, 8:19:08 PM
     Author     : Admin
 --%>
-
 <%@page import="users.UserDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -16,10 +15,6 @@
     %>
 <!DOCTYPE html>
 <header id="page-topbar">
-    <%
-
-        UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
-    %>
     <div class="layout-width">
         <div class="navbar-header">
             
