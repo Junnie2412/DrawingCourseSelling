@@ -17,6 +17,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import users.UserDTO;
 
 /**
  *
@@ -34,9 +36,10 @@ public class SortCourseController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String url = ERROR;
         boolean flag = false;
+                
         try {
             CourseDAO dao = new CourseDAO();
-            ArrayList<CourseDTO> listCourse = dao.getlistCourse();
+            List<CourseDTO> listCourse = dao.getlistCourse("");
             if (listCourse != null) {
                 if (request.getParameter("sort").equalsIgnoreCase(SORTBYNAME)) {
                     Collections.sort(listCourse, (a, b) -> a.getName().compareTo(b.getName()));

@@ -80,6 +80,8 @@ public class MainController extends HttpServlet {
     private static final String HANDLE_VNPAY = "goToVNPay";
     private static final String VNPAY_CONTROLLER = "ajaxServlet";
 
+    private static final String VIEW_COURSE_PAGE = "ViewCoursePage";
+    private static final String VIEW_COURSE_PAGE_CONTROLLER = "ViewCoursePageController";
     private static final String VIEW_COURSE_DETAIL = "ViewCourseDetail";
     private static final String VIEW_COURSE_DETAIL_CONTROLLER = "ViewCourseController";
 

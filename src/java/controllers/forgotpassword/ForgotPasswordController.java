@@ -1,24 +1,17 @@
 package controllers.forgotpassword;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Properties;
 import java.util.Random;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.mail.*;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 import users.UserDAO;
 
 /**
  *
  * @author TienToan
  */
-@WebServlet("/ForgotPasswordServlet")
 public class ForgotPasswordController extends HttpServlet {
 
     private static final String SUCCESS = "forgot_password/enter-otp.jsp";
@@ -36,28 +29,11 @@ public class ForgotPasswordController extends HttpServlet {
                 String getEmailByAccountID = dao.getEmailByAccountID(accountID);
                 if (getEmailByAccountID != null) {
                     String otp = generateOTP(6);
-                    //
-                    String user = "toanntse171537@fpt.edu.vn";
-                    String pass = "etydfmbvlmfezvny";
-                    Properties properties = new Properties();
-                    properties.put("mail.smtp.host", "smtp.gmail.com");
-                    properties.put("mail.smtp.port", "587");
-                    properties.put("mail.smtp.auth", "true");
-                    properties.put("mail.smtp.starttls.enable", "true");
-                    Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
-                        @Override
-                        protected PasswordAuthentication getPasswordAuthentication() {
-                            return new PasswordAuthentication(user, pass);
-                        }
-                    });
-                    MimeMessage message = new MimeMessage(session);
-                    message.setFrom(new InternetAddress(user));
-                    message.addRecipient(Message.RecipientType.TO, new InternetAddress(getEmailByAccountID));
-                    message.setSubject("Your OTP to reset your password");
-                    message.setContent("Your OPT is: " + otp, "text/html");
-                    Transport.send(message);
-                    request.setAttribute("resetOTP", otp);
-                    url = SUCCESS;
+                    boolean check = SendMail.send(getEmailByAccountID, "Your OTP to reset your password", "<h3>Your OPT is: " + otp + " </h3>" + "<p>Plase dont share your OTP to anyone</p>");
+                    if (check) {
+                        request.setAttribute("resetOTP", otp);
+                        url = SUCCESS;
+                    }
                 }
             } else {
                 request.setAttribute("ERROR", "Your accountID is not exist! Please try again!");

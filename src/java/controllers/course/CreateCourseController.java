@@ -28,7 +28,7 @@ import users.UserDTO;
 public class CreateCourseController extends HttpServlet {
 
     private static final String ERROR = "createCourse.jsp";
-    private static final String SUCCESS = "createCourse.jsp";
+    private static final String SUCCESS = "UpdateCourseController?courseId=";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -56,22 +56,13 @@ public class CreateCourseController extends HttpServlet {
 
             String instructorID = loginUser.getAccountID();
 
-            String moduleTitle = request.getParameter("moduleTitle");
-
-            String lessonTitle = request.getParameter("lessonTitle");
-            String lessonDescription = request.getParameter("lessonDescription");
-
-            String videoContent = request.getParameter("videoContent");
-            LocalTime videoTime = LocalTime.parse(request.getParameter("videoTime"));
-            boolean videoIsActive = false;
-
             CourseDAO courseDAO = new CourseDAO();
-            boolean check = courseDAO.createCourse(courseID, coursePrice, courseName, courseDuration, courseIsActive, courseDatePublic, descriptionContent, descriptionTarget, descriptionImage, descriptionType, descriptionLevel, instructorID, moduleTitle, lessonTitle, lessonDescription, videoContent, videoTime, videoIsActive);
+            boolean check = courseDAO.createCourse(courseID, coursePrice, courseName, courseDuration, courseIsActive, courseDatePublic, descriptionContent, descriptionTarget, descriptionImage, descriptionType, descriptionLevel, instructorID);
             if (!check) {
                 request.setAttribute("MESSAGE", "Create Course Unsuccessfully");
             } else {
                 request.setAttribute("MESSAGE", "Create Course Successfully");
-                url = SUCCESS;
+                url = SUCCESS + courseID;
             }
         } catch (Exception e) {
             System.out.println("Lỗi");

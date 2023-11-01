@@ -28,7 +28,7 @@
         <!-- App Css-->
         <link href="staff/assets/css/app.min.css" rel="stylesheet" type="text/css" />
         <!-- custom Css-->
-        <link href="staff/assets/css/custom.min.css" rel="stylesheet" type="text/css" />
+        
 
 
 
@@ -37,11 +37,9 @@
     </head>
 
     <body>
-
+            
         <!-- Begin page -->
-        <div id="layout-wrapper">
-
-            <jsp:include page="layoutadmin/header.jsp"/>
+         <jsp:include page="layoutadmin/header.jsp"/>
 
             <!-- removeNotificationModal -->
 
@@ -99,7 +97,7 @@
                                             <input type="date" class="form-control" name="dateOfbirth" required>
 
                                         </div>
-                                        
+
                                         <div class="mb-3">
                                             <label for="role" class="form-label">Role</label>
                                             <input type="text" class="form-control" name="role" readonly="" placeholder="Instructor">

@@ -1,4 +1,5 @@
-package controllers.order;
+
+package controllers.course;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -6,46 +7,16 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import order.VoucherDAO;
 
-/**
- *
- * @author TienToan
- */
-public class ApplyVoucherController extends HttpServlet {
-
-    private static final String ERROR = "checkout.jsp";
-    private static final String SUCCESS = "checkout.jsp";
+public class ViewCoursePageController extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = ERROR;
-
-        try {
-            HttpSession session = request.getSession();
-            float total = Float.parseFloat(request.getParameter("total"));
-            String voucherCode = request.getParameter("voucherCode");
-            VoucherDAO vouDao = new VoucherDAO();
-            boolean checkExist = vouDao.checkDuplicatedVoucherCode(voucherCode);
-            if (checkExist) {
-                int discount = vouDao.checkVoucherCodeExist(voucherCode, total);
-                if (discount != 0) {
-                    session.setAttribute("DISCOUNT", discount);
-                    session.setAttribute("VOUCHERCODE", voucherCode);
-                } else {
-                    request.setAttribute("ERROR", "The code is expired!");
-                    session.setAttribute("DISCOUNT", 0);
-                }
-            } else {
-                request.setAttribute("ERROR", "The code is not exist!");
-                session.setAttribute("DISCOUNT", 0);
-            }
-        } catch (Exception e) {
-            log("Error at ApplyVoucherController");
-        } finally {
-            request.getRequestDispatcher(url).forward(request, response);
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            String url = "courses.jsp";
+            response.sendRedirect(url);
         }
     }
 
