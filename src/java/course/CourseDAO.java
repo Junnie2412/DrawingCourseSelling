@@ -55,6 +55,7 @@ public class CourseDAO {
     private static final String GET_PROFIT = "select sum(total) as profit from tblOrder";
     private static final String GET_NUMORDER = "select count(orderID) as numOrder from tblOrder";
     private static final String GET_NUMOFCUSTOMERS = "select count(DISTINCT accountID) as numOfCustomers from tblOrder";
+    
     public List<CourseDTO> getlistCourse(String search) throws ClassNotFoundException, SQLException {
         List<CourseDTO> list = new ArrayList<>();
         Connection conn = null;

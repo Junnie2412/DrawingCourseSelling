@@ -466,7 +466,7 @@
                     </div>
                     <div class="row justify-content-center mb-30-none">
                         <%
-                            List<CourseDTO> list = courseDAO.getlistCourse();
+                            List<CourseDTO> list = courseDAO.getlistCourse("");
                             if (list != null) {
                                 if (list.size() > 0) {
                                     for (CourseDTO course : list) {
