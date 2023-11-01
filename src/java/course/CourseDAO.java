@@ -31,6 +31,7 @@ public class CourseDAO {
 
     private static final String GET_ACCOUNT_BY_COURSEID = "SELECT * FROM tblAccount WHERE accountID = (SELECT accountID FROM tblCourse WHERE courseID = ?)";
     private static final String GET_DESCRIPTION_BY_COURSEID = "SELECT * FROM tblDescription WHERE descriptionID = (SELECT descriptionID FROM tblCourse WHERE courseID = ?)";
+    private static final String GET_ALL_COURSE_FOR_INSTRUCTOR = "SELECT * FROM tblCourse WHERE accountID = ?";
     private static final String GET_ALL_COURSE = "SELECT * FROM tblCourse WHERE isActive = '1'";
     private static final String FILTER_COURSE_BY_LEVEL = "SELECT c.* FROM tblCourse AS c JOIN tblDescription AS d ON c.descriptionID = d.descriptionID WHERE c.isActive = '1' AND d.level = ? ";
     private static final String FILTER_COURSE_BY_TYPE = "SELECT c.* FROM tblCourse AS c JOIN tblDescription AS d ON c.descriptionID = d.descriptionID WHERE c.isActive = '1' AND d.type = ? ";
@@ -55,7 +56,7 @@ public class CourseDAO {
     private static final String GET_PROFIT = "select sum(total) as profit from tblOrder";
     private static final String GET_NUMORDER = "select count(orderID) as numOrder from tblOrder";
     private static final String GET_NUMOFCUSTOMERS = "select count(DISTINCT accountID) as numOfCustomers from tblOrder";
-    public List<CourseDTO> getlistCourse(String search) throws ClassNotFoundException, SQLException {
+   public List<CourseDTO> getlistCourse() throws ClassNotFoundException, SQLException {
         List<CourseDTO> list = new ArrayList<>();
         Connection conn = null;
         ResultSet rs = null;
@@ -64,8 +65,7 @@ public class CourseDAO {
         try {
             conn = DBUtil.getConnection();
             if (conn != null) {
-                ptm = conn.prepareStatement(SEARCH_COURSE_NAME);
-                ptm.setString(1, "%" + search + "%");
+                ptm = conn.prepareStatement(GET_ALL_COURSE);
                 rs = ptm.executeQuery();
                 while (rs.next()) {
                     String courseID = rs.getString("courseID");
@@ -394,7 +394,8 @@ public class CourseDAO {
         try {
             conn = DBUtil.getConnection();
             if (conn != null) {
-                ptm = conn.prepareStatement(GET_ALL_COURSE);
+                ptm = conn.prepareStatement( GET_ALL_COURSE_FOR_INSTRUCTOR);
+                ptm.setString(1, accountId);
                 rs = ptm.executeQuery();
                 while (rs.next()) {
                     String courseID = rs.getString("courseID");
