@@ -5,6 +5,33 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<head>
+
+        <meta charset="utf-8" />
+        <title>ArtCenter - Online Drawing Course</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+        <meta content="Themesbrand" name="author" />
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="assets/images/favicon.ico">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> 
+
+        <!-- Sweet Alert css-->
+        <link href="admin/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+
+        <!-- Layout config Js -->
+        <script src="admin/assets/js/layout.js"></script>
+        <!-- Bootstrap Css -->
+        <link href="admin/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <!-- Icons Css -->
+        <link href="admin/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <!-- App Css-->
+        <link href="admin/assets/css/app.min.css" rel="stylesheet" type="text/css" />
+        <!-- custom Css-->
+        <link href="admin/assets/css/custom.min.css" rel="stylesheet" type="text/css" />
+    </head>
+
 <!DOCTYPE html>
 <div class="app-menu navbar-menu">
     <!-- LOGO -->
@@ -12,7 +39,7 @@
         <div class="text-center mt-sm-5 mb-4 text-white-50">
             <div>
                 <a href="../index.jsp"class="d-inline-block auth-logo">
-                    <img src="admin/assets/images/logomain.png" alt="logo" height="70" >
+                    <img src="admin/assets/images/art1.png" alt="logo" height="70" >
                 </a>                          
             </div>
         </div>

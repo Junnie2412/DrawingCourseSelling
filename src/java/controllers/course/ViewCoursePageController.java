@@ -1,41 +1,23 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package controllers.staff;
+
+package controllers.course;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import users.UserDAO;
-import users.UserDTO;
 
-/**
- *
- * @author PC
- */
-@WebServlet(name = "SearchInstructorController", urlPatterns = {"/SearchInstructorController"})
-public class SearchInstructorController extends HttpServlet {
+public class ViewCoursePageController extends HttpServlet {
 
-    private static final String SUCCESS = "ShowListController";
-    private static final String ERROR = "ShowListController";
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = ERROR;
-        
-        String search = request.getParameter("searchName");
-        UserDAO dao = new UserDAO();
-        List<UserDTO> listInstructor = dao.getListSearchInstructor(search);
-        
-        
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            String url = "courses.jsp";
+            response.sendRedirect(url);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

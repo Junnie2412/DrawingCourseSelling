@@ -211,7 +211,7 @@
                     <%
                     } else if (loginUser.getRole().equals("Customer")) {
                     %>
-                    <a href="courses.jsp">Courses</a>
+                    <a href="MainController?action=ViewCoursePage">Courses</a>
                     <%
                     } else if (loginUser.getRole().equals("Instructor")) {
                     %>
@@ -223,7 +223,7 @@
                     <%
                     } else {
                     %>
-                    <a href="courses.jsp">Courses</a>
+                    <a href="MainController?action=ViewCoursePage">Courses</a>
                     <%
                         }
                     %>
@@ -348,7 +348,7 @@
                     <a href="#0">Courses</a>
                     <ul class="submenu">
                         <li>
-                            <a href="courses.jsp">Courses</a>
+                            <a href="MainController?action=ViewCoursePage">Courses</a>
                         </li>
                         <li>
                             <a href="course-details.jsp">Course Details</a>

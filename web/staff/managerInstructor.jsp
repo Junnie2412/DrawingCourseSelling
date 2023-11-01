@@ -202,11 +202,11 @@
                                                                     <!-- <td class="id" style="display:none;"><a href="javascript:void(0);" class="fw-medium link-primary">#VZ2101</a></td>-->
                                                                     <td>
                                                                         <div class="accountID">
-                                                                            <input type="password" name="accountID" value="<%=u.getAccountID()%>" readonly=""/>
+                                                                            <input type="hidden" name="accountID" value="<%=u.getAccountID()%>" readonly=""/>
                                                                         </div>
                                                                     </td>
                                                                     <td class="password">
-                                                                        <input type="password" name="password" value="<%=u.getPassword()%>" readonly=""/>
+                                                                        <input type="hidden" name="password" value="<%=u.getPassword()%>" readonly=""/>
 
                                                                     </td>
                                                                     <td class="name">
