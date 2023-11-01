@@ -34,7 +34,7 @@ public class UserDAO {
     private static final String LOADUSER = "SELECT * FROM tblAccount";
     private static final String UPDATEUSER = "UPDATE tblAccount set fullName=?, dateOfBirth=?, email=? WHERE accountID=?";
     private static final String CHANGE_PASSWORD = "UPDATE tblAccount set password=? WHERE accountID=?";
-
+    private static final String SEARCH_INSTRUCTOR = "SELECT * FROM tblAccount WHERE role = 'Instructor' and fullName = ?";
     private static final String INSTRUCTOR_LIST = "SELECT * FROM tblAccount WHERE role = 'Instructor'";
     private static final String CREATEACCOUNTGOOGLE = "INSERT INTO tblAccount(accountID,fullName,role,isActive,image) VALUES (?,?,?,?,?)";
     private static final String INSERT_INSTRUCTOR = "INSERT INTO tblAccount VALUES (?,?,?,?,?,?,?,?)";
@@ -488,4 +488,17 @@ public class UserDAO {
     public String getEmailByAccountID(String accountID) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+    public List<UserDTO> getListSearchInstructor(String search) {
+        List<UserDTO> list = new ArrayList<>();
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement ptm = null;
+        
+        
+        
+        return list;
+    }
+
+    
 }

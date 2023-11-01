@@ -4,9 +4,14 @@
     Author     : Admin
 --%>
 
+<%@page import="users.UserDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <header id="page-topbar">
+    <%
+
+        UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
+    %>
     <div class="layout-width">
         <div class="navbar-header">
             
