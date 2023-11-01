@@ -56,7 +56,7 @@ public class CourseDAO {
     private static final String GET_PROFIT = "select sum(total) as profit from tblOrder";
     private static final String GET_NUMORDER = "select count(orderID) as numOrder from tblOrder";
     private static final String GET_NUMOFCUSTOMERS = "select count(DISTINCT accountID) as numOfCustomers from tblOrder";
-   public List<CourseDTO> getlistCourse() throws ClassNotFoundException, SQLException {
+    public List<CourseDTO> getlistCourse(String search) throws ClassNotFoundException, SQLException {
         List<CourseDTO> list = new ArrayList<>();
         Connection conn = null;
         ResultSet rs = null;
@@ -65,7 +65,8 @@ public class CourseDAO {
         try {
             conn = DBUtil.getConnection();
             if (conn != null) {
-                ptm = conn.prepareStatement(GET_ALL_COURSE);
+                ptm = conn.prepareStatement(SEARCH_COURSE_NAME);
+                ptm.setString(1, "%" + search + "%");
                 rs = ptm.executeQuery();
                 while (rs.next()) {
                     String courseID = rs.getString("courseID");
@@ -394,7 +395,7 @@ public class CourseDAO {
         try {
             conn = DBUtil.getConnection();
             if (conn != null) {
-                ptm = conn.prepareStatement( GET_ALL_COURSE_FOR_INSTRUCTOR);
+                ptm = conn.prepareStatement(GET_ALL_COURSE_FOR_INSTRUCTOR);
                 ptm.setString(1, accountId);
                 rs = ptm.executeQuery();
                 while (rs.next()) {
