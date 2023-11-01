@@ -28,7 +28,7 @@ import users.UserDTO;
 public class CreateCourseController extends HttpServlet {
 
     private static final String ERROR = "createCourse.jsp";
-    private static final String SUCCESS = "createCourse.jsp";
+    private static final String SUCCESS = "UpdateCourseController?courseId=";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -61,8 +61,8 @@ public class CreateCourseController extends HttpServlet {
             if (!check) {
                 request.setAttribute("MESSAGE", "Create Course Unsuccessfully");
             } else {
-                request.setAttribute("MESSAGE", "Create Course Successfully, please go update to add more Module");
-                url = SUCCESS;
+                request.setAttribute("MESSAGE", "Create Course Successfully");
+                url = SUCCESS + courseID;
             }
         } catch (Exception e) {
             System.out.println("Lỗi");

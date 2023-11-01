@@ -1,4 +1,5 @@
 package controllers.forgotpassword;
+
 import javax.mail.*;
 import java.util.Properties;
 import javax.mail.Message;
@@ -11,7 +12,7 @@ import javax.mail.internet.MimeMessage;
 
 /**
  *
- * @author Win 10
+ * @author TienToan
  */
 public class SendMail {
 
@@ -19,7 +20,9 @@ public class SendMail {
             String msg) {
         boolean check = false;
         String user = "artcenter2412@gmail.com";
-        String pass = "rduaiicjoamzvsfo";
+        String pass = "nguyenlehoangdung2412#";
+//        String user = "toanntse171537@fpt.edu.vn";
+//        String pass = "etydfmbvlmfezvny";
         Properties props = new Properties();
         props.put("mail.smtp.host", "smtp.gmail.com");
         props.put("mail.smtp.port", "587");
@@ -32,12 +35,14 @@ public class SendMail {
             }
         });
         try {
+            
             MimeMessage message = new MimeMessage(session);
             message.setFrom(new InternetAddress(user));
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
             message.setSubject(sub);
             message.setContent(msg, "text/html");
             Transport.send(message);
+            
             check = true;
         } catch (MessagingException e) {
             e.printStackTrace();

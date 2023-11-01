@@ -36,7 +36,7 @@ public class CourseDAO {
     private static final String FILTER_COURSE_BY_TYPE = "SELECT c.* FROM tblCourse AS c JOIN tblDescription AS d ON c.descriptionID = d.descriptionID WHERE c.isActive = '1' AND d.type = ? ";
     private static final String FILTER_COURSE_BY_PRICE_UNDER_300000 = "SELECT * FROM tblCourse WHERE isActive = '1' AND price <300000";
     private static final String FILTER_COURSE_BY_PRICE_ABOVE_300000 = "SELECT * FROM tblCourse WHERE isActive = '1' AND price >300000";
-            
+
     private static final String CHECK_EXISTED_COURSE = "SELECT * FROM tblCourse WHERE courseID = ?";
     private static final String LIST_UNAPPROVED_COURSE = "SELECT * FROM tblCOurse WHERE isActive = 1";
 
@@ -52,49 +52,9 @@ public class CourseDAO {
 
     private static final String UPDATE_COURSE = "update tblCourse set price = ?, name = ?, duration = ?, datePublic = ? where courseID = ?";
     private static final String GET_COURSE_BY_COURSEID = "SELECT courseID, price, name, duration, isActive, datePublic, accountID, descriptionID FROM tblCourse WHERE courseID = ? ";
-
-    public ArrayList<CourseDTO> getlistCourse() throws SQLException {
-        ArrayList<CourseDTO> list = new ArrayList<>();
-        Connection conn = null;
-        ResultSet rs = null;
-        PreparedStatement ptm = null;
-
-        try {
-            conn = DBUtil.getConnection();
-            if (conn != null) {
-                ptm = conn.prepareStatement(GET_ALL_COURSE);
-                rs = ptm.executeQuery();
-                while (rs.next()) {
-                    String courseID = rs.getString("courseID");
-                    String name = rs.getString("name");
-                    float price = rs.getFloat("price");
-                    int duration = rs.getInt("duration");
-                    boolean isActive = rs.getBoolean("isActive");
-                    Date datePublic = rs.getDate("datePublic");
-                    String accountID = rs.getString("accountID");
-                    int descriptionID = rs.getInt("descriptionID");
-
-                    list.add(new CourseDTO(courseID, name, price, duration, isActive, datePublic, accountID, descriptionID));
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-
-        } finally {
-            if (rs != null) {
-                rs.close();
-            }
-            if (ptm != null) {
-                ptm.close();
-            }
-            if (conn != null) {
-                conn.close();
-            }
-        }
-
-        return list;
-    }
-
+    private static final String GET_PROFIT = "select sum(total) as profit from tblOrder";
+    private static final String GET_NUMORDER = "select count(orderID) as numOrder from tblOrder";
+    private static final String GET_NUMOFCUSTOMERS = "select count(DISTINCT accountID) as numOfCustomers from tblOrder";
     public List<CourseDTO> getlistCourse(String search) throws ClassNotFoundException, SQLException {
         List<CourseDTO> list = new ArrayList<>();
         Connection conn = null;
@@ -317,7 +277,11 @@ public class CourseDAO {
                 ptm.setString(7, instructorID);
                 ptm.setInt(8, descriptionID);
 
-                return ptm.executeUpdate() > 0;
+                return ptm.executeUpdate() >0;
+
+               
+
+               
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -419,7 +383,9 @@ public class CourseDAO {
         return description;
     }
 
-    public ArrayList<CourseDTO> getlistCourseInstructor(String accountId) throws SQLException {
+
+     public ArrayList<CourseDTO> getlistCourseInstructor(String accountId) throws SQLException {
+  
         ArrayList<CourseDTO> list = new ArrayList<>();
         Connection conn = null;
         ResultSet rs = null;
@@ -429,7 +395,6 @@ public class CourseDAO {
             conn = DBUtil.getConnection();
             if (conn != null) {
                 ptm = conn.prepareStatement(GET_ALL_COURSE);
-                ptm.setString(1, accountId);
                 rs = ptm.executeQuery();
                 while (rs.next()) {
                     String courseID = rs.getString("courseID");
@@ -553,7 +518,7 @@ public class CourseDAO {
         try {
             conn = DBUtil.getConnection();
             if (conn != null) {
-                if(PriceRange.contentEquals("Under-300000")){
+                if (PriceRange.contentEquals("Under-300000")) {
                     ptm = conn.prepareStatement(FILTER_COURSE_BY_PRICE_UNDER_300000);
                 } else {
                     ptm = conn.prepareStatement(FILTER_COURSE_BY_PRICE_ABOVE_300000);
@@ -745,13 +710,13 @@ public class CourseDAO {
         return list;
     }
 
-    public boolean inserOrder(UserDTO loginUser, List<CourseDTO> Listcourse, TransactionDTO trans, int totalInt) throws SQLException {
+    public boolean inserOrder(UserDTO loginUser, List<CourseDTO> Listcourse, TransactionDTO trans, int totalInt, String voucherCode) throws SQLException {
         //voucher
         //payment
         //order
         //orderdetailed
         double total = (double) totalInt;
-        
+
         boolean checkOrder = false;
         boolean check = false;
         boolean check1 = false;
@@ -769,7 +734,7 @@ public class CourseDAO {
             if (conn != null) {
                 ptm = conn.prepareStatement(INSERT_ORDER);
                 ptm.setString(1, date);
-                ptm.setString(2, "NVPAY");
+                ptm.setString(2, voucherCode);
                 ptm.setDouble(3, total);
                 ptm.setBoolean(4, true);
                 ptm.setString(5, loginUser.getAccountID());
@@ -859,5 +824,102 @@ public class CourseDAO {
         }
 
         return false;
+    }
+
+    public float getProfit() throws SQLException {
+        float profit = 0;
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement ptm = null;
+
+        try {
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(GET_PROFIT);
+                rs = ptm.executeQuery();
+
+                if (rs.next()) {
+                    profit = rs.getFloat("profit");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return profit;
+    }
+    public int getNumOrder() throws SQLException {
+        int numOrder = 0;
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement ptm = null;
+
+        try {
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(GET_NUMORDER);
+                rs = ptm.executeQuery();
+
+                if (rs.next()) {
+                    numOrder = rs.getInt("numOrder");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return numOrder;
+    }
+    public int getNumOfCustomers() throws SQLException {
+        int numOfCustomers = 0;
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement ptm = null;
+
+        try {
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(GET_NUMOFCUSTOMERS);
+                rs = ptm.executeQuery();
+
+                if (rs.next()) {
+                    numOfCustomers = rs.getInt("numOfCustomers");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return numOfCustomers;
     }
 }
