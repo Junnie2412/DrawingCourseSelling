@@ -108,6 +108,10 @@
         <servlet-name>CompletePasswordResetController</servlet-name>
         <servlet-class>controllers.forgotpassword.CompletePasswordResetController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ViewCoursePageController</servlet-name>
+        <servlet-class>controllers.course.ViewCoursePageController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>MainController</servlet-name>
         <url-pattern>/MainController</url-pattern>
@@ -215,6 +219,10 @@
     <servlet-mapping>
         <servlet-name>CompletePasswordResetController</servlet-name>
         <url-pattern>/CompletePasswordResetController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewCoursePageController</servlet-name>
+        <url-pattern>/ViewCoursePageController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
