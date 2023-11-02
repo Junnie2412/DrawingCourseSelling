@@ -550,17 +550,4 @@ public class UserDAO {
         }
         return email;
     }
-
-    public List<UserDTO> getListSearchInstructor(String search) {
-        List<UserDTO> list = new ArrayList<>();
-        Connection conn = null;
-        ResultSet rs = null;
-        PreparedStatement ptm = null;
-        
-        
-        
-        return list;
-    }
-
-    
 }
