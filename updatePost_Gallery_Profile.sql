@@ -1,12 +1,5 @@
 /****** Script for SelectTopNRows command from SSMS  ******/
-SELECT TOP (1000) [postID]
-      ,[image]
-      ,[title]
-      ,[content]
-      ,[dateCreate]
-      ,[isApproved]
-      ,[accountID]
-  FROM [DrawingCourse].[dbo].[tblPost]
+
 
   SET IDENTITY_INSERT tblPost ON
   INSERT INTO tblPost(postID,image,title,content,dateCreate,isApproved,accountID)
