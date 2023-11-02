@@ -29,27 +29,54 @@
         <!-- custom Css-->
         <link href="admin/assets/css/custom.min.css" rel="stylesheet" type="text/css" />
     </head>
+    <style>
+    .table-manager-staff {
+    background-color: rgba(59, 30, 66, 0.1); 
+     
+}
+
+    .custom-tabs {
+        display: flex; /* Hi?n th? các ph?n t? theo chi?u ngang */
+        justify-content: flex-start;
+        margin-left: 50px;/* ??a các ph?n t? ra bên trái */
+    }
+
+    .nav-item {
+        margin-right: 10px; /* T?o kho?ng cách gi?a các ph?n t? */
+    }
+
+     
+    </style>
     <body>
+        
+        
+        <div class="nav-bar">
+           <jsp:include page="layoutadmin/header.jsp"/>
+        </div>
+        
+        
+        
         <div id="layout-wrapper">
-            <jsp:include page="layoutadmin/header.jsp"/>  
+            
             <jsp:include page="layoutadmin/slidebar.jsp"/>
         </div>
 
-        <div class="container pt-5">             
+                     
 
-            <ul class="nav nav-tabs">
-                <li class="nav-item">
-                    <a class="nav-link active" data-bs-toggle="tab" href="#addStaff">Add Staff Account</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-bs-toggle="tab" href="#manageStaff">Manage Staff Account</a>
-                </li>           
-            </ul>   
-            <div class="tab-content">
-                <div class="tab-pane container active" id="addStaff">
-                    <div class="container pt-5" style="width: 50%;">   
+            <div class="container mt-5">
+                <ul class="nav nav-tabs custom-tabs" style="margin-top: 80px; margin-bottom: 50px;">
+                    <li class="nav-item">
+                        <a class="nav-link active btn-primary" data-bs-toggle="tab" href="#addStaff">Add Staff</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn-primary" data-bs-toggle="tab" href="#manageStaff">Manager Staff</a>
+                    </li>
+                </ul>
 
-                        <form action="MainController" method="POST">
+                <div class="tab-content">
+                    <div class="tab-pane container active" id="addStaff">
+                        <div style="width: 50%; margin-left: 400px">
+                    <form action="MainController" method="POST">
                             <div class="mb-3">
                                 <label for="accountID" class="form-label">Account ID</label>
                                 <input type="text" class="form-control" name="accountID" required>
@@ -99,20 +126,21 @@
                         </form>   
                     </div>
                 </div>
-                <div class="tab-pane container fade" id="manageStaff">
-                    <div class="container mt-5">
+                            <div class="tab-pane fade" id="manageStaff" style="width: 100%;">
+                                <div class="table-responsive table-card " style="margin-left: 110px;">
+                                    <div>
                         <%
                             ArrayList<UserDTO> staffList = (ArrayList) session.getAttribute("STAFF_LIST");
                             if (staffList != null) {
                                 if (staffList.size() > 0) {
                         %>
-                        <div class="table-responsive table-card">
-                            <table class="table table-hover" border="1">
+                        
+                            <table class="table  table-manager-staff"  >
                                 <thead class="table-light">
                                     <tr>
                                         <th  data-sort="counter">No</th>
-                                        <th  data-sort="accountID">Account ID</th>
-                                        <th  data-sort="password">Password</th>
+                                        
+                                        
                                         <th  data-sort="name">Name</th>
                                         <th  data-sort="date">Birth Day</th>                                    
                                         <th  data-sort="isActive">Active</th>
@@ -133,15 +161,8 @@
                                     <tr>                                               
                                         <td><%= count++%></td>
                                         <!-- <td class="id" style="display:none;"><a href="javascript:void(0);" class="fw-medium link-primary">#VZ2101</a></td>-->
-                                        <td>
-                                            <div class="accountID">
-                                                <input type="text" name="accountID" value="<%=u.getAccountID()%>" readonly=""/>
-                                            </div>
-                                        </td>
-                                        <td class="password">
-                                            <input type="text" name="password" value="<%=u.getPassword()%>" required=""/>
-
-                                        </td>
+                                        
+                                        
                                         <td class="name">
 
                                             <input type="text" name="fullName" value="<%=u.getFullName()%>" required=""/>
@@ -189,6 +210,7 @@
                 </div>
             </div>      
         </div>
+         
 
 
         <!-- JAVASCRIPT -->

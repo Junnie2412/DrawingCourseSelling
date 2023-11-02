@@ -318,7 +318,10 @@
                         <ul class="breadcrumb cl-white p-0 m-0" style="background-color: #e9ecef00">
                             <li>
                                 <a href="index.jsp">Home</a>
-                            </li>                           
+                            </li>
+                            <li>
+                                Learning
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -344,7 +347,7 @@
                         <h1>My Learning</h1>
                     </div>
                     <div class="learning-button">
-                        <button class="processedBtn" type="submit" id="processedBtnID" name="processedBtn" onclick="changeProcessedBtn()">Processed</button>
+                        <button class="processedBtn" type="submit" id="processedBtnID" name="processedBtn" onclick="changeProcessedBtn()">In progress</button>
                         <button class="finishedBtn" type="submit" id="finishedBtnID" name="FinishedBtn" onclick="changeFinishedBtn()">Finished</button>
                     </div>
                     <div class="title-courses">
@@ -361,7 +364,7 @@
                     <%
                         for (LearningCourseDTO learningCourse : listActive) {
                     %>
-                    <div class="showListCourseActive active">
+                    <div class="showListCourseActive activeList">
                         <div class="courseBox">
                             <div class="coursePicture">
                                 <img src="<%=courseDAO.getDescription(learningCourse.getCourseID()).getImage()%>">
@@ -380,7 +383,7 @@
                                     </p>
                                 </div>
                                 <div class="learnBtn">
-                                    <a href="course-learn.jsp?courseID=<%=learningCourse.getCourseID()%>">Learn <i class="fa fa-light fa-arrow-right"></i></a>
+                                    <a href="course-learning.jsp?courseID=<%=learningCourse.getCourseID()%>">Learn <i class="fa fa-light fa-arrow-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -392,7 +395,7 @@
                     <%
                         for (LearningCourseDTO learningCourse : listNotActive) {
                     %>
-                    <div class="showListCourseNotActive notActive">
+                    <div class="showListCourseNotActive notActiveList">
                         <div class="courseBox">
                             <div class="coursePicture">
                                 <img src="<%=courseDAO.getDescription(learningCourse.getCourseID()).getImage()%>">
@@ -432,19 +435,19 @@
 
         <script>
             function loadPage() {
-                var check2 = document.getElementsByClassName("notActive");
+                var check2 = document.getElementsByClassName("notActiveList");
                 for (var i = 0; i < check2.length; i++) {
                     check2[i].style.visibility = "hidden";
                 }
             }
 
             function changeFinishedBtn() {
-                var check1 = document.getElementsByClassName("notActive");
+                var check1 = document.getElementsByClassName("notActiveList");
                 for (var i = 0; i < check1.length; i++) {
                     check1[i].style.visibility = "visible";
                 }
 
-                var check2 = document.getElementsByClassName("active");
+                var check2 = document.getElementsByClassName("activeList");
                 for (var i = 0; i < check2.length; i++) {
                     check2[i].style.visibility = "hidden";
                 }
@@ -457,12 +460,12 @@
             }
 
             function changeProcessedBtn() {
-                var check1 = document.getElementsByClassName("active");
+                var check1 = document.getElementsByClassName("activeList");
                 for (var i = 0; i < check1.length; i++) {
                     check1[i].style.visibility = "visible";
                 }
 
-                var check2 = document.getElementsByClassName("notActive");
+                var check2 = document.getElementsByClassName("notActiveList");
                 for (var i = 0; i < check2.length; i++) {
                     check2[i].style.visibility = "hidden";
                 }
