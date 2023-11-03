@@ -80,7 +80,7 @@
             }
         </style>
     </head>
-    <body onload="pageLoad()">
+    <body>
         <div class="all-sections oh">
             <!-- ~~~ Loader & Go-Top ~~~ -->
             <div class="overlayer"></div>
@@ -99,35 +99,42 @@
 
             <%
                 UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
-                if(loginUser == null){
+                if (loginUser == null) {
                     loginUser = new UserDTO();
                 }
                 if (loginUser.getRole() != "") {
+                    String title = (String) request.getAttribute("TITLE");
+                    String description = (String) request.getAttribute("DESCRIPTION");
+                    String video = (String) request.getAttribute("VIDEO");
+                    String courseID = (String) request.getAttribute("COURSEID");
+
             %>
-            <div class="learning-right" style="position: absolute; top: 27%; right:-10px ">
-                <div style="margin-bottom: 20px">
-                    <h1 id="titleLessonSpan" ></h1>
+            <div class="learning-right" style="position: absolute; top: 27%; right:-10px;">
+                <div style="margin-bottom: 20px; justify-content: space-between ;display: flex;width: 90% ">
+                    <h1><%=title%></h1>
+                    <a href="">Next <i class="fa fa-solid fa-arrow-right"></i></a>
                 </div>
-                <iframe id="changeVideo" width="90%" height="80%" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <iframe width="90%" height="80%" src="<%=video%>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 <div style="margin-top: 30px">
                     <h4 style="margin-bottom: 20px">Description</h4>
-                    <p id="descriptionLessonSpan" style="background-color: rgb(240, 238, 238); width: 90%; padding: 50px; font-size: 17px">
+                    <p style="background-color: rgb(240, 238, 238); width: 90%; padding: 50px; font-size: 17px">
+                        <%=description%>
                     </p>
                 </div>
             </div>
             <%
-                String courseID = request.getParameter("courseID");
-                ModuleDAO moduleDAO = new ModuleDAO();
-                List<ModuleDTO> listModule = moduleDAO.getModulesByCourseId(courseID);
+                List<ModuleDTO> listModule = (List<ModuleDTO>) request.getAttribute("LIST_MODULE");
             %>
 
             <div class="navbar-learning">
                 <a href="customer.jsp"><i class="fa fa-solid fa-house-user"></i> Home</a>
-                <a href="learning.jsp"> &nbsp; &nbsp; <i class="fa fa-solid fa-caret-left"></i> Learning</a>
-                <a href=""> &nbsp; &nbsp; <i class="fa fa-solid fa-caret-left"></i> Lesson</a>
+                <a href="MainController?action=learning"> &nbsp; &nbsp; <i class="fa fa-solid fa-caret-left"></i> Learning</a>
+                <a href=""> &nbsp; &nbsp; <i class="fa fa-solid fa-caret-left"></i> <%=title%></a>
             </div>
 
             <%
+                int count1 = 0;
+                int count2 = 0;
                 for (ModuleDTO module : listModule) {
             %>
             <div class="learning-container">
@@ -136,47 +143,38 @@
                         <a href=""><%=module.getTitle()%></a>
                     </div>
                     <%
-                        List<LessonDTO> listLesson = moduleDAO.getLessonList(module.getModuleID());
+                        List<LessonDTO> listLesson = (List<LessonDTO>) request.getAttribute("LIST_LESSON_" + count1);
+                        count1++;
                         for (LessonDTO lesson : listLesson) {
+                            video = (String) request.getAttribute("LESSON_VIDEO_" + count2);
                     %>
                     <div style="width: 25%">
-                        <input type="hidden" id="titleLessonID" name="titleLessonList" value="<%=lesson.getTitle()%>">
-                        <input type="hidden" id="descriptionLessonID" name="descriptionLessonList" value="<%=lesson.getDescription()%>">
-                        <input type="hidden" id="videoID" name="videoList" value="<%=moduleDAO.getVideo(lesson.getLessonID()).getContent()%>">
-                        <div name="lessonList" value="<%=lesson.getLessonID()%>" class="lesson-title" style="font-size: 17px; color: black; padding: 10px; padding-left: 30%">
-                            <a href="#" style="width: 100%; color:black" onclick="changeLesson()"><%=lesson.getTitle()%></a>
+                        <%
+                            if (lesson.getTitle().equals(title)) {
+                        %>
+                        <div name="lessonList" value="<%=lesson.getLessonID()%>" class="lesson-title" style="font-size: 17px; color: black; padding: 10px; padding-left: 30%; background-color: rgb(230, 228, 228);border-left: 10px solid rgb(21,76,121);">
+                            <a href="ViewVideoController?title=<%=lesson.getTitle()%>&description=<%=lesson.getDescription()%>&video=<%=video%>&courseID=<%=courseID%>" style="width: 100%; color:black;"><%=lesson.getTitle()%></a>
                         </div>
+                        <%
+                        } else {
+                        %>
+                        <div name="lessonList" value="<%=lesson.getLessonID()%>" class="lesson-title" style="font-size: 17px; color: black; padding: 10px; padding-left: 30%">
+                            <a href="ViewVideoController?title=<%=lesson.getTitle()%>&description=<%=lesson.getDescription()%>&video=<%=video%>&courseID=<%=courseID%>" style="width: 100%; color:black"><%=lesson.getTitle()%></a>
+                        </div>
+                        <%
+                            }
+                        %>
+
                     </div>
                 </div>
             </div>
             <%
+                            count2++;
                         }
                     }
                 }
             %>
         </div>
-        
-        <script>
-            function pageLoad(){
-                var titleList = document.getElementsByName("titleLessonList");
-                var descriptionList = document.getElementsByName("descriptionLessonList");
-                var videoList = document.getElementsByName("videoList");
-                
-                document.getElementById("titleLessonSpan").innerHTML = titleList[0].value;
-                document.getElementById("descriptionLessonSpan").innerHTML = descriptionList[0].value;
-                document.getElementById("changeVideo").src = videoList[0].value;
-            }
-            
-            function changeLesson(){
-                var title = document.getElementById("titleLessonID");
-                var description = document.getElementById("descriptionLessonID");
-                var video = document.getElementById("videoID");
-                
-                document.getElementById("titleLessonSpan").innerHTML = title.value;
-                document.getElementById("descriptionLessonSpan").innerHTML = description.value;
-                document.getElementById("changeVideo").src = video.value;
-            }
-        </script>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"></script>
 

@@ -26,6 +26,8 @@ public class VoucherDAO {
     private static final String CREATE_VOUCHER = "INSERT INTO tblVoucher(discountPercent, voucherCode, createdDay, expiredDay) VALUES(?,?,?,?)";
     private static final String CHECK_DUPLICATED_VOUCHER_CODE = "SELECT * FROM tblVoucher WHERE voucherCode = ?";
     private static final String CHECK_VOUCHER_CODE = "SELECT * FROM tblVoucher WHERE voucherCode = ?";
+    private static final String UPDATE_VOUCHER = "UPDATE tblVoucher set discountPercent = ?, voucherCode = ?, createdDay = ?, expiredDay = ? where voucherID = ?";
+    private static final String DELETE_VOUCHER = "DELETE FROM tblVoucher where voucherID = ?";
 
     public boolean createVoucher(float discountVoucher, String voucherCode, Date createdDay, Date expiredDay) throws SQLException {
         boolean check = false;
@@ -98,7 +100,7 @@ public class VoucherDAO {
         Connection conn = null;
         ResultSet rs = null;
         PreparedStatement ptm = null;
-        SimpleDateFormat sdformat = new SimpleDateFormat("yyyy-MM-dd");
+        
         try {
             conn = DBUtil.getConnection();
             if (conn != null) {
@@ -134,5 +136,69 @@ public class VoucherDAO {
             }
         }
         return discount;
+    }
+    
+    public boolean updateVoucher(int voucherID, float discountVoucher, String voucherCode, Date createdDay, Date expiredDay) throws SQLException {
+        boolean check = false;
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement ptm = null;
+
+        try {
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(UPDATE_VOUCHER);
+                ptm.setFloat(1, discountVoucher);
+                ptm.setString(2, voucherCode);
+                ptm.setDate(3, createdDay);
+                ptm.setDate(4, expiredDay);
+                ptm.setInt(5, voucherID);
+
+                check = ptm.executeUpdate() > 0 ? true : false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return check;
+    }
+    
+    public boolean deleteVoucher(int voucherID) throws SQLException {
+        boolean check = false;
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement ptm = null;
+
+        try {
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(DELETE_VOUCHER);
+                ptm.setInt(1, voucherID);
+
+                check = ptm.executeUpdate() > 0 ? true : false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return check;
     }
 }

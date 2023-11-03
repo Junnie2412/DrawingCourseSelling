@@ -301,7 +301,7 @@
                     %>
                     <a class="dropdown-item" href="LoadUserController">Manage Your Account</a> 
                     <a class="dropdown-item" href="courses.jsp">View Course</a>
-                    <a class="dropdown-item" href="learning.jsp">Learning</a> 
+                    <a class="dropdown-item" href="MainController?action=learning">Learning</a> 
                     <a class="dropdown-item" href="viewCart.jsp">View Cart</a> 
                     <%
                         }

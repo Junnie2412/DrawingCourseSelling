@@ -123,7 +123,7 @@ public class LearningCourseDAO {
                 ptm.setString(3, courseID);
                 ptm.setString(4, accountID);
                 
-                 check = ptm.executeUpdate() > 0 ? true : false;
+                check = ptm.executeUpdate() > 0 ? true : false;
             }
         } catch (Exception e) {
             e.printStackTrace();

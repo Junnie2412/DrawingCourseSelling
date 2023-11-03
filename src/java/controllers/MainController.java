@@ -98,6 +98,11 @@ public class MainController extends HttpServlet {
     private static final String HANDLE_OTP_CONTROLLER = "HandlerOTPController";
     private static final String SET_NEW_PASSWORD = "Reset Password";
     private static final String SET_NEW_PASSWORD_CONTROLLER = "CompletePasswordResetController";
+    
+    private static final String LEARNING = "learning";
+    private static final String LEARNING_CONTROLLER = "LearningController";
+    private static final String VIEW_VIDEO = "viewVideo";
+    private static final String VIEW_VIDEO_CONTROLLER = "ViewVideoController";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -178,6 +183,10 @@ public class MainController extends HttpServlet {
                 url = EDIT_INSTRUCTOR_CONTROLLER;
             }else if (action.equals(HIDE_INSTRUCTOR)) {
                 url = HIDE_INSTRUCTOR_CONTROLLER;
+            }else if (action.equals(LEARNING)) {
+                url = LEARNING_CONTROLLER;
+            }else if (action.equals(VIEW_VIDEO)) {
+                url = VIEW_VIDEO_CONTROLLER;
             }
 
         } catch (Exception e) {

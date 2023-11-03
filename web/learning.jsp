@@ -353,12 +353,12 @@
                     <div class="title-courses">
                         <h3>My Courses</h3>
                     </div>
-
                     <%
-                        LearningCourseDAO learningCourseDAO = new LearningCourseDAO();
                         CourseDAO courseDAO = new CourseDAO();
-                        List<LearningCourseDTO> listActive = learningCourseDAO.getlistLearningCourseActive(loginUser.getAccountID());
-                        List<LearningCourseDTO> listNotActive = learningCourseDAO.getlistLearningCourseNotActive(loginUser.getAccountID());
+                        List<LearningCourseDTO> listActive = (List<LearningCourseDTO>) request.getAttribute("LIST_ACTIVE");
+                        List<LearningCourseDTO> listNotActive = (List<LearningCourseDTO>) request.getAttribute("LIST_NOT_ACTIVE");
+
+                        if (listActive.size() > 0) {
                     %>
 
                     <%
@@ -383,17 +383,19 @@
                                     </p>
                                 </div>
                                 <div class="learnBtn">
-                                    <a href="course-learning.jsp?courseID=<%=learningCourse.getCourseID()%>">Learn <i class="fa fa-light fa-arrow-right"></i></a>
+                                    <a href="MainController?action=viewVideo&courseID=<%=learningCourse.getCourseID()%>">Learn <i class="fa fa-light fa-arrow-right"></i></a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <%
+                            }
                         }
                     %>
 
                     <%
-                        for (LearningCourseDTO learningCourse : listNotActive) {
+                        if (listNotActive.size() > 0) {
+                            for (LearningCourseDTO learningCourse : listNotActive) {
                     %>
                     <div class="showListCourseNotActive notActiveList">
                         <div class="courseBox">
@@ -424,6 +426,7 @@
                     <br>
                     <br>
                     <%
+                            }
                         }
                     %>
                 </div>
@@ -451,7 +454,7 @@
                 for (var i = 0; i < check2.length; i++) {
                     check2[i].style.visibility = "hidden";
                 }
-                
+
                 document.getElementById("finishedBtnID").style.backgroundColor = 'black';
                 document.getElementById("finishedBtnID").style.color = 'white';
                 document.getElementById("processedBtnID").style.backgroundColor = 'white';
