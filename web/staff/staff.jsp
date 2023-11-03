@@ -1,3 +1,4 @@
+<%@page import="users.UserDTO"%>
 <!doctype html>
 <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable">
 
@@ -39,6 +40,10 @@
 <body>
 
     <!-- Begin page -->
+    <%
+
+        UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
+    %>
     <div id="layout-wrapper">
 
          <jsp:include page="layoutadmin/header.jsp"/>
@@ -64,8 +69,8 @@
                                     <div class="col-12">
                                         <div class="d-flex align-items-lg-center flex-lg-row flex-column">
                                             <div class="flex-grow-1">
-                                                <h4 class="fs-16 mb-1">Good Morning, Anna!</h4>
-                                                <p class="text-muted mb-0">Here's what's happening with your store today.</p>
+                                                <h4 class="fs-16 mb-1">Good Morning, <%=loginUser.getFullName()%>!</h4>
+                                                <h3 class="text-muted mb-0">Welcome to Management Page for Staff!</h3>
                                             </div>
                                             <div class="mt-3 mt-lg-0">
                                                 <form action="javascript:void(0);">

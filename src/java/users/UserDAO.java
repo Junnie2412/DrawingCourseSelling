@@ -34,11 +34,11 @@ public class UserDAO {
     private static final String LOADUSER = "SELECT * FROM tblAccount";
     private static final String UPDATEUSER = "UPDATE tblAccount set fullName=?, dateOfBirth=?, email=? WHERE accountID=?";
     private static final String CHANGE_PASSWORD = "UPDATE tblAccount set password=? WHERE accountID=?";
-    private static final String SEARCH_INSTRUCTOR = "SELECT * FROM tblAccount WHERE role = 'Instructor' and fullName = ?";
     private static final String INSTRUCTOR_LIST = "SELECT * FROM tblAccount WHERE role = 'Instructor'";
     private static final String CREATEACCOUNTGOOGLE = "INSERT INTO tblAccount(accountID,fullName,role,isActive,image) VALUES (?,?,?,?,?)";
     private static final String INSERT_INSTRUCTOR = "INSERT INTO tblAccount VALUES (?,?,?,?,?,?,?,?)";
-
+    private static final String EDIT_INSTRUCTOR = "UPDATE tblAccount set fullName=?, dateOfBirth=?, image=?, email=? WHERE accountID=?";
+    
     public UserDTO checkLogin(String userName, String password) throws SQLException {
         UserDTO user = null;
 
@@ -549,5 +549,33 @@ public class UserDAO {
             }
         }
         return email;
+    }
+
+    public boolean updateInstructor(UserDTO user) throws SQLException {
+        boolean check = false;
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        try {
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(EDIT_INSTRUCTOR);
+                ptm.setString(1, user.getFullName());
+                ptm.setDate(2, user.getDateOfBirth());
+                ptm.setString(3, user.getImage());
+                ptm.setString(4, user.getEmail());
+                ptm.setString(5, user.getAccountID());
+                check = ptm.executeUpdate() > 0 ? true : false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return check;
     }
 }
