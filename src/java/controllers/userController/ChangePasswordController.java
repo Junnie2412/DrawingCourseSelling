@@ -42,8 +42,7 @@ public class ChangePasswordController extends HttpServlet {
         HttpSession session = request.getSession();
         UserDTO user = (UserDTO) session.getAttribute("LOGIN_USER");
         
-        System.out.println(oldPassword);
-        System.out.println(user.getPassword());
+        
 
         if (!user.getPassword().equals(oldPassword)) {
             request.setAttribute("msgError", "Old password invalid");
