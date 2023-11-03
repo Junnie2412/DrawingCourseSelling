@@ -280,7 +280,6 @@
             }
             .showListCourseActive{
                 width: 100%;
-                max-height: 0;
                 padding-left: 70px;
                 padding-right: 70px;
             }
@@ -378,9 +377,6 @@
                                 </div>
                                 <div class="description">
                                     <button class="descriptBtn" onclick="showDescription()">Description</button>
-                                    <p style="display: none">
-                                        <%=courseDAO.getDescription(learningCourse.getCourseID()).getContent()%>
-                                    </p>
                                 </div>
                                 <div class="learnBtn">
                                     <a href="MainController?action=viewVideo&courseID=<%=learningCourse.getCourseID()%>">Learn <i class="fa fa-light fa-arrow-right"></i></a>
@@ -388,6 +384,10 @@
                             </div>
                         </div>
                     </div>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
                     <%
                             }
                         }
@@ -411,9 +411,6 @@
                                 </div>
                                 <div class="description">
                                     <button class="descriptBtn" onclick="showDescription()">Description</button>
-                                    <p style="display: none">
-                                        <%=courseDAO.getDescription(learningCourse.getCourseID()).getContent()%>
-                                    </p>
                                 </div>
                                 <div class="learnBtn">
                                     <a href="course-learn.jsp?courseID=<%=learningCourse.getCourseID()%>">Get Certificate <i class="fa fa-light fa-arrow-right"></i></a>
@@ -440,19 +437,19 @@
             function loadPage() {
                 var check2 = document.getElementsByClassName("notActiveList");
                 for (var i = 0; i < check2.length; i++) {
-                    check2[i].style.visibility = "hidden";
+                    check2[i].style.display = "none";
                 }
             }
 
             function changeFinishedBtn() {
                 var check1 = document.getElementsByClassName("notActiveList");
                 for (var i = 0; i < check1.length; i++) {
-                    check1[i].style.visibility = "visible";
+                    check1[i].style.display = "block";
                 }
 
                 var check2 = document.getElementsByClassName("activeList");
                 for (var i = 0; i < check2.length; i++) {
-                    check2[i].style.visibility = "hidden";
+                    check2[i].style.display = "none";
                 }
 
                 document.getElementById("finishedBtnID").style.backgroundColor = 'black';
@@ -465,12 +462,12 @@
             function changeProcessedBtn() {
                 var check1 = document.getElementsByClassName("activeList");
                 for (var i = 0; i < check1.length; i++) {
-                    check1[i].style.visibility = "visible";
+                    check1[i].style.display = "block";
                 }
 
                 var check2 = document.getElementsByClassName("notActiveList");
                 for (var i = 0; i < check2.length; i++) {
-                    check2[i].style.visibility = "hidden";
+                    check2[i].style.display = "none";
                 }
 
                 document.getElementById("finishedBtnID").style.backgroundColor = 'white';
