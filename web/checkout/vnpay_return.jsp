@@ -49,19 +49,19 @@
     </head>
     <style>
         .nav-bar {
-            height: 100px; 
+            height: 100px;
             width: 1600px;
         }
         .learning-button {
-    margin-top: 15px; 
-}
+            margin-top: 15px;
+        }
     </style>
-    
+
 
     <body>
-        
+
         <jsp:include page="../layout/header.jsp"/>
-        
+
         <div id="layout-wrapper">
             <section class="hero-section banner-overlay bg_img" data-img="assets/images/hinhnen.png" style="height: 290px; display: flex; align-items: center;">
 
@@ -72,15 +72,15 @@
                             <li>
                                 <a href="../index.jsp">Home</a>
                             </li>
-                            
+
                         </ul>
                     </div>
                 </div>
             </section>
 
         </div>
-        
-        
+
+
         <div class="main-content container custom-billing ">
             <div class="page-content">
                 <div class="container-fluid">
@@ -114,7 +114,7 @@
                                     %>
                                     <!--Begin display -->
                                     <div class="container">
-                                        
+
                                         <div class="header clearfix">
                                             <h3 class="text-muted">KẾT QUẢ THANH TOÁN</h3>
                                         </div>
@@ -126,8 +126,8 @@
                                             <div class="form-group">
                                                 <label >Số tiền: VND</label>
                                                 <% String soTien = request.getParameter("vnp_Amount");
-                                                   int soTienInt = Integer.parseInt(soTien);
-                                                   soTienInt = soTienInt/100;
+                                                    int soTienInt = Integer.parseInt(soTien);
+                                                    soTienInt = soTienInt / 100;
                                                 %>
                                                 <label><%=soTienInt%></label>
                                             </div>                                              
@@ -159,7 +159,7 @@
                                         <p>
                                             &nbsp;
                                         </p>
-                                       
+
                                     </div>  
 
                                 </div>
@@ -219,7 +219,7 @@
                                             }
                                             String transactionID = request.getParameter("vnp_TxnRef");
                                             String bankName = request.getParameter("vnp_BankCode");
-                                            int amount = Integer.parseInt(request.getParameter("vnp_Amount"));
+                                            int amount = soTienInt;
                                             boolean flag = false;
                                             String voucherCode = (String) session.getAttribute("VOUCHERCODE");
                                             if (signValue.equals(vnp_SecureHash)) {
@@ -236,7 +236,7 @@
                                             trans.setAmount(amount);
                                             //
                                             CourseDAO dao = new CourseDAO();
-                                            boolean check = dao.inserOrder(user, listCourseCheckout, trans, totalInt,voucherCode);
+                                            boolean check = dao.inserOrder(user, listCourseCheckout, trans, totalInt, voucherCode);
                                             if (check) {
                                                 // cart clear
                                                 CartItemDAO cartDao = new CartItemDAO();
@@ -248,19 +248,19 @@
                                         <a href="/Wedproject2_temp1/learning.jsp" class=" btn-md btn-viewCourse slide_right learning-button"><span style="text-align: center;border-radius: 25px;">LEARNING</span> <i class="fa fa-book" aria-hidden="true"></i></a>
                                             <%                                            }
                                             %>
-                                            
+
                                     </div>
-                                    
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                                    
+
             </div>
-                                   
+
         </div>
-                       
+
     </body>
-     
+
 </html>

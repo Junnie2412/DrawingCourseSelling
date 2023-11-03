@@ -1,53 +1,41 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package controllers.staff;
+
+package controllers.userController;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Date;
+import java.util.List;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import users.UserDAO;
 import users.UserDTO;
 
 /**
  *
- * @author PC
+ * @author TienToan
  */
-@WebServlet(name = "HideInstructorController", urlPatterns = {"/HideInstructorController"})
-public class HideInstructorController extends HttpServlet {
-
-    private static final String SUCCESS = "ShowListController";
-    private static final String ERROR = "ShowListController";
-    
+public class LoadCustomerController extends HttpServlet {
+    private static final String ERROR = "admin/manageCustomer.jsp";
+    private static final String SUCCESS = "admin/manageCustomer.jsp";
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String url = ERROR;
-        
-        try{
-            
-            String fullName = request.getParameter("fullName");
-            boolean isActive = true;
-            
+        try {
             UserDAO dao = new UserDAO();
-            UserDTO user = new UserDTO(fullName, isActive);
-            boolean checkHide = dao.hideInstructor(user);
-            if (checkHide) {
-                request.setAttribute("MESSAGE2", "Deactive successfully");
+            List<UserDTO> loadCustomerList = dao.loadCustomerList();
+            HttpSession session = request.getSession(true);
+            if (loadCustomerList.size() > 0) {
+                session.setAttribute("CUSTOMER_LIST", loadCustomerList);
                 url = SUCCESS;
             } else {
-                request.setAttribute("ERROR", "Something went wrong! Please try again!");
+                request.setAttribute("ERROR", "Your request is fail. Please try again!");
             }
-        }catch(Exception e){
-            log("Error at HideInstructorController: "+ e.toString());
-        }finally{
+        } catch (Exception e) {
+            log("Error at LoadStaffController: " + e.toString());
+        } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }
     }

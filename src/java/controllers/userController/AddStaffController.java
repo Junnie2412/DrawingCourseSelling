@@ -62,7 +62,7 @@ public class AddStaffController extends HttpServlet {
 //                userError.setUserIDError("Duplicate User ID !");
 //                checkValidation=false;
 //            }
-            if (fullName.length() < 5 || fullName.length() > 20) {
+            if (fullName.length() < 5 || fullName.length() > 30) {
                 userError.setFullNameError("Full Name must be in [5,20]");
                 checkValidation = false;
             }

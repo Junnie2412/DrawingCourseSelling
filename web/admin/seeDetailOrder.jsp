@@ -1,3 +1,6 @@
+
+<%@page import="order.PaymentDTO"%>
+<%@page import="course.CourseDTO"%>
 <%@page import="order.OrderDAO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
@@ -35,14 +38,8 @@
         <link href="/Wedproject2_temp1/admin/assets/css/bootstrap-rtl.min.css" rel="stylesheet" type="text/css" />
         <!-- custom Css-->
         <link href="/Wedproject2_temp1/admin/assets/css/app-rtl.min.css" rel="stylesheet" type="text/css" />
-
-
-
-
     </head>
-
     <body>
-
         <!-- Begin page -->
         <div id="layout-wrapper">
             <div style="margin-right: 100px">
@@ -224,66 +221,151 @@
 
 
                                 </div> <!-- end .h-100-->
+                            </div>
+                        </div> <!-- end col -->
+                        <div class="row" style="width: 80%;border: 3px;border-radius: 30px;">
+                            <div class="col-xl-7">
+                                <table class="table table-borderless align-middle mb-0">
+                                    <thead class="table-light text-muted">
+                                        <tr>
+                                            <td scope="col-sm-2">Course</td>
+                                            <th scope="col-sm-4">Course name</th>
+                                            <th scope="col-sm-3" colspan="2">Price</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <%
+                                            int orderID = Integer.parseInt(request.getParameter("orderID"));
+                                            OrderDAO orDao = new OrderDAO();
+                                            CourseDAO cDao = new CourseDAO();
+                                            List<CourseDTO> courseOrder = orDao.getCourseByOrderID(orderID);
+                                            if (courseOrder != null) {
+                                                for (CourseDTO c : courseOrder) {
+                                        %>
+                                        <tr>
+                                            <td class="col-sm-3">
+                                                <img src="<%= cDao.getDescription(c.getCourseID()).getImage()%>" alt="course" width="75%">
+                                            </td>
+                                            <td class="col-sm-5">
+                                                <h6 class="fs-14"><a href="apps-ecommerce-product-details.html" class="text-dark"><%=c.getName()%></a></h6>
+                                            </td>
+                                            <td class="col-sm-5"><%=c.getPrice()%><span></span> VND</td>
+                                        </tr>
+                                        <%
+                                                }
+                                            }
+                                        %>                
+                                        <tr>
+                                            <td colspan="3" style="height: 20px;"></td>
+                                        </tr>        
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-xl-5">
+                                <%
+                                    PaymentDTO pm = orDao.getPaymentInforByOrderID(orderID);
+                                    int amountPayment = (int) pm.getAmount();
+                                    if (pm != null) {
+                                %>
+                                <div class="container">
 
-                            </div> <!-- end col -->
-
+                                    <div class="header clearfix">
+                                        <h4 class="text-muted">TRANSACTION INFOR</h4>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <div class="form-group">
+                                            <label >Transaction number:</label>
+                                            <label><%=pm.getNumTransaction()%></label>
+                                        </div>  
+                                        <div class="form-group">
+                                            <label >Amount:</label>
+                                            <label><%=amountPayment%></label>
+                                        </div> 
+                                        <div class="form-group">
+                                            <label >Bank:</label>
+                                            <label><%=pm.getProvider()%></label>
+                                        </div> 
+                                        <div class="form-group">
+                                            <label >Status:</label>
+                                            <%
+                                                if (pm.isStatus()) {
+                                            %>
+                                            <td><span class="badge badge-pill badge-success">Success</span></td>
+                                            <%
+                                            } else {
+                                            %>
+                                            <td><span class="badge badge-pill badge-danger">Fail</span></td>
+                                            <%
+                                                }
+                                            %>
+                                        </div> 
+                                        <div class="form-group">
+                                            <label>Date transaction:</label>
+                                            <label><%=pm.getCreatedAt()%></label>
+                                        </div> 
+                                    </div>
+                                </div>
+                                <%
+                                    }
+                                %>
+                            </div>
                             <!-- end col -->
                         </div>
                         <%--order tbale --%>
-                        
-                    </div>
-                    <!-- container-fluid -->
-                </div>
-                <!-- End Page-content -->
 
-                <footer class="footer">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <script>document.write(new Date().getFullYear())</script> ? ArtCenter.
+
+                        <!-- container-fluid -->
+                    </div>
+                    <!-- End Page-content -->
+
+                    <footer class="footer">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <script>document.write(new Date().getFullYear())</script> ? ArtCenter.
+                                </div>
+
                             </div>
-
                         </div>
-                    </div>
-                </footer>
+                    </footer>
+                </div>
+                <!-- end main content-->
+
             </div>
-            <!-- end main content-->
-
-        </div>
-        <!-- END layout-wrapper -->
+            <!-- END layout-wrapper -->
 
 
 
-        <!--start back-to-top-->
-        <button onclick="topFunction()" class="btn btn-danger btn-icon" id="back-to-top">
-            <i class="ri-arrow-up-line"></i>
-        </button>
+            <!--start back-to-top-->
+            <button onclick="topFunction()" class="btn btn-danger btn-icon" id="back-to-top">
+                <i class="ri-arrow-up-line"></i>
+            </button>
 
 
-        <!-- JAVASCRIPT -->
-        
-        <script src="/Wedproject2_temp1/admin/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="/Wedproject2_temp1/admin/assets/libs/simplebar/simplebar.min.js"></script>
-        <script src="/Wedproject2_temp1/admin/assets/libs/node-waves/waves.min.js"></script>
-        <script src="/Wedproject2_temp1/admin/assets/libs/feather-icons/feather.min.js"></script>
-        <script src="/Wedproject2_temp1/admin/assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
-        <script src="/Wedproject2_temp1/admin/assets/js/plugins.js"></script>
+            <!-- JAVASCRIPT -->
 
-        <!-- apexcharts -->
-        <script src="/Wedproject2_temp1/admin/assets/libs/apexcharts/apexcharts.min.js"></script>
+            <script src="/Wedproject2_temp1/admin/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+            <script src="/Wedproject2_temp1/admin/assets/libs/simplebar/simplebar.min.js"></script>
+            <script src="/Wedproject2_temp1/admin/assets/libs/node-waves/waves.min.js"></script>
+            <script src="/Wedproject2_temp1/admin/assets/libs/feather-icons/feather.min.js"></script>
+            <script src="/Wedproject2_temp1/admin/assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
+            <script src="/Wedproject2_temp1/admin/assets/js/plugins.js"></script>
 
-        <!-- Vector map-->
-        <script src="/Wedproject2_temp1/admin/assets/libs/jsvectormap/js/jsvectormap.min.js"></script>
-        <script src="/Wedproject2_temp1/admin/assets/libs/jsvectormap/maps/world-merc.js"></script>
+            <!-- apexcharts -->
+            <script src="/Wedproject2_temp1/admin/assets/libs/apexcharts/apexcharts.min.js"></script>
 
-        <!--Swiper slider js-->
-        <script src="/Wedproject2_temp1/admin/assets/libs/swiper/swiper-bundle.min.js"></script>
+            <!-- Vector map-->
+            <script src="/Wedproject2_temp1/admin/assets/libs/jsvectormap/js/jsvectormap.min.js"></script>
+            <script src="/Wedproject2_temp1/admin/assets/libs/jsvectormap/maps/world-merc.js"></script>
 
-        <!-- Dashboard init -->
-        <script src="/Wedproject2_temp1/admin/assets/js/pages/dashboard-ecommerce.init.js"></script>
+            <!--Swiper slider js-->
+            <script src="/Wedproject2_temp1/admin/assets/libs/swiper/swiper-bundle.min.js"></script>
 
-        <!-- App js -->
-        <script src="/Wedproject2_temp1/admin/assets/js/app.js"></script>
+            <!-- Dashboard init -->
+            <script src="/Wedproject2_temp1/admin/assets/js/pages/dashboard-ecommerce.init.js"></script>
+
+            <!-- App js -->
+            <script src="/Wedproject2_temp1/admin/assets/js/app.js"></script>
     </body>
 
-</html>
+</html>                                   

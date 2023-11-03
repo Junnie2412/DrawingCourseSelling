@@ -324,7 +324,7 @@
                                 <div class="instructor-content">
                                     <h6 class="title"><a href="#0"> Ngô Khánh Hân
                                         </a></h6>
-                                    <span class="details">TEACHER</span>
+                                    <span class="details">INSTRUCTOR</span>
                                 </div>
                             </div>
                         </div>
@@ -336,7 +336,7 @@
                                 <div class="instructor-content">
                                     <h6 class="title"><a href="#0"> Hoàng Minh
                                         </a></h6>
-                                    <span class="details">TEACHER</span>
+                                    <span class="details">INSTRUCTOR</span>
                                 </div>
                             </div>
                         </div>
@@ -347,7 +347,7 @@
                                 </div>
                                 <div class="instructor-content">
                                     <h6 class="title"><a href="#0">Minh Khang</a></h6>
-                                    <span class="details">TEACHER</span>
+                                    <span class="details">INSTRUCTOR</span>
                                 </div>
                             </div>
                         </div>
@@ -358,7 +358,7 @@
                                 </div>
                                 <div class="instructor-content">
                                     <h6 class="title"><a href="#0">Hoàng Linh</a></h6>
-                                    <span class="details">TEACHER</span>
+                                    <span class="details">INSTRUCTOR</span>
                                 </div>
                             </div>
                         </div>

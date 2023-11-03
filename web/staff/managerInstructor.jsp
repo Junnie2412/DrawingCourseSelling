@@ -132,8 +132,17 @@
                                             <div class="card-header border-0">
                                                 <%
                                                         String noti = (String) request.getAttribute("MESSAGE1");
+                                                        
                                                         if (noti != null) {
                                                             out.print("<h6 style=\"color: green;\">" + noti + "</h6>");
+                                                        }
+                                                        
+                                                        String notiHide = (String) request.getAttribute("MESSAGE2");
+                                                        String notiFail = (String) request.getAttribute("ERROR");
+                                                        if (notiHide != null) {
+                                                            out.print("<h6 style=\"color: green;\">" + notiHide + "</h6>");
+                                                        }else{
+                                                            out.print("<h6 style=\"color: green;\">" + notiFail + "</h6>");
                                                         }
                                                 %>
                                                 <div class="row g-4 align-items-center">
@@ -227,7 +236,10 @@
                                                                         <input type="text" name="email" value="<%=u.getEmail()%>" required=""/>
 
                                                                     </td>
-                                                                    <td class="image"><img src="<%=u.getImage()%>" alt="<%=u.getFullName()%>" width="80" height="120" name="image"></td>
+                                                                    <td class="image">
+                                                                        <img src="<%=u.getImage()%>" alt="<%=u.getFullName()%>" width="80" height="120">
+                                                                        <input name="image" value="<%=u.getImage()%>" type="hidden"/>
+                                                                    </td>
                                                                     <td class="function">
                                                                         <ul class="list-inline hstack gap-2 mb-0">
                                                                             <li class="list-inline-item edit" data-bs-toggle="tooltip"

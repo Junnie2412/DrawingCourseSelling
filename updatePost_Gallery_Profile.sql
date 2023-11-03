@@ -1,6 +1,11 @@
 /****** Script for SelectTopNRows command from SSMS  ******/
 
+----chạy câu này trước nha----
+ALTER TABLE tblPost
+ALTER COLUMN content text 
+-------------
 
+  
   SET IDENTITY_INSERT tblPost ON
   INSERT INTO tblPost(postID,image,title,content,dateCreate,isApproved,accountID)
   VALUES(1,'https://cand.com.vn/Files/Image/honghai/2019/05/20/06fe5cd6-72fb-45b7-8706-d84d1134403f.jpg','Nguyen Quoc Thai - A warrior using a brush instead of a gun',

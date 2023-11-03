@@ -83,6 +83,11 @@ public class UserDTO {
         this.image = image;
         this.email = email;
     }
+
+    public UserDTO(String fullName, boolean active) {
+        this.fullName = fullName;
+        this.isActive = active;
+    }
     
 
     public String getAccountID() {
