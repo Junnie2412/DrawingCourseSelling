@@ -112,6 +112,10 @@
         <servlet-name>ViewCoursePageController</servlet-name>
         <servlet-class>controllers.course.ViewCoursePageController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LoadCustomerController</servlet-name>
+        <servlet-class>controllers.userController.LoadCustomerController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>MainController</servlet-name>
         <url-pattern>/MainController</url-pattern>
@@ -223,6 +227,10 @@
     <servlet-mapping>
         <servlet-name>ViewCoursePageController</servlet-name>
         <url-pattern>/ViewCoursePageController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoadCustomerController</servlet-name>
+        <url-pattern>/LoadCustomerController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

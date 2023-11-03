@@ -40,20 +40,20 @@
         #order-summary {
 
             width: 100%;
-            height: 600px; 
+            height: 600px;
         }
 
         #billing-information {
 
             width: 100%;
-            height: 450px; 
+            height: 450px;
 
         }
 
         .payment-method {
             display: flex;
             align-items: center;
-            width: 200px;     
+            width: 200px;
 
         }
 
@@ -64,11 +64,11 @@
         .payment-text {
             font-size: 14px;
             font-weight: bold;
-            color: #333; 
-        }    
+            color: #333;
+        }
 
         .page-container {
-            background-color: rgba(59, 65, 66, 0.1); 
+            background-color: rgba(59, 65, 66, 0.1);
         }
         .section-title {
             font-weight: bold;
@@ -228,8 +228,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <%                                                       
-                                                        float total = 0;
+                                                    <%                                                        float total = 0;
                                                         for (CourseDTO c : listCourseCheckout) {
                                                             total += c.getPrice();
                                                     %>
@@ -321,7 +320,7 @@
                                                 }
 
                                             %>
-                                            <%                                            String error = (String) request.getAttribute("ERROR");
+                                            <%                                                String error = (String) request.getAttribute("ERROR");
                                                 if (error == null) {
                                                     error = "";
                                                 }
@@ -357,13 +356,13 @@
                     tmp = parseFloat(input[i].value);
                     document.getElementsByName("priceValue")[i].innerHTML = Intl.NumberFormat().format(tmp.toFixed(3));
                 }
-                
+
                 var total = 0;
                 for (var i = 0; i < input.length; i++) {
                     total += parseFloat(input[i].value);
                 }
                 document.getElementById("subTotal").innerHTML = Intl.NumberFormat().format(total.toFixed(3));
-                
+
                 var total = 0;
                 for (var i = 0; i < input.length; i++) {
                     total += parseFloat(input[i].value);
