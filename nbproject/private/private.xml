@@ -30,6 +30,26 @@
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/layout/header.jsp</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/course/LessonDAO.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/course/VideoDTO.java</file>
+>>>>>>> ac2fdf082124067f0c7f239c39478f8be999d169
+        </group>
+        <group>
+            <file>file:/D:/SWP391/SWP391/src/java/controllers/course/SearchController.java</file>
+            <file>file:/D:/SWP391/SWP391/web/layout/header.jsp</file>
+            <file>file:/D:/SWP391/SWP391/src/java/controllers/MainController.java</file>
+            <file>file:/D:/SWP391/SWP391/src/java/controllers/staff/SearchInstructorController.java</file>
+            <file>file:/D:/SWP391/SWP391/web/staff/managerInstructor.jsp</file>
+            <file>file:/D:/SWP391/SWP391/web/courses.jsp</file>
+            <file>file:/D:/SWP391/SWP391/src/java/controllers/staff/ShowListController.java</file>
+            <file>file:/D:/SWP391/SWP391/src/java/users/UserDAO.java</file>
+            <file>file:/D:/SWP391/SWP391/src/java/course/CourseDAO.java</file>
+            <file>file:/D:/SWP391/SWP391/src/java/controllers/course/ViewCourseController.java</file>
+        </group>
+        <group>
+            <file>file:/D:/SWP391/SWP391/src/java/controllers/MainController.java</file>
+            <file>file:/D:/SWP391/SWP391/web/staff/managerInstructor.jsp</file>
+            <file>file:/D:/SWP391/SWP391/web/courses.jsp</file>
+            <file>file:/D:/SWP391/SWP391/src/java/users/UserDAO.java</file>
+            <file>file:/D:/SWP391/SWP391/src/java/course/CourseDAO.java</file>
         </group>
         <group>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/customer.jsp</file>

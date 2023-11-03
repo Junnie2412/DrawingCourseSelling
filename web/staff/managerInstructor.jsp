@@ -120,13 +120,6 @@
                             </div>
 
                             <div class="tab-pane container active" id="manageInstructor">
-                                <%
-                                    String search = request.getParameter("searchName");
-                                    if (search == null) {
-                                        search = "";
-                                    }
-
-                                %>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="card" id="leadsList">
@@ -134,20 +127,13 @@
 
                                                 <div class="row g-4 align-items-center">
                                                     <div class="col-sm-3">
-                                                        <div class="search-box">
-                                                            <form action="MainController" method="POST">
-                                                                <input type="text" class="form-control search" placeholder="Search for..." name="searchName" value="<%= search%>">
-                                                                <button type="submit" name="action" value="SearchIns"> Search Instructor</button>
-                                                            </form>
-
-                                                            <i class="ri-search-line search-icon"></i>
-                                                        </div>
+                                                        
                                                     </div>
                                                     <div class="col-sm-auto ms-auto">
                                                         <div class="hstack gap-2">
                                                             <button class="btn btn-soft-danger" id="remove-actions" onClick="deleteMultiple()"><i class="ri-delete-bin-2-line"></i></button>
 
-                                                            <button type="button" class="btn btn-success add-btn" data-bs-toggle="modal" id="create-btn" data-bs-target="#showModal"><i class="ri-add-line align-bottom me-1"></i> Add Staff</button>
+                                                            
 
                                                         </div>
                                                     </div>
