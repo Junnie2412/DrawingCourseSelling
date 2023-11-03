@@ -108,7 +108,7 @@
                 List<CourseDTO> listCourse = (List<CourseDTO>) request.getAttribute("LIST_COURSE");
                 List<CourseDTO> listCourseFilter = (List<CourseDTO>) request.getAttribute("LIST_COURSE_FILTER");
                 if (listCourse != null) {
-                    if (listCourse.size() > 0) {
+                    if (listCourse.size() > 0) { 
 
             %>
             <section class="course-section pt-120 pb-120 section-bg oh pos-rel">    
@@ -120,7 +120,8 @@
                 </div>
                 <div class="container">
                     <div class="row justify-content-center mb-30-none">
-                        <%            for (CourseDTO course : listCourse) {
+                        <%            
+                            for (CourseDTO course : listCourse) {
                         %>
                         <div class="col-xl-4 col-md-6 col-sm-10">  
                             <form action="MainController" method="POST" id="courseForm<%= course.getCourseID()%>">
@@ -466,7 +467,7 @@
                     </div>
                     <div class="row justify-content-center mb-30-none">
                         <%
-                            List<CourseDTO> list = courseDAO.getlistCourse();
+                            List<CourseDTO> list = courseDAO.getlistCourse("");
                             if (list != null) {
                                 if (list.size() > 0) {
                                     for (CourseDTO course : list) {

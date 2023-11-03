@@ -57,48 +57,6 @@ public class CourseDAO {
     private static final String GET_NUMORDER = "select count(orderID) as numOrder from tblOrder";
     private static final String GET_NUMOFCUSTOMERS = "select count(DISTINCT accountID) as numOfCustomers from tblOrder";
     
-    public List<CourseDTO> getlistCourse() throws ClassNotFoundException, SQLException {
-        List<CourseDTO> list = new ArrayList<>();
-        Connection conn = null;
-        ResultSet rs = null;
-        PreparedStatement ptm = null;
-
-        try {
-            conn = DBUtil.getConnection();
-            if (conn != null) {
-                ptm = conn.prepareStatement(GET_ALL_COURSE);
-                rs = ptm.executeQuery();
-                while (rs.next()) {
-                    String courseID = rs.getString("courseID");
-                    String name = rs.getString("name");
-                    float price = rs.getFloat("price");
-                    int duration = rs.getInt("duration");
-                    boolean isActive = rs.getBoolean("isActive");
-                    Date datePublic = rs.getDate("datePublic");
-                    String accountID = rs.getString("accountID");
-                    int descriptionID = rs.getInt("descriptionID");
-
-                    list.add(new CourseDTO(courseID, name, price, duration, isActive, datePublic, accountID, descriptionID));
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-
-        } finally {
-            if (rs != null) {
-                rs.close();
-            }
-            if (ptm != null) {
-                ptm.close();
-            }
-            if (conn != null) {
-                conn.close();
-            }
-        }
-
-        return list;
-    }
-    
     public List<CourseDTO> getlistCourse(String search) throws ClassNotFoundException, SQLException {
         List<CourseDTO> list = new ArrayList<>();
         Connection conn = null;

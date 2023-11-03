@@ -143,7 +143,7 @@
                                 <%
                                 } else if (loginUser.getRole().equals("Customer")) {
                                 %>
-                            <a href="learning.jsp" class=" btn-md btn-viewCourse slide_right"><span style="text-align: center;">LEARNING</span> <i class="fa fa-book" aria-hidden="true"></i></a>
+                            <a href="MainController?action=learning" class=" btn-md btn-viewCourse slide_right"><span style="text-align: center;">LEARNING</span> <i class="fa fa-book" aria-hidden="true"></i></a>
                                 <%
                                 } else if (loginUser.getRole().equals("Instructor")) {
                                 %>

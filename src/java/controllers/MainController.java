@@ -58,8 +58,6 @@ public class MainController extends HttpServlet {
     private static final String SHOW_LIST_INSTRUCTOR_CONTROLLER = "ShowListController";
     private static final String ADD_INSTRUCTOR = "Add Instructor";
     private static final String ADD_INSTRUCTOR_CONTROLLER = "AddInstructorController";
-    private static final String SEARCH_INSTRUCTOR = "SearchIns";
-    private static final String SEARCH_INSTRUCTOR_CONTROLLER = "SearchInstructorController";
     private static final String EDIT_INSTRUCTOR = "editInstructor";
     private static final String EDIT_INSTRUCTOR_CONTROLLER = "EditInstructorController";
     private static final String HIDE_INSTRUCTOR = "hideInstructor";
@@ -98,6 +96,11 @@ public class MainController extends HttpServlet {
     private static final String HANDLE_OTP_CONTROLLER = "HandlerOTPController";
     private static final String SET_NEW_PASSWORD = "Reset Password";
     private static final String SET_NEW_PASSWORD_CONTROLLER = "CompletePasswordResetController";
+    
+    private static final String LEARNING = "learning";
+    private static final String LEARNING_CONTROLLER = "LearningController";
+    private static final String VIEW_VIDEO = "viewVideo";
+    private static final String VIEW_VIDEO_CONTROLLER = "ViewVideoController";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -158,8 +161,6 @@ public class MainController extends HttpServlet {
                 url = VNPAY_CONTROLLER;
             } else if (action.equals(ADD_INSTRUCTOR)) {
                 url = ADD_INSTRUCTOR_CONTROLLER;
-            } else if (action.equals(SEARCH_INSTRUCTOR)) {
-                url = SEARCH_INSTRUCTOR_CONTROLLER;
             } else if (action.equals(VIEW_COURSE_DETAIL)) {
                 url = VIEW_COURSE_DETAIL_CONTROLLER;
             } else if (action.equals(FILTER_BY_TYPE)) {
@@ -178,6 +179,10 @@ public class MainController extends HttpServlet {
                 url = EDIT_INSTRUCTOR_CONTROLLER;
             }else if (action.equals(HIDE_INSTRUCTOR)) {
                 url = HIDE_INSTRUCTOR_CONTROLLER;
+            }else if (action.equals(LEARNING)) {
+                url = LEARNING_CONTROLLER;
+            }else if (action.equals(VIEW_VIDEO)) {
+                url = VIEW_VIDEO_CONTROLLER;
             }
 
         } catch (Exception e) {

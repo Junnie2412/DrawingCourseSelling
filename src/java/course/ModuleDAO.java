@@ -21,10 +21,85 @@ import utils.DBUtil;
 public class ModuleDAO {
 
     private static final String LASTEST_MODULE = "SELECT TOP 1 * FROM tblModule ORDER BY moduleID DESC";
+    private static final String GET_LIST_LESSON = "SELECT * FROM tblLesson WHERE moduleID = ?";
+    private static final String GET_VIDEO_BY_LESSONID = "SELECT * FROM tblVideo WHERE lessonID= ?";
 
     private static final String QUANTITY_OF_MODULES = "SELECT COUNT(moduleID) AS countModule FROM tblModule WHERE courseID = ? ";
     private static final String MODULE_OF_COURSE = "select * from tblModule where courseID = ?";
     private static final String CREATE_MODULE = "insert into tblModule(title, courseID) values (?,?)";
+    
+    public VideoDTO getVideo(int lessonID) throws SQLException {
+        VideoDTO video = null;
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement ptm = null;
+
+        try {
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(GET_VIDEO_BY_LESSONID);
+                ptm.setInt(1, lessonID);
+                rs = ptm.executeQuery();
+                if(rs.next()) {
+                    int videoID = rs.getInt("videoID");
+                    String content = rs.getString("content");
+                    LocalTime time = rs.getTime("time").toLocalTime();
+                    boolean isActive = rs.getBoolean("isActive");
+
+                    video = new VideoDTO(videoID, content, time, isActive, lessonID);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return video;
+    }
+    
+    public List<LessonDTO> getLessonList(int moduleID) throws SQLException {
+        List<LessonDTO> list = new ArrayList();
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement ptm = null;
+
+        try {
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(GET_LIST_LESSON);
+                ptm.setInt(1, moduleID);
+                rs = ptm.executeQuery();
+                while(rs.next()) {
+                    int lessonID = rs.getInt("lessonID");
+                    String title = rs.getString("title");
+                    String description = rs.getString("description");
+
+                    list.add(new LessonDTO(lessonID, title, description, moduleID));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return list;
+    }
     
     public ModuleDTO getLastestModule() throws SQLException {
         ModuleDTO module = null;
