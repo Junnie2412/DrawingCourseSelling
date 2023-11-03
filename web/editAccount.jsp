@@ -64,7 +64,7 @@
         %>
 
 
-        <div class="all-sections oh">
+        <div class="all-sections oh" style="background-color: rgba(59, 65, 66, 0.1);">
             <!-- ~~~ Loader & Go-Top ~~~ -->
             <div class="overlayer"></div>
             <span class="go-top">
@@ -78,7 +78,7 @@
 
 
             <!-- ~~~ Hero Section ~~~ -->
-            <section class="hero-section banner-overlay bg_img" data-img="../assets/images/banner.png">
+            <section class="hero-section banner-overlay bg_img" data-img="https://images.unsplash.com/photo-1589758438368-0ad531db3366?auto=format&fit=crop&q=80&w=1632&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
 
                 <div class="custom-container">
                     <div class="hero-content">
@@ -99,7 +99,7 @@
 
 
 
-            <div class="main-content custom-account">
+            <div class="main-content custom-account" >
 
                 <div class="page-content container">
                     <div class="container-fluid">
@@ -234,14 +234,7 @@
                 <jsp:include page="layout/footer.jsp"/>
             
         </div>
-        <!-- end main content-->
-
-
-        <!-- END layout-wrapper -->
-
-        <jsp:include page="layout/footer.jsp"/>
-
-        <!--start back-to-top-->
+       
 
         <!-- JAVASCRIPT -->
         <script src="admin/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
