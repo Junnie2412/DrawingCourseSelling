@@ -3,41 +3,54 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controllers.staff;
+package controllers.learning;
 
+import course.CourseDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import users.UserDAO;
+import javax.servlet.http.HttpSession;
+import learningCourse.LearningCourseDAO;
+import learningCourse.LearningCourseDTO;
+import users.UserDTO;
 
 /**
  *
- * @author PC
+ * @author HOANG DUNG
  */
-@WebServlet(name = "HideInstructorController", urlPatterns = {"/HideInstructorController"})
-public class HideInstructorController extends HttpServlet {
+@WebServlet(name = "LearningController", urlPatterns = {"/LearningController"})
+public class LearningController extends HttpServlet {
 
-    private static final String SUCCESS = "ShowListController";
-    private static final String ERROR = "ShowListController";
-    
+    private static final String ERROR = "index.jsp";
+    private static final String SUCCESS = "learning.jsp";
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+
         String url = ERROR;
-        
-        try{
-            String status = request.getParameter("isActive");
-            String fullName = request.getParameter("fullName");
-            UserDAO dao = new UserDAO();
+        try {
+            HttpSession session = request.getSession();
+            UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
+            LearningCourseDAO learningCourseDAO = new LearningCourseDAO();
+
+            List<LearningCourseDTO> listActive = learningCourseDAO.getlistLearningCourseActive(loginUser.getAccountID());
+            List<LearningCourseDTO> listNotActive = learningCourseDAO.getlistLearningCourseNotActive(loginUser.getAccountID());
             
-           
+            request.setAttribute("LIST_ACTIVE", listActive);
+            request.setAttribute("LIST_NOT_ACTIVE", listNotActive);
             
-        }catch(Exception e){
+            url=SUCCESS;
             
+        } catch (Exception e) {
+            log("Error at LearningController " + e.toString());
+        } finally {
+            request.getRequestDispatcher(url).forward(request, response);
         }
     }
 

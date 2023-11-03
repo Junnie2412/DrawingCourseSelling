@@ -280,7 +280,6 @@
             }
             .showListCourseActive{
                 width: 100%;
-                max-height: 0;
                 padding-left: 70px;
                 padding-right: 70px;
             }
@@ -318,7 +317,10 @@
                         <ul class="breadcrumb cl-white p-0 m-0" style="background-color: #e9ecef00">
                             <li>
                                 <a href="index.jsp">Home</a>
-                            </li>                           
+                            </li>
+                            <li>
+                                Learning
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -344,24 +346,24 @@
                         <h1>My Learning</h1>
                     </div>
                     <div class="learning-button">
-                        <button class="processedBtn" type="submit" id="processedBtnID" name="processedBtn" onclick="changeProcessedBtn()">Processed</button>
+                        <button class="processedBtn" type="submit" id="processedBtnID" name="processedBtn" onclick="changeProcessedBtn()">In progress</button>
                         <button class="finishedBtn" type="submit" id="finishedBtnID" name="FinishedBtn" onclick="changeFinishedBtn()">Finished</button>
                     </div>
                     <div class="title-courses">
                         <h3>My Courses</h3>
                     </div>
-
                     <%
-                        LearningCourseDAO learningCourseDAO = new LearningCourseDAO();
                         CourseDAO courseDAO = new CourseDAO();
-                        List<LearningCourseDTO> listActive = learningCourseDAO.getlistLearningCourseActive(loginUser.getAccountID());
-                        List<LearningCourseDTO> listNotActive = learningCourseDAO.getlistLearningCourseNotActive(loginUser.getAccountID());
+                        List<LearningCourseDTO> listActive = (List<LearningCourseDTO>) request.getAttribute("LIST_ACTIVE");
+                        List<LearningCourseDTO> listNotActive = (List<LearningCourseDTO>) request.getAttribute("LIST_NOT_ACTIVE");
+
+                        if (listActive.size() > 0) {
                     %>
 
                     <%
                         for (LearningCourseDTO learningCourse : listActive) {
                     %>
-                    <div class="showListCourseActive active">
+                    <div class="showListCourseActive activeList">
                         <div class="courseBox">
                             <div class="coursePicture">
                                 <img src="<%=courseDAO.getDescription(learningCourse.getCourseID()).getImage()%>">
@@ -375,24 +377,27 @@
                                 </div>
                                 <div class="description">
                                     <button class="descriptBtn" onclick="showDescription()">Description</button>
-                                    <p style="display: none">
-                                        <%=courseDAO.getDescription(learningCourse.getCourseID()).getContent()%>
-                                    </p>
                                 </div>
                                 <div class="learnBtn">
-                                    <a href="course-learn.jsp?courseID=<%=learningCourse.getCourseID()%>">Learn <i class="fa fa-light fa-arrow-right"></i></a>
+                                    <a href="MainController?action=viewVideo&courseID=<%=learningCourse.getCourseID()%>">Learn <i class="fa fa-light fa-arrow-right"></i></a>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
                     <%
+                            }
                         }
                     %>
 
                     <%
-                        for (LearningCourseDTO learningCourse : listNotActive) {
+                        if (listNotActive.size() > 0) {
+                            for (LearningCourseDTO learningCourse : listNotActive) {
                     %>
-                    <div class="showListCourseNotActive notActive">
+                    <div class="showListCourseNotActive notActiveList">
                         <div class="courseBox">
                             <div class="coursePicture">
                                 <img src="<%=courseDAO.getDescription(learningCourse.getCourseID()).getImage()%>">
@@ -406,9 +411,6 @@
                                 </div>
                                 <div class="description">
                                     <button class="descriptBtn" onclick="showDescription()">Description</button>
-                                    <p style="display: none">
-                                        <%=courseDAO.getDescription(learningCourse.getCourseID()).getContent()%>
-                                    </p>
                                 </div>
                                 <div class="learnBtn">
                                     <a href="course-learn.jsp?courseID=<%=learningCourse.getCourseID()%>">Get Certificate <i class="fa fa-light fa-arrow-right"></i></a>
@@ -421,6 +423,7 @@
                     <br>
                     <br>
                     <%
+                            }
                         }
                     %>
                 </div>
@@ -432,23 +435,23 @@
 
         <script>
             function loadPage() {
-                var check2 = document.getElementsByClassName("notActive");
+                var check2 = document.getElementsByClassName("notActiveList");
                 for (var i = 0; i < check2.length; i++) {
-                    check2[i].style.visibility = "hidden";
+                    check2[i].style.display = "none";
                 }
             }
 
             function changeFinishedBtn() {
-                var check1 = document.getElementsByClassName("notActive");
+                var check1 = document.getElementsByClassName("notActiveList");
                 for (var i = 0; i < check1.length; i++) {
-                    check1[i].style.visibility = "visible";
+                    check1[i].style.display = "block";
                 }
 
-                var check2 = document.getElementsByClassName("active");
+                var check2 = document.getElementsByClassName("activeList");
                 for (var i = 0; i < check2.length; i++) {
-                    check2[i].style.visibility = "hidden";
+                    check2[i].style.display = "none";
                 }
-                
+
                 document.getElementById("finishedBtnID").style.backgroundColor = 'black';
                 document.getElementById("finishedBtnID").style.color = 'white';
                 document.getElementById("processedBtnID").style.backgroundColor = 'white';
@@ -457,14 +460,14 @@
             }
 
             function changeProcessedBtn() {
-                var check1 = document.getElementsByClassName("active");
+                var check1 = document.getElementsByClassName("activeList");
                 for (var i = 0; i < check1.length; i++) {
-                    check1[i].style.visibility = "visible";
+                    check1[i].style.display = "block";
                 }
 
-                var check2 = document.getElementsByClassName("notActive");
+                var check2 = document.getElementsByClassName("notActiveList");
                 for (var i = 0; i < check2.length; i++) {
-                    check2[i].style.visibility = "hidden";
+                    check2[i].style.display = "none";
                 }
 
                 document.getElementById("finishedBtnID").style.backgroundColor = 'white';

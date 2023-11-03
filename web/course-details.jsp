@@ -158,6 +158,7 @@
                                                     CartDAO cartDAO = new CartDAO();
                                                     if (cartDAO.checkAlreadyAdd(courseID, loginUser.getAccountID())) {
                                                 %>
+                                                                    
                                             <button class="custom-button theme-one rounded" type="submit" name="action" value="AlreadyBuyNow">Buy Now<i class="fas fa-angle-right"></i></button><br>
                                             <button class="custom-button theme-one rounded" type="submit" name="action" value="AlreadyAddToCart">Already Add To Cart <i class="fas fa-angle-right"></i></button><br>
                                                 <%

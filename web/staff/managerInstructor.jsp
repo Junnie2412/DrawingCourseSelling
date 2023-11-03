@@ -115,39 +115,36 @@
                                         </div>
 
                                         <input class="btn btn-outline-primary" type="submit" name="action" value="Add Instructor">
+                                        <%
+                                                        String notication = (String) request.getAttribute("MESSAGE");
+                                                        if (notication != null) {
+                                                            out.print("<h6 style=\"color: green;\">" + notication + "</h6>");
+                                                        }
+                                        %>
                                     </form>   
                                 </div>
                             </div>
 
                             <div class="tab-pane container active" id="manageInstructor">
-                                <%
-                                    String search = request.getParameter("searchName");
-                                    if (search == null) {
-                                        search = "";
-                                    }
-
-                                %>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="card" id="leadsList">
                                             <div class="card-header border-0">
-
+                                                <%
+                                                        String noti = (String) request.getAttribute("MESSAGE1");
+                                                        if (noti != null) {
+                                                            out.print("<h6 style=\"color: green;\">" + noti + "</h6>");
+                                                        }
+                                                %>
                                                 <div class="row g-4 align-items-center">
                                                     <div class="col-sm-3">
-                                                        <div class="search-box">
-                                                            <form action="MainController" method="POST">
-                                                                <input type="text" class="form-control search" placeholder="Search for..." name="searchName" value="<%= search%>">
-                                                                <button type="submit" name="action" value="SearchIns"> Search Instructor</button>
-                                                            </form>
-
-                                                            <i class="ri-search-line search-icon"></i>
-                                                        </div>
+                                                        
                                                     </div>
                                                     <div class="col-sm-auto ms-auto">
                                                         <div class="hstack gap-2">
                                                             <button class="btn btn-soft-danger" id="remove-actions" onClick="deleteMultiple()"><i class="ri-delete-bin-2-line"></i></button>
 
-                                                            <button type="button" class="btn btn-success add-btn" data-bs-toggle="modal" id="create-btn" data-bs-target="#showModal"><i class="ri-add-line align-bottom me-1"></i> Add Staff</button>
+                                                            
 
                                                         </div>
                                                     </div>
@@ -189,6 +186,8 @@
                                                                     int count = 1;
 
                                                                     for (UserDTO u : listInstructor) {
+                                                                        if(u.isIsActive() == true){
+                                                                        
 
                                                                 %>
                                                             <form action="MainController" method="POST">
@@ -228,7 +227,7 @@
                                                                         <input type="text" name="email" value="<%=u.getEmail()%>" required=""/>
 
                                                                     </td>
-                                                                    <td class="image"><img src="<%=u.getImage()%>" alt="<%=u.getFullName()%>" width="80" height="120"></td>
+                                                                    <td class="image"><img src="<%=u.getImage()%>" alt="<%=u.getFullName()%>" width="80" height="120" name="image"></td>
                                                                     <td class="function">
                                                                         <ul class="list-inline hstack gap-2 mb-0">
                                                                             <li class="list-inline-item edit" data-bs-toggle="tooltip"
@@ -248,6 +247,7 @@
 
                                                             </form>
                                                             <%
+                                                                }
                                                                 }
                                                             %>
                                                             </tbody>
