@@ -7,12 +7,14 @@ package controllers.staff;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import users.UserDAO;
+import users.UserDTO;
 
 /**
  *
@@ -30,14 +32,23 @@ public class HideInstructorController extends HttpServlet {
         String url = ERROR;
         
         try{
-            String status = request.getParameter("isActive");
+            
             String fullName = request.getParameter("fullName");
+            boolean isActive = true;
+            
             UserDAO dao = new UserDAO();
-            
-           
-            
+            UserDTO user = new UserDTO(fullName, isActive);
+            boolean checkHide = dao.hideInstructor(user);
+            if (checkHide) {
+                request.setAttribute("MESSAGE2", "Deactive successfully");
+                url = SUCCESS;
+            } else {
+                request.setAttribute("ERROR", "Something went wrong! Please try again!");
+            }
         }catch(Exception e){
-            
+            log("Error at HideInstructorController: "+ e.toString());
+        }finally{
+            request.getRequestDispatcher(url).forward(request, response);
         }
     }
 
