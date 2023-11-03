@@ -264,7 +264,7 @@
                             %>
                         <form action="MainController" method="POST">
                             <tr style="border-top: 2px solid gray;">
-                                <td><input name="price" value="<%= course.getPrice()%>" type="checkbox" checked onclick="calculation()"></td>
+                                <td><input name="price" value="<%= course.getPrice()%>" type="hidden"></td>
                                 <td><%= count++%></td>
                                 <td><img style="width: 100px; height: 100px" src="<%=courseDAO.getDescription(course.getCourseID()).getImage()%>"></td>
                                 <td style="text-align: left; font-weight: bold"><%=course.getName()%></td>
@@ -315,7 +315,7 @@
                         <tbody>
                         <form action="MainController" method="POST">
                             <tr style="border-top: 2px solid gray;">
-                                <td><input type="checkbox" onclick="calculation()" name="price" value="<%= course.getPrice()%>"></td>
+                                <td><input type="hidden" name="price" value="<%= course.getPrice()%>"></td>
                                 <td><%= count++%></td>
                                 <td><img style="width: 100px; height: 100px" src="<%=courseDAO.getDescription(course.getCourseID()).getImage()%>"></td>
                                 <td style="text-align: left; font-weight: bold"><%=course.getName()%>"</td>
@@ -354,18 +354,13 @@
 
             function loadPage() {
 
-                var input = document.getElementsByName("cartPrice");
+                var input = document.getElementsByName("price");
                 var total = 0;
                 for (var i = 0; i < input.length; i++) {
                     total += parseFloat(input[i].value);
                 }
                 document.getElementById("result").innerHTML = Intl.NumberFormat().format(total.toFixed(3));
 
-                var tmp1 = 0;
-                for (var i = 0; i < input.length; i++) {
-                    tmp1 = parseFloat(input[i].value);
-                    document.getElementsByName("cartPriceValue")[i].innerHTML = Intl.NumberFormat().format(tmp1.toFixed(3));
-                }
 
                 var input2 = document.getElementsByName("priceList");
                 var tmp2 = 0;
@@ -373,17 +368,14 @@
                     tmp2 = parseFloat(input2[i].value);
                     document.getElementsByName("priceValue")[i].innerHTML = Intl.NumberFormat().format(tmp2.toFixed(3));
                 }
-            }
-
-            function calculation() {
-                var input = document.getElementsByName("price");
-                var total = 0;
+                
+                var tmp1 = 0;
                 for (var i = 0; i < input.length; i++) {
-                    if (input[i].checked) {
-                        total += parseFloat(input[i].value);
-                    }
+                    tmp1 = parseFloat(input[i].value);
+                    document.getElementsByName("cartPriceValue")[i].innerHTML = Intl.NumberFormat().format(tmp1.toFixed(3));
                 }
-                document.getElementById("result").innerHTML = Intl.NumberFormat().format(total.toFixed(3));
+
+                
             }
         </script>
 

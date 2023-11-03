@@ -282,12 +282,100 @@
                 width: 100%;
                 padding-left: 70px;
                 padding-right: 70px;
+                margin-bottom: 100px;
             }
             .showListCourseNotActive{
                 width: 100%;
                 padding-left: 70px;
                 padding-right: 70px;
+                margin-bottom: 100px;
             }
+            .courseInstructor{
+                display: flex;
+                justify-content: space-between;
+            }
+            .meter {
+                box-sizing: content-box;
+                height: 20px; /* Can be anything */
+                position: relative;
+                margin: 20px 50px 20px 50px; /* Just for demo spacing */
+                background: #555;
+                border-radius: 25px;
+                padding: 10px;
+                box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3);
+            }
+            .meter > span {
+                display: block;
+                height: 100%;
+                border-top-right-radius: 8px;
+                border-bottom-right-radius: 8px;
+                border-top-left-radius: 20px;
+                border-bottom-left-radius: 20px;
+                background-color: rgb(43, 194, 83);
+                background-image: linear-gradient(
+                    center bottom,
+                    rgb(43, 194, 83) 37%,
+                    rgb(84, 240, 84) 69%
+                    );
+                box-shadow: inset 0 2px 9px rgba(255, 255, 255, 0.3),
+                    inset 0 -2px 6px rgba(0, 0, 0, 0.4);
+                position: relative;
+                overflow: hidden;
+            }
+            .meter > span:after,
+            .animate > span > span {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                background-image: linear-gradient(
+                    -45deg,
+                    rgba(255, 255, 255, 0.2) 25%,
+                    transparent 25%,
+                    transparent 50%,
+                    rgba(255, 255, 255, 0.2) 50%,
+                    rgba(255, 255, 255, 0.2) 75%,
+                    transparent 75%,
+                    transparent
+                    );
+                z-index: 1;
+                background-size: 50px 50px;
+                animation: move 2s linear infinite;
+                border-top-right-radius: 8px;
+                border-bottom-right-radius: 8px;
+                border-top-left-radius: 20px;
+                border-bottom-left-radius: 20px;
+                overflow: hidden;
+            }
+
+            .animate > span:after {
+                display: none;
+            }
+
+            @keyframes move {
+                0% {
+                    background-position: 0 0;
+                }
+                100% {
+                    background-position: 50px 50px;
+                }
+            }
+
+            .orange > span {
+                background-image: linear-gradient(#f1a165, #f36d0a);
+            }
+
+            .red > span {
+                background-image: linear-gradient(#f0a3a3, #f42323);
+            }
+
+            .nostripes > span > span,
+            .nostripes > span::after {
+                background-image: none;
+            }
+
         </style>
     </head>
     <body onload="loadPage()">
@@ -361,7 +449,11 @@
                     %>
 
                     <%
+                        int count = 0;
                         for (LearningCourseDTO learningCourse : listActive) {
+                            int number = (int) (request.getAttribute("NUMBER_ACTIVE_" + count));
+                            int total = (int) (request.getAttribute("TOTAL_ACTIVE_" + count));
+                            float avg = number * 100 / total;
                     %>
                     <div class="showListCourseActive activeList">
                         <div class="courseBox">
@@ -373,10 +465,11 @@
                                     <%=courseDAO.getCourseByCourseID(learningCourse.getCourseID()).getName()%>
                                 </div>
                                 <div class="courseInstructor">
-                                    <%=courseDAO.getAccount(learningCourse.getCourseID()).getFullName()%>
+                                    <p><%=courseDAO.getAccount(learningCourse.getCourseID()).getFullName()%></p>
+                                    <p>Expired Day: <%=learningCourse.getExpiredDay()%></p>
                                 </div>
-                                <div class="description">
-                                    <button class="descriptBtn" onclick="showDescription()">Description</button>
+                                <div class="progress meter">
+                                    <span style="width: <%=avg%>%"></span>
                                 </div>
                                 <div class="learnBtn">
                                     <a href="MainController?action=viewVideo&courseID=<%=learningCourse.getCourseID()%>">Learn <i class="fa fa-light fa-arrow-right"></i></a>
@@ -384,11 +477,8 @@
                             </div>
                         </div>
                     </div>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
                     <%
+                                count++;
                             }
                         }
                     %>
@@ -407,7 +497,8 @@
                                     <%=courseDAO.getCourseByCourseID(learningCourse.getCourseID()).getName()%>
                                 </div>
                                 <div class="courseInstructor">
-                                    <%=courseDAO.getAccount(learningCourse.getCourseID()).getFullName()%>
+                                    <p><%=courseDAO.getAccount(learningCourse.getCourseID()).getFullName()%></p>
+                                    <p>Expired Day: <%=learningCourse.getExpiredDay()%></p>
                                 </div>
                                 <div class="description">
                                     <button class="descriptBtn" onclick="showDescription()">Description</button>
@@ -418,10 +509,6 @@
                             </div>
                         </div>
                     </div>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
                     <%
                             }
                         }
@@ -431,6 +518,10 @@
             <%
                 }
             %>
+
+            <!-- ~~~ Footer Section ~~~ -->
+            <jsp:include page="layout/footer.jsp"/>
+            <!-- ~~~ Footer Section ~~~ -->
         </div>
 
         <script>
