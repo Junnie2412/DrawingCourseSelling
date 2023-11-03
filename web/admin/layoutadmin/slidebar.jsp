@@ -39,7 +39,7 @@
         <div class="text-center mt-sm-5 mb-4 text-white-50">
             <div>
                 <a href="../index.jsp"class="d-inline-block auth-logo">
-                    <img src="admin/assets/images/art1.png" alt="logo" height="70" >
+                    <img src="/Wedproject2_temp1/admin/assets/images/art1.png" alt="logo" height="70" >
                 </a>                          
             </div>
         </div>
@@ -71,7 +71,10 @@
                     <div class="collapse menu-dropdown" id="sidebarDashboards">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="admin/admin.jsp" class="nav-link" data-key="t-ecommerce"> View static </a>
+                                <a href="/Wedproject2_temp1/admin/admin.jsp" class="nav-link" data-key="t-ecommerce"> View static </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/Wedproject2_temp1/admin/viewAllOrder.jsp" class="nav-link" data-key="t-ecommerce"> View all order </a>
                             </li>
                         </ul>
                     </div>
@@ -89,8 +92,13 @@
                         <ul class="nav nav-sm flex-column">
 
                             <li class="nav-item">
-                                <form action="MainController" method="post">
+                                <form action="/Wedproject2_temp1/MainController" method="POST">
                                     <input type="submit" name="action" value="All Staff" class="custom-button" >
+                                </form>                           
+                            </li>
+                            <li class="nav-item">
+                                <form action="/Wedproject2_temp1/LoadCustomerController" method="POST">
+                                    <input type="submit" name="action" value="All Customer" class="custom-button" >
                                 </form>                           
                             </li>
                         </ul>

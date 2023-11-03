@@ -30,15 +30,19 @@ public class UserDAO {
     private static final String INSERTSTAFF = "INSERT INTO tblAccount VALUES (?,?,?,?,?,?,?,?)";
     private static final String DELETESTAFF = "DELETE tblAccount WHERE accountID=?";
     private static final String UPDATESTAFF = "UPDATE tblAccount set password=?, fullName=?, dateOfBirth=?, isActive=?, image=?, email=? WHERE accountID=?";
-    private static final String LOADSTAFF = "SELECT * FROM tblAccount WHERE role = 'Staff'";
+    private static final String LOADSTAFF = "SELECT * FROM tblAccount WHERE role = 'Staff' AND isActive = 1";
     private static final String LOADUSER = "SELECT * FROM tblAccount";
     private static final String UPDATEUSER = "UPDATE tblAccount set fullName=?, dateOfBirth=?, email=? WHERE accountID=?";
     private static final String CHANGE_PASSWORD = "UPDATE tblAccount set password=? WHERE accountID=?";
+    private static final String SEARCH_INSTRUCTOR = "SELECT * FROM tblAccount WHERE role = 'Instructor' and fullName = ?";
     private static final String INSTRUCTOR_LIST = "SELECT * FROM tblAccount WHERE role = 'Instructor'";
     private static final String CREATEACCOUNTGOOGLE = "INSERT INTO tblAccount(accountID,fullName,role,isActive,image) VALUES (?,?,?,?,?)";
     private static final String INSERT_INSTRUCTOR = "INSERT INTO tblAccount VALUES (?,?,?,?,?,?,?,?)";
+    private static final String LOADCUSTOMER = "SELECT * FROM tblAccount WHERE role = 'Customer' and isActive = 1";
+    private static final String GET_NUM_OF_CUSTOMER = "SELECT COUNT(accountID) AS numOfCustomer FROM tblAccount WHERE role = 'Customer'";
+    private static final String GET_NUM_OF_ACTIVE_CUSTOMER = "SELECT COUNT(accountID) AS numOfCustomer FROM tblAccount WHERE role = 'Customer' AND isActive = 1";
+    private static final String GET_CUSTOMER_LEARNING = "SELECT COUNT(accountID) AS customerLearning FROM tblLearningCourse";
     private static final String EDIT_INSTRUCTOR = "UPDATE tblAccount set fullName=?, dateOfBirth=?, image=?, email=? WHERE accountID=?";
-    
     public UserDTO checkLogin(String userName, String password) throws SQLException {
         UserDTO user = null;
 
@@ -549,6 +553,144 @@ public class UserDAO {
             }
         }
         return email;
+    }
+
+    public List<UserDTO> getListSearchInstructor(String search) {
+        List<UserDTO> list = new ArrayList<>();
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement ptm = null;
+
+        return list;
+    }
+
+    public List<UserDTO> loadCustomerList() throws SQLException {
+        List<UserDTO> staffList = new ArrayList<>();
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(LOADCUSTOMER);
+                rs = ptm.executeQuery();
+                while (rs.next()) {
+                    String accountID = rs.getString("accountID");
+                    String password = rs.getString("password");
+                    String fullName = rs.getString("fullName");
+                    Date dateOfBirth = rs.getDate("dateOfBirth");
+                    String role = rs.getString("role");
+                    Boolean isActive = rs.getBoolean("isActive");
+                    String image = rs.getString("image");
+                    String email = rs.getString("email");
+
+                    staffList.add(new UserDTO(accountID, password, fullName, dateOfBirth, role, isActive, image, email));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return staffList;
+    }
+
+    public int getNumberOfCustomer() throws SQLException {
+        int num = 0;
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(GET_NUM_OF_CUSTOMER);
+                rs = ptm.executeQuery();
+                if (rs.next()) {
+                    num = rs.getInt("numOfCustomer");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return num;
+    }
+
+    public int getNumberOfActiveCustomer() throws SQLException {
+        int num = 0;
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(GET_NUM_OF_ACTIVE_CUSTOMER);
+                rs = ptm.executeQuery();
+                if (rs.next()) {
+                    num = rs.getInt("numOfCustomer");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return num;
+    }
+
+    public int getCustomerLearning() throws SQLException {
+        int num = 0;
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(GET_CUSTOMER_LEARNING);
+                rs = ptm.executeQuery();
+                if (rs.next()) {
+                    num = rs.getInt("customerLearning");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return num;
     }
 
     public boolean updateInstructor(UserDTO user) throws SQLException {

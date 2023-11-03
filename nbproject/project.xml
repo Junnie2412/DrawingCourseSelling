@@ -111,6 +111,10 @@
                 <library dirs="200">
                     <file>${file.reference.apache-tomcat-8.5.89-windows-x64-apache-tomcat-8.5.89}</file>
                 </library>
+                <library dirs="200">
+                    <file>${libs.jstl.classpath}</file>
+                    <path-in-war>WEB-INF/lib</path-in-war>
+                </library>
             </web-module-libraries>
             <web-module-additional-libraries/>
             <source-roots>

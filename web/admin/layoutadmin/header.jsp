@@ -17,7 +17,7 @@
         UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
     %>
     <div class="layout-width">
-        <div class="navbar-header">
+        <div class="navbar-header flex-1">
             <div class="d-flex">
                 <!-- LOGO -->
                 <div class="navbar-brand-box horizontal-logo">

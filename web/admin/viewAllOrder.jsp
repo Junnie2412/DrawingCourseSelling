@@ -1,3 +1,4 @@
+<%@page import="course.CourseDTO"%>
 <%@page import="order.OrderDAO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
@@ -45,8 +46,7 @@
 
         <!-- Begin page -->
         <div id="layout-wrapper">
-            <div style="margin-right: 100px">
-
+            <div style="margin-right: 100px;">
                 <jsp:include page="layoutadmin/header.jsp"/>
             </div>
 
@@ -82,10 +82,8 @@
             <!-- Start right Content here -->
             <!-- ============================================================== -->
             <div class="main-content">
-
                 <div class="page-content">
                     <div class="container-fluid">
-
                         <div class="row">
                             <div class="col">
 
@@ -227,14 +225,81 @@
 
                             </div> <!-- end col -->
 
-                            <!-- end col -->
                         </div>
                         <%--order tbale --%>
-                        
-                    </div>
-                    <!-- container-fluid -->
+                        <%
+                            List<OrderDTO> listOrder = null;
+                            OrderDAO orderDao = new OrderDAO();
+                            listOrder = orderDao.getAllOrder();
+                        %>
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Order ID</th>
+                                    <th scope="col">Account ID</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Total</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Voucher</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <%
+                                    int index = 0;
+
+                                    if (listOrder != null) {
+                                        if (listOrder.size() > 0) {
+                                            for (OrderDTO o : listOrder) {
+
+                                                index++;
+                                %>
+                                <tr>
+                                    <th scope="row"><%=index%></th>
+                                    <td><%=o.getOrderID()%></td>
+                                    <td style="width: 80px;"><%=o.getAccountID()%></td>
+                                    <td style="width: 80px;">                                        
+                                        <input type="date" value="<%=o.getDate()%>" readonly="" style="border:0;background: none;">
+                                    </td>
+
+                                    <td>
+
+                                        <span id="total1"><%=o.getTotal()%></span> VND
+                                    </td>
+                                    <%
+                                        if (o.isIsSuccess()) {
+                                    %>
+                                    <td><span class="badge badge-pill badge-success">Success</span></td>
+                                    <%
+                                    } else {
+                                    %>
+                                    <td><a href="#" class="badge badge-danger">Fail</a></td>
+                                    <%
+                                        }
+                                    %>
+
+                                    <td><%=o.getVoucherCode()%></td>
+                                    <td>
+                                        
+                                        <form action="seeDetailOrder.jsp" method="post">
+                                            <input type="hidden" name="orderID" value="<%=o.getOrderID()%>">
+                                            <button type="submit" class="btn btn-info">Detail</button>
+                                        </form>  
+                                    </td>
+                                </tr> 
+
+                                <%
+                                            }
+                                        }
+                                    }
+                                %>   
+                            </tbody>
+                        </table>                          
+                    </div>   
                 </div>
-                <!-- End Page-content -->
+
+                <%--endmain--%>
 
                 <footer class="footer">
                     <div class="container-fluid">
@@ -253,7 +318,6 @@
         <!-- END layout-wrapper -->
 
 
-
         <!--start back-to-top-->
         <button onclick="topFunction()" class="btn btn-danger btn-icon" id="back-to-top">
             <i class="ri-arrow-up-line"></i>
@@ -261,7 +325,7 @@
 
 
         <!-- JAVASCRIPT -->
-        
+
         <script src="/Wedproject2_temp1/admin/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="/Wedproject2_temp1/admin/assets/libs/simplebar/simplebar.min.js"></script>
         <script src="/Wedproject2_temp1/admin/assets/libs/node-waves/waves.min.js"></script>
