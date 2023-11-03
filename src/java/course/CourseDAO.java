@@ -223,7 +223,7 @@ public class CourseDAO {
         try {
             conn = DBUtil.getConnection();
             if (conn != null) {
-                ptm = conn.prepareStatement(CREATE_DESCRIPTION, Statement.RETURN_GENERATED_KEYS);
+                ptm = conn.prepareStatement(CREATE_DESCRIPTION, Statement.RETURN_GENERATED_KEYS);//của java.sql trả về tất cả thông tin vừa tạo nếu không có thì chỉ trả về số dòng được tạo
                 ptm.setString(1, descriptionContent);
                 ptm.setString(2, descriptionTarget);
                 ptm.setString(3, descriptionImage);
@@ -235,8 +235,8 @@ public class CourseDAO {
                 if (rowsAffected > 0) {
                     rs = ptm.getGeneratedKeys();
                     if (rs.next()) {
-                        int pk = rs.getInt(1);
-                        return pk;
+                        int id = rs.getInt(1);
+                        return id;
                     }
                 }
             }

@@ -16,6 +16,10 @@
     <link rel="stylesheet" href="assets/css/all.min.css">
     <link href="assets/css/main2.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     
     
     <link rel="shortcut icon" href="assets/images/art1.png" type="image/x-icon">
@@ -53,7 +57,7 @@
                         <a href="index.jsp">Home</a>
                     </li>
                     <li>
-                        My Account
+                        My Courses
                     </li>
                 </ul>
             </div>
@@ -147,32 +151,39 @@
                 </div>
 
     <container>
-        <h1>Update Module</h1>
+        <h1>Update and Create Module</h1>
     </container>
+
     <div class="createTable">
         <div class="card">
-            <table>
-                <% for (ModuleDTO module : (List<ModuleDTO>) request.getAttribute("modules")) {%>
-                <tr>
-                    <td>
-                        <%= module.getTitle()%>
-                    </td>
-                    <td>
-                        <a href="CreateLessonController?moduleId=<%= module.getModuleID() %>">Edit</a>
-                    </td>
-                </tr>
-                <% }%>
-                <tr>
-                <form action="CreateModuleController" method="POST">
-                    <td>
-                        <input type="hidden" name="courseId" value="${requestScope.course.getCourseID()}" />
-                        <input type="text" name="title" placeholder="title"/>
-                    </td>
-                    <td>
-                        <button type="submit">Create Module</button>
-                    </td>
-                </form>
-                </tr>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Title Module</th>
+                        <th>Function</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (ModuleDTO module : (List<ModuleDTO>) request.getAttribute("modules")) { %>
+                    <tr>
+                        <td><%= module.getTitle() %></td>
+                        <td>
+                            <a href="CreateLessonController?moduleId=<%= module.getModuleID() %>" class="btn btn-primary">edit</a>
+                        </td>
+                    </tr>
+                    <% } %>
+                    <tr>
+                        <form action="CreateModuleController" method="POST">
+                            <td>
+                                <input type="hidden" name="courseId" value="${requestScope.course.getCourseID()}" />
+                                <input type="text" name="title" placeholder="Title" required class="form-control">
+                            </td>
+                            <td>
+                                <button type="submit" class="btn btn-dark">Create Module</button>
+                            </td>
+                        </form>
+                    </tr>
+                </tbody>
             </table>
         </div>
     </div>
