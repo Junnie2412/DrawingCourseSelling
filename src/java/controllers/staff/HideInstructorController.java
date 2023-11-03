@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import users.UserDAO;
 
 /**
  *
@@ -20,29 +21,23 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "HideInstructorController", urlPatterns = {"/HideInstructorController"})
 public class HideInstructorController extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    private static final String SUCCESS = "ShowListController";
+    private static final String ERROR = "ShowListController";
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet HideInstructorController</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet HideInstructorController at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        String url = ERROR;
+        
+        try{
+            String status = request.getParameter("isActive");
+            String fullName = request.getParameter("fullName");
+            UserDAO dao = new UserDAO();
+            
+           
+            
+        }catch(Exception e){
+            
         }
     }
 

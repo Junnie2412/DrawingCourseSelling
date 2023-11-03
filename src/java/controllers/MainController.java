@@ -183,6 +183,8 @@ public class MainController extends HttpServlet {
                 url = LEARNING_CONTROLLER;
             }else if (action.equals(VIEW_VIDEO)) {
                 url = VIEW_VIDEO_CONTROLLER;
+            }else if (action.equals(VIEW_COURSE_PAGE)) {
+                url = VIEW_COURSE_PAGE_CONTROLLER;
             }
 
         } catch (Exception e) {
