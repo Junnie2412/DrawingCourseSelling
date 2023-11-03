@@ -9,178 +9,142 @@
 <%@page import="java.sql.Date"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Create Course</title>
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                background-image: url('https://aap.cornell.edu/sites/default/files/archhome1_2000x1320_0_1.png'); 
-                background-size: cover; 
-                background-repeat: no-repeat; 
-                background-attachment: fixed; 
-                background-position: center center; 
-                color: white;
-            }
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>ArtCenter - Create Courses</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/all.min.css">
+    <link href="assets/css/main2.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    
+    
+    <link rel="shortcut icon" href="assets/images/art1.png" type="image/x-icon">
+</head>
+<style>
+.custom-label {
+    font-weight: bold;
+    color: #0b0a0a; /* Màu n?i b?t c?a ch? */
+}
+.larger-text{
+    font-size: 20px;
+    
+    .custom-container{
+        background-color: rgba(59, 65, 66, 0.1);
+    }
+    
+    .nav-bar {
+            height: 100px; 
+            width: 1600px;
+        }
 
-            h1 {
-                text-align: center;
-                color: black;
-            }
-
-            form,
-            .createTable {
-                margin: 0 auto;
-                background-color: rgba(133, 134, 133, 0.8);
-                padding: 20px;
-                border-radius: 5px;
-                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-            }
-
-            table {
-                width: 100%;
-            }
-
-            table td {
-                padding: 10px;
-            }
-
-            input[type="text"],
-            input[type="date"],
-            select {
-                width: 90%;
-                padding: 10px;
-                margin-bottom: 10px;
-                border: 1px solid #ccc;
-                border-radius: 4px;
-            }
-
-            button {
-                background-color: #333;
-                color: #fff;
-                padding: 10px 20px;
-                border: none;
-                border-radius: 4px;
-                cursor: pointer;
-            }
-
-            button:hover {
-                background-color: #555;
-            }
-
-            .createTable{
-                display: flex;
-
-            }
-
-            .table1{
-                width: 40%;
-            }
-
-            .table2{
-                width: 50%;
-            }
-
-
-
-        </style>
-    </head>
-    <body>
-    <container>
-        <h1>UPDATE COURSE</h1>
-    </container>
-
-    <form action="UpdateCourseController" method="POST" class="createTable">
-        <div class="table1">
-            <table>
-                <tbody>
-                    <tr>
-                        <td style="font-weight: bold;  color:black">Course ID</td>
-                        <td><input readonly type="text" name="courseID" value="${requestScope.course.getCourseID()}"></td>
-                    </tr>
-                    <tr>
-                        <td>Price</td>
-                        <td><input type="text" name="coursePrice" value="${requestScope.course.getPrice()}"></td>
-                    </tr>
-                    <tr>
-                        <td>Name</td>
-                        <td><input type="text" name="courseName" value="${requestScope.course.getName()}"></td>
-                    </tr>
-                    <tr>
-                        <td>Duration</td>
-                        <td><input type="text" name="courseDuration" value="${requestScope.course.getDuration()}"></td>
-                    </tr>
-                    <tr>
-                        <td>Date Public</td>
-                        <td><input type="date" name="courseDatePublic" value="${requestScope.course.getDatePublic()}"></td>
-                    </tr>
-                    <tr>
-                        <td><br></td>
-                        <td><br></td>
-                    </tr>
-                    <tr>
-                        <td><button type="submit">Turn Back To Courses</button></td>
-                    </tr>
-                </tbody>
-            </table>
+}
+</style>
+<body>
+    <div class="nav-bar">
+                <jsp:include page="layout/header.jsp"/>
+            </div>
+            
+            <section class="hero-section banner-overlay bg_img" data-img="https://images.unsplash.com/photo-1589758438368-0ad531db3366?auto=format&fit=crop&q=80&w=1632&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+        <div class="custom-container">
+            <div class="hero-content">
+                <h1 class="title uppercase text-white">Update Courses</h1>
+                <ul class="breadcrumb text-white p-0 m-0" style="background-color: #e9ecef00">
+                    <li>
+                        <a href="index.jsp">Home</a>
+                    </li>
+                    <li>
+                        My Account
+                    </li>
+                </ul>
+            </div>
         </div>
+    </section>
 
-        <div class="table2">
-            <table>
-                <tbody>
-                    <tr>
-                        <td style="font-weight: bold;  color:black">Description</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Content</td>
-                <input type="hidden" name="descriptionId" value="${requestScope.description.getDescriptionID()}"/>
-                <td><input type="text" name="descriptionContent" value="${requestScope.description.getContent()}"></td>
-                </tr>
-                <tr>
-                    <td>Target</td>
-                    <td><input type="text" name="descriptionTarget" value="${requestScope.description.getTarget()}"></td>
-                </tr>
-                <tr>
-                    <td>Image</td>
-                    <td><input type="text" name="descriptionImage" value="${requestScope.description.getImage()}"/></td>
-                </tr>
-                <tr>
-                    <td>Type</td>
-                    <td><input type="text" name="descriptionType" value="${requestScope.description.getType()}"/></td>
-                </tr>
-                <tr>
-                    <td>Level</td>
-                    <td>
-                        <select name="descriptionLevel">
-                            <option value="Basic" ${requestScope.description.getLevel() == "Basic" ? "selected" : ""}>Basic</option>
-                            <option value="Intermediate" ${requestScope.description.getLevel() == "Intermediate" ? "selected" : ""}>Intermediate</option>
-                            <option value="Advanced" ${requestScope.description.getLevel() == "Advanced" ? "selected" : ""}>Advanced</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td><br></td>
-                    <td><br></td>
-                </tr>
-                <tr>
+
+ <div class="container" style="margin-top: 40px; margin-bottom: 100px" >
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+<form action="UpdateCourseController" method="POST" class="p-4" style="background-color: #fff; border-radius: 5px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);">
+    
+             <div class="form-group">
+                        <i class="bi bi-info-circle-fill"></i>
+                        <label class="custom-label font-weight-bold larger-text">Course Information</label>
+
+                    </div>
+            <div class="form-group">
+                <label for="courseID">Course ID</label>
+                <input readonly type="text" class="form-control" id="courseID" name="courseID" value="${requestScope.course.getCourseID()}">
+            </div>
+            <div class="form-group">
+                <label for="coursePrice">Price</label>
+                <input type="text" class="form-control" id="coursePrice" name="coursePrice" value="${requestScope.course.getPrice()}">
+            </div>
+            <div class="form-group">
+                <label for="courseName">Name</label>
+                <input type="text" class="form-control" id="courseName" name="courseName" value="${requestScope.course.getName()}">
+            </div>
+            <div class="form-group">
+                <label for="courseDuration">Duration</label>
+                <input type="text" class="form-control" id="courseDuration" name="courseDuration" value="${requestScope.course.getDuration()}">
+            </div>
+            <div class="form-group">
+                <label for="courseDatePublic">Date Public</label>
+                <input type="date" class="form-control" id="courseDatePublic" name="courseDatePublic" value="${requestScope.course.getDatePublic()}">
+            </div>
+            
+        
+
+        
+            <div class="form-group" style="margin-top: 40px">
+                        <i class="bi bi-info-circle-fill"></i>
+                        <label class="custom-label font-weight-bold larger-text">Description</label>
+
+                    </div>
+            <input type="hidden" name="descriptionId" value="${requestScope.description.getDescriptionID()}">
+            <div class="form-group">
+                <label for="descriptionContent">Content</label>
+                <input type="text" class="form-control" id="descriptionContent" name="descriptionContent" value="${requestScope.description.getContent()}">
+            </div>
+            <div class="form-group">
+                <label for="descriptionTarget">Target</label>
+                <input type="text" class="form-control" id="descriptionTarget" name="descriptionTarget" value="${requestScope.description.getTarget()}">
+            </div>
+            <div class="form-group">
+                <label for="descriptionImage">Image</label>
+                <input type="text" class="form-control" id="descriptionImage" name="descriptionImage" value="${requestScope.description.getImage()}">
+            </div>
+            <div class="form-group">
+                <label for="descriptionType">Type</label>
+                <input type="text" class="form-control" id="descriptionType" name="descriptionType" value="${requestScope.description.getType()}">
+            </div>
+            <div class="form-group">
+                <label for="descriptionLevel">Level</label>
+                <select class="form-control" id="descriptionLevel" name="descriptionLevel">
+                    <option value="Basic" ${requestScope.description.getLevel() == "Basic" ? "selected" : ""}>Basic</option>
+                    <option value="Intermediate" ${requestScope.description.getLevel() == "Intermediate" ? "selected" : ""}>Intermediate</option>
+                    <option value="Advanced" ${requestScope.description.getLevel() == "Advanced" ? "selected" : ""}>Advanced</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <p class="text-danger">
                     <%
-                        String message = (String) request.getAttribute("MESSAGE");
-                        if (message == null) {
-                            message = "";
-                        }
+                    String message = (String) request.getAttribute("MESSAGE");
+                    if (message == null) {
+                        message = "";
+                    }
                     %>
-                    <td></td>
-                    <td><%=message%></td>
-                </tr>
-                <tr>
-                    <td><button type="submit">Update Course</button></td>
-
-                </tr>
-                </tbody>
-            </table>
+                    <%=message%>
+                </p>
+            </div>
+                <div class="form-group">
+            <button type="submit" class="btn btn-dark">Turn Back To Courses</button>
+            <button type="submit" class="btn btn-dark">Update Course</button>
+            </div>
+        
+   </form>
+                </div>
         </div>
-    </form>
+                </div>
 
     <container>
         <h1>Update Module</h1>
@@ -215,5 +179,8 @@
     <script>
         document.getElementById("todayDate").valueAsDate = new Date();
     </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
