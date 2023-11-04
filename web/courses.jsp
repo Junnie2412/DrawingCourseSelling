@@ -155,19 +155,19 @@
                                         <div class="ratings-area">
                                             <div class="ratings cl-theme">
                                                 <%
-                                                    float avgrate = courseFeedbackDAO.getAverageRate(course.getCourseID());
-                                                    for (int i = 0; i < avgrate; i++) {
+//                                                    float avgrate = courseFeedbackDAO.getAverageRate(course.getCourseID());
+//                                                    for (int i = 0; i < avgrate; i++) {
                                                 %>
-                                                <span><i class="fas fa-star"></i></span>
+<!--//                                                <span><i class="fas fa-star"></i></span>-->
                                                     <%
-                                                        }
-                                                        for (int i = 0; i < (5 - avgrate); i++) {
+//                                                        }
+//                                                        for (int i = 0; i < (5 - avgrate); i++) {
                                                     %>
-                                                <span class="cl-theme-light"><i class="fas fa-star"></i></span>
+<!--//                                                <span class="cl-theme-light"><i class="fas fa-star"></i></span>-->
                                                     <%
-                                                        }
+//                                                        }
                                                     %>
-                                                <span>(<%= courseFeedbackDAO.getAverageRate(course.getCourseID())%>/5.00)</span>
+<!--//                                                <span>(<%= courseFeedbackDAO.getAverageRate(course.getCourseID())%>/5.00)</span>-->
                                             </div>
                                             <div class="price cl-1"><input type="hidden" name="price" value="<%=course.getPrice()%>">
                                                 <span name="priceValue"></span> VND
@@ -316,19 +316,19 @@
                                         <div class="ratings-area">
                                             <div class="ratings cl-theme">
                                                 <%
-                                                    float avgrate = courseFeedbackDAO.getAverageRate(course.getCourseID());
-                                                    for (int i = 0; i < avgrate; i++) {
+//                                                    float avgrate = courseFeedbackDAO.getAverageRate(course.getCourseID());
+//                                                    for (int i = 0; i < avgrate; i++) {
                                                 %>
-                                                <span><i class="fas fa-star"></i></span>
+<!--//                                                <span><i class="fas fa-star"></i></span>-->
                                                     <%
-                                                        }
-                                                        for (int i = 0; i < (5 - avgrate); i++) {
+//                                                        }
+//                                                        for (int i = 0; i < (5 - avgrate); i++) {
                                                     %>
-                                                <span class="cl-theme-light"><i class="fas fa-star"></i></span>
+<!--//                                                <span class="cl-theme-light"><i class="fas fa-star"></i></span>-->
                                                     <%
-                                                        }
+//                                                        }
                                                     %>
-                                                <span>(<%= courseFeedbackDAO.getAverageRate(course.getCourseID())%>/5.00)</span>
+<!--//                                                <span>(<%= courseFeedbackDAO.getAverageRate(course.getCourseID())%>/5.00)</span>-->
                                             </div>
                                             <div class="price cl-1"><input type="hidden" name="price" value="<%=course.getPrice()%>">
                                                 <span name="priceValue"></span> VND
@@ -504,19 +504,19 @@
                                         <div class="ratings-area">
                                             <div class="ratings cl-theme">
                                                 <%
-                                                    float avgrate = courseFeedbackDAO.getAverageRate(course.getCourseID());
-                                                    for (int i = 0; i < avgrate; i++) {
+//                                                    float avgrate = courseFeedbackDAO.getAverageRate(course.getCourseID());
+//                                                    for (int i = 0; i < avgrate; i++) {
                                                 %>
-                                                <span><i class="fas fa-star"></i></span>
+<!--//                                                <span><i class="fas fa-star"></i></span>-->
                                                     <%
-                                                        }
-                                                        for (int i = 0; i < (5 - avgrate); i++) {
+//                                                        }
+//                                                        for (int i = 0; i < (5 - avgrate); i++) {
                                                     %>
-                                                <span class="cl-theme-light"><i class="fas fa-star"></i></span>
+<!--//                                                <span class="cl-theme-light"><i class="fas fa-star"></i></span>-->
                                                     <%
-                                                        }
+//                                                        }
                                                     %>
-                                                <span>(<%= courseFeedbackDAO.getAverageRate(course.getCourseID())%>/5.00)</span>
+<!--//                                                <span>(<%= courseFeedbackDAO.getAverageRate(course.getCourseID())%>/5.00)</span>-->
                                             </div>
                                             <div class="price cl-1"><input type="hidden" name="price" value="<%=course.getPrice()%>">
                                                 <span name="priceValue"></span> VND
