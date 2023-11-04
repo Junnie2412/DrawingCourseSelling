@@ -69,7 +69,7 @@
 
 
             <!-- ~~~ Hero Section ~~~ -->
-            <section class="hero-section banner-overlay bg_img" data-img="https://images.unsplash.com/photo-1614278390641-835b276fab2c?auto=format&fit=crop&q=80&w=1480&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+            <section class="hero-section banner-overlay bg_img" data-img="assets/images/banner/banner-course-detail.avif">
 
                 <div class="custom-container">
                     <div class="hero-content">
@@ -182,7 +182,8 @@
                         <div class="col-lg-8">
                             <div class="course-details">
                                 <div class="price">
-                                    <%= course.getPrice()%>đ
+                                    <input type="hidden" name="price" value="<%=course.getPrice()%>">
+                                    <span name="priceValue"></span> VND
                                 </div>
                                 <div class="course-header">
                                     <h4 class="title"><%= course.getName()%></h4>
@@ -370,7 +371,17 @@
             <!-- ~~~ Footer Section ~~~ -->
         </div>
 
-
+        <script>
+            window.addEventListener('load', function() {
+                var input = document.getElementsByName("price");
+                var tmp1 = 0;
+                for (var i = 0; i < input.length; i++) {
+                    tmp1 = parseFloat(input[i].value);
+                    document.getElementsByName("priceValue")[i].innerHTML = Intl.NumberFormat().format(tmp1.toFixed(3));
+                }
+            });
+        </script>
+        
         <script data-cfasync="false" src="../../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/jquery-3.6.0.min.js"></script>
 
         <script src="assets/js/bootstrap.min.js"></script>
