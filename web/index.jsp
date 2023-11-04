@@ -127,7 +127,7 @@
 
 
             <!-- ~~~ Banner Section ~~~ -->
-            <section class="banner-section banner-overlay bg_img bg-banner" data-img="https://images.unsplash.com/photo-1626243048109-e2ef80ff5b31?auto=format&fit=crop&q=80&w=1470&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+            <section class="banner-section banner-overlay bg_img bg-banner" data-img="assets/images/banner/home.avif">
                 <div class="container">
                     <div class="banner-content cl-white">
                         <h3 class="subtitle subtitle-banner">Join the drawing course now</h3>
