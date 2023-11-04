@@ -20,6 +20,7 @@ public class ProgressDAO {
     private static final String CREATE_PROGRESS = "INSERT INTO tblProgress(learningCourseID, videoID, IsFnished) VALUES(?,?,1)";
     private static final String CHECK_EXIST_PROGRESS = "SELECT * FROM tblProgress WHERE learningCourseID = ? AND videoID = ?";
     private static final String GET_NUMBER_FINISH = "SELECT COUNT(learningCourseID) AS 'Number' FROM tblProgress WHERE isFnished = 1 AND learningCourseID = ?;";
+    private static final String CHECK_FINISHED = "SELECT * FROM tblProgress WHERE learningCourseID = ? AND videoID = ? AND IsFnished = 1";
     
     public boolean createProgress(int learningCourseID, int videoID) throws SQLException {
         boolean check = false;
@@ -118,5 +119,39 @@ public class ProgressDAO {
             }
         }
         return count;
+    }
+    
+    public boolean checkFisnished(int learningCourseID, int videoID) throws SQLException {
+        boolean check = false;
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement ptm = null;
+
+        try {
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(CHECK_FINISHED);
+                ptm.setInt(1, learningCourseID);
+                ptm.setInt(2, videoID);
+                rs= ptm.executeQuery();
+                
+                if(rs.next()){
+                    check=true;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return check;
     }
 }

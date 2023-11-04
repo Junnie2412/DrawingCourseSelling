@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Time;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -109,7 +110,7 @@ public class LearningCourseDAO {
         return list;
     }
     
-    public boolean createLearningCourse(boolean isLearning, Date expiredDay, String courseID, String accountID) throws SQLException {
+    public boolean createLearningCourse(boolean isLearning, String expiredDay, String courseID, String accountID) throws SQLException {
         boolean check = false;
         Connection conn = null;
         ResultSet rs = null;
@@ -120,7 +121,7 @@ public class LearningCourseDAO {
             if (conn != null) {
                 ptm = conn.prepareStatement(CREATE_LEARNING_COURSE);
                 ptm.setBoolean(1, isLearning);
-                ptm.setDate(2, expiredDay);
+                ptm.setDate(2, Date.valueOf(expiredDay));
                 ptm.setString(3, courseID);
                 ptm.setString(4, accountID);
                 

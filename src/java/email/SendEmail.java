@@ -17,8 +17,8 @@ public class SendEmail {
 
     public static void send(String to, String sub,
             String msg) {
-        String user = "dungnlhse171696@fpt.edu.vn";
-        String pass = "mkcsfijqgdysubno";
+        String user = "artcenter2412@gmail.com";
+        String pass = "ngrlpsbvkwtegedw";
         Properties props = new Properties();
         props.put("mail.smtp.host", "smtp.gmail.com");
         props.put("mail.smtp.port", "587");
