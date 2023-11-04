@@ -101,7 +101,7 @@
     </head>
 
 
-    <body>
+    <body onload="loadPage()">
 
         <%
 
@@ -290,8 +290,8 @@
                                                 %>
                                             <span>(<%= courseFeedbackDAO.getAverageRate(course.getCourseID())%>/5.00)</span>
                                         </div>
-                                        <div class="price cl-1">
-                                            <%= course.getPrice()%>đ
+                                        <div class="price cl-1"><input type="hidden" name="price" value="<%=course.getPrice()%>">
+                                                <span name="priceValue"></span> VND
                                         </div>
                                     </div>
                                 </div>
@@ -415,6 +415,18 @@
             <jsp:include page="layout/footer.jsp"/>
             <!-- ~~~ Footer Section ~~~ -->
         </div>
+
+            <script>
+            function loadPage() {
+
+                var input = document.getElementsByName("price");
+                var tmp1 = 0;
+                for (var i = 0; i < input.length; i++) {
+                    tmp1 = parseFloat(input[i].value);
+                    document.getElementsByName("priceValue")[i].innerHTML = Intl.NumberFormat().format(tmp1.toFixed(3));
+                }
+            }
+            </script>
 
 
         <script data-cfasync="false" src="../../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/jquery-3.6.0.min.js"></script>

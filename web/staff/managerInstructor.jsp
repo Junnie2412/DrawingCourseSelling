@@ -61,7 +61,12 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" data-bs-toggle="tab" href="#manageInstructor">Manage Instructor Account</a>
-                            </li>           
+                            </li>     
+                            <form action="MainController" method="POST">
+                                <button type="submit" name="action" value="TurnBackStaff">Turn Back</button>
+                            </form>
+                            
+                            
                         </ul>   
                         <div class="tab-content">
                             <div class="tab-pane container active" id="addInstructor">
@@ -113,14 +118,15 @@
                                             <input type="text" class="form-control" name="image" required>
 
                                         </div>
-
-                                        <input class="btn btn-outline-primary" type="submit" name="action" value="Add Instructor">
+                                        <button class="btn btn-outline-primary" type="submit" name="action" value="Add Instructor">Add Instructor</button>
                                         <%
                                                         String notication = (String) request.getAttribute("MESSAGE");
                                                         if (notication != null) {
                                                             out.print("<h6 style=\"color: green;\">" + notication + "</h6>");
                                                         }
                                         %>
+                                           
+                                        
                                     </form>   
                                 </div>
                             </div>
