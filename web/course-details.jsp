@@ -112,21 +112,21 @@
                                     <div class="course-video-content">
                                         <h6 class="title"><%= course.getName()%></h6>
                                         <div class="ratings cl-theme">
-                                            <%
-                                                float avgrate = courseFeedbackDAO.getAverageRate(courseID);
-                                                for (int i = 0; i < avgrate; i++) {
-                                            %>
-                                            <span><i class="fas fa-star"></i></span>
                                                 <%
-                                                    }
-                                                    for (int i = 0; i < (5 - avgrate); i++) {
+//                                                    float avgrate = courseFeedbackDAO.getAverageRate(course.getCourseID());
+//                                                    for (int i = 0; i < avgrate; i++) {
                                                 %>
-                                            <span class="cl-theme-light"><i class="fas fa-star"></i></span>
-                                                <%
-                                                    }
-                                                %>
-                                            <span>(<%= courseFeedbackDAO.getAverageRate(course.getCourseID())%>/5.00)</span>
-                                        </div>
+<!--//                                                <span><i class="fas fa-star"></i></span>-->
+                                                    <%
+//                                                        }
+//                                                        for (int i = 0; i < (5 - avgrate); i++) {
+                                                    %>
+<!--//                                                <span class="cl-theme-light"><i class="fas fa-star"></i></span>-->
+                                                    <%
+//                                                        }
+                                                    %>
+<!--//                                                <span>(<%= courseFeedbackDAO.getAverageRate(course.getCourseID())%>/5.00)</span>-->
+                                            </div>
                                         <ul class="course-infos">
                                             <li>
                                                 <span><i class="fas fa-play-circle"></i>Total Lessons</span><span><%= lessonDAO.getTotalLessons(course.getCourseID())%></span>
@@ -216,9 +216,9 @@
                                         <li>
                                             <a href="#instructor" data-bs-toggle="tab">instructor</a>
                                         </li>
-                                        <li>
+<!--                                        <li>
                                             <a href="#reviews" data-bs-toggle="tab">reviews</a>
-                                        </li>
+                                        </li>-->
                                     </ul>
                                     <div class="tab-content">
                                         <div class="tab-pane show fade active" id="overview">
