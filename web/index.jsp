@@ -101,7 +101,7 @@
     </head>
 
 
-    <body>
+    <body onload="loadPage()">
 
         <%
 
@@ -278,23 +278,24 @@
                                         <div class="ratings-area">
                                             <div class="ratings cl-theme">
                                                 <%
-                                                    float avgrate = courseFeedbackDAO.getAverageRate(course.getCourseID());
-                                                    for (int i = 0; i < avgrate; i++) {
+//                                                    float avgrate = courseFeedbackDAO.getAverageRate(course.getCourseID());
+//                                                    for (int i = 0; i < avgrate; i++) {
                                                 %>
-                                                <span><i class="fas fa-star"></i></span>
+<!--//                                                <span><i class="fas fa-star"></i></span>-->
                                                     <%
-                                                        }
-                                                        for (int i = 0; i < (5 - avgrate); i++) {
+//                                                        }
+//                                                        for (int i = 0; i < (5 - avgrate); i++) {
                                                     %>
-                                                <span class="cl-theme-light"><i class="fas fa-star"></i></span>
+<!--//                                                <span class="cl-theme-light"><i class="fas fa-star"></i></span>-->
                                                     <%
-                                                        }
+//                                                        }
                                                     %>
-                                                <span>(<%= courseFeedbackDAO.getAverageRate(course.getCourseID())%>/5.00)</span>
+<!--//                                                <span>(<%= courseFeedbackDAO.getAverageRate(course.getCourseID())%>/5.00)</span>-->
                                             </div>
                                             <div class="price cl-1"><input type="hidden" name="price" value="<%=course.getPrice()%>">
                                                 <span name="priceValue"></span> VND
                                             </div>
+
                                         </div>
                                     </div>           
                                 </div>  
@@ -419,16 +420,17 @@
             <!-- ~~~ Footer Section ~~~ -->
         </div>
 
-        <script>
-            window.addEventListener('load', function() {
-                var input = document.getElementsByName("price");
-                var tmp1 = 0;
-                for (var i = 0; i < input.length; i++) {
-                    tmp1 = parseFloat(input[i].value);
-                    document.getElementsByName("priceValue")[i].innerHTML = Intl.NumberFormat().format(tmp1.toFixed(3));
-                }
-            });
-        </script>
+            <script>
+                        function loadPage() {
+
+                            var input = document.getElementsByName("price");
+                            var tmp1 = 0;
+                            for (var i = 0; i < input.length; i++) {
+                                tmp1 = parseFloat(input[i].value);
+                                document.getElementsByName("priceValue")[i].innerHTML = Intl.NumberFormat().format(tmp1.toFixed(3));
+                            }
+                        }
+            </script>
         
         <script>
             var courseForms = document.querySelectorAll('form[id^="courseForm"]');
@@ -446,6 +448,7 @@
                 });
             });
         </script>
+
 
         <script data-cfasync="false" src="../../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/jquery-3.6.0.min.js"></script>
 
