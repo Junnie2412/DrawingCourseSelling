@@ -144,12 +144,12 @@
                                                         }
                                                         
                                                         String notiHide = (String) request.getAttribute("MESSAGE2");
-                                                        String notiFail = (String) request.getAttribute("ERROR");
+                                                        
                                                         if (notiHide != null) {
                                                             out.print("<h6 style=\"color: green;\">" + notiHide + "</h6>");
-                                                        }else{
-                                                            out.print("<h6 style=\"color: green;\">" + notiFail + "</h6>");
                                                         }
+                                                        
+                                                        
                                                 %>
                                                 <div class="row g-4 align-items-center">
                                                     <div class="col-sm-3">

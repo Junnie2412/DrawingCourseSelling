@@ -420,17 +420,17 @@
             <!-- ~~~ Footer Section ~~~ -->
         </div>
 
-<script>
-            function loadPage() {
+            <script>
+                        function loadPage() {
 
-                var input = document.getElementsByName("price");
-                var tmp1 = 0;
-                for (var i = 0; i < input.length; i++) {
-                    tmp1 = parseFloat(input[i].value);
-                    document.getElementsByName("priceValue")[i].innerHTML = Intl.NumberFormat().format(tmp1.toFixed(3));
-                }
-            }
-        </script>
+                            var input = document.getElementsByName("price");
+                            var tmp1 = 0;
+                            for (var i = 0; i < input.length; i++) {
+                                tmp1 = parseFloat(input[i].value);
+                                document.getElementsByName("priceValue")[i].innerHTML = Intl.NumberFormat().format(tmp1.toFixed(3));
+                            }
+                        }
+            </script>
         
         <script>
             var courseForms = document.querySelectorAll('form[id^="courseForm"]');

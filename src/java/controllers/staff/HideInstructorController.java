@@ -33,12 +33,9 @@ public class HideInstructorController extends HttpServlet {
         
         try{
             
-            String fullName = request.getParameter("fullName");
-            boolean isActive = true;
-            
+            String accountID = request.getParameter("accountID");
             UserDAO dao = new UserDAO();
-            UserDTO user = new UserDTO(fullName, isActive);
-            boolean checkHide = dao.hideInstructor(user);
+            boolean checkHide = dao.hideInstructor(accountID);
             if (checkHide) {
                 request.setAttribute("MESSAGE2", "Deactive successfully");
                 url = SUCCESS;
