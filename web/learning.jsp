@@ -231,8 +231,8 @@
             }
             .description button{
                 width: 90%;
-                margin-top: 20px;
-                margin-bottom: 20px;
+                margin-top: 10px;
+                margin-bottom: 10px;
             }
             .descriptBtn {
                 background-color: #fbeee0;
@@ -500,9 +500,13 @@
                                     <p><%=courseDAO.getAccount(learningCourse.getCourseID()).getFullName()%></p>
                                     <p>Expired Day: <%=learningCourse.getExpiredDay()%></p>
                                 </div>
-                                <div class="description">
-                                    <button class="descriptBtn" onclick="showDescription()">Description</button>
-                                </div>
+                                <form action="MainController" method="POST">
+                                    <input type="hidden" name="action" value="ViewCourseDetail">
+                                    <input type="hidden" name="courseID" value="<%=courseDAO.getCourseByCourseID(learningCourse.getCourseID()).getCourseID()%>">
+                                    <div class="description">
+                                        <button class="descriptBtn" onclick="showDescription()">Description</button>
+                                    </div>
+                                </form>
                                 <div class="learnBtn">
                                     <a href="course-learn.jsp?courseID=<%=learningCourse.getCourseID()%>">Get Certificate <i class="fa fa-light fa-arrow-right"></i></a>
                                 </div>

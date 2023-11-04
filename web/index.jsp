@@ -101,7 +101,7 @@
     </head>
 
 
-    <body>
+    <body onload="loadPage()">
 
         <%
 
@@ -295,6 +295,7 @@
                                             <div class="price cl-1"><input type="hidden" name="price" value="<%=course.getPrice()%>">
                                                 <span name="priceValue"></span> VND
                                             </div>
+
                                         </div>
                                     </div>           
                                 </div>  
@@ -419,15 +420,16 @@
             <!-- ~~~ Footer Section ~~~ -->
         </div>
 
-        <script>
-            window.addEventListener('load', function() {
+<script>
+            function loadPage() {
+
                 var input = document.getElementsByName("price");
                 var tmp1 = 0;
                 for (var i = 0; i < input.length; i++) {
                     tmp1 = parseFloat(input[i].value);
                     document.getElementsByName("priceValue")[i].innerHTML = Intl.NumberFormat().format(tmp1.toFixed(3));
                 }
-            });
+            }
         </script>
         
         <script>
@@ -446,6 +448,7 @@
                 });
             });
         </script>
+
 
         <script data-cfasync="false" src="../../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/jquery-3.6.0.min.js"></script>
 
