@@ -127,7 +127,7 @@
 
 
             <!-- ~~~ Banner Section ~~~ -->
-            <section class="banner-section banner-overlay bg_img bg-banner" data-img="https://images.unsplash.com/photo-1626243048109-e2ef80ff5b31?auto=format&fit=crop&q=80&w=1470&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+            <section class="banner-section banner-overlay bg_img bg-banner" data-img="assets/images/banner/home.avif">
                 <div class="container">
                     <div class="banner-content cl-white">
                         <h3 class="subtitle subtitle-banner">Join the drawing course now</h3>
@@ -246,56 +246,64 @@
                                 if (list.size() > 0) {
                                     for (CourseDTO course : list) {
                         %>
-                        <div class="col-xl-4 col-md-6 col-sm-10">
-                            <div class="course-item">
-                                <div class="thumb">
-                                    <a href="course-details.jsp?courseID=<%= course.getCourseID()%>">
-                                        <img src="<%= courseDAO.getDescription(course.getCourseID()).getImage()%>" alt="course">
-                                    </a>
-                                </div>
-                                <div class="content">
-                                    <h5 class="title">
-                                        <a href="course-details.jsp?courseID=<%= course.getCourseID()%>"><%= course.getName()%></a>
-                                    </h5>
-                                    <div class="meta-area">
-                                        <div class="meta">
-                                            <div class="meta-item">
-                                                <i class="fas fa-user"></i>
-                                                <span><%= courseDAO.getAccount(course.getCourseID()).getFullName()%></span>
-                                            </div>
-                                            <div class="meta-item">
-                                                <i class="fas fa-photo-video"></i>
-                                                <span><%= moduleDAO.getQuantityOfModules(course.getCourseID())%> Modules</span>
-                                            </div>
-                                            <div class="meta-item">
-                                                <i class="fas fa-user-graduate"></i>
-                                                <span><%= courseDAO.getDescription(course.getCourseID()).getType()%></span>
-                                            </div>
-                                        </div>
+                        <div class="col-xl-4 col-md-6 col-sm-10">  
+                            <form action="MainController" method="POST" id="courseForm<%= course.getCourseID()%>">
+                                <input type="hidden" value="ViewCourseDetail" name="action"/>
+                                <input type="hidden" name="courseID" value="<%= course.getCourseID()%>">
+                                <input type="hidden" name="courseName" value="<%= course.getName()%>">
+                                <div class="course-item">
+                                    <div class="thumb">
+                                        <img src="<%= courseDAO.getDescription(course.getCourseID()).getImage()%>" alt="course" id="courseImage">
                                     </div>
-                                    <div class="ratings-area">
-                                        <div class="ratings cl-theme">
-                                            <%
-                                                float avgrate = courseFeedbackDAO.getAverageRate(course.getCourseID());
-                                                for (int i = 0; i < avgrate; i++) {
-                                            %>
-                                            <span><i class="fas fa-star"></i></span>
-                                                <%
-                                                    }
-                                                    for (int i = 0; i < (5 - avgrate); i++) {
-                                                %>
-                                            <span class="cl-theme-light"><i class="fas fa-star"></i></span>
-                                                <%
-                                                    }
-                                                %>
-                                            <span>(<%= courseFeedbackDAO.getAverageRate(course.getCourseID())%>/5.00)</span>
+                                    <div class="content">
+                                        <h5 class="title">
+                                            <p id="courseName"><%= course.getName()%></p>
+                                        </h5>
+                                        <div class="meta-area">
+                                            <div class="meta">
+                                                <div class="meta-item">
+                                                    <i class="fas fa-user"></i>
+                                                    <span><%= courseDAO.getAccount(course.getCourseID()).getFullName()%></span>
+                                                </div>
+                                                <div class="meta-item">
+                                                    <i class="fas fa-photo-video"></i>
+                                                    <span><%= moduleDAO.getQuantityOfModules(course.getCourseID())%> Modules</span>
+                                                </div>
+                                                <div class="meta-item">
+                                                    <i class="fas fa-user-graduate"></i>
+                                                    <span><%= courseDAO.getDescription(course.getCourseID()).getType()%></span>
+                                                </div>
+                                            </div>
                                         </div>
+<<<<<<< HEAD
                                         <div class="price cl-1"><input type="hidden" name="price" value="<%=course.getPrice()%>">
                                                 <span name="priceValue"></span> VND
+=======
+                                        <div class="ratings-area">
+                                            <div class="ratings cl-theme">
+                                                <%
+                                                    float avgrate = courseFeedbackDAO.getAverageRate(course.getCourseID());
+                                                    for (int i = 0; i < avgrate; i++) {
+                                                %>
+                                                <span><i class="fas fa-star"></i></span>
+                                                    <%
+                                                        }
+                                                        for (int i = 0; i < (5 - avgrate); i++) {
+                                                    %>
+                                                <span class="cl-theme-light"><i class="fas fa-star"></i></span>
+                                                    <%
+                                                        }
+                                                    %>
+                                                <span>(<%= courseFeedbackDAO.getAverageRate(course.getCourseID())%>/5.00)</span>
+                                            </div>
+                                            <div class="price cl-1"><input type="hidden" name="price" value="<%=course.getPrice()%>">
+                                                <span name="priceValue"></span> VND
+                                            </div>
+>>>>>>> a93aa07d112789a28a01c7efc2b9b8ddd4a0b003
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
+                                    </div>           
+                                </div>  
+                            </form>                     
                         </div>
                         <%
                                     }
@@ -416,18 +424,45 @@
             <!-- ~~~ Footer Section ~~~ -->
         </div>
 
+<<<<<<< HEAD
             <script>
             function loadPage() {
 
+=======
+        <script>
+            window.addEventListener('load', function() {
+>>>>>>> a93aa07d112789a28a01c7efc2b9b8ddd4a0b003
                 var input = document.getElementsByName("price");
                 var tmp1 = 0;
                 for (var i = 0; i < input.length; i++) {
                     tmp1 = parseFloat(input[i].value);
                     document.getElementsByName("priceValue")[i].innerHTML = Intl.NumberFormat().format(tmp1.toFixed(3));
                 }
+<<<<<<< HEAD
             }
             </script>
 
+=======
+            });
+        </script>
+        
+        <script>
+            var courseForms = document.querySelectorAll('form[id^="courseForm"]');
+
+            courseForms.forEach(function(form) {
+                var courseImage = form.querySelector('#courseImage');
+                var courseName = form.querySelector('#courseName');
+
+                courseImage.addEventListener('click', function() {
+                    form.submit(); 
+                });
+
+                courseName.addEventListener('click', function() {
+                    form.submit(); 
+                });
+            });
+        </script>
+>>>>>>> a93aa07d112789a28a01c7efc2b9b8ddd4a0b003
 
         <script data-cfasync="false" src="../../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/jquery-3.6.0.min.js"></script>
 

@@ -27,7 +27,7 @@ public class CreateLessonController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int moduleId = Integer.parseInt(request.getParameter("moduleId"));
+        int moduleId = Integer.parseInt(request.getParameter("moduleId"));//
         
         LessonDAO ld = new LessonDAO();
         

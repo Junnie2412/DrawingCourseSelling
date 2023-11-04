@@ -33,7 +33,7 @@ public class CreateCourseController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        System.out.println("go here-2");
+       
 
         String url = ERROR;
 
@@ -65,7 +65,7 @@ public class CreateCourseController extends HttpServlet {
                 url = SUCCESS + courseID;
             }
         } catch (Exception e) {
-            System.out.println("Lỗi");
+            
             System.out.println(e);
         } finally {
             request.getRequestDispatcher(url).forward(request, response);

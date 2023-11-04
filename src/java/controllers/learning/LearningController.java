@@ -6,6 +6,9 @@
 package controllers.learning;
 
 import course.CourseDAO;
+import course.LessonDTO;
+import course.ModuleDAO;
+import course.ModuleDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -17,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import learningCourse.LearningCourseDAO;
 import learningCourse.LearningCourseDTO;
+import progress.ProgressDAO;
 import users.UserDTO;
 
 /**
@@ -44,6 +48,29 @@ public class LearningController extends HttpServlet {
             
             request.setAttribute("LIST_ACTIVE", listActive);
             request.setAttribute("LIST_NOT_ACTIVE", listNotActive);
+            
+            int count1 = 0;
+            
+            ProgressDAO progressDAO = new ProgressDAO();
+            ModuleDAO moduleDAO = new ModuleDAO();
+             
+            
+            for(LearningCourseDTO learningCourse : listActive){
+                int count = progressDAO.getNumberFinished(learningCourse.getLearningCourseID());
+                int total = 0;
+                
+                request.setAttribute("NUMBER_ACTIVE_"+count1, count);
+                
+                List<ModuleDTO> moduleList = moduleDAO.getModulesByCourseId(learningCourse.getCourseID());
+                
+                for(ModuleDTO module : moduleList){
+                    List<LessonDTO> lessonList = moduleDAO.getLessonList(module.getModuleID());
+                    total += lessonList.size();
+                }
+                
+                request.setAttribute("TOTAL_ACTIVE_"+count1, total);
+                count1++;
+            }
             
             url=SUCCESS;
             

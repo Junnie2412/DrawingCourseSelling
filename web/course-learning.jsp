@@ -107,12 +107,12 @@
                     String description = (String) request.getAttribute("DESCRIPTION");
                     String video = (String) request.getAttribute("VIDEO");
                     String courseID = (String) request.getAttribute("COURSEID");
+                    String videoID = (String) request.getAttribute("VIDEOID");
 
             %>
             <div class="learning-right" style="position: absolute; top: 27%; right:-10px;">
                 <div style="margin-bottom: 20px; justify-content: space-between ;display: flex;width: 90% ">
                     <h1><%=title%></h1>
-                    <a href="">Next <i class="fa fa-solid fa-arrow-right"></i></a>
                 </div>
                 <iframe width="90%" height="80%" src="<%=video%>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 <div style="margin-top: 30px">
@@ -147,19 +147,20 @@
                         count1++;
                         for (LessonDTO lesson : listLesson) {
                             video = (String) request.getAttribute("LESSON_VIDEO_" + count2);
+                            videoID = (String) request.getAttribute("LESSON_VIDEO_ID_" + count2);
                     %>
                     <div style="width: 25%">
                         <%
                             if (lesson.getTitle().equals(title)) {
                         %>
                         <div name="lessonList" value="<%=lesson.getLessonID()%>" class="lesson-title" style="font-size: 17px; color: black; padding: 10px; padding-left: 30%; background-color: rgb(230, 228, 228);border-left: 10px solid rgb(21,76,121);">
-                            <a href="ViewVideoController?title=<%=lesson.getTitle()%>&description=<%=lesson.getDescription()%>&video=<%=video%>&courseID=<%=courseID%>" style="width: 100%; color:black;"><%=lesson.getTitle()%></a>
+                            <a href="ViewVideoController?title=<%=lesson.getTitle()%>&description=<%=lesson.getDescription()%>&video=<%=video%>&courseID=<%=courseID%>&videoID=<%=videoID%>" style="width: 100%; color:black;"><%=lesson.getTitle()%></a>
                         </div>
                         <%
                         } else {
                         %>
                         <div name="lessonList" value="<%=lesson.getLessonID()%>" class="lesson-title" style="font-size: 17px; color: black; padding: 10px; padding-left: 30%">
-                            <a href="ViewVideoController?title=<%=lesson.getTitle()%>&description=<%=lesson.getDescription()%>&video=<%=video%>&courseID=<%=courseID%>" style="width: 100%; color:black"><%=lesson.getTitle()%></a>
+                            <a href="ViewVideoController?title=<%=lesson.getTitle()%>&description=<%=lesson.getDescription()%>&video=<%=video%>&courseID=<%=courseID%>&videoID=<%=videoID%>" style="width: 100%; color:black"><%=lesson.getTitle()%></a>
                         </div>
                         <%
                             }

@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import learningCourse.LearningCourseDAO;
 import learningCourse.LearningCourseDTO;
+import progress.ProgressDAO;
 import users.UserDTO;
 
 /**
@@ -37,10 +38,14 @@ public class ViewVideoController extends HttpServlet {
 
         String url = ERROR;
         try {
+            HttpSession session = request.getSession();
+            UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
+            
             String courseID = request.getParameter("courseID");
             String title = request.getParameter("title");
             String video = request.getParameter("video");
             String description = request.getParameter("description");
+            String videoID = request.getParameter("videoID");
 
             ModuleDAO moduleDAO = new ModuleDAO();
             List<ModuleDTO> listModule = moduleDAO.getModulesByCourseId(courseID);
@@ -52,15 +57,27 @@ public class ViewVideoController extends HttpServlet {
                 List<LessonDTO> listLesson = moduleDAO.getLessonList(module.getModuleID());
                 request.setAttribute("LIST_LESSON_" + count1, listLesson);
                 for (LessonDTO lesson : listLesson) {
-                    if (title == null && video == null && description == null) {
+                    if (title == null && video == null && description == null && videoID == null) {
                         title = lesson.getTitle();
                         description = lesson.getDescription();
                         video = moduleDAO.getVideo(lesson.getLessonID()).getContent();
+                        videoID = String.valueOf(moduleDAO.getVideo(lesson.getLessonID()).getVideoID());
                     }
                     request.setAttribute("LESSON_VIDEO_" + count2, moduleDAO.getVideo(lesson.getLessonID()).getContent());
+                    request.setAttribute("LESSON_VIDEO_ID_" + count2, String.valueOf(moduleDAO.getVideo(lesson.getLessonID()).getVideoID()));
                     count2++;
                 }
                 count1++;
+            }
+            
+            ProgressDAO progressDAO = new ProgressDAO();
+            LearningCourseDAO learningCourseDAO = new LearningCourseDAO();
+
+            int learningCourseID = learningCourseDAO.getLearningCourseID(loginUser.getAccountID(), courseID);
+            
+            boolean checkExistProgress = progressDAO.checkExistProgress(learningCourseID, Integer.parseInt(videoID));
+            if(videoID != null && !checkExistProgress){
+                boolean check = progressDAO.createProgress(learningCourseID, Integer.parseInt(videoID));
             }
 
             request.setAttribute("LIST_MODULE", listModule);
@@ -68,7 +85,8 @@ public class ViewVideoController extends HttpServlet {
             request.setAttribute("VIDEO", video);
             request.setAttribute("DESCRIPTION", description);
             request.setAttribute("COURSEID", courseID);
-
+            request.setAttribute("VIDEOID", videoID);
+            
             url = SUCCESS;
 
         } catch (Exception e) {
