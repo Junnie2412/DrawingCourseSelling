@@ -56,6 +56,50 @@ public class CourseDAO {
     private static final String GET_PROFIT = "select sum(total) as profit from tblOrder";
     private static final String GET_NUMORDER = "select count(orderID) as numOrder from tblOrder";
     private static final String GET_NUMOFCUSTOMERS = "select count(DISTINCT accountID) as numOfCustomers from tblOrder";
+     private static final String GET_BILL = "select od.orderDetailID, od.price, od.quantity, c.courseID, c.name, a.fullName from tblOrderDetail as od left join tblCourse as c\n"
+            + "on od.courseID = c.courseID left join tblOrder as o\n"
+            + "on od.orderID = o.orderID left join tblAccount as a\n"
+            + "on o.accountID = a.accountID\n"
+            + "where od.courseID in\n"
+            + "(\n"
+            + "	select courseID from tblCourse where accountID = ?\n"
+            + ")";
+
+    public List<BillDTO> getBillOfInstructor(String accountId) throws SQLException {
+        List<BillDTO> list = new ArrayList<>();
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement ptm = null;
+
+        try {
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(GET_BILL);
+                ptm.setString(1, accountId);
+                rs = ptm.executeQuery();
+
+                while (rs.next()) {
+                    list.add(
+                            new BillDTO(rs.getInt(1), rs.getFloat(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6))
+                    );
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+
+        return list;
+    }
     
     public List<CourseDTO> getlistCourse(String search) throws ClassNotFoundException, SQLException {
         List<CourseDTO> list = new ArrayList<>();
@@ -101,7 +145,7 @@ public class CourseDAO {
     }
 
     public int createVideo(String content, LocalTime time, boolean isActive, int lessionId) throws SQLException {
-        boolean check = false;
+        
         Connection conn = null;
         ResultSet rs = null;
         PreparedStatement ptm = null;

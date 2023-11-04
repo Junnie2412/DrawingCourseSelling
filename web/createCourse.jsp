@@ -32,8 +32,9 @@
     
     .nav-bar {
             height: 100px; 
-            width: 1600px;
+            width: 100px;
         }
+        
 
 }
 </style>
@@ -59,7 +60,7 @@
         </div>
     </section>
 
-            <div class="container" style="margin-top: 40px; margin-bottom: 100px" >
+            <div class="container createTable" style="margin-top: 40px; margin-bottom: 100px" >
         <div class="row justify-content-center">
             <div class="col-md-7">
                 <form action="MainController" class="p-4" style="background-color: #fff; border-radius: 5px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);">
@@ -70,46 +71,46 @@
                     </div>
                     <div class="form-group">
                         <label for="courseID" class="custom-label">Course ID</label>
-                        <input type="text" class="form-control" id="courseID" name="courseID">
+                        <input type="text" class="form-control" id="courseID" name="courseID" required>
                     </div>
                     <div class="form-group">
                         <label for="coursePrice"  class="custom-label">Price</label>
-                        <input type="text" class="form-control" id="coursePrice" name="coursePrice">
+                        <input type="text" class="form-control" id="coursePrice" name="coursePrice" required>
                     </div>
                     <div class="form-group">
                         <label for="courseName"  class="custom-label">Name</label>
-                        <input type="text" class="form-control" id="courseName" name="courseName">
+                        <input type="text" class="form-control" id="courseName" name="courseName" required>
                     </div>
                     <div class="form-group">
                         <label for="courseDuration"  class="custom-label">Duration</label>
-                        <input type="text" class="form-control" id="courseDuration" name="courseDuration">
+                        <input type="text" class="form-control" id="courseDuration" name="courseDuration" required>
                     </div>
                     <div class="form-group">
                         <label for="courseDatePublic"  class="custom-label">Date Public</label>
-                        <input type="date" class="form-control" id="courseDatePublic" name="courseDatePublic">
+                        <input type="date" class="form-control" id="courseDatePublic" name="courseDatePublic" required>
                     </div>
                     <div class="form-group" style="margin-top: 50px">
                         <label class="custom-label font-weight-bold larger-text" style="color: black;">Description</label>
                     </div>
                     <div class="form-group">
                         <label for="descriptionContent"  class="custom-label">Content</label>
-                        <input type="text" class="form-control" id="descriptionContent" name="descriptionContent">
+                        <input type="text" class="form-control" id="descriptionContent" name="descriptionContent" required>
                     </div>
                     <div class="form-group">
                         <label for="descriptionTarget"  class="custom-label">Target</label>
-                        <input type="text" class="form-control" id="descriptionTarget" name="descriptionTarget">
+                        <input type="text" class="form-control" id="descriptionTarget" name="descriptionTarget" required>
                     </div>
                     <div class="form-group">
                         <label for="descriptionImage"  class="custom-label">Image</label>
-                        <input type="text" class="form-control" id="descriptionImage" name="descriptionImage">
+                        <input type="text" class="form-control" id="descriptionImage" name="descriptionImage" required>
                     </div>
                     <div class="form-group">
                         <label for="descriptionType"  class="custom-label">Type</label>
-                        <input type="text" class="form-control" id="descriptionType" name="descriptionType">
+                        <input type="text" class="form-control" id="descriptionType" name="descriptionType" required>
                     </div>
                     <div class="form-group">
                         <label for="descriptionLevel"  class="custom-label">Level</label>
-                        <select class="form-control" id="descriptionLevel" name="descriptionLevel">
+                        <select class="form-control" id="descriptionLevel" name="descriptionLevel" required>
                             <option value="Basic">Basic</option>
                             <option value="Intermediate">Intermediate</option>
                             <option value="Advanced">Advanced</option>

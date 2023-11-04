@@ -43,7 +43,7 @@ public class UserDAO {
     private static final String GET_NUM_OF_ACTIVE_CUSTOMER = "SELECT COUNT(accountID) AS numOfCustomer FROM tblAccount WHERE role = 'Customer' AND isActive = 1";
     private static final String GET_CUSTOMER_LEARNING = "SELECT COUNT(accountID) AS customerLearning FROM tblLearningCourse";
     private static final String EDIT_INSTRUCTOR = "UPDATE tblAccount set fullName=?, dateOfBirth=?, image=?, email=? WHERE accountID=?";
-    private static final String HIDE_INSTRUCTOR = "UPDATE tblAccount set isActive = 0 WHERE fullName =?";
+    private static final String HIDE_INSTRUCTOR = "UPDATE tblAccount set isActive = 0 WHERE accountID =?";
     
     public UserDTO checkLogin(String userName, String password) throws SQLException {
         UserDTO user = null;
@@ -723,16 +723,16 @@ public class UserDAO {
         return check;
     }
 
-    public boolean hideInstructor(UserDTO user) throws SQLException {
+    public boolean hideInstructor(String accountID) throws SQLException {
         boolean check = false;
         Connection conn = null;
         PreparedStatement ptm = null;
+
         try {
             conn = DBUtil.getConnection();
             if (conn != null) {
                 ptm = conn.prepareStatement(HIDE_INSTRUCTOR);
-                ptm.setString(1, user.getFullName());
-                ptm.setBoolean(2, user.isIsActive());
+                ptm.setString(1, accountID);
                 check = ptm.executeUpdate() > 0 ? true : false;
             }
         } catch (Exception e) {
@@ -747,6 +747,8 @@ public class UserDAO {
         }
         return check;
     }
+
+    
     
     
 
