@@ -10,18 +10,6 @@
 <%@page import="java.sql.Date"%>
 <!DOCTYPE html>
 <html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>ArtCenter - Create Courses</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/all.min.css">
-    <link href="assets/css/main2.css" rel="stylesheet" type="text/css"/>
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-
-<body><!DOCTYPE html>
-<html>
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -96,8 +84,9 @@
     }
     </style>
 </head>
-
 <body>
+
+
     <header>
         <h1> Create Lesson</h1>
     </header>
@@ -121,10 +110,14 @@
             <% } %>
             <tr>
                 <td>
+                    <button type="button" class="btn btn-primary" onclick="goBack()">
+                        Back
+                    </button>
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-create">
                         + Create lesson
                     </button>
-                    
+
+
                 </td>
             </tr>
         </tbody>
@@ -166,6 +159,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
     <script>
         document.getElementById("todayDate").valueAsDate = new Date();
+        function goBack() {
+                                            history.back();
+                                        }
     </script>
 </body>
 
