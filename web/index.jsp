@@ -275,10 +275,6 @@
                                                 </div>
                                             </div>
                                         </div>
-<<<<<<< HEAD
-                                        <div class="price cl-1"><input type="hidden" name="price" value="<%=course.getPrice()%>">
-                                                <span name="priceValue"></span> VND
-=======
                                         <div class="ratings-area">
                                             <div class="ratings cl-theme">
                                                 <%
@@ -299,7 +295,7 @@
                                             <div class="price cl-1"><input type="hidden" name="price" value="<%=course.getPrice()%>">
                                                 <span name="priceValue"></span> VND
                                             </div>
->>>>>>> a93aa07d112789a28a01c7efc2b9b8ddd4a0b003
+
                                         </div>
                                     </div>           
                                 </div>  
@@ -424,26 +420,16 @@
             <!-- ~~~ Footer Section ~~~ -->
         </div>
 
-<<<<<<< HEAD
-            <script>
+<script>
             function loadPage() {
 
-=======
-        <script>
-            window.addEventListener('load', function() {
->>>>>>> a93aa07d112789a28a01c7efc2b9b8ddd4a0b003
                 var input = document.getElementsByName("price");
                 var tmp1 = 0;
                 for (var i = 0; i < input.length; i++) {
                     tmp1 = parseFloat(input[i].value);
                     document.getElementsByName("priceValue")[i].innerHTML = Intl.NumberFormat().format(tmp1.toFixed(3));
                 }
-<<<<<<< HEAD
             }
-            </script>
-
-=======
-            });
         </script>
         
         <script>
@@ -462,7 +448,7 @@
                 });
             });
         </script>
->>>>>>> a93aa07d112789a28a01c7efc2b9b8ddd4a0b003
+
 
         <script data-cfasync="false" src="../../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/jquery-3.6.0.min.js"></script>
 
