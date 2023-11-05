@@ -4,6 +4,8 @@
     Author     : HOANG DUNG
 --%>
 
+<%@page import="learningCourse.LearningCourseDAO"%>
+<%@page import="progress.ProgressDAO"%>
 <%@page import="users.UserDTO"%>
 <%@page import="course.LessonDTO"%>
 <%@page import="course.ModuleDTO"%>
@@ -151,16 +153,36 @@
                     %>
                     <div style="width: 25%">
                         <%
+                            ProgressDAO progressDAO = new ProgressDAO();
+                            LearningCourseDAO learningCourseDAO = new LearningCourseDAO();
+                            int learningCourseID = learningCourseDAO.getLearningCourseID(loginUser.getAccountID(), courseID);
+                            
                             if (lesson.getTitle().equals(title)) {
                         %>
                         <div name="lessonList" value="<%=lesson.getLessonID()%>" class="lesson-title" style="font-size: 17px; color: black; padding: 10px; padding-left: 30%; background-color: rgb(230, 228, 228);border-left: 10px solid rgb(21,76,121);">
-                            <a href="ViewVideoController?title=<%=lesson.getTitle()%>&description=<%=lesson.getDescription()%>&video=<%=video%>&courseID=<%=courseID%>&videoID=<%=videoID%>" style="width: 100%; color:black;"><%=lesson.getTitle()%></a>
+                            <a href="ViewVideoController?title=<%=lesson.getTitle()%>&description=<%=lesson.getDescription()%>&video=<%=video%>&courseID=<%=courseID%>&videoID=<%=videoID%>" style="width: 100%; color:black;"><%=lesson.getTitle()%>
+                                <%
+                                    if (progressDAO.checkFisnished(learningCourseID, Integer.parseInt(videoID))) {
+                                %>
+                                <p style="color: green; display: inline-block"><i class="fa fa-solid fa-check"></i></p>
+                                <%
+                                    }
+                                %>
+                            </a>
                         </div>
                         <%
                         } else {
                         %>
                         <div name="lessonList" value="<%=lesson.getLessonID()%>" class="lesson-title" style="font-size: 17px; color: black; padding: 10px; padding-left: 30%">
-                            <a href="ViewVideoController?title=<%=lesson.getTitle()%>&description=<%=lesson.getDescription()%>&video=<%=video%>&courseID=<%=courseID%>&videoID=<%=videoID%>" style="width: 100%; color:black"><%=lesson.getTitle()%></a>
+                            <a href="ViewVideoController?title=<%=lesson.getTitle()%>&description=<%=lesson.getDescription()%>&video=<%=video%>&courseID=<%=courseID%>&videoID=<%=videoID%>" style="width: 100%; color:black"><%=lesson.getTitle()%>
+                                <%
+                                    if (progressDAO.checkFisnished(learningCourseID, Integer.parseInt(videoID))) {
+                                %>
+                                <p style="color: green; display: inline-block"><i class="fa fa-solid fa-check"></i></p>
+                                <%
+                                    }
+                                %>
+                            </a>
                         </div>
                         <%
                             }
