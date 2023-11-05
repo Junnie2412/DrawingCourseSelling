@@ -298,7 +298,7 @@
                 box-sizing: content-box;
                 height: 20px; /* Can be anything */
                 position: relative;
-                margin: 20px 50px 20px 50px; /* Just for demo spacing */
+                margin: 15px 50px 15px 50px; /* Just for demo spacing */
                 background: #555;
                 border-radius: 25px;
                 padding: 10px;

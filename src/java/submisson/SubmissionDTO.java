@@ -17,11 +17,12 @@ public class SubmissionDTO {
     private boolean isPassed;
     private String instructorNote;
     private float grade;
+    private byte[] project;
 
     public SubmissionDTO() {
     }
 
-    public SubmissionDTO(int submissionID, String accountID, String assignmentID, boolean isGraded, boolean isPassed, String instructorNote, float grade) {
+    public SubmissionDTO(int submissionID, String accountID, String assignmentID, boolean isGraded, boolean isPassed, String instructorNote, float grade, byte[] project) {
         this.submissionID = submissionID;
         this.accountID = accountID;
         this.assignmentID = assignmentID;
@@ -29,6 +30,7 @@ public class SubmissionDTO {
         this.isPassed = isPassed;
         this.instructorNote = instructorNote;
         this.grade = grade;
+        this.project = project;
     }
 
     public int getSubmissionID() {
@@ -86,6 +88,14 @@ public class SubmissionDTO {
     public void setGrade(float grade) {
         this.grade = grade;
     }
-    
+
+    public byte[] getProject() {
+        return project;
+    }
+
+    public void setProject(byte[] project) {
+        this.project = project;
+    }
+
     
 }

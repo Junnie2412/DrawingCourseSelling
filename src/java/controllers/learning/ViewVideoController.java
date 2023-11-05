@@ -5,27 +5,39 @@
  */
 package controllers.learning;
 
+import assignment.AssignmentDAO;
+import assignment.AssignmentDTO;
+import course.CourseDAO;
+import course.CourseDTO;
 import course.LessonDTO;
 import course.ModuleDAO;
 import course.ModuleDTO;
+import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
+import java.nio.file.Paths;
 import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 import learningCourse.LearningCourseDAO;
 import learningCourse.LearningCourseDTO;
 import progress.ProgressDAO;
+import submisson.SubmissionDAO;
 import users.UserDTO;
 
 /**
  *
  * @author HOANG DUNG
  */
+@MultipartConfig(maxFileSize = 16177215)
 @WebServlet(name = "ViewVideoController", urlPatterns = {"/ViewVideoController"})
 public class ViewVideoController extends HttpServlet {
 
@@ -40,19 +52,28 @@ public class ViewVideoController extends HttpServlet {
         try {
             HttpSession session = request.getSession();
             UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
-            
+
             String courseID = request.getParameter("courseID");
             String title = request.getParameter("title");
             String video = request.getParameter("video");
             String description = request.getParameter("description");
             String videoID = request.getParameter("videoID");
+            String videoIDOld = request.getParameter("videoIDOld");
+            String assignment = request.getParameter("assignment");
+            Part filePart = request.getPart("fileToUpload");
+
+            if (assignment == null) {
+                assignment = "notActive";
+            } else {
+                title = "Assignment";
+            }
 
             ModuleDAO moduleDAO = new ModuleDAO();
             List<ModuleDTO> listModule = moduleDAO.getModulesByCourseId(courseID);
-            
+
             int count1 = 0;
             int count2 = 0;
-            
+
             for (ModuleDTO module : listModule) {
                 List<LessonDTO> listLesson = moduleDAO.getLessonList(module.getModuleID());
                 request.setAttribute("LIST_LESSON_" + count1, listLesson);
@@ -69,15 +90,47 @@ public class ViewVideoController extends HttpServlet {
                 }
                 count1++;
             }
-            
+
             ProgressDAO progressDAO = new ProgressDAO();
             LearningCourseDAO learningCourseDAO = new LearningCourseDAO();
+            CourseDAO courseDAO = new CourseDAO();
+            AssignmentDAO assignmentDAO = new AssignmentDAO();
+            AssignmentDTO assignmentDTO = assignmentDAO.getAssignmentByCourseID(courseID);
+
+            CourseDTO courseDTO = courseDAO.getCourseByCourseID(courseID);
 
             int learningCourseID = learningCourseDAO.getLearningCourseID(loginUser.getAccountID(), courseID);
-            
-            boolean checkExistProgress = progressDAO.checkExistProgress(learningCourseID, Integer.parseInt(videoID));
-            if(videoID != null && !checkExistProgress){
-                boolean check = progressDAO.createProgress(learningCourseID, Integer.parseInt(videoID));
+
+            if (videoIDOld != null) {
+                boolean checkExistProgress = progressDAO.checkExistProgress(learningCourseID, Integer.parseInt(videoIDOld));
+                if (!checkExistProgress) {
+                    boolean check = progressDAO.createProgress(learningCourseID, Integer.parseInt(videoIDOld));
+                }
+            }
+
+            if (filePart != null) {
+                String header = filePart.getHeader("content-disposition");
+                String fileName = header.substring(header.lastIndexOf("=") + 2, header.length() - 1);
+                InputStream fileContent = filePart.getInputStream();
+
+                ByteArrayOutputStream bos = new ByteArrayOutputStream();
+                byte[] buffer = new byte[1024];
+                int bytesRead;
+                while ((bytesRead = fileContent.read(buffer)) != -1) {
+                    bos.write(buffer, 0, bytesRead);
+                }
+                byte[] pictureData = bos.toByteArray();
+
+                SubmissionDAO submissionDAO = new SubmissionDAO();
+                boolean checkCreateSubmission = submissionDAO.createSubmission(loginUser.getAccountID(), assignmentDTO.getAssignmentID(), pictureData);
+
+                if (checkCreateSubmission) {
+                    String message = "Your Project is submitted successfully. Now waiting for instructor to grade your assignment";
+                    request.setAttribute("MESSAGE", message);
+                } else {
+                    String message = "Your Project is submitted unsuccessfully. Please try again";
+                    request.setAttribute("MESSAGE", message);
+                }
             }
 
             request.setAttribute("LIST_MODULE", listModule);
@@ -86,11 +139,14 @@ public class ViewVideoController extends HttpServlet {
             request.setAttribute("DESCRIPTION", description);
             request.setAttribute("COURSEID", courseID);
             request.setAttribute("VIDEOID", videoID);
-            
+            request.setAttribute("COURSE_NAME", courseDTO.getName());
+            request.setAttribute("ASSIGNMENT", assignment);
+            request.setAttribute("ASSIGNMENT_TOPIC", assignmentDTO.getTopic());
+
             url = SUCCESS;
 
         } catch (Exception e) {
-            log("Error at LearningController " + e.toString());
+            log("Error at ViewVideoController " + e.toString());
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }

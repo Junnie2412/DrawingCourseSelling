@@ -3,25 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package assignment;
+package submisson;
 
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import users.UserDTO;
 import utils.DBUtil;
 
 /**
  *
  * @author HOANG DUNG
  */
-public class AssignmentDAO {
-    private static final String GET_ASSIGNMENT ="SELECT * FROM tblAssignment WHERE courseID = ?";
+public class SubmissionDAO {
+    private static final String CREATE_SUBMISSION = "INSERT INTO tblSubmission(accountID, assignmentID, isGraded, isPassed, instructorNote, grade, project) VALUES(?,?,?,?,?,?,?)";
     
-    public AssignmentDTO getAssignmentByCourseID(String courseID) throws SQLException {
-        AssignmentDTO assignment= null;
+    public boolean createSubmission(String accountID, String assignmentID, byte[] project ) throws SQLException {
+        boolean check = false;
         Connection conn = null;
         ResultSet rs = null;
         PreparedStatement ptm = null;
@@ -29,16 +28,16 @@ public class AssignmentDAO {
         try {
             conn = DBUtil.getConnection();
             if (conn != null) {
-                ptm = conn.prepareStatement(GET_ASSIGNMENT);
-                ptm.setString(1, courseID);
-                rs = ptm.executeQuery();
-
-                if (rs.next()) {
-                    String assignmentID = rs.getString("assignmentID");
-                    String topic = rs.getString("topic");
-
-                    assignment = new AssignmentDTO(assignmentID, topic, courseID);
-                }
+                ptm = conn.prepareStatement(CREATE_SUBMISSION);
+                ptm.setString(1, accountID);
+                ptm.setString(2, assignmentID);
+                ptm.setBoolean(3, false);
+                ptm.setBoolean(4, false);
+                ptm.setString(5, "");
+                ptm.setFloat(6, 0);
+                ptm.setBytes(7, project);
+                
+                check = ptm.executeUpdate() > 0 ? true : false;
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -53,6 +52,6 @@ public class AssignmentDAO {
                 conn.close();
             }
         }
-        return assignment;
+        return check;
     }
 }
