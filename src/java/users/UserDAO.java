@@ -747,10 +747,5 @@ public class UserDAO {
         }
         return check;
     }
-
-    
-    
-    
-
     
 }
