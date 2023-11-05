@@ -60,7 +60,7 @@ public class ViewVideoController extends HttpServlet {
             String videoID = request.getParameter("videoID");
             String videoIDOld = request.getParameter("videoIDOld");
             String assignment = request.getParameter("assignment");
-            Part filePart = request.getPart("fileToUpload");
+//            Part filePart = request.getPart("fileToUpload");
 
             if (assignment == null) {
                 assignment = "notActive";
@@ -108,30 +108,29 @@ public class ViewVideoController extends HttpServlet {
                 }
             }
 
-            if (filePart != null) {
-                String header = filePart.getHeader("content-disposition");
-                String fileName = header.substring(header.lastIndexOf("=") + 2, header.length() - 1);
-                InputStream fileContent = filePart.getInputStream();
-
-                ByteArrayOutputStream bos = new ByteArrayOutputStream();
-                byte[] buffer = new byte[1024];
-                int bytesRead;
-                while ((bytesRead = fileContent.read(buffer)) != -1) {
-                    bos.write(buffer, 0, bytesRead);
-                }
-                byte[] pictureData = bos.toByteArray();
-
-                SubmissionDAO submissionDAO = new SubmissionDAO();
-                boolean checkCreateSubmission = submissionDAO.createSubmission(loginUser.getAccountID(), assignmentDTO.getAssignmentID(), pictureData);
-
-                if (checkCreateSubmission) {
-                    String message = "Your Project is submitted successfully. Now waiting for instructor to grade your assignment";
-                    request.setAttribute("MESSAGE", message);
-                } else {
-                    String message = "Your Project is submitted unsuccessfully. Please try again";
-                    request.setAttribute("MESSAGE", message);
-                }
-            }
+//            if (filePart != null) {
+//                String header = filePart.getHeader("content-disposition");
+//                InputStream fileContent = filePart.getInputStream();
+//
+//                ByteArrayOutputStream bos = new ByteArrayOutputStream();
+//                byte[] buffer = new byte[1024];
+//                int bytesRead;
+//                while ((bytesRead = fileContent.read(buffer)) != -1) {
+//                    bos.write(buffer, 0, bytesRead);
+//                }
+//                byte[] pictureData = bos.toByteArray();
+//
+//                SubmissionDAO submissionDAO = new SubmissionDAO();
+//                boolean checkCreateSubmission = submissionDAO.createSubmission(loginUser.getAccountID(), assignmentDTO.getAssignmentID(), pictureData);
+//
+//                if (checkCreateSubmission) {
+//                    String message = "Your Project is submitted successfully. Now waiting for instructor to grade your assignment";
+//                    request.setAttribute("MESSAGE", message);
+//                } else {
+//                    String message = "Your Project is submitted unsuccessfully. Please try again";
+//                    request.setAttribute("MESSAGE", message);
+//                }
+//            }
 
             request.setAttribute("LIST_MODULE", listModule);
             request.setAttribute("TITLE", title);
