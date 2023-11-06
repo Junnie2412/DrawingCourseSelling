@@ -29,6 +29,7 @@ public class LearningCourseDAO {
     private static final String GET_ALL_LEARNING_COURSE_NOT_ACTIVE = "SELECT * FROM tblLearningCourse WHERE accountID=? AND isLearning=0";
     private static final String CREATE_LEARNING_COURSE = "INSERT INTO tblLearningCourse(isLearning, expiredDay, courseID, accountID) VALUES(?,?,?,?)";
     private static final String GET_LEARNING_COURSE_BY_COURSEID_ACCOUNTID = "SELECT * FROM tblLearningCourse WHERE accountID = ? AND courseID = ?";
+    private static final String UPDATE_LEARNING_COURSE = "UPDATE tblLearningCourse SET isLearning = 0 WHERE accountID = ? AND courseID = ?";
 
     public List<LearningCourseDTO> getlistLearningCourseActive(String accountID) throws ClassNotFoundException, SQLException {
         List<LearningCourseDTO> list = new ArrayList<>();
@@ -219,5 +220,34 @@ public class LearningCourseDAO {
         return learningCourseID;
     }
     
-    
+    public boolean updateLearningCourse(String accountID, String courseID) throws SQLException {
+        boolean check = false;
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement ptm = null;
+
+        try {
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(UPDATE_LEARNING_COURSE);
+                ptm.setString(1, accountID);
+                ptm.setString(2, courseID);
+                
+                check = ptm.executeUpdate() > 0 ? true : false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return check;
+    }
 }

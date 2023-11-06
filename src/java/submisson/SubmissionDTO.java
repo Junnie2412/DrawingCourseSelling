@@ -13,6 +13,7 @@ public class SubmissionDTO {
     private int submissionID;
     private String accountID;
     private String assignmentID;
+    private int learningCourseID;
     private boolean isGraded;
     private boolean isPassed;
     private String instructorNote;
@@ -22,10 +23,11 @@ public class SubmissionDTO {
     public SubmissionDTO() {
     }
 
-    public SubmissionDTO(int submissionID, String accountID, String assignmentID, boolean isGraded, boolean isPassed, String instructorNote, float grade, byte[] project) {
+    public SubmissionDTO(int submissionID, String accountID, String assignmentID, int learningCourseID, boolean isGraded, boolean isPassed, String instructorNote, float grade, byte[] project) {
         this.submissionID = submissionID;
         this.accountID = accountID;
         this.assignmentID = assignmentID;
+        this.learningCourseID = learningCourseID;
         this.isGraded = isGraded;
         this.isPassed = isPassed;
         this.instructorNote = instructorNote;
@@ -55,6 +57,14 @@ public class SubmissionDTO {
 
     public void setAssignmentID(String assignmentID) {
         this.assignmentID = assignmentID;
+    }
+
+    public int getLearningCourseID() {
+        return learningCourseID;
+    }
+
+    public void setLearningCourseID(int learningCourseID) {
+        this.learningCourseID = learningCourseID;
     }
 
     public boolean isIsGraded() {

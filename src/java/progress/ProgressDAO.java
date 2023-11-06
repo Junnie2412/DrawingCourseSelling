@@ -21,6 +21,7 @@ public class ProgressDAO {
     private static final String CHECK_EXIST_PROGRESS = "SELECT * FROM tblProgress WHERE learningCourseID = ? AND videoID = ?";
     private static final String GET_NUMBER_FINISH = "SELECT COUNT(learningCourseID) AS 'Number' FROM tblProgress WHERE isFnished = 1 AND learningCourseID = ?;";
     private static final String CHECK_FINISHED = "SELECT * FROM tblProgress WHERE learningCourseID = ? AND videoID = ? AND IsFnished = 1";
+    private static final String GET_TOTAl_LESSON_BY_COURSEID = "SELECT COUNT(*) AS total FROM tblLesson l JOIN tblModule m ON l.moduleID = m.moduleID WHERE m.courseID = ?";
     
     public boolean createProgress(int learningCourseID, int videoID) throws SQLException {
         boolean check = false;
@@ -153,5 +154,38 @@ public class ProgressDAO {
             }
         }
         return check;
+    }
+    
+    public int getTotalLesson(String courseID) throws SQLException {
+        int total = 0;
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement ptm = null;
+
+        try {
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(GET_TOTAl_LESSON_BY_COURSEID);
+                ptm.setString(1, courseID);
+                rs= ptm.executeQuery();
+                
+                if(rs.next()){
+                    total = rs.getInt("total");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return total;
     }
 }
