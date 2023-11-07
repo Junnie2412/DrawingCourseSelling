@@ -205,7 +205,7 @@ public class ModuleDAO {
     
     public boolean createModule(String title, String courseId) throws ClassNotFoundException, SQLException {
         Connection conn = null;
-        ResultSet rs = null;
+        
         PreparedStatement ptm = null;
 
         try {
@@ -222,9 +222,7 @@ public class ModuleDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            if (rs != null) {
-                rs.close();
-            }
+           
             if (ptm != null) {
                 ptm.close();
             }

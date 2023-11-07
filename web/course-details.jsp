@@ -229,21 +229,7 @@
                                         <div class="tab-pane fade" id="curriculum">
                                             <div class="overview">
                                                 <p><%= courseDAO.getDescription(courseID).getTarget()%></p>
-                                                <div class="details-buttons-area">
-                                                    <a href="#0" class="custom-button theme-one">Buy Now <i class="fas fa-angle-right"></i></a>
-                                                    <a href="#0" class="custom-button bg-white">Add to Cart</a>
-                                                    <!--                                                    <ul class="social-icons">
-                                                                                                            <li>
-                                                                                                                <a href="#0"><i class="fab fa-facebook-f"></i></a>
-                                                                                                            </li>
-                                                                                                            <li>
-                                                                                                                <a href="#0"><i class="fab fa-twitter"></i></a>
-                                                                                                            </li>
-                                                                                                            <li>
-                                                                                                                <a href="#0"><i class="fab fa-instagram"></i></a>
-                                                                                                            </li>
-                                                                                                        </ul>-->
-                                                </div>
+                                                
                                             </div>
                                         </div>
                                         <div class="tab-pane fade" id="instructor">
