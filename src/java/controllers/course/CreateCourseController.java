@@ -22,7 +22,7 @@ import users.UserDTO;
 
 /**
  *
- * @author HOANG DUNG
+ * @author Admin
  */
 @WebServlet(name = "CreateCourseController", urlPatterns = {"/CreateCourseController"})
 public class CreateCourseController extends HttpServlet {
