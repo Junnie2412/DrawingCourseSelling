@@ -15,7 +15,7 @@
         <div class="text-center mt-sm-5 mb-4 text-white-50">
             <div>
                 <a href="../index.jsp"class="d-inline-block auth-logo">
-                    <img src="assets/images/logomain.png" alt="logo" height="70" >
+                    <img src="assets/images/logomain.jpg" alt="logo" height="70" style="border-radius: 50%" >
                 </a>
 
             </div>

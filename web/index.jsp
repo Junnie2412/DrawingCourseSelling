@@ -187,7 +187,7 @@
                                 <div class="content">
                                     <h6 class="title">Online Class</h6>
                                     <span class="shape"></span>
-                                    <p class="fs-sm">To meet the need to learn without going to the school, each course will provide online videos for each student when registering for the course. You can access our website anytime, anywhere as long as you have a learning spirit and are willing to develop your creativity.
+                                    <p class="fs-sm">To meet the   to learn without going to the school, each course will provide online videos for each student when registering for the course. You can access our website anytime, anywhere as long as you have a learning spirit and are willing to develop your creativity.
                                     </p>
                                 </div>
                             </div>
