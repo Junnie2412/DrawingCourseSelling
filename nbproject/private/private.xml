@@ -9,11 +9,13 @@
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/controllers/order/UpdateVocherController.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/course/CourseFeedbackDAO.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/progress/ProgressDTO.java</file>
+            <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/staff/staff.jsp</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/controllers/course/ViewCourseController.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/controllers/learning/LearningController.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/controllers/course/ViewCoursePageController.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/instructorVideo.jsp</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/users/ProfileDTO.java</file>
+            <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/staff/layoutadmin/slidebar.jsp</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/controllers/forgotpassword/CompletePasswordResetController.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/course/DescriptionDTO.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/assets/css/main2.css</file>
@@ -77,6 +79,7 @@
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/users/ProfileDAO.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/checkout/vnpay_pay.jsp</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/checkout/vnpay_querydr.jsp</file>
+            <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/staff/managerInstructor.jsp</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/course/ModuleDAO.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/course/ModuleDTO.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/viewCart.jsp</file>
@@ -90,11 +93,13 @@
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/controllers/order/UpdateVocherController.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/course/CourseFeedbackDAO.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/progress/ProgressDTO.java</file>
+            <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/staff/staff.jsp</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/controllers/course/ViewCourseController.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/controllers/learning/LearningController.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/controllers/course/ViewCoursePageController.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/instructorVideo.jsp</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/users/ProfileDTO.java</file>
+            <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/staff/layoutadmin/slidebar.jsp</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/controllers/forgotpassword/CompletePasswordResetController.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/course/DescriptionDTO.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/assets/css/main2.css</file>
@@ -158,6 +163,7 @@
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/users/ProfileDAO.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/checkout/vnpay_pay.jsp</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/checkout/vnpay_querydr.jsp</file>
+            <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/staff/managerInstructor.jsp</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/course/ModuleDAO.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/course/ModuleDTO.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/viewCart.jsp</file>
@@ -171,11 +177,13 @@
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/controllers/order/UpdateVocherController.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/course/CourseFeedbackDAO.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/progress/ProgressDTO.java</file>
+            <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/staff/staff.jsp</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/controllers/course/ViewCourseController.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/controllers/learning/LearningController.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/controllers/course/ViewCoursePageController.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/instructorVideo.jsp</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/users/ProfileDTO.java</file>
+            <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/staff/layoutadmin/slidebar.jsp</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/controllers/forgotpassword/CompletePasswordResetController.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/course/DescriptionDTO.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/assets/css/main2.css</file>
@@ -220,6 +228,7 @@
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/controllers/order/DeleteVoucherController.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/learningCourse/LearningCourseDTO.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/course/VideoDAO.java</file>
+            <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/certificate.jsp</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/contact.jsp</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/checkout/vnpay_ipn.jsp</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/courses.jsp</file>
@@ -239,10 +248,12 @@
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/users/ProfileDAO.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/checkout/vnpay_pay.jsp</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/checkout/vnpay_querydr.jsp</file>
+            <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/staff/managerInstructor.jsp</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/course/ModuleDAO.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/course/ModuleDTO.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/viewCart.jsp</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/admin/admin.jsp</file>
+            <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/certificateDetail.jsp</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/email/SendEmail.java</file>
         </group>
         <group>
@@ -252,11 +263,13 @@
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/controllers/order/UpdateVocherController.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/course/CourseFeedbackDAO.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/progress/ProgressDTO.java</file>
+            <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/staff/staff.jsp</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/controllers/course/ViewCourseController.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/controllers/learning/LearningController.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/controllers/course/ViewCoursePageController.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/instructorVideo.jsp</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/users/ProfileDTO.java</file>
+            <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/staff/layoutadmin/slidebar.jsp</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/controllers/forgotpassword/CompletePasswordResetController.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/course/DescriptionDTO.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/assets/css/main2.css</file>
@@ -301,6 +314,7 @@
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/controllers/order/DeleteVoucherController.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/learningCourse/LearningCourseDTO.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/course/VideoDAO.java</file>
+            <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/certificate.jsp</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/contact.jsp</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/checkout/vnpay_ipn.jsp</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/courses.jsp</file>
@@ -320,24 +334,29 @@
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/users/ProfileDAO.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/checkout/vnpay_pay.jsp</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/checkout/vnpay_querydr.jsp</file>
+            <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/staff/managerInstructor.jsp</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/course/ModuleDAO.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/course/ModuleDTO.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/viewCart.jsp</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/admin/admin.jsp</file>
+            <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/certificateDetail.jsp</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/email/SendEmail.java</file>
         </group>
         <group>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/assignment/AssignmentDAO.java</file>
+            <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/controllers/learning/GetCertificateController.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/customer.jsp</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/controllers/MainController.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/controllers/order/UpdateVocherController.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/course/CourseFeedbackDAO.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/progress/ProgressDTO.java</file>
+            <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/staff/staff.jsp</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/controllers/course/ViewCourseController.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/controllers/learning/LearningController.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/controllers/course/ViewCoursePageController.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/instructorVideo.jsp</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/users/ProfileDTO.java</file>
+            <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/staff/layoutadmin/slidebar.jsp</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/controllers/forgotpassword/CompletePasswordResetController.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/course/DescriptionDTO.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/assets/css/main2.css</file>
@@ -382,6 +401,7 @@
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/controllers/order/DeleteVoucherController.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/learningCourse/LearningCourseDTO.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/course/VideoDAO.java</file>
+            <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/certificate.jsp</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/contact.jsp</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/checkout/vnpay_ipn.jsp</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/courses.jsp</file>
@@ -401,10 +421,12 @@
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/users/ProfileDAO.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/checkout/vnpay_pay.jsp</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/checkout/vnpay_querydr.jsp</file>
+            <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/staff/managerInstructor.jsp</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/course/ModuleDAO.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/course/ModuleDTO.java</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/viewCart.jsp</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/admin/admin.jsp</file>
+            <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/web/certificateDetail.jsp</file>
             <file>file:/C:/Users/HOANG%20DUNG/Documents/GitHub/SWP391/src/java/email/SendEmail.java</file>
         </group>
     </open-files>

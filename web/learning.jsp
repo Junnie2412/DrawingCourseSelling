@@ -508,7 +508,7 @@
                                     </div>
                                 </form>
                                 <div class="learnBtn">
-                                    <a href="course-learn.jsp?courseID=<%=learningCourse.getCourseID()%>">Get Certificate <i class="fa fa-light fa-arrow-right"></i></a>
+                                    <a href="GetCertificateController?CourseName=<%=courseDAO.getCourseByCourseID(learningCourse.getCourseID()).getName()%>">Get Certificate <i class="fa fa-light fa-arrow-right"></i></a>
                                 </div>
                             </div>
                         </div>
