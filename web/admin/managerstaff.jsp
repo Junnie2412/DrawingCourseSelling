@@ -135,25 +135,33 @@
                                     <label for="image" class="form-label">Image</label>
                                     <input type="text" class="form-control" name="image" required>
                                 </div>
-                                <input class="btn btn-outline-primary" type="submit" name="action" value="Add Staff">
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <input class="btn btn-outline-primary" type="submit" name="action" value="Add Staff">
+                                    </div> 
+                                    <div class="form-group col-md-6">
+                                        <%
+                                            String mess = (String) request.getAttribute("MESSAGE");
+                                            String er = (String) request.getAttribute("ERROR");
+                                            if (mess != null) {
+                                        %>
+                                        <div class="alert alert-success">
+                                            <%=mess%>
+                                        </div>
+                                        <%
+                                        } else if (er != null) {
+                                        %>
+                                        <div class="alert alert-danger">
+                                            <%=er%>
+                                        </div>
+                                        <%
+                                            }
+                                        %>
+                                    </div>
+                                </div>    
+
                             </form>   
-                            <%
-                                String mess = (String) request.getAttribute("MESSAGE");
-                                String er = (String) request.getAttribute("ERROR");
-                                if (mess != null) {
-                            %>
-                            <div class="alert alert-success">
-                                <%=mess%>
-                            </div>
-                            <%
-                            } else if (er != null) {
-                            %>
-                            <div class="alert alert-danger">
-                                <%=mess%>
-                            </div>
-                            <%
-                                }
-                            %>
+
                         </div>
                     </div>
                     <div class="tab-pane fade" id="manageStaff" style="width: 100%;">
@@ -166,7 +174,7 @@
                                 %>
 
                                 <table class="table  table-manager-staff"  >
-                                    <thead class="table-light">
+                                    <thead class="table">
                                         <tr>
                                             <th  data-sort="counter">No</th>
 
@@ -187,7 +195,7 @@
                                             for (UserDTO u : staffList) {
 
                                         %>
-                                    <form action="MainController" method="POST">
+                                    <form action="/Wedproject2_temp1/MainController" method="POST">
                                         <tr>                                               
                                             <td><%= count++%></td>
                                             <!-- <td class="id" style="display:none;"><a href="javascript:void(0);" class="fw-medium link-primary">#VZ2101</a></td>-->
@@ -202,8 +210,18 @@
 
                                             </td>
 
-                                            <td class="isActive">
-                                                <input type="radio" name="isActive" value="<%=u.isIsActive()%>">
+                                            <td class="isActive">                                                
+                                                <%
+                                                    if (u.isIsActive()) {
+                                                %>
+                                            <span class="badge badge-pill badge-success">Active</span>
+                                            <%
+                                            } else {
+                                            %>
+                                            <a href="#" class="badge badge-danger">Inactive</a>
+                                            <%
+                                                }
+                                            %>
                                             </td>
                                             <td class="tags">
                                                 <span class="badge badge-soft-primary">Staff</span>
@@ -220,8 +238,17 @@
                                                     <li class="list-inline-item edit" data-bs-toggle="tooltip"
                                                         data-bs-trigger="hover" data-bs-placement="top"
                                                         title="Edit">
-                                                        <input type="submit" name="action" value="updateStaff"/>
-                                                    </li>                                                        
+                                                        <input type="hidden" name="accountID" value="<%=u.getAccountID()%>">
+                                                        <input type="hidden" name="password" value="<%=u.getPassword()%>">
+                                                        <button class="btn btn-primary"><input type="submit" name="action" value="updateStaff"/></button>
+                                                    </li>  
+                                                    <li class="list-inline-item edit" data-bs-toggle="tooltip"
+                                                        data-bs-trigger="hover" data-bs-placement="top"
+                                                        title="Edit">                                                        
+                                                            <input type="hidden" name="accountID" value="<%=u.getAccountID()%>>">
+                                                            <button class="btn btn-danger"><input type="submit" name="action" value="Inactive"/></button>
+                                                                                                                   
+                                                    </li>  
                                                 </ul>
                                             </td>
                                         </tr>

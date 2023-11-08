@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="course.CourseDTO"%>
 <%@page import="order.OrderDAO"%>
 <%@page import="java.util.ArrayList"%>
@@ -97,6 +98,7 @@
                                     </div>
                                     <!--end row-->
                                     <%
+                                        
                                         CourseDAO dao = new CourseDAO();
                                         float profit = dao.getProfit();
                                         int numOrder = dao.getNumOrder();
@@ -248,7 +250,7 @@
                             <tbody>
                                 <%
                                     int index = 0;
-
+                                    DecimalFormat formatter = new DecimalFormat("###,###,###");
                                     if (listOrder != null) {
                                         if (listOrder.size() > 0) {
                                             for (OrderDTO o : listOrder) {
@@ -265,7 +267,7 @@
 
                                     <td>
 
-                                        <span id="total1"><%=o.getTotal()%></span> VND
+                                        <span id="total1"><%=formatter.format(o.getTotal())%></span> VND
                                     </td>
                                     <%
                                         if (o.isIsSuccess()) {

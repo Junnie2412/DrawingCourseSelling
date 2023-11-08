@@ -1,3 +1,7 @@
+<%@page import="java.text.DecimalFormat"%>
+<%@page import="java.time.LocalDateTime"%>
+<%@page import="java.time.format.DateTimeFormatter"%>
+<%@page import="java.time.LocalDate"%>
 <%@page import="cart.CartItemDAO"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="order.TransactionDTO"%>
@@ -28,7 +32,7 @@
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <meta name="description" content="">
         <meta name="author" content="">
-        <title>KẾT QUẢ THANH TOÁN</title>
+        <title>CHECKOUT | NOTICE</title>
         <!-- Bootstrap core CSS -->
         <link href="assets/bootstrap.min.css" rel="stylesheet"/>
         <!-- Custom styles for this template -->
@@ -59,7 +63,7 @@
 
 
     <body>
-
+        
         <jsp:include page="../layout/header.jsp"/>
 
         <div id="layout-wrapper">
@@ -90,6 +94,7 @@
                             <div class="card">
                                 <div class="card-body checkout-tab">
                                     <%
+                                        DecimalFormat formatter = new DecimalFormat("###,###,###");
                                         UserDTO user = (UserDTO) session.getAttribute("LOGIN_USER");
                                         int totalInt = (int) session.getAttribute("total");
                                         //Begin process return from VNPAY
@@ -116,38 +121,49 @@
                                     <div class="container">
 
                                         <div class="header clearfix">
-                                            <h3 class="text-muted">KẾT QUẢ THANH TOÁN</h3>
+                                            <h3 class="text-muted">Payment Information</h3>
                                         </div>
-                                        <div class="table-responsive alert alert-success">
+                                        <div class="table">
                                             <div class="form-group">
-                                                <label >Mã giao dịch thanh toán:</label>
+                                                <label >Transaction number:</label>
                                                 <label><%=request.getParameter("vnp_TxnRef")%></label>
                                             </div>    
                                             <div class="form-group">
-                                                <label >Số tiền: VND</label>
+                                                <label >Amount: VND</label>
                                                 <% String soTien = request.getParameter("vnp_Amount");
                                                     int soTienInt = Integer.parseInt(soTien);
                                                     soTienInt = soTienInt / 100;
                                                 %>
-                                                <label><%=soTienInt%></label>
+                                                <label><%=formatter.format(soTienInt)%></label>
                                             </div>                                              
                                             <div class="form-group">
-                                                <label >Ngân hàng thanh toán:</label>
+                                                <label >Bank:</label>
                                                 <label><%=request.getParameter("vnp_BankCode")%></label>
                                             </div> 
                                             <div class="form-group">
-                                                <label >Thời gian thanh toán:</label>
-                                                <label><%=request.getParameter("vnp_PayDate")%></label>
+                                                <label >Created at:</label>
+                                                <%
+                                                    String d = request.getParameter("vnp_PayDate");
+                                                    DateTimeFormatter inputFormat = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
+                                                    DateTimeFormatter outputFormat = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");
+
+                                                    // Parse the input string as a LocalDateTime object
+                                                    LocalDateTime dateTime = LocalDateTime.parse(d, inputFormat);
+
+                                                    // Format the LocalDateTime object as a new string
+                                                    String outputString = dateTime.format(outputFormat);
+                                                %>
+                                                <label><%=outputString%></label>
                                             </div> 
                                             <div class="form-group">
-                                                <label >Tình trạng giao dịch:</label>
+                                                <label >Status payment:</label>
                                                 <label>
                                                     <%
                                                         if (signValue.equals(vnp_SecureHash)) {
                                                             if ("00".equals(request.getParameter("vnp_TransactionStatus"))) {
-                                                                out.print("Thành công");
+                                                                out.print("Success");
                                                             } else {
-                                                                out.print("Không thành công");
+                                                                out.print("No success");
                                                             }
 
                                                         } else {
@@ -170,6 +186,7 @@
                                 <div class="card-body">
                                     <div class="table-responsive table-card">
                                         <%
+                                            String voucherCode = (String) session.getAttribute("VOUCHERCODE"); 
                                             List<CourseDTO> listCourseCheckout = (List<CourseDTO>) session.getAttribute("LISTBUYCOURSE");
                                             if (listCourseCheckout != null) {
                                                 if (listCourseCheckout.size() > 0) {
@@ -184,19 +201,20 @@
                                             </thead>
                                             <tbody>
                                                 <%
+                                                    
+                                                    CourseDAO cDao = new CourseDAO();
                                                     for (CourseDTO c : listCourseCheckout) {
-
                                                 %>
                                                 <tr>
                                                     <td>
                                                         <div class="avatar-md bg-light rounded p-1">
-                                                            <img src="<%=c.getImage()%>" alt="" class="img-fluid d-block">
+                                                            <img src="<%= cDao.getDescription(c.getCourseID()).getImage()%>" alt="" class="img-fluid d-block">
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <h5 class="fs-14"><a href="apps-ecommerce-product-details.html" class="text-dark"><%=c.getName()%></a></h5>
                                                     </td>
-                                                    <td class="text-end"><%=c.getPrice()%></td>
+                                                    <td class="text-end"><%=formatter.format(c.getPrice())%></td>
                                                 </tr>
                                                 <%
                                                     }
@@ -204,11 +222,19 @@
                                                 <tr>
                                                     <td colspan="3" style="height: 20px;"></td>
                                                 </tr>
-                                                <tr class="table-active">
+                                                <tr >
+                                                    <th colspan="2">Voucher:  </th>
+                                                    <td class="text-end">
+                                                        <span class="bg-success">
+                                                            <%=voucherCode%>
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
                                                     <th colspan="2">Total (VND) </th>
                                                     <td class="text-end">
                                                         <span class="fw-semibold">
-                                                            <%= totalInt%>
+                                                            <%= formatter.format(totalInt)%>
                                                         </span>
                                                     </td>
                                                 </tr>
@@ -221,7 +247,7 @@
                                             String bankName = request.getParameter("vnp_BankCode");
                                             int amount = soTienInt;
                                             boolean flag = false;
-                                            String voucherCode = (String) session.getAttribute("VOUCHERCODE");
+                                            
                                             if (signValue.equals(vnp_SecureHash)) {
                                                 if ("00".equals(request.getParameter("vnp_TransactionStatus"))) {
                                                     flag = true;

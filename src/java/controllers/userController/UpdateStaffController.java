@@ -35,21 +35,13 @@ public class UpdateStaffController extends HttpServlet {
             String dateString = request.getParameter("dateOfbirth");
             Date dateOfBirth = Date.valueOf(dateString);
             String role = "Staff";
-
-            boolean isActive=true;
-            String activeStr = request.getParameter("isActive");
-            if (activeStr.equalsIgnoreCase("active")) {
-                isActive = true;
-            } else if (activeStr.equalsIgnoreCase("inactive")) {
-                isActive = false;
-            }
-
+            boolean isActive = true;
             String email = request.getParameter("email");
             String img = request.getParameter("image");
             String password = request.getParameter("password");
             UserDAO dao = new UserDAO();
-            if (accountID.length() < 2 || accountID.length() > 10) {
-                userError.setUserIDError("Account ID must be in [2,10]");
+            if (accountID.length() < 2 || accountID.length() > 20) {
+                userError.setUserIDError("Account ID must be in [2,20]");
                 checkValidation = false;
             }
             if (fullName.length() < 5 || fullName.length() > 20) {
