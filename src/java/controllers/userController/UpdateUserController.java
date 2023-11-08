@@ -17,7 +17,7 @@ import users.UserError;
 
 /**
  *
- * @author TienToan
+ * @author Admin
  */
 public class UpdateUserController extends HttpServlet {
 

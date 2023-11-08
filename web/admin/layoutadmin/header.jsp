@@ -176,7 +176,7 @@
                     <a class="dropdown-item" href="LoadUserController">Manage your Account</a>
                     
 
-                    <a class="dropdown-item" href="MainController?action=SignOut">Logout</a>
+                    <a class="dropdown-item" href="/Wedproject2_temp1/MainController?action=SignOut">Logout</a>
                 </div>
             </div>               
 

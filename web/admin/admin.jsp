@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="order.OrderDAO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
@@ -35,7 +36,9 @@
         <link href="/Wedproject2_temp1/admin/assets/css/bootstrap-rtl.min.css" rel="stylesheet" type="text/css" />
         <!-- custom Css-->
         <link href="/Wedproject2_temp1/admin/assets/css/app-rtl.min.css" rel="stylesheet" type="text/css" />
-
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+        </script>
 
 
 
@@ -230,7 +233,8 @@
                             <!-- end col -->
                         </div>
                         <%--order tbale --%>
-                        
+                        <canvas id="myChart" style="width:100%;max-width:600px; max-height: 100%;"></canvas>
+
                     </div>
                     <!-- container-fluid -->
                 </div>
@@ -261,7 +265,7 @@
 
 
         <!-- JAVASCRIPT -->
-        
+
         <script src="/Wedproject2_temp1/admin/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="/Wedproject2_temp1/admin/assets/libs/simplebar/simplebar.min.js"></script>
         <script src="/Wedproject2_temp1/admin/assets/libs/node-waves/waves.min.js"></script>
@@ -284,6 +288,50 @@
 
         <!-- App js -->
         <script src="/Wedproject2_temp1/admin/assets/js/app.js"></script>
-    </body>
+        <%
+            OrderDAO orderDAO = new OrderDAO();
+            ArrayList listTotal = new ArrayList();
+            listTotal = orderDAO.getTotalInAMonthFromJulyToDecember();
+        %>
+        <script>
+            var xValues = ["July", "August", "Septemer", "October", "November", "December"];
+            var yValues = [<%=listTotal.get(0)%>,<%=listTotal.get(1)%>,<%=listTotal.get(2)%>,<%=listTotal.get(3)%>,<%=listTotal.get(4)%>,<%=listTotal.get(5)%>];
+            var barColors = ["red", "green", "blue", "orange", "brown", "pink", "black"];
 
+            new Chart("myChart", {
+                type: "bar",
+                data: {
+                    labels: xValues,
+                    datasets: [{
+                            backgroundColor: barColors,
+                            data: yValues
+                        }]
+                },
+                options: {
+                    legend: {display: false},
+                    title: {
+                        display: true,
+                        text: "Monthly Profit"
+
+                    }
+                },
+                responsive: true,
+                scales: {
+                    yAxes: [{
+                            ticks: {
+                                beginAtZero: true,
+                                callback: function (value, index, values) {
+                                    if (parseInt(value) >= 1000) {
+                                        return '$' + value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                                    } else {
+                                        return '$' + value;
+                                    }
+                                }
+                            }
+                        }]
+                },
+            });
+        </script>
+    </body>
+    replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 </html>

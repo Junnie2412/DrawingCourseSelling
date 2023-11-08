@@ -1,4 +1,5 @@
 
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="order.PaymentDTO"%>
 <%@page import="course.CourseDTO"%>
 <%@page import="order.OrderDAO"%>
@@ -235,6 +236,7 @@
                                     </thead>
                                     <tbody>
                                         <%
+                                            DecimalFormat formatter = new DecimalFormat("###,###,###");
                                             int orderID = Integer.parseInt(request.getParameter("orderID"));
                                             OrderDAO orDao = new OrderDAO();
                                             CourseDAO cDao = new CourseDAO();
@@ -249,7 +251,7 @@
                                             <td class="col-sm-5">
                                                 <h6 class="fs-14"><a href="apps-ecommerce-product-details.html" class="text-dark"><%=c.getName()%></a></h6>
                                             </td>
-                                            <td class="col-sm-5"><%=c.getPrice()%><span></span> VND</td>
+                                            <td class="col-sm-5"><%=formatter.format(c.getPrice())%><span></span> VND</td>
                                         </tr>
                                         <%
                                                 }
@@ -279,7 +281,7 @@
                                         </div>  
                                         <div class="form-group">
                                             <label >Amount:</label>
-                                            <label><%=amountPayment%></label>
+                                            <label><%=formatter.format(amountPayment)%></label>
                                         </div> 
                                         <div class="form-group">
                                             <label >Bank:</label>
