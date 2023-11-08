@@ -48,8 +48,8 @@ update tblVideo set content = 'https://www.youtube.com/embed/jS7ib3-ET5M' where 
 update tblVideo set content = 'https://www.youtube.com/embed/UdMTZE7DDMM' where  videoID = 47
 update tblVideo set content = 'https://www.youtube.com/embed/1Bi8wqbpCSQ' where  videoID = 48
 update tblVideo set content = 'https://www.youtube.com/embed/mysAqNK6CHI' where  videoID = 49
-update tblVideo set content = 'https://www.youtube.com/embed/vgfdrf1BsJY' where  videoID = 50
-update tblVideo set content = 'https://www.youtube.com/embed/kn_4I6x0Y3I' where  videoID = 51
+update tblVideo set content = 'https://www.youtube.com/embed/-WR-FyUQc6I?si=OwVJKNoX0QqrtfCX' where  videoID = 50
+update tblVideo set content = 'https://www.youtube.com/embed/-dqGkHWC5IU?si=OAFCWBTKbchgMylK' where  videoID = 51
 update tblVideo set content = 'https://www.youtube.com/embed/RnKo1UtF9PM' where  videoID = 52
 update tblVideo set content = 'https://www.youtube.com/embed/lb1WrQp2EAI' where  videoID = 53
 update tblVideo set content = 'https://www.youtube.com/embed/N0vWyKyYv4o' where  videoID = 54

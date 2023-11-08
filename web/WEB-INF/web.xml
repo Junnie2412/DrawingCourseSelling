@@ -116,6 +116,10 @@
         <servlet-name>LoadCustomerController</servlet-name>
         <servlet-class>controllers.userController.LoadCustomerController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ViewVideoController</servlet-name>
+        <servlet-class>controllers.learning.ViewVideoController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>MainController</servlet-name>
         <url-pattern>/MainController</url-pattern>
@@ -231,6 +235,10 @@
     <servlet-mapping>
         <servlet-name>LoadCustomerController</servlet-name>
         <url-pattern>/LoadCustomerController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewVideoController</servlet-name>
+        <url-pattern>/ViewVideoController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

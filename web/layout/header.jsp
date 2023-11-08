@@ -308,6 +308,7 @@
                         if (loginUser.getRole().equals("Instructor")) {
                     %>
                     <a class="dropdown-item" href="LoadUserController">Manage your Account</a>
+                    <a class="dropdown-item" href="instructorBill.jsp">Bill</a>
                     <%
                         }
                     %>

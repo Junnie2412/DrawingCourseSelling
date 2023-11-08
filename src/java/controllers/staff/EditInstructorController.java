@@ -74,6 +74,10 @@ public class EditInstructorController extends HttpServlet {
             }
         } catch (Exception e) {
             log("Error at EditInstructorController: "+ e.toString());
+            if (e.toString().contains("duplicate")) {
+                userError.setUserIDError("UserID has already exist!");
+                request.setAttribute("USER_ERROR", userError);
+            }
         }finally{
             request.getRequestDispatcher(url).forward(request, response);
         }

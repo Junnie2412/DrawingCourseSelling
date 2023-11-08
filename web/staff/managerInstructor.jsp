@@ -61,7 +61,12 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" data-bs-toggle="tab" href="#manageInstructor">Manage Instructor Account</a>
-                            </li>           
+                            </li>     
+                            <form action="MainController" method="POST">
+                                <button type="submit" name="action" value="TurnBackStaff">Turn Back</button>
+                            </form>
+                            
+                            
                         </ul>   
                         <div class="tab-content">
                             <div class="tab-pane container active" id="addInstructor">
@@ -113,14 +118,15 @@
                                             <input type="text" class="form-control" name="image" required>
 
                                         </div>
-
-                                        <input class="btn btn-outline-primary" type="submit" name="action" value="Add Instructor">
+                                        <button class="btn btn-outline-primary" type="submit" name="action" value="Add Instructor">Add Instructor</button>
                                         <%
                                                         String notication = (String) request.getAttribute("MESSAGE");
                                                         if (notication != null) {
                                                             out.print("<h6 style=\"color: green;\">" + notication + "</h6>");
                                                         }
                                         %>
+                                           
+                                        
                                     </form>   
                                 </div>
                             </div>
@@ -132,9 +138,18 @@
                                             <div class="card-header border-0">
                                                 <%
                                                         String noti = (String) request.getAttribute("MESSAGE1");
+                                                        
                                                         if (noti != null) {
                                                             out.print("<h6 style=\"color: green;\">" + noti + "</h6>");
                                                         }
+                                                        
+                                                        String notiHide = (String) request.getAttribute("MESSAGE2");
+                                                        
+                                                        if (notiHide != null) {
+                                                            out.print("<h6 style=\"color: green;\">" + notiHide + "</h6>");
+                                                        }
+                                                        
+                                                        
                                                 %>
                                                 <div class="row g-4 align-items-center">
                                                     <div class="col-sm-3">
@@ -227,7 +242,10 @@
                                                                         <input type="text" name="email" value="<%=u.getEmail()%>" required=""/>
 
                                                                     </td>
-                                                                    <td class="image"><img src="<%=u.getImage()%>" alt="<%=u.getFullName()%>" width="80" height="120" name="image"></td>
+                                                                    <td class="image">
+                                                                        <img src="<%=u.getImage()%>" alt="<%=u.getFullName()%>" width="80" height="120">
+                                                                        <input name="image" value="<%=u.getImage()%>" type="hidden"/>
+                                                                    </td>
                                                                     <td class="function">
                                                                         <ul class="list-inline hstack gap-2 mb-0">
                                                                             <li class="list-inline-item edit" data-bs-toggle="tooltip"

@@ -77,10 +77,6 @@
                     <file>${file.reference.smtp.jar-3}</file>
                 </library>
                 <library dirs="200">
-                    <file>${file.reference.commons-logging-1.2.1.1.jar}</file>
-                    <path-in-war>WEB-INF/lib</path-in-war>
-                </library>
-                <library dirs="200">
                     <file>${file.reference.mail.jar-3}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
@@ -110,10 +106,6 @@
                 </library>
                 <library dirs="200">
                     <file>${file.reference.apache-tomcat-8.5.89-windows-x64-apache-tomcat-8.5.89}</file>
-                </library>
-                <library dirs="200">
-                    <file>${libs.jstl.classpath}</file>
-                    <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
             </web-module-libraries>
             <web-module-additional-libraries/>

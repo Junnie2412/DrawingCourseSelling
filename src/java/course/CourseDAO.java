@@ -23,9 +23,7 @@ import utils.DBUtil;
 public class CourseDAO {
 
     private static final String SEARCH_COURSE_NAME = "SELECT * FROM tblCourse WHERE isActive = '1' AND name like ? ";
-    private static final String CREATE_VIDEO = "INSERT INTO tblVideo(content, time, isActive, lessonID) VALUES(?,?,?,?)";
-    private static final String CREATE_LESSON = "INSERT INTO tblLesson(title, description, moduleID) VALUES(?,?,?)";
-    private static final String CREATE_MODULE = "INSERT INTO tblModule(title,courseID) VALUES(?,?)";
+   
     private static final String CREATE_DESCRIPTION = "INSERT INTO tblDescription(content, target, image,type, level) VALUES(?,?,?,?,?)";
     private static final String CREATE_COURSE = "INSERT INTO tblCourse(courseID, price, name, duration, isActive, datePublic, accountID, descriptionID) VALUES(?,?,?,?,?,?,?,?)";
 
@@ -56,6 +54,50 @@ public class CourseDAO {
     private static final String GET_PROFIT = "select sum(total) as profit from tblOrder";
     private static final String GET_NUMORDER = "select count(orderID) as numOrder from tblOrder";
     private static final String GET_NUMOFCUSTOMERS = "select count(DISTINCT accountID) as numOfCustomers from tblOrder";
+     private static final String GET_BILL = "select od.orderDetailID, od.price, od.quantity, c.courseID, c.name, a.fullName from tblOrderDetail as od left join tblCourse as c\n"
+            + "on od.courseID = c.courseID left join tblOrder as o\n"
+            + "on od.orderID = o.orderID left join tblAccount as a\n"
+            + "on o.accountID = a.accountID\n"
+            + "where od.courseID in\n"
+            + "(\n"
+            + "	select courseID from tblCourse where accountID = ?\n"
+            + ")";
+
+    public List<BillDTO> getBillOfInstructor(String accountId) throws SQLException {
+        List<BillDTO> list = new ArrayList<>();
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement ptm = null;
+
+        try {
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(GET_BILL);
+                ptm.setString(1, accountId);
+                rs = ptm.executeQuery();
+
+                while (rs.next()) {
+                    list.add(
+                            new BillDTO(rs.getInt(1), rs.getFloat(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6))
+                    );
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+
+        return list;
+    }
     
     public List<CourseDTO> getlistCourse(String search) throws ClassNotFoundException, SQLException {
         List<CourseDTO> list = new ArrayList<>();
@@ -100,120 +142,11 @@ public class CourseDAO {
         return list;
     }
 
-    public int createVideo(String content, LocalTime time, boolean isActive, int lessionId) throws SQLException {
-        boolean check = false;
-        Connection conn = null;
-        ResultSet rs = null;
-        PreparedStatement ptm = null;
+   
 
-        try {
-            conn = DBUtil.getConnection();
-            if (conn != null) {
-                ptm = conn.prepareStatement(CREATE_VIDEO, Statement.RETURN_GENERATED_KEYS);
-                ptm.setString(1, content);
-                ptm.setTime(2, Time.valueOf(time));
-                ptm.setBoolean(3, isActive);
-                ptm.setInt(4, lessionId);
-                int rowsAffected = ptm.executeUpdate();
-                if (rowsAffected > 0) {
-                    rs = ptm.getGeneratedKeys();
-                    if (rs.next()) {
-                        int id = rs.getInt(1);
-                        return id;
-                    }
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (rs != null) {
-                rs.close();
-            }
-            if (ptm != null) {
-                ptm.close();
-            }
-            if (conn != null) {
-                conn.close();
-            }
-        }
-        return -1;
-    }
+   
 
-    public int createLesson(String title, String description, int moduleId) throws SQLException {
-        Connection conn = null;
-        ResultSet rs = null;
-        PreparedStatement ptm = null;
-
-        try {
-            conn = DBUtil.getConnection();
-            if (conn != null) {
-                ptm = conn.prepareStatement(CREATE_LESSON, Statement.RETURN_GENERATED_KEYS);
-                ptm.setString(1, title);
-                ptm.setString(2, description);
-                ptm.setInt(3, moduleId);
-
-                int rowsAffected = ptm.executeUpdate();
-                if (rowsAffected > 0) {
-                    rs = ptm.getGeneratedKeys();
-                    if (rs.next()) {
-                        int id = rs.getInt(1);
-                        return id;
-                    }
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (rs != null) {
-                rs.close();
-            }
-            if (ptm != null) {
-                ptm.close();
-            }
-            if (conn != null) {
-                conn.close();
-            }
-        }
-        return -1;
-    }
-
-    public int createModule(String title, String courseId) throws SQLException {
-        Connection conn = null;
-        ResultSet rs = null;
-        PreparedStatement ptm = null;
-
-        try {
-            conn = DBUtil.getConnection();
-            if (conn != null) {
-                ptm = conn.prepareStatement(CREATE_MODULE, Statement.RETURN_GENERATED_KEYS);
-                ptm.setString(1, title);
-                ptm.setString(2, courseId);
-
-                int rowsAffected = ptm.executeUpdate();
-
-                if (rowsAffected > 0) {
-                    rs = ptm.getGeneratedKeys();
-                    if (rs.next()) {
-                        int id = rs.getInt(1);
-                        return id;
-                    }
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (rs != null) {
-                rs.close();
-            }
-            if (ptm != null) {
-                ptm.close();
-            }
-            if (conn != null) {
-                conn.close();
-            }
-        }
-        return -1;
-    }
+   
 
     public int createDescription(String descriptionContent, String descriptionTarget, String descriptionImage, String descriptionType, String descriptionLevel) throws SQLException {
         Connection conn = null;
@@ -223,7 +156,7 @@ public class CourseDAO {
         try {
             conn = DBUtil.getConnection();
             if (conn != null) {
-                ptm = conn.prepareStatement(CREATE_DESCRIPTION, Statement.RETURN_GENERATED_KEYS);
+                ptm = conn.prepareStatement(CREATE_DESCRIPTION, Statement.RETURN_GENERATED_KEYS);//của java.sql trả về tất cả thông tin vừa tạo nếu không có thì chỉ trả về số dòng được tạo
                 ptm.setString(1, descriptionContent);
                 ptm.setString(2, descriptionTarget);
                 ptm.setString(3, descriptionImage);
@@ -235,8 +168,8 @@ public class CourseDAO {
                 if (rowsAffected > 0) {
                     rs = ptm.getGeneratedKeys();
                     if (rs.next()) {
-                        int pk = rs.getInt(1);
-                        return pk;
+                        int id = rs.getInt(1);
+                        return id;
                     }
                 }
             }
@@ -925,4 +858,6 @@ public class CourseDAO {
         }
         return numOfCustomers;
     }
+    
+    
 }

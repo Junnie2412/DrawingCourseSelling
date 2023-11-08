@@ -69,7 +69,7 @@
 
 
             <!-- ~~~ Hero Section ~~~ -->
-            <section class="hero-section banner-overlay bg_img" data-img="https://images.unsplash.com/photo-1614278390641-835b276fab2c?auto=format&fit=crop&q=80&w=1480&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+            <section class="hero-section banner-overlay bg_img" data-img="assets/images/banner/banner-course-detail.avif">
 
                 <div class="custom-container">
                     <div class="hero-content">
@@ -112,21 +112,21 @@
                                     <div class="course-video-content">
                                         <h6 class="title"><%= course.getName()%></h6>
                                         <div class="ratings cl-theme">
-                                            <%
-                                                float avgrate = courseFeedbackDAO.getAverageRate(courseID);
-                                                for (int i = 0; i < avgrate; i++) {
-                                            %>
-                                            <span><i class="fas fa-star"></i></span>
                                                 <%
-                                                    }
-                                                    for (int i = 0; i < (5 - avgrate); i++) {
+//                                                    float avgrate = courseFeedbackDAO.getAverageRate(course.getCourseID());
+//                                                    for (int i = 0; i < avgrate; i++) {
                                                 %>
-                                            <span class="cl-theme-light"><i class="fas fa-star"></i></span>
-                                                <%
-                                                    }
-                                                %>
-                                            <span>(<%= courseFeedbackDAO.getAverageRate(course.getCourseID())%>/5.00)</span>
-                                        </div>
+<!--//                                                <span><i class="fas fa-star"></i></span>-->
+                                                    <%
+//                                                        }
+//                                                        for (int i = 0; i < (5 - avgrate); i++) {
+                                                    %>
+<!--//                                                <span class="cl-theme-light"><i class="fas fa-star"></i></span>-->
+                                                    <%
+//                                                        }
+                                                    %>
+<!--//                                                <span>(<%= courseFeedbackDAO.getAverageRate(course.getCourseID())%>/5.00)</span>-->
+                                            </div>
                                         <ul class="course-infos">
                                             <li>
                                                 <span><i class="fas fa-play-circle"></i>Total Lessons</span><span><%= lessonDAO.getTotalLessons(course.getCourseID())%></span>
@@ -182,7 +182,8 @@
                         <div class="col-lg-8">
                             <div class="course-details">
                                 <div class="price">
-                                    <%= course.getPrice()%>đ
+                                    <input type="hidden" name="price" value="<%=course.getPrice()%>">
+                                    <span name="priceValue"></span> VND
                                 </div>
                                 <div class="course-header">
                                     <h4 class="title"><%= course.getName()%></h4>
@@ -215,9 +216,9 @@
                                         <li>
                                             <a href="#instructor" data-bs-toggle="tab">instructor</a>
                                         </li>
-                                        <li>
+<!--                                        <li>
                                             <a href="#reviews" data-bs-toggle="tab">reviews</a>
-                                        </li>
+                                        </li>-->
                                     </ul>
                                     <div class="tab-content">
                                         <div class="tab-pane show fade active" id="overview">
@@ -228,21 +229,7 @@
                                         <div class="tab-pane fade" id="curriculum">
                                             <div class="overview">
                                                 <p><%= courseDAO.getDescription(courseID).getTarget()%></p>
-                                                <div class="details-buttons-area">
-                                                    <a href="#0" class="custom-button theme-one">Buy Now <i class="fas fa-angle-right"></i></a>
-                                                    <a href="#0" class="custom-button bg-white">Add to Cart</a>
-                                                    <!--                                                    <ul class="social-icons">
-                                                                                                            <li>
-                                                                                                                <a href="#0"><i class="fab fa-facebook-f"></i></a>
-                                                                                                            </li>
-                                                                                                            <li>
-                                                                                                                <a href="#0"><i class="fab fa-twitter"></i></a>
-                                                                                                            </li>
-                                                                                                            <li>
-                                                                                                                <a href="#0"><i class="fab fa-instagram"></i></a>
-                                                                                                            </li>
-                                                                                                        </ul>-->
-                                                </div>
+                                                
                                             </div>
                                         </div>
                                         <div class="tab-pane fade" id="instructor">
@@ -370,7 +357,17 @@
             <!-- ~~~ Footer Section ~~~ -->
         </div>
 
-
+        <script>
+            window.addEventListener('load', function() {
+                var input = document.getElementsByName("price");
+                var tmp1 = 0;
+                for (var i = 0; i < input.length; i++) {
+                    tmp1 = parseFloat(input[i].value);
+                    document.getElementsByName("priceValue")[i].innerHTML = Intl.NumberFormat().format(tmp1.toFixed(3));
+                }
+            });
+        </script>
+        
         <script data-cfasync="false" src="../../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/jquery-3.6.0.min.js"></script>
 
         <script src="assets/js/bootstrap.min.js"></script>

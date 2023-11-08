@@ -1,7 +1,11 @@
+
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="java.time.LocalDateTime"%>
 <%@page import="java.time.format.DateTimeFormatter"%>
 <%@page import="java.time.LocalDate"%>
+=======
+<%@page import="email.SendEmail"%>
+
 <%@page import="cart.CartItemDAO"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="order.TransactionDTO"%>
@@ -96,6 +100,12 @@
                                     <%
                                         DecimalFormat formatter = new DecimalFormat("###,###,###");
                                         UserDTO user = (UserDTO) session.getAttribute("LOGIN_USER");
+
+                                        UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
+                                        SendEmail.send(loginUser.getEmail(), "Check Your Order Right Now", "<h3>Your Order On ArtCenter</h3>"
+                                                + "<img src=\"https://i.etsystatic.com/37593498/c/1920/1080/0/0/il/8fe1cb/4204255055/il_340x270.4204255055_3r7q.jpg\">"
+                                                + "<p>Thank your for your order</p>");
+
                                         int totalInt = (int) session.getAttribute("total");
                                         //Begin process return from VNPAY
                                         Map fields = new HashMap();
