@@ -53,8 +53,8 @@ public class AddStaffController extends HttpServlet {
             String confirm = request.getParameter("confirm");
             UserDAO dao = new UserDAO();
             //////
-            if (accountID.length() < 2 || accountID.length() > 10) {
-                userError.setUserIDError("Account ID must be in [2,10]");
+            if (accountID.length() < 2 || accountID.length() > 20) {
+                userError.setUserIDError("Account ID must be in [2,20]");
                 checkValidation = false;
             }
 //            boolean checkDuplicate = dao.checkDuplicate(accountID);
@@ -82,7 +82,7 @@ public class AddStaffController extends HttpServlet {
             if (checkValidation) {
                 UserDTO user = new UserDTO(accountID, password, fullName, dateOfBirth, role, isActive, img, email);
                 boolean checkInsert = dao.insertStaff(user);
-                if (checkInsert) {
+                if (checkInsert==true) {
                     request.setAttribute("MESSAGE", "This account is added successfully!");
                     url = SUCCESS;
                 } else {
@@ -93,10 +93,10 @@ public class AddStaffController extends HttpServlet {
             }
         } catch (Exception e) {
             log("Error at AddStaffController");
-            if (e.toString().contains("duplicate")) {
-                userError.setUserIDError("UserID has already exist!");
-                request.setAttribute("USER_ERROR", userError);
-            }
+//            if (e.toString().contains("duplicate")) {
+//                userError.setUserIDError("UserID has already exist!");
+//                request.setAttribute("USER_ERROR", userError);
+//            }
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }

@@ -28,7 +28,7 @@ public class UserDAO {
     private static final String LOGIN = "SELECT * FROM tblAccount WHERE accountID=? AND password=? ";
     private static final String LOGINBYGOOGLE = "SELECT role FROM tblAccount WHERE accountID=?";
     private static final String INSERTSTAFF = "INSERT INTO tblAccount VALUES (?,?,?,?,?,?,?,?)";
-    private static final String DELETESTAFF = "DELETE tblAccount WHERE accountID=?";
+    private static final String INACTIVESTAFF = "UPDATE tblAccount SET isActive = 0  WHERE accountID = ?";
     private static final String UPDATESTAFF = "UPDATE tblAccount set password=?, fullName=?, dateOfBirth=?, isActive=?, image=?, email=? WHERE accountID=?";
     private static final String LOADSTAFF = "SELECT * FROM tblAccount WHERE role = 'Staff' AND isActive = 1";
     private static final String LOADUSER = "SELECT * FROM tblAccount";
@@ -43,8 +43,9 @@ public class UserDAO {
     private static final String GET_NUM_OF_ACTIVE_CUSTOMER = "SELECT COUNT(accountID) AS numOfCustomer FROM tblAccount WHERE role = 'Customer' AND isActive = 1";
     private static final String GET_CUSTOMER_LEARNING = "SELECT COUNT(accountID) AS customerLearning FROM tblLearningCourse";
     private static final String EDIT_INSTRUCTOR = "UPDATE tblAccount set fullName=?, dateOfBirth=?, image=?, email=? WHERE accountID=?";
+
     private static final String HIDE_INSTRUCTOR = "UPDATE tblAccount set isActive = 0 WHERE accountID =?";
-    
+
     public UserDTO checkLogin(String userName, String password) throws SQLException {
         UserDTO user = null;
 
@@ -188,7 +189,7 @@ public class UserDAO {
                 ptm.setBoolean(6, user.isIsActive());
                 ptm.setString(7, user.getImage());
                 ptm.setString(8, user.getEmail());
-                check = ptm.executeUpdate() > 0 ? true : false;
+                check = ptm.executeUpdate()>0;
             }
         } finally {
             if (ptm != null) {
@@ -200,7 +201,7 @@ public class UserDAO {
         }
         return check;
     }
-
+    //just inactive
     public boolean deleteStaff(String accountID) throws SQLException {
         boolean check = false;
         Connection conn = null;
@@ -209,7 +210,7 @@ public class UserDAO {
         try {
             conn = DBUtil.getConnection();
             if (conn != null) {
-                ptm = conn.prepareStatement(DELETESTAFF);
+                ptm = conn.prepareStatement(INACTIVESTAFF);
                 ptm.setString(1, accountID);
                 check = ptm.executeUpdate() > 0 ? true : false;
             }
@@ -694,7 +695,6 @@ public class UserDAO {
         }
         return num;
     }
-
     public boolean updateInstructor(UserDTO user) throws SQLException {
         boolean check = false;
         Connection conn = null;
@@ -748,9 +748,4 @@ public class UserDAO {
         return check;
     }
 
-    
-    
-    
-
-    
 }

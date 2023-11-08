@@ -164,7 +164,7 @@ public class LessonDAO {
 
     public boolean createLesson(String title, String description, int moduleId) throws SQLException {
         Connection conn = null;
-        ResultSet rs = null;
+        
         PreparedStatement ptm = null;
 
         try {
@@ -180,9 +180,7 @@ public class LessonDAO {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            if (rs != null) {
-                rs.close();
-            }
+           
             if (ptm != null) {
                 ptm.close();
             }

@@ -79,78 +79,53 @@
     </style>
 
     <body>
-        <jsp:include page="layoutadmin/header.jsp"/>
-        <!-- Begin page -->
-        <div id="layout-wrapper">
-            <jsp:include page="layoutadmin/slidebar.jsp"/>
-            <div class="container mt-5">
-                <ul class="nav nav-tabs custom-tabs" style="margin-top: 80px; margin-bottom: 50px;">
-                    <li class="nav-item">
-                        <a class="nav-link active btn-primary" data-bs-toggle="tab" href="#Coursewaiting">Course waiting</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn-primary" data-bs-toggle="tab" href="#Courseactive">Course active</a>
-                    </li>
-                </ul>
+    <jsp:include page="layoutadmin/header.jsp"/>
+    <div id="layout-wrapper">
+        <jsp:include page="layoutadmin/slidebar.jsp"/>
+        <div class="container mt-5">
+            <ul class="nav nav-tabs custom-tabs" style="margin-top: 80px; margin-bottom: 50px;">
+                <li class="nav-item">
+                    <a class="nav-link active btn-primary" data-bs-toggle="tab" href="#Coursewaiting">Courses Waiting</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn-primary" data-bs-toggle="tab" href="#Courseactive">Courses Active</a>
+                </li>
+            </ul>
+        </div>
+        <div class="tab-content">
+            <div class="tab-pane container active" id="Coursewaiting" style="margin-right: 150px;">
+                <table class="table table-manager-staff">
+                    <thead>
+                        <tr>
+                            <th>Course ID</th>
+                            <th>Name Course</th>
+                            <th>Price</th>
+                            <th>Instructor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Fill this section with data for "Courses Waiting" -->
+                    </tbody>
+                </table>
             </div>
-            <div class="tab-content">
-                <div class="tab-pane container active" id="Courseactive" style="margin-right: 150px;">
-    <table class="table table-manager-staff">
-        <thead>
-            <tr>
-                <th>Course ID</th>
-                <th>Name Course</th>
-                <th>Price</th>
-                <th>Instructor</th>
-                <th>active</th>
-            </tr>
-        </thead>
-        <tbody>
-            
-            
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-        </tbody>
-    </table>
-</div>
-            
+            <div class="tab-pane container" id="Courseactive" style="margin-right: 150px;">
+                <table class="table table-manager-staff">
+                    <thead>
+                        <tr>
+                            <th>Course ID</th>
+                            <th>Name Course</th>
+                            <th>Price</th>
+                            <th>Instructor</th>
+                            <th>Active</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Fill this section with data for "Courses Active" -->
+                    </tbody>
+                </table>
+            </div>
         </div>
-            <div class="tab-content">
-                <div class="tab-pane container active" id="Coursewaiting" style="margin-right: 150px;">
-    <table class="table table-manager-staff">
-        <thead>
-            <tr>
-                <th>Course ID</th>
-                <th>Name Course</th>
-                <th>Price</th>
-                <th>Instructor</th>
-            </tr>
-        </thead>
-        <tbody>
-            
-            
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-        </tbody>
-    </table>
-</div>
-            
-        </div>
-        </div>
-    
-
-        <!-- JAVASCRIPT -->
-        <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="assets/libs/simplebar/simplebar.min.js"></script>
         <script src="assets/libs/node-waves/waves.min.js"></script>
         <script src="assets/libs/feather-icons/feather.min.js"></script>
@@ -168,7 +143,9 @@
 
         <!-- App js -->
         <script src="assets/js/app.js"></script>
-    </body>
+        
+    </div>
+</body>
 
 </html>
 

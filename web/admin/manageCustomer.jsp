@@ -24,26 +24,27 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> 
 
         <!-- Sweet Alert css-->
-        <link href="admin/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+        <link href="/Wedproject2_temp1/admin/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
 
         <!-- Layout config Js -->
-        <script src="admin/assets/js/layout.js"></script>
+        <script src="/Wedproject2_temp1/admin/assets/js/layout.js"></script>
         <!-- Bootstrap Css -->
-        <link href="admin/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="/Wedproject2_temp1/admin/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <!-- Icons Css -->
-        <link href="admin/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="/Wedproject2_temp1/admin/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
         <!-- App Css-->
-        <link href="admin/assets/css/app.min.css" rel="stylesheet" type="text/css" />
+        <link href="/Wedproject2_temp1/admin/assets/css/app.min.css" rel="stylesheet" type="text/css" />
         <!-- custom Css-->
-        <link href="admin/assets/css/custom.min.css" rel="stylesheet" type="text/css" />
+        <link href="/Wedproject2_temp1/admin/assets/css/custom.min.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <div id="layout-wrapper">
             <div style="margin-right: 100px">
-
                 <jsp:include page="layoutadmin/header.jsp"/>
             </div>
+            <div>
             <jsp:include page="layoutadmin/slidebar.jsp"/>
+            </div>
 
             <!-- ============================================================== -->
             <!-- Start right Content here -->
@@ -56,7 +57,7 @@
                         <div class="row">
                             <div class="col">
 
-                                <div class="h-100">
+                                <div class="h-70f">
                                     <div class="row mb-3 pb-1">
                                         <div class="col-12">
                                             <div class="d-flex align-items-lg-center flex-lg-row flex-column"> 
@@ -135,108 +136,120 @@
                                     </div> <!-- end row-->
                                 </div> <!-- end .h-100-->
                             </div> <!-- end col -->
-                            <div class="table-responsive table-card " style="margin-left: 110px;">
-                                <div>
-                                    <%
-                                        ArrayList<UserDTO> cusList = (ArrayList) session.getAttribute("CUSTOMER_LIST");
-                                        if (cusList != null) {
-                                            if (cusList.size() > 0) {
-                                    %>
+                            <div class="container mt-5">
+                                <ul class="nav nav-tabs custom-tabs" style="margin-top: 80px; margin-bottom: 50px;">
+                                    <li class="nav-item">
+                                        <a class="nav-link active btn-primary" data-bs-toggle="tab" href="#addCustomer">Add Customer</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link btn-primary" data-bs-toggle="tab" href="#manageCustomer">Manager Customer</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content" style="margin-righ: -50px">
+                                    <div class="tab-pane container active" id="manageCustomer">
+                                        <div class="formAdd">                      
+                                            <div class="table-responsive table-card ">
+                                                <div>
+                                                    <%
+                                                        ArrayList<UserDTO> cusList = (ArrayList) session.getAttribute("CUSTOMER_LIST");
+                                                        if (cusList != null) {
+                                                            if (cusList.size() > 0) {
+                                                    %>
 
-                                    <table class="table  table-manager-staff"  >
-                                        <thead class="table-light">
-                                            <tr>
-                                                <th  data-sort="counter">No</th>
-                                                <th  data-sort="name">Name</th>
-                                                <th  data-sort="date">Birth Day</th>                                    
-                                                <th  data-sort="isActive">Active</th>
-                                                <th  data-sort="role">Role</th>
-                                                <th  data-sort="email">Email</th>
-                                                <th data-sort="image">Image</th>
-                                                <th data-sort="function">Function</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <%
-                                                int count = 1;
+                                                    <table class="table  table-manager-staff"  >
+                                                        <thead class="table-light">
+                                                            <tr>
+                                                                <th  data-sort="counter">No</th>
+                                                                <th  data-sort="name">Name</th>
+                                                                <th  data-sort="date">Birth Day</th>                                                                                                    
+                                                                <th  data-sort="role">Role</th>
+                                                                <th  data-sort="email">Email</th>
+                                                                <th data-sort="image">Image</th>
+                                                                <th data-sort="function">Function</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <%
+                                                                int count = 1;
 
-                                                for (UserDTO u : cusList) {
+                                                                for (UserDTO u : cusList) {
 
-                                            %>
-                                        <form action="MainController" method="POST">
-                                            <tr>                                               
-                                                <td><%= count++%></td>
+                                                            %>
+                                                        <form action="MainController" method="POST">
+                                                            <tr>                                               
+                                                                <td><%= count++%></td>
 
-                                                <td class="name">
+                                                                <td class="name">
 
-                                                    <input type="text" name="fullName" value="<%=u.getFullName()%>" required=""/>
-                                                </td>
-                                                <td class="date">
-                                                    <input type="date" name="dateOfbirth" value="<%=u.getDateOfBirth()%>" required=""/>
+                                                                    <input type="text" name="fullName" value="<%=u.getFullName()%>" required=""/>
+                                                                </td>
+                                                                <td class="date">
+                                                                    <input type="date" name="dateOfbirth" value="<%=u.getDateOfBirth()%>" required=""/>
 
-                                                </td>
+                                                                </td>
 
-                                                <td class="isActive">
-                                                    <input type="radio" name="isActive" value="<%=u.isIsActive()%>">
-                                                </td>
-                                                <td class="tags">
-                                                    <span class="badge badge-soft-primary">Customer</span>
-                                                </td>                                                                
-                                                <td class="email">
-                                                    <input type="text" name="email" value="<%=u.getEmail()%>" required=""/>
+                                                                <td class="tags">
+                                                                    <span class="badge badge-soft-primary">Customer</span>
+                                                                </td>                                                                
+                                                                <td class="email">
+                                                                    <input type="text" name="email" value="<%=u.getEmail()%>" required=""/>
 
-                                                </td>
-                                                <td class="image"><img src="<%=u.getImage()%>" alt="<%=u.getFullName()%>" width="80" height="120">
-                                                    <input type="hidden" name="image" value="<%=u.getImage()%>">
-                                                </td>
-                                                <td class="function">
-                                                    <ul class="list-inline hstack gap-2 mb-0">
-                                                        <li class="list-inline-item edit" data-bs-toggle="tooltip"
-                                                            data-bs-trigger="hover" data-bs-placement="top"
-                                                            title="Edit">
-                                                            <input type="submit" name="action" value="Update Customer"/>
-                                                        </li>                                                        
-                                                    </ul>
-                                                </td>
-                                            </tr>
-                                        </form>
-                                        <%
-                                            }
-                                        %>
-                                        </tbody>
-                                    </table>                                                                                                       
-                                    <%
-                                            }
-                                        }
-                                    %> 
+                                                                </td>
+                                                                <td class="image"><img src="<%=u.getImage()%>" alt="<%=u.getFullName()%>" width="80" height="120">
+                                                                    <input type="hidden" name="image" value="<%=u.getImage()%>">
+                                                                </td>
+                                                                <td class="function">
+                                                                    <ul class="list-inline hstack gap-2 mb-0">
+                                                                        <li class="list-inline-item edit" data-bs-toggle="tooltip"
+                                                                            data-bs-trigger="hover" data-bs-placement="top"
+                                                                            title="Edit">
+                                                                            <input type="submit" name="action" value="Update Customer"/>
+                                                                        </li>                                                        
+                                                                    </ul>
+                                                                </td>
+                                                            </tr>
+                                                        </form>
+                                                        <%
+                                                            }
+                                                        %>
+                                                        </tbody>
+                                                    </table>                                                                                                       
+                                                    <%
+                                                            }
+                                                        }
+                                                    %> 
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                            </div>    
                         </div>
                     </div>
-                </div>
-            </div>    
+                </div>    
+            </div>
         </div>
-        <script src="admin/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="admin/assets/libs/simplebar/simplebar.min.js"></script>
-        <script src="admin/assets/libs/node-waves/waves.min.js"></script>
-        <script src="admin/assets/libs/feather-icons/feather.min.js"></script>
-        <script src="admin/assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
-        <script src="admin/assets/js/plugins.js"></script>
+        <script src="/Wedproject2_temp1/admin/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/Wedproject2_temp1/admin/assets/libs/simplebar/simplebar.min.js"></script>
+        <script src="/Wedproject2_temp1/admin/assets/libs/node-waves/waves.min.js"></script>
+        <script src="/Wedproject2_temp1/admin/assets/libs/feather-icons/feather.min.js"></script>
+        <script src="/Wedproject2_temp1/admin/assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
+        <script src="/Wedproject2_temp1/admin/assets/js/plugins.js"></script>
 
         <!-- apexcharts -->
-        <script src="admin/assets/libs/apexcharts/apexcharts.min.js"></script>
+        <script src="/Wedproject2_temp1/admin/assets/libs/apexcharts/apexcharts.min.js"></script>
 
         <!-- Vector map-->
-        <script src="admin/assets/libs/jsvectormap/js/jsvectormap.min.js"></script>
-        <script src="admin/assets/libs/jsvectormap/maps/world-merc.js"></script>
+        <script src="/Wedproject2_temp1/admin/assets/libs/jsvectormap/js/jsvectormap.min.js"></script>
+        <script src="/Wedproject2_temp1/admin/assets/libs/jsvectormap/maps/world-merc.js"></script>
 
         <!--Swiper slider js-->
-        <script src="admin/assets/libs/swiper/swiper-bundle.min.js"></script>
+        <script src="/Wedproject2_temp1/admin/assets/libs/swiper/swiper-bundle.min.js"></script>
 
         <!-- Dashboard init -->
-        <script src="admin/assets/js/pages/dashboard-ecommerce.init.js"></script>
+        <script src="/Wedproject2_temp1/admin/assets/js/pages/dashboard-ecommerce.init.js"></script>
 
         <!-- App js -->
-        <script src="admin/assets/js/app.js"></script>
+        <script src="/Wedproject2_temp1/admin/assets/js/app.js"></script>
     </body>
 </html>

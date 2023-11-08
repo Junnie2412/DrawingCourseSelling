@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="course.CourseDAO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="cart.CartItemDTO"%>
@@ -282,14 +283,14 @@
                                                     <td colspan="3" style="height: 20px;"></td>
                                                 </tr>
 
-                                                <%
-                                                    if (discount != 0) {
+                                                <%    DecimalFormat formatter = new DecimalFormat("###,###,###");                                                                                                       
+                                                if (discount != 0) {
                                                 %>
                                                 <tr class="table-active">
                                                     <th colspan="2">Discount </th>
                                                     <td class="text-end">
                                                         <span class="fw-semibold" style="color: green;font-style: italic;">
-                                                            - <%=discount%>
+                                                            - <%=formatter.format(discount)%>VND
                                                         </span>
                                                     </td>
                                                 </tr><!-- comment -->
@@ -298,7 +299,7 @@
                                                     <th colspan="2">Total</th>
                                                     <td class="text-end">
                                                         <span class="fw-semibold">
-                                                            <span id="total"></span> VND
+                                                            <span id="total"><%=formatter.format(total)%></span> VND
                                                         </span>
                                                     </td>
                                                 </tr>
@@ -321,7 +322,7 @@
 
                                             %>
                                             <%                                                String error = (String) request.getAttribute("ERROR");
-                                                if (error == null) {
+                                                if (error== null) {
                                                     error = "";
                                                 }
                                             %>
@@ -363,11 +364,7 @@
                 }
                 document.getElementById("subTotal").innerHTML = Intl.NumberFormat().format(total.toFixed(3));
 
-                var total = 0;
-                for (var i = 0; i < input.length; i++) {
-                    total += parseFloat(input[i].value);
-                }
-                document.getElementById("total").innerHTML = Intl.NumberFormat().format(total.toFixed(3));
+               
             }
         </script>
 

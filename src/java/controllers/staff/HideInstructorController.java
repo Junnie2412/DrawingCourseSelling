@@ -32,7 +32,6 @@ public class HideInstructorController extends HttpServlet {
         String url = ERROR;
         
         try{
-            
             String accountID = request.getParameter("accountID");
             UserDAO dao = new UserDAO();
             boolean checkHide = dao.hideInstructor(accountID);
