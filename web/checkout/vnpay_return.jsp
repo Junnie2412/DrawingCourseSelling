@@ -67,7 +67,7 @@
 
 
     <body>
-        
+
         <jsp:include page="../layout/header.jsp"/>
 
         <div id="layout-wrapper">
@@ -171,9 +171,13 @@
                                                     <%
                                                         if (signValue.equals(vnp_SecureHash)) {
                                                             if ("00".equals(request.getParameter("vnp_TransactionStatus"))) {
-                                                                out.print("Success");
-                                                            } else {
-                                                                out.print("No success");
+
+                                                    %>
+                                                    <span class="badge badge-pill badge-success">Success</span>
+                                                    <%                                                    } else {
+                                                    %>
+                                                    <span class="badge rounded-pill bg-danger">Danger</span>
+                                                    <%
                                                             }
 
                                                         } else {
@@ -196,7 +200,7 @@
                                 <div class="card-body">
                                     <div class="table-responsive table-card">
                                         <%
-                                            String voucherCode = (String) session.getAttribute("VOUCHERCODE"); 
+                                            String voucherCode = (String) session.getAttribute("VOUCHERCODE");
                                             List<CourseDTO> listCourseCheckout = (List<CourseDTO>) session.getAttribute("LISTBUYCOURSE");
                                             if (listCourseCheckout != null) {
                                                 if (listCourseCheckout.size() > 0) {
@@ -211,7 +215,6 @@
                                             </thead>
                                             <tbody>
                                                 <%
-                                                    
                                                     CourseDAO cDao = new CourseDAO();
                                                     for (CourseDTO c : listCourseCheckout) {
                                                 %>
@@ -257,7 +260,7 @@
                                             String bankName = request.getParameter("vnp_BankCode");
                                             int amount = soTienInt;
                                             boolean flag = false;
-                                            
+
                                             if (signValue.equals(vnp_SecureHash)) {
                                                 if ("00".equals(request.getParameter("vnp_TransactionStatus"))) {
                                                     flag = true;
