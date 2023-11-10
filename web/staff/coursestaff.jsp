@@ -101,6 +101,7 @@
                             <th>Name Course</th>
                             <th>Price</th>
                             <th>Instructor</th>
+                            <th>Approve</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -116,7 +117,7 @@
                             <th>Name Course</th>
                             <th>Price</th>
                             <th>Instructor</th>
-                            <th>Active</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
