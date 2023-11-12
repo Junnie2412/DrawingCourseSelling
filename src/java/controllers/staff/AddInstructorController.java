@@ -27,7 +27,7 @@ import users.UserError;
 public class AddInstructorController extends HttpServlet {
 
     private static final String SUCCESS = "ShowListController";
-    private static final String ERROR = "staff/managerInstructor.jsp";
+    private static final String ERROR = "ShowListController";
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

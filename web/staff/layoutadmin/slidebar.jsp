@@ -90,7 +90,9 @@
                                         <ul class="nav nav-sm flex-column">
 
                                             <li class="nav-item">
-                                                <a href="staff/coursestaff.jsp" class="nav-link" data-key="t-dropdowns">Course</a>
+                                                <form action="MainController" method="POST">
+                                                    <input type="submit" name="action" value="All Course" class="custom-button">
+                                                </form>
                                             </li>
                                             <li class="nav-item">
                                                 <a href="poststaff.jsp" class="nav-link" data-key="t-grid">Post</a>

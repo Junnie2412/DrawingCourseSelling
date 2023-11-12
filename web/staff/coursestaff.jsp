@@ -4,6 +4,8 @@
     Author     : Admin
 --%>
 
+<%@page import="course.CourseDTO"%>
+<%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="users.UserDTO"%>
 <!doctype html>
@@ -23,18 +25,18 @@
         
 
         <!-- Sweet Alert css-->
-        <link href="assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+        <link href="staff/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
 
         <!-- Layout config Js -->
-        <script src="assets/js/layout.js"></script>
+        <script src="staff/assets/js/layout.js"></script>
         <!-- Bootstrap Css -->
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="staff/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <!-- Icons Css -->
-        <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="staff/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
         <!-- App Css-->
-        <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
+        <link href="staff/assets/css/app.min.css" rel="stylesheet" type="text/css" />
         <!-- custom Css-->
-        <link href="assets/css/custom.min.css" rel="stylesheet" type="text/css" />
+        <link href="staff/assets/css/custom.min.css" rel="stylesheet" type="text/css" />
          
         
         
@@ -44,9 +46,9 @@
     <style>
         .table-manager-staff {
             background-color: rgba(59, 65, 66, 0.1);
-    border: 1px solid #ddd;
-    border-collapse: collapse;
-    width: 100%;
+            border: 1px solid #ddd;
+            border-collapse: collapse;
+            width: 100%;
 
         }
        
@@ -93,10 +95,23 @@
             </ul>
         </div>
         <div class="tab-content">
+            <%
+                List<CourseDTO> listAllCourse = (List<CourseDTO>) request.getAttribute("LIST_ALL_COURSE");
+                if (listAllCourse != null) {
+                    if (listAllCourse.size() > 0) {
+            %>
             <div class="tab-pane container active" id="Coursewaiting" style="margin-right: 150px;">
+                <%
+                    String noti = (String) request.getAttribute("APPROVED");
+
+                    if (noti != null) {
+                        out.print("<h6 style=\"color: green;\">" + noti + "</h6>");
+                    }
+                %>
                 <table class="table table-manager-staff">
                     <thead>
                         <tr>
+                            <th>No</th>
                             <th>Course ID</th>
                             <th>Name Course</th>
                             <th>Price</th>
@@ -106,6 +121,38 @@
                     </thead>
                     <tbody>
                         <!-- Fill this section with data for "Courses Waiting" -->
+                        <%
+                            int count = 1;
+                            for(CourseDTO course : listAllCourse){
+                                if(course.isIsActive() == false){
+                            
+                        %>
+                    <form action="MainController" method="POST">
+                        <tr>
+                            <td><%= count++%></td>
+                            <td>
+                                <input type="text" name="courseID" value="<%= course.getCourseID() %>" readonly=""/>
+                            </td>
+                            <td>
+                                <input type="text" name="name" value="<%= course.getName()%>" readonly=""/>
+                            </td>
+                            <td>
+                                <input type="text" name="price" value="<%= course.getPrice()%>" readonly=""/>
+                            </td>
+                            <td>
+                                <input type="text" name="instructor" value="<%= course.getAccountID()%>" readonly=""/>
+                            </td>
+                            <td>
+                                <button type="submit" name="action" value="ApproveCourse"> Approve</button>
+                            </td>
+                        </tr>
+                    </form>
+                        
+                        
+                        <% 
+                                }
+                            }
+                        %>
                     </tbody>
                 </table>
             </div>
@@ -113,17 +160,55 @@
                 <table class="table table-manager-staff">
                     <thead>
                         <tr>
+                            <th>No</th>
                             <th>Course ID</th>
                             <th>Name Course</th>
                             <th>Price</th>
                             <th>Instructor</th>
+                            <th>Deactive</th>
                             
                         </tr>
                     </thead>
                     <tbody>
                         <!-- Fill this section with data for "Courses Active" -->
+                        <%
+                            int count1 = 1;
+                            for(CourseDTO course : listAllCourse){
+                                if(course.isIsActive() == true){
+                            
+                        %>
+                        
+                        <form action="MainController" method="POST">
+                        <tr>
+                            <td><%= count1++%></td>
+                            <td>
+                                <input type="text" name="courseID" value="<%= course.getCourseID() %>" readonly=""/>
+                            </td>
+                            <td>
+                                <input type="text" name="name" value="<%= course.getName()%>" readonly=""/>
+                            </td>
+                            <td>
+                                <input type="text" name="price" value="<%= course.getPrice()%>" readonly=""/>
+                            </td>
+                            <td>
+                                <input type="text" name="instructor" value="<%= course.getAccountID()%>" readonly=""/>
+                            </td>
+                            <td>
+                                <button type="submit" name="action" value="DeactiveCourse">Deactive</button>
+                            </td>
+                        </tr>
+                    </form>
+                        
+                        <% 
+                                }
+                            }
+                        %>
                     </tbody>
                 </table>
+                <%
+                        }
+                    }
+                %> 
             </div>
         </div>
 <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
