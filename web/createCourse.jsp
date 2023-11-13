@@ -37,6 +37,10 @@
 
 
         }
+
+        .error-label {
+            color: red;
+        }
     </style>
     <body>
         <div class="nav-bar">
@@ -72,10 +76,13 @@
                         <div class="form-group">
                             <label for="courseID" class="custom-label">Course ID</label>
                             <input type="text" class="form-control" id="courseID" name="courseID" required>
+                            <% if (request.getAttribute("MESSAGE") != null) {%>
+                            <label class="error-label"><%= request.getAttribute("MESSAGE")%></label>
+                            <% } %>
                         </div>
                         <div class="form-group">
                             <label for="coursePrice"  class="custom-label">Price</label>
-                            <input type="text" class="form-control" id="coursePrice" name="coursePrice" required>
+                            <input type="number" class="form-control" id="coursePrice" name="coursePrice" required="Number not odd" min="1">
                         </div>
                         <div class="form-group">
                             <label for="courseName"  class="custom-label">Name</label>
@@ -83,7 +90,7 @@
                         </div>
                         <div class="form-group">
                             <label for="courseDuration"  class="custom-label">Duration</label>
-                            <input type="text" class="form-control" id="courseDuration" name="courseDuration" required>
+                            <input type="number" class="form-control" id="courseDuration" name="courseDuration" required>
                         </div>
                         <div class="form-group">
                             <label for="courseDatePublic"  class="custom-label">Date Public</label>

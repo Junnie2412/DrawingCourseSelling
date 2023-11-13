@@ -59,7 +59,7 @@ public class CreateCourseController extends HttpServlet {
             CourseDAO courseDAO = new CourseDAO();
             boolean check = courseDAO.createCourse(courseID, coursePrice, courseName, courseDuration, courseIsActive, courseDatePublic, descriptionContent, descriptionTarget, descriptionImage, descriptionType, descriptionLevel, instructorID);
             if (!check) {
-                request.setAttribute("MESSAGE", "Create Course Unsuccessfully");
+                request.setAttribute("MESSAGE", "Course ID already exist");
             } else {
                 request.setAttribute("MESSAGE", "Create Course Successfully");
                 url = SUCCESS + courseID;

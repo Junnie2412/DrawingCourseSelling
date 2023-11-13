@@ -81,16 +81,16 @@
     </style>
 
     <body>
-    <jsp:include page="layoutadmin/header.jsp"/>
+        <jsp:include page="layoutstaff/header.jsp"/>
     <div id="layout-wrapper">
-        <jsp:include page="layoutadmin/slidebar.jsp"/>
+        <jsp:include page="layoutstaff/slidebar.jsp"/>
         <div class="container mt-5">
             <ul class="nav nav-tabs custom-tabs" style="margin-top: 80px; margin-bottom: 50px;">
                 <li class="nav-item">
-                    <a class="nav-link active btn-primary" data-bs-toggle="tab" href="#Coursewaiting">Courses Waiting</a>
+                    <a class="nav-link active btn-primary" data-toggle="tab" href="#Coursewaiting">Courses Waiting</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link btn-primary" data-bs-toggle="tab" href="#Courseactive">Courses Active</a>
+                    <a class="nav-link btn-primary" data-toggle="tab" href="#Courseactive">Courses Active</a>
                 </li>
             </ul>
         </div>
@@ -156,7 +156,8 @@
                     </tbody>
                 </table>
             </div>
-            <div class="tab-pane container" id="Courseactive" style="margin-right: 150px;">
+                           
+            <div class="tab-pane container " id="Courseactive" style="margin-right: 150px;">
                 <table class="table table-manager-staff">
                     <thead>
                         <tr>
@@ -211,24 +212,29 @@
                 %> 
             </div>
         </div>
-<script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="assets/libs/simplebar/simplebar.min.js"></script>
-        <script src="assets/libs/node-waves/waves.min.js"></script>
-        <script src="assets/libs/feather-icons/feather.min.js"></script>
-        <script src="assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
-        <script src="assets/js/plugins.js"></script>
+        </div>
+  <script src="staff/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="staff/assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="staff/assets/libs/node-waves/waves.min.js"></script>
+    <script src="staff/assets/libs/feather-icons/feather.min.js"></script>
+    <script src="staff/assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
+    <script src="staff/assets/js/plugins.js"></script>
 
-        <!-- list.js min js -->
-        <script src="assets/libs/list.js/list.min.js"></script>
-        <script src="assets/libs/list.pagination.js/list.pagination.min.js"></script>
+    <!-- apexcharts -->
+    <script src="staff/assets/libs/apexcharts/apexcharts.min.js"></script>
 
-        <!-- Sweet Alerts js -->
-        <script src="assets/libs/sweetalert2/sweetalert2.min.js"></script>
-        <!-- crm leads init -->
-        <script src="assets/js/pages/crm-leads.init.js"></script>
+    <!-- Vector map-->
+    <script src="staff/assets/libs/jsvectormap/js/jsvectormap.min.js"></script>
+    <script src="staff/assets/libs/jsvectormap/maps/world-merc.js"></script>
 
-        <!-- App js -->
-        <script src="assets/js/app.js"></script>
+    <!--Swiper slider js-->
+    <script src="staff/assets/libs/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Dashboard init -->
+    <script src="staff/assets/js/pages/dashboard-ecommerce.init.js"></script>
+
+    <!-- App js -->
+    <script src="staff/assets/js/app.js"></script>
         
     </div>
 </body>
