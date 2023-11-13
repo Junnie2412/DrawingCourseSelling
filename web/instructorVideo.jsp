@@ -156,7 +156,7 @@
                                             </tr>
                                             <tr>
                                                 <td style="color: #333;">Time</td>
-                                                <td><input type="text" name="time" value="<%= video.getTime() %>"></td>
+                                                <td><input type="time" name="time" value="<%= video.getTime() %>"></td>
                                             </tr>
                                         </table>
                                     </div>
@@ -203,7 +203,7 @@
                             </tr>
                             <tr>
                                 <td style="color: #333;">Time</td>
-                                <td><input type="text" name="time"></td>
+                                <td><input type="time" name="time"></td>
                             </tr>
                         </table>
                     </div>
