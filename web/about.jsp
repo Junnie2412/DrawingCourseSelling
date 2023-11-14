@@ -173,7 +173,7 @@
                     <div class="row">
                         <div class="col-lg-6 align-self-end d-none d-lg-block">
                             <div class="about-thumb rtl">
-                                <img src="" alt="about">
+                                <img src="assets/images/about/about.png" alt="about">
                             </div>
                         </div>
                         <div class="col-lg-6 pb-120">

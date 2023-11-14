@@ -4,6 +4,8 @@
     Author     : Admin
 --%>
 
+<%@page import="course.CourseDTO"%>
+<%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="users.UserDTO"%>
 <!doctype html>
@@ -23,18 +25,18 @@
         
 
         <!-- Sweet Alert css-->
-        <link href="assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+        <link href="staff/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
 
         <!-- Layout config Js -->
-        <script src="assets/js/layout.js"></script>
+        <script src="staff/assets/js/layout.js"></script>
         <!-- Bootstrap Css -->
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="staff/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <!-- Icons Css -->
-        <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="staff/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
         <!-- App Css-->
-        <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
+        <link href="staff/assets/css/app.min.css" rel="stylesheet" type="text/css" />
         <!-- custom Css-->
-        <link href="assets/css/custom.min.css" rel="stylesheet" type="text/css" />
+        <link href="staff/assets/css/custom.min.css" rel="stylesheet" type="text/css" />
          
         
         
@@ -44,9 +46,9 @@
     <style>
         .table-manager-staff {
             background-color: rgba(59, 65, 66, 0.1);
-    border: 1px solid #ddd;
-    border-collapse: collapse;
-    width: 100%;
+            border: 1px solid #ddd;
+            border-collapse: collapse;
+            width: 100%;
 
         }
        
@@ -79,70 +81,160 @@
     </style>
 
     <body>
-    <jsp:include page="layoutadmin/header.jsp"/>
+        <jsp:include page="layoutstaff/header.jsp"/>
     <div id="layout-wrapper">
-        <jsp:include page="layoutadmin/slidebar.jsp"/>
+        <jsp:include page="layoutstaff/slidebar.jsp"/>
         <div class="container mt-5">
             <ul class="nav nav-tabs custom-tabs" style="margin-top: 80px; margin-bottom: 50px;">
                 <li class="nav-item">
-                    <a class="nav-link active btn-primary" data-bs-toggle="tab" href="#Coursewaiting">Courses Waiting</a>
+                    <a class="nav-link active btn-primary" data-toggle="tab" href="#Coursewaiting">Courses Waiting</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link btn-primary" data-bs-toggle="tab" href="#Courseactive">Courses Active</a>
+                    <a class="nav-link btn-primary" data-toggle="tab" href="#Courseactive">Courses Active</a>
                 </li>
             </ul>
         </div>
         <div class="tab-content">
+            <%
+                List<CourseDTO> listAllCourse = (List<CourseDTO>) request.getAttribute("LIST_ALL_COURSE");
+                if (listAllCourse != null) {
+                    if (listAllCourse.size() > 0) {
+            %>
             <div class="tab-pane container active" id="Coursewaiting" style="margin-right: 150px;">
+                <%
+                    String noti = (String) request.getAttribute("APPROVED");
+
+                    if (noti != null) {
+                        out.print("<h6 style=\"color: green;\">" + noti + "</h6>");
+                    }
+                %>
                 <table class="table table-manager-staff">
                     <thead>
                         <tr>
+                            <th>No</th>
                             <th>Course ID</th>
                             <th>Name Course</th>
                             <th>Price</th>
                             <th>Instructor</th>
+                            <th>Approve</th>
                         </tr>
                     </thead>
                     <tbody>
                         <!-- Fill this section with data for "Courses Waiting" -->
+                        <%
+                            int count = 1;
+                            for(CourseDTO course : listAllCourse){
+                                if(course.isIsActive() == false){
+                            
+                        %>
+                    <form action="MainController" method="POST">
+                        <tr>
+                            <td><%= count++%></td>
+                            <td>
+                                <input type="text" name="courseID" value="<%= course.getCourseID() %>" readonly=""/>
+                            </td>
+                            <td>
+                                <input type="text" name="name" value="<%= course.getName()%>" readonly=""/>
+                            </td>
+                            <td>
+                                <input type="text" name="price" value="<%= course.getPrice()%>" readonly=""/>
+                            </td>
+                            <td>
+                                <input type="text" name="instructor" value="<%= course.getAccountID()%>" readonly=""/>
+                            </td>
+                            <td>
+                                <button type="submit" name="action" value="ApproveCourse"> Approve</button>
+                            </td>
+                        </tr>
+                    </form>
+                        
+                        
+                        <% 
+                                }
+                            }
+                        %>
                     </tbody>
                 </table>
             </div>
-            <div class="tab-pane container" id="Courseactive" style="margin-right: 150px;">
+                           
+            <div class="tab-pane container " id="Courseactive" style="margin-right: 150px;">
                 <table class="table table-manager-staff">
                     <thead>
                         <tr>
+                            <th>No</th>
                             <th>Course ID</th>
                             <th>Name Course</th>
                             <th>Price</th>
                             <th>Instructor</th>
-                            <th>Active</th>
+                            <th>Deactive</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
                         <!-- Fill this section with data for "Courses Active" -->
+                        <%
+                            int count1 = 1;
+                            for(CourseDTO course : listAllCourse){
+                                if(course.isIsActive() == true){
+                            
+                        %>
+                        
+                        <form action="MainController" method="POST">
+                        <tr>
+                            <td><%= count1++%></td>
+                            <td>
+                                <input type="text" name="courseID" value="<%= course.getCourseID() %>" readonly=""/>
+                            </td>
+                            <td>
+                                <input type="text" name="name" value="<%= course.getName()%>" readonly=""/>
+                            </td>
+                            <td>
+                                <input type="text" name="price" value="<%= course.getPrice()%>" readonly=""/>
+                            </td>
+                            <td>
+                                <input type="text" name="instructor" value="<%= course.getAccountID()%>" readonly=""/>
+                            </td>
+                            <td>
+                                <button type="submit" name="action" value="DeactiveCourse">Deactive</button>
+                            </td>
+                        </tr>
+                    </form>
+                        
+                        <% 
+                                }
+                            }
+                        %>
                     </tbody>
                 </table>
+                <%
+                        }
+                    }
+                %> 
             </div>
         </div>
-<script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="assets/libs/simplebar/simplebar.min.js"></script>
-        <script src="assets/libs/node-waves/waves.min.js"></script>
-        <script src="assets/libs/feather-icons/feather.min.js"></script>
-        <script src="assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
-        <script src="assets/js/plugins.js"></script>
+        </div>
+  <script src="staff/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="staff/assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="staff/assets/libs/node-waves/waves.min.js"></script>
+    <script src="staff/assets/libs/feather-icons/feather.min.js"></script>
+    <script src="staff/assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
+    <script src="staff/assets/js/plugins.js"></script>
 
-        <!-- list.js min js -->
-        <script src="assets/libs/list.js/list.min.js"></script>
-        <script src="assets/libs/list.pagination.js/list.pagination.min.js"></script>
+    <!-- apexcharts -->
+    <script src="staff/assets/libs/apexcharts/apexcharts.min.js"></script>
 
-        <!-- Sweet Alerts js -->
-        <script src="assets/libs/sweetalert2/sweetalert2.min.js"></script>
-        <!-- crm leads init -->
-        <script src="assets/js/pages/crm-leads.init.js"></script>
+    <!-- Vector map-->
+    <script src="staff/assets/libs/jsvectormap/js/jsvectormap.min.js"></script>
+    <script src="staff/assets/libs/jsvectormap/maps/world-merc.js"></script>
 
-        <!-- App js -->
-        <script src="assets/js/app.js"></script>
+    <!--Swiper slider js-->
+    <script src="staff/assets/libs/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Dashboard init -->
+    <script src="staff/assets/js/pages/dashboard-ecommerce.init.js"></script>
+
+    <!-- App js -->
+    <script src="staff/assets/js/app.js"></script>
         
     </div>
 </body>

@@ -7,9 +7,9 @@ package userGoogle;
  */
 public class Constants {
 
-    public static String GOOGLE_CLIENT_ID = "154364300660-v8tagpsjupfrtf737hbfepdq7jphjgku.apps.googleusercontent.com";
+    public static String GOOGLE_CLIENT_ID = "154364300660-ecu5h2lor5cs3buoa22oc0tohf78f189.apps.googleusercontent.com";
 
-    public static String GOOGLE_CLIENT_SECRET = "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";
+    public static String GOOGLE_CLIENT_SECRET = "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";
 
     public static String GOOGLE_REDIRECT_URI = "http://localhost:8080/Wedproject2_temp1/UserGoogleHandler";
 

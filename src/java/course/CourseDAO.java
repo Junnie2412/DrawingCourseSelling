@@ -30,7 +30,7 @@ public class CourseDAO {
     private static final String GET_ACCOUNT_BY_COURSEID = "SELECT * FROM tblAccount WHERE accountID = (SELECT accountID FROM tblCourse WHERE courseID = ?)";
     private static final String GET_DESCRIPTION_BY_COURSEID = "SELECT * FROM tblDescription WHERE descriptionID = (SELECT descriptionID FROM tblCourse WHERE courseID = ?)";
     private static final String GET_ALL_COURSE_FOR_INSTRUCTOR = "SELECT * FROM tblCourse WHERE accountID = ?";
-    private static final String GET_ALL_COURSE = "SELECT * FROM tblCourse WHERE isActive = '1'";
+    private static final String GET_ALL_COURSE = "SELECT * FROM tblCourse";
     private static final String FILTER_COURSE_BY_LEVEL = "SELECT c.* FROM tblCourse AS c JOIN tblDescription AS d ON c.descriptionID = d.descriptionID WHERE c.isActive = '1' AND d.level = ? ";
     private static final String FILTER_COURSE_BY_TYPE = "SELECT c.* FROM tblCourse AS c JOIN tblDescription AS d ON c.descriptionID = d.descriptionID WHERE c.isActive = '1' AND d.type = ? ";
     private static final String FILTER_COURSE_BY_PRICE_UNDER_300000 = "SELECT * FROM tblCourse WHERE isActive = '1' AND price <300000";
@@ -62,6 +62,7 @@ public class CourseDAO {
             + "(\n"
             + "	select courseID from tblCourse where accountID = ?\n"
             + ")";
+    private static final String APPROVE_COURSE = "update tblCourse set isActive=1 where courseID = ?";
 
     public List<BillDTO> getBillOfInstructor(String accountId) throws SQLException {
         List<BillDTO> list = new ArrayList<>();
@@ -142,11 +143,6 @@ public class CourseDAO {
         return list;
     }
 
-   
-
-   
-
-   
 
     public int createDescription(String descriptionContent, String descriptionTarget, String descriptionImage, String descriptionType, String descriptionLevel) throws SQLException {
         Connection conn = null;
@@ -857,6 +853,71 @@ public class CourseDAO {
             }
         }
         return numOfCustomers;
+    }
+
+    public List<CourseDTO> getAllCourse() throws SQLException {
+        List<CourseDTO> listAllCourse = new ArrayList<>();
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(GET_ALL_COURSE);
+                rs = ptm.executeQuery();
+                while (rs.next()) {
+                    String courseID = rs.getString("courseID");
+                    String name = rs.getString("name");
+                    float price = rs.getFloat("price");
+                    int duration = rs.getInt("duration");
+                    boolean isActive = rs.getBoolean("isActive");
+                    Date datePublic = rs.getDate("datePublic");
+                    String accountID = rs.getString("accountID");
+                    int descriptionID = rs.getInt("descriptionID");
+                    
+                    listAllCourse.add(new CourseDTO(courseID, name, price, duration, isActive, datePublic, accountID, descriptionID));
+
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return listAllCourse;
+    }
+
+    public boolean approveCourse(String courseID) throws SQLException {
+        boolean check = false;
+        Connection conn = null;
+        PreparedStatement ptm = null;
+
+        try {
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(APPROVE_COURSE);
+                ptm.setString(1, courseID);
+                check = ptm.executeUpdate() > 0 ? true : false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return check;
     }
     
     

@@ -309,6 +309,7 @@
                     %>
                     <a class="dropdown-item" href="LoadUserController">Manage your Account</a>
                     <a class="dropdown-item" href="instructorBill.jsp">Bill</a>
+                    <a class="dropdown-item" href="instructorMark.jsp">Mark</a>
                     <%
                         }
                     %>

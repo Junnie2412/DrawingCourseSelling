@@ -4,7 +4,6 @@
 <%@page import="java.time.LocalDateTime"%>
 <%@page import="java.time.format.DateTimeFormatter"%>
 <%@page import="java.time.LocalDate"%>
-=======
 <%@page import="email.SendEmail"%>
 
 <%@page import="cart.CartItemDAO"%>
@@ -102,10 +101,7 @@
                                         DecimalFormat formatter = new DecimalFormat("###,###,###");
                                         UserDTO user = (UserDTO) session.getAttribute("LOGIN_USER");
 
-                                        UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
-                                        SendEmail.send(loginUser.getEmail(), "Check Your Order Right Now", "<h3>Your Order On ArtCenter</h3>"
-                                                + "<img src=\"https://i.etsystatic.com/37593498/c/1920/1080/0/0/il/8fe1cb/4204255055/il_340x270.4204255055_3r7q.jpg\">"
-                                                + "<p>Thank your for your order</p>");
+                                        
 
                                         int totalInt = (int) session.getAttribute("total");
                                         //Begin process return from VNPAY
@@ -140,12 +136,12 @@
                                                 <label><%=request.getParameter("vnp_TxnRef")%></label>
                                             </div>    
                                             <div class="form-group">
-                                                <label >Amount: VND</label>
+                                                <label >Amount:</label>
                                                 <% String soTien = request.getParameter("vnp_Amount");
                                                     int soTienInt = Integer.parseInt(soTien);
                                                     soTienInt = soTienInt / 100;
                                                 %>
-                                                <label><%=formatter.format(soTienInt)%></label>
+                                                <label><%=formatter.format(soTienInt)%></label><span>VND</span>
                                             </div>                                              
                                             <div class="form-group">
                                                 <label >Bank:</label>
@@ -167,14 +163,18 @@
                                                 <label><%=outputString%></label>
                                             </div> 
                                             <div class="form-group">
-                                                <label >Status payment:</label>
+                                                <label>Status payment:</label>
                                                 <label>
                                                     <%
                                                         if (signValue.equals(vnp_SecureHash)) {
                                                             if ("00".equals(request.getParameter("vnp_TransactionStatus"))) {
-                                                                out.print("Success");
-                                                            } else {
-                                                                out.print("No success");
+
+                                                    %>
+                                                    <span class="badge badge-pill badge-success">Success</span>
+                                                    <%                                                    } else {
+                                                    %>
+                                                    <span class="badge rounded-pill bg-danger">Danger</span>
+                                                    <%
                                                             }
 
                                                         } else {

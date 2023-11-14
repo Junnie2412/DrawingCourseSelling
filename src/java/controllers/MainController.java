@@ -44,7 +44,7 @@ public class MainController extends HttpServlet {
     private static final String ADDSTAFF_CONTROLLER = "AddStaffController";
     private static final String DELETESTAFF = "Inactive";
     private static final String DELETESTAFF_CONTROLLER = "DeleteStaffController";
-    private static final String UPDATESTAFF = "updateStaff";
+    private static final String UPDATESTAFF = "Update staff";
     private static final String UPDATESTAFF_CONTROLLER = "UpdateStaffController";
     private static final String LOADSTAFF = "All Staff";
     private static final String LOADSTAFF_CONTROLLER = "LoadStaffController";
@@ -62,6 +62,12 @@ public class MainController extends HttpServlet {
     private static final String EDIT_INSTRUCTOR_CONTROLLER = "EditInstructorController";
     private static final String HIDE_INSTRUCTOR = "hideInstructor";
     private static final String HIDE_INSTRUCTOR_CONTROLLER = "HideInstructorController";
+    private static final String LOAD_COURSE = "All Course";
+    private static final String LOAD_COURSE_CONTROLLER = "LoadCourseController";
+    private static final String APPROVE_COURSE = "ApproveCourse";
+    private static final String APPROVE_COURSE_CONTROLLER = "ApproveCourseController";
+    private static final String DEACTIVE_COURSE = "DeactiveCourse";
+    private static final String DEACTIVE_COURSE_CONTROLLER = "DeactiveCourseController";
 
     private static final String VIEW_CART = "ViewCart";
     private static final String VIEW_CART_PAGE = "viewCart.jsp";
@@ -102,6 +108,11 @@ public class MainController extends HttpServlet {
     private static final String VIEW_VIDEO = "viewVideo";
     private static final String VIEW_VIDEO_CONTROLLER = "ViewVideoController";
 
+    private static final String DELETECUSTOMER = "Inactive Customer";
+    private static final String DELETECUSTOMER_CONTROLLER = "DeleteCustomerController";
+    private static final String UPDATECUSTOMER = "Update Customer";
+    private static final String UPDATECUSTOMER_CONTROLLER = "UpdateCustomerController";
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String url = HOMEPAGE;
@@ -185,6 +196,16 @@ public class MainController extends HttpServlet {
                 url = VIEW_VIDEO_CONTROLLER;
             }else if (action.equals(VIEW_COURSE_PAGE)) {
                 url = VIEW_COURSE_PAGE_CONTROLLER;
+            }else if (action.equals(LOAD_COURSE)) {
+                url = LOAD_COURSE_CONTROLLER;
+            }else if (action.equals(APPROVE_COURSE)) {
+                url = APPROVE_COURSE_CONTROLLER;
+            }else if (action.equals(DEACTIVE_COURSE)) {
+                url = DEACTIVE_COURSE_CONTROLLER;
+            }else if(action.equals(DELETECUSTOMER)){
+                url = DELETECUSTOMER_CONTROLLER;
+            } else if(action.equals(UPDATECUSTOMER)){
+                url = UPDATECUSTOMER_CONTROLLER;
             }
 
         } catch (Exception e) {

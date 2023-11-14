@@ -22,7 +22,7 @@
 
         <!--Swiper slider css-->
         <link href="/Wedproject2_temp1/admin/assets/libs/swiper/swiper-bundle.min.css" rel="stylesheet" type="text/css" />
-
+        <link href="/Wedproject2_temp1/admin/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
         <!-- Layout config Js -->
         <script src="/Wedproject2_temp1/admin/assets/js/layout.js"></script>
         <!-- Bootstrap Css -->

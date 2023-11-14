@@ -26,7 +26,7 @@ public class UserDAO {
             + "WHERE accountID = ? OR email = ? ";
     private static final String SIGNUP = "INSERT tblAccount VALUES(?, ?, ?, ?, 'Customer', 1, '', ?)";
     private static final String LOGIN = "SELECT * FROM tblAccount WHERE accountID=? AND password=? ";
-    private static final String LOGINBYGOOGLE = "SELECT role FROM tblAccount WHERE accountID=?";
+    private static final String LOGINBYGOOGLE = "SELECT role, fullName, image FROM tblAccount WHERE accountID=?";
     private static final String INSERTSTAFF = "INSERT INTO tblAccount VALUES (?,?,?,?,?,?,?,?)";
     private static final String INACTIVESTAFF = "UPDATE tblAccount SET isActive = 0  WHERE accountID = ?";
     private static final String UPDATESTAFF = "UPDATE tblAccount set password=?, fullName=?, dateOfBirth=?, isActive=?, image=?, email=? WHERE accountID=?";
@@ -102,7 +102,9 @@ public class UserDAO {
                 rs = ptm.executeQuery();
                 if (rs.next()) {
                     String role = rs.getString("role");
-                    user = new UserDTO(userID, role);
+                    String fullName = rs.getString("fullName");
+                    String image = rs.getString("image");
+                    user = new UserDTO(userID, fullName, role, image);
                 }
             }
         } catch (Exception e) {
@@ -189,7 +191,7 @@ public class UserDAO {
                 ptm.setBoolean(6, user.isIsActive());
                 ptm.setString(7, user.getImage());
                 ptm.setString(8, user.getEmail());
-                check = ptm.executeUpdate()>0;
+                check = ptm.executeUpdate() > 0;
             }
         } finally {
             if (ptm != null) {
@@ -201,6 +203,7 @@ public class UserDAO {
         }
         return check;
     }
+
     //just inactive
     public boolean deleteStaff(String accountID) throws SQLException {
         boolean check = false;
@@ -695,6 +698,7 @@ public class UserDAO {
         }
         return num;
     }
+
     public boolean updateInstructor(UserDTO user) throws SQLException {
         boolean check = false;
         Connection conn = null;

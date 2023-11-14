@@ -81,7 +81,7 @@
                         </div>
                         <div class="form-group">
                             <label for="coursePrice">Price</label>
-                            <input type="text" class="form-control" id="coursePrice" name="coursePrice" value="${requestScope.course.getPrice()}">
+                            <input type="number" class="form-control" id="coursePrice" name="coursePrice" value="${requestScope.course.getPrice()}" required min="1">
                         </div>
                         <div class="form-group">
                             <label for="courseName">Name</label>

@@ -120,6 +120,18 @@
         <servlet-name>ViewVideoController</servlet-name>
         <servlet-class>controllers.learning.ViewVideoController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddCustomerController</servlet-name>
+        <servlet-class>controllers.userController.AddCustomerController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteCustomerController</servlet-name>
+        <servlet-class>controllers.userController.DeleteCustomerController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateCustomerController</servlet-name>
+        <servlet-class>controllers.userController.UpdateCustomerController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>MainController</servlet-name>
         <url-pattern>/MainController</url-pattern>
@@ -239,6 +251,18 @@
     <servlet-mapping>
         <servlet-name>ViewVideoController</servlet-name>
         <url-pattern>/ViewVideoController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddCustomerController</servlet-name>
+        <url-pattern>/AddCustomerController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteCustomerController</servlet-name>
+        <url-pattern>/DeleteCustomerController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateCustomerController</servlet-name>
+        <url-pattern>/UpdateCustomerController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
