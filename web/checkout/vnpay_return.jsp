@@ -1,9 +1,9 @@
 
+<%@page import="learningCourse.LearningCourseDAO"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="java.time.LocalDateTime"%>
 <%@page import="java.time.format.DateTimeFormatter"%>
 <%@page import="java.time.LocalDate"%>
-=======
 <%@page import="email.SendEmail"%>
 
 <%@page import="cart.CartItemDAO"%>
@@ -101,10 +101,7 @@
                                         DecimalFormat formatter = new DecimalFormat("###,###,###");
                                         UserDTO user = (UserDTO) session.getAttribute("LOGIN_USER");
 
-                                        UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
-                                        SendEmail.send(loginUser.getEmail(), "Check Your Order Right Now", "<h3>Your Order On ArtCenter</h3>"
-                                                + "<img src=\"https://i.etsystatic.com/37593498/c/1920/1080/0/0/il/8fe1cb/4204255055/il_340x270.4204255055_3r7q.jpg\">"
-                                                + "<p>Thank your for your order</p>");
+                                        
 
                                         int totalInt = (int) session.getAttribute("total");
                                         //Begin process return from VNPAY
@@ -139,12 +136,12 @@
                                                 <label><%=request.getParameter("vnp_TxnRef")%></label>
                                             </div>    
                                             <div class="form-group">
-                                                <label >Amount: VND</label>
+                                                <label >Amount:</label>
                                                 <% String soTien = request.getParameter("vnp_Amount");
                                                     int soTienInt = Integer.parseInt(soTien);
                                                     soTienInt = soTienInt / 100;
                                                 %>
-                                                <label><%=formatter.format(soTienInt)%></label>
+                                                <label><%=formatter.format(soTienInt)%></label><span>VND</span>
                                             </div>                                              
                                             <div class="form-group">
                                                 <label >Bank:</label>
@@ -166,7 +163,7 @@
                                                 <label><%=outputString%></label>
                                             </div> 
                                             <div class="form-group">
-                                                <label >Status payment:</label>
+                                                <label>Status payment:</label>
                                                 <label>
                                                     <%
                                                         if (signValue.equals(vnp_SecureHash)) {
@@ -239,6 +236,11 @@
                                                     <th colspan="2">Voucher:  </th>
                                                     <td class="text-end">
                                                         <span class="bg-success">
+                                                            <%
+                                                                if(voucherCode == null){
+                                                                    voucherCode = "";
+                                                                }
+                                                            %>
                                                             <%=voucherCode%>
                                                         </span>
                                                     </td>
@@ -277,6 +279,15 @@
                                             CourseDAO dao = new CourseDAO();
                                             boolean check = dao.inserOrder(user, listCourseCheckout, trans, totalInt, voucherCode);
                                             if (check) {
+                                                LearningCourseDAO learningCourseDAO = new LearningCourseDAO();
+                                                for (CourseDTO course : listCourseCheckout) {
+                                                    LocalDate currentDate = LocalDate.now();
+                                                    LocalDate futureDate = currentDate.plusMonths(4);
+                                                    DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                                                    String expiredDay = futureDate.format(formatter2);
+                                                    learningCourseDAO.createLearningCourse(true, expiredDay,course.getCourseID(), loginUser.getAccountID());
+                                                }
+
                                                 // cart clear
                                                 CartItemDAO cartDao = new CartItemDAO();
                                                 for (CourseDTO course : listCourseCheckout) {
@@ -284,7 +295,7 @@
                                                 }
 
                                         %>
-                                        <a href="/Wedproject2_temp1/learning.jsp" class=" btn-md btn-viewCourse slide_right learning-button"><span style="text-align: center;border-radius: 25px;">LEARNING</span> <i class="fa fa-book" aria-hidden="true"></i></a>
+                                        <a href="/Wedproject2_temp1/LearningController" class=" btn-md btn-viewCourse slide_right learning-button"><span style="text-align: center;border-radius: 25px;">LEARNING</span> <i class="fa fa-book" aria-hidden="true"></i></a>
                                             <%                                            }
                                             %>
 

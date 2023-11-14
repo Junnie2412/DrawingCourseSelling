@@ -32,7 +32,7 @@ public class LoadStaffController extends HttpServlet {
         try {
             UserDAO dao = new UserDAO();
             List<UserDTO> loadStaffList = dao.loadStaffList();
-            HttpSession session = request.getSession(true);
+            HttpSession session = request.getSession();
             if (loadStaffList.size() > 0) {
                 session.setAttribute("STAFF_LIST", loadStaffList);
                 url = SUCCESS;

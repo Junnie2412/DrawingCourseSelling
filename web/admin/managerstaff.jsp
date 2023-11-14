@@ -1,3 +1,4 @@
+<%@page import="users.UserError"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="users.UserDTO"%>
 <!doctype html>
@@ -17,6 +18,9 @@
 
         <!-- Sweet Alert css-->
         <link href="/Wedproject2_temp1/admin/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+        <link href="/Wedproject2_temp1/admin/assets/libs/jsvectormap/css/jsvectormap.min.css" rel="stylesheet" type="text/css" />
+
+        <link href="/Wedproject2_temp1/admin/assets/libs/swiper/swiper-bundle.min.css" rel="stylesheet" type="text/css" />
         <link rel="shortcut icon" href="assets/images/art1.png" type="image/x-icon">
         <!-- Layout config Js -->
         <script src="/Wedproject2_temp1/admin/assets/js/layout.js"></script>
@@ -45,7 +49,7 @@
             margin-right: 10px; /* T?o kho?ng cách gi?a các ph?n t? */
         }
         .formAdd {
-            width: 70%; 
+            width: 70%;
             margin-left: 300px;
             border-style: solid;
             background-color: rgb(245 245 245);
@@ -53,6 +57,7 @@
             margin-top: 10px;
             float:left;
             border-width: medium;
+            padding-bottom: 10px;
         }
         .formAdd h4{
             color: #184785;
@@ -80,6 +85,9 @@
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane container active" id="addStaff">
+                        <%
+                            UserError userError = (UserError) request.getAttribute("USER_ERROR");
+                        %>
                         <div class="formAdd">
                             <h4>Add Staff Account</h4>
                             <form action="/Wedproject2_temp1/MainController" method="POST">
@@ -87,7 +95,9 @@
                                     <div class="form-group col-md-6">
                                         <label for="accountID" class="form-label">Account ID</label>
                                         <input type="text" class="form-control" name="accountID" required>
-                                        <p style="color: red;">${requestScope.USER_ERROR.userIDError}</p>
+                                        <%if (userError != null) {%> 
+                                        <p style="color: red;"><%= userError.getUserIDError()%></p>
+                                        <% } %>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="dateOfbirth" class="form-label">Date Of Birth</label>
@@ -96,76 +106,78 @@
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label for="password" class="form-label">Password</label>
-                                        <input type="password" class="form-control" name="password" required>
-                                        <p style="color: red;">${requestScope.USER_ERROR.passwordError}</p>
-                                    </div>
+                                        <label for="password" class="form-label">Password (default)</label>
+                                        <input type="text" class="form-control" name="password" readonly="" value="user123">                                       
+                                    </div> 
                                     <div class="form-group col-md-6">
-                                        <label for="confirm" class="form-label">Confirm</label>
-                                        <input type="password" class="form-control" name="confirm" required>
-                                        <p style="color: red;">${requestScope.USER_ERROR.confirmError}</p>
+                                        <label for="role" class="form-label">Role</label><br>
+                                        <span class="badge badge-soft-primary" style="font-size: 17px;">Staff</span>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="fullname" class="form-label">Name</label>
                                         <input type="text" class="form-control" name="fullName" required>
-                                        <p style="color: red;">${requestScope.USER_ERROR.fullNameError}</p>
+                                        <%if (userError != null) {%> 
+                                        <p style="color: red;"><%= userError.getFullNameError()%></p>
+                                        <% }%>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="email" class="form-label">Email</label><br/>
                                         <input type="text" class="form-control" name="email" required>
-                                        <p style="color: red;">${requestScope.USER_ERROR.emailError}</p>
+                                        <%if(userError != null){ %>
+                                        <p style="color: red;"><%= userError.getEmailError()%></p>
+                                        <% } %>
                                     </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="isActive" class="form-label">Status</label>
-                                        <select name="isActive">
-                                            <option value="active">Active</option>
-                                            <option value="inactive">Inactive</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="role" class="form-label">Role</label>
-                                        <span class="badge badge-soft-primary" style="font-size: 17px;">Staff</span>
-                                    </div>
-                                </div>
+                                </div>                               
                                 <div class="mb-3">
                                     <label for="image" class="form-label">Image</label>
                                     <input type="text" class="form-control" name="image" required>
                                 </div>
                                 <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <input class="btn btn-outline-primary" type="submit" name="action" value="Add Staff">
-                                    </div> 
+
                                     <div class="form-group col-md-6">
                                         <%
-                                            String mess = (String) request.getAttribute("MESSAGE");
+                                            String mess = (String) request.getAttribute("MESSAGE_ADD");
                                             String er = (String) request.getAttribute("ERROR");
                                             if (mess != null) {
                                         %>
                                         <div class="alert alert-success">
-                                            <%=mess%>
-                                        </div>
-                                        <%
-                                        } else if (er != null) {
-                                        %>
+                                            <p><%=mess%></p>
+                                        </div> 
+                                        <% } else if (er != null) {%>
                                         <div class="alert alert-danger">
-                                            <%=er%>
-                                        </div>
-                                        <%
-                                            }
-                                        %>
+                                            <p><%=er%></p>
+                                        </div>    
+                                        <% } %>
+                                    </div>
+                                    <div class="form-group col-md-6" style="margin-left: 85%;">
+                                        <input class="btn btn-outline-primary" type="submit" name="action" value="Add Staff">
                                     </div>
                                 </div>    
-
                             </form>   
 
                         </div>
                     </div>
                     <div class="tab-pane fade" id="manageStaff" style="width: 100%;">
-                        <div class="table-responsive table-card " style="margin-left: 110px;">
+                        <div class="table-responsive" style="margin-left: 110px;">
+                            <%
+                                String messUp = (String) request.getAttribute("MESSAGE");
+                                String erUp = (String) request.getAttribute("ERROR");
+                                if (mess != null) {
+                            %>
+                            <div class="alert alert-success">
+                                <p><%=messUp%></p>
+                            </div>
+                            <%
+                            } else if (erUp != null) {
+                            %>
+                            <div class="alert alert-danger">
+                                <p><%=er%></p>
+                            </div>
+                            <%
+                                }
+                            %>
                             <div>
                                 <%
                                     ArrayList<UserDTO> staffList = (ArrayList) session.getAttribute("STAFF_LIST");
@@ -177,8 +189,6 @@
                                     <thead class="table">
                                         <tr>
                                             <th  data-sort="counter">No</th>
-
-
                                             <th  data-sort="name">Name</th>
                                             <th  data-sort="date">Birth Day</th>                                    
                                             <th  data-sort="isActive">Active</th>
@@ -196,32 +206,28 @@
 
                                         %>
                                     <form action="/Wedproject2_temp1/MainController" method="POST">
-                                        <tr>                                               
+                                        <tr style="background-color: white;">                                               
                                             <td><%= count++%></td>
-                                            <!-- <td class="id" style="display:none;"><a href="javascript:void(0);" class="fw-medium link-primary">#VZ2101</a></td>-->
-
 
                                             <td class="name">
-
                                                 <input type="text" name="fullName" value="<%=u.getFullName()%>" required=""/>
                                             </td>
                                             <td class="date">
                                                 <input type="date" name="dateOfbirth" value="<%=u.getDateOfBirth()%>" required=""/>
-
                                             </td>
 
                                             <td class="isActive">                                                
                                                 <%
                                                     if (u.isIsActive()) {
                                                 %>
-                                            <span class="badge badge-pill badge-success">Active</span>
-                                            <%
-                                            } else {
-                                            %>
-                                            <a href="#" class="badge badge-danger">Inactive</a>
-                                            <%
-                                                }
-                                            %>
+                                                <span class="badge badge-pill badge-success">Active</span>
+                                                <%
+                                                } else {
+                                                %>
+                                                <a href="#" class="badge badge-danger">Inactive</a>
+                                                <%
+                                                    }
+                                                %>
                                             </td>
                                             <td class="tags">
                                                 <span class="badge badge-soft-primary">Staff</span>
@@ -240,14 +246,14 @@
                                                         title="Edit">
                                                         <input type="hidden" name="accountID" value="<%=u.getAccountID()%>">
                                                         <input type="hidden" name="password" value="<%=u.getPassword()%>">
-                                                        <button class="btn btn-primary"><input type="submit" name="action" value="updateStaff"/></button>
+                                                        <input class="btn btn-primary" type="submit" name="action" value="Update staff"/>
                                                     </li>  
                                                     <li class="list-inline-item edit" data-bs-toggle="tooltip"
                                                         data-bs-trigger="hover" data-bs-placement="top"
-                                                        title="Edit">                                                        
-                                                            <input type="hidden" name="accountID" value="<%=u.getAccountID()%>>">
-                                                            <button class="btn btn-danger"><input type="submit" name="action" value="Inactive"/></button>
-                                                                                                                   
+                                                        title="Inactive">                                                        
+                                                        <input type="hidden" name="accountID" value="<%=u.getAccountID()%>>">
+                                                        <input class="btn btn-danger" type="submit" name="action" value="Inactive"/>
+
                                                     </li>  
                                                 </ul>
                                             </td>

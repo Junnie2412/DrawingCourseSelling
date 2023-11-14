@@ -114,7 +114,7 @@
 
 
                                                             <a href="https://accounts.google.com/o/oauth2/auth?scope=profile&redirect_uri=http://localhost:8080/Wedproject2_temp1/UserGoogleHandler&response_type=code
-                                                               &client_id=154364300660-v8tagpsjupfrtf737hbfepdq7jphjgku.apps.googleusercontent.com&approval_prompt=force">
+                                                               &client_id=154364300660-ecu5h2lor5cs3buoa22oc0tohf78f189.apps.googleusercontent.com&approval_prompt=force">
                                                                 <button type="button" class="btn btn-danger btn-icon waves-effect waves-light" style="width: 200px;"><i class="ri-google-fill fs-16"></i>  &nbsp; 
                                                                     <span class="button-text ">Login with Google account</span>
                                                                 </button> 

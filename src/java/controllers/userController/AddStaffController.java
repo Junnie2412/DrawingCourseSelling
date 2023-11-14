@@ -24,8 +24,8 @@ import users.UserError;
  */
 public class AddStaffController extends HttpServlet {
 
-    private static final String ERROR = "admin/managerstaff.jsp";
-    private static final String SUCCESS = "admin/managerstaff.jsp";
+    private static final String ERROR = "LoadStaffController";
+    private static final String SUCCESS = "LoadStaffController";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -40,37 +40,21 @@ public class AddStaffController extends HttpServlet {
             String dateString = request.getParameter("dateOfbirth");
             Date dateOfBirth = Date.valueOf(dateString);
             String role = "Staff";
-            boolean isActive = true;
-            String activeStr = request.getParameter("isActive");
-            if (activeStr.equalsIgnoreCase("active")) {
-                isActive = true;
-            } else if (activeStr.equalsIgnoreCase("inactive")) {
-                isActive = false;
-            }
+            boolean isActive = true;           
             String email = request.getParameter("email");
             String img = request.getParameter("image");
-            String password = request.getParameter("password");
-            String confirm = request.getParameter("confirm");
+            String password = "user123";
+
             UserDAO dao = new UserDAO();
             //////
             if (accountID.length() < 2 || accountID.length() > 20) {
                 userError.setUserIDError("Account ID must be in [2,20]");
                 checkValidation = false;
             }
-//            boolean checkDuplicate = dao.checkDuplicate(accountID);
-//            if(checkDuplicate) {
-//                userError.setUserIDError("Duplicate User ID !");
-//                checkValidation=false;
-//            }
             if (fullName.length() < 5 || fullName.length() > 30) {
                 userError.setFullNameError("Full Name must be in [5,20]");
                 checkValidation = false;
             }
-            if (!password.equals(confirm)) {
-                userError.setConfirmError("two password are not match");
-                checkValidation = false;
-            }
-            //check email
             String regex = "^[A-Za-z0-9+_.-]+@(.+)$";
             //Compile regular expression to get the pattern  
             Pattern pattern = Pattern.compile(regex);
@@ -82,8 +66,8 @@ public class AddStaffController extends HttpServlet {
             if (checkValidation) {
                 UserDTO user = new UserDTO(accountID, password, fullName, dateOfBirth, role, isActive, img, email);
                 boolean checkInsert = dao.insertStaff(user);
-                if (checkInsert==true) {
-                    request.setAttribute("MESSAGE", "This account is added successfully!");
+                if (checkInsert) {
+                    request.setAttribute("MESSAGE_ADD", "This account is added successfully!");
                     url = SUCCESS;
                 } else {
                     request.setAttribute("ERROR", "Unknown error!");
@@ -93,10 +77,10 @@ public class AddStaffController extends HttpServlet {
             }
         } catch (Exception e) {
             log("Error at AddStaffController");
-//            if (e.toString().contains("duplicate")) {
-//                userError.setUserIDError("UserID has already exist!");
-//                request.setAttribute("USER_ERROR", userError);
-//            }
+            if (e.toString().contains("duplicate")) {
+                userError.setUserIDError("UserID has already exist!");
+                request.setAttribute("USER_ERROR", userError);
+            }
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }
