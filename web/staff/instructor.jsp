@@ -4,6 +4,7 @@
     Author     : PC
 --%>
 
+<%@page import="users.UserError"%>
 <%@page import="users.UserDTO"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -32,6 +33,26 @@
         <link href="staff/assets/css/app.min.css" rel="stylesheet" type="text/css" />
         <!-- custom Css-->
     </head>
+    <style>
+        
+        .formAdd {
+            width: 70%;
+            margin-left: 300px;
+            border-style: solid;
+            background-color: rgb(245 245 245);
+            padding: 50px;
+            margin-top: 10px;
+            float:left;
+            border-width: medium;
+            padding-bottom: 10px;
+        }
+        .formAdd h4{
+            color: #184785;
+            font-size: 38px;
+            margin-left: 170px;
+        }
+
+    </style>
     <body>
         <!-- Begin page -->
         <jsp:include page="layoutstaff/header.jsp"/>
@@ -59,64 +80,84 @@
                 </ul>   
                         <div class="tab-content">
                             <div class="tab-pane container active" id="addInstructor">
-                                <div class="container" style="width: 40%;">                                 
-                                    <%--    <div class="card-header border-0">
-                                        <div class="row g-4 align-items-center">                                         
-                                            <div class="col-sm-auto ms-auto">
-                                                <div> --%>
-
+                                <%
+                                    UserError userError = (UserError) request.getAttribute("USER_ERROR");
+                                %>
+                                <div class="formAdd">
+                                    <h4>Add Staff Account</h4>
                                     <form action="MainController" method="POST">
-                                        <div class="mb-3">
-                                            <label for="accountID" class="form-label">Account ID</label>
-                                            <input type="text" class="form-control" name="accountID" required>
-                                            <p style="color: red;">${requestScope.USER_ERROR.userIDError}</p>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="password" class="form-label">Password</label>
-                                            <input type="password" class="form-control" name="password" required>
-                                            <p style="color: red;">${requestScope.USER_ERROR.passwordError}</p>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="confirm" class="form-label">Confirm</label>
-                                            <input type="password" class="form-control" name="confirm" required>
-                                            <p style="color: red;">${requestScope.USER_ERROR.confirmError}</p>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="fullname" class="form-label">Name</label>
-                                            <input type="text" class="form-control" name="fullname" required>
-                                            <p style="color: red;">${requestScope.USER_ERROR.fullNameError}</p>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="dateOfbirth" class="form-label">Date Of Birth</label>
-                                            <input type="date" class="form-control" name="dateOfbirth" required>
-
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label for="accountID" class="form-label">Account ID</label>
+                                                <input type="text" class="form-control" name="accountID" required>
+                                                <%if (userError != null) {%> 
+                                                <p style="color: red;"><%= userError.getUserIDError()%></p>
+                                                <% } %>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="dateOfbirth" class="form-label">Date Of Birth</label>
+                                                <input type="date" class="form-control" name="dateOfbirth" required>
+                                            </div>
                                         </div>
 
-                                        <div class="mb-3">
-                                            <label for="role" class="form-label">Role</label>
-                                            <input type="text" class="form-control" name="role" readonly="" placeholder="Instructor">
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label for="password" class="form-label">Password (default)</label>
+                                                <input type="text" class="form-control" name="password" readonly="" value="user123">                                       
+                                            </div> 
+                                            <div class="form-group col-md-6">
+                                                <label for="role" class="form-label">Role</label><br>
+                                                <span class="badge badge-soft-primary" style="font-size: 17px;">Instructor</span>
+                                            </div>
+                                        </div>
 
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="email" class="form-label">Email</label>
-                                            <input type="text" class="form-control" name="email" required>
-                                            <p style="color: red;">${requestScope.USER_ERROR.emailError}</p>
-                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label for="fullname" class="form-label">Name</label>
+                                                <input type="text" class="form-control" name="fullName" required>
+                                                <%if (userError != null) {%> 
+                                                <p style="color: red;"><%= userError.getFullNameError()%></p>
+                                                <% }%>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="email" class="form-label">Email</label><br/>
+                                                <input type="text" class="form-control" name="email" required>
+                                                <%if (userError != null) {%>
+                                                <p style="color: red;"><%= userError.getEmailError()%></p>
+                                                <% } %>
+                                            </div>
+                                        </div> 
                                         <div class="mb-3">
                                             <label for="image" class="form-label">Image</label>
                                             <input type="text" class="form-control" name="image" required>
 
                                         </div>
-                                        <button class="btn btn-outline-primary" type="submit" name="action" value="Add Instructor">Add Instructor</button>
-                                        <%
-                                                        String notication = (String) request.getAttribute("MESSAGE");
-                                                        if (notication != null) {
-                                                            out.print("<h6 style=\"color: green;\">" + notication + "</h6>");
-                                                        }
-                                        %>
-                                           
-                                        
+                                        <div class="form-row">
+
+                                            <div class="form-group col-md-6">
+                                                <%
+                                                    String mess = (String) request.getAttribute("MESSAGE");
+                                                    String er = (String) request.getAttribute("ERROR");
+                                                    if (mess != null) {
+                                                %>
+                                                <div class="alert alert-success">
+                                                    <p><%=mess%></p>
+                                                </div> 
+                                                <% } else if (er != null) {%>
+                                                <div class="alert alert-danger">
+                                                    <p><%=er%></p>
+                                                </div>    
+                                                <% } %>
+                                            </div>
+                                            <div class="form-group col-md-6" style="margin-left: 85%;">
+                                                <input class="btn btn-outline-primary" type="submit" name="action" value="Add Instructor">
+                                            </div>
+
+
+
+                                        </div>   
                                     </form>   
+
                                 </div>
                             </div>
 
