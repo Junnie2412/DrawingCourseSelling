@@ -30,7 +30,7 @@
                                         <a href="about.jsp">About us</a>
                                     </li>
                                     <li>
-                                        <a href="login.jsp">Registration</a>
+                                        <a href="signup.jsp">Registration</a>
                                     </li>
                                     <li>
                                         <a href="blog.jsp">Blog</a>

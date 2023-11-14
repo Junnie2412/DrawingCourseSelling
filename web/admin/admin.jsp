@@ -48,7 +48,7 @@
 
         <!-- Begin page -->
         <div id="layout-wrapper">
-            <div style="margin-right: 100px">
+            <div style="margin-left: 500px;">
 
                 <jsp:include page="layoutadmin/header.jsp"/>
             </div>
@@ -92,7 +92,7 @@
                         <div class="row">
                             <div class="col">
 
-                                <div class="h-100">
+                                <div class="h-100" style="margin-right: 0px;">
                                     <div class="row mb-3 pb-1">
                                         <div class="col-12">
                                             <div class="d-flex align-items-lg-center flex-lg-row flex-column"> 
