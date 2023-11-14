@@ -62,6 +62,12 @@ public class MainController extends HttpServlet {
     private static final String EDIT_INSTRUCTOR_CONTROLLER = "EditInstructorController";
     private static final String HIDE_INSTRUCTOR = "hideInstructor";
     private static final String HIDE_INSTRUCTOR_CONTROLLER = "HideInstructorController";
+    private static final String LOAD_COURSE = "All Course";
+    private static final String LOAD_COURSE_CONTROLLER = "LoadCourseController";
+    private static final String APPROVE_COURSE = "ApproveCourse";
+    private static final String APPROVE_COURSE_CONTROLLER = "ApproveCourseController";
+    private static final String DEACTIVE_COURSE = "DeactiveCourse";
+    private static final String DEACTIVE_COURSE_CONTROLLER = "DeactiveCourseController";
 
     private static final String VIEW_CART = "ViewCart";
     private static final String VIEW_CART_PAGE = "viewCart.jsp";
@@ -190,7 +196,13 @@ public class MainController extends HttpServlet {
                 url = VIEW_VIDEO_CONTROLLER;
             }else if (action.equals(VIEW_COURSE_PAGE)) {
                 url = VIEW_COURSE_PAGE_CONTROLLER;
-            } else if(action.equals(DELETECUSTOMER)){
+            }else if (action.equals(LOAD_COURSE)) {
+                url = LOAD_COURSE_CONTROLLER;
+            }else if (action.equals(APPROVE_COURSE)) {
+                url = APPROVE_COURSE_CONTROLLER;
+            }else if (action.equals(DEACTIVE_COURSE)) {
+                url = DEACTIVE_COURSE_CONTROLLER;
+            }else if(action.equals(DELETECUSTOMER)){
                 url = DELETECUSTOMER_CONTROLLER;
             } else if(action.equals(UPDATECUSTOMER)){
                 url = UPDATECUSTOMER_CONTROLLER;
