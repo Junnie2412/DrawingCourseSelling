@@ -19,7 +19,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="Themesbrand" name="author" />
-        <link rel="shortcut icon" href="../assets/images/art1.png">
+        <link rel="shortcut icon" href="admin/assets/images/art1.png">
         <!-- App favicon -->
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -140,7 +140,7 @@
                                                 <div class="card-body">
                                                     <div class="d-flex align-items-center">
                                                         <div class="flex-grow-1 overflow-hidden">
-                                                            <p class="text-uppercase fw-medium text-muted text-truncate mb-0">New customer in month</p>
+                                                            <p class="text-uppercase fw-medium text-muted text-truncate mb-0">New customer learning month</p>
                                                         </div>
 
                                                     </div>

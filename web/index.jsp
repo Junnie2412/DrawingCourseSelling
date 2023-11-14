@@ -145,11 +145,13 @@
                                 %>
                             <a href="learning.jsp" class=" btn-md btn-viewCourse slide_right"><span style="text-align: center;">LEARNING</span> <i class="fa fa-book" aria-hidden="true"></i></a>
                                 <%
-                                } else if (loginUser.getRole().equals("Instructor")) {
+                                } else if (loginUser.getRole().equals("Instructor")) { 
                                 %>
                             <a href="courses.jsp" class=" btn-md btn-viewCourse slide_right">VIEW COURSES <i class="fas fa-play-circle"></i></a>
                                 <%
-                                    }
+                                    } else if(loginUser.getRole().equals("Admin")){
+                                      response.sendRedirect("/Wedproject2_temp1/admin/admin.jsp");
+                                }
                                 %>
                         </div>
                     </div>
