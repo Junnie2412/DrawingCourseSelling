@@ -1,12 +1,15 @@
-<%@page import="java.util.List"%>
-<%@page import="java.util.ArrayList"%>
+<%-- 
+    Document   : instructor
+    Created on : Nov 14, 2023, 8:14:49 PM
+    Author     : PC
+--%>
+
 <%@page import="users.UserDTO"%>
-<!doctype html>
+<%@page import="java.util.List"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable">
-
     <head>
-
-
         <meta charset="utf-8" />
         <title>ArtCenter - Online Drawing Course</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,16 +31,8 @@
         <!-- App Css-->
         <link href="staff/assets/css/app.min.css" rel="stylesheet" type="text/css" />
         <!-- custom Css-->
-        
-
-
-
-
-
     </head>
-
     <body>
-            
         <!-- Begin page -->
         <jsp:include page="layoutstaff/header.jsp"/>
 
@@ -48,11 +43,7 @@
             <!-- Left Sidebar End -->
             <!-- Vertical Overlay-->
             <div class="vertical-overlay"></div>
-
-            <!-- ============================================================== -->
-            <!-- Start right Content here -->
-            <!-- ============================================================== -->
-              <div class="container-fluid">
+            <div class="container-fluid">
         <div class="main-content">
             <div class="page-content">
                 <ul class="nav nav-tabs" style="margin-bottom: 50px">
@@ -297,45 +288,7 @@
                     <!-- container-fluid -->
                 </div>
             </div>
+                
             
-        
-
-        <!--start back-to-top-->
-        
-        <!--end back-to-top-->
-
-        <!--preloader-->
-        <
-
-
-
-        <!-- Theme Settings -->
-        
-
-       
-        <!-- JAVASCRIPT -->
-    <script src="staff/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="staff/assets/libs/simplebar/simplebar.min.js"></script>
-    <script src="staff/assets/libs/node-waves/waves.min.js"></script>
-    <script src="staff/assets/libs/feather-icons/feather.min.js"></script>
-    <script src="staff/assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
-    <script src="staff/assets/js/plugins.js"></script>
-
-    <!-- apexcharts -->
-    <script src="staff/assets/libs/apexcharts/apexcharts.min.js"></script>
-
-    <!-- Vector map-->
-    <script src="staff/assets/libs/jsvectormap/js/jsvectormap.min.js"></script>
-    <script src="staff/assets/libs/jsvectormap/maps/world-merc.js"></script>
-
-    <!--Swiper slider js-->
-    <script src="staff/assets/libs/swiper/swiper-bundle.min.js"></script>
-
-    <!-- Dashboard init -->
-    <script src="staff/assets/js/pages/dashboard-ecommerce.init.js"></script>
-
-    <!-- App js -->
-    <script src="staff/assets/js/app.js"></script>
     </body>
-
 </html>

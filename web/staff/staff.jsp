@@ -46,12 +46,12 @@
     %>
     <div id="layout-wrapper">
 
-        <jsp:include page="layoutstaff//header.jsp"/>
+        <jsp:include page="layoutstaff/header.jsp"/>
 
 <!-- removeNotificationModal -->
 <!-- /.modal -->
         <!-- ========== App Menu ========== -->
-        <jsp:include page="layoutstaff//slidebar.jsp"/>
+        <jsp:include page="layoutstaff/slidebar.jsp"/>
 
         <!-- ============================================================== -->
         <!-- Start right Content here -->
