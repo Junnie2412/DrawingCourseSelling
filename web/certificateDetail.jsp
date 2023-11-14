@@ -113,7 +113,7 @@
         .art-center1 {
             position: absolute;
             top: 115px;
-            left: 616px;
+            left: 586px;
             font-size: 35px;
         }
         .art-center1 {
@@ -153,16 +153,16 @@
         .users-full-name {
             position: absolute;
             top: 419px;
-            left: 400px;
+            left: 520px;
         }
         .users-full-name {
             top: 339px;
-            left: 501px;
+            left: 550px;
         }
         .this-certificate-is {
             position: absolute;
-            top: 276px;
-            left: 445px;
+            top: 296px;
+            left: 545px;
         }
         .course-complete-certificate {
             position: absolute;
@@ -307,7 +307,11 @@
 
                 <img class="group-icon" alt="" src="assets/images/background/medal.png" />
             </div>
+            <div style="height: 30px; width: 100vw; margin-top: 100px">
+            </div>
         </div>
+
+
 
         <div>
             <!-- ~~~ Footer Section ~~~ -->

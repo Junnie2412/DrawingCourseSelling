@@ -106,7 +106,6 @@
             <section class="feature-section pt-120 pb-120" style="background-color: #ebecec">
                 <div class="container">
                     <div class="section-header">
-                        <span class="category">Features</span>
                         <h2 class="title"><span>Our Special</span> Features</h2>
                     </div>
                     <div class="row justify-content-center mb-30-none">
@@ -178,7 +177,7 @@
                         </div>
                         <div class="col-lg-6 pb-120">
                             <div class="section-header text-lg-left mb-0">
-                                <h2 class="title"><span>Read </span>About Us</h2>
+                                <h2 class="title" style="margin-top: 50px"><span>Read </span>About Us</h2>
                                 <p>Art Center is the first professional online drawing center in Vietnam specializing in online drawing lessons: learning to draw portraits, learning to draw for exams.
 
                                     With a team of teachers with over 13 years of experience and well-trained training, we have taught drawing online to thousands of domestic and international students, creating opportunities for those who are already married to continue their passion for drawing. Families, working people who don't have much free time, and students living far from the center who don't have to brave rain and shine to go to drawing class still have enough knowledge to take the exam to get into their favorite Architecture - Fine Arts school..</p>
@@ -205,7 +204,6 @@
             <section class="instructor-section pt-120 pb-120 gradient-bg">
                 <div class="container">
                     <div class="section-header">
-                        <span class="category">our teachers</span>
                         <h2 class="title"><span>Awesome </span>Instructors</h2>
                     </div>
                     <div class="row justify-content-center mb-30-none">

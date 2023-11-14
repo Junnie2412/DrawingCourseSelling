@@ -85,7 +85,7 @@
                 width: 100%;
                 display: flex;
                 align-items: center;
-                background-color: rgb(6,57,112);
+                background-color: rgba(88,100,125,255);
             }
 
             .courseTitle{

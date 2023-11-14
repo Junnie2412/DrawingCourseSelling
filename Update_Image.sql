@@ -1,6 +1,6 @@
 ﻿-------- Update dữ liệu Image bảng tblCourse -------
 
-UPDATE tblDescription SET image = 'assets/images/courseDescription/1.webp' WHERE descriptionID = 1
+UPDATE tblDescription SET image = 'assets/images/courseDescription/1.jpg' WHERE descriptionID = 1
 UPDATE tblDescription SET image = 'assets/images/courseDescription/2.jpg' WHERE descriptionID = 2
 UPDATE tblDescription SET image = 'assets/images/courseDescription/3.jpg' WHERE descriptionID = 3
 UPDATE tblDescription SET image = 'assets/images/courseDescription/4.webp' WHERE descriptionID = 4

@@ -23,8 +23,8 @@ import users.UserDTO;
 @WebServlet(name = "ShowListController", urlPatterns = {"/ShowListController"})
 public class ShowListController extends HttpServlet {
 
-    private static final String SUCCESS = "staff/managerInstructor.jsp";
-    private static final String ERROR = "staff/managerInstructor.jsp";
+    private static final String SUCCESS = "staff/instructor.jsp";
+    private static final String ERROR = "staff/instructor.jsp";
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");

@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controllers.learning;
+package controllers.assignment;
 
-import course.CourseDAO;
 import course.LessonDTO;
 import course.ModuleDAO;
 import course.ModuleDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,63 +21,52 @@ import javax.servlet.http.HttpSession;
 import learningCourse.LearningCourseDAO;
 import learningCourse.LearningCourseDTO;
 import progress.ProgressDAO;
+import submisson.SubmissionDAO;
+import submisson.SubmissionDTO;
 import users.UserDTO;
 
 /**
  *
  * @author HOANG DUNG
  */
-@WebServlet(name = "LearningController", urlPatterns = {"/LearningController"})
-public class LearningController extends HttpServlet {
+@WebServlet(name = "GradingController", urlPatterns = {"/GradingController"})
+public class GradingController extends HttpServlet {
 
-    private static final String ERROR = "index.jsp";
-    private static final String SUCCESS = "learning.jsp";
-
+    private static final String ERROR ="instructor.jsp";
+    private static final String SUCCESS ="instructorMark.jsp";
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
+        
         String url = ERROR;
+        
         try {
             HttpSession session = request.getSession();
             UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
+            
+            SubmissionDAO submissionDAO = new SubmissionDAO();
             LearningCourseDAO learningCourseDAO = new LearningCourseDAO();
+            List<SubmissionDTO> listSubmission = submissionDAO.getListSubmission(loginUser.getAccountID());
             
-            
-
-            List<LearningCourseDTO> listActive = learningCourseDAO.getlistLearningCourseActive(loginUser.getAccountID());
-            List<LearningCourseDTO> listNotActive = learningCourseDAO.getlistLearningCourseNotActive(loginUser.getAccountID());
-            
-            request.setAttribute("LIST_ACTIVE", listActive);
-            request.setAttribute("LIST_NOT_ACTIVE", listNotActive);
-            
-            int count1 = 0;
-            
-            ProgressDAO progressDAO = new ProgressDAO();
-            ModuleDAO moduleDAO = new ModuleDAO();
-             
-            
-            for(LearningCourseDTO learningCourse : listActive){
-                int count = progressDAO.getNumberFinished(learningCourse.getLearningCourseID());
-                int total = 0;
+            int count = 1;
+            for(SubmissionDTO submission : listSubmission){
+                String studentName = submissionDAO.getStudentName(submission.getAccountID());
+                String courseName = learningCourseDAO.getCourseName(submission.getLearningCourseID());
+                String topicName = submissionDAO.getTopicName(submission.getLearningCourseID());
                 
-                request.setAttribute("NUMBER_ACTIVE_"+count1, count);
+                request.setAttribute("NAME_STUDENT_"+count, studentName);
+                request.setAttribute("NAME_COURSE_"+count, courseName);
+                request.setAttribute("NAME_TOPIC_"+count, topicName);
                 
-                List<ModuleDTO> moduleList = moduleDAO.getModulesByCourseId(learningCourse.getCourseID());
-                
-                for(ModuleDTO module : moduleList){
-                    List<LessonDTO> lessonList = moduleDAO.getLessonList(module.getModuleID());
-                    total += lessonList.size();
-                }
-                
-                request.setAttribute("TOTAL_ACTIVE_"+count1, total);
-                count1++;
+                count++;
             }
             
-            url=SUCCESS;
+            request.setAttribute("LIST_SUBMISSION", listSubmission);
+            url = SUCCESS;
             
         } catch (Exception e) {
-            log("Error at LearningController " + e.toString());
+            log("Error at GradingController " + e.toString());
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }

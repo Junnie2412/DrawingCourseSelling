@@ -1,4 +1,5 @@
 
+<%@page import="learningCourse.LearningCourseDAO"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="java.time.LocalDateTime"%>
 <%@page import="java.time.format.DateTimeFormatter"%>
@@ -235,6 +236,11 @@
                                                     <td class="text-end">
                                                         <% if (voucherCode != null) {%>
                                                         <span class="bg-success">
+                                                            <%
+                                                                if(voucherCode == null){
+                                                                    voucherCode = "";
+                                                                }
+                                                            %>
                                                             <%=voucherCode%>
                                                         </span>
                                                         <% }%>
@@ -274,6 +280,15 @@
                                             CourseDAO dao = new CourseDAO();
                                             boolean check = dao.inserOrder(user, listCourseCheckout, trans, totalInt, voucherCode);
                                             if (check) {
+                                                LearningCourseDAO learningCourseDAO = new LearningCourseDAO();
+                                                for (CourseDTO course : listCourseCheckout) {
+                                                    LocalDate currentDate = LocalDate.now();
+                                                    LocalDate futureDate = currentDate.plusMonths(4);
+                                                    DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                                                    String expiredDay = futureDate.format(formatter2);
+                                                    learningCourseDAO.createLearningCourse(true, expiredDay,course.getCourseID(), user.getAccountID());
+                                                }
+
                                                 // cart clear
                                                 CartItemDAO cartDao = new CartItemDAO();
                                                 for (CourseDTO course : listCourseCheckout) {
@@ -281,7 +296,7 @@
                                                 }
 
                                         %>
-                                        <a href="/Wedproject2_temp1/learning.jsp" class=" btn-md btn-viewCourse slide_right learning-button"><span style="text-align: center;border-radius: 25px;">LEARNING</span> <i class="fa fa-book" aria-hidden="true"></i></a>
+                                        <a href="/Wedproject2_temp1/LearningController" class=" btn-md btn-viewCourse slide_right learning-button"><span style="text-align: center;border-radius: 25px;">LEARNING</span> <i class="fa fa-book" aria-hidden="true"></i></a>
                                             <%                                            }
                                             %>
 

@@ -63,7 +63,8 @@ public class CourseDAO {
             + "	select courseID from tblCourse where accountID = ?\n"
             + ")";
     private static final String APPROVE_COURSE = "update tblCourse set isActive=1 where courseID = ?";
-
+    private static final String DEACTIVE_COURSE = "update tblCourse set isActive=0 where courseID = ?";
+    
     public List<BillDTO> getBillOfInstructor(String accountId) throws SQLException {
         List<BillDTO> list = new ArrayList<>();
         Connection conn = null;
@@ -904,6 +905,31 @@ public class CourseDAO {
             conn = DBUtil.getConnection();
             if (conn != null) {
                 ptm = conn.prepareStatement(APPROVE_COURSE);
+                ptm.setString(1, courseID);
+                check = ptm.executeUpdate() > 0 ? true : false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return check;
+    }
+
+    public boolean deactiveCourse(String courseID) throws SQLException {
+        boolean check = false;
+        Connection conn = null;
+        PreparedStatement ptm = null;
+
+        try {
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(DEACTIVE_COURSE);
                 ptm.setString(1, courseID);
                 check = ptm.executeUpdate() > 0 ? true : false;
             }
