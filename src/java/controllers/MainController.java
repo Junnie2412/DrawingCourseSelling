@@ -118,6 +118,9 @@ public class MainController extends HttpServlet {
     private static final String GRADING_DETAIL ="gradingDetail";
     private static final String GRADING_DETAIL_CONTROLLER ="GradingDetailController";
     
+    private static final String CERTIFICATE_VIEW="certificateView";
+    private static final String CERTIFICATE_CONTROLLER="CertificateController";
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String url = HOMEPAGE;
@@ -215,6 +218,8 @@ public class MainController extends HttpServlet {
                 url = GRADING_CONTROLLER;
             }else if(action.equals(GRADING_DETAIL)){
                 url = GRADING_DETAIL_CONTROLLER;
+            }else if(action.equals(CERTIFICATE_VIEW)){
+                url = CERTIFICATE_CONTROLLER;
             }
 
         } catch (Exception e) {

@@ -21,12 +21,12 @@ update tblVideo set content = 'https://www.youtube.com/embed/AAwYHNo31ZQ' where 
 update tblVideo set content = 'https://www.youtube.com/embed/U11B_0FCn6o' where  videoID = 20
 update tblVideo set content = 'https://www.youtube.com/embed/STsC8tdbSEk' where  videoID = 21
 update tblVideo set content = 'https://www.youtube.com/embed/dm9XcTCKpUw' where  videoID = 22
-update tblVideo set content = 'https://www.youtube.com/embed/uRHCZTw_vjs' where  videoID = 23
+update tblVideo set content = 'https://www.youtube.com/embed/DaxL4gYwUrU?si=DVNxkz_4brnn4rau' where  videoID = 23
 update tblVideo set content = 'https://www.youtube.com/embed/AQiYbpGZadU' where  videoID = 24
 update tblVideo set content = 'https://www.youtube.com/embed/thZlNmTbgPs' where  videoID = 25
 update tblVideo set content = 'https://www.youtube.com/embed/AEJ3yWp1uUE' where  videoID = 26
 update tblVideo set content = 'https://www.youtube.com/embed/PE86v4BBT3w' where  videoID = 27
-update tblVideo set content = 'https://www.youtube.com/embed/2EH95eox9VE' where  videoID = 28
+update tblVideo set content = 'https://www.youtube.com/embed/2gY51vW2H-U?si=S_BoXveIBA47vEr3' where  videoID = 28
 update tblVideo set content = 'https://www.youtube.com/embed/B6zFJKCDQqU' where  videoID = 29
 update tblVideo set content = 'https://www.youtube.com/embed/ZRaKqe-LP2Q' where  videoID = 30
 update tblVideo set content = 'https://www.youtube.com/embed/W-FB-iX7T68' where  videoID = 31
