@@ -2,7 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
         <group>
             <file>file:/D:/SWP391/SWP391/web/WEB-INF/web.xml</file>
             <file>file:/D:/SWP391/SWP391/src/java/controllers/userController/DeleteStaffController.java</file>
@@ -62,6 +61,16 @@
             <file>file:/D:/SWP391/SWP391/web/index.jsp</file>
             <file>file:/D:/SWP391/SWP391/web/staff/coursestaff.jsp</file>
             <file>file:/D:/SWP391/SWP391/web/about.jsp</file>
+            <file>file:/D:/SWP391/SWP391/src/java/controllers/staff/HideInstructorController.java</file>
+        </group>
+        <group>
+            <file>file:/D:/SWP391/SWP391/src/java/controllers/userController/AddStaffController.java</file>
+            <file>file:/D:/SWP391/SWP391/src/java/controllers/staff/AddInstructorController.java</file>
+            <file>file:/D:/SWP391/SWP391/src/java/controllers/staff/DeactiveCourseController.java</file>
+            <file>file:/D:/SWP391/SWP391/src/java/course/CourseDAO.java</file>
+            <file>file:/D:/SWP391/SWP391/web/staff/coursestaff.jsp</file>
+            <file>file:/D:/SWP391/SWP391/web/admin/managerstaff.jsp</file>
+            <file>file:/D:/SWP391/SWP391/web/staff/instructor.jsp</file>
             <file>file:/D:/SWP391/SWP391/src/java/controllers/staff/HideInstructorController.java</file>
         </group>
     </open-files>
