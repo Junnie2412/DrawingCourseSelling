@@ -103,10 +103,11 @@
             <div class="tab-pane container active" id="Coursewaiting" style="margin-right: 150px;">
                 <%
                     String noti = (String) request.getAttribute("APPROVED");
-
+                    
                     if (noti != null) {
                         out.print("<h6 style=\"color: green;\">" + noti + "</h6>");
-                    }
+                    } 
+
                 %>
                 <table class="table table-manager-staff">
                     <thead>
@@ -158,6 +159,13 @@
             </div>
                            
             <div class="tab-pane container " id="Courseactive" style="margin-right: 150px;">
+                <%
+                    
+                    String deactive = (String)request.getAttribute("DEACTIVE");
+                    if(deactive != null){
+                        out.print("<h6 style=\"color: green;\">" + deactive + "</h6>");
+                    }
+                %>
                 <table class="table table-manager-staff">
                     <thead>
                         <tr>

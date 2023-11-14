@@ -39,15 +39,15 @@ public class AddInstructorController extends HttpServlet {
             boolean checkValidation = true;
             
             String accountID = request.getParameter("accountID");
-            String fullName = request.getParameter("fullname");
+            String fullName = request.getParameter("fullName");
             String dateString = request.getParameter("dateOfbirth");
             Date dateOfBirth = Date.valueOf(dateString);
             String role = "Instructor";
-            boolean isActive = true;
+            boolean isActive = true;           
             String email = request.getParameter("email");
             String img = request.getParameter("image");
-            String password = request.getParameter("password");
-            String confirm = request.getParameter("confirm");
+            String password = "user123";
+            
             UserDAO dao = new UserDAO();
             //////
             if (accountID.length() < 2 || accountID.length() > 10) {
@@ -63,10 +63,7 @@ public class AddInstructorController extends HttpServlet {
                 userError.setFullNameError("Full Name must be in [5,20]");
                 checkValidation = false;
             }
-            if (!password.equals(confirm)) {
-                userError.setConfirmError("Two password are not match");
-                checkValidation = false;
-            }
+            
             //check email
             String regex = "^[A-Za-z0-9+_.-]+@(.+)$";
             //Compile regular expression to get the pattern  

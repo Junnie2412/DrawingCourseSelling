@@ -5,6 +5,7 @@
  */
 package controllers.staff;
 
+import course.CourseDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -12,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import users.UserDAO;
 
 /**
  *
@@ -28,7 +30,14 @@ public class DeactiveCourseController extends HttpServlet {
         String url = ERROR;
         try{
             String courseID = request.getParameter("courseID");
-            
+            CourseDAO dao = new CourseDAO();
+            boolean checkDeactive = dao.deactiveCourse(courseID);
+            if (checkDeactive) {
+                request.setAttribute("DEACTIVE", "Deactive successfully");
+                url = SUCCESS;
+            } else {
+                request.setAttribute("ERROR", "Something went wrong! Please try again!");
+            }
         }catch(Exception e){
             log("Error at DeactiveCourseController: " + e.toString());
         }finally{
