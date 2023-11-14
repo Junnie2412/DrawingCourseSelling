@@ -52,7 +52,8 @@
         <link rel="stylesheet" href="../assets/css/magnific-popup.css">
         <link rel="stylesheet" href="../assets/css/flaticon.css">
         <link href="../assets/css/main2.css" rel="stylesheet" type="text/css"/>
-
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
         <link rel="shortcut icon" href="../assets/images/art1.png" type="image/x-icon"> 
     </head>
     <style>
@@ -101,8 +102,6 @@
                                         DecimalFormat formatter = new DecimalFormat("###,###,###");
                                         UserDTO user = (UserDTO) session.getAttribute("LOGIN_USER");
 
-                                        
-
                                         int totalInt = (int) session.getAttribute("total");
                                         //Begin process return from VNPAY
                                         Map fields = new HashMap();
@@ -128,7 +127,7 @@
                                     <div class="container">
 
                                         <div class="header clearfix">
-                                            <h3 class="text-muted">Payment Information</h3>
+                                            <h3 class="text-muted" class="text-success">Payment Information</h3>
                                         </div>
                                         <div class="table">
                                             <div class="form-group">
@@ -141,7 +140,7 @@
                                                     int soTienInt = Integer.parseInt(soTien);
                                                     soTienInt = soTienInt / 100;
                                                 %>
-                                                <label><%=formatter.format(soTienInt)%></label><span>VND</span>
+                                                <label><%=formatter.format(soTienInt)%></label><lebel>VND</lebel>
                                             </div>                                              
                                             <div class="form-group">
                                                 <label >Bank:</label>
@@ -164,23 +163,23 @@
                                             </div> 
                                             <div class="form-group">
                                                 <label>Status payment:</label>
-                                                <label>
-                                                    <%
-                                                        if (signValue.equals(vnp_SecureHash)) {
-                                                            if ("00".equals(request.getParameter("vnp_TransactionStatus"))) {
 
-                                                    %>
-                                                    <span class="badge badge-pill badge-success">Success</span>
-                                                    <%                                                    } else {
-                                                    %>
-                                                    <span class="badge rounded-pill bg-danger">Danger</span>
-                                                    <%
-                                                            }
+                                                <%
+                                                    if (signValue.equals(vnp_SecureHash)) {
+                                                        if ("00".equals(request.getParameter("vnp_TransactionStatus"))) {
 
-                                                        } else {
-                                                            out.print("invalid signature");
+                                                %>
+                                                <label><span class="badge bg-success">Success</span></label>
+                                                <%                                                    } else {
+                                                %>
+                                                <label><span class="badge bg-danger">Danger</span></label>
+                                                <%
                                                         }
-                                                    %></label>
+
+                                                    } else {
+                                                        out.print("invalid signature");
+                                                    }
+                                                %>
                                             </div> 
                                         </div>
                                         <p>
@@ -222,7 +221,7 @@
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <h5 class="fs-14"><a href="apps-ecommerce-product-details.html" class="text-dark"><%=c.getName()%></a></h5>
+                                                        <h5 class= text-primary fs-14"><a href="apps-ecommerce-product-details.html" class="text-dark"><%=c.getName()%></a></h5>
                                                     </td>
                                                     <td class="text-end"><%=formatter.format(c.getPrice())%></td>
                                                 </tr>
@@ -235,6 +234,7 @@
                                                 <tr >
                                                     <th colspan="2">Voucher:  </th>
                                                     <td class="text-end">
+                                                        <% if (voucherCode != null) {%>
                                                         <span class="bg-success">
                                                             <%
                                                                 if(voucherCode == null){
@@ -243,6 +243,7 @@
                                                             %>
                                                             <%=voucherCode%>
                                                         </span>
+                                                        <% }%>
                                                     </td>
                                                 </tr>
                                                 <tr>

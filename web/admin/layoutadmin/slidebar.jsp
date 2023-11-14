@@ -116,38 +116,26 @@
                     <a class="nav-link menu-link" href="#sidebarAuth" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarAuth">
                         <i class="mdi mdi-account-circle-outline"></i> <span data-key="t-authentication">Manager Staff account</span>
                     </a>
-                    
+
                     <div class="collapse menu-dropdown" id="sidebarAuth">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <form action="/Wedproject2_temp1/MainController" method="POST">
-                                    <input type="submit" name="action" value="All Staff" class="custom-button">
+                                    <input style="background-color: #333;" type="submit" name="action" value="All Staff" class="custom-button">
                                 </form>
+                                
+                            </li>
+                            <li class="nav-item" style="margin-top: 20px;">
+                                <form action="/Wedproject2_temp1/LoadCustomerController" method="POST">
+                                    <input style="background-color: #333;" type="submit" name="action" value="All Customer" class="custom-button">
+                                </form>
+                               
                             </li>
                         </ul>
                     </div>
                 </li>
 
-                <li class="menu-title"><i class="ri-more-fill"></i> <span data-key="t-components">Components</span></li>
 
-                <li class="nav-item">
-                    <a class="nav-link menu-link" href="#sidebarUI" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarUI">
-                        <i class="mdi mdi-cube-outline"></i> <span data-key="t-base-ui">Manager Customer Account</span>
-                    </a>
-                    <div class="collapse menu-dropdown mega-dropdown-menu" id="sidebarUI">
-                        <div class="row">
-                            <div class="col-lg-4">
-                                <ul class="nav nav-sm flex-column">
-                                    <li class="nav-item">
-                                        <form action="/Wedproject2_temp1/LoadCustomerController" method="POST">
-                                            <input type="submit" name="action" value="All Customer" class="custom-button">
-                                        </form>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </li>
             </ul>
         </div>
     </div> 
@@ -157,8 +145,8 @@
 
 
 
-<div class="sidebar-background"></div>
-<div class="vertical-overlay"></div>
+    <div class="sidebar-background"></div>
+    <div class="vertical-overlay"></div>
 </div>
 <!-- Left Sidebar End -->
 <!-- Vertical Overlay-->

@@ -3,6 +3,7 @@ package controllers.userController;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.servlet.ServletException;
@@ -46,6 +47,14 @@ public class UpdateStaffController extends HttpServlet {
             }
             if (fullName.length() < 5 || fullName.length() > 20) {
                 userError.setFullNameError("Full Name must be in [5,20]");
+                checkValidation = false;
+            }
+            LocalDate curDate = LocalDate.now();
+            Date dateEdit = Date.valueOf(dateString);
+            // Convert the Date to a LocalDate
+            LocalDate dbDate = dateEdit.toLocalDate();
+            if(dbDate.isAfter(curDate)){
+                userError.setDateError("Date is exceed current day!");
                 checkValidation = false;
             }
             //check email

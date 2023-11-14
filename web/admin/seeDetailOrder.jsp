@@ -38,7 +38,7 @@
         <!-- custom Css-->
         <link href="/Wedproject2_temp1/admin/assets/css/bootstrap-rtl.min.css" rel="stylesheet" type="text/css" />
         <!-- custom Css-->
-        <link href="/Wedproject2_temp1/admin/assets/css/app-rtl.min.css" rel="stylesheet" type="text/css" />
+       
     </head>
     <body>
         <!-- Begin page -->
@@ -79,7 +79,7 @@
             <!-- ============================================================== -->
             <!-- Start right Content here -->
             <!-- ============================================================== -->
-            <div class="main-content">
+            <div class="main-content" style="margin-top: 5%;">
 
                 <div class="page-content">
                     <div class="container-fluid">
@@ -111,16 +111,12 @@
                                                         <div class="flex-grow-1 overflow-hidden">
                                                             <p class="text-uppercase fw-medium text-muted text-truncate mb-0"> Total Earnings</p>
                                                         </div>
-                                                        <div class="flex-shrink-0">
-                                                            <h5 class="text-success fs-14 mb-0">
-                                                                <i class="ri-arrow-right-up-line fs-13 align-middle"></i> +16.24 %
-                                                            </h5>
-                                                        </div>
+                                                        
                                                     </div>
                                                     <div class="d-flex align-items-end justify-content-between mt-4">
                                                         <div>
                                                             <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value" data-target="<%=profit%>">0</span>VND </h4>
-                                                            <a href="#" class="text-decoration-underline">View net earnings</a>
+                                                            <a href="admin.jsp" class="text-decoration-underline">View net earnings</a>
                                                         </div>
                                                         <div class="avatar-sm flex-shrink-0">
                                                             <span class="avatar-title bg-success rounded fs-3">
@@ -140,16 +136,12 @@
                                                         <div class="flex-grow-1 overflow-hidden">
                                                             <p class="text-uppercase fw-medium text-muted text-truncate mb-0">Orders</p>
                                                         </div>
-                                                        <div class="flex-shrink-0">
-                                                            <h5 class="text-danger fs-14 mb-0">
-                                                                <i class="ri-arrow-right-down-line fs-13 align-middle"></i> -3.57 %
-                                                            </h5>
-                                                        </div>
+                                                        
                                                     </div>
                                                     <div class="d-flex align-items-end justify-content-between mt-4">
                                                         <div>
                                                             <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value" data-target="<%=numOrder%>">0</span></h4>
-                                                            <a href="#" class="text-decoration-underline">View all orders</a>
+                                                            <a href="viewAllOrder.jsp" class="text-decoration-underline">View all orders</a>
                                                         </div>
                                                         <div class="avatar-sm flex-shrink-0">
                                                             <span class="avatar-title bg-info rounded fs-3">
@@ -169,16 +161,12 @@
                                                         <div class="flex-grow-1 overflow-hidden">
                                                             <p class="text-uppercase fw-medium text-muted text-truncate mb-0">Customers</p>
                                                         </div>
-                                                        <div class="flex-shrink-0">
-                                                            <h5 class="text-success fs-14 mb-0">
-                                                                <i class="ri-arrow-right-up-line fs-13 align-middle"></i> +29.08 %
-                                                            </h5>
-                                                        </div>
+                                                        
                                                     </div>
                                                     <div class="d-flex align-items-end justify-content-between mt-4">
                                                         <div>
                                                             <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value" data-target="<%=numOfCustomers%>">0</span> </h4>
-                                                            <a href="#" class="text-decoration-underline">See details</a>
+                                                            <a href="manageCustomer.jsp" class="text-decoration-underline">See details</a>
                                                         </div>
                                                         <div class="avatar-sm flex-shrink-0">
                                                             <span class="avatar-title bg-warning rounded fs-3">
@@ -198,16 +186,12 @@
                                                         <div class="flex-grow-1 overflow-hidden">
                                                             <p class="text-uppercase fw-medium text-muted text-truncate mb-0"> My Balance</p>
                                                         </div>
-                                                        <div class="flex-shrink-0">
-                                                            <h5 class="text-muted fs-14 mb-0">
-                                                                +0.00 %
-                                                            </h5>
-                                                        </div>
+                                                        
                                                     </div>
                                                     <div class="d-flex align-items-end justify-content-between mt-4">
                                                         <div>
                                                             <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value" data-target="<%=profit%>">0</span>VND </h4>
-                                                            <a href="#" class="text-decoration-underline">Withdraw money</a>
+                                                            <a href="admin.jsp" class="text-decoration-underline">Withdraw money</a>
                                                         </div>
                                                         <div class="avatar-sm flex-shrink-0">
                                                             <span class="avatar-title bg-danger rounded fs-3">
@@ -224,7 +208,7 @@
                                 </div> <!-- end .h-100-->
                             </div>
                         </div> <!-- end col -->
-                        <div class="row" style="width: 80%;border: 3px;border-radius: 30px;">
+                        <div class="row" style="width: 80%;border: 3px;border-radius: 30px;margin-left: 16%;margin-top: 4%;">
                             <div class="col-xl-7">
                                 <table class="table table-borderless align-middle mb-0">
                                     <thead class="table-light text-muted">
