@@ -11,18 +11,6 @@
             <file>file:/D:/SWP391/SWP391/src/java/controllers/course/ViewCourseController.java</file>
             <file>file:/D:/SWP391/SWP391/src/java/course/CourseDAO.java</file>
             <file>file:/D:/SWP391/SWP391/web/index.jsp</file>
-            <file>file:/D:/SWP391/SWP391/web/about.jsp</file>
-            <file>file:/D:/SWP391/SWP391/src/java/controllers/staff/HideInstructorController.java</file>
-        </group>
-        <group>
-            <file>file:/D:/SWP391/SWP391/src/java/controllers/userController/DeleteStaffController.java</file>
-            <file>file:/D:/SWP391/SWP391/web/staff/managerInstructor.jsp</file>
-            <file>file:/D:/SWP391/SWP391/web/courses.jsp</file>
-            <file>file:/D:/SWP391/SWP391/src/java/users/UserDAO.java</file>
-            <file>file:/D:/SWP391/SWP391/src/java/controllers/course/ViewCoursePageController.java</file>
-            <file>file:/D:/SWP391/SWP391/src/java/controllers/course/ViewCourseController.java</file>
-            <file>file:/D:/SWP391/SWP391/src/java/course/CourseDAO.java</file>
-            <file>file:/D:/SWP391/SWP391/web/index.jsp</file>
             <file>file:/D:/SWP391/SWP391/web/staff/coursestaff.jsp</file>
             <file>file:/D:/SWP391/SWP391/web/about.jsp</file>
             <file>file:/D:/SWP391/SWP391/src/java/controllers/staff/HideInstructorController.java</file>
@@ -54,6 +42,22 @@
             <file>file:/D:/SWP391/SWP391/web/staff/managerInstructor.jsp</file>
             <file>file:/D:/SWP391/SWP391/src/java/controllers/staff/DeactiveCourseController.java</file>
             <file>file:/D:/SWP391/SWP391/web/staff/layoutadmin/slidebar.jsp</file>
+            <file>file:/D:/SWP391/SWP391/src/java/controllers/course/ViewCourseController.java</file>
+            <file>file:/D:/SWP391/SWP391/web/staff/coursestaff.jsp</file>
+            <file>file:/D:/SWP391/SWP391/src/java/controllers/staff/HideInstructorController.java</file>
+        </group>
+        <group>
+            <file>file:/D:/SWP391/SWP391/src/java/controllers/MainController.java</file>
+            <file>file:/D:/SWP391/SWP391/src/java/controllers/staff/ApproveCourseController.java</file>
+            <file>file:/D:/SWP391/SWP391/src/java/controllers/staff/LoadCourseController.java</file>
+            <file>file:/D:/SWP391/SWP391/src/java/controllers/staff/AddInstructorController.java</file>
+            <file>file:/D:/SWP391/SWP391/web/courses.jsp</file>
+            <file>file:/D:/SWP391/SWP391/src/java/controllers/staff/ShowListController.java</file>
+            <file>file:/D:/SWP391/SWP391/src/java/course/CourseDAO.java</file>
+            <file>file:/D:/SWP391/SWP391/web/WEB-INF/web.xml</file>
+            <file>file:/D:/SWP391/SWP391/src/java/controllers/userController/DeleteStaffController.java</file>
+            <file>file:/D:/SWP391/SWP391/web/staff/managerInstructor.jsp</file>
+            <file>file:/D:/SWP391/SWP391/src/java/controllers/staff/DeactiveCourseController.java</file>
             <file>file:/D:/SWP391/SWP391/src/java/controllers/course/ViewCourseController.java</file>
             <file>file:/D:/SWP391/SWP391/web/staff/coursestaff.jsp</file>
             <file>file:/D:/SWP391/SWP391/src/java/controllers/staff/HideInstructorController.java</file>
