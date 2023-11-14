@@ -113,6 +113,11 @@ public class MainController extends HttpServlet {
     private static final String UPDATECUSTOMER = "Update Customer";
     private static final String UPDATECUSTOMER_CONTROLLER = "UpdateCustomerController";
     
+    private static final String GRADING_ASSIGNMENT ="gradingAssignment";
+    private static final String GRADING_CONTROLLER ="GradingController";
+    private static final String GRADING_DETAIL ="gradingDetail";
+    private static final String GRADING_DETAIL_CONTROLLER ="GradingDetailController";
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String url = HOMEPAGE;
@@ -206,6 +211,10 @@ public class MainController extends HttpServlet {
                 url = DELETECUSTOMER_CONTROLLER;
             } else if(action.equals(UPDATECUSTOMER)){
                 url = UPDATECUSTOMER_CONTROLLER;
+            }else if(action.equals(GRADING_ASSIGNMENT)){
+                url = GRADING_CONTROLLER;
+            }else if(action.equals(GRADING_DETAIL)){
+                url = GRADING_DETAIL_CONTROLLER;
             }
 
         } catch (Exception e) {

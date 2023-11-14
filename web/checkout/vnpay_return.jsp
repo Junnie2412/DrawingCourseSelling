@@ -285,7 +285,7 @@
                                                     LocalDate futureDate = currentDate.plusMonths(4);
                                                     DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
                                                     String expiredDay = futureDate.format(formatter2);
-                                                    learningCourseDAO.createLearningCourse(true, expiredDay,course.getCourseID(), loginUser.getAccountID());
+                                                    learningCourseDAO.createLearningCourse(true, expiredDay,course.getCourseID(), user.getAccountID());
                                                 }
 
                                                 // cart clear

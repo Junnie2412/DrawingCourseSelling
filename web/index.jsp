@@ -370,7 +370,7 @@
 
                 </div>
                 <div class="text-center load-more mt-5">
-                    <a href="instructor.jsp" class="custom-button theme-one">load more Awesome Instructors <i class="fas fa-angle-right"></i></a>
+                    <a href="instructor.jsp" class="custom-button theme-one">Load more Awesome Instructors <i class="fas fa-angle-right"></i></a>
                 </div>
             </section>
             <!-- ~~~ Instructor Section ~~~ -->
@@ -378,9 +378,6 @@
             <!-- ~~~ Sponsor Section ~~~ -->
             <div class="sponsor-section pb-120">
                 <div class="container-fluid">
-                    <div class="text-center">
-                        <h4 class="title cl-theme">Art Center</h4>
-                    </div>
                     <div class="sponsor-slider-wrapper">
                         <div class="sponsor-slider owl-theme owl-carousel">
                             <div class="sponsor-item">

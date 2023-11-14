@@ -30,7 +30,9 @@ public class LearningCourseDAO {
     private static final String CREATE_LEARNING_COURSE = "INSERT INTO tblLearningCourse(isLearning, expiredDay, courseID, accountID) VALUES(?,?,?,?)";
     private static final String GET_LEARNING_COURSE_BY_COURSEID_ACCOUNTID = "SELECT * FROM tblLearningCourse WHERE accountID = ? AND courseID = ?";
     private static final String UPDATE_LEARNING_COURSE = "UPDATE tblLearningCourse SET isLearning = 0 WHERE accountID = ? AND courseID = ?";
-
+    private static final String CHECK_LEARNING_COURSE = "SELECT * FROM tblLearningCourse WHERE accountID = ? AND courseID = ? AND isLearning=1";
+    private static final String GET_COURSE_NAME_BY_LEARNING_COURSE = "SELECT c.name FROM tblCourse c JOIN tblLearningCourse l ON c.courseID = l.courseID WHERE l.learningCourseID = ?";
+            
     public List<LearningCourseDTO> getlistLearningCourseActive(String accountID) throws ClassNotFoundException, SQLException {
         List<LearningCourseDTO> list = new ArrayList<>();
         Connection conn = null;
@@ -249,5 +251,72 @@ public class LearningCourseDAO {
             }
         }
         return check;
+    }
+    
+    public boolean checkLearningCourse(String accountID, String courseID) throws SQLException {
+        boolean check = false;
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement ptm = null;
+
+        try {
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(CHECK_LEARNING_COURSE);
+                ptm.setString(1, accountID);
+                ptm.setString(2, courseID);
+                rs =ptm.executeQuery();
+                
+                if(rs.next()){
+                    check=true;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return check;
+    }
+    
+    public String getCourseName(int learningCourseID) throws SQLException {
+        String courseName = null;
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement ptm = null;
+
+        try {
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(GET_COURSE_NAME_BY_LEARNING_COURSE);
+                ptm.setInt(1, learningCourseID);
+                rs =ptm.executeQuery();
+                
+                if(rs.next()){
+                    courseName = rs.getString("name");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return courseName;
     }
 }

@@ -115,7 +115,7 @@
                     String topic = (String) request.getAttribute("ASSIGNMENT_TOPIC");
                     String message = (String) request.getAttribute("MESSAGE");
                     String isGrading = (String) request.getAttribute("MESSAGE_GRADING");
-                    
+                   
                     if(message == null){
                         message = "";
                     }
@@ -256,9 +256,22 @@
                         <a href="">Assignment <%=isGrading%></a>
                     </div>
                     <div style="width: 25%">
-                        <div class="lesson-title" style="font-size: 17px; color: black; padding: 10px; padding-left: 30%" id="assignment" onlclick="assignmentClick()">
+                        <%
+                            if(videoIDOld == null){
+                        %>
+                        <div class="lesson-title" style="font-size: 17px; color: black; padding: 10px; padding-left: 30%">
+                            <a href="ViewVideoController?assignment=Active&courseID=<%=courseID%>" style="width: 100%; color:black;">Go to Assignment</a>
+                        </div>
+                        <%
+                            }else{
+                        %>
+                        <div class="lesson-title" style="font-size: 17px; color: black; padding: 10px; padding-left: 30%">
                             <a href="ViewVideoController?assignment=Active&courseID=<%=courseID%>&videoIDOld=<%=videoIDOld%>" style="width: 100%; color:black;">Go to Assignment</a>
                         </div>
+                        <%
+                            }
+                        %>
+                        
                     </div>
                 </div>
             </div>
@@ -271,9 +284,21 @@
                         <a href="">Assignment <%=isGrading%></a>
                     </div>
                     <div style="width: 25%">
+                        <%
+                            if(videoIDOld == null){
+                        %>
+                        <div class="lesson-title" style="font-size: 17px; color: black; padding: 10px; padding-left: 30%;background-color: rgb(230, 228, 228);border-left: 10px solid rgb(21,76,121);">
+                            <a href="ViewVideoController?assignment=Active&courseID=<%=courseID%>" style="width: 100%; color:black;">Go to Assignment</a>
+                        </div>
+                        <%
+                            }else{
+                        %>
                         <div class="lesson-title" style="font-size: 17px; color: black; padding: 10px; padding-left: 30%;background-color: rgb(230, 228, 228);border-left: 10px solid rgb(21,76,121);">
                             <a href="ViewVideoController?assignment=Active&courseID=<%=courseID%>&videoIDOld=<%=videoIDOld%>" style="width: 100%; color:black;">Go to Assignment</a>
                         </div>
+                        <%
+                            }
+                        %>
                     </div>
                 </div>
             </div>

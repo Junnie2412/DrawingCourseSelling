@@ -4,6 +4,7 @@
     Author     : Admin
 --%>
 
+<%@page import="learningCourse.LearningCourseDAO"%>
 <%@page import="course.CourseFeedbackDTO"%>
 <%@page import="java.util.List"%>
 <%@page import="users.ProfileDAO"%>
@@ -112,21 +113,20 @@
                                     <div class="course-video-content">
                                         <h6 class="title"><%= course.getName()%></h6>
                                         <div class="ratings cl-theme">
-                                                <%
+                                            <%
 //                                                    float avgrate = courseFeedbackDAO.getAverageRate(course.getCourseID());
 //                                                    for (int i = 0; i < avgrate; i++) {
-                                                %>
-<!--//                                                <span><i class="fas fa-star"></i></span>-->
-                                                    <%
+                                            %>
+                                            <!--//                                                <span><i class="fas fa-star"></i></span>-->
+                                            <%
 //                                                        }
 //                                                        for (int i = 0; i < (5 - avgrate); i++) {
-                                                    %>
-<!--//                                                <span class="cl-theme-light"><i class="fas fa-star"></i></span>-->
-                                                    <%
-//                                                        }
-                                                    %>
+                                            %>
+                                            <!--//                                                <span class="cl-theme-light"><i class="fas fa-star"></i></span>-->
+                                            <%//                                                        }
+%>
 <!--//                                                <span>(<%= courseFeedbackDAO.getAverageRate(course.getCourseID())%>/5.00)</span>-->
-                                            </div>
+                                        </div>
                                         <ul class="course-infos">
                                             <li>
                                                 <span><i class="fas fa-play-circle"></i>Total Lessons</span><span><%= lessonDAO.getTotalLessons(course.getCourseID())%></span>
@@ -155,10 +155,13 @@
                                                 } else {
                                                 %>
                                                 <%
-                                                    CartDAO cartDAO = new CartDAO();
-                                                    if (cartDAO.checkAlreadyAdd(courseID, loginUser.getAccountID())) {
+                                                    LearningCourseDAO learningCourseDAO = new LearningCourseDAO();
+                                                    boolean checkLearningCourse = learningCourseDAO.checkLearningCourse(loginUser.getAccountID(), courseID);
+                                                    if (!checkLearningCourse) {
+                                                        CartDAO cartDAO = new CartDAO();
+                                                        if (cartDAO.checkAlreadyAdd(courseID, loginUser.getAccountID())) {
                                                 %>
-                                                                    
+
                                             <button class="custom-button theme-one rounded" type="submit" name="action" value="AlreadyBuyNow">Buy Now<i class="fas fa-angle-right"></i></button><br>
                                             <button class="custom-button theme-one rounded" type="submit" name="action" value="AlreadyAddToCart">Already Add To Cart <i class="fas fa-angle-right"></i></button><br>
                                                 <%
@@ -172,6 +175,7 @@
                                             <input type="hidden" name="courseID" value="<%= course.getCourseID()%>">
                                             <input type="date" hidden="" name="createdDay" id="todayDate">
                                             <%
+                                                    }
                                                 }
                                             %>
                                         </div>
@@ -216,9 +220,9 @@
                                         <li>
                                             <a href="#instructor" data-bs-toggle="tab">instructor</a>
                                         </li>
-<!--                                        <li>
-                                            <a href="#reviews" data-bs-toggle="tab">reviews</a>
-                                        </li>-->
+                                        <!--                                        <li>
+                                                                                    <a href="#reviews" data-bs-toggle="tab">reviews</a>
+                                                                                </li>-->
                                     </ul>
                                     <div class="tab-content">
                                         <div class="tab-pane show fade active" id="overview">
@@ -229,7 +233,7 @@
                                         <div class="tab-pane fade" id="curriculum">
                                             <div class="overview">
                                                 <p><%= courseDAO.getDescription(courseID).getTarget()%></p>
-                                                
+
                                             </div>
                                         </div>
                                         <div class="tab-pane fade" id="instructor">
@@ -358,7 +362,7 @@
         </div>
 
         <script>
-            window.addEventListener('load', function() {
+            window.addEventListener('load', function () {
                 var input = document.getElementsByName("price");
                 var tmp1 = 0;
                 for (var i = 0; i < input.length; i++) {
@@ -367,7 +371,7 @@
                 }
             });
         </script>
-        
+
         <script data-cfasync="false" src="../../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/jquery-3.6.0.min.js"></script>
 
         <script src="assets/js/bootstrap.min.js"></script>
@@ -381,9 +385,9 @@
         <script src="assets/js/main.js"></script>
 
         <script>
-                                                function checkLoginFunction() {
-                                                    alert("Before Add to Cart, you must Login first");
-                                                }
+            function checkLoginFunction() {
+                alert("Before Add to Cart, you must Login first");
+            }
         </script>
         <script>
             document.getElementById("todayDate").valueAsDate = new Date();

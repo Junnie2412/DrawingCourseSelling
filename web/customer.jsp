@@ -104,7 +104,6 @@
     <body>
 
         <%
-
             UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
             if(loginUser == null)
                 loginUser = new UserDTO();
@@ -250,7 +249,7 @@
                                 <input type="hidden" value="ViewCourseDetail" name="action"/>
                                 <input type="hidden" name="courseID" value="<%= course.getCourseID()%>">
                                 <input type="hidden" name="courseName" value="<%= course.getName()%>">
-                                <div class="course-item">
+                                <div class="course-item" style="height: 450px">
                                     <div class="thumb">
                                         <img src="<%= courseDAO.getDescription(course.getCourseID()).getImage()%>" alt="course" id="courseImage">
                                     </div>
@@ -376,9 +375,6 @@
             <!-- ~~~ Sponsor Section ~~~ -->
             <div class="sponsor-section pb-120">
                 <div class="container-fluid">
-                    <div class="text-center">
-                        <h4 class="title cl-theme">Art Center</h4>
-                    </div>
                     <div class="sponsor-slider-wrapper">
                         <div class="sponsor-slider owl-theme owl-carousel">
                             <div class="sponsor-item">
