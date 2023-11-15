@@ -41,7 +41,7 @@ public class AddStaffController extends HttpServlet {
             String dateString = request.getParameter("dateOfbirth");
             Date dateOfBirth = Date.valueOf(dateString);
             String role = "Staff";
-            boolean isActive = true;           
+            boolean isActive = true;
             String email = request.getParameter("email");
             String img = request.getParameter("image");
             String password = "user123";
@@ -60,7 +60,7 @@ public class AddStaffController extends HttpServlet {
             Date dateEdit = Date.valueOf(dateString);
             // Convert the Date to a LocalDate
             LocalDate dbDate = dateEdit.toLocalDate();
-            if(dbDate.isAfter(curDate)){
+            if (dbDate.isAfter(curDate)) {
                 userError.setDateError("Date is exceed current day!");
                 checkValidation = false;
             }
@@ -70,6 +70,10 @@ public class AddStaffController extends HttpServlet {
             Matcher matcher = pattern.matcher(email);
             if (!matcher.matches()) {
                 userError.setEmailError("Your email is not valid!");
+                checkValidation = false;
+            }
+            if (dao.accountIsExist(accountID)) {
+                userError.setUserIDError("UserID has already exist!");
                 checkValidation = false;
             }
             if (checkValidation) {
@@ -86,10 +90,7 @@ public class AddStaffController extends HttpServlet {
             }
         } catch (Exception e) {
             log("Error at AddStaffController");
-            if (e.toString().contains("duplicate")) {
-                userError.setUserIDError("UserID has already exist!");
-                request.setAttribute("USER_ERROR", userError);
-            }
+            
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }
