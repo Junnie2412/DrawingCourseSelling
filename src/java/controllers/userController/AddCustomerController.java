@@ -53,7 +53,7 @@ public class AddCustomerController extends HttpServlet {
                 checkValidation = false;
             }
             if (fullName.length() < 5 || fullName.length() > 30) {
-                userError.setFullNameError("Full Name must be in [5,20]");
+                userError.setFullNameError("Full Name must be in [5,30]");
                 checkValidation = false;
             }
             LocalDate curDate = LocalDate.now();
@@ -72,6 +72,10 @@ public class AddCustomerController extends HttpServlet {
                 userError.setEmailError("Your email is not valid!");
                 checkValidation = false;
             }
+            if(dao.accountIsExist(accountID)){
+                userError.setUserIDError("UserID has already exist!");
+                checkValidation = false;
+            }
             if (checkValidation) {
                 UserDTO user = new UserDTO(accountID, password, fullName, dateOfBirth, role, isActive, img, email);
                 boolean checkInsert = dao.insertStaff(user);
@@ -87,10 +91,7 @@ public class AddCustomerController extends HttpServlet {
             }
         } catch (Exception e) {
             log("Error at AddStaffController");
-            if (e.toString().contains("duplicate")) {
-                userError.setUserIDError("UserID has already exist!");
-                request.setAttribute("USER_ERROR", userError);
-            }
+            
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }
