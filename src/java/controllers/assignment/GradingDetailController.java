@@ -62,6 +62,9 @@ public class GradingDetailController extends HttpServlet {
                     if (grade >= 5) {
                         boolean checkUpdateGrade = submissionDAO.checkUpdateGrade(grade, note, true, submissionID);
                         if (checkUpdateGrade) {
+                            LearningCourseDAO learningCourseDAO = new LearningCourseDAO();
+                            int learningCourseID = submissionDAO.getLearningCourseID(submissionID);
+                            boolean checkUpdateLearningCourse = learningCourseDAO.updateLearningCourseByID(learningCourseID);
                             request.setAttribute("MESSAGE", "Submit successfully");
                         }
                     } else {

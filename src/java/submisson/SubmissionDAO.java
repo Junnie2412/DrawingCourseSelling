@@ -27,6 +27,7 @@ public class SubmissionDAO {
     private static final String GET_ASSIGNMENT_TOPIC ="SELECT DISTINCT a.topic FROM tblAssignment a JOIN tblSubmission s ON a.assignmentID = s.assignmentID WHERE s.learningCourseID = ?";
     private static final String GET_IMAGE = "SELECT project FROM tblSubmission WHERE submissionID = ?";
     private static final String UPDATE_GRADE = "UPDATE tblSubmission SET isGraded = 1, isPassed = ?, instructorNote = ?, grade= ? WHERE submissionID =?";
+    private static final String GET_LEARNING_COURSE_ID = "SELECT learningCourseID FROM tblSubmission WHERE submissionID =?";
     
     public boolean createSubmission(String accountID, String assignmentID, int learningCourseID, byte[] project ) throws SQLException {
         boolean check = false;
@@ -275,6 +276,39 @@ public class SubmissionDAO {
             }
         }
         return image;
+    }
+    
+    public int getLearningCourseID(int submissionID) throws SQLException {
+        int learningCourseID = 0;
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement ptm = null;
+
+        try {
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(GET_LEARNING_COURSE_ID);
+                ptm.setInt(1, submissionID);
+                rs = ptm.executeQuery();
+                
+                if(rs.next()){
+                    learningCourseID = rs.getInt("learningCourseID");;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return learningCourseID;
     }
     
     public boolean checkUpdateGrade(float grade, String instructorNote, boolean isPassed, int submissionID) throws SQLException {
