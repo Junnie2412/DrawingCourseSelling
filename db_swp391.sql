@@ -72,25 +72,6 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tblCourseFeedback]    Script Date: 10/1/2023 9:28:33 PM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[tblCourseFeedback](
-	[courseFeedbackID] [int] IDENTITY(1,1) NOT NULL,
-	[feedback] [varchar](250) NOT NULL,
-	[rate] [int] NULL,
-	[date] [datetime] NULL,
-	[isActive] [bit] NULL,
-	[courseID] [varchar](250) NULL,
-	[accountID] [varchar](250) NULL,
-PRIMARY KEY CLUSTERED 
-(
-	[courseFeedbackID] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-GO
 /****** Object:  Table [dbo].[tblDescription]    Script Date: 10/1/2023 9:28:33 PM ******/
 SET ANSI_NULLS ON
 GO
@@ -125,22 +106,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tblGrade]    Script Date: 10/1/2023 9:28:33 PM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[tblGrade](
-	[gradeID] [int] IDENTITY(1,1) NOT NULL,
-	[grade] [float] NULL,
-	[accountID] [varchar](250) NULL,
-	[quizID] [int] NULL,
-PRIMARY KEY CLUSTERED 
-(
-	[gradeID] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-GO
+
 /****** Object:  Table [dbo].[tblLesson]    Script Date: 10/1/2023 9:28:33 PM ******/
 SET ANSI_NULLS ON
 GO
@@ -253,87 +219,6 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tblQuiz]    Script Date: 10/1/2023 9:28:33 PM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[tblQuiz](
-	[quizID] [int] IDENTITY(1,1) NOT NULL,
-	[title] [varchar](250) NULL,
-	[lessonID] [int] NULL,
-PRIMARY KEY CLUSTERED 
-(
-	[quizID] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[tblQuizQuestion]    Script Date: 10/1/2023 9:28:33 PM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[tblQuizQuestion](
-	[questionID] [int] IDENTITY(1,1) NOT NULL,
-	[question] [varchar](250) NULL,
-	[quizID] [int] NULL,
-PRIMARY KEY CLUSTERED 
-(
-	[questionID] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[tblQuizQuestionOption]    Script Date: 10/1/2023 9:28:33 PM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[tblQuizQuestionOption](
-	[optionID] [int] IDENTITY(1,1) NOT NULL,
-	[content] [varchar](250) NULL,
-	[isCorrect] [bit] NULL,
-	[questionID] [int] NULL,
-PRIMARY KEY CLUSTERED 
-(
-	[optionID] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[tblQuizUserAnswer]    Script Date: 10/1/2023 9:28:33 PM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[tblQuizUserAnswer](
-	[answerID] [int] IDENTITY(1,1) NOT NULL,
-	[accountID] [varchar](250) NULL,
-	[courseID] [varchar](250) NULL,
-	[questionID] [int] NULL,
-	[optionID] [int] NULL,
-	[lessonID] [int] NULL,
-PRIMARY KEY CLUSTERED 
-(
-	[answerID] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[tblUserLog]    Script Date: 10/1/2023 9:28:33 PM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[tblUserLog](
-	[LogID] [int] IDENTITY(1,1) NOT NULL,
-	[accountID] [varchar](250) NULL,
-	[DeviceName] [varchar](100) NULL,
-	[TimeLogin] [datetime] NULL,
-	[DayLogin] [date] NULL,
-PRIMARY KEY CLUSTERED 
-(
-	[LogID] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-GO
 /****** Object:  Table [dbo].[tblVideo]    Script Date: 10/1/2023 9:28:33 PM ******/
 SET ANSI_NULLS ON
 GO
@@ -424,20 +309,8 @@ GO
 ALTER TABLE [dbo].[tblCourse]  WITH CHECK ADD FOREIGN KEY([descriptionID])
 REFERENCES [dbo].[tblDescription] ([descriptionID])
 GO
-ALTER TABLE [dbo].[tblCourseFeedback]  WITH CHECK ADD FOREIGN KEY([accountID])
-REFERENCES [dbo].[tblAccount] ([accountID])
-GO
-ALTER TABLE [dbo].[tblCourseFeedback]  WITH CHECK ADD FOREIGN KEY([courseID])
-REFERENCES [dbo].[tblCourse] ([courseID])
-GO
 ALTER TABLE [dbo].[tblGallery]  WITH CHECK ADD FOREIGN KEY([courseID])
 REFERENCES [dbo].[tblAccount] ([accountID])
-GO
-ALTER TABLE [dbo].[tblGrade]  WITH CHECK ADD FOREIGN KEY([accountID])
-REFERENCES [dbo].[tblAccount] ([accountID])
-GO
-ALTER TABLE [dbo].[tblGrade]  WITH CHECK ADD FOREIGN KEY([quizID])
-REFERENCES [dbo].[tblQuiz] ([quizID])
 GO
 ALTER TABLE [dbo].[tblLesson]  WITH CHECK ADD FOREIGN KEY([moduleID])
 REFERENCES [dbo].[tblModule] ([moduleID])
@@ -472,33 +345,6 @@ REFERENCES [dbo].[tblLearningCourse] ([learningCourseID])
 GO
 ALTER TABLE [dbo].[tblProgress]  WITH CHECK ADD FOREIGN KEY([videoID])
 REFERENCES [dbo].[tblVideo] ([videoID])
-GO
-ALTER TABLE [dbo].[tblQuiz]  WITH CHECK ADD FOREIGN KEY([lessonID])
-REFERENCES [dbo].[tblLesson] ([lessonID])
-GO
-ALTER TABLE [dbo].[tblQuizQuestion]  WITH CHECK ADD FOREIGN KEY([quizID])
-REFERENCES [dbo].[tblQuiz] ([quizID])
-GO
-ALTER TABLE [dbo].[tblQuizQuestionOption]  WITH CHECK ADD FOREIGN KEY([questionID])
-REFERENCES [dbo].[tblQuizQuestion] ([questionID])
-GO
-ALTER TABLE [dbo].[tblQuizUserAnswer]  WITH CHECK ADD FOREIGN KEY([accountID])
-REFERENCES [dbo].[tblAccount] ([accountID])
-GO
-ALTER TABLE [dbo].[tblQuizUserAnswer]  WITH CHECK ADD FOREIGN KEY([courseID])
-REFERENCES [dbo].[tblCourse] ([courseID])
-GO
-ALTER TABLE [dbo].[tblQuizUserAnswer]  WITH CHECK ADD FOREIGN KEY([lessonID])
-REFERENCES [dbo].[tblLesson] ([lessonID])
-GO
-ALTER TABLE [dbo].[tblQuizUserAnswer]  WITH CHECK ADD FOREIGN KEY([optionID])
-REFERENCES [dbo].[tblQuizQuestionOption] ([optionID])
-GO
-ALTER TABLE [dbo].[tblQuizUserAnswer]  WITH CHECK ADD FOREIGN KEY([questionID])
-REFERENCES [dbo].[tblQuizQuestion] ([questionID])
-GO
-ALTER TABLE [dbo].[tblUserLog]  WITH CHECK ADD FOREIGN KEY([accountID])
-REFERENCES [dbo].[tblAccount] ([accountID])
 GO
 ALTER TABLE [dbo].[tblLearningCourse]  WITH CHECK ADD FOREIGN KEY([accountID])
 REFERENCES [dbo].[tblAccount] ([accountID])
